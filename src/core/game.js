@@ -1,24 +1,7 @@
 class Game {
   constructor() {
     this.world = WORLD;
-    this.save =
-      savedPlayer?.version === 4 && savedPlayer?.bag && savedPlayer?.quests
-        ? savedPlayer
-        : defaultSave();
-    this.save.stockSold ||= {};
-    this.save.quickSlots ||= [
-      "bandage",
-      "ration",
-      "healing_tincture",
-      "bolt",
-      "wick_cell",
-      null,
-      null,
-      null,
-      null,
-      null,
-    ];
-    this.save.factionStanding ||= {};
+    this.save = loadStoredSave(); // see src/core/save.js
     this.quest = new QuestEngine(this);
     this.mapId = "hub";
     this.mode = "start";

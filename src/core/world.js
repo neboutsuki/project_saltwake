@@ -31,14 +31,17 @@ Object.assign(Game.prototype, {
   store() {
     this.save.lastUpdate = Date.now();
     // Never commit provisional expedition loot or quest progress before a safe extraction.
-    const committed = this.raid
+    return put(SAVE_KEY, JSON.stringify(this.committedSave()));
+  },
+  /** The save as it would be after dying right now: no unextracted loot or quest progress. */
+  committedSave() {
+    return this.raid
       ? {
           ...this.save,
           bag: this.raid.bagSnapshot,
           quests: this.raid.questSnapshot,
         }
       : this.save;
-    return put(SAVE_KEY, JSON.stringify(committed));
   },
   notify(message, t = 2.9) {
     $("toast").textContent = message;

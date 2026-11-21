@@ -1,3 +1,4 @@
+const GEOMETRY_AT_BOOT = geometryOf(WORLD);
 const game = new Game();
 game.bind();
 window.SALTWAKE_DEV = {
@@ -20,7 +21,7 @@ window.SALTWAKE_DEV = {
   },
   emit: (type, id) => game.quest.emit(type, id),
   get geometryLock() {
-    return geometryOf(game.world) === geometryOf(WORLD);
+    return geometryOf(game.world) === GEOMETRY_AT_BOOT;
   },
 };
 requestAnimationFrame((t) => game.tick(t));

@@ -168,8 +168,17 @@ Object.assign(Game.prototype, {
       r = 11;
     if (x < r || y < r || x > m.w * T - r || y > m.h * T - r) return false;
     if (this.isWater(x, y)) return false;
-    for (const b of m.buildings)
-      if (this.wallCollides(b, x, y, r)) return false;
+    return !this.solidAt(x, y, r);
+  },
+  /** Walls and blocking props only. Water blocks walking but not projectiles. */
+  projectileBlocked(x, y) {
+    const m = this.map();
+    if (x < 0 || y < 0 || x > m.w * T || y > m.h * T) return true;
+    return this.solidAt(x, y, 3);
+  },
+  solidAt(x, y, r) {
+    const m = this.map();
+    for (const b of m.buildings) if (this.wallCollides(b, x, y, r)) return true;
     for (const o of m.decor)
       if (["tree", "stone", "crate"].includes(o.type)) {
         let ox = (o.x + o.w * 0.45) * T,
@@ -178,9 +187,9 @@ Object.assign(Game.prototype, {
           distance(x, y, ox, oy) <
           (o.type === "tree" ? 13 : o.type === "stone" ? 10 : 12) + r
         )
-          return false;
+          return true;
       }
-    return true;
+    return false;
   },
   portal(o) {
     if (this.mapId === "hub") {

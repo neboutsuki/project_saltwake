@@ -88,102 +88,6 @@ Object.assign(Game.prototype, {
       this.updateParticles(dt);
     }
   },
-  updateEnemies(dt) {
-    let r = this.raid,
-      p = this.player;
-    if (!r) return;
-    for (const e of r.enemies) {
-      if (e.dead) continue;
-      let def = this.world.content.enemies.find((t) => t.id === e.type) || {},
-        d = distance(e.x, e.y, p.x, p.y);
-      e.walk += dt;
-      e.attackCD = Math.max(0, e.attackCD - dt);
-      e.aggro = Math.max(0, e.aggro - dt);
-      if (d < (def.aggroRange || 120) && (!def.neutral || e.hp < e.max))
-        e.aggro = 3.5;
-      let dir = 0,
-        mvx = 0,
-        mvy = 0,
-        spd = def.speed || 60;
-      if (e.aggro > 0) {
-        dir = rad(p.y - e.y, p.x - e.x);
-        if (d > (def.attackRange || 35) * 0.8) {
-          mvx = Math.cos(dir) * spd * dt;
-          mvy = Math.sin(dir) * spd * dt;
-        }
-      } else if (e.walk % 8 < 3) {
-        dir =
-          rad(e.homeY - e.y, e.homeX - e.x) + Math.sin(e.phase + e.walk) * 1.8;
-        mvx = Math.cos(dir) * spd * 0.23 * dt;
-        mvy = Math.sin(dir) * spd * 0.23 * dt;
-      }
-      if (mvx || mvy) {
-        if (this.walkable(e.x + mvx, e.y)) e.x += mvx;
-        if (this.walkable(e.x, e.y + mvy)) e.y += mvy;
-      }
-      if (e.aggro > 0 && e.attackCD <= 0) {
-        if (e.type === "wrecker" && d < 290 && d > 55) {
-          let a = rad(p.y - e.y, p.x - e.x);
-          r.bullets.push({
-            x: e.x,
-            y: e.y - 5,
-            vx: Math.cos(a) * 445,
-            vy: Math.sin(a) * 445,
-            t: 1.4,
-            damage: 13,
-            enemy: true,
-          });
-          e.attackCD = 2.15;
-        } else if (d < (def.attackRange || 42) + 6) {
-          this.hurtPlayer(def.damage || 12, e.type === "widow" ? 0.28 : 0.08);
-          e.attackCD = def.attackCooldown || 1.5;
-        }
-      }
-    }
-  },
-  updateBullets(dt) {
-    let r = this.raid;
-    if (!r) return;
-    for (let i = r.bullets.length - 1; i >= 0; i--) {
-      let b = r.bullets[i];
-      b.t -= dt;
-      let prevx = b.x,
-        prevy = b.y;
-      b.x += b.vx * dt;
-      b.y += b.vy * dt;
-      let hit = false;
-      if (
-        !this.walkable(b.x, b.y) ||
-        !this.walkable((prevx + b.x) / 2, (prevy + b.y) / 2)
-      )
-        hit = true;
-      if (
-        !hit &&
-        b.enemy &&
-        distance(b.x, b.y, this.player.x, this.player.y - 7) < 19
-      ) {
-        this.hurtPlayer(b.damage, 0.09);
-        hit = true;
-      }
-      if (!hit && !b.enemy)
-        for (const e of r.enemies) {
-          if (
-            !e.dead &&
-            distance(b.x, b.y, e.x, e.y) < (e.type === "brineback" ? 33 : 23)
-          ) {
-            this.hurtEnemy(e, b.damage);
-            hit = true;
-            let key = this.player.weapon === 1 ? "wickcaster" : "arbalest";
-            this.save.weaponCondition[key] = Math.max(
-              1,
-              (this.save.weaponCondition[key] || 100) - 0.3,
-            );
-            break;
-          }
-        }
-      if (hit || b.t <= 0) r.bullets.splice(i, 1);
-    }
-  },
   updateParticles(dt) {
     let r = this.raid;
     if (!r) return;
@@ -343,6 +247,13 @@ Object.assign(Game.prototype, {
       e.target.value = "";
     });
   },
+  questOfferText(q) {
+    const giver = this.world.content.npcs.find((n) => n.id === q.offeredBy);
+    const where = giver
+      ? "Offered by " + giver.name
+      : "Check the contract board";
+    return this.raid ? where + " · after you extract" : where;
+  },
   hud() {
     let p = this.player,
       m = this.mechanics(),
@@ -353,7 +264,7 @@ Object.assign(Game.prototype, {
     $("questObjective").textContent = st
       ? st.description
       : q
-        ? "Available at the contract board"
+        ? this.questOfferText(q)
         : "All known contracts complete";
     $("locationLabel").textContent =
       this.map().name.toUpperCase() +

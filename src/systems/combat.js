@@ -80,17 +80,6 @@ Object.assign(Game.prototype, {
       color: "#eecb83",
     });
   },
-  hurtEnemy(e, dmg) {
-    e.hp -= dmg;
-    e.aggro = 5;
-    if (e.hp > 0) return;
-    e.dead = true;
-    this.raid.kills++;
-    let def = this.world.content.enemies.find((q) => q.id === e.type);
-    if (def?.drop)
-      this.raid.drops.push({ x: e.x, y: e.y, id: def.drop, n: 1, got: false });
-    this.notify(def?.name + " defeated");
-  },
   hurtPlayer(dmg, bleed = 0) {
     let p = this.player;
     if (p.iframes > 0) return;

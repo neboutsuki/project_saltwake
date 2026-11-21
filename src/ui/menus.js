@@ -15,12 +15,6 @@ Object.assign(Game.prototype, {
       parts.join("") || "<p>No contracts available.</p>",
     );
   },
-  showPack() {
-    this.open(
-      "EXPEDITION BACKPACK",
-      `<div class="row"><span>Weight ${weight(this.save.bag).toFixed(1)} / ${this.mechanics().comfortWeight} kg comfortable</span><span>${this.save.gold} scrip</span></div><div class="scroll">${renderInventory(this.save.bag, (id, n) => (["bandage", "healing_tincture", "ration"].includes(id) ? `<button data-act="consume" data-id="${id}">USE</button>` : ""))}</div><p class="fine">Items carried into a raid can be lost. Use the Personal Stash in the hub for permanent storage.</p>`,
-    );
-  },
   mapPanel() {
     const m = this.map(),
       directory = (kind, records) =>
@@ -295,13 +289,9 @@ Object.assign(Game.prototype, {
   },
   async applySave(file) {
     try {
-      let o = JSON.parse(await file.text());
-      if (o?.version !== 4 || !o.bag || !o.quests || !o.stash)
-        throw Error("Incompatible player save");
-      put(BACKUP_KEY, JSON.stringify(this.save));
+      let o = normalizeSave(JSON.parse(await file.text()));
+      put(BACKUP_KEY, JSON.stringify(this.committedSave()));
       this.save = o;
-      this.save.quickSlots ||= QUICK_DEFAULT.slice();
-      this.save.factionStanding ||= {};
       this.player.hp = 100;
       this.player.st = 100;
       this.raid = null;
@@ -385,13 +375,13 @@ Object.assign(Game.prototype, {
         this.renderMapPanel();
         return;
       case "exportsave":
-        download("SALTWAKE_Player_Save.json", this.save);
+        download("SALTWAKE_Player_Save.json", this.committedSave());
         return;
       case "importsave":
         $("loadSave").click();
         return;
       case "manualsave":
-        put(BACKUP_KEY, get(SAVE_KEY) || JSON.stringify(this.save));
+        put(BACKUP_KEY, get(SAVE_KEY) || JSON.stringify(this.committedSave()));
         this.store();
         this.notify("Player progress saved (backup created)");
         return;

@@ -301,8 +301,8 @@ Object.assign(Game.prototype, {
       b.y += b.vy * dt;
       let hit = false;
       if (
-        !this.walkable(b.x, b.y) ||
-        !this.walkable((prevx + b.x) / 2, (prevy + b.y) / 2)
+        this.projectileBlocked(b.x, b.y) ||
+        this.projectileBlocked((prevx + b.x) / 2, (prevy + b.y) / 2)
       )
         hit = true;
       if (!hit && b.enemy) {

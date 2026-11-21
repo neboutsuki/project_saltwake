@@ -167,9 +167,3 @@ function geometryOf(p) {
     ]),
   );
 }
-let savedPlayer;
-try {
-  savedPlayer = JSON.parse(get(SAVE_KEY) || "null");
-} catch (e) {
-  savedPlayer = null;
-}
