@@ -1,0 +1,11 @@
+{
+  "note": "Protected gameplay geometry. Update only after a documented placement audit (tools/validate_world.py --update-lock).",
+  "sha256": {
+    "hub": "e015640e47dcdf1114959bfe83acf124e8ef8d9e91b09b1a23f46494eb7538a0",
+    "quays": "889f36f8017f04ab2e6ed4fce5557bc645aad4e7fe3675bd1e29c8ed282339b1",
+    "npcs": "08cf0b4e815511ade79cec2e9f24187bbfadb1e278c78b66b76d147a936d93b4",
+    "interactables": "ed70a7a9acd6d6060f7f08d78170d44130ccfcde4ac3a843c166f7b05cd6b5d4",
+    "containers": "574128eced62db49d0832a588d7998594737ebc2535dfa1a62b048779abf4676",
+    "factionAgents": "3d6591c25c4cb70f4d6f2740662f27ad80638c71d39193cc8c4d0899905407d6"
+  }
+}

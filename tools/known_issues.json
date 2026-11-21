@@ -1,0 +1,6 @@
+{
+  "note": "Validator findings that are acknowledged but intentionally not fixed yet (protected geometry). Each must name a ticket in docs/AUDIT_v0.11.md. Remove an entry once fixed.",
+  "accepted": {
+    "quays: building quays.caves overlaps a dock": "AUDIT G-3: cave mouth footprint (135,82 19x13) covers the inner ends of piers at x129 and x148. Needs a placement decision before geometry is changed."
+  }
+}
