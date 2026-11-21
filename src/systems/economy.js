@@ -1,14 +1,133 @@
-Object.assign(Game.prototype,{
- stash(){let bag=this.save.bag,stash=this.save.stash;this.open('PERSONAL STASH',`<p class="muted">Only stored items are safe if you die. Your equipped weapons are not stored here.</p><div class="cols"><div><h3>BACKPACK · ${weight(bag).toFixed(1)} KG</h3><div class="scroll">${renderInventory(bag,(id,n)=>`<button data-act="deposit" data-id="${id}">STORE ×${n}</button>`)}</div><button data-act="depositall">STORE ALL MATERIALS</button></div><div><h3>SECURE STASH</h3><div class="scroll">${renderInventory(stash,(id,n)=>`<button data-act="withdraw" data-id="${id}">TAKE 1</button>`)}</div></div></div>`)},
- deposit(id,all=false){if(!itemCount(this.save.bag,id))return;let n=all?this.save.bag[id]:1;addItem(this.save.bag,id,-n);addItem(this.save.stash,id,n);this.store();this.stash()},
- withdraw(id){if(!itemCount(this.save.stash,id))return;let mass=weight(this.save.bag)+itemDef(id).weight;if(mass>this.mechanics().hardWeight){this.notify('Backpack weight limit reached');return}addItem(this.save.stash,id,-1);addItem(this.save.bag,id,1);this.store();this.stash()},
- shop(id){let shop=this.world.content.shops.find(s=>s.id===id);if(!shop)return;this.shopID=id;this.shopView()},
- shopView(){let shop=this.world.content.shops.find(s=>s.id===this.shopID);if(!shop)return;let choices=shop.stock.map(x=>`<div class="item"><span><strong>${safeText(itemDef(x.itemId).name)}</strong><br><small class="mutedLabel">${x.price} scrip · stock ${Math.max(0,x.quantity-(this.save.stockSold[shop.id+'.'+x.itemId]||0))}</small></span><button data-act="buy" data-id="${x.itemId}">BUY</button></div>`).join('');this.open(shop.name,`<div class="row"><b>YOUR SCRIP</b><strong>${this.save.gold}</strong></div><div class="cols"><div><h3>BUY SUPPLIES</h3><div class="scroll">${choices}</div></div><div><h3>SELL BACKPACK ITEMS</h3><div class="scroll">${renderInventory(this.save.bag,(id,n)=>itemDef(id).category==='quest'||itemDef(id).category==='ammunition'?'':`<button data-act="sell" data-id="${id}">SELL +${Math.max(1,Math.round(itemDef(id).baseValue*.55))}</button>`)}</div></div></div>`)},
- buy(id){let shop=this.world.content.shops.find(s=>s.id===this.shopID),entry=shop?.stock.find(x=>x.itemId===id);if(!entry||entry.quantity<=(this.save.stockSold[shop.id+'.'+id]||0)){this.notify('Out of stock');return}if(this.save.gold<entry.price){this.notify('Not enough scrip');return}let eq=id==='weapon_arbalest'?'arbalest':id==='weapon_wickcaster'?'wickcaster':null;if(eq&&this.save.weapons[eq]){this.notify('You already have that weapon equipped');return}if(!eq&&weight(this.save.bag)+itemDef(id).weight>this.mechanics().hardWeight){this.notify('Backpack full');return}this.save.gold-=entry.price;this.save.stockSold[shop.id+'.'+id]=(this.save.stockSold[shop.id+'.'+id]||0)+1;
- if(eq){this.save.weapons[eq]=true;this.save.weaponCondition[eq]=100}else addItem(this.save.bag,id,1);
- this.ensureQuickSlots();this.notify('Purchased '+itemDef(id).name);this.store();this.shopView()},
- sell(id){if(!itemCount(this.save.bag,id)||itemDef(id).category==='quest')return;addItem(this.save.bag,id,-1);this.save.gold+=Math.max(1,Math.round(itemDef(id).baseValue*.55));this.store();this.shopView()},
- repair(){let total=Object.entries(this.save.weaponCondition).reduce((a,[id,v])=>a+(this.save.weapons[id]?Math.ceil((100-v)*.5):0),0);this.open('REPAIR BENCH',`<p>Maintain your arbalest and Wickcaster before entering the Quays.</p><p>Service fee: <b>${total} scrip</b></p><button data-act="repairall">REPAIR EQUIPPED WEAPONS</button>`)},
- consume(id){if(!itemCount(this.save.bag,id))return;addItem(this.save.bag,id,-1);if(id==='bandage'){this.player.hp=clamp(this.player.hp+36,0,100);this.player.bleed=0}else if(id==='healing_tincture')this.player.hp=clamp(this.player.hp+60,0,100);else if(id==='ration')this.player.st=clamp(this.player.st+48,0,100);this.notify('Used '+itemDef(id).name);this.store();this.showPack()},
- depositWithoutRefresh(k){let n=this.save.bag[k]||0;if(n){addItem(this.save.bag,k,-n);addItem(this.save.stash,k,n)}}
+Object.assign(Game.prototype, {
+  stash() {
+    let bag = this.save.bag,
+      stash = this.save.stash;
+    this.open(
+      "PERSONAL STASH",
+      `<p class="muted">Only stored items are safe if you die. Your equipped weapons are not stored here.</p><div class="cols"><div><h3>BACKPACK · ${weight(bag).toFixed(1)} KG</h3><div class="scroll">${renderInventory(bag, (id, n) => `<button data-act="deposit" data-id="${id}">STORE ×${n}</button>`)}</div><button data-act="depositall">STORE ALL MATERIALS</button></div><div><h3>SECURE STASH</h3><div class="scroll">${renderInventory(stash, (id, n) => `<button data-act="withdraw" data-id="${id}">TAKE 1</button>`)}</div></div></div>`,
+    );
+  },
+  deposit(id, all = false) {
+    if (!itemCount(this.save.bag, id)) return;
+    let n = all ? this.save.bag[id] : 1;
+    addItem(this.save.bag, id, -n);
+    addItem(this.save.stash, id, n);
+    this.store();
+    this.stash();
+  },
+  withdraw(id) {
+    if (!itemCount(this.save.stash, id)) return;
+    let mass = weight(this.save.bag) + itemDef(id).weight;
+    if (mass > this.mechanics().hardWeight) {
+      this.notify("Backpack weight limit reached");
+      return;
+    }
+    addItem(this.save.stash, id, -1);
+    addItem(this.save.bag, id, 1);
+    this.store();
+    this.stash();
+  },
+  shop(id) {
+    let shop = this.world.content.shops.find((s) => s.id === id);
+    if (!shop) return;
+    this.shopID = id;
+    this.shopView();
+  },
+  shopView() {
+    let shop = this.world.content.shops.find((s) => s.id === this.shopID);
+    if (!shop) return;
+    let choices = shop.stock
+      .map(
+        (x) =>
+          `<div class="item"><span><strong>${safeText(itemDef(x.itemId).name)}</strong><br><small class="mutedLabel">${x.price} scrip · stock ${Math.max(0, x.quantity - (this.save.stockSold[shop.id + "." + x.itemId] || 0))}</small></span><button data-act="buy" data-id="${x.itemId}">BUY</button></div>`,
+      )
+      .join("");
+    this.open(
+      shop.name,
+      `<div class="row"><b>YOUR SCRIP</b><strong>${this.save.gold}</strong></div><div class="cols"><div><h3>BUY SUPPLIES</h3><div class="scroll">${choices}</div></div><div><h3>SELL BACKPACK ITEMS</h3><div class="scroll">${renderInventory(this.save.bag, (id, n) => (itemDef(id).category === "quest" || itemDef(id).category === "ammunition" ? "" : `<button data-act="sell" data-id="${id}">SELL +${Math.max(1, Math.round(itemDef(id).baseValue * 0.55))}</button>`))}</div></div></div>`,
+    );
+  },
+  buy(id) {
+    let shop = this.world.content.shops.find((s) => s.id === this.shopID),
+      entry = shop?.stock.find((x) => x.itemId === id);
+    if (
+      !entry ||
+      entry.quantity <= (this.save.stockSold[shop.id + "." + id] || 0)
+    ) {
+      this.notify("Out of stock");
+      return;
+    }
+    if (this.save.gold < entry.price) {
+      this.notify("Not enough scrip");
+      return;
+    }
+    let eq =
+      id === "weapon_arbalest"
+        ? "arbalest"
+        : id === "weapon_wickcaster"
+          ? "wickcaster"
+          : null;
+    if (eq && this.save.weapons[eq]) {
+      this.notify("You already have that weapon equipped");
+      return;
+    }
+    if (
+      !eq &&
+      weight(this.save.bag) + itemDef(id).weight > this.mechanics().hardWeight
+    ) {
+      this.notify("Backpack full");
+      return;
+    }
+    this.save.gold -= entry.price;
+    this.save.stockSold[shop.id + "." + id] =
+      (this.save.stockSold[shop.id + "." + id] || 0) + 1;
+    if (eq) {
+      this.save.weapons[eq] = true;
+      this.save.weaponCondition[eq] = 100;
+    } else addItem(this.save.bag, id, 1);
+    this.ensureQuickSlots();
+    this.notify("Purchased " + itemDef(id).name);
+    this.store();
+    this.shopView();
+  },
+  sell(id) {
+    if (!itemCount(this.save.bag, id) || itemDef(id).category === "quest")
+      return;
+    addItem(this.save.bag, id, -1);
+    this.save.gold += Math.max(1, Math.round(itemDef(id).baseValue * 0.55));
+    this.store();
+    this.shopView();
+  },
+  repair() {
+    let total = Object.entries(this.save.weaponCondition).reduce(
+      (a, [id, v]) =>
+        a + (this.save.weapons[id] ? Math.ceil((100 - v) * 0.5) : 0),
+      0,
+    );
+    this.open(
+      "REPAIR BENCH",
+      `<p>Maintain your arbalest and Wickcaster before entering the Quays.</p><p>Service fee: <b>${total} scrip</b></p><button data-act="repairall">REPAIR EQUIPPED WEAPONS</button>`,
+    );
+  },
+  consume(id) {
+    if (!itemCount(this.save.bag, id)) return;
+    addItem(this.save.bag, id, -1);
+    if (id === "bandage") {
+      this.player.hp = clamp(this.player.hp + 36, 0, 100);
+      this.player.bleed = 0;
+    } else if (id === "healing_tincture")
+      this.player.hp = clamp(this.player.hp + 60, 0, 100);
+    else if (id === "ration")
+      this.player.st = clamp(this.player.st + 48, 0, 100);
+    this.notify("Used " + itemDef(id).name);
+    this.store();
+    this.showPack();
+  },
+  depositWithoutRefresh(k) {
+    let n = this.save.bag[k] || 0;
+    if (n) {
+      addItem(this.save.bag, k, -n);
+      addItem(this.save.stash, k, n);
+    }
+  },
 });

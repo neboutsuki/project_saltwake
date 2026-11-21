@@ -1,35 +1,133 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>ASHEN WILDS: SALTWAKE — Modular Foundation v0.10</title><link rel="stylesheet" href="src/ui/style.css"></head><body>
-<div id="shell" tabindex="0">
- <header id="bar"><div><b>ASHEN WILDS</b> <strong>SALTWAKE</strong><small id="mapTitle">SALVAGER'S REST · SALTWATCH HARBOR</small></div><nav><button data-ui="journal">J · QUESTS</button><button data-ui="pack">TAB · PACK</button><button data-ui="map">M · MAP</button><button data-ui="factions">G · FACTIONS</button><button data-ui="system">PLAYER SAVE</button><button data-ui="help">?</button></nav></header>
- <div id="viewport"><canvas id="world" width="1024" height="576" aria-label="SALTWAKE game map"></canvas>
- <aside id="missionHud"><div class="eyebrow" id="locationLabel">SALVAGER'S REST</div><b id="questName">THE EMPTY SKIFF</b><p id="questObjective">Talk to Mara Fen at the docks</p></aside>
- <aside id="tideHud"><b id="phaseText">SAFE HARBOR</b><div id="clockText">WORLD TIME · DUSK</div><div class="track"><i id="tideProgress" style="width:0%"></i></div><small id="zoomText">ZOOM 100%</small></aside>
- <div id="quickSlots" aria-label="1 through 0 action slots"></div><div id="interactPrompt" hidden></div><div id="toast" hidden></div>
- <footer id="hud"><section><div class="stat"><span>HP <b id="hpText">100</b></span><div class="track"><i class="health" id="hpBar" style="width:100%"></i></div></div><div class="stat"><span>STA <b id="stText">100</b></span><div class="track"><i class="stamina" id="stBar" style="width:100%"></i></div></div><div class="stat"><span>BLEED <b id="bleedText">—</b></span><span id="weightText">0 / 18 KG</span></div></section><section class="weaponSlots"><div class="slot selected" id="slot0"><b>MAIN · ARBALEST</b><span id="ammo0">1 / 14</span></div><div class="slot" id="slot1"><b>SUB · WICKCASTER</b><span id="ammo1">3 / 12</span></div></section><section class="hudDetails"><b id="coinsText">230 SCRIP</b><span id="areaText">SAFE ZONE</span><small id="statusText">SPACE — DODGE READY</small></section></footer>
- <div id="screen" class="scrim"><div id="screenBox" class="panel"><div class="eyebrow">ASHEN WILDS · RED SALT COAST</div><h1>SALTWAKE</h1><p>MODULAR FOUNDATION 0.10 · IMAGE-ASSET BUILD</p><p class="muted">Walk through Salvager's Rest, accept contracts, talk to NPCs, trade, prepare your equipment, enter the Outer Quays, recover salvage, and extract alive.</p><button class="primary" data-action="start">ENTER SALVAGER'S REST</button><div class="fine">WASD move · Shift sprint · Space dodge · Mouse aim/fire · E interact · R reload · F bandage · Q swap weapons · 1–0 quick items · G factions · Wheel zoom</div></div></div>
- <div id="panelLayer" hidden><div id="panel" class="panel" role="dialog" aria-modal="true"></div></div>
- </div><div id="quickBar"><span>WASD MOVE</span><span>SPACE ROLL</span><span>MOUSE SHOOT</span><span>E INTERACT</span><span>TAB INVENTORY</span><span>M LABELED MAP</span><span>J JOURNAL</span><span>Q SWAP</span><span>1–0 QUICK ITEMS</span><span>G FACTIONS</span><span>WHEEL ZOOM</span></div>
- <input id="loadSave" type="file" accept=".json,application/json" hidden>
-</div>
-<script src="data/generated/world.js"></script>
-<script src="data/generated/assets.js"></script>
-<script src="data/generated/terrain_maps.js"></script>
-<script src="src/core/globals.js"></script>
-<script src="src/render/assets.js"></script>
-<script src="src/systems/quests.js"></script>
-<script src="src/core/game.js"></script>
-<script src="src/core/world.js"></script>
-<script src="src/systems/raids.js"></script>
-<script src="src/systems/movement.js"></script>
-<script src="src/systems/combat.js"></script>
-<script src="src/systems/interactions.js"></script>
-<script src="src/systems/economy.js"></script>
-<script src="src/ui/menus.js"></script>
-<script src="src/systems/simulation.js"></script>
-<script src="src/render/world.js"></script>
-<script src="src/render/environment.js"></script>
-<script src="src/systems/factions.js"></script>
-<script src="src/systems/inventory_v10.js"></script>
-<script src="src/render/painted_terrain.js"></script>
-<script src="src/core/boot.js"></script>
-</body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>ASHEN WILDS: SALTWAKE — Modular Foundation v0.10</title>
+    <link rel="stylesheet" href="src/ui/style.css" />
+  </head>
+  <body>
+    <div id="shell" tabindex="0">
+      <header id="bar">
+        <div>
+          <b>ASHEN WILDS</b> <strong>SALTWAKE</strong
+          ><small id="mapTitle">SALVAGER'S REST · SALTWATCH HARBOR</small>
+        </div>
+        <nav>
+          <button data-ui="journal">J · QUESTS</button
+          ><button data-ui="pack">TAB · PACK</button
+          ><button data-ui="map">M · MAP</button
+          ><button data-ui="factions">G · FACTIONS</button
+          ><button data-ui="system">PLAYER SAVE</button
+          ><button data-ui="help">?</button>
+        </nav>
+      </header>
+      <div id="viewport">
+        <canvas
+          id="world"
+          width="1024"
+          height="576"
+          aria-label="SALTWAKE game map"
+        ></canvas>
+        <aside id="missionHud">
+          <div class="eyebrow" id="locationLabel">SALVAGER'S REST</div>
+          <b id="questName">THE EMPTY SKIFF</b>
+          <p id="questObjective">Talk to Mara Fen at the docks</p>
+        </aside>
+        <aside id="tideHud">
+          <b id="phaseText">SAFE HARBOR</b>
+          <div id="clockText">WORLD TIME · DUSK</div>
+          <div class="track"><i id="tideProgress" style="width: 0%"></i></div>
+          <small id="zoomText">ZOOM 100%</small>
+        </aside>
+        <div id="quickSlots" aria-label="1 through 0 action slots"></div>
+        <div id="interactPrompt" hidden></div>
+        <div id="toast" hidden></div>
+        <footer id="hud">
+          <section>
+            <div class="stat">
+              <span>HP <b id="hpText">100</b></span>
+              <div class="track">
+                <i class="health" id="hpBar" style="width: 100%"></i>
+              </div>
+            </div>
+            <div class="stat">
+              <span>STA <b id="stText">100</b></span>
+              <div class="track">
+                <i class="stamina" id="stBar" style="width: 100%"></i>
+              </div>
+            </div>
+            <div class="stat">
+              <span>BLEED <b id="bleedText">—</b></span
+              ><span id="weightText">0 / 18 KG</span>
+            </div>
+          </section>
+          <section class="weaponSlots">
+            <div class="slot selected" id="slot0">
+              <b>MAIN · ARBALEST</b><span id="ammo0">1 / 14</span>
+            </div>
+            <div class="slot" id="slot1">
+              <b>SUB · WICKCASTER</b><span id="ammo1">3 / 12</span>
+            </div>
+          </section>
+          <section class="hudDetails">
+            <b id="coinsText">230 SCRIP</b><span id="areaText">SAFE ZONE</span
+            ><small id="statusText">SPACE — DODGE READY</small>
+          </section>
+        </footer>
+        <div id="screen" class="scrim">
+          <div id="screenBox" class="panel">
+            <div class="eyebrow">ASHEN WILDS · RED SALT COAST</div>
+            <h1>SALTWAKE</h1>
+            <p>MODULAR FOUNDATION 0.10 · IMAGE-ASSET BUILD</p>
+            <p class="muted">
+              Walk through Salvager's Rest, accept contracts, talk to NPCs,
+              trade, prepare your equipment, enter the Outer Quays, recover
+              salvage, and extract alive.
+            </p>
+            <button class="primary" data-action="start">
+              ENTER SALVAGER'S REST
+            </button>
+            <div class="fine">
+              WASD move · Shift sprint · Space dodge · Mouse aim/fire · E
+              interact · R reload · F bandage · Q swap weapons · 1–0 quick items
+              · G factions · Wheel zoom
+            </div>
+          </div>
+        </div>
+        <div id="panelLayer" hidden>
+          <div id="panel" class="panel" role="dialog" aria-modal="true"></div>
+        </div>
+      </div>
+      <div id="quickBar">
+        <span>WASD MOVE</span><span>SPACE ROLL</span><span>MOUSE SHOOT</span
+        ><span>E INTERACT</span><span>TAB INVENTORY</span
+        ><span>M LABELED MAP</span><span>J JOURNAL</span><span>Q SWAP</span
+        ><span>1–0 QUICK ITEMS</span><span>G FACTIONS</span
+        ><span>WHEEL ZOOM</span>
+      </div>
+      <input id="loadSave" type="file" accept=".json,application/json" hidden />
+    </div>
+    <script src="data/generated/world.js"></script>
+    <script src="data/generated/assets.js"></script>
+    <script src="data/generated/terrain_maps.js"></script>
+    <script src="src/core/globals.js"></script>
+    <script src="src/render/assets.js"></script>
+    <script src="src/systems/quests.js"></script>
+    <script src="src/core/game.js"></script>
+    <script src="src/core/world.js"></script>
+    <script src="src/systems/raids.js"></script>
+    <script src="src/systems/movement.js"></script>
+    <script src="src/systems/combat.js"></script>
+    <script src="src/systems/interactions.js"></script>
+    <script src="src/systems/economy.js"></script>
+    <script src="src/ui/menus.js"></script>
+    <script src="src/systems/simulation.js"></script>
+    <script src="src/render/world.js"></script>
+    <script src="src/render/environment.js"></script>
+    <script src="src/systems/factions.js"></script>
+    <script src="src/systems/inventory_v10.js"></script>
+    <script src="src/render/painted_terrain.js"></script>
+    <script src="src/core/boot.js"></script>
+  </body>
+</html>
