@@ -236,6 +236,15 @@ Object.assign(Game.prototype, {
       if (!northDoor) this.fill(doorX - 33, y + h - 10, 66, 5, "#bea17a");
     }
   },
+  /** Draw a sprite at its natural size with its bottom-centre at (cx, bottom). */
+  drawNative(key, cx, bottom, scale = 1) {
+    const im = SPRITES.image(key);
+    if (!im) return false;
+    const w = im.naturalWidth * scale,
+      h = im.naturalHeight * scale;
+    g.drawImage(im, Math.round(cx - w / 2), Math.round(bottom - h), w, h);
+    return true;
+  },
   drawFixtures(v) {
     for (const o of this.map().features) {
       let x = o.x * T,
@@ -251,12 +260,22 @@ Object.assign(Game.prototype, {
             : o.kind === "hoist" || o.kind === "board"
               ? "props/pier"
               : null;
-      if (
-        fixtureAsset &&
-        SPRITES.draw(g, fixtureAsset, x - 4, y - 14, w + 8, h + 26)
-      ) {
+      // Props are drawn at native pixel size (1 art px = 1 world px), anchored
+      // to the bottom-centre of their footprint, so every sprite shares the
+      // same texel density as actors and terrain. The footprint is unchanged.
+      const cx = x + w / 2,
+        base = y + h - 6;
+      if (o.kind === "cistern" && SPRITES.image("props/barrel")) {
+        // a rainwater cistern reads as a cluster of storage casks
+        for (const [dx, dy] of [
+          [-24, -14],
+          [22, -16],
+          [0, 0],
+        ])
+          this.drawNative("props/barrel", cx + dx, base + dy);
         continue;
       }
+      if (fixtureAsset && this.drawNative(fixtureAsset, cx, base)) continue;
       this.fill(x + 8, y + 12, w - 5, h - 3, "#2f3430");
       this.fill(
         x,

@@ -181,6 +181,9 @@ def validate(world):
                     errors.append(f"{mid}: blocking decor {o['id']} inside building {b['id']}")
                 elif rect_overlap(o, door_lane(b)):
                     errors.append(f"{mid}: blocking decor {o['id']} in front of door of {b['id']}")
+            for d in m["docks"]:
+                if rect_overlap(o, d):
+                    warnings.append(f"{mid}: blocking decor {o['id']} ({o['type']}) sits on a dock/pier")
         for f in m["features"]:
             for b in bs:
                 if rect_overlap(f, door_lane(b)):
