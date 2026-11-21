@@ -1,0 +1,409 @@
+[
+  {
+    "id": "d_dockmaster",
+    "speakerNpcId": "n_dockmaster",
+    "startNode": "greeting",
+    "nodes": [
+      {
+        "id": "greeting",
+        "text": "You heading beyond the seawall? The storm left more wreckage than we can count.",
+        "choices": [
+          {
+            "text": "Any salvage contracts?",
+            "next": "jobs"
+          },
+          {
+            "text": "Tell me about the tides.",
+            "next": "tides"
+          },
+          {
+            "text": "My equipment was lost. Can I borrow a basic kit?",
+            "next": "loaner",
+            "action": {
+              "type": "issue_kit"
+            }
+          },
+          {
+            "text": "Goodbye"
+          }
+        ]
+      },
+      {
+        "id": "jobs",
+        "text": "An empty skiff came home without its crew. Find the mooring tag and come back with it.",
+        "choices": [
+          {
+            "text": "I’ll investigate.",
+            "next": "accepted",
+            "action": {
+              "type": "offer_quest",
+              "questId": "q_empty_skiff"
+            }
+          },
+          {
+            "text": "Not today"
+          }
+        ]
+      },
+      {
+        "id": "accepted",
+        "text": "Good. The West Passage is clear. Don’t count on the lower roads staying dry.",
+        "choices": [
+          {
+            "text": "Back"
+          }
+        ]
+      },
+      {
+        "id": "tides",
+        "text": "Low tide opens the lower quays. Rising water closes the cart track. Storm Gate stays reachable inland.",
+        "choices": [
+          {
+            "text": "Understood"
+          }
+        ]
+      },
+      {
+        "id": "loaner",
+        "text": "The harbor cannot replace what you lost. Take a worn arbalest and six bolts—but come back alive this time.",
+        "choices": [
+          {
+            "text": "Thank you."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d_clerk",
+    "speakerNpcId": "n_clerk",
+    "startNode": "greeting",
+    "nodes": [
+      {
+        "id": "greeting",
+        "text": "In this harbor we write the lost twice: once at home quay, once in the pilot ledger. The copies disagree.",
+        "choices": [
+          {
+            "text": "What’s missing?",
+            "next": "evidence"
+          },
+          {
+            "text": "I have the records.",
+            "next": "turnin",
+            "action": {
+              "type": "turn_in",
+              "questId": "q_second_record"
+            }
+          },
+          {
+            "text": "Goodbye"
+          }
+        ]
+      },
+      {
+        "id": "evidence",
+        "text": "Find the second ledger in the Customs Warehouse. I need the original, not another rumor.",
+        "choices": [
+          {
+            "text": "I’ll retrieve it.",
+            "next": "accepted",
+            "action": {
+              "type": "offer_quest",
+              "questId": "q_second_record"
+            }
+          },
+          {
+            "text": "Leave"
+          }
+        ]
+      },
+      {
+        "id": "accepted",
+        "text": "Bring it back intact. Names matter here.",
+        "choices": [
+          {
+            "text": "Back"
+          }
+        ]
+      },
+      {
+        "id": "turnin",
+        "text": "If these entries are true, someone altered the salvage records after the storm.",
+        "choices": [
+          {
+            "text": "What now?",
+            "next": "followup"
+          }
+        ]
+      },
+      {
+        "id": "followup",
+        "text": "Then the unmarked cargo must be traced.",
+        "choices": [
+          {
+            "text": "Investigate the cargo.",
+            "next": "accepted",
+            "action": {
+              "type": "offer_quest",
+              "questId": "q_cargo_without_name"
+            }
+          },
+          {
+            "text": "Later"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d_quartermaster",
+    "speakerNpcId": "n_quartermaster",
+    "startNode": "greeting",
+    "nodes": [
+      {
+        "id": "greeting",
+        "text": "Dry rope costs less than a drowned salvager. What supplies do you need?",
+        "choices": [
+          {
+            "text": "Show supplies.",
+            "next": "trade",
+            "action": {
+              "type": "open_shop",
+              "shopId": "shop_quartermaster"
+            }
+          },
+          {
+            "text": "Any advice?",
+            "next": "tip"
+          },
+          {
+            "text": "Leave"
+          }
+        ]
+      },
+      {
+        "id": "trade",
+        "text": "Rations, bandages, oil. Count your weight before leaving.",
+        "choices": [
+          {
+            "text": "Thanks"
+          }
+        ]
+      },
+      {
+        "id": "tip",
+        "text": "Don’t drag every crate home. Take the things that keep you alive.",
+        "choices": [
+          {
+            "text": "Understood"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d_mechanic",
+    "speakerNpcId": "n_mechanic",
+    "startNode": "greeting",
+    "nodes": [
+      {
+        "id": "greeting",
+        "text": "Pressure seals are delicate. A dirty launcher is worse than no launcher.",
+        "choices": [
+          {
+            "text": "Inspect weapon parts.",
+            "next": "work",
+            "action": {
+              "type": "open_shop",
+              "shopId": "shop_mechanic"
+            }
+          },
+          {
+            "text": "Goodbye"
+          }
+        ]
+      },
+      {
+        "id": "work",
+        "text": "That fitting came from an experimental batch. I’d test it before trusting it.",
+        "choices": [
+          {
+            "text": "Leave"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d_medic",
+    "speakerNpcId": "n_medic",
+    "startNode": "greeting",
+    "nodes": [
+      {
+        "id": "greeting",
+        "text": "The sea strips heat faster than courage. Let me see your wounds.",
+        "choices": [
+          {
+            "text": "Purchase treatment.",
+            "next": "treat",
+            "action": {
+              "type": "open_shop",
+              "shopId": "shop_medic"
+            }
+          },
+          {
+            "text": "Leave"
+          }
+        ]
+      },
+      {
+        "id": "treat",
+        "text": "Keep your bandages dry. Salt water is no friend to an open wound.",
+        "choices": [
+          {
+            "text": "Thanks"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d_guard",
+    "speakerNpcId": "n_guard",
+    "startNode": "greeting",
+    "nodes": [
+      {
+        "id": "greeting",
+        "text": "Past this gate is Saltwatch proper. Salvagers use the controlled passage to the southeast.",
+        "choices": [
+          {
+            "text": "Can I enter the city?",
+            "next": "city"
+          },
+          {
+            "text": "Goodbye"
+          }
+        ]
+      },
+      {
+        "id": "city",
+        "text": "The city is not accessible in this prototype.",
+        "choices": [
+          {
+            "text": "Understood"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d_salvager",
+    "speakerNpcId": "n_salvager",
+    "startNode": "greeting",
+    "nodes": [
+      {
+        "id": "greeting",
+        "text": "Wreckers say the Drowned King sank half the missing ships. Too convenient a story.",
+        "choices": [
+          {
+            "text": "Tell me more.",
+            "next": "king"
+          },
+          {
+            "text": "Leave"
+          }
+        ]
+      },
+      {
+        "id": "king",
+        "text": "There are false sightings every storm season. Follow the paperwork, not the sea tales.",
+        "choices": [
+          {
+            "text": "Investigate the claims.",
+            "next": "accepted",
+            "action": {
+              "type": "offer_quest",
+              "questId": "q_false_kings_wake"
+            }
+          },
+          {
+            "text": "Leave"
+          }
+        ]
+      },
+      {
+        "id": "accepted",
+        "text": "Start with the ruined Watch Store. Someone wanted the records gone.",
+        "choices": [
+          {
+            "text": "Thanks"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d_ropewright",
+    "startNode": "start",
+    "nodes": [
+      {
+        "id": "start",
+        "text": "The salt eats poorly spun rope. Keep your lines dry and double-knot them.",
+        "choices": [
+          {
+            "text": "Thanks for the warning.",
+            "next": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d_tidepilot",
+    "startNode": "start",
+    "nodes": [
+      {
+        "id": "start",
+        "text": "Check the tide markers before leaving the harbor. There is always an inland route home.",
+        "choices": [
+          {
+            "text": "Thanks for the warning.",
+            "next": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d_apprentice",
+    "startNode": "start",
+    "nodes": [
+      {
+        "id": "start",
+        "text": "Old pressure seals need careful maintenance. I would rather fix a launcher than explain a failure.",
+        "choices": [
+          {
+            "text": "Thanks for the warning.",
+            "next": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "d_crewhand",
+    "startNode": "start",
+    "nodes": [
+      {
+        "id": "start",
+        "text": "Storms leave cargo everywhere. They also leave wreckers; mind who you trust.",
+        "choices": [
+          {
+            "text": "Thanks for the warning.",
+            "next": null
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,151 @@
+[
+  {
+    "id": "c_empty_skiff",
+    "name": "Skiff Mooring Box",
+    "mapId": "quays",
+    "x": 116,
+    "y": 79,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid",
+    "buildingId": "quays.boathouse",
+    "guaranteedItems": [
+      {
+        "itemId": "empty_skiff_tag",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "c_pilot_ledger",
+    "name": "Pilot Records Chest",
+    "mapId": "quays",
+    "x": 76,
+    "y": 49,
+    "lootTableId": "customs_docs",
+    "respawn": "raid",
+    "buildingId": "quays.warehouse",
+    "guaranteedItems": [
+      {
+        "itemId": "pilot_ledger",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "c_manifest",
+    "name": "Manifest Strongbox",
+    "mapId": "quays",
+    "x": 90,
+    "y": 48,
+    "lootTableId": "customs_docs",
+    "respawn": "raid",
+    "buildingId": "quays.customs",
+    "guaranteedItems": [
+      {
+        "itemId": "unnamed_manifest",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "c_waterline",
+    "name": "Tidal Cavern Cache",
+    "mapId": "quays",
+    "x": 144,
+    "y": 80,
+    "lootTableId": "cave_salvage",
+    "respawn": "raid",
+    "buildingId": "quays.caves",
+    "guaranteedItems": [
+      {
+        "itemId": "salt_widow_token",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "c_wake_report",
+    "name": "Watch Store Report Case",
+    "mapId": "quays",
+    "x": 127,
+    "y": 49,
+    "lootTableId": "customs_docs",
+    "respawn": "raid",
+    "buildingId": "quays.store",
+    "guaranteedItems": [
+      {
+        "itemId": "false_wake_report",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "c_wrecker_cache",
+    "name": "Wreckers’ Stash",
+    "mapId": "quays",
+    "x": 26,
+    "y": 81,
+    "lootTableId": "wrecker_cache",
+    "respawn": "raid",
+    "buildingId": "quays.camp"
+  },
+  {
+    "id": "c_rope_stack",
+    "name": "Abandoned Rope Crate",
+    "mapId": "quays",
+    "x": 52,
+    "y": 59,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid"
+  },
+  {
+    "id": "c_cargo_scrap",
+    "name": "Customs Yard Salvage",
+    "mapId": "quays",
+    "x": 71,
+    "y": 42,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid",
+    "buildingId": "quays.warehouse"
+  },
+  {
+    "id": "c_salt_barrels",
+    "name": "Salt-Yard Barrels",
+    "mapId": "quays",
+    "x": 23,
+    "y": 56,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid",
+    "buildingId": "quays.salthouse"
+  },
+  {
+    "id": "c_pier_box",
+    "name": "Pier Cargo Chest",
+    "mapId": "quays",
+    "x": 118,
+    "y": 86,
+    "lootTableId": "provisions",
+    "respawn": "raid",
+    "buildingId": "quays.boathouse"
+  },
+  {
+    "id": "c_watch_crate",
+    "name": "Watch Crate",
+    "mapId": "quays",
+    "x": 109,
+    "y": 53,
+    "lootTableId": "provisions",
+    "respawn": "raid",
+    "buildingId": "quays.store"
+  },
+  {
+    "id": "c_hub_supplies",
+    "name": "Quartermaster Inventory Case",
+    "mapId": "hub",
+    "x": 31,
+    "y": 41,
+    "lootTableId": "provisions",
+    "respawn": "raid",
+    "buildingId": "hub.trade"
+  }
+]

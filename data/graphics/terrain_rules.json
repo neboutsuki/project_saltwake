@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "tileSize": 32,
+  "materials": {
+    "0": "packed_soil",
+    "1": "salt_flat",
+    "2": "gravel",
+    "3": "wet_mud"
+  },
+  "roadType": "stone_road",
+  "autotile": {
+    "cardinal": {
+      "N": 1,
+      "E": 2,
+      "S": 4,
+      "W": 8
+    }
+  },
+  "protectedGeometry": true,
+  "notes": "Visual-only tile indices derived from unchanged road/space coordinates; user overrides may replace tileIndex without moving any object."
+}

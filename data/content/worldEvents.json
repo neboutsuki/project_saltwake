@@ -1,0 +1,26 @@
+[
+  {
+    "id": "e_low_tide",
+    "name": "Low-Tide Salvage Window",
+    "mapId": "quays",
+    "phase": "low",
+    "effect": "Lower piers accessible; more salvage reachable",
+    "probability": 1.0
+  },
+  {
+    "id": "e_rising_tide",
+    "name": "Rising Saltwater",
+    "mapId": "quays",
+    "phase": "rising",
+    "effect": "Flood lower passages, warn of wildlife movement",
+    "probability": 1.0
+  },
+  {
+    "id": "e_rumors",
+    "name": "False King Sighting",
+    "mapId": "quays",
+    "phase": "any",
+    "effect": "Rumor only; no direct Drowned King spawn",
+    "probability": 0.18
+  }
+]

@@ -1,0 +1,238 @@
+[
+  {
+    "id": "q_empty_skiff",
+    "title": "The Empty Skiff",
+    "kind": "main",
+    "offeredBy": "n_dockmaster",
+    "prerequisites": [],
+    "summary": "A vessel returned without its crew. Recover its mooring tag and report to the dockmaster.",
+    "stages": [
+      {
+        "id": "a",
+        "description": "Speak to Mara Fen at the Rest Docks",
+        "type": "talk",
+        "targetId": "n_dockmaster",
+        "count": 1
+      },
+      {
+        "id": "b",
+        "description": "Recover the mooring tag near the Outer Quays boathouse",
+        "type": "loot",
+        "targetId": "c_empty_skiff",
+        "count": 1
+      },
+      {
+        "id": "c",
+        "description": "Extract to Salvager’s Rest",
+        "type": "extract",
+        "targetId": "quays.west",
+        "count": 1
+      },
+      {
+        "id": "d",
+        "description": "Return the tag to Mara Fen",
+        "type": "talk",
+        "targetId": "n_dockmaster",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "coins": 95,
+      "items": [
+        {
+          "itemId": "bandage",
+          "quantity": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": "q_second_record",
+    "title": "The Second Record",
+    "kind": "main",
+    "offeredBy": "n_clerk",
+    "prerequisites": [
+      "q_empty_skiff"
+    ],
+    "summary": "The official list of lost sailors contradicts its pilot copy.",
+    "stages": [
+      {
+        "id": "a",
+        "description": "Speak with Edda Voss",
+        "type": "talk",
+        "targetId": "n_clerk",
+        "count": 1
+      },
+      {
+        "id": "b",
+        "description": "Retrieve the second ledger from the Customs Warehouse",
+        "type": "loot",
+        "targetId": "c_pilot_ledger",
+        "count": 1
+      },
+      {
+        "id": "c",
+        "description": "Extract with the ledger",
+        "type": "extract",
+        "targetId": "quays.west",
+        "count": 1
+      },
+      {
+        "id": "d",
+        "description": "Deliver the ledger to Edda Voss",
+        "type": "talk",
+        "targetId": "n_clerk",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "coins": 165,
+      "items": [
+        {
+          "itemId": "pressure_seal",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": "q_cargo_without_name",
+    "title": "Cargo Without a Name",
+    "kind": "main",
+    "offeredBy": "n_clerk",
+    "prerequisites": [
+      "q_second_record"
+    ],
+    "summary": "Follow a manifest for cargo that officially never existed.",
+    "stages": [
+      {
+        "id": "a",
+        "description": "Collect the unmarked manifest at Customs",
+        "type": "loot",
+        "targetId": "c_manifest",
+        "count": 1
+      },
+      {
+        "id": "b",
+        "description": "Inspect the experimental cargo cache",
+        "type": "interact",
+        "targetId": "i_cargo_inspect",
+        "count": 1
+      },
+      {
+        "id": "c",
+        "description": "Extract from the Outer Quays",
+        "type": "extract",
+        "targetId": "quays.west",
+        "count": 1
+      },
+      {
+        "id": "d",
+        "description": "Report to Edda Voss",
+        "type": "talk",
+        "targetId": "n_clerk",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "coins": 240,
+      "items": [
+        {
+          "itemId": "cartridge",
+          "quantity": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": "q_below_waterline",
+    "title": "Below the Waterline",
+    "kind": "side",
+    "offeredBy": "n_dockmaster",
+    "prerequisites": [
+      "q_empty_skiff"
+    ],
+    "summary": "Search tidal-cave debris for evidence of the missing salvage party.",
+    "stages": [
+      {
+        "id": "a",
+        "description": "Investigate the Salt Widow cave marker",
+        "type": "interact",
+        "targetId": "i_cave_marker",
+        "count": 1
+      },
+      {
+        "id": "b",
+        "description": "Recover evidence from the cavern cache",
+        "type": "loot",
+        "targetId": "c_waterline",
+        "count": 1
+      },
+      {
+        "id": "c",
+        "description": "Extract and return to Mara Fen",
+        "type": "extract",
+        "targetId": "quays.west",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "coins": 210,
+      "items": [
+        {
+          "itemId": "healing_tincture",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": "q_false_kings_wake",
+    "title": "A False King’s Wake",
+    "kind": "side",
+    "offeredBy": "n_salvager",
+    "prerequisites": [
+      "q_empty_skiff"
+    ],
+    "summary": "Investigate misleading Drowned King reports around Saltwatch. The real catastrophe is not a routine local raid boss.",
+    "stages": [
+      {
+        "id": "a",
+        "description": "Collect the false sighting report near the ruined Watch Store",
+        "type": "loot",
+        "targetId": "c_wake_report",
+        "count": 1
+      },
+      {
+        "id": "b",
+        "description": "Read the warning board",
+        "type": "interact",
+        "targetId": "i_warning_bell",
+        "count": 1
+      },
+      {
+        "id": "c",
+        "description": "Extract to the hub",
+        "type": "extract",
+        "targetId": "quays.west",
+        "count": 1
+      },
+      {
+        "id": "d",
+        "description": "Discuss the evidence with Talla Cor",
+        "type": "talk",
+        "targetId": "n_salvager",
+        "count": 1
+      }
+    ],
+    "rewards": {
+      "coins": 175,
+      "items": [
+        {
+          "itemId": "broken_compass",
+          "quantity": 1
+        }
+      ]
+    }
+  }
+]

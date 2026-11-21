@@ -1,0 +1,67 @@
+[
+  {
+    "id": "patrol_compact_01",
+    "name": "Compact Watch Patrol",
+    "type": "human",
+    "factionId": "harbor_compact",
+    "mapId": "quays",
+    "x": 72,
+    "y": 43,
+    "homeX": 72,
+    "homeY": 43,
+    "radius": 6,
+    "weapon": "arbalest"
+  },
+  {
+    "id": "patrol_compact_02",
+    "name": "Compact Reef Guard",
+    "type": "human",
+    "factionId": "harbor_compact",
+    "mapId": "quays",
+    "x": 107,
+    "y": 51,
+    "homeX": 107,
+    "homeY": 51,
+    "radius": 6,
+    "weapon": "wickcaster"
+  },
+  {
+    "id": "patrol_salvager_01",
+    "name": "Licensed Salvager Scout",
+    "type": "human",
+    "factionId": "licensed_salvagers",
+    "mapId": "quays",
+    "x": 52,
+    "y": 51,
+    "homeX": 52,
+    "homeY": 51,
+    "radius": 7,
+    "weapon": "arbalest"
+  },
+  {
+    "id": "patrol_salvager_02",
+    "name": "Licensed Salvager Team",
+    "type": "human",
+    "factionId": "licensed_salvagers",
+    "mapId": "quays",
+    "x": 97,
+    "y": 65,
+    "homeX": 97,
+    "homeY": 65,
+    "radius": 6,
+    "weapon": "wickcaster"
+  },
+  {
+    "id": "patrol_neutral_01",
+    "name": "Independent Fisher",
+    "type": "human",
+    "factionId": "neutral_crews",
+    "mapId": "quays",
+    "x": 38,
+    "y": 42,
+    "homeX": 38,
+    "homeY": 42,
+    "radius": 4,
+    "weapon": null
+  }
+]

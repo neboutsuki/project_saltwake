@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "chunkTiles": 16,
+  "tileSize": 32,
+  "assets": 115,
+  "maps": [
+    "hub",
+    "quays"
+  ],
+  "source": "External authored Red Salt Coast terrain atlases, blended in material space, with road masks.",
+  "tide": "dynamic overlay"
+}

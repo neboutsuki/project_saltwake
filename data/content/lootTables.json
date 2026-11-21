@@ -1,0 +1,234 @@
+[
+  {
+    "id": "dock_scrap",
+    "name": "Dockside Debris",
+    "rolls": 2,
+    "entries": [
+      {
+        "itemId": "scrap_metal",
+        "weight": 55,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "itemId": "rope",
+        "weight": 22,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "salt_crystals",
+        "weight": 25,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "ship_gears",
+        "weight": 11,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "itemId": "lamp_oil",
+        "weight": 9,
+        "min": 1,
+        "max": 1
+      }
+    ],
+    "guaranteed": []
+  },
+  {
+    "id": "provisions",
+    "name": "Dry Store Supplies",
+    "rolls": 2,
+    "entries": [
+      {
+        "itemId": "ration",
+        "weight": 40,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "bandage",
+        "weight": 29,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "rope",
+        "weight": 22,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "lamp_oil",
+        "weight": 28,
+        "min": 1,
+        "max": 1
+      }
+    ],
+    "guaranteed": []
+  },
+  {
+    "id": "customs_docs",
+    "name": "Customs Records Case",
+    "rolls": 1,
+    "entries": [
+      {
+        "itemId": "lens",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "itemId": "broken_compass",
+        "weight": 23,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "itemId": "scrap_metal",
+        "weight": 30,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "pressure_seal",
+        "weight": 17,
+        "min": 1,
+        "max": 2
+      }
+    ],
+    "guaranteed": []
+  },
+  {
+    "id": "wrecker_cache",
+    "name": "Wreckers’ Cache",
+    "rolls": 3,
+    "entries": [
+      {
+        "itemId": "pressure_seal",
+        "weight": 22,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "cartridge",
+        "weight": 25,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "itemId": "bandage",
+        "weight": 20,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "ship_gears",
+        "weight": 15,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "scrap_metal",
+        "weight": 40,
+        "min": 2,
+        "max": 5
+      }
+    ],
+    "guaranteed": []
+  },
+  {
+    "id": "cave_salvage",
+    "name": "Tidal Cavern Salvage",
+    "rolls": 2,
+    "entries": [
+      {
+        "itemId": "salt_crystals",
+        "weight": 35,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "salt_widow_shell",
+        "weight": 9,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "itemId": "broken_compass",
+        "weight": 19,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "itemId": "rope",
+        "weight": 24,
+        "min": 1,
+        "max": 2
+      }
+    ],
+    "guaranteed": []
+  },
+  {
+    "id": "brineback_drops",
+    "name": "Brineback Remains",
+    "rolls": 1,
+    "entries": [
+      {
+        "itemId": "brineback_plate",
+        "weight": 80,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "salt_crystals",
+        "weight": 20,
+        "min": 1,
+        "max": 2
+      }
+    ],
+    "guaranteed": []
+  },
+  {
+    "id": "redhook_drops",
+    "name": "Redhook Gull Remains",
+    "rolls": 1,
+    "entries": [
+      {
+        "itemId": "redhook_feather",
+        "weight": 94,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "scrap_metal",
+        "weight": 6,
+        "min": 1,
+        "max": 1
+      }
+    ],
+    "guaranteed": []
+  },
+  {
+    "id": "widow_drops",
+    "name": "Salt Widow Remains",
+    "rolls": 1,
+    "entries": [
+      {
+        "itemId": "salt_widow_shell",
+        "weight": 75,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "salt_crystals",
+        "weight": 25,
+        "min": 1,
+        "max": 3
+      }
+    ],
+    "guaranteed": []
+  }
+]

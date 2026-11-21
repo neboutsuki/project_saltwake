@@ -1,0 +1,30 @@
+[
+  {
+    "id": "arbalest",
+    "itemId": "weapon_arbalest",
+    "name": "Arbalest",
+    "ammoId": "bolt",
+    "magSize": 1,
+    "damage": 90,
+    "cooldown": 0.73,
+    "reload": 1.2,
+    "speed": 930,
+    "spread": 0.035,
+    "noise": 360,
+    "range": 980
+  },
+  {
+    "id": "wickcaster",
+    "itemId": "weapon_wickcaster",
+    "name": "Wickcaster",
+    "ammoId": "wick_cell",
+    "magSize": 3,
+    "damage": 43,
+    "cooldown": 0.3,
+    "reload": 1.55,
+    "speed": 710,
+    "spread": 0.075,
+    "noise": 270,
+    "range": 700
+  }
+]

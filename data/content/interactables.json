@@ -1,0 +1,74 @@
+[
+  {
+    "id": "i_contract_board",
+    "name": "Contract Notice Board",
+    "mapId": "hub",
+    "x": 68,
+    "y": 40,
+    "kind": "quest_board",
+    "buildingId": "hub.ledger"
+  },
+  {
+    "id": "i_stash",
+    "name": "Personal Stash",
+    "mapId": "hub",
+    "x": 85,
+    "y": 10,
+    "kind": "stash",
+    "buildingId": "hub.player"
+  },
+  {
+    "id": "i_bed",
+    "name": "Resting Cot",
+    "mapId": "hub",
+    "x": 79,
+    "y": 10,
+    "kind": "rest",
+    "buildingId": "hub.player"
+  },
+  {
+    "id": "i_workbench",
+    "name": "Repair Bench",
+    "mapId": "hub",
+    "x": 26,
+    "y": 65,
+    "kind": "repair",
+    "buildingId": "hub.mech"
+  },
+  {
+    "id": "i_departure",
+    "name": "Departure Registry",
+    "mapId": "hub",
+    "x": 54,
+    "y": 63,
+    "kind": "travel",
+    "buildingId": "hub.pilot",
+    "linkedId": "quays.west"
+  },
+  {
+    "id": "i_cargo_inspect",
+    "name": "Unmarked Cargo Stack",
+    "mapId": "quays",
+    "x": 106,
+    "y": 58,
+    "kind": "inspect",
+    "buildingId": "quays.customs"
+  },
+  {
+    "id": "i_cave_marker",
+    "name": "Cave Tide Marker",
+    "mapId": "quays",
+    "x": 131,
+    "y": 78,
+    "kind": "inspect",
+    "buildingId": "quays.caves"
+  },
+  {
+    "id": "i_warning_bell",
+    "name": "Damaged Warning Bell",
+    "mapId": "quays",
+    "x": 80,
+    "y": 45,
+    "kind": "inspect"
+  }
+]

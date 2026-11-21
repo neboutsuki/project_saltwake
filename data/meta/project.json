@@ -1,0 +1,13 @@
+{
+  "schema": "saltwake-world-project-v3",
+  "revision": 4,
+  "tileSize": 32,
+  "region": "Red Salt Coast",
+  "coordinateLock": true,
+  "description": "V3: locked geographic layout, independent procedural artwork, and data-driven gameplay content with stable IDs for quests, dialogue, NPCs, loot and encounters.",
+  "version": "0.10",
+  "metadata": {
+    "lastPlacementAudit": "2026-11-21; structural overlap and interaction-placement correction"
+  },
+  "note": "Compact hub, hotbar, faction agents, painted terrain blend, lore creature art"
+}

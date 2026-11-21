@@ -1,0 +1,1915 @@
+{
+  "id": "hub",
+  "name": "Salvager’s Rest",
+  "w": 98,
+  "h": 76,
+  "seed": 12741,
+  "shore": 76,
+  "desc": "A protected salvage quarter on the INNER Saltwatch Harbor waterfront. North is the secure city road; the southeastern controlled passage leads to Outer Quays.",
+  "waterStart": 65,
+  "roads": [
+    {
+      "id": "main",
+      "width": 5,
+      "pts": [
+        [
+          50,
+          0
+        ],
+        [
+          50,
+          19
+        ],
+        [
+          51,
+          33
+        ],
+        [
+          51,
+          50
+        ],
+        [
+          53,
+          61
+        ]
+      ]
+    },
+    {
+      "id": "market",
+      "width": 4,
+      "pts": [
+        [
+          51,
+          36
+        ],
+        [
+          33,
+          37
+        ],
+        [
+          23,
+          41
+        ]
+      ]
+    },
+    {
+      "id": "ledger",
+      "width": 4,
+      "pts": [
+        [
+          53,
+          36
+        ],
+        [
+          67,
+          38
+        ],
+        [
+          81,
+          41
+        ]
+      ]
+    },
+    {
+      "id": "work",
+      "width": 4,
+      "pts": [
+        [
+          50,
+          53
+        ],
+        [
+          36,
+          56
+        ],
+        [
+          23,
+          65
+        ]
+      ]
+    },
+    {
+      "id": "pier",
+      "width": 4,
+      "pts": [
+        [
+          53,
+          61
+        ],
+        [
+          52,
+          65
+        ]
+      ]
+    },
+    {
+      "id": "outer",
+      "width": 5,
+      "pts": [
+        [
+          53,
+          52
+        ],
+        [
+          80,
+          53
+        ],
+        [
+          97,
+          51
+        ]
+      ]
+    },
+    {
+      "id": "northlane",
+      "width": 3,
+      "pts": [
+        [
+          50,
+          19
+        ],
+        [
+          67,
+          19
+        ],
+        [
+          81,
+          17
+        ]
+      ]
+    },
+    {
+      "id": "houses",
+      "width": 3,
+      "pts": [
+        [
+          50,
+          21
+        ],
+        [
+          25,
+          25
+        ],
+        [
+          18,
+          26
+        ]
+      ]
+    },
+    {
+      "id": "workdock",
+      "width": 3,
+      "pts": [
+        [
+          28,
+          65
+        ],
+        [
+          38,
+          66
+        ],
+        [
+          53,
+          65
+        ]
+      ]
+    }
+  ],
+  "spaces": [
+    {
+      "id": "square",
+      "type": "square",
+      "x": 39,
+      "y": 29,
+      "w": 29,
+      "h": 21,
+      "tag": "Salvager’s Square"
+    },
+    {
+      "id": "yard",
+      "type": "yard",
+      "x": 5,
+      "y": 54,
+      "w": 37,
+      "h": 11,
+      "tag": "Workshop Yard"
+    },
+    {
+      "id": "dockyard",
+      "type": "yard",
+      "x": 44,
+      "y": 60,
+      "w": 49,
+      "h": 6,
+      "tag": "The Rest Docks"
+    }
+  ],
+  "features": [
+    {
+      "id": "hub.lantern",
+      "name": "Central Signal Lantern",
+      "type": "fixture",
+      "kind": "lantern",
+      "x": 48,
+      "y": 31,
+      "w": 3,
+      "h": 3,
+      "variant": 0
+    },
+    {
+      "id": "hub.well",
+      "name": "Rainwater Cistern",
+      "type": "fixture",
+      "kind": "cistern",
+      "x": 41,
+      "y": 34,
+      "w": 4,
+      "h": 4,
+      "variant": 1
+    },
+    {
+      "id": "hub.board",
+      "name": "Salvager Notice Board",
+      "type": "fixture",
+      "kind": "board",
+      "x": 56,
+      "y": 32,
+      "w": 5,
+      "h": 3,
+      "variant": 0
+    },
+    {
+      "id": "hub.hoist",
+      "name": "Dockside Cargo Hoist",
+      "type": "fixture",
+      "kind": "hoist",
+      "x": 37,
+      "y": 56,
+      "w": 4,
+      "h": 5,
+      "variant": 0
+    },
+    {
+      "id": "hub.tidepost",
+      "name": "Rest Docks Tide Marker",
+      "type": "fixture",
+      "kind": "tide",
+      "x": 62,
+      "y": 58,
+      "w": 2,
+      "h": 4,
+      "variant": 0
+    }
+  ],
+  "buildings": [
+    {
+      "id": "hub.player",
+      "name": "Player Quarters",
+      "type": "house",
+      "x": 75,
+      "y": 5,
+      "w": 14,
+      "h": 10,
+      "variant": 1
+    },
+    {
+      "id": "hub.ledger",
+      "name": "Ledger House / Contracts",
+      "type": "office",
+      "x": 72,
+      "y": 27,
+      "w": 18,
+      "h": 13,
+      "variant": 0
+    },
+    {
+      "id": "hub.clinic",
+      "name": "Harbor Clinic",
+      "type": "house",
+      "x": 72,
+      "y": 44,
+      "w": 16,
+      "h": 10,
+      "variant": 2
+    },
+    {
+      "id": "hub.trade",
+      "name": "Quartermaster Hall",
+      "type": "merchant",
+      "x": 14,
+      "y": 29,
+      "w": 16,
+      "h": 11,
+      "variant": 0
+    },
+    {
+      "id": "hub.buyer",
+      "name": "Salvage Buyer",
+      "type": "warehouse",
+      "x": 14,
+      "y": 43,
+      "w": 16,
+      "h": 9,
+      "variant": 1
+    },
+    {
+      "id": "hub.mech",
+      "name": "Launcher Workshop",
+      "type": "workshop",
+      "x": 9,
+      "y": 55,
+      "w": 17,
+      "h": 9,
+      "variant": 2
+    },
+    {
+      "id": "hub.tools",
+      "name": "Tool Shed",
+      "type": "workshop",
+      "x": 29,
+      "y": 55,
+      "w": 10,
+      "h": 8,
+      "variant": 0
+    },
+    {
+      "id": "hub.guard",
+      "name": "Harbor Guardhouse",
+      "type": "office",
+      "x": 27,
+      "y": 4,
+      "w": 13,
+      "h": 10,
+      "variant": 1
+    },
+    {
+      "id": "hub.stables",
+      "name": "Cart Shelter",
+      "type": "house",
+      "x": 8,
+      "y": 5,
+      "w": 13,
+      "h": 9,
+      "variant": 2
+    },
+    {
+      "id": "hub.nhome1",
+      "name": "Saltworker Home A",
+      "type": "house",
+      "x": 7,
+      "y": 17,
+      "w": 10,
+      "h": 7,
+      "variant": 0
+    },
+    {
+      "id": "hub.nhome2",
+      "name": "Saltworker Home B",
+      "type": "house",
+      "x": 29,
+      "y": 18,
+      "w": 10,
+      "h": 7,
+      "variant": 2
+    },
+    {
+      "id": "hub.ration",
+      "name": "Ration Vendor",
+      "type": "merchant",
+      "x": 3,
+      "y": 29,
+      "w": 9,
+      "h": 8,
+      "variant": 1
+    },
+    {
+      "id": "hub.store",
+      "name": "Harbor Stores",
+      "type": "warehouse",
+      "x": 80,
+      "y": 57,
+      "w": 14,
+      "h": 7,
+      "variant": 2
+    },
+    {
+      "id": "hub.pilot",
+      "name": "Pilot Station",
+      "type": "office",
+      "x": 90,
+      "y": 42,
+      "w": 7,
+      "h": 9,
+      "variant": 0
+    }
+  ],
+  "portals": [
+    {
+      "id": "hub.north",
+      "name": "Saltwatch City Gate",
+      "x": 50,
+      "y": 3,
+      "target": "Saltwatch city (future)"
+    },
+    {
+      "id": "hub.outer",
+      "name": "Outer Quays Passage →",
+      "x": 96,
+      "y": 51,
+      "target": "quays.west"
+    },
+    {
+      "id": "hub.depart",
+      "name": "Rest Docks — Departure",
+      "x": 51,
+      "y": 67,
+      "target": "raid departures"
+    }
+  ],
+  "docks": [
+    {
+      "x": 47,
+      "y": 65,
+      "w": 8,
+      "h": 11
+    },
+    {
+      "x": 69,
+      "y": 65,
+      "w": 8,
+      "h": 10
+    },
+    {
+      "x": 84,
+      "y": 65,
+      "w": 8,
+      "h": 11
+    }
+  ],
+  "zones": [
+    {
+      "id": "residential",
+      "name": "North Gate Row",
+      "x": 2,
+      "y": 1,
+      "w": 94,
+      "h": 25
+    },
+    {
+      "id": "trade",
+      "name": "Quartermaster Lane",
+      "x": 2,
+      "y": 27,
+      "w": 32,
+      "h": 27
+    },
+    {
+      "id": "square",
+      "name": "Salvager’s Square",
+      "x": 37,
+      "y": 27,
+      "w": 33,
+      "h": 28
+    },
+    {
+      "id": "ledger",
+      "name": "Ledger and Clinic Row",
+      "x": 70,
+      "y": 25,
+      "w": 27,
+      "h": 32
+    },
+    {
+      "id": "work",
+      "name": "Workshop Yard",
+      "x": 3,
+      "y": 54,
+      "w": 38,
+      "h": 13
+    },
+    {
+      "id": "docks",
+      "name": "The Rest Docks",
+      "x": 42,
+      "y": 59,
+      "w": 54,
+      "h": 17
+    }
+  ],
+  "decor": [
+    {
+      "id": "compact.grass.000",
+      "type": "grass",
+      "x": 34.44,
+      "y": 30.52,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.001",
+      "type": "grass",
+      "x": 56.42,
+      "y": 2.51,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.002",
+      "type": "grass",
+      "x": 44.25,
+      "y": 53.43,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.003",
+      "type": "grass",
+      "x": 33.12,
+      "y": 49.14,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 0
+    },
+    {
+      "id": "compact.grass.004",
+      "type": "grass",
+      "x": 50.37,
+      "y": 25.33,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.005",
+      "type": "grass",
+      "x": 55.96,
+      "y": 61.04,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.006",
+      "type": "grass",
+      "x": 32.28,
+      "y": 31.24,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 0
+    },
+    {
+      "id": "compact.grass.008",
+      "type": "grass",
+      "x": 6.35,
+      "y": 53.71,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.009",
+      "type": "grass",
+      "x": 41.36,
+      "y": 53.13,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.011",
+      "type": "grass",
+      "x": 5.91,
+      "y": 1.95,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.012",
+      "type": "grass",
+      "x": 41.21,
+      "y": 3.3,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.013",
+      "type": "grass",
+      "x": 6.09,
+      "y": 12.56,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 0
+    },
+    {
+      "id": "compact.grass.014",
+      "type": "grass",
+      "x": 25.56,
+      "y": 22.11,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 0
+    },
+    {
+      "id": "compact.grass.015",
+      "type": "grass",
+      "x": 93.85,
+      "y": 8.21,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.016",
+      "type": "grass",
+      "x": 28.5,
+      "y": 15.56,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.017",
+      "type": "grass",
+      "x": 79.6,
+      "y": 19.29,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.018",
+      "type": "grass",
+      "x": 4.41,
+      "y": 15.63,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.019",
+      "type": "grass",
+      "x": 5.4,
+      "y": 14.2,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.020",
+      "type": "grass",
+      "x": 94.0,
+      "y": 5.29,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.021",
+      "type": "grass",
+      "x": 64.25,
+      "y": 3.28,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.022",
+      "type": "grass",
+      "x": 51.75,
+      "y": 1.5,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.023",
+      "type": "grass",
+      "x": 41.53,
+      "y": 14.7,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.024",
+      "type": "grass",
+      "x": 45.04,
+      "y": 12.06,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.025",
+      "type": "grass",
+      "x": 75.27,
+      "y": 59.39,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.026",
+      "type": "grass",
+      "x": 63.63,
+      "y": 1.2,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.027",
+      "type": "grass",
+      "x": 55.86,
+      "y": 12.49,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.029",
+      "type": "grass",
+      "x": 33.57,
+      "y": 44.97,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.030",
+      "type": "grass",
+      "x": 53.67,
+      "y": 6.52,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.031",
+      "type": "grass",
+      "x": 70.01,
+      "y": 15.98,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.032",
+      "type": "grass",
+      "x": 90.05,
+      "y": 4.75,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.033",
+      "type": "grass",
+      "x": 10.8,
+      "y": 38.74,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 0
+    },
+    {
+      "id": "compact.grass.034",
+      "type": "grass",
+      "x": 3.96,
+      "y": 14.54,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.035",
+      "type": "grass",
+      "x": 2.68,
+      "y": 6.3,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.036",
+      "type": "grass",
+      "x": 52.84,
+      "y": 12.15,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 0
+    },
+    {
+      "id": "compact.grass.037",
+      "type": "grass",
+      "x": 43.19,
+      "y": 17.89,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.038",
+      "type": "grass",
+      "x": 54.58,
+      "y": 23.01,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.039",
+      "type": "grass",
+      "x": 1.53,
+      "y": 13.36,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.040",
+      "type": "grass",
+      "x": 44.06,
+      "y": 62.17,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.041",
+      "type": "grass",
+      "x": 53.03,
+      "y": 11.5,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 0
+    },
+    {
+      "id": "compact.grass.042",
+      "type": "grass",
+      "x": 51.56,
+      "y": 24.76,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.043",
+      "type": "grass",
+      "x": 74.96,
+      "y": 62.46,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.045",
+      "type": "grass",
+      "x": 35.86,
+      "y": 50.37,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.046",
+      "type": "grass",
+      "x": 3.79,
+      "y": 3.37,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 0
+    },
+    {
+      "id": "compact.grass.047",
+      "type": "grass",
+      "x": 45.31,
+      "y": 54.33,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 0
+    },
+    {
+      "id": "compact.grass.048",
+      "type": "grass",
+      "x": 25.08,
+      "y": 10.0,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.049",
+      "type": "grass",
+      "x": 1.37,
+      "y": 5.53,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.050",
+      "type": "grass",
+      "x": 17.98,
+      "y": 17.66,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.051",
+      "type": "grass",
+      "x": 23.84,
+      "y": 9.92,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.052",
+      "type": "grass",
+      "x": 95.05,
+      "y": 3.14,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 0
+    },
+    {
+      "id": "compact.grass.053",
+      "type": "grass",
+      "x": 66.78,
+      "y": 11.05,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.054",
+      "type": "grass",
+      "x": 67.04,
+      "y": 23.36,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.057",
+      "type": "grass",
+      "x": 94.52,
+      "y": 7.98,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.058",
+      "type": "grass",
+      "x": 72.17,
+      "y": 2.27,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.059",
+      "type": "grass",
+      "x": 61.85,
+      "y": 25.16,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.060",
+      "type": "grass",
+      "x": 36.23,
+      "y": 42.49,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.061",
+      "type": "grass",
+      "x": 46.47,
+      "y": 18.09,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.062",
+      "type": "grass",
+      "x": 54.99,
+      "y": 2.08,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.063",
+      "type": "grass",
+      "x": 7.9,
+      "y": 26.03,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 0
+    },
+    {
+      "id": "compact.grass.064",
+      "type": "grass",
+      "x": 2.85,
+      "y": 23.25,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.065",
+      "type": "grass",
+      "x": 3.27,
+      "y": 26.33,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 1
+    },
+    {
+      "id": "compact.grass.066",
+      "type": "grass",
+      "x": 64.43,
+      "y": 56.38,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.067",
+      "type": "grass",
+      "x": 24.56,
+      "y": 19.22,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.068",
+      "type": "grass",
+      "x": 18.14,
+      "y": 23.58,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 3
+    },
+    {
+      "id": "compact.grass.069",
+      "type": "grass",
+      "x": 4.32,
+      "y": 61.15,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 0
+    },
+    {
+      "id": "compact.grass.070",
+      "type": "grass",
+      "x": 92.0,
+      "y": 10.53,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.grass.071",
+      "type": "grass",
+      "x": 74.1,
+      "y": 56.8,
+      "w": 0.8,
+      "h": 0.9,
+      "variant": 2
+    },
+    {
+      "id": "compact.shrub.000",
+      "type": "shrub",
+      "x": 75.9,
+      "y": 1.95,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 0
+    },
+    {
+      "id": "compact.shrub.001",
+      "type": "shrub",
+      "x": 20.94,
+      "y": 1.7,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.shrub.002",
+      "type": "shrub",
+      "x": 17.87,
+      "y": 2.82,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 0
+    },
+    {
+      "id": "compact.shrub.003",
+      "type": "shrub",
+      "x": 43.57,
+      "y": 1.3,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 1
+    },
+    {
+      "id": "compact.shrub.004",
+      "type": "shrub",
+      "x": 93.95,
+      "y": 3.15,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.shrub.006",
+      "type": "shrub",
+      "x": 55.57,
+      "y": 9.72,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 1
+    },
+    {
+      "id": "compact.shrub.007",
+      "type": "shrub",
+      "x": 46.16,
+      "y": 58.44,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.shrub.008",
+      "type": "shrub",
+      "x": 70.11,
+      "y": 9.33,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.shrub.009",
+      "type": "shrub",
+      "x": 65.89,
+      "y": 10.17,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 1
+    },
+    {
+      "id": "compact.shrub.010",
+      "type": "shrub",
+      "x": 5.17,
+      "y": 47.39,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 0
+    },
+    {
+      "id": "compact.shrub.011",
+      "type": "shrub",
+      "x": 61.12,
+      "y": 11.85,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 1
+    },
+    {
+      "id": "compact.shrub.012",
+      "type": "shrub",
+      "x": 60.29,
+      "y": 6.53,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.shrub.013",
+      "type": "shrub",
+      "x": 2.68,
+      "y": 3.8,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.shrub.015",
+      "type": "shrub",
+      "x": 70.67,
+      "y": 1.87,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.shrub.016",
+      "type": "shrub",
+      "x": 57.5,
+      "y": 21.96,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.shrub.017",
+      "type": "shrub",
+      "x": 39.99,
+      "y": 1.01,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.shrub.018",
+      "type": "shrub",
+      "x": 26.66,
+      "y": 15.94,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.shrub.019",
+      "type": "shrub",
+      "x": 35.77,
+      "y": 44.43,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 1
+    },
+    {
+      "id": "compact.shrub.020",
+      "type": "shrub",
+      "x": 65.92,
+      "y": 11.95,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.shrub.021",
+      "type": "shrub",
+      "x": 36.12,
+      "y": 49.09,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.shrub.023",
+      "type": "shrub",
+      "x": 28.96,
+      "y": 14.9,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.shrub.024",
+      "type": "shrub",
+      "x": 31.78,
+      "y": 52.0,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.shrub.025",
+      "type": "shrub",
+      "x": 33.04,
+      "y": 1.77,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.shrub.026",
+      "type": "shrub",
+      "x": 62.78,
+      "y": 3.88,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 1
+    },
+    {
+      "id": "compact.shrub.027",
+      "type": "shrub",
+      "x": 21.72,
+      "y": 15.68,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 1
+    },
+    {
+      "id": "compact.shrub.028",
+      "type": "shrub",
+      "x": 62.59,
+      "y": 8.18,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.shrub.030",
+      "type": "shrub",
+      "x": 60.37,
+      "y": 1.06,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 1
+    },
+    {
+      "id": "compact.shrub.031",
+      "type": "shrub",
+      "x": 71.39,
+      "y": 7.22,
+      "w": 1.4,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.stone.000",
+      "type": "stone",
+      "x": 82.44,
+      "y": 1.24,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 2
+    },
+    {
+      "id": "compact.stone.001",
+      "type": "stone",
+      "x": 58.36,
+      "y": 57.93,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 2
+    },
+    {
+      "id": "compact.stone.002",
+      "type": "stone",
+      "x": 79.95,
+      "y": 1.59,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 0
+    },
+    {
+      "id": "compact.stone.004",
+      "type": "stone",
+      "x": 44.11,
+      "y": 7.42,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 0
+    },
+    {
+      "id": "compact.stone.005",
+      "type": "stone",
+      "x": 19.28,
+      "y": 20.2,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 3
+    },
+    {
+      "id": "compact.stone.006",
+      "type": "stone",
+      "x": 5.43,
+      "y": 56.39,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 3
+    },
+    {
+      "id": "compact.stone.007",
+      "type": "stone",
+      "x": 36.98,
+      "y": 46.84,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 3
+    },
+    {
+      "id": "compact.stone.008",
+      "type": "stone",
+      "x": 55.25,
+      "y": 4.78,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 2
+    },
+    {
+      "id": "compact.stone.009",
+      "type": "stone",
+      "x": 94.4,
+      "y": 14.27,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 1
+    },
+    {
+      "id": "compact.stone.010",
+      "type": "stone",
+      "x": 66.96,
+      "y": 2.61,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 1
+    },
+    {
+      "id": "compact.stone.011",
+      "type": "stone",
+      "x": 6.33,
+      "y": 45.25,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 3
+    },
+    {
+      "id": "compact.stone.012",
+      "type": "stone",
+      "x": 82.0,
+      "y": 24.33,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 3
+    },
+    {
+      "id": "compact.stone.014",
+      "type": "stone",
+      "x": 55.33,
+      "y": 24.38,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 1
+    },
+    {
+      "id": "compact.stone.015",
+      "type": "stone",
+      "x": 90.65,
+      "y": 1.06,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 0
+    },
+    {
+      "id": "compact.stone.016",
+      "type": "stone",
+      "x": 1.98,
+      "y": 11.46,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 1
+    },
+    {
+      "id": "compact.stone.017",
+      "type": "stone",
+      "x": 66.65,
+      "y": 6.05,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 0
+    },
+    {
+      "id": "compact.stone.018",
+      "type": "stone",
+      "x": 60.47,
+      "y": 10.01,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 2
+    },
+    {
+      "id": "compact.stone.019",
+      "type": "stone",
+      "x": 64.07,
+      "y": 59.33,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 1
+    },
+    {
+      "id": "compact.stone.020",
+      "type": "stone",
+      "x": 71.87,
+      "y": 12.78,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 2
+    },
+    {
+      "id": "compact.stone.021",
+      "type": "stone",
+      "x": 3.12,
+      "y": 18.8,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 0
+    },
+    {
+      "id": "compact.stone.023",
+      "type": "stone",
+      "x": 34.09,
+      "y": 40.95,
+      "w": 1.6,
+      "h": 1.35,
+      "variant": 1
+    },
+    {
+      "id": "compact.tree.000",
+      "type": "tree",
+      "x": 9.17,
+      "y": 50.96,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 3
+    },
+    {
+      "id": "compact.tree.002",
+      "type": "tree",
+      "x": 31.6,
+      "y": 42.37,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 0
+    },
+    {
+      "id": "compact.tree.003",
+      "type": "tree",
+      "x": 91.04,
+      "y": 7.33,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 1
+    },
+    {
+      "id": "compact.tree.005",
+      "type": "tree",
+      "x": 56.73,
+      "y": 7.62,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 0
+    },
+    {
+      "id": "compact.tree.006",
+      "type": "tree",
+      "x": 2.11,
+      "y": 43.83,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 3
+    },
+    {
+      "id": "compact.tree.007",
+      "type": "tree",
+      "x": 6.37,
+      "y": 50.39,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 1
+    },
+    {
+      "id": "compact.tree.008",
+      "type": "tree",
+      "x": 1.33,
+      "y": 58.68,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 3
+    },
+    {
+      "id": "compact.tree.009",
+      "type": "tree",
+      "x": 5.27,
+      "y": 59.57,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 0
+    },
+    {
+      "id": "compact.tree.010",
+      "type": "tree",
+      "x": 74.59,
+      "y": 21.21,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 1
+    },
+    {
+      "id": "compact.tree.012",
+      "type": "tree",
+      "x": 57.81,
+      "y": 25.68,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 2
+    },
+    {
+      "id": "compact.tree.013",
+      "type": "tree",
+      "x": 91.57,
+      "y": 3.96,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 1
+    },
+    {
+      "id": "compact.tree.014",
+      "type": "tree",
+      "x": 58.48,
+      "y": 14.28,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 2
+    },
+    {
+      "id": "compact.tree.015",
+      "type": "tree",
+      "x": 92.31,
+      "y": 12.52,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 3
+    },
+    {
+      "id": "compact.tree.016",
+      "type": "tree",
+      "x": 64.24,
+      "y": 4.47,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 0
+    },
+    {
+      "id": "compact.tree.017",
+      "type": "tree",
+      "x": 71.98,
+      "y": 21.47,
+      "w": 2.2,
+      "h": 2.2,
+      "variant": 3
+    },
+    {
+      "id": "compact.crate.000",
+      "type": "crate",
+      "x": 8.7,
+      "y": 45.61,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.crate.001",
+      "type": "crate",
+      "x": 56.01,
+      "y": 26.23,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.crate.002",
+      "type": "crate",
+      "x": 79.65,
+      "y": 23.05,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.crate.003",
+      "type": "crate",
+      "x": 24.46,
+      "y": 7.01,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.crate.004",
+      "type": "crate",
+      "x": 69.69,
+      "y": 61.76,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.crate.005",
+      "type": "crate",
+      "x": 40.0,
+      "y": 61.5,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.crate.006",
+      "type": "crate",
+      "x": 22.18,
+      "y": 8.37,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.crate.008",
+      "type": "crate",
+      "x": 19.57,
+      "y": 15.59,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.crate.009",
+      "type": "crate",
+      "x": 57.93,
+      "y": 10.09,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 1
+    },
+    {
+      "id": "compact.crate.010",
+      "type": "crate",
+      "x": 69.56,
+      "y": 26.99,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 1
+    },
+    {
+      "id": "compact.crate.011",
+      "type": "crate",
+      "x": 61.21,
+      "y": 14.36,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 3
+    },
+    {
+      "id": "compact.crate.012",
+      "type": "crate",
+      "x": 27.88,
+      "y": 52.83,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 0
+    },
+    {
+      "id": "compact.crate.013",
+      "type": "crate",
+      "x": 69.67,
+      "y": 22.44,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.crate.014",
+      "type": "crate",
+      "x": 2.78,
+      "y": 52.62,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.crate.015",
+      "type": "crate",
+      "x": 90.69,
+      "y": 13.92,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 0
+    },
+    {
+      "id": "compact.crate.016",
+      "type": "crate",
+      "x": 35.13,
+      "y": 1.89,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.crate.017",
+      "type": "crate",
+      "x": 69.23,
+      "y": 13.53,
+      "w": 1.35,
+      "h": 1.3,
+      "variant": 2
+    },
+    {
+      "id": "compact.lantern.000",
+      "type": "lantern",
+      "x": 1.17,
+      "y": 39.59,
+      "w": 0.9,
+      "h": 1.0,
+      "variant": 3
+    },
+    {
+      "id": "compact.lantern.001",
+      "type": "lantern",
+      "x": 56.68,
+      "y": 4.07,
+      "w": 0.9,
+      "h": 1.0,
+      "variant": 1
+    },
+    {
+      "id": "compact.lantern.003",
+      "type": "lantern",
+      "x": 32.82,
+      "y": 42.02,
+      "w": 0.9,
+      "h": 1.0,
+      "variant": 1
+    },
+    {
+      "id": "compact.lantern.004",
+      "type": "lantern",
+      "x": 43.68,
+      "y": 20.02,
+      "w": 0.9,
+      "h": 1.0,
+      "variant": 1
+    },
+    {
+      "id": "compact.lantern.005",
+      "type": "lantern",
+      "x": 23.1,
+      "y": 22.39,
+      "w": 0.9,
+      "h": 1.0,
+      "variant": 1
+    },
+    {
+      "id": "compact.lantern.007",
+      "type": "lantern",
+      "x": 73.1,
+      "y": 60.26,
+      "w": 0.9,
+      "h": 1.0,
+      "variant": 1
+    },
+    {
+      "id": "compact.lantern.008",
+      "type": "lantern",
+      "x": 69.69,
+      "y": 10.44,
+      "w": 0.9,
+      "h": 1.0,
+      "variant": 1
+    },
+    {
+      "id": "compact.lantern.009",
+      "type": "lantern",
+      "x": 1.02,
+      "y": 43.4,
+      "w": 0.9,
+      "h": 1.0,
+      "variant": 3
+    },
+    {
+      "id": "compact.lantern.010",
+      "type": "lantern",
+      "x": 33.77,
+      "y": 40.87,
+      "w": 0.9,
+      "h": 1.0,
+      "variant": 1
+    },
+    {
+      "id": "compact.lantern.011",
+      "type": "lantern",
+      "x": 42.03,
+      "y": 6.02,
+      "w": 0.9,
+      "h": 1.0,
+      "variant": 3
+    }
+  ],
+  "terrainTiles": []
+}

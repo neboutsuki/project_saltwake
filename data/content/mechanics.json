@@ -1,0 +1,26 @@
+{
+  "playerSpeed": 170,
+  "sprintSpeed": 255,
+  "rollSpeed": 420,
+  "rollDuration": 0.31,
+  "rollStamina": 28,
+  "rollInvulnerability": 0.23,
+  "rollCooldown": 1.05,
+  "comfortWeight": 18,
+  "hardWeight": 34,
+  "raidSeconds": 600,
+  "lowTideUntil": 205,
+  "risingTideUntil": 435,
+  "medicineHeal": 36,
+  "initialCoins": 230,
+  "starterBag": {
+    "bolt": 14,
+    "wick_cell": 12,
+    "bandage": 3,
+    "ration": 2
+  },
+  "starterWeapons": {
+    "arbalest": true,
+    "wickcaster": true
+  }
+}

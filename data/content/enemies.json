@@ -1,0 +1,62 @@
+[
+  {
+    "id": "brineback",
+    "name": "Brineback",
+    "health": 145,
+    "speed": 65,
+    "damage": 25,
+    "aggroRange": 220,
+    "attackRange": 40,
+    "attackCooldown": 1.65,
+    "drop": "brineback_plate",
+    "neutral": false
+  },
+  {
+    "id": "gull",
+    "name": "Redhook Gull",
+    "health": 34,
+    "speed": 100,
+    "damage": 9,
+    "aggroRange": 135,
+    "attackRange": 28,
+    "attackCooldown": 1.35,
+    "drop": "redhook_feather",
+    "neutral": false
+  },
+  {
+    "id": "widow",
+    "name": "Salt Widow",
+    "health": 92,
+    "speed": 58,
+    "damage": 22,
+    "aggroRange": 155,
+    "attackRange": 40,
+    "attackCooldown": 1.7,
+    "drop": "salt_widow_shell",
+    "neutral": false
+  },
+  {
+    "id": "wrecker",
+    "name": "Harbor Wrecker",
+    "health": 76,
+    "speed": 77,
+    "damage": 13,
+    "aggroRange": 260,
+    "attackRange": 230,
+    "attackCooldown": 2.1,
+    "drop": "scrap_metal",
+    "neutral": false
+  },
+  {
+    "id": "grazer",
+    "name": "Saltcliff Grazer",
+    "health": 100,
+    "speed": 53,
+    "damage": 16,
+    "aggroRange": 90,
+    "attackRange": 38,
+    "attackCooldown": 2.0,
+    "drop": "salt_crystals",
+    "neutral": true
+  }
+]

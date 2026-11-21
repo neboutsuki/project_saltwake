@@ -1,0 +1,83 @@
+[
+  {
+    "id": "shop_quartermaster",
+    "name": "Quartermaster Supplies",
+    "ownerNpcId": "n_quartermaster",
+    "stock": [
+      {
+        "itemId": "bandage",
+        "price": 42,
+        "quantity": 12
+      },
+      {
+        "itemId": "ration",
+        "price": 26,
+        "quantity": 10
+      },
+      {
+        "itemId": "rope",
+        "price": 20,
+        "quantity": 8
+      },
+      {
+        "itemId": "lamp_oil",
+        "price": 29,
+        "quantity": 6
+      },
+      {
+        "itemId": "bolt",
+        "price": 4,
+        "quantity": 50
+      },
+      {
+        "itemId": "weapon_arbalest",
+        "price": 180,
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "id": "shop_mechanic",
+    "name": "Launcher Workshop Parts",
+    "ownerNpcId": "n_mechanic",
+    "stock": [
+      {
+        "itemId": "pressure_seal",
+        "price": 98,
+        "quantity": 3
+      },
+      {
+        "itemId": "cartridge",
+        "price": 62,
+        "quantity": 14
+      },
+      {
+        "itemId": "wick_cell",
+        "price": 10,
+        "quantity": 40
+      },
+      {
+        "itemId": "weapon_wickcaster",
+        "price": 390,
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "id": "shop_medic",
+    "name": "Harbor Clinic",
+    "ownerNpcId": "n_medic",
+    "stock": [
+      {
+        "itemId": "bandage",
+        "price": 39,
+        "quantity": 12
+      },
+      {
+        "itemId": "healing_tincture",
+        "price": 119,
+        "quantity": 6
+      }
+    ]
+  }
+]

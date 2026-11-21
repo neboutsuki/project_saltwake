@@ -1,0 +1,55 @@
+[
+  {
+    "id": "harbor_compact",
+    "name": "Saltwatch Harbor Compact",
+    "alignment": "lawful",
+    "playerStanding": 25,
+    "color": "#97b8c3",
+    "description": "Customs officials, reef pilots and harbor guards who protect the lawful port. Protect civilians and confront unauthorized wreckers.",
+    "hostileTo": [
+      "wreckers"
+    ],
+    "friendlyTo": [
+      "licensed_salvagers"
+    ]
+  },
+  {
+    "id": "licensed_salvagers",
+    "name": "Licensed Salvagers",
+    "alignment": "friendly",
+    "playerStanding": 35,
+    "color": "#ddbd86",
+    "description": "Independent salvagers licensed to work the storm coast. Cooperate with Compact patrols but compete for salvage.",
+    "hostileTo": [
+      "wreckers"
+    ],
+    "friendlyTo": [
+      "harbor_compact"
+    ]
+  },
+  {
+    "id": "wreckers",
+    "name": "Unlicensed Wreckers",
+    "alignment": "hostile",
+    "playerStanding": -70,
+    "color": "#c87565",
+    "description": "Unauthorized salvage bands willing to ambush crews and steal cargo. This is a working name for local hostile groups.",
+    "hostileTo": [
+      "harbor_compact",
+      "licensed_salvagers"
+    ],
+    "friendlyTo": []
+  },
+  {
+    "id": "neutral_crews",
+    "name": "Independent Harbor Crews",
+    "alignment": "neutral",
+    "playerStanding": 0,
+    "color": "#b5bba3",
+    "description": "Fisherfolk, repairers and independents who avoid violence unless threatened.",
+    "hostileTo": [
+      "wreckers"
+    ],
+    "friendlyTo": []
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "graphics": {
+    "theme": "premium",
+    "roof": "coast",
+    "overrides": {}
+  },
+  "visualRules": {
+    "house": {
+      "wallColor": "#655447"
+    },
+    "office": {
+      "wallColor": "#66574b"
+    },
+    "merchant": {
+      "wallColor": "#80614c"
+    },
+    "warehouse": {
+      "wallColor": "#5f5348"
+    },
+    "workshop": {
+      "wallColor": "#635249"
+    },
+    "tree": {
+      "foliageColor": "#466d60"
+    },
+    "shrub": {
+      "foliageColor": "#60735b"
+    },
+    "stone": {
+      "stoneColor": "#8c8279"
+    }
+  }
+}

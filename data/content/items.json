@@ -1,0 +1,242 @@
+[
+  {
+    "id": "scrap_metal",
+    "name": "Salt-bitten Scrap",
+    "category": "material",
+    "rarity": "common",
+    "baseValue": 8,
+    "weight": 0.4,
+    "stackLimit": 20,
+    "description": "Corroded metal recovered from ruined works"
+  },
+  {
+    "id": "rope",
+    "name": "Dry Rope",
+    "category": "material",
+    "rarity": "common",
+    "baseValue": 14,
+    "weight": 0.5,
+    "stackLimit": 20,
+    "description": "Reliable rope kept above the high-tide line"
+  },
+  {
+    "id": "salt_crystals",
+    "name": "Red Salt Crystals",
+    "category": "material",
+    "rarity": "common",
+    "baseValue": 12,
+    "weight": 0.3,
+    "stackLimit": 20,
+    "description": "Crystallized coastal salt useful for preservation"
+  },
+  {
+    "id": "lamp_oil",
+    "name": "Lantern Oil",
+    "category": "consumable",
+    "rarity": "common",
+    "baseValue": 23,
+    "weight": 0.6,
+    "stackLimit": 5,
+    "description": "A sealed bottle for lanterns and repairs"
+  },
+  {
+    "id": "bandage",
+    "name": "Clean Bandage",
+    "category": "medicine",
+    "rarity": "common",
+    "baseValue": 35,
+    "weight": 0.15,
+    "stackLimit": 8,
+    "description": "Stops ordinary bleeding"
+  },
+  {
+    "id": "ration",
+    "name": "Saltwatch Ration",
+    "category": "food",
+    "rarity": "common",
+    "baseValue": 20,
+    "weight": 0.4,
+    "stackLimit": 8,
+    "description": "A preserved meal for expeditions"
+  },
+  {
+    "id": "pressure_seal",
+    "name": "Pressure Seal",
+    "category": "weapon_part",
+    "rarity": "uncommon",
+    "baseValue": 68,
+    "weight": 0.25,
+    "stackLimit": 8,
+    "description": "Machined launcher pressure fitting"
+  },
+  {
+    "id": "cartridge",
+    "name": "Experimental Wickcaster Cartridge",
+    "category": "ammunition",
+    "rarity": "uncommon",
+    "baseValue": 41,
+    "weight": 0.15,
+    "stackLimit": 15,
+    "description": "Imported launch charge of uncertain origin"
+  },
+  {
+    "id": "brineback_plate",
+    "name": "Brineback Salt Plate",
+    "category": "monster_part",
+    "rarity": "uncommon",
+    "baseValue": 63,
+    "weight": 1.3,
+    "stackLimit": 5,
+    "description": "Armor-like plating recovered from a Brineback"
+  },
+  {
+    "id": "redhook_feather",
+    "name": "Redhook Gull Feather",
+    "category": "monster_part",
+    "rarity": "common",
+    "baseValue": 18,
+    "weight": 0.1,
+    "stackLimit": 20,
+    "description": "Distinctive scarlet scavenger flight feather"
+  },
+  {
+    "id": "salt_widow_shell",
+    "name": "Salt Widow Shell",
+    "category": "monster_part",
+    "rarity": "rare",
+    "baseValue": 115,
+    "weight": 1.1,
+    "stackLimit": 5,
+    "description": "Camouflaged carapace from a coastal cave hunter"
+  },
+  {
+    "id": "pilot_ledger",
+    "name": "Second Pilot Ledger",
+    "category": "quest",
+    "rarity": "unique",
+    "baseValue": 0,
+    "weight": 0.2,
+    "stackLimit": 1,
+    "description": "Missing shipping ledger with contradictory names and dates"
+  },
+  {
+    "id": "empty_skiff_tag",
+    "name": "Empty Skiff Mooring Tag",
+    "category": "quest",
+    "rarity": "unique",
+    "baseValue": 0,
+    "weight": 0.1,
+    "stackLimit": 1,
+    "description": "Proof of origin tied to the storm-battered vessel"
+  },
+  {
+    "id": "unnamed_manifest",
+    "name": "Unmarked Cargo Manifest",
+    "category": "quest",
+    "rarity": "unique",
+    "baseValue": 0,
+    "weight": 0.1,
+    "stackLimit": 1,
+    "description": "A record that disputes the official cargo account"
+  },
+  {
+    "id": "salt_widow_token",
+    "name": "Waterline Evidence",
+    "category": "quest",
+    "rarity": "unique",
+    "baseValue": 0,
+    "weight": 0.2,
+    "stackLimit": 1,
+    "description": "An unusual item recovered near the tidal cave"
+  },
+  {
+    "id": "false_wake_report",
+    "name": "False King’s Wake Report",
+    "category": "quest",
+    "rarity": "unique",
+    "baseValue": 0,
+    "weight": 0.2,
+    "stackLimit": 1,
+    "description": "A suspicious report blaming missing crews on a legendary calamity"
+  },
+  {
+    "id": "healing_tincture",
+    "name": "Harbor Tincture",
+    "category": "medicine",
+    "rarity": "uncommon",
+    "baseValue": 88,
+    "weight": 0.25,
+    "stackLimit": 5,
+    "description": "Basic treatment from the Harbor Clinic"
+  },
+  {
+    "id": "broken_compass",
+    "name": "Broken Pilot Compass",
+    "category": "valuable",
+    "rarity": "uncommon",
+    "baseValue": 55,
+    "weight": 0.3,
+    "stackLimit": 5,
+    "description": "Salvage from the storm fleet"
+  },
+  {
+    "id": "ship_gears",
+    "name": "Shipwork Gears",
+    "category": "material",
+    "rarity": "uncommon",
+    "baseValue": 44,
+    "weight": 0.8,
+    "stackLimit": 10,
+    "description": "Usable brass gears from a dockside winch"
+  },
+  {
+    "id": "lens",
+    "name": "Brass Survey Lens",
+    "category": "valuable",
+    "rarity": "rare",
+    "baseValue": 135,
+    "weight": 0.35,
+    "stackLimit": 5,
+    "description": "A ship surveyor’s optical instrument"
+  },
+  {
+    "id": "bolt",
+    "name": "Arbalest Bolt",
+    "category": "ammunition",
+    "rarity": "common",
+    "baseValue": 3,
+    "weight": 0.045,
+    "stackLimit": 60,
+    "description": "Iron-tipped arbalest bolt"
+  },
+  {
+    "id": "wick_cell",
+    "name": "Wickcaster Cell",
+    "category": "ammunition",
+    "rarity": "uncommon",
+    "baseValue": 8,
+    "weight": 0.08,
+    "stackLimit": 40,
+    "description": "Sealed low-pressure launcher charge"
+  },
+  {
+    "id": "weapon_arbalest",
+    "name": "Used Arbalest",
+    "category": "weapon",
+    "rarity": "common",
+    "baseValue": 145,
+    "weight": 3.3,
+    "stackLimit": 1,
+    "description": "Heavy crossbow launcher; loud, slow, hard-hitting"
+  },
+  {
+    "id": "weapon_wickcaster",
+    "name": "Wickcaster",
+    "category": "weapon",
+    "rarity": "uncommon",
+    "baseValue": 340,
+    "weight": 2.2,
+    "stackLimit": 1,
+    "description": "Short-range experimental pressure launcher"
+  }
+]
