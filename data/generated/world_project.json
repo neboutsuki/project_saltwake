@@ -5,7 +5,7 @@
   "region": "Red Salt Coast",
   "coordinateLock": true,
   "description": "V3: locked geographic layout, independent procedural artwork, and data-driven gameplay content with stable IDs for quests, dialogue, NPCs, loot and encounters.",
-  "version": "0.10",
+  "version": "0.11",
   "metadata": {
     "lastPlacementAudit": "2026-11-21; structural overlap and interaction-placement correction"
   },
