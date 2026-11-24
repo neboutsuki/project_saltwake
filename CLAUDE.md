@@ -1,0 +1,13 @@
+# SALTWAKE — canonical development handover
+
+Current playable build: v0.30.0 — The Unseen War (see CHANGELOG.md). Continue it, do not rewrite it. Original HTML/JS/CSS source was monolithic; this package extracts embedded images and the canonical world JSON into editable files without changing the runtime. `source/game.template.html` is the canonical editable game source; `python build.py` generates the playable HTML. Edit world and media separately; preserve IDs, coordinates, exits and collisions. The source is not yet split into gameplay modules. Do not treat the archived encounter prototypes as another runtime; live encounters use the native actor engine.
+
+## Workflow
+1. Rebuild and verify the existing version before editing. Run `node qa/tools/run_qa.js playable/SALTWAKE_v0.30.0_Unseen_War.html qa/v0.30.0` (Node Playwright; all checks must be true). New code goes in `source/modules/*.js` via `@@SALTWAKE_MODULE:name.js@@`. Keep a backup and export player saves. The historical 22 focused checks do not constitute full regression.
+2. Audit gameplay, saves, map accessibility, quests, collision and performance. Fix regressions before new features.
+3. Improve existing monster AI, patrols, combat response, attack telegraphs and movement; preserve inventory, crafting, extraction and progression. Living hostile humans remain rare; Brineworn are mutated former humans who attack humans. Avoid duplicate actors/loot and parallel combat engines.
+4. Improve art: premium HD pixel art with 2.5D environmental depth, fixed top-down axes (not isometric), detailed 2D characters, consistent scale, accessible paths, layered foliage and image-based assets. No engine migration yet. Create directional animation assets and preserve combat timing.
+5. Polish HUD, inventory, crafting, quest journal, field guide, trading, map, preparation, debrief and settings. Stable HUD layout. Optimize rendering, AI and collisions, benchmark, then run full regression and browser playtesting.
+6. Deliver a playable HTML, complete updated source/assets, changelog, QA results, screenshots and known issues. If subagents are available, delegate audit, art, UI, AI and QA with coordinated changes. Do actual implementation rather than only a plan.
+
+See development/README.md for the integrated behavior and limits. Archive contains earlier prototypes for reference only. Full external lore documents and original pre-embedded art working files were not supplied; the world data and recovered embedded artwork are included. Keep a single canonical build. Target: polished v0.30.0 Alpha, then commercial indie quality over time.

@@ -1,0 +1,28 @@
+{
+  "checks": {
+    "boot": true,
+    "assets": true,
+    "first": true,
+    "safePoints": true,
+    "extraction": true,
+    "report": true,
+    "second": true,
+    "rare": true,
+    "unique": true,
+    "route": true,
+    "motion": true,
+    "nativePatrol": true,
+    "engaged": true,
+    "retreat": true,
+    "hostile": true,
+    "nativeCombat": true,
+    "claim": true,
+    "noDuplicate": true,
+    "drop": true,
+    "repeatKill": true,
+    "persist": true,
+    "return": true
+  },
+  "page_errors": [],
+  "method": "Chromium actual game API; controlled fixtures; no full regression or manual balancing"
+}
