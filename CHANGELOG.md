@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased — Glass UI
+- New module `source/modules/ui-glass.js` adds a dark translucent theme. The game view now fills the window. The top bar is a floating pill. HUD blocks use frosted glass with a cool cyan accent instead of green and gold. Menus open as a rounded glass sheet over the blurred game rather than a full-screen page. The location label sits under the nav bar and no longer overlaps the hotbar.
+- The Classic theme is still available under Graphics & Performance → Interface theme (stored in `saltwake.ui.theme`). The theme only changes how things look, not game state.
+- Before and after screenshots are in `qa/screenshots/ui-glass/`. Regression: 79/79 checks passed.
+
 ## v0.30.0 — The Unseen War (2026-11-24)
 New module `source/modules/polish-v030.js`, inlined by `build.py`. Save key and schema are unchanged. Settings are stored under `saltwake.polish.v1`.
 
