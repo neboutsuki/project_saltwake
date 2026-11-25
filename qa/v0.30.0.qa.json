@@ -66,7 +66,7 @@
     "v031.castShadows": true,
     "v031.extract": true,
     "v030.loaded": true,
-    "v030.title": false,
+    "v030.title": true,
     "v030.raid": true,
     "v030.telegraph": true,
     "v030.telegraphToggle": true,

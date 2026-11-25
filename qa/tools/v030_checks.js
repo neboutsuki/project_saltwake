@@ -1,5 +1,5 @@
 module.exports=`()=>{const G=SALTWAKE_DEV.game,S=window.saltwakePolish,A=saltwakeAlpha;const c={};
-c.loaded=S?.revision==='0.30.0';c.title=document.title.includes('v0.30.0')&&!document.title.includes('alpha');
+c.loaded=S?.revision==='0.30.0';c.title=!!window.SALTWAKE_BUILD&&document.title.includes(SALTWAKE_BUILD.label);
 G.close?.();G.setArea('hub',34,36);G.mode='play';G.save.completedRaids=3;G.beginRaid();const r=G.raid;c.raid=!!r;
 const pts=r.war.points;const q=pts.find(p=>G.walkable(p.x+40,p.y)&&G.hasSight(p.x,p.y,p.x+40,p.y));
 G.player.x=q.x+40;G.player.y=q.y;const m=A.makeAltered(G,'brineworn_drifter',q.x,q.y,'qa-tele');r.enemies=[m];G.initSense?.(m);
