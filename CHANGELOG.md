@@ -4,11 +4,13 @@
 - Conversations now appear as a speech box above the speaker's head (it follows them if the camera or they move; it
   drops below the head near the top edge). The speaker's portrait sits on the left, the player's on the right; the
   side that is talking is lit. Lines type out (Space/Enter/F to finish, then continue), choices appear afterwards,
-  1–9 pick a choice, Esc leaves. The dialogue engine, quest hooks and actions are unchanged.
+  1–9 pick a choice. The box is light and see-through (frosted white, dark text). There is no close button: you
+  leave by saying a farewell line; a node without one gets "Maybe next time.", "I'll pass." or "Goodbye." (Esc still
+  leaves quietly). The dialogue engine, quest hooks and actions are unchanged.
 - Portraits are image files (`assets/art/portraits/<npcId>.png`, `player_<body>.png`, optional `<id>_<mood>.png`
   with a node `"mood"`); a silhouette placeholder (`assets/ui/portrait_unknown.svg`) is used until they exist.
   `docs/PORTRAITS.md` lists the 13 portraits with prompts; the import tool makes portraits live at once.
-- QA: new `dialogue` suite; 147/147.
+- QA: new `dialogue` suite; 149/149.
 
 ## Unreleased — Systems pass and quest safety net
 - **Pack alert:** hurting a monster brings nearby monsters of the same kind into the fight (neutral prey excluded).

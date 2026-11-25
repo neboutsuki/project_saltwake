@@ -9,7 +9,8 @@
  *   art/portraits/<npcId>_<mood>.png     optional; a node can set "mood": "worried" etc.
  *   art/portraits/player_<body>.png      player (body from the save, else player_male), or art/portraits/player.png
  * Missing portraits fall back to ui/portrait_unknown.
- * Controls: Space/Enter/F finish the line, then continue; 1-9 pick a choice; Esc leaves (game close()).
+ * Controls: Space/Enter/F finish the line, then continue; 1-9 pick a choice. There is no close button: you leave by
+ * saying a farewell line (nodes without one get "Maybe next time." etc.); Esc still leaves quietly.
  */
 (() => {
   const P = Game.prototype;
@@ -23,6 +24,8 @@
     for (const k of keys) if (k && im[k]) return { src: im[k], found: true };
     return { src: im['ui/portrait_unknown'] || '', found: false };
   }
+  const FAREWELLS = ['Maybe next time.', 'I’ll pass.', 'Goodbye.', 'Another time.', 'I should go.'];
+  const farewell = (npc, node) => FAREWELLS[[...(npc.id + node)].reduce((a, ch) => a + ch.charCodeAt(0), 0) % FAREWELLS.length];
   D.npcPortrait = (npc, mood) => portrait([mood && `art/portraits/${npc.id}_${mood}`, `art/portraits/${npc.id}`]);
   D.playerPortrait = g => {
     const body = g.save?.appearance?.body || g.save?.profile?.body || g.save?.body || 'male';
@@ -77,6 +80,8 @@
     const node = d.dialogue.nodes.find(n => n.id === d.node);
     if (!node) { this.close(); return; }
     const npc = d.npc, choices = node.choices || [];
+    // No close button: leaving is a line you say. Nodes without a plain exit get a natural farewell.
+    const hasExit = choices.some(c => !c.next && !c.action);
     const np = D.npcPortrait(npc, node.mood), pp = D.playerPortrait(this);
     this.open(npc.name, '');                                   // keeps pause, focus trap, Esc and inert HUD
     const layer = document.getElementById('panelLayer'), panel = document.getElementById('panel');
@@ -86,12 +91,11 @@
       <div class="swDlg">
         <figure class="swFace npc speaking ${np.found ? '' : 'placeholder'}"><img alt="" src="${np.src}"></figure>
         <div class="swDlgBody">
-          <header><b>${esc(npc.name)}</b><span>${esc(npc.role || '')}</span>
-            <button type="button" class="swDlgClose" data-act="close" aria-label="Leave conversation">✕</button></header>
+          <header><b>${esc(npc.name)}</b><span>${esc(npc.role || '')}</span></header>
           <p class="swLine" aria-live="polite"></p>
-          <div class="swChoices" hidden>${choices.length ? choices.map((c, i) =>
-            `<button type="button" data-act="choice" data-i="${i}"><kbd>${i + 1}</kbd>${esc(c.text)}</button>`).join('')
-            : `<button type="button" data-act="close"><kbd>1</kbd>Leave</button>`}</div>
+          <div class="swChoices" hidden>${choices.map((c, i) =>
+            `<button type="button" data-act="choice" data-i="${i}"><kbd>${i + 1}</kbd>${esc(c.text)}</button>`).join('')}${hasExit ? '' :
+            `<button type="button" data-act="close" class="farewell"><kbd>${choices.length + 1}</kbd>${esc(farewell(npc, d.node))}</button>`}</div>
           <footer class="swHint">Space · continue</footer>
         </div>
         <figure class="swFace player ${pp.found ? '' : 'placeholder'}"><img alt="" src="${pp.src}"></figure>
@@ -101,7 +105,8 @@
       list.hidden = false;
       panel.querySelector('.swFace.npc').classList.remove('speaking');
       panel.querySelector('.swFace.player').classList.add('speaking');
-      panel.querySelector('.swHint').textContent = choices.length > 1 ? '1–' + Math.min(9, choices.length) + ' · choose' : 'Space · continue';
+      const total = choices.length + (hasExit ? 0 : 1);
+      panel.querySelector('.swHint').textContent = total > 1 ? '1–' + Math.min(9, total) + ' · choose' : 'Space · continue';
       place(box, D.anchor);
       list.querySelector('button')?.focus({ preventScroll: true });
     };
@@ -156,31 +161,31 @@
     width:min(660px,calc(100vw - 24px))!important;height:auto!important;max-height:none!important;min-height:0!important;
     padding:0!important;overflow:visible!important;pointer-events:auto;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
   ${Q} .swDlg{display:grid;grid-template-columns:84px 1fr 84px;gap:10px;align-items:end;position:relative;background:transparent!important}
-  ${Q} .swDlgBody{position:relative;background:rgba(10,14,16,.88)!important;border:1px solid rgba(143,212,232,.28);border-radius:10px;
-    padding:10px 14px 8px;box-shadow:0 10px 30px rgba(0,0,0,.45);color:#e6eef0;min-height:84px}
+  ${Q} .swDlgBody{position:relative;background:rgba(246,244,239,.74)!important;border:1px solid rgba(255,255,255,.75);border-radius:12px;
+    padding:10px 14px 8px;box-shadow:0 8px 28px rgba(0,0,0,.35);color:#1c2224;min-height:84px;
+    backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
   ${Q} .swDlgBody::after{content:'';position:absolute;bottom:-9px;left:calc(var(--tail,50%) - 94px - 8px);
-    width:16px;height:16px;background:rgba(10,14,16,.88);border:solid rgba(143,212,232,.28);border-width:0 1px 1px 0;transform:rotate(45deg)}
+    width:16px;height:16px;background:rgba(246,244,239,.74);border:solid rgba(255,255,255,.75);border-width:0 1px 1px 0;transform:rotate(45deg)}
   ${Q}.below .swDlgBody::after{bottom:auto;top:-9px;transform:rotate(225deg)}
   ${Q}:not(.anchored) .swDlgBody::after{display:none}
   ${Q} .swDlgBody header{display:flex;align-items:baseline;gap:10px;margin:0 0 4px;border:0!important;padding:0!important}
-  ${Q} .swDlgBody header b{font-size:15px;color:#fff!important;letter-spacing:.02em}
-  ${Q} .swDlgBody header span{font-size:12px;color:#8fd4e8;opacity:.85;flex:1}
-  ${Q} .swDlgClose{all:unset;cursor:pointer;color:#9aa7ab;font-size:13px;padding:2px 6px;border-radius:4px}
-  ${Q} .swDlgClose:hover,${Q} .swDlgClose:focus-visible{color:#fff;background:rgba(255,255,255,.08)!important}
-  ${Q} .swLine{margin:0;font-size:15px;line-height:1.45;min-height:2.9em;color:#e6eef0!important}
+  ${Q} .swDlgBody header b{font-size:15px;color:#14191b!important;letter-spacing:.02em}
+  ${Q} .swDlgBody header span{font-size:12px;color:#4d6a72!important;flex:1}
+  ${Q} .swLine{margin:0;font-size:15px;line-height:1.45;min-height:2.9em;color:#1c2224!important}
   ${Q} .swChoices{display:flex;flex-direction:column;gap:3px;margin-top:8px}
   ${Q} .swChoices[hidden]{display:none}
   ${Q} .swChoices button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:8px;align-items:center;padding:5px 8px;border-radius:6px;
-    font-size:14px;color:#d8e2e4;background:rgba(255,255,255,.035)!important;border:1px solid transparent!important}
-  ${Q} .swChoices button:hover,${Q} .swChoices button:focus-visible{background:rgba(143,212,232,.15)!important;color:#fff;border-color:rgba(143,212,232,.45)!important}
-  ${Q} .swChoices kbd{font:600 11px/1 ui-monospace,monospace;color:#8fd4e8;border:1px solid rgba(143,212,232,.4);border-radius:4px;padding:2px 5px;background:none}
-  ${Q} .swHint{font-size:11px;color:#7f8c90;text-align:right;margin-top:6px}
+    font-size:14px;color:#26302f!important;background:rgba(255,255,255,.45)!important;border:1px solid transparent!important}
+  ${Q} .swChoices button:hover,${Q} .swChoices button:focus-visible{background:rgba(255,255,255,.92)!important;color:#0d1213!important;border-color:rgba(40,90,105,.45)!important}
+  ${Q} .swChoices kbd{font:600 11px/1 ui-monospace,monospace;color:#3f6470!important;border:1px solid rgba(63,100,112,.45);border-radius:4px;padding:2px 5px;background:none}
+  ${Q} .swChoices .farewell{color:#55605f!important;font-style:italic}
+  ${Q} .swHint{font-size:11px;color:#66716f!important;text-align:right;margin-top:6px}
   ${Q} .swFace{margin:0;width:84px;height:84px;border-radius:10px;overflow:hidden;background:#15191b;
-    border:1px solid rgba(255,255,255,.14);box-shadow:0 6px 18px rgba(0,0,0,.45);transition:filter .2s,opacity .2s,transform .2s;
+    border:2px solid rgba(246,244,239,.55);box-shadow:0 6px 18px rgba(0,0,0,.4);transition:filter .2s,opacity .2s,transform .2s;
     filter:grayscale(.6) brightness(.55);opacity:.85}
   ${Q} .swFace img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated;display:block}
   ${Q} .swFace.player img{transform:scaleX(-1)}
-  ${Q} .swFace.speaking{filter:none;opacity:1;transform:translateY(-3px);border-color:rgba(143,212,232,.55)}
+  ${Q} .swFace.speaking{filter:none;opacity:1;transform:translateY(-3px);border-color:rgba(255,255,255,.95)}
   @media (max-width:560px){${Q} .swDlg{grid-template-columns:56px 1fr 56px}${Q} .swFace{width:56px;height:56px}}
   @media (prefers-reduced-motion:reduce){${Q} .swFace{transition:none}}`;
   document.head.appendChild(css);
