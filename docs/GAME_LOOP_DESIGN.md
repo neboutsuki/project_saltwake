@@ -116,11 +116,71 @@ added over time:
 4. **New monsters:** behaviors first (placeholder art), then art.
 5. **Progression:** Hunter Rank, Threat gating, Bestiary, monster gear.
 
-## Decisions (agreed)
-- **The Outer Quays are replaced.** All expeditions go to generated Drowned Isles. The story chain (for example
-  *The Empty Skiff* boathouse cache, Names on the Wall) still needs its locations, so its key places become
-  **fixed story landmarks** that the generator places on the island while that story step is active (boathouse,
-  customs house, and so on). The Quays' hand-made buildings and art are reused as landmark prefabs.
+## Decisions (agreed, revised)
+- **Two kinds of world.**
+  1. **The Red Salt Coast: a large fixed region for the story.** Hand-built, growing out of today's Outer Quays
+     into several connected zones (quays, salt flats, ashwood, the drowned village, cliffs). The story happens here.
+     It still feels alive: **random roaming bosses and random encounters** (wandering elites, ambushes, storms
+     bringing in an "intruder" boss, wreck events) rotate in, so a familiar map is never quite the same.
+  2. **The Drowned Isles: generated, for the grind.** The repeatable hunt loop described above. Better loot, higher
+     Threat levels, rare materials and the apex quarries only exist here.
 - **Death:** you lose the cargo you carried that hadn't been extracted. You keep your equipped gear. The contract
   fails.
-- **Run length:** 15–30 minutes. Island size and tide stages are tuned to that.
+- **Run length:** 15–30 minutes on the isles. Story-region outings are free-form.
+- **Difficulty:** Monster Hunter-like. Bosses are hard, readable and fair; you win through learning patterns,
+  positioning, breaking parts and preparing well, not through stats alone.
+
+## 7. Boss combat design
+**Pillars**
+1. **Readable, then punishing.** Every big attack is telegraphed (wind-up pose, ground wedge or zone, sound). If you
+   read it you can always avoid it, but a hit hurts.
+2. **Dodge is the core skill.** The existing roll has invulnerability frames. Bosses fire projectile patterns
+   (fans, rings, lines, homing spit, rain) that you weave through. Stamina limits how much you can roll.
+3. **The boss's attacks are your tools.** Missed attacks leave something in the arena you can use against it.
+4. **Break parts to change the fight.** Specific parts gate specific attacks. Breaking the right part removes or
+   weakens the most dangerous move, including **one-hit-kill ultimates**.
+5. **Phases and enrage.** Each boss has 2–3 phases (at about 70% and 35% health) with new patterns. Enrage speeds it
+   up; exhaustion gives you openings.
+6. **Openings.** Stagger, topple (knocked down: big damage window), wall-stun after a missed charge, and
+   flinch-on-break.
+
+**Shared combat systems to build**
+- **Pattern engine:** data-driven attack definitions (telegraph, timing, hitbox shape, projectile pattern,
+  cooldown, phase, required part).
+- **Breakable parts:** each with its own health, a visible damage state and a break reward. A part can be tagged
+  `disables: [attackIds]` or `weakens: {attackId: factor}`.
+- **Arena objects:** spawned debris and hazards with simple interactions: pick up / throw, ignite, collapse, flood.
+- **Status effects:** bleed, wet and soaked, brine-poison, stun, and fire (also used on the boss).
+- **Hit feedback:** hit-stop, part flash, break burst, stagger meter, enrage glow (built on the existing telegraph
+  and damage-direction work).
+
+**Gimmick catalogue (examples to build from)**
+| Gimmick | How it plays |
+|---|---|
+| **Return to sender** | The boss hurls salt boulders or harpoons. A missed one sticks in the ground; pick it up and throw it back for big stagger damage. |
+| **Charge into the wall** | Bait a charge into a pillar or wreck. The boss stuns itself (topple window), and the pillar collapses on it. |
+| **Break the battery** | The ultimate ("Brine Deluge", a one-hit kill if you're caught) is charged by glowing gill sacs. Break both before phase 3 and the ultimate is gone. Break one and it becomes survivable. |
+| **Cut the tether** | A Caller-type boss anchors summons to its lantern-lure. Break the lure and the summons scatter. |
+| **Light and dark** | Night horrors only take full damage inside your lantern's light. They try to bait you into dousing it, or knock it out. |
+| **Ignite the spill** | Brine-oil spit leaves pools; a fire bolt (wickcaster) ignites them under the boss. |
+| **Tide timing** | Some lair arenas flood in waves. The boss is stronger in water; fight it on the dry islands between waves. |
+| **Reflect the spit** | Time a parry or melee swing on certain slow projectiles to send them back. |
+| **Mount / climb** (later) | Topple, then climb onto the boss for a weak-point stab mini-game. |
+
+**First boss to prototype: Tidemaw** (burrowing brine beast, tidal cave lair)
+- Phase 1: burrow and lunge (ground ripple telegraph), spit fans (dodge through the gaps), and a tail sweep.
+- Gimmicks: its burrow lunges throw up **salt boulders** that you can throw back. Charging into a cave pillar
+  stuns it.
+- Breakable parts: **gill sacs (×2)** power the phase-3 ultimate **Brine Deluge** (an arena-wide wave; a one-hit
+  kill unless you're behind a pillar or the gills are broken). **Jaw:** breaking it weakens bites. **Tail:** it can
+  be severed, which removes the sweep and adds a carve.
+- Phase 3 (enraged at 35%): faster, adds ring bursts. The arena floods between waves.
+
+## Build phases (revised)
+1. **Boss combat framework + Tidemaw prototype,** tested first inside the existing Quays, because fun combat is the
+   core of everything else.
+2. **Fixed story region expansion:** grow the Quays into a larger, connected hand-built region with random boss and
+   encounter rotation.
+3. **Drowned Isles generator** for the grind loop: biomes, POIs, lairs, extraction, tide stages.
+4. **Hunt flow:** Hunt Board, threat levels, tracking, carving, debrief.
+5. **Night and horror** quarries, more bosses, progression (Hunter Rank, Bestiary, monster gear).
