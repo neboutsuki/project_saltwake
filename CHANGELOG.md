@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased — Better maps
+- **Map screens:** `tools/make_maps.py` now also renders a clean top-down picture of each area from the game art
+  (`assets/art/maps/hub.webp`, `quays.webp`); the round minimap and the field map (M) draw it instead of flat shapes.
+  Unexplored fog on the Quays is lighter (the land shows through dimly) and you reveal a wider area as you walk.
+  The hub map's location directory works again (buildings, districts, people, exits and services).
+- **Salvager's Rest:** a town wall with the city gate along the north, garden fences in front of the homes, more
+  street clutter and benches.
+- **Outer Quays:** Customs Hill now sits on a plateau with a cliff edge and one road up (signpost and shrine at the
+  top); fences along the Salt Yards, a rubble line along the Wreckers' Camp and an iron fence around the Boathouse Slip
+  turn open ground into paths; landmarks (two giant grove trees, the lighthouse on the point, a hunter statue);
+  cargo clutter around the working districts; about twice the ground cover (grass, flowers, shrubs, small rocks).
+- QA 227/227.
+
 ## Unreleased — Living Salvager's Rest
 - **Townsfolk** (`source/modules/hublife.js`, routes in `tools/make_maps.py`): about 11 people by day walk the harbor
   routes (around Lantern Square, the promenade, the north lane, the road to the departure pier, the Quays gate road,

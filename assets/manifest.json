@@ -10490,5 +10490,23 @@
   "pack": "art-new",
   "staged": true,
   "sha256": "6f6fc03ca20f1920ce2d655b4d34f09eca7e8b64594923195d2b466c86e20287"
+ },
+ "art_map_hub": {
+  "path": "assets/art/maps/hub.webp",
+  "mime": "image/webp",
+  "aliases": [
+   "art/maps/hub"
+  ],
+  "pack": "art-new",
+  "sha256": "ea4444f59ce90afad575e24c1df1de78585050e1ae7092d94f5b623bab4fc2e6"
+ },
+ "art_map_quays": {
+  "path": "assets/art/maps/quays.webp",
+  "mime": "image/webp",
+  "aliases": [
+   "art/maps/quays"
+  ],
+  "pack": "art-new",
+  "sha256": "b469f169daf213b37db7ae5b18a9ceb465a416686257f2b5fa6d05c0bfe0572c"
  }
 }

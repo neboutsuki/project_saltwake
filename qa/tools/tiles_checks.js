@@ -15,4 +15,5 @@ c.northEdgeBlocks=!G.walkable(40*T,2*T);c.stormGateOpen=G.walkable(100*T,4*T);
 c.westEdgeBlocks=!G.walkable(1*T,40*T);c.westPassageOpen=G.walkable(1.5*T,62*T);c.innerStillWalkable=G.walkable(15*T,63*T);
 c.buildingsSolid=Q.buildings.filter(b=>b.art).every(b=>!G.walkable((b.x+b.w/2)*T,(b.y+b.h/2)*T));
 const w=G.map().portals.every(p=>{for(let r=0;r<=3;r+=.5)for(let k=0;k<12;k++){const a=k/12*Math.PI*2;if(G.walkable((p.x+Math.cos(a)*r)*T,(p.y+Math.sin(a)*r)*T))return true}return false});c.exitsReachable=w;
-G.endRaid(true,'QA tiles');c.backInHub=G.mapId==='hub'&&G.walkable(G.player.x,G.player.y);return c}`;
+c.customsPlateauCliff=!G.walkable(80*T,57*T)&&G.walkable(99*T,57*T);c.overviewArt=!!SALTWAKE_ASSETS.images['art/maps/quays']&&Q.overview==='art/maps/quays';
+G.endRaid(true,'QA tiles');c.hubTownWall=!G.walkable(20*T,7*T)&&G.walkable(36*T,8*T);c.backInHub=G.mapId==='hub'&&G.walkable(G.player.x,G.player.y);return c}`;

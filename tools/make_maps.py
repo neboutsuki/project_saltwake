@@ -280,7 +280,21 @@ def hub():
     M.scatter(SHRUBS, 26, (2, 8, 70, 46), r=.5)
     M.scatter(ROCKS_S, 10, (2, 8, 70, 46), r=.4)
     shore_dress(M, 2, 70)
-    edges(M, gaps_n=((32, 40),), gaps_e=((28, 36),), west=True, gaps_w=((22, 28),))
+    # North: forest behind a town wall with the city gate on the north road
+    for x in range(-3, M.w + 3, 8):
+        M.obj(M.rng.choice(TREELINE), x + 4, 3.6 + M.rng.uniform(0, .8), 1.0, take=False, mirror=M.rng.random() < .5)
+    for x in (5.6, 16.8, 27.6, 44.4, 55.2, 66.4):
+        M.obj('art/edges/town_wall', x, 8.4, 1.0, take=False)
+    M.obj('art/edges/town_gate', 36, 9.2, 1.0, take=False)
+    M.blocked.append([0, 0, M.w, 7.6]); M.openings.append([33.5, 0, 5, 8.6]); M.take(0, 0, M.w, 8.6)
+    edges(M, north=False, gaps_e=((28, 36),), west=True, gaps_w=((22, 28),))
+    # garden fences in front of the homes, a little more street life
+    for x, y in ((5, 18.2), (8.2, 18.2), (15, 18.2), (22.4, 18.2)):
+        M.obj('art/props/fence_wood', x, y, .8, take=False)
+    for x, y, a in ((12, 39.6, 'art/props/barrel_01'), (16.5, 39.8, 'art/props/crate_02'), (59.5, 39.8, 'art/props/crate_stack'), (67, 39.6, 'art/props/barrel_02'),
+                    (52, 28.6, 'art/props/wheelbarrow'), (24, 29, 'art/props/bench'), (47.5, 29.2, 'art/props/bench'), (5, 29.5, 'art/props/hanging_net_frame')):
+        if M.free(x, y, .6):
+            M.obj(a, x, y, 1.0, 'crate')
     # portals / features
     M.portals = [{'id': 'hub.north', 'name': 'Saltwatch City Gate', 'x': 36, 'y': 7.5, 'target': 'Saltwatch city (future)'},
                  {'id': 'hub.outer', 'name': 'Outer Quays Passage →', 'x': 69.5, 'y': 32, 'target': 'quays.west'},
@@ -437,6 +451,31 @@ def quays():
     for cx, cy, r, n in ((72, 30, 7, 10), (152, 40, 8, 12), (122, 84, 5, 6), (52, 106, 6, 7), (192, 62, 7, 9), (12, 28, 5, 6), (140, 108, 4, 4)):
         M.scatter(TREES_DARK + TREES_COAST + TREES_BROAD, n, (cx - r, cy - r, cx + r, cy + r), solid='tree', r=1.4)
         M.scatter(SHRUBS + FLOWERS, n * 2, (cx - r - 2, cy - r - 2, cx + r + 2, cy + r + 2), r=.4)
+    # Customs Hill sits on a plateau: a cliff edge along its south side, one road up (the customs road)
+    for x in (72.5, 85.5, 110.5, 123.5):
+        M.obj('art/edges/cliff_straight', x, 59.2, .8, take=True)
+    M.blocked += [[66, 55.2, 30.5, 3.6], [102.5, 55.2, 30.5, 3.6]]
+    M.obj('art/props/signpost', 104.2, 60.5, 1.0)
+    # fences and low walls divide the districts; gaps follow the roads
+    for x in range(8, 62, 4):
+        if not 27 <= x <= 35:
+            M.obj('art/props/fence_wood' if x % 8 else 'art/props/broken_fence', x, 57.4, .9, take=False)
+            M.ghosts.append({'type': 'crate', 'x': x, 'y': 57.1})
+    for y in range(70, 112, 5):
+        if not 98 <= y <= 106:
+            M.obj('art/edges/rubble_heap_01' if y % 2 else 'art/edges/rubble_heap_02', 52, y + 3, .5, 'stone', take=False)
+    for x in range(146, 192, 4):
+        if not 158 <= x <= 166:
+            M.obj('art/props/fence_iron', x, 91.2, .9, take=False)
+            M.ghosts.append({'type': 'crate', 'x': x, 'y': 90.9})
+    # landmarks
+    M.obj('art/trees/giant_grove_tree_01', 150, 14.5, .85, 'tree', take=False)
+    M.obj('art/trees/giant_grove_tree_02', 36, 13.5, .85, 'tree', take=False)
+    M.obj('art/buildings/lighthouse', 214, 130, .8, take=False)
+    M.obj('art/props/statue_hunter', 100, 63, .9, 'stone')
+    # cargo clutter around the working districts
+    for cx, cy, n in ((70, 90, 6), (90, 88, 4), (124, 70, 4), (30, 50, 4), (160, 100, 3), (112, 122, 5)):
+        M.scatter(CRATES + ['art/props/crate_stack', 'art/props/supply_sacks', 'art/props/rope_coil', 'art/props/fish_basket'], n, (cx - 5, cy - 4, cx + 5, cy + 4), solid='crate', r=.7)
     # lanterns along the main road
     for x in range(14, 200, 22):
         o('art/props/lantern_post', x, 60.5 + (x % 3), 1.0, 'crate', light=150)
@@ -458,10 +497,10 @@ def quays():
     M.scatter(TREES_DEAD, 14, (6, 18, 64, 58), solid='tree', r=1.8)
     M.scatter(TREES_COAST, 34, (6, 56, 214, 116), solid='tree', r=2.0)
     M.scatter(ROCKS_L, 30, (6, 10, 214, 118), solid='stone', r=1.2)
-    M.scatter(ROCKS_S, 60, (6, 10, 214, 124), r=.4)
+    M.scatter(ROCKS_S, 120, (6, 10, 214, 124), r=.4)
     M.scatter(['art/rocks/salt_crystal_cluster_01', 'art/rocks/salt_crystal_cluster_02'], 22, (10, 14, 62, 60), solid='stone', r=.8)
-    M.scatter(GRASS + FLOWERS, 520, (4, 8, 216, 116), r=.25)
-    M.scatter(SHRUBS, 160, (4, 8, 216, 116), r=.5)
+    M.scatter(GRASS + FLOWERS, 950, (4, 8, 216, 116), r=.25)
+    M.scatter(SHRUBS, 280, (4, 8, 216, 116), r=.5)
     M.scatter(REEDS, 60, (4, 112, 216, 127), r=.3)
     M.scatter(['art/trees/fallen_log_01', 'art/trees/fallen_log_02', 'art/trees/stump_01', 'art/trees/stump_02'], 26, (6, 10, 214, 60), solid='stone', r=1.0)
     M.scatter(['art/props/bone_pile_01', 'art/props/bone_pile_02', 'art/props/carcass_02', 'art/props/body_satchel'], 10, (10, 70, 214, 120), r=.8)
@@ -584,7 +623,7 @@ def to_world(M, old):
               'terrainTiles': [], 'ground': M.ground, 'blocked': M.blocked, 'openings': M.openings,
               'scene': {'darkness': .34, 'ambience': (old.get('scene') or {}).get('ambience'), 'lights': M.lights,
                         'decor': sorted(M.objects, key=lambda o: o['y'])},
-              'arrivals': M.arrivals, 'tilemap': True})
+              'arrivals': M.arrivals, 'tilemap': True, 'overview': f'art/maps/{M.id}'})
     if getattr(M, 'spawns', None):
         m['spawns'] = M.spawns
     if getattr(M, 'life', None):
@@ -599,7 +638,7 @@ COL = {'soil': (92, 78, 62), 'grass': (82, 92, 62), 'tall': (104, 104, 70), 'gra
        'plaza': (128, 124, 118), 'salt': (168, 112, 104), 'mud': (70, 60, 52), 'sand': (150, 140, 120), 'cave': (76, 76, 80), 'ash': (110, 108, 104)}
 
 
-def preview(M, path, px=8):
+def preview(M, path, px=8, debug=True):
     im = Image.new('RGB', (M.w * px, M.h * px), COL['soil'])
     d = ImageDraw.Draw(im)
     grid = paint(M)
@@ -608,9 +647,9 @@ def preview(M, path, px=8):
     d.rectangle([0, M.water * px, M.w * px, M.h * px], fill=(38, 64, 72))
     for dk in M.docks:
         d.rectangle([dk['x'] * px, dk['y'] * px, (dk['x'] + dk['w']) * px, (dk['y'] + dk['h']) * px], fill=(120, 92, 64))
-    for r in M.blocked:
+    for r in M.blocked if debug else []:
         d.rectangle([r[0] * px, r[1] * px, (r[0] + r[2]) * px, (r[1] + r[3]) * px], outline=(200, 60, 60))
-    for r in M.openings:
+    for r in M.openings if debug else []:
         d.rectangle([r[0] * px, r[1] * px, (r[0] + r[2]) * px, (r[1] + r[3]) * px], outline=(60, 220, 120))
     k = px / T
     for o in sorted(M.objects + [{'asset': b['art'], 'x': b['x'] + b['w'] / 2, 'y': b['y'] + b['h'], 'w': tiles(b['art'], b['artScale'])[0], 'h': tiles(b['art'], b['artScale'])[1]} for b in M.buildings], key=lambda o: o['y']):
@@ -620,6 +659,9 @@ def preview(M, path, px=8):
         if o.get('mirror'):
             a = a.transpose(Image.FLIP_LEFT_RIGHT)
         im.paste(a, (int(o['x'] * px - w / 2), int(o['y'] * px - h)), a)
+    if not debug:
+        im.save(path, quality=86) if str(path).endswith('.webp') else im.save(path)
+        return
     for b in M.buildings:
         d.rectangle([b['x'] * px, b['y'] * px, (b['x'] + b['w']) * px, (b['y'] + b['h']) * px], outline=(255, 220, 80))
         d.text((b['x'] * px + 2, (b['y'] + b['h']) * px + 2), b['id'].split('.')[1], fill=(255, 240, 160))
@@ -681,6 +723,17 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     preview(H, out / 'salvagers_rest.png', 10)
     preview(Q, out / 'outer_quays.png', 6)
+    # clean overview images for the in-game minimap and map screen (asset aliases art/maps/<id>)
+    art = ROOT / 'assets/art/maps'
+    art.mkdir(parents=True, exist_ok=True)
+    man = json.loads((ROOT / 'assets/manifest.json').read_text())
+    import hashlib
+    for M_, px in ((H, 8), (Q, 6)):
+        f = art / f'{M_.id}.webp'
+        preview(M_, f, px, debug=False)
+        man[f'art_map_{M_.id}'] = {'path': f'assets/art/maps/{M_.id}.webp', 'mime': 'image/webp', 'aliases': [f'art/maps/{M_.id}'], 'pack': 'art-new',
+                                   'sha256': hashlib.sha256(f.read_bytes()).hexdigest()}
+    (ROOT / 'assets/manifest.json').write_text(json.dumps(man, indent=1))
     if '--preview' in sys.argv:
         print('previews written')
         return
