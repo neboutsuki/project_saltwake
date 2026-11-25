@@ -108,6 +108,8 @@ def main():
     ok = bad = 0
     seen = set()
     for path in sorted(INCOMING.rglob('*.png')):
+        if '_replaced' in path.parts:   # art superseded by newer art (kept for reference, never imported)
+            continue
         rel = path.relative_to(INCOMING)
         category = rel.parts[0] if len(rel.parts) > 1 else 'misc'
         problems, warnings = check(path, category)
