@@ -90,6 +90,37 @@ html.sw-glass .tide-menu button:disabled{opacity:.45}
 html.sw-glass #screen h1{letter-spacing:.06em}
 html.sw-glass #screen .eyebrow{color:var(--gl-accent)!important}
 html.sw-glass .tide-prologue .tide-training{background:var(--gl-bg-strong)!important;backdrop-filter:var(--gl-blur);border:1px solid var(--gl-edge)!important;border-radius:16px!important}
+
+/* ---- Neutralize the legacy green/gold palette ---- */
+html.sw-glass #shell,html.sw-glass #panelLayer #panel,html.sw-glass #screen,html.sw-glass .tide-prologue{color:var(--gl-text)!important}
+html.sw-glass :is(#shell,#screen,.tide-prologue) :is(p,span,small,em,i,div,dt,dd,li,td,th,label,h1,h2,h3,h4,h5,b,strong,button,a,article,section,aside,header):not([class*=danger]):not([class*=warn]):not([class*=bad]):not([class*=alert]):not([class*=red]):not([class*=good]):not([class*=rare]):not([class*=epic]):not([class*=legend]):not([class*=uncommon]):not([class*=hostile]):not([class*=friend]){color:var(--gl-text)!important}
+html.sw-glass :is(#shell,#screen,.tide-prologue) :is(small,dt,label,.fine,.titleStory,.titleLocation,.pi-weapon-numbers,.sp-cap,.sp-count,.folioPlace,.meter span,#questDestination,#envEffectText,#clockText,#weatherReadout,.vitalFlags,.chevron,.sk-heading small,.pi-progress,.pi-rank,.pi-id,.questReward,[class*=note],[class*=hint],[class*=sub],[class*=muted],[class*=desc],[class*=meta]):not([class*=danger]):not([class*=warn]){color:var(--gl-muted)!important}
+html.sw-glass :is(#shell,#screen,.tide-prologue) :is(.eyebrow,.voyage-kicker,.pi-kicker,.eq-group-label,.sk-heading,[class*=kicker],[class*=eyebrow],[class*=label]:not(label)){color:var(--gl-accent)!important;letter-spacing:.14em}
+html.sw-glass #screen h1{color:#f4f7f9!important;text-shadow:0 4px 30px rgba(0,0,0,.55)}
+/* Card-like surfaces inside menus and the profile/prologue screens. */
+html.sw-glass :is(#panelLayer,#screen,.tide-prologue) :is(.pi-card,.pi-stat,.pi-weapon,.pi-status,.nextStep,.itemHero,.inspection,.path-status,.sp-grid,.sp-tools,.faces-preview,.tide-profile-row,.factionEntry,.eq-slot,.eq-icon,.packTools,.sealArt,.tide-card,.tide-training,.questReward,.sk-panel,[class*=card],[class*=Card],[class*=tile],[class*=Tile]){
+ background:rgba(255,255,255,.04)!important;background-image:none!important;border-color:var(--gl-edge)!important;box-shadow:none!important}
+html.sw-glass :is(#panelLayer,#screen) :is(.eq-slot.eq-empty){background:rgba(255,255,255,.015)!important;border-style:dashed!important}
+html.sw-glass :is(#panelLayer,#screen) :is(.pi-weapon.pi-held,.eq-slot.eq-active,.active,[aria-pressed=true],[aria-selected=true],[aria-current],.selected,.is-selected,.current){
+ background:var(--gl-accent-soft)!important;border-color:rgba(143,212,232,.45)!important;box-shadow:none!important}
+html.sw-glass #panelLayer #panel :is(button,[role=tab]){box-shadow:none!important}
+html.sw-glass #panelLayer #panel :is(button,[role=tab])::after{background:var(--gl-accent)!important;border-color:var(--gl-accent)!important}
+html.sw-glass :is(#panelLayer,#screen) :is(.pi-metertrack){background:rgba(255,255,255,.08)!important;border:0!important;border-radius:999px!important}
+html.sw-glass :is(#panelLayer,#screen) :is(.pi-metertrack>*,.pi-meter i,.pi-progress i,progress){background:var(--gl-accent)!important}
+html.sw-glass :is(#panelLayer,#screen) .pi-status.good{background:rgba(127,214,164,.1)!important;border-color:rgba(127,214,164,.35)!important;color:var(--gl-ok)!important}
+html.sw-glass :is(#panelLayer,#screen) .badge{background:rgba(255,255,255,.07)!important;border-color:var(--gl-edge)!important}
+html.sw-glass :is(#panelLayer,#screen) :is(blockquote,.callout,[style*=border-left]){border-left-color:var(--gl-accent)!important}
+html.sw-glass :is(#panelLayer,#screen) b{border-color:var(--gl-edge)!important}
+html.sw-glass .tide-prologue{background:rgba(3,5,8,.82)!important;background-image:none!important}
+html.sw-glass #tideSteps>*{background:rgba(255,255,255,.05)!important;border-color:var(--gl-edge)!important}
+/* HUD leftovers. */
+html.sw-glass .tideDot{background:var(--gl-accent)!important;box-shadow:0 0 8px rgba(143,212,232,.6)!important}
+html.sw-glass :is(#alphaGoal,#environmentMission,#sprintLoad){border-color:var(--gl-edge)!important;background:rgba(255,255,255,.04)!important}
+html.sw-glass #voyageHintText{background:rgba(255,255,255,.05)!important;border:1px solid var(--gl-edge)!important;border-radius:8px!important}
+html.sw-glass .quickSlot,html.sw-glass .quickSlot *{color:var(--gl-text)!important}
+html.sw-glass #stBar,html.sw-glass .meter .stamina{background:linear-gradient(90deg,#4fa3c7,#8fd4e8)!important}
+html.sw-glass #awarenessText{color:var(--gl-text)!important}
+html.sw-glass ::selection{background:rgba(143,212,232,.3)}
 @media (prefers-reduced-transparency:reduce){html.sw-glass{--gl-bg:rgba(10,13,18,.92);--gl-bg-strong:rgba(10,13,18,.97)}}
 @media (max-width:760px){html.sw-glass #bar{top:6px!important;max-width:96vw;overflow-x:auto}html.sw-glass #bar nav button{padding:4px 7px!important;font-size:11px!important}}
 `;
