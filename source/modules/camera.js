@@ -18,16 +18,22 @@ function applyZoom(){const G=window.SALTWAKE_DEV?.game;if(!G?.camera)return;G.ca
 const noise=(t,s)=>Math.sin(t*37.1+s)*.6+Math.sin(t*61.7+s*2.3)*.4;
 P.cameraFrame=function(viewW,viewH){const p=this.player,now=performance.now()/1000,dt=Math.min(.1,st.t?now-st.t:0);st.t=now;
  const lw=this.longwatchView||{x:0,y:0};
- // Look-ahead: lead toward aim direction and current movement; longwatch already shifts the view itself.
- let tx=0,ty=0;if(cfg.lookahead&&!this.longwatchView&&this.mode==='play'){const vx=dt?(p.x-st.px)/dt:0,vy=dt?(p.y-st.py)/dt:0;const aim=this.raid?46:24;
-  tx=Math.cos(p.angle||0)*aim+Math.max(-60,Math.min(60,vx*.22));ty=Math.sin(p.angle||0)*aim*.8+Math.max(-45,Math.min(45,vy*.22))}
+ // Look-ahead: mostly toward where you are walking (eased), a little toward the aim; none while standing and aiming
+ // close. Longwatch already shifts the view itself.
+ let tx=0,ty=0;if(cfg.lookahead&&!this.longwatchView&&this.mode==='play'){const vx=dt?(p.x-st.px)/dt:0,vy=dt?(p.y-st.py)/dt:0,sp=Math.hypot(vx,vy);
+  const lead=Math.min(1,sp/170),aim=(this.raid?26:12)*(.35+.65*lead);
+  tx=Math.cos(p.angle||0)*aim+Math.max(-70,Math.min(70,vx*.3));ty=Math.sin(p.angle||0)*aim*.75+Math.max(-50,Math.min(50,vy*.3))}
  st.px=p.x;st.py=p.y;
- const k=dt?1-Math.exp(-dt*5):1;st.lx+=(tx-st.lx)*k;st.ly+=(ty-st.ly)*k;
- const gx=p.x-viewW/2+lw.x+st.lx,gy=p.y-viewH/2+lw.y+st.ly;
- if(!cfg.smooth||st.x===null||st.map!==this.mapId||Math.hypot(gx-st.x,gy-st.y)>600){st.x=gx;st.y=gy;st.map=this.mapId}
- else{const f=dt?1-Math.exp(-dt*9):1;st.x+=(gx-st.x)*f;st.y+=(gy-st.y)*f}
+ const k=dt?1-Math.exp(-dt*2.6):1;st.lx+=(tx-st.lx)*k;st.ly+=(ty-st.ly)*k;
+ const gx=p.x-viewW/2+lw.x+st.lx,gy=p.y-viewH/2+lw.y+st.ly-6;
+ if(!cfg.smooth||st.x===null||st.map!==this.mapId||Math.hypot(gx-st.x,gy-st.y)>600){st.x=gx;st.y=gy;st.vx=st.vy=0;st.map=this.mapId}
+ else{ // critically damped spring: smooth start and stop, no overshoot
+  const w=7.5,f=1+2*w*dt+.48*w*w*dt*dt+.235*w*w*w*dt*dt*dt,ex=1/f;
+  for(const [a,v,g] of [['x','vx',gx],['y','vy',gy]]){const c=st[a]-g,tmp=((st[v]||0)+w*c)*dt;st[v]=((st[v]||0)-w*tmp)*ex;st[a]=g+(c+tmp)*ex}}
  let sx=0,sy=0;if(st.trauma>0){const a=st.trauma*st.trauma*11;sx=noise(now,1)*a;sy=noise(now,7)*a;st.trauma=Math.max(0,st.trauma-dt*1.5)}
- return {x:st.x,y:st.y,sx,sy}};
+ // snap to whole screen pixels so pixel art does not shimmer while the camera glides
+ const z=this.camera?.zoom||1,snap=v=>Math.round(v*z)/z;
+ return {x:snap(st.x),y:snap(st.y),sx,sy}};
 // Snap on map changes / teleports.
 const sa=P.setArea;P.setArea=function(...a){const r=sa.apply(this,a);st.x=null;st.lx=st.ly=0;st.trauma=0;return r};
 // Screen shake on damage taken.

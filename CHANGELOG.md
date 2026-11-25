@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased — Day & night, camera and movement
+- **Day & night lighting** (`source/modules/daynight.js`): on the new maps the flat dark wash is replaced by colored
+  light. Ambient color follows the clock (cold blue night, violet pre-dawn, warm sunrise, neutral day, golden hour,
+  red sunset, blue hour), greyed and dimmed by clouds, rain and fog. A half-resolution light layer adds warm light
+  from the map's lanterns, braziers and campfires (fires flicker), lit town windows from dusk, and the player's
+  lantern (glow plus a cone toward the aim); the world is multiplied by it, with a soft bloom on flames at night.
+  The GPU renderer keeps the field neutral while this owns the lighting (no double tint).
+- **Camera** (`camera.js`): a critically damped spring follow (smooth start and stop, no overshoot), look-ahead mostly
+  toward where you walk with only a small aim lead, and pixel-snapped positions so pixel art does not shimmer.
+- **Movement** (`source/modules/movement.js`): eased acceleration (full speed in about 0.1 s) and stopping (about
+  0.07 s); direction changes blend; walking into the edge of a tree, rock or crate slides you around it. Speeds,
+  sprint, stamina, weight, crouch, rolls and collisions are unchanged.
+- QA: new `feel` suite; 236/236.
+
 ## Unreleased — Better maps
 - **Map screens:** `tools/make_maps.py` now also renders a clean top-down picture of each area from the game art
   (`assets/art/maps/hub.webp`, `quays.webp`); the round minimap and the field map (M) draw it instead of flat shapes.
