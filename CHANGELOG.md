@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — Weapon art
+- `tools/cut_weapons.py` cuts the weapon sheet (`incoming_art/source/weapons_sheet.webp`: arbalest, Wickcaster,
+  spear, harpoon gun, greataxe, knife) into `assets/art/weapons/*.png`, 64 px inventory icons
+  (`art/icons/weapon_*`) and white HUD silhouettes (`assets/ui/weapon_*_sil.png`, taking over the `ui/weapon_*`
+  aliases from the old SVGs).
+- The HUD weapon silhouette, the inventory/loadout icons and the weapon in Ren's hands now use this art. The weapon
+  points at the aim, sits behind Ren when aiming up, flips when aiming left, and is hidden during a dodge.
+- Harpoon gun, greataxe and knife art is ready for when those weapons exist in the game. QA 196/196.
+
 ## Unreleased — Ren Kagari and the story cast
 - Imported the character art: Ren Kagari's 6-frame walk in 4 directions, and ten story characters (Captain Elda,
   Harlan, Ivo, Kade, Lira, Marin, Master Rook, Mira, Soren, Tess) with 4-direction designs, 4-frame idles and

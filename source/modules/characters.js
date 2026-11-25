@@ -71,9 +71,23 @@
     game.draw25Shadow?.(p.x, p.y + footOffset, 15, 6, .37);
     const frame = s.still ? 0 : moving ? Math.floor(motion.dist / 9) % s.frames : Math.floor(now / s.ms) % s.frames;
     const roll = p.roll > 0 ? Math.sin(Math.min(1, p.roll / .31) * Math.PI) : 0;
+    const showWeapon = game.raid && !roll, behind = dir === 'up';
+    if (showWeapon && behind) weapon(game, p, footOffset);
     blit(g, s, frame, p.x, p.y + footOffset, 64, p.hit > 0 && Math.floor(now / 60) % 2 === 0, roll);
+    if (showWeapon && !behind) weapon(game, p, footOffset);
     C.stats.player++;
     return true;
+  }
+  // Weapon in hand: art/weapons/<name>, pointing at the aim, flipped when aiming left (never upside down).
+  const WEAPON_ART = ['art/weapons/arbalest', 'art/weapons/wickcaster', 'art/weapons/spear'];   // by player.weapon slot
+  const WEAPON_LEN = [46, 44, 62];
+  function weapon(game, p, footOffset) {
+    const im = img(WEAPON_ART[p.weapon] || WEAPON_ART[0]); if (!ok(im)) return;
+    const a = p.angle || 0, len = WEAPON_LEN[p.weapon] || 46, h = len * im.naturalHeight / im.naturalWidth, left = Math.cos(a) < 0;
+    g.save(); g.imageSmoothingEnabled = false;
+    g.translate(p.x + Math.cos(a) * 6, p.y + footOffset - 30 + Math.sin(a) * 4); g.rotate(a); if (left) g.scale(1, -1);
+    g.drawImage(im, -len * .32, -h / 2, len, h); g.restore();
+    C.stats.weapon = (C.stats.weapon || 0) + 1;
   }
   // Coast renderer (Quays and other field maps) and the older 2.5D renderer.
   const cp = P.coastPlayer;

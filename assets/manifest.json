@@ -6300,27 +6300,21 @@
  "art_ui_weapon_arbalest_svg": {
   "path": "assets/ui/weapon_arbalest.svg",
   "mime": "image/svg+xml",
-  "aliases": [
-   "ui/weapon_arbalest"
-  ],
+  "aliases": [],
   "pack": "art-v031",
   "sha256": "357874136e005463ecb7fa2bf2c0d86789db919805cc9e05356be2038fe72df9"
  },
  "art_ui_weapon_wickcaster_svg": {
   "path": "assets/ui/weapon_wickcaster.svg",
   "mime": "image/svg+xml",
-  "aliases": [
-   "ui/weapon_wickcaster"
-  ],
+  "aliases": [],
   "pack": "art-v031",
   "sha256": "f641af45400cc4cae46eca4426bf76a5e3893addbbd81620fff1ad14464f0f9f"
  },
  "art_ui_weapon_spear_svg": {
   "path": "assets/ui/weapon_spear.svg",
   "mime": "image/svg+xml",
-  "aliases": [
-   "ui/weapon_spear"
-  ],
+  "aliases": [],
   "pack": "art-v031",
   "sha256": "7615711999e5349cb2da62b8ac2cffbdfc8df7f092ff7eb83cacfdffd235b22e"
  },
@@ -7461,8 +7455,7 @@
    "art/icons/weapon_arbalest"
   ],
   "pack": "art-new",
-  "staged": false,
-  "sha256": "bccc3eaf2a8bf0af0c8a9794a8160dcc57492487219cedd4f1edadc772909364"
+  "sha256": "d48cd5ac7d0a2b12e800260f10df97210eb8c4f973305b9cff30b7b4c28f3501"
  },
  "art_new_art_icons_weapon_greataxe": {
   "path": "assets/art/icons/weapon_greataxe.png",
@@ -7471,8 +7464,7 @@
    "art/icons/weapon_greataxe"
   ],
   "pack": "art-new",
-  "staged": false,
-  "sha256": "c933cb330b32cc285519e10bb6dae6d706aea4fb63e7ed22ef045e66a31a81f2"
+  "sha256": "6dee920574a313198d16f7108c8bd093993eee0406f2e07e274dc63a9374dc19"
  },
  "art_new_art_icons_weapon_harpoon_gun": {
   "path": "assets/art/icons/weapon_harpoon_gun.png",
@@ -7481,8 +7473,7 @@
    "art/icons/weapon_harpoon_gun"
   ],
   "pack": "art-new",
-  "staged": false,
-  "sha256": "a2ba322ab9e6f8df55b59e4fee9822bd72172b35d12479d2075f22ddb418f286"
+  "sha256": "3d3c9630f7d3152832b544dffb50bedc0310da6f8ca08143d9ba92525e259fe8"
  },
  "art_new_art_icons_weapon_spear": {
   "path": "assets/art/icons/weapon_spear.png",
@@ -7491,8 +7482,7 @@
    "art/icons/weapon_spear"
   ],
   "pack": "art-new",
-  "staged": false,
-  "sha256": "771b0cfeded3433a5451e3623705701a10bcb91c3f9a567b523c8023932d3d27"
+  "sha256": "fa23a320fe5d0dda1421f0bd403a2c35bb0607a283181557e20f97ac302a36b7"
  },
  "art_new_art_icons_weapon_wickcaster": {
   "path": "assets/art/icons/weapon_wickcaster.png",
@@ -7501,8 +7491,7 @@
    "art/icons/weapon_wickcaster"
   ],
   "pack": "art-new",
-  "staged": false,
-  "sha256": "2aa12e5d13aa623b9912ef954ab8c3f6f65eb3ef5bba31df51968899c6b30b7d"
+  "sha256": "7636e48d1dd72e98c9d7700991c6b392e56ed3106622cc5cbcb147a00c22c476"
  },
  "art_new_art_icons_whetstone": {
   "path": "assets/art/icons/whetstone.png",
@@ -10264,5 +10253,122 @@
   "pack": "art-new",
   "staged": false,
   "sha256": "140e17d1ac8155010505f9c3a510049e9742f3bd6f0200000ecca5c835f51807"
+ },
+ "art_weapon_arbalest": {
+  "path": "assets/art/weapons/arbalest.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/weapons/arbalest"
+  ],
+  "pack": "art-new",
+  "sha256": "2880281be2002fc2a3e1bc1a172288b836a41e0477020e4388f195ea58fcf0f7"
+ },
+ "art_ui_weapon_arbalest_sil": {
+  "path": "assets/ui/weapon_arbalest_sil.png",
+  "mime": "image/png",
+  "aliases": [
+   "ui/weapon_arbalest"
+  ],
+  "pack": "art-new",
+  "sha256": "50270b36095421bbb52ef93201e01cdd32eb48740e5eae8e486809ad8ec9d8c8"
+ },
+ "art_weapon_wickcaster": {
+  "path": "assets/art/weapons/wickcaster.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/weapons/wickcaster"
+  ],
+  "pack": "art-new",
+  "sha256": "dd25ba5fe733274704cc408fcca8b3a9d6bccf7f3d16f3fac5eaecb7d587a51a"
+ },
+ "art_ui_weapon_wickcaster_sil": {
+  "path": "assets/ui/weapon_wickcaster_sil.png",
+  "mime": "image/png",
+  "aliases": [
+   "ui/weapon_wickcaster"
+  ],
+  "pack": "art-new",
+  "sha256": "a18a0074f734abf0cbae6e6a80b4ca64bbcaea5a613bab55af23eb5f7241274b"
+ },
+ "art_weapon_spear": {
+  "path": "assets/art/weapons/spear.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/weapons/spear"
+  ],
+  "pack": "art-new",
+  "sha256": "217e7a47abe86a10fe5d04f690afb7e013f254942ea5889dab1427146cbbd436"
+ },
+ "art_ui_weapon_spear_sil": {
+  "path": "assets/ui/weapon_spear_sil.png",
+  "mime": "image/png",
+  "aliases": [
+   "ui/weapon_spear"
+  ],
+  "pack": "art-new",
+  "sha256": "36faa32dc2e3ffe8777b3447c21dbc3d644be3874e7673ee30526ee8fe1f8f58"
+ },
+ "art_weapon_harpoon_gun": {
+  "path": "assets/art/weapons/harpoon_gun.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/weapons/harpoon_gun"
+  ],
+  "pack": "art-new",
+  "sha256": "cb9176062b4373d158ba2664e3e2737748b4169a8aa64e651ef8d1dd74351291"
+ },
+ "art_ui_weapon_harpoon_gun_sil": {
+  "path": "assets/ui/weapon_harpoon_gun_sil.png",
+  "mime": "image/png",
+  "aliases": [
+   "ui/weapon_harpoon_gun"
+  ],
+  "pack": "art-new",
+  "sha256": "37bea2f8f63bbf73d7c4e7fdc96ffea5d4e39e1842d76eae1a84a92b8691a843"
+ },
+ "art_weapon_greataxe": {
+  "path": "assets/art/weapons/greataxe.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/weapons/greataxe"
+  ],
+  "pack": "art-new",
+  "sha256": "4fc7baca234dbb8f4eb80250538fec22531aea5ba05b9a5ee8b53ae14ee49ad3"
+ },
+ "art_ui_weapon_greataxe_sil": {
+  "path": "assets/ui/weapon_greataxe_sil.png",
+  "mime": "image/png",
+  "aliases": [
+   "ui/weapon_greataxe"
+  ],
+  "pack": "art-new",
+  "sha256": "c841bde112dc8fa11fa19ca806455ede693d1c546a8a585a48f336b0f200fb0e"
+ },
+ "art_weapon_knife": {
+  "path": "assets/art/weapons/knife.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/weapons/knife"
+  ],
+  "pack": "art-new",
+  "sha256": "e66dd7887f59a5144415d685895f75ca3d61405b4b68282d7d5ab90e24f719e6"
+ },
+ "art_new_art_icons_weapon_knife": {
+  "path": "assets/art/icons/weapon_knife.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/weapon_knife"
+  ],
+  "pack": "art-new",
+  "sha256": "9870f3c0c69314ea2ee6e31d870a2da9588d3aed93bc9685cf279fe6acbbb424"
+ },
+ "art_ui_weapon_knife_sil": {
+  "path": "assets/ui/weapon_knife_sil.png",
+  "mime": "image/png",
+  "aliases": [
+   "ui/weapon_knife"
+  ],
+  "pack": "art-new",
+  "sha256": "f7a317d1407ade6e0b9ff7ee55d25565d40161316ed46250ff3362c40311c687"
  }
 }

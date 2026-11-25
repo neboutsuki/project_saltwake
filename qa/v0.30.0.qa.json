@@ -188,6 +188,7 @@
     "cast.renReady": true,
     "cast.dirFromAim": true,
     "cast.fieldPlayerSprite": true,
+    "cast.weaponArt": true,
     "cast.castDraws": true,
     "systems.loaded": true,
     "systems.packAlert": true,
