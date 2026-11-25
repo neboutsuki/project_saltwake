@@ -9,7 +9,7 @@ G.graphicsPanel();c.settingsUI=!!document.getElementById('swTheme')&&!!document.
 G.hud();const R=el=>document.getElementById(el)?.getBoundingClientRect(),vp=R('viewport'),vit=document.querySelector('#swHudLeft .vitals')?.getBoundingClientRect(),wp=document.querySelector('#swHudLeft .weaponReadout')?.getBoundingClientRect(),mh=R('missionHud'),th=R('tideHud');
 c.vitalsTopLeft=!!vit&&vit.left-vp.left<40&&vit.top-vp.top<40;c.weaponBelowVitals=!!wp&&wp.top>=vit.bottom-1&&Math.abs(wp.left-vit.left)<2;
 c.questTopRight=mh.right>vp.right-40&&mh.top-vp.top<40;c.mapBottomLeft=th.left-vp.left<40&&th.bottom>vp.bottom-40;
-c.weaponSilhouette=!!document.querySelector('#swWeaponSil svg')&&/[0-9]/.test(document.getElementById('swAmmo').textContent);
+c.weaponSilhouette=!!document.querySelector('#swWeaponSil img')&&/[0-9]/.test(document.getElementById('swAmmo').textContent);
 c.questTags=document.querySelectorAll('#swQuestType .tag').length>0;
 const hunt=(G.world.content.living_expeditions.contracts||[]).find(x=>x.steps.some(s=>s.kind==='kill'));const keep=G.raid.living;G.raid.living={id:hunt.id,step:0};const qi=saltwakeHudLayout.questInfo(G);c.huntTag=qi.tags.some(t=>t[0]==='hunt')&&/Target/.test(qi.target);G.raid.living=keep;
 G.player.bleed=3;G.hud();c.bleedingInVitals=!document.getElementById('bleedText').hidden&&!!document.getElementById('bleedText').closest('#swHudLeft');G.player.bleed=0;

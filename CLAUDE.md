@@ -2,6 +2,9 @@
 
 Current playable build: v0.30.0 — The Unseen War (see CHANGELOG.md). Continue it, do not rewrite it. Original HTML/JS/CSS source was monolithic; this package extracts embedded images and the canonical world JSON into editable files without changing the runtime. `source/game.template.html` is the canonical editable game source; `python build.py` generates the playable HTML. Edit world and media separately; preserve IDs, coordinates, exits and collisions. The source is not yet split into gameplay modules. Do not treat the archived encounter prototypes as another runtime; live encounters use the native actor engine.
 
+## Art rule
+Art is image files in `assets/` referenced by alias via `assets/manifest.json` (see `assets/README.md`). Do not draw art with canvas primitives in code; bake or paint image files and place them. Rendering effects (lighting, grade, particles motion, shadows from sprites, UI indicators) may stay in code.
+
 ## Workflow
 1. Rebuild and verify the existing version before editing. Run `node qa/tools/run_qa.js playable/SALTWAKE_v0.30.0_Unseen_War.html qa/v0.30.0` (Node Playwright; all checks must be true). New code goes in `source/modules/*.js` via `@@SALTWAKE_MODULE:name.js@@`. Keep a backup and export player saves. The historical 22 focused checks do not constitute full regression.
 2. Audit gameplay, saves, map accessibility, quests, collision and performance. Fix regressions before new features.

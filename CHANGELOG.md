@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased — Art separated from code
+- **Art is now ordinary image files.** Everything I added since v0.30 is baked by `tools/bake_art.py` into image files in `assets/` (pack `art-v031`) and registered in `assets/manifest.json`:
+  - `weathered/`: 47 weathered building sprites, covering every field façade and the harbor house set;
+  - `decals/`: 17 terrain decals;
+  - `fx/`: 5 particle sprites;
+  - `ui/`: 9 SVG HUD icons and weapon silhouettes.
+  The game code only looks images up by alias and places them. There is no runtime pixel drawing for these anymore (no stippling, gradient weathering or inline SVG).
+- **Build:** `build.py` registers every art-pack file into the sprite library before it is created. It also writes `SALTWAKE_WEATHER_INDEX`, which maps a source image (by content signature) to its weathered file. This lets harbor houses with unnamed media keys use their weathered art.
+- **Art guide:** `assets/README.md` explains how to repaint or add art, and lists the older harbor pieces still drawn with shape primitives (plaza pillars, district props, walls and gates, towers, boats, yard and interior details). Those are next for sprite replacement.
+- Rendering effects (lighting, bloom, grade, fog, wind sway, cast shadows, combat indicators) stay in code because they're effects, not art.
+- QA: 122 checks, all passing.
+
+
 ## Unreleased — Houses and terrain detail
 - **Weathered buildings** (`source/modules/world-detail.js`): every field façade and every harbor house gets a weathering pass, cached once per image. The pass adds:
   - baked directional light (warm upper-left, cool shade lower-right);

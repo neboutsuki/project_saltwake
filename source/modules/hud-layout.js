@@ -6,14 +6,12 @@
  */
 (()=>{'use strict';
 const P=Game.prototype;
-const SIL={
- arbalest:'<svg viewBox="0 0 64 64"><path d="M6 30h40l6-4h6v12h-6l-6-4H6z"/><path d="M30 10c6 6 8 14 8 22s-2 16-8 22l-3-2c5-6 7-13 7-20s-2-14-7-20z"/><path d="M30 12 22 32l8 20" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="40" y="34" width="5" height="14" rx="1.5"/></svg>',
- wickcaster:'<svg viewBox="0 0 64 64"><rect x="6" y="26" width="34" height="12" rx="3"/><rect x="40" y="23" width="12" height="18" rx="2"/><path d="M52 29h7v6h-7z"/><rect x="14" y="38" width="7" height="14" rx="2"/><path d="M46 23c0-6 4-8 6-12 1 4-1 7-3 9z"/><circle cx="30" cy="32" r="2.5" fill="#0006"/></svg>',
- spear:'<svg viewBox="0 0 64 64"><path d="M8 56 46 18l3 3L11 59z"/><path d="M44 12 58 6l-6 14-6 2-4-4z"/><rect x="18" y="40" width="9" height="3" transform="rotate(-45 22 41)"/></svg>',
- unknown:'<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="14"/></svg>'};
-const AMMO={
- bolt:'<svg viewBox="0 0 24 24"><path d="M3 21 17 7l2 2L5 23z"/><path d="M16 4l6-2-2 6-2 1-3-3z"/><path d="M3 18l3 3-4 1z"/></svg>',
- cell:'<svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="17" rx="2"/><rect x="10" y="1" width="4" height="3"/><path d="M12 8l-2 5h3l-2 5" fill="none" stroke="#000a" stroke-width="1.5"/></svg>'};
+// Icons are image files (assets/ui/*.svg, pack art-v031); the HUD only references them.
+const ART=window.SALTWAKE_ASSETS.images,ui=n=>ART['ui/'+n]||'';
+const img=(n,cls='')=>ui(n)?`<img class="${cls}" src="${ui(n)}" alt="" draggable="false">`:'';
+const SIL={arbalest:img('weapon_arbalest'),wickcaster:img('weapon_wickcaster'),spear:img('weapon_spear'),unknown:''};
+const AMMO={bolt:img('ammo_bolt'),cell:img('ammo_cell')};
+for(const n of ['heart','stamina','bleed'])document.documentElement.style.setProperty('--sw-icon-'+n,`url("${ui(n)}")`);
 const weaponKind=t=>/arbalest/i.test(t)?'arbalest':/wick/i.test(t)?'wickcaster':/spear|melee/i.test(t)?'spear':'unknown';
 const css=`
 #swHudLeft{position:absolute;top:14px;left:14px;width:262px;display:flex;flex-direction:column;gap:8px;z-index:4;pointer-events:none}
@@ -25,9 +23,9 @@ const css=`
 #swHudLeft .weaponReadout #weaponName{font-size:15px!important;line-height:1.2}
 #swHudLeft .weaponReadout>small:not(#ammoText),#swHudLeft .weaponReadout>p{font-size:10px!important;color:#6c7780!important}
 #swWeaponSil{grid-column:1!important;grid-row:1/span 5!important;width:64px;height:64px;color:rgba(255,255,255,.82);filter:drop-shadow(0 0 6px rgba(143,212,232,.25))}
-#swWeaponSil svg{width:100%;height:100%;fill:currentColor}
+#swWeaponSil img{width:100%;height:100%;opacity:.82;image-rendering:auto}
 #swAmmo{display:flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums}
-#swAmmo svg{width:16px;height:16px;fill:rgba(255,255,255,.8)}
+#swAmmo img{width:16px;height:16px;opacity:.85}
 #swAmmo b{font-size:15px}#swAmmo small{color:var(--gl-muted,#9aa5ae)}
 #swHudLeft .weaponReadout #ammoText{display:none!important}
 #hud{position:absolute!important;left:0!important;right:0!important;bottom:14px!important;top:auto!important;display:flex!important;justify-content:center!important;align-items:flex-end!important;pointer-events:none;grid-template-columns:none!important}
@@ -49,13 +47,13 @@ const css=`
 #swHudLeft .vitals,#swHudLeft .weaponReadout{background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:0!important}
 #swHudLeft .meter{display:grid!important;grid-template-columns:18px 1fr 30px!important;align-items:center;column-gap:8px!important;margin:0 0 6px!important}
 #swHudLeft .meter>span{font-size:0!important;width:18px;height:18px;background:center/contain no-repeat;filter:drop-shadow(0 1px 2px #000)}
-#swHudLeft .meter:nth-of-type(1)>span{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23f07a68' d='M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.2 1.8-2 3.3-3.2 5.4-3.2 3.6 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z'/%3E%3C/svg%3E")}
-#swHudLeft .meter:nth-of-type(2)>span{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238fd4e8' d='M13.5 2 4 13.5h6.5L9 22l11-12.5h-6.8z'/%3E%3C/svg%3E")}
+#swHudLeft .meter:nth-of-type(1)>span{background-image:var(--sw-icon-heart)}
+#swHudLeft .meter:nth-of-type(2)>span{background-image:var(--sw-icon-stamina)}
 #swHudLeft .meter .track{height:8px!important;background:rgba(0,0,0,.45)!important;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 2px 6px rgba(0,0,0,.4)}
 #swHudLeft .meter b{font-size:12px!important;text-shadow:0 1px 3px #000;color:#eef1f4!important}
 #swHudLeft #sprintLoad{display:none!important}
 #swHudLeft .vitalFlags{display:flex!important;gap:6px;min-height:0!important;margin-top:2px}
-#swHudLeft #bleedText:not([hidden]){font-size:0!important;width:22px;height:22px;border-radius:50%;background:rgba(200,40,40,.35) center/14px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff6b5e' d='M12 2s7 8 7 13a7 7 0 0 1-14 0c0-5 7-13 7-13z'/%3E%3C/svg%3E");box-shadow:0 0 0 1px rgba(255,107,94,.6),0 0 10px rgba(255,80,70,.5);animation:swPulse 1s ease-in-out infinite}
+#swHudLeft #bleedText:not([hidden]){font-size:0!important;width:22px;height:22px;border-radius:50%;background:rgba(200,40,40,.35) center/14px no-repeat var(--sw-icon-bleed);box-shadow:0 0 0 1px rgba(255,107,94,.6),0 0 10px rgba(255,80,70,.5);animation:swPulse 1s ease-in-out infinite}
 #swHudLeft #statusText:not([hidden]){font-size:10px!important;padding:2px 7px;border-radius:999px;background:rgba(0,0,0,.4);color:#eef1f4!important;text-shadow:none}
 @keyframes swPulse{50%{opacity:.55}}
 #swHudLeft .weaponReadout{grid-template-columns:56px auto!important;justify-content:start;column-gap:10px!important;cursor:pointer}
@@ -63,7 +61,7 @@ const css=`
 #swWeaponSil{width:56px!important;height:56px!important;grid-row:1!important;color:rgba(255,255,255,.75)!important;filter:drop-shadow(0 1px 3px rgba(0,0,0,.8))!important}
 #swAmmo{grid-row:1!important;align-self:center;text-shadow:0 1px 3px #000}
 #swAmmo b{font-size:22px!important;color:#fff!important}#swAmmo small{font-size:13px!important;color:rgba(255,255,255,.65)!important}
-#swAmmo svg{width:18px!important;height:18px!important;filter:drop-shadow(0 1px 2px #000)}
+#swAmmo img{width:18px!important;height:18px!important;filter:drop-shadow(0 1px 2px #000)}
 /* Round minimap, single info line, lantern icon. */
 html #tideHud,html.sw-glass #tideHud{background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:0!important;width:auto!important;max-width:none!important;display:flex!important;flex-direction:column;align-items:center;gap:6px}
 #tideHud>:not(#chartBody):not(#swMapInfo){display:none!important}
@@ -74,8 +72,8 @@ html #tideHud,html.sw-glass #tideHud{background:none!important;border:0!importan
 #swMapInfo .dot{width:7px;height:7px;border-radius:50%;background:#8fd4e8;box-shadow:0 0 6px #8fd4e8}
 #swMapInfo .timer{color:#ffd0a0}
 #swLantern{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.4);display:grid;place-items:center;cursor:pointer;padding:0;position:absolute;right:-4px;bottom:4px;z-index:2}
-#swLantern svg{width:15px;height:15px;fill:rgba(255,255,255,.4)}
-#swLantern.lit{border-color:rgba(255,190,110,.6);box-shadow:0 0 10px rgba(255,170,80,.5)}#swLantern.lit svg{fill:#ffc27a}
+#swLantern img{width:15px;height:15px;opacity:.4}
+#swLantern.lit{border-color:rgba(255,190,110,.6);box-shadow:0 0 10px rgba(255,170,80,.5)}#swLantern.lit img{opacity:1;filter:sepia(1) saturate(4) hue-rotate(-12deg) brightness(1.1)}
 
 /* ---- Simple quest tracker (v0.31c): type tag, title, objective. Full details live in the Journal. ---- */
 html #missionHud,html.sw-glass #missionHud{background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:0!important;text-align:right;width:min(300px,34vw)!important}
@@ -106,7 +104,7 @@ function questInfo(G){const tags=[];let target='';
  return {tags,target}}
 const safe=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-const LANTERN='<svg viewBox="0 0 24 24"><path d="M9 2h6v2h-1v1.2c2.4.6 4 2.6 4 5V18a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-7.8c0-2.4 1.6-4.4 4-5V4H9z"/><rect x="8" y="21" width="8" height="1.6" rx=".8"/></svg>';
+const LANTERN=img('lantern');
 function mountMap(){const th=$('tideHud'),body=$('chartBody');if(!th||!body||$('swMapInfo'))return;const info=document.createElement('div');info.id='swMapInfo';th.append(info);
  const b=document.createElement('button');b.id='swLantern';b.type='button';b.title='Lantern (T)';b.setAttribute('aria-label','Toggle lantern');b.innerHTML=LANTERN;b.onclick=e=>{e.stopPropagation();SALTWAKE_DEV.game.toggleLantern?.()};body.append(b)}
 let lastInfo='';

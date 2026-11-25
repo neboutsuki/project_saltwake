@@ -97,6 +97,8 @@ def main():
     restore = '--restore' in sys.argv
     counts = {}
     for key, a in manifest.items():
+        if a.get('pack'):
+            continue  # baked art packs (tools/bake_art.py) are authored files, not remaster inputs
         path = ROOT / a['path']
         keep = ORIG / path.name
         if not keep.exists():

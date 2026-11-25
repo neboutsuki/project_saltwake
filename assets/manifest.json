@@ -5571,5 +5571,754 @@
    "wrecker"
   ],
   "remaster": "actor"
+ },
+ "art_weathered_media_0000_png": {
+  "path": "assets/weathered/media_0000.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0000"
+  ],
+  "weathers": "media_0000",
+  "pack": "art-v031",
+  "sha256": "db74dbdf94b861a4ece426a7c04012f7bcb0b4501195b318c1a985225317464c"
+ },
+ "art_weathered_media_0001_png": {
+  "path": "assets/weathered/media_0001.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0001"
+  ],
+  "weathers": "media_0001",
+  "pack": "art-v031",
+  "sha256": "b51ebb44a7c953f06b5088c3a164a54506c0a4193f1d239fb5341be1220e9c23"
+ },
+ "art_weathered_media_0002_png": {
+  "path": "assets/weathered/media_0002.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0002"
+  ],
+  "weathers": "media_0002",
+  "pack": "art-v031",
+  "sha256": "930b815b4f8bddcc473303b650eda3b564cbf569de5ac898cd8e8d4b7a75f8d7"
+ },
+ "art_weathered_media_0003_png": {
+  "path": "assets/weathered/media_0003.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0003"
+  ],
+  "weathers": "media_0003",
+  "pack": "art-v031",
+  "sha256": "d04d78e4399c951a872cd13f2c58137f916489c22bf709788ecb9fa8b91d8b30"
+ },
+ "art_weathered_media_0035_png": {
+  "path": "assets/weathered/media_0035.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0035"
+  ],
+  "weathers": "media_0035",
+  "pack": "art-v031",
+  "sha256": "705a5517ee1009d10255cc66883375f7dee99a9244e2ff1d87427fe29999417e"
+ },
+ "art_weathered_media_0036_png": {
+  "path": "assets/weathered/media_0036.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0036"
+  ],
+  "weathers": "media_0036",
+  "pack": "art-v031",
+  "sha256": "d3ac60df079468d86ae384e44c4cbe2484adf0d499a8f76664a93d0b4bbb1065"
+ },
+ "art_weathered_media_0037_png": {
+  "path": "assets/weathered/media_0037.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0037"
+  ],
+  "weathers": "media_0037",
+  "pack": "art-v031",
+  "sha256": "fe90a564d366f386a14578efc1b42129875a95cc40e4e4f56efeba27f4bd4ff8"
+ },
+ "art_weathered_media_0038_png": {
+  "path": "assets/weathered/media_0038.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0038"
+  ],
+  "weathers": "media_0038",
+  "pack": "art-v031",
+  "sha256": "40eac69727a6b7a515fb73fb5630cbc97696495ecd903c2dfb32a64ba860a3e6"
+ },
+ "art_weathered_media_0039_png": {
+  "path": "assets/weathered/media_0039.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0039"
+  ],
+  "weathers": "media_0039",
+  "pack": "art-v031",
+  "sha256": "239eb509682878074e269963707da2d90a22298080363bf473670820b31eee20"
+ },
+ "art_weathered_media_0040_png": {
+  "path": "assets/weathered/media_0040.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0040"
+  ],
+  "weathers": "media_0040",
+  "pack": "art-v031",
+  "sha256": "6ca8892315f0866e9758d65120d8fbc4e8658571437772d7cdd7d0e46c9e7311"
+ },
+ "art_weathered_media_0041_png": {
+  "path": "assets/weathered/media_0041.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0041"
+  ],
+  "weathers": "media_0041",
+  "pack": "art-v031",
+  "sha256": "f07e1fa1d66d4b3061dfe754a2ce019d1049584f9e6c8f8e92c5537e07feb648"
+ },
+ "art_weathered_media_0042_png": {
+  "path": "assets/weathered/media_0042.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0042"
+  ],
+  "weathers": "media_0042",
+  "pack": "art-v031",
+  "sha256": "d60651b518f162cda665ad688cff5f8cb3bbb07e9360b089ae93e0888b74c8ce"
+ },
+ "art_weathered_media_0043_png": {
+  "path": "assets/weathered/media_0043.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0043"
+  ],
+  "weathers": "media_0043",
+  "pack": "art-v031",
+  "sha256": "db7557ce8a2fbda63b04d8915232ab48f0eb68c90a8c231268b90f0431b9c38c"
+ },
+ "art_weathered_media_0044_png": {
+  "path": "assets/weathered/media_0044.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0044"
+  ],
+  "weathers": "media_0044",
+  "pack": "art-v031",
+  "sha256": "79d68510e44b0f23ac810400c5d7199e8f603c8021fdcf8e446376451f331c15"
+ },
+ "art_weathered_media_0045_png": {
+  "path": "assets/weathered/media_0045.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0045"
+  ],
+  "weathers": "media_0045",
+  "pack": "art-v031",
+  "sha256": "e1bad6f092b82a6c8639f7d9969f4bb303c9e951dce5e7ad6f4e31871bbaf144"
+ },
+ "art_weathered_media_0046_png": {
+  "path": "assets/weathered/media_0046.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0046"
+  ],
+  "weathers": "media_0046",
+  "pack": "art-v031",
+  "sha256": "ade1a603cb29e44ea7d1a8b262bbc8562eedc474666d5d1a1d2740f9077be229"
+ },
+ "art_weathered_media_0047_png": {
+  "path": "assets/weathered/media_0047.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0047"
+  ],
+  "weathers": "media_0047",
+  "pack": "art-v031",
+  "sha256": "0f1e44e9e870586320a23fa893512cc5a62d2ddd1ff1cd6e7cf47577759f03f3"
+ },
+ "art_weathered_media_0048_png": {
+  "path": "assets/weathered/media_0048.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0048"
+  ],
+  "weathers": "media_0048",
+  "pack": "art-v031",
+  "sha256": "2074bd3ca8526161f8443674bd13daf1672c8c1d11b652466bfe0fdbf873a981"
+ },
+ "art_weathered_media_0049_png": {
+  "path": "assets/weathered/media_0049.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0049"
+  ],
+  "weathers": "media_0049",
+  "pack": "art-v031",
+  "sha256": "cc3f37730ce9bf644a96f68ec058ea0ee8dfb07e90b071e987ca1004bbc90a62"
+ },
+ "art_weathered_media_0050_png": {
+  "path": "assets/weathered/media_0050.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0050"
+  ],
+  "weathers": "media_0050",
+  "pack": "art-v031",
+  "sha256": "eb19c7bb8511d72782a05fc02c265299645d9ce51b3a36a5a23227e4b4782d20"
+ },
+ "art_weathered_media_0051_png": {
+  "path": "assets/weathered/media_0051.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0051"
+  ],
+  "weathers": "media_0051",
+  "pack": "art-v031",
+  "sha256": "54225885ca17432af59bf55a90f4179983d38099e3cb92d0d75b95ecb85257d4"
+ },
+ "art_weathered_media_0052_png": {
+  "path": "assets/weathered/media_0052.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0052"
+  ],
+  "weathers": "media_0052",
+  "pack": "art-v031",
+  "sha256": "44f58a94383b1d0e993bd24f94a67f92a7cf8fde5f1efb2a46fcd1178f5c9108"
+ },
+ "art_weathered_media_0053_png": {
+  "path": "assets/weathered/media_0053.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0053"
+  ],
+  "weathers": "media_0053",
+  "pack": "art-v031",
+  "sha256": "d12a6279db615916fa7495e4f4fb578218df1894ab2efd7a7e5a226405c30aa8"
+ },
+ "art_weathered_media_0054_png": {
+  "path": "assets/weathered/media_0054.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0054"
+  ],
+  "weathers": "media_0054",
+  "pack": "art-v031",
+  "sha256": "918894869e9f0b276b5a61ca147bf9bc729c48d60eca14c29e566ccc2923a879"
+ },
+ "art_weathered_media_0162_png": {
+  "path": "assets/weathered/media_0162.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0162"
+  ],
+  "weathers": "media_0162",
+  "pack": "art-v031",
+  "sha256": "1a77f9260b4dad8fbd9d6da39b3fedf583d1b11c3c1d788f7484dd5af6cca544"
+ },
+ "art_weathered_media_0194_png": {
+  "path": "assets/weathered/media_0194.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0194"
+  ],
+  "weathers": "media_0194",
+  "pack": "art-v031",
+  "sha256": "b2f78e1dbf7b803a322fd99f931498839bfe34e1c8eb337d801c45743446003b"
+ },
+ "art_weathered_media_0195_png": {
+  "path": "assets/weathered/media_0195.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0195"
+  ],
+  "weathers": "media_0195",
+  "pack": "art-v031",
+  "sha256": "91c224adc84aa9b1f4d92fceb532ed9211fcba920942a4a4a8591eb77713b9e8"
+ },
+ "art_weathered_media_0196_png": {
+  "path": "assets/weathered/media_0196.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0196"
+  ],
+  "weathers": "media_0196",
+  "pack": "art-v031",
+  "sha256": "fb263c96826fc8f548b5bae247fb0b8863a4257803fa0b6ce70b9d3301d97ec1"
+ },
+ "art_weathered_media_0273_png": {
+  "path": "assets/weathered/media_0273.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0273"
+  ],
+  "weathers": "media_0273",
+  "pack": "art-v031",
+  "sha256": "c4d2d59a6fa9731a2f974118142a23658f5f976d5df9aedc0295b4f63019b236"
+ },
+ "art_weathered_media_0276_png": {
+  "path": "assets/weathered/media_0276.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0276"
+  ],
+  "weathers": "media_0276",
+  "pack": "art-v031",
+  "sha256": "d4fe1695ed659a0f40a652d880464f4dc07674a8a5dd267aebaa615cbb92fed0"
+ },
+ "art_weathered_media_0396_png": {
+  "path": "assets/weathered/media_0396.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0396"
+  ],
+  "weathers": "media_0396",
+  "pack": "art-v031",
+  "sha256": "c2ff6931a0a112599a861a8ec784fd3f10d98accb0562e74ef06b70e9fda5da7"
+ },
+ "art_weathered_media_0397_png": {
+  "path": "assets/weathered/media_0397.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0397"
+  ],
+  "weathers": "media_0397",
+  "pack": "art-v031",
+  "sha256": "c93324391e0d21902137b76b616551e8f9fd1c7d6ac4970e0120277b111ffd69"
+ },
+ "art_weathered_media_0398_png": {
+  "path": "assets/weathered/media_0398.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0398"
+  ],
+  "weathers": "media_0398",
+  "pack": "art-v031",
+  "sha256": "9aac960fb99b65e2fd22b315768f2aea965d9342cc1ea09017d5f6275d4e14e7"
+ },
+ "art_weathered_media_0399_png": {
+  "path": "assets/weathered/media_0399.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0399"
+  ],
+  "weathers": "media_0399",
+  "pack": "art-v031",
+  "sha256": "74c7e522f3941fe4cb3a333f713ffb09b0c0327ac398b4f95653e0f78f3dd385"
+ },
+ "art_weathered_media_0400_png": {
+  "path": "assets/weathered/media_0400.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0400"
+  ],
+  "weathers": "media_0400",
+  "pack": "art-v031",
+  "sha256": "701c783c079ff2da96eac6dcddc9e44a243ff287a7956c6eb0bc760ef1da9bd6"
+ },
+ "art_weathered_media_0401_png": {
+  "path": "assets/weathered/media_0401.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0401"
+  ],
+  "weathers": "media_0401",
+  "pack": "art-v031",
+  "sha256": "f4b9dd93fef5c89d9acd2c3ed13668c11ab0a093b95f74045093bd6541831a61"
+ },
+ "art_weathered_media_0402_png": {
+  "path": "assets/weathered/media_0402.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0402"
+  ],
+  "weathers": "media_0402",
+  "pack": "art-v031",
+  "sha256": "5db7d61e80f637e573b404ef9f1a8202473a7c1703249c9c738add251948cadf"
+ },
+ "art_weathered_media_0403_png": {
+  "path": "assets/weathered/media_0403.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0403"
+  ],
+  "weathers": "media_0403",
+  "pack": "art-v031",
+  "sha256": "75162e60fcfd3749bf13a5cac7a69692a050b20df5516ecde83525a4d63a256a"
+ },
+ "art_weathered_media_0404_png": {
+  "path": "assets/weathered/media_0404.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0404"
+  ],
+  "weathers": "media_0404",
+  "pack": "art-v031",
+  "sha256": "a138effd08d40da6deee6e522305c9e5fa64eac1a83a965e005c6927d30e4d84"
+ },
+ "art_weathered_media_0405_png": {
+  "path": "assets/weathered/media_0405.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0405"
+  ],
+  "weathers": "media_0405",
+  "pack": "art-v031",
+  "sha256": "5ffba262aa30250a6ee676f93f2173a495b49375de98308f108066dffaf08c8e"
+ },
+ "art_weathered_media_0406_png": {
+  "path": "assets/weathered/media_0406.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0406"
+  ],
+  "weathers": "media_0406",
+  "pack": "art-v031",
+  "sha256": "09c9555d6f05911c6d4080b2ea7b3bef8df578b1aa22bb17ae411a4936d0a67a"
+ },
+ "art_weathered_media_0407_png": {
+  "path": "assets/weathered/media_0407.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0407"
+  ],
+  "weathers": "media_0407",
+  "pack": "art-v031",
+  "sha256": "98b8a534a615f8e86ace9dfd65ba66d8ec4662be5d4ba505d4e8902cfa90dd6a"
+ },
+ "art_weathered_media_0408_png": {
+  "path": "assets/weathered/media_0408.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0408"
+  ],
+  "weathers": "media_0408",
+  "pack": "art-v031",
+  "sha256": "e6f16cdb3dcf0d21f278ec8f299f6b15db6d7ae8cfb5b5fbd3c9e68b2f6f5d31"
+ },
+ "art_weathered_media_0409_png": {
+  "path": "assets/weathered/media_0409.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0409"
+  ],
+  "weathers": "media_0409",
+  "pack": "art-v031",
+  "sha256": "37ee6567615cfab772c46c3e9808e46293b1dcfb61747fa60c8344cd84d6ac37"
+ },
+ "art_weathered_media_0410_png": {
+  "path": "assets/weathered/media_0410.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0410"
+  ],
+  "weathers": "media_0410",
+  "pack": "art-v031",
+  "sha256": "e3d9f51573aec36f2eb264c715c0fbec935b71bf796f85e6a0c8c1d90f31c7d1"
+ },
+ "art_weathered_media_0411_png": {
+  "path": "assets/weathered/media_0411.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0411"
+  ],
+  "weathers": "media_0411",
+  "pack": "art-v031",
+  "sha256": "d35a52fbb85a91ee42e6fa8e1137071ddd707d9426ac7ae1ef4dcbe71f2b8ef6"
+ },
+ "art_weathered_media_0412_png": {
+  "path": "assets/weathered/media_0412.png",
+  "mime": "image/png",
+  "aliases": [
+   "weathered/media_0412"
+  ],
+  "weathers": "media_0412",
+  "pack": "art-v031",
+  "sha256": "4a5fed62001333db7e5784e6ec87a8dba2a4ca715816fd5c8a17feeb07a715ff"
+ },
+ "art_decals_salt_crust_1_png": {
+  "path": "assets/decals/salt_crust_1.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/salt_crust_1"
+  ],
+  "pack": "art-v031",
+  "sha256": "f0a34dc1179d29cf81c8d97ab22d368fdededab1341499bbdd823bef86b88a6f"
+ },
+ "art_decals_salt_crust_2_png": {
+  "path": "assets/decals/salt_crust_2.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/salt_crust_2"
+  ],
+  "pack": "art-v031",
+  "sha256": "18894c3310d48cf93ac825b3d9a533df70f94f2394977cccd1a588b5f166672f"
+ },
+ "art_decals_salt_crust_3_png": {
+  "path": "assets/decals/salt_crust_3.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/salt_crust_3"
+  ],
+  "pack": "art-v031",
+  "sha256": "120e0576d6b842002b98297572925da8b643751b92dd48867f2d6f270442cfce"
+ },
+ "art_decals_salt_crust_4_png": {
+  "path": "assets/decals/salt_crust_4.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/salt_crust_4"
+  ],
+  "pack": "art-v031",
+  "sha256": "e9f01b4713088f099013ab9b3c1c525c44a7faef9fba14c895fead3a7e49b605"
+ },
+ "art_decals_ash_drift_1_png": {
+  "path": "assets/decals/ash_drift_1.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/ash_drift_1"
+  ],
+  "pack": "art-v031",
+  "sha256": "69b58697fa8a46a16ff0373a8ee1984f63082fe0b92f5dbf5b10341f3d100cd0"
+ },
+ "art_decals_ash_drift_2_png": {
+  "path": "assets/decals/ash_drift_2.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/ash_drift_2"
+  ],
+  "pack": "art-v031",
+  "sha256": "16ad38ac65488c1ac1a68a2af7a2eed6e66e8b04fb23f4ef1032cad5c5a50052"
+ },
+ "art_decals_ash_drift_3_png": {
+  "path": "assets/decals/ash_drift_3.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/ash_drift_3"
+  ],
+  "pack": "art-v031",
+  "sha256": "04691bf9271cbd74ae98f42f85a750e29707f7b0e97399f5359e13653758ba88"
+ },
+ "art_decals_ash_drift_4_png": {
+  "path": "assets/decals/ash_drift_4.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/ash_drift_4"
+  ],
+  "pack": "art-v031",
+  "sha256": "657e31e79552f4cccb66d22240ac89981e6f724d99994e6292c6d288f39485f6"
+ },
+ "art_decals_crack_1_png": {
+  "path": "assets/decals/crack_1.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/crack_1"
+  ],
+  "pack": "art-v031",
+  "sha256": "28e4bff323901fb244d7f78e584d3308814fd30de1cab149d9baa2c62e6a4c48"
+ },
+ "art_decals_crack_2_png": {
+  "path": "assets/decals/crack_2.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/crack_2"
+  ],
+  "pack": "art-v031",
+  "sha256": "ce1b8bce4272459ad50f1f4c10c69ec0501d1a0f66072eff28c13c18d20c8214"
+ },
+ "art_decals_crack_3_png": {
+  "path": "assets/decals/crack_3.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/crack_3"
+  ],
+  "pack": "art-v031",
+  "sha256": "c51e5f99f05310d737b5e4a6e5c05ba007103d1cb2717211493438d7488c9d0f"
+ },
+ "art_decals_pebbles_1_png": {
+  "path": "assets/decals/pebbles_1.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/pebbles_1"
+  ],
+  "pack": "art-v031",
+  "sha256": "664b51c9e1f1727f5e117c45aa3a267dfb83d4abe0ae89115e9fc0ab2e899030"
+ },
+ "art_decals_pebbles_2_png": {
+  "path": "assets/decals/pebbles_2.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/pebbles_2"
+  ],
+  "pack": "art-v031",
+  "sha256": "8b8f7e9b800cc6f37b65dffd8a7fa79fefe85427fd3e37687d7bf1b72f64a958"
+ },
+ "art_decals_pebbles_3_png": {
+  "path": "assets/decals/pebbles_3.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/pebbles_3"
+  ],
+  "pack": "art-v031",
+  "sha256": "904e06ca41e382af258eb97592996fcce35b7b6a1e58b4cccbe9977ef50c500c"
+ },
+ "art_decals_puddle_1_png": {
+  "path": "assets/decals/puddle_1.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/puddle_1"
+  ],
+  "pack": "art-v031",
+  "sha256": "072c1415e2fd339bdeabda972bc0e1277f6ea3b7e84f5f89be85baec9e51a3c2"
+ },
+ "art_decals_puddle_2_png": {
+  "path": "assets/decals/puddle_2.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/puddle_2"
+  ],
+  "pack": "art-v031",
+  "sha256": "1794c84f7f38fca8d23c19bddee0496f6ce4e9ff011286efe7aabd46ffb78e0b"
+ },
+ "art_decals_puddle_3_png": {
+  "path": "assets/decals/puddle_3.png",
+  "mime": "image/png",
+  "aliases": [
+   "decals/puddle_3"
+  ],
+  "pack": "art-v031",
+  "sha256": "656a54956e7a3ae869aa187588c3caad93181963d95310b74e8d7e3b89f19a9a"
+ },
+ "art_fx_ash_flake_png": {
+  "path": "assets/fx/ash_flake.png",
+  "mime": "image/png",
+  "aliases": [
+   "fx/ash_flake"
+  ],
+  "pack": "art-v031",
+  "sha256": "b524dfd5a4685b579ebca4b83c3685b8f4e1935b7616294e5682d0e66e17439e"
+ },
+ "art_fx_ash_flake_small_png": {
+  "path": "assets/fx/ash_flake_small.png",
+  "mime": "image/png",
+  "aliases": [
+   "fx/ash_flake_small"
+  ],
+  "pack": "art-v031",
+  "sha256": "c7cc9ea7e9bd9f6b9226b2d2d0b2ff6081eca6ebbe5d4972537d6b07c45c2d59"
+ },
+ "art_fx_ember_png": {
+  "path": "assets/fx/ember.png",
+  "mime": "image/png",
+  "aliases": [
+   "fx/ember"
+  ],
+  "pack": "art-v031",
+  "sha256": "6355bb9d76c49c022df2faf5821e40729b068703ff743d54e04f5d80ed8fca9a"
+ },
+ "art_fx_rain_streak_png": {
+  "path": "assets/fx/rain_streak.png",
+  "mime": "image/png",
+  "aliases": [
+   "fx/rain_streak"
+  ],
+  "pack": "art-v031",
+  "sha256": "44e94ed493318db9791862ec7cf495251c80fb76a2f9aa793756b225304ee669"
+ },
+ "art_fx_splash_png": {
+  "path": "assets/fx/splash.png",
+  "mime": "image/png",
+  "aliases": [
+   "fx/splash"
+  ],
+  "pack": "art-v031",
+  "sha256": "56583830704b41b3649a6b69b5d7c4eb469fd5fa08ba89aafbfa2bd7a600a30d"
+ },
+ "art_ui_heart_svg": {
+  "path": "assets/ui/heart.svg",
+  "mime": "image/svg+xml",
+  "aliases": [
+   "ui/heart"
+  ],
+  "pack": "art-v031",
+  "sha256": "bfd2bbae487aa0258dc79bcc5fcda82202eccf8f80731033b2c92e20283a0d55"
+ },
+ "art_ui_stamina_svg": {
+  "path": "assets/ui/stamina.svg",
+  "mime": "image/svg+xml",
+  "aliases": [
+   "ui/stamina"
+  ],
+  "pack": "art-v031",
+  "sha256": "dcc7cd256779f8b1d162a7267320ef08bfbb3eea6ab38341971f42610e9384f7"
+ },
+ "art_ui_bleed_svg": {
+  "path": "assets/ui/bleed.svg",
+  "mime": "image/svg+xml",
+  "aliases": [
+   "ui/bleed"
+  ],
+  "pack": "art-v031",
+  "sha256": "9760ce19c8e8212fc577e97c087d2f1e5f5316a0c8925b47f6e7512e85fba528"
+ },
+ "art_ui_lantern_svg": {
+  "path": "assets/ui/lantern.svg",
+  "mime": "image/svg+xml",
+  "aliases": [
+   "ui/lantern"
+  ],
+  "pack": "art-v031",
+  "sha256": "a6e98e9ae81446409d9d3c25f1ca591ae8edb7e796f2931649547ffe586dda30"
+ },
+ "art_ui_ammo_bolt_svg": {
+  "path": "assets/ui/ammo_bolt.svg",
+  "mime": "image/svg+xml",
+  "aliases": [
+   "ui/ammo_bolt"
+  ],
+  "pack": "art-v031",
+  "sha256": "6fbb7820c0727f42970eb446e077d56f5de1ad580865d1b4b9a9e170ca64df74"
+ },
+ "art_ui_ammo_cell_svg": {
+  "path": "assets/ui/ammo_cell.svg",
+  "mime": "image/svg+xml",
+  "aliases": [
+   "ui/ammo_cell"
+  ],
+  "pack": "art-v031",
+  "sha256": "b71a348d3ecdf3d0fee939adf4fd140fd35709a13f2b1d2831ae392ee5cbace6"
+ },
+ "art_ui_weapon_arbalest_svg": {
+  "path": "assets/ui/weapon_arbalest.svg",
+  "mime": "image/svg+xml",
+  "aliases": [
+   "ui/weapon_arbalest"
+  ],
+  "pack": "art-v031",
+  "sha256": "357874136e005463ecb7fa2bf2c0d86789db919805cc9e05356be2038fe72df9"
+ },
+ "art_ui_weapon_wickcaster_svg": {
+  "path": "assets/ui/weapon_wickcaster.svg",
+  "mime": "image/svg+xml",
+  "aliases": [
+   "ui/weapon_wickcaster"
+  ],
+  "pack": "art-v031",
+  "sha256": "f641af45400cc4cae46eca4426bf76a5e3893addbbd81620fff1ad14464f0f9f"
+ },
+ "art_ui_weapon_spear_svg": {
+  "path": "assets/ui/weapon_spear.svg",
+  "mime": "image/svg+xml",
+  "aliases": [
+   "ui/weapon_spear"
+  ],
+  "pack": "art-v031",
+  "sha256": "7615711999e5349cb2da62b8ac2cffbdfc8df7f092ff7eb83cacfdffd235b22e"
  }
 }
