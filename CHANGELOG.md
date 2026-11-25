@@ -1,6 +1,12 @@
 # Changelog
 
-## Unreleased — Camera, scale and ashen atmosphere
+## Unreleased — Enhanced renderer
+- **GPU post-processing** (`source/modules/post-fx.js`, WebGL2): every frame of the field and the harbor is re-presented through pixel-art sharpening, bloom from lanterns, windows, fire and embers, tilt-shift depth of field (top and bottom of the screen soften so the scene reads as a lit diorama), a filmic ashen grade (drained mid-tones, cool slate shadows, warm ember highlights), a vignette and fine film grain. The source canvases still render and take input underneath. If the GPU path fails it switches itself off, and the old 2D/CSS grade takes over again. Each effect can be toggled in Graphics & Performance.
+- **Projected shadows:** trees, lanterns, banners, cargo, barrels and similar props cast their actual silhouette along a low sun direction, in addition to the existing contact shadows.
+- Headless software-GL cost is about 5 ms per frame in the harbor and about 17 ms in raids. On a real GPU it should be far lower, but I haven't measured it.
+- QA now runs 104 checks, all passing.
+
+## Camera, scale and ashen atmosphere
 - **Camera** (`source/modules/camera.js`): smooth follow; look-ahead toward your aim and movement, stronger during raids; zoom with the mouse wheel over the world or `-` / `=` (0.8×–1.45× of each map's base scale); screen shake on damage that grows with the damage taken. The map-edge limits and the long-range aiming offset still work. Each option can be set in Graphics & Performance (zoom slider plus toggles). The base render now calls `Game.prototype.cameraFrame`.
 - **Scale** (`source/modules/scale.js`): characters (player, NPCs, wreckers, Brineworn) are drawn 1.15× larger in both the field and the harbor. Gulls are reduced to 0.72×. Crates, benches, barrels, cargo and banners are reduced to roughly human scale. All scaling is anchored at the feet; hitboxes, collision radii, ranges and positions are unchanged. The HUD scales with the game's width (0.8×–1.55×).
 - **Ashen Wilds atmosphere:** a drained, ash-grey grade with a warm haze and a darker seaward horizon, plus falling ash with occasional red embers that drift with the wind and parallax with the camera. A faint green brine haze pools at the feet of Brineworn and Brinebacks. The harbor gets a matching filter. "Falling ash" is a separate toggle.

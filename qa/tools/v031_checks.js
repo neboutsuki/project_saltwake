@@ -18,4 +18,5 @@ G.player.x-=200;const z0=G.camera.target;Cm.set({zoom:1.2});c.cameraZoom=Math.ab
 const tr=Cm.state.trauma;G.player.iframes=0;G.hurtPlayer(10,0);c.cameraShake=Cm.state.trauma>tr;G.player.hp=100;
 const sc=saltwakeScale.stats.chars;G.render(performance.now());c.charScale=saltwakeScale.stats.chars>sc&&saltwakeScale.CHAR>1;c.propScale=saltwakeScale.stats.props>0;
 c.ashOverlay=!!document.getElementById('swAsh');c.hudScale=!!getComputedStyle(document.documentElement).getPropertyValue('--sw-hud-scale');
+c.postPipeline=!!window.saltwakePost&&saltwakePost.stats.errors===0;c.castShadows=(saltwakeEnvFx.stats.cast||0)>0;
 G.endRaid(true,'QA v031');c.extract=!G.raid;return c}`;

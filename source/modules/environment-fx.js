@@ -15,9 +15,15 @@ function swayAngle(key,x,h){const t=performance.now()/1000,str=wind();const tall
  return (Math.sin(t*freq+x*.021)+.35*Math.sin(t*freq*2.3+x*.047))*amp}
 function contact(x,footY,w){const r=Math.max(8,w*.42);g.save();g.translate(x,footY-1);g.scale(1,.28);const gr=g.createRadialGradient(0,0,0,0,0,r);gr.addColorStop(0,'rgba(10,9,8,.34)');gr.addColorStop(.6,'rgba(10,9,8,.14)');gr.addColorStop(1,'rgba(10,9,8,0)');g.fillStyle=gr;g.beginPath();g.arc(0,0,r,0,Math.PI*2);g.fill();g.restore();stats.shadowed++}
 // coastSprite(key,x,footY,width,height,mirror) is the shared sprite entry point of the coast renderer.
+// Projected silhouette shadows: each tall sprite casts its real outline away from a low sun (upper-left).
+const sil=new Map();
+function silhouette(im){let c=sil.get(im);if(c)return c;c=document.createElement('canvas');c.width=im.width;c.height=im.height;const x=c.getContext('2d');x.drawImage(im,0,0);x.globalCompositeOperation='source-in';x.fillStyle='#0b0a0c';x.fillRect(0,0,c.width,c.height);sil.set(im,c);return c}
+const CAST=/foliage\/|ashen25d\/|vegetation\/(tall|short)-pine|coastal-pine|blossom-tree|props\/(lantern|banner|cargo-hoist|warning-bell|brazier|iron-bollard|anchor-sign|barrels|crates|bench|worktable|rope-cargo|small-cargo|noticeboard)|buildings\//;
+function cast(key,x,footY,w,h){if(!cfg.shadows||!CAST.test(key)||h<30)return;const im=SPRITES.image(key);if(!im||!im.width)return;const sc=Math.min(w/im.width,h/im.height),dw=im.width*sc,dh=im.height*sc;
+ g.save();g.globalAlpha=h>120?.26:.3;g.translate(x,footY-2);g.transform(1,0,-.62,.42,0,0);g.drawImage(silhouette(im),-dw/2,-dh,dw,dh);g.restore();stats.cast=(stats.cast||0)+1}
 if(typeof coastSprite==='function'){const base=coastSprite;
  coastSprite=function(key,x,footY,width,height,mirror=false){
-  const foliage=FOLIAGE.test(key);
+  const foliage=FOLIAGE.test(key);cast(key,x,footY,width,height);
   if(cfg.shadows&&!foliage&&!NO_SHADOW.test(key)&&key.startsWith('coast/props/'))contact(x,footY,width);
   if(!cfg.wind||!foliage)return base.call(this,key,x,footY,width,height,mirror);
   const a=swayAngle(key,x,height);g.save();g.translate(x,footY);g.transform(1,0,-a,1,0,0);g.translate(-x,-footY);
@@ -29,7 +35,7 @@ if(typeof SPRITES!=='undefined'){const sd=SPRITES.draw.bind(SPRITES);
 // Colour grade: cool shadows / warm light, applied once per frame in screen space after the scene.
 const P=Game.prototype,render=P.render;
 // Ashen Wilds grade: drained colour, warm ash-grey haze, darker horizon toward the sea (bottom), cool shadows.
-P.render=function(t,...r){const out=render.call(this,t,...r);if(!cfg.grade||this.mode!=='play')return out;
+P.render=function(t,...r){const out=render.call(this,t,...r);if(!cfg.grade||this.mode!=='play'||FX.gpuGrade)return out;
  g.save();g.setTransform(1,0,0,1,0,0);
  g.globalCompositeOperation='saturation';g.fillStyle='rgba(128,128,128,.24)';g.fillRect(0,0,VW,VH);
  g.globalCompositeOperation='soft-light';g.fillStyle='rgba(150,128,110,.22)';g.fillRect(0,0,VW,VH);

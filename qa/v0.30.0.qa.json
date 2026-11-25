@@ -44,6 +44,8 @@
     "v031.propScale": true,
     "v031.ashOverlay": true,
     "v031.hudScale": true,
+    "v031.postPipeline": true,
+    "v031.castShadows": true,
     "v031.extract": true,
     "v030.loaded": true,
     "v030.title": true,
