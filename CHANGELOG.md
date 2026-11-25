@@ -1,5 +1,28 @@
 # Changelog
 
+## Unreleased — New Salvager's Rest and Outer Quays
+- **Both areas rebuilt from the art pack** by `tools/make_maps.py` (previews in `docs/maps/`; old world in
+  `archive/world_pre_v031_maps/`):
+  - **Salvager's Rest (hub), 72x58 tiles, compact:** Lantern Square with fountain, notice board and lanterns; Old Town
+    row (homes, Tide Chapel, guardhouse, your lodging, cart shelter); clinic and Ledger House west, forge yard east;
+    Market Row (quartermaster, salvage buyer, ration stall, Hunters' Hall, harbor stores); harbor front with crane,
+    fish racks, Pilot Station and three piers. Exits: city gate north, Outer Quays passage east, Rest Docks south.
+  - **Outer Quays (field), 220x150 tiles, large (was 160x128):** Salt Yards with red-salt crust, evaporation pans and
+    the old saltworks; Customs Hill (customs house, warehouse, harbor master's lodge, watch beacon, ruined store);
+    Ashwood edge and Ravine Ridge north; Wreckers' Camp; Warehouse Row and the Crane Yard; Old Fish Market;
+    Net-loft lanes; Broken Quays with four piers, wrecks and sunken houses; the Boathouse Slip arena (pillars,
+    harpoons, salt boulders); Tidal Caverns; lighthouse stump. Exits: West Passage, Storm Gate, cart track, pilot skiff.
+  - Natural edges: dense treelines north and along the sides, rubble near the shore, the sea south. No invisible walls.
+- Every building, NPC, container, interactable, portal and feature ID is kept (only moved), so quests and saves work;
+  all six story quests still play through. Buildings are closed facades; NPCs stand at their shop fronts.
+- **One renderer:** the old harbor frame no longer loads; the hub is a normal map (`tilemap.js` renders any map with
+  `"tilemap": true`). Art objects are depth-sorted with actors; collisions use spatial bins; old hard-coded arrival
+  points are remapped; the eight wildlife spawns, faction patrols and the minimap use the new layouts. F also talks.
+- The story cast is drawn on the new hub; the dialogue box anchors above the speaker through the game camera.
+- **Redo art (B27) imported:** full-width cliff, ravine and surf strips, a new moss tile, lantern post, bollard,
+  harpoon stake and a stone relic. Source images live in `incoming_art/source/` and are never imported as game art.
+- QA: 210/210 on both builds (tile-map suite rewritten for the new maps).
+
 ## Unreleased — Story cast in the harbor
 - Imported the story characters' portraits (`art/portraits/<name>.png`, 192 px). Their work/station animations were
   removed and are not used anywhere (`tools/pack_frames.py` skips `work/` folders).

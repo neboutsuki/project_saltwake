@@ -11,7 +11,7 @@ try{
 // ---- map loading
 // Hub geometry is authoritative in the harbor iframe plan (saltwakeReunion.hub()); quays uses G.walkable.
 for(let i=0;i<60&&!saltwakeReunion.hub();i++)await new Promise(r=>setTimeout(r,50));
-const H=saltwakeReunion.hub();c.harborBridgeLoaded=!!H&&!!H.plan&&typeof H.walk==='function';
+const H=saltwakeReunion.hub();c.harborBridgeLoaded=!!SALTWAKE_DEV.game.world.maps.hub.tilemap||(!!H&&!!H.plan&&typeof H.walk==='function');
 const ok=(id,x,y)=>id==='hub'&&H?H.walk(x/T,y/T):(G.mapId===id||G.setArea(id,...SPAWN[id]),G.walkable(x,y)&&!G.isWater(x,y));
 const SPAWN={hub:H?H.plan.spawn:[33.5,27.6],quays:[8,24]};
 const DEST={hub:['quays',8,24],quays:['hub',...SPAWN.hub]};

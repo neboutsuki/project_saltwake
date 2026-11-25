@@ -39,6 +39,7 @@ def sig(url):
 # (tools/build_split.py) references it by path, so it costs nothing there.
 # Staged art that a module names in full ('art/trees/ash_pine_01') is in use, so it is inlined too.
 _module_text = '\n'.join(p.read_text(encoding='utf-8') for p in sorted((root / 'source' / 'modules').glob('*.js')))
+_module_text += world.replace('"', "'")   # art named by the maps (scene objects, facades) is in use too
 def _used(a):
     return not a.get('staged') or any(("'" + al + "'") in _module_text for al in a.get('aliases', []))
 extra = {al: '@@SALTWAKE_MEDIA:' + k + '@@' for k, a in manifest.items() if a.get('pack') and _used(a) for al in a.get('aliases', [])}

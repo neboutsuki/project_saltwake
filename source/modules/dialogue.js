@@ -47,6 +47,15 @@
         }
       }
     } catch (e) { /* frame not ready: fall through */ }
+    // Field renderer: the speaker's world position through the game camera.
+    try {
+      const cv = document.getElementById('world'), at = g.npcLocation?.(npc);
+      if (cv && at && npc.mapId === g.mapId) {
+        const r = cv.getBoundingClientRect(), k = r.width / cv.width, z = g.camera.zoom;
+        const x = r.left + (at.x - g.camera.x) * z * k, y = r.top + (at.y - 2.7 * 32 - g.camera.y) * z * k;
+        if (x > r.left && x < r.right && y > r.top - 40 && y < r.bottom) return { x, y, anchored: true };
+      }
+    } catch (e) { }
     const v = document.getElementById('viewport')?.getBoundingClientRect() || { left: 0, top: 0, width: innerWidth, height: innerHeight };
     return { x: v.left + v.width / 2, y: v.top + v.height * 0.62, anchored: false };
   }

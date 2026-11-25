@@ -59,7 +59,7 @@
 - [ ] `bosses/salt_wyrm.png`
 - [ ] `keyart/bestiary_portrait_<monster>.png`
 
-## Extra files not on the list: 162
+## Extra files not on the list: 164
 
 - `buildings/salvage_shed.png`
 - `buildings/utility_shack.png`
@@ -173,6 +173,7 @@
 - `eapon_knife.png`
 - `eapon_spear.png`
 - `eapon_wickcaster.png`
+- `edges/cliff_face.png`
 - `icons/weapon_knife.png`
 - `portraits/captain_elda.png`
 - `portraits/harlan.png`
@@ -200,6 +201,7 @@
 - `props/rowboat_damaged.png`
 - `props/salt_processing_trough.png`
 - `props/salvage_debris.png`
+- `props/stone_relic.png`
 - `props/storage_shelf.png`
 - `props/supply_sacks.png`
 - `props/tool_rack.png`

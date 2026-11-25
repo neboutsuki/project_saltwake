@@ -6366,7 +6366,7 @@
   ],
   "pack": "art-new",
   "staged": true,
-  "sha256": "da896561096d72b48fc209df27f0b3a126562d4da377b1503068af0ce8a8c1b3"
+  "sha256": "2c1c8207d510734f33528366238a06bf3c17ce1dbcad19d0b69d3f6bebb8d7eb"
  },
  "art_new_art_arena_lure_lantern": {
   "path": "assets/art/arena/lure_lantern.png",
@@ -7006,7 +7006,7 @@
   ],
   "pack": "art-new",
   "staged": true,
-  "sha256": "32c72282d633c1fc6a64012f245757c8179aad4f2f2e392d6699eb7da6692d44"
+  "sha256": "d23d6d6a5f404fa001ca63271bb1f7bf28cc59de5d2dacd10d20d4d9287f3eee"
  },
  "art_new_art_edges_cliff_top_lip": {
   "path": "assets/art/edges/cliff_top_lip.png",
@@ -7046,7 +7046,7 @@
   ],
   "pack": "art-new",
   "staged": true,
-  "sha256": "16395f4965fc7e8c2be03b4fff7a592678033bc80473ea165d069603372741a0"
+  "sha256": "f6d0c00495c661071fe7deba088b44eb2c0db0213481c6dbfe384425a2c96fbd"
  },
  "art_new_art_edges_rubble_heap_01": {
   "path": "assets/art/edges/rubble_heap_01.png",
@@ -7086,7 +7086,7 @@
   ],
   "pack": "art-new",
   "staged": true,
-  "sha256": "af1064bc3cf04dcda02a0785ca17eb070b3b5980b779e635415a7cb206c46bc8"
+  "sha256": "95e4b0c70fcaa3097c1f214fed1311c862da03d74f49aacd6aa81a23a6b3f1c5"
  },
  "art_new_art_edges_town_gate": {
   "path": "assets/art/edges/town_gate.png",
@@ -7841,7 +7841,7 @@
   ],
   "pack": "art-new",
   "staged": true,
-  "sha256": "8393fad78b18fea7e579c425830196adfee5aafadf7ac2bc347d62fecf1b583c"
+  "sha256": "6cb5d7f81c8608d6914ea78035739aa6cb661846ca17dc694b00972f74ca00cc"
  },
  "art_new_art_props_bone_pile_01": {
   "path": "assets/art/props/bone_pile_01.png",
@@ -8161,7 +8161,7 @@
   ],
   "pack": "art-new",
   "staged": true,
-  "sha256": "53da9c1355b00a4398d98712b53143c3b6751f6e65d04f741faa5b836a176bea"
+  "sha256": "010d3e32b47562c968b493839f42771ff090f58116e1cb965e2ce95c9d627cc1"
  },
  "art_new_art_props_lantern_post_variant": {
   "path": "assets/art/props/lantern_post_variant.png",
@@ -8591,7 +8591,7 @@
   ],
   "pack": "art-new",
   "staged": true,
-  "sha256": "f723313189352e2ac75b03009f7b94ce347b27e95c7c11e31c23552ba1eb80ea"
+  "sha256": "e7920513f59223bddd905cbeba0d322fd677753b6b2b1819dd33e1fac9d29b7c"
  },
  "art_new_art_tiles_packed_soil": {
   "path": "assets/art/tiles/packed_soil.png",
@@ -10470,5 +10470,25 @@
   "pack": "art-new",
   "staged": false,
   "sha256": "76909d8b4d7c083ca6ec0d0633fc888114ee1ee788df627090844997aa9bba5b"
+ },
+ "art_new_art_edges_cliff_face": {
+  "path": "assets/art/edges/cliff_face.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/cliff_face"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6a17420b335e86587a110f80cf57aec20e28ad1b9791a5c881043b05b336036a"
+ },
+ "art_new_art_props_stone_relic": {
+  "path": "assets/art/props/stone_relic.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/stone_relic"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6f6fc03ca20f1920ce2d655b4d34f09eca7e8b64594923195d2b466c86e20287"
  }
 }

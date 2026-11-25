@@ -140,6 +140,30 @@
   }
   wrapFaces(); setTimeout(wrapFaces, 0);
 
+  // Field renderer (hub as a normal map): NPCs drawn by coastPerson(x, y, faction, role) use their story character.
+  const fieldNpc = {};
+  const cp2 = P.coastPerson;
+  if (cp2) P.coastPerson = function (x, y, faction, role) {
+    if (C.enabled && typeof x === 'number' && role) {
+      const n = (this.world.content.npcs || []).find(q => q.role === role && q.mapId === this.mapId), who = n && CAST_OF[n.id];
+      if (who) {
+        const now = performance.now(), m = fieldNpc[n.id] || (fieldNpc[n.id] = { x, y, dist: 0, last: 0, dir: 'down' }), d = Math.hypot(x - m.x, y - m.y);
+        if (d < 60) { m.dist += d; if (d > .3) { m.last = now; m.dir = Math.abs(x - m.x) > Math.abs(y - m.y) ? (x < m.x ? 'left' : 'right') : y < m.y ? 'up' : 'down'; } }
+        m.x = x; m.y = y;
+        const moving = now - m.last < 160, action = moving && (m.dir === 'up' || m.dir === 'down') ? 'walk' : 'idle';
+        const D = moving ? m.dir : 'down', s = strip(who, action, D);
+        if (s) {
+          this.draw25Shadow?.(x, y + 4, 15, 6, .32);
+          const fr = action === 'walk' ? Math.floor(m.dist / 9) % s.frames : Math.floor(now / s.ms) % s.frames;
+          const bob = moving && action === 'idle' ? Math.abs(Math.sin(m.dist / 9 * Math.PI)) * 2 : 0;
+          blit(g, s, fr, x, y + 4 - bob, 64 * (window.saltwakeScale?.CHAR || 1.4));
+          C.stats.npc = (C.stats.npc || 0) + 1; return;
+        }
+      }
+    }
+    return cp2.apply(this, arguments);
+  };
+
   C.set = on => { C.enabled = !!on; try { localStorage.setItem('saltwake.cast', on ? 'on' : 'off'); } catch (e) { } };
   const gp = P.graphicsPanel;
   P.graphicsPanel = function () {
