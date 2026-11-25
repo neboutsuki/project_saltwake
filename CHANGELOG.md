@@ -1,6 +1,12 @@
 # Changelog
 
-## Unreleased — Glass UI
+## Unreleased — Graphics pass, profile cleanup
+- **Asset remaster:** `tools/remaster_assets.py` processes all 622 sprites by category (buildings, foliage, characters/creatures, props, icons, tiling terrain). It applies a unified contrast curve, cool shadows and warm highlights, and saturation control. Sprites and icons are sharpened; tiling terrain is not, so seams stay clean. Characters, creatures, props and foliage get a soft 1px dark rim so they read against busy ground. Sprite sizes don't change, so draw offsets and collisions are unaffected. Originals are kept in `assets/original/`. Run `python tools/remaster_assets.py --restore` to revert.
+- **Living environment** (`source/modules/environment-fx.js`): vegetation sways in the wind (stronger in rain and squalls, anchored at the base), small props get soft contact shadows, and the scene gets a color grade. The harbor hub gets a matching grade. Each effect can be turned off in Graphics & Performance.
+- **Profile portrait removed:** character creation, player info and the load menu no longer show the pixel portrait, and the hair/cloak pickers are hidden. Old saves still load.
+- QA now runs 87 checks, all passing.
+
+## Glass UI
 - New module `source/modules/ui-glass.js` adds a dark translucent theme. The game view now fills the window. The top bar is a floating pill. HUD blocks use frosted glass with a cool cyan accent instead of green and gold. Menus open as a rounded glass sheet over the blurred game rather than a full-screen page. The location label sits under the nav bar and no longer overlaps the hotbar.
 - The Classic theme is still available under Graphics & Performance → Interface theme (stored in `saltwake.ui.theme`). The theme only changes how things look, not game state.
 - Removed the remaining green and gold. Text is now neutral white or gray, and labels and kickers are cyan. Cards, slots, profile and prologue screens use glass surfaces. Selected, active and equipped states, tab underlines and the selected inventory slot use a cyan highlight. Progress and weight bars, faction tracks and badges are restyled, and the field map and minimap are muted to slate. An automated color scan of 15 screens found 411 green or gold elements before this change and 19 after; the rest are intentional (green "good" status, faction identity colors).
