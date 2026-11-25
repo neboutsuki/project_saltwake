@@ -87,8 +87,9 @@ class Map:
             o['mirror'] = True
         self.objects.append(o)
         if solid:      # solid = ghost type ('tree' | 'stone' | 'crate'); circles along the base
-            n = max(1, round(dw * .7 / 1.1))
-            span = dw * .7
+            # trees block only at the trunk; rocks and props along a narrower base
+            span = 0 if solid == 'tree' else dw * (.5 if solid == 'stone' else .6)
+            n = 1 if solid == 'tree' else max(1, round(span / 1.1))
             for i in range(n):
                 gx = x - span / 2 + span * (i + .5) / n
                 self.ghosts.append({'type': solid, 'x': round(gx, 2), 'y': round(y - .25, 2)})

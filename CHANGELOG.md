@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — Movement: walk, run, crouch, no snagging
+- **No more getting stuck on trees and rocks:** trees now block only at the trunk (one small circle, not a row across
+  the canopy) and rocks and props along a narrower base, and walking into a round obstacle slides you around it. A
+  head-on bump picks the open side and sticks with it; if that side is blocked it switches. Wall corners nudge you
+  past. Measured: with a way around, 95% of head-on approaches now get past (from 0%).
+- **Running:** sprint builds up over 0.35 s instead of snapping on, Ren leans into the run and dust kicks up behind.
+- **Crouching:** eases into a lower, wider pose (and back) instead of no visible change.
+- Day/night lighting reads the game clock directly. QA 248/248.
+
 ## Unreleased — Better dodge
 - **Burst and ease:** the roll starts fast (about 2.3x the old speed) and eases out, covering the same distance; Ren
   leans into it and dips.

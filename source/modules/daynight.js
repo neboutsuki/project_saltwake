@@ -83,7 +83,7 @@
     const m = this.map();
     DN.active = DN.enabled && !!m?.tilemap && this.mode === 'play';
     if (!DN.active) return old.apply(this, arguments);
-    const K = window.saltwakeSky?.state || {}, minute = K.minute ?? (this.climateClock?.() % 1440);
+    const K = window.saltwakeSky?.state || {}, cc = this.climateClock?.(), minute = Number.isFinite(cc) ? cc % 1440 : (K.minute ?? 720);
     let [r, gg, b, dark] = ambient(minute);
     // weather: clouds/rain grey and dim the light; fog lifts the blacks a little
     const cloud = K.cloud || 0, rain = K.rain || 0, fog = K.fog || 0, grey = (r + gg + b) / 3;
