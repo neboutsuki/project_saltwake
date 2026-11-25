@@ -5272,6 +5272,39 @@ const css=`
 #swQuestType .tag.main{background:transparent;color:#9aa5ae}
 #swQuestType .target{font-size:11px;color:#eef1f4;width:100%}
 #swQuestType .target b{color:#ffc9bf}
+
+/* ---- Minimal HUD (v0.31b): icons + bars, no panels or labels ---- */
+#swHudLeft{gap:10px;width:240px}
+#swHudLeft .vitals,#swHudLeft .weaponReadout{background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:0!important}
+#swHudLeft .meter{display:grid!important;grid-template-columns:18px 1fr 30px!important;align-items:center;column-gap:8px!important;margin:0 0 6px!important}
+#swHudLeft .meter>span{font-size:0!important;width:18px;height:18px;background:center/contain no-repeat;filter:drop-shadow(0 1px 2px #000)}
+#swHudLeft .meter:nth-of-type(1)>span{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23f07a68' d='M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.2 1.8-2 3.3-3.2 5.4-3.2 3.6 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z'/%3E%3C/svg%3E")}
+#swHudLeft .meter:nth-of-type(2)>span{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%238fd4e8' d='M13.5 2 4 13.5h6.5L9 22l11-12.5h-6.8z'/%3E%3C/svg%3E")}
+#swHudLeft .meter .track{height:8px!important;background:rgba(0,0,0,.45)!important;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 2px 6px rgba(0,0,0,.4)}
+#swHudLeft .meter b{font-size:12px!important;text-shadow:0 1px 3px #000;color:#eef1f4!important}
+#swHudLeft #sprintLoad{display:none!important}
+#swHudLeft .vitalFlags{display:flex!important;gap:6px;min-height:0!important;margin-top:2px}
+#swHudLeft #bleedText:not([hidden]){font-size:0!important;width:22px;height:22px;border-radius:50%;background:rgba(200,40,40,.35) center/14px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff6b5e' d='M12 2s7 8 7 13a7 7 0 0 1-14 0c0-5 7-13 7-13z'/%3E%3C/svg%3E");box-shadow:0 0 0 1px rgba(255,107,94,.6),0 0 10px rgba(255,80,70,.5);animation:swPulse 1s ease-in-out infinite}
+#swHudLeft #statusText:not([hidden]){font-size:10px!important;padding:2px 7px;border-radius:999px;background:rgba(0,0,0,.4);color:#eef1f4!important;text-shadow:none}
+@keyframes swPulse{50%{opacity:.55}}
+#swHudLeft .weaponReadout{grid-template-columns:56px auto!important;justify-content:start;column-gap:10px!important;cursor:pointer}
+#swHudLeft .weaponReadout>.weaponState,#swHudLeft .weaponReadout>#weaponName,#swHudLeft .weaponReadout>#sprintAmmo,#swHudLeft .weaponReadout>small:not(#ammoText),#swHudLeft .weaponReadout>p{display:none!important}
+#swWeaponSil{width:56px!important;height:56px!important;grid-row:1!important;color:rgba(255,255,255,.75)!important;filter:drop-shadow(0 1px 3px rgba(0,0,0,.8))!important}
+#swAmmo{grid-row:1!important;align-self:center;text-shadow:0 1px 3px #000}
+#swAmmo b{font-size:22px!important;color:#fff!important}#swAmmo small{font-size:13px!important;color:rgba(255,255,255,.65)!important}
+#swAmmo svg{width:18px!important;height:18px!important;filter:drop-shadow(0 1px 2px #000)}
+/* Round minimap, single info line, lantern icon. */
+html #tideHud,html.sw-glass #tideHud{background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:0!important;width:auto!important;max-width:none!important;display:flex!important;flex-direction:column;align-items:center;gap:6px}
+#tideHud>:not(#chartBody):not(#swMapInfo){display:none!important}
+#tideHud #chartBody{display:block!important;position:relative}
+#tideHud #chartMap{display:block!important;width:150px!important;height:150px!important;padding:0!important;border-radius:50%!important;overflow:hidden!important;border:2px solid rgba(255,255,255,.18)!important;box-shadow:0 4px 18px rgba(0,0,0,.5),inset 0 0 0 1px rgba(0,0,0,.4)!important;background:rgba(8,11,15,.6)!important;position:relative}
+#tideHud #minimap{position:absolute;left:50%;top:50%;height:150px!important;width:auto!important;max-width:none!important;transform:translate(-50%,-50%);border:0!important;border-radius:0!important}
+#swMapInfo{display:flex;align-items:center;gap:8px;font-size:12px;color:#eef1f4;text-shadow:0 1px 3px #000;white-space:nowrap}
+#swMapInfo .dot{width:7px;height:7px;border-radius:50%;background:#8fd4e8;box-shadow:0 0 6px #8fd4e8}
+#swMapInfo .timer{color:#ffd0a0}
+#swLantern{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.4);display:grid;place-items:center;cursor:pointer;padding:0;position:absolute;right:-4px;bottom:4px;z-index:2}
+#swLantern svg{width:15px;height:15px;fill:rgba(255,255,255,.4)}
+#swLantern.lit{border-color:rgba(255,190,110,.6);box-shadow:0 0 10px rgba(255,170,80,.5)}#swLantern.lit svg{fill:#ffc27a}
 `;
 const style=document.createElement('style');style.id='sw-hud-layout';style.textContent=css;document.head.append(style);
 function mount(){const hud=$('hud'),vp=$('viewport');if(!hud||!vp||$('swHudLeft'))return;const box=document.createElement('div');box.id='swHudLeft';
@@ -5291,12 +5324,20 @@ function questInfo(G){const tags=[];let target='';
  if(r&&!tags.some(t=>t[0]==='expedition'))tags.push(['expedition','ON EXPEDITION']);
  return {tags,target}}
 const safe=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+const LANTERN='<svg viewBox="0 0 24 24"><path d="M9 2h6v2h-1v1.2c2.4.6 4 2.6 4 5V18a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-7.8c0-2.4 1.6-4.4 4-5V4H9z"/><rect x="8" y="21" width="8" height="1.6" rx=".8"/></svg>';
+function mountMap(){const th=$('tideHud'),body=$('chartBody');if(!th||!body||$('swMapInfo'))return;const info=document.createElement('div');info.id='swMapInfo';th.append(info);
+ const b=document.createElement('button');b.id='swLantern';b.type='button';b.title='Lantern (T)';b.setAttribute('aria-label','Toggle lantern');b.innerHTML=LANTERN;b.onclick=e=>{e.stopPropagation();SALTWAKE_DEV.game.toggleLantern?.()};body.append(b)}
+let lastInfo='';
+function updateMap(G){mountMap();const info=$('swMapInfo');if(!info)return;const phase=$('phaseText')?.textContent||'',clock=($('clockText')?.textContent||'').split('·')[0].trim(),wx=($('weatherReadout')?.textContent||'').trim().split(/\s+/)[0]||'',ex=($('sprintTime')?.textContent||'').match(/\d+:\d\d/);
+ const html=`<span class="dot"></span><span>${safe(phase)}</span><span>${safe(wx)}</span><span>${safe(clock)}</span>${ex&&G.raid?`<span class="timer">⏱ ${ex[0]}</span>`:''}`;if(html!==lastInfo){lastInfo=html;info.innerHTML=html}
+ const l=$('swLantern');if(l){const lit=G.lanternOn!==false;l.classList.toggle('lit',lit);l.hidden=!G.raid&&G.mapId==='hub'?false:false}}
 let lastQ='',lastW='';
-const hud=P.hud;P.hud=function(...a){const out=hud.apply(this,a);mount();
+const hud=P.hud;P.hud=function(...a){const out=hud.apply(this,a);mount();updateMap(this);
  const box=$('swQuestType');if(box){const {tags,target}=questInfo(this);const html=tags.map(([c,l])=>`<span class="tag ${c}">${safe(l)}</span>`).join('')+(target?`<div class="target">${target}</div>`:'');if(html!==lastQ){lastQ=html;box.innerHTML=html}}
  const name=$('weaponName')?.textContent||'',ammo=$('ammoText')?.textContent||'',kind=weaponKind(name);const sig=kind+'|'+ammo;
  if(sig!==lastW){lastW=sig;const s=$('swWeaponSil');if(s)s.innerHTML=SIL[kind];const am=$('swAmmo');if(am){const m=ammo.match(/(\d+)\s*\/\s*(\d+)/);const icon=kind==='wickcaster'?AMMO.cell:kind==='arbalest'?AMMO.bolt:'';
-   am.innerHTML=m?`${icon}<b>${m[1]}</b><small>/ ${m[2]}</small>`:kind==='spear'?'<small>Melee · no ammunition</small>':`${icon}<small>${safe(ammo)}</small>`}}
+   const n=ammo.match(/\d+/);am.innerHTML=m?`${icon}<b>${m[1]}</b><small>/ ${m[2]}</small>`:kind==='spear'?'':n?`${icon}<b>${n[0]}</b>`:''}}
  return out};
 window.saltwakeHudLayout={questInfo:G=>questInfo(G||SALTWAKE_DEV.game),weaponKind};
 })();
