@@ -5164,6 +5164,19 @@ html.sw-glass #voyageHintText{background:rgba(255,255,255,.05)!important;border:
 html.sw-glass .quickSlot,html.sw-glass .quickSlot *{color:var(--gl-text)!important}
 html.sw-glass #stBar,html.sw-glass .meter .stamina{background:linear-gradient(90deg,#4fa3c7,#8fd4e8)!important}
 html.sw-glass #awarenessText{color:var(--gl-text)!important}
+html.sw-glass #voyageHint button,html.sw-glass #missionHud button[data-act=voyage_hide]{background:rgba(255,255,255,.06)!important;border:1px solid var(--gl-edge)!important;border-radius:6px!important;color:var(--gl-muted)!important}
+html.sw-glass #panelLayer #panel .badge{color:var(--gl-text)!important;background:rgba(255,255,255,.07)!important;border:1px solid var(--gl-edge)!important;border-radius:999px!important}
+html.sw-glass #panelLayer #panel .repTrack{background:rgba(255,255,255,.08)!important;border:0!important;border-radius:999px!important;overflow:hidden}
+html.sw-glass #panelLayer #panel progress,html.sw-glass #panelLayer #panel meter{appearance:none;-webkit-appearance:none;height:6px;border:0;border-radius:999px;background:rgba(255,255,255,.08)!important;overflow:hidden}
+html.sw-glass #panelLayer #panel progress::-webkit-progress-bar{background:rgba(255,255,255,.08);border-radius:999px}
+html.sw-glass #panelLayer #panel progress::-webkit-progress-value{background:linear-gradient(90deg,#4fa3c7,#8fd4e8);border-radius:999px}
+html.sw-glass #panelLayer #panel meter::-webkit-meter-bar{background:rgba(255,255,255,.08);border:0;border-radius:999px}
+html.sw-glass #panelLayer #panel meter::-webkit-meter-optimum-value{background:#8fd4e8}
+html.sw-glass #panelLayer #panel .sp-item.sp-selected{outline-color:var(--gl-accent)!important;box-shadow:0 0 0 1px rgba(143,212,232,.35),0 0 14px rgba(143,212,232,.25)!important}
+html.sw-glass #panelLayer #panel :is(.eq-heading,.sk-heading,.sk-empty,dl.numbers,hr,kbd,span[class=""],.itemHero){border-color:var(--gl-edge)!important}
+html.sw-glass #panelLayer #panel hr{background:var(--gl-edge)!important;border:0;height:1px}
+html.sw-glass :is(#fieldHarborMap,#mapCanvas,#pathMap,#minimap){filter:saturate(.45) brightness(.92) contrast(1.05);border-radius:10px}
+html.sw-glass #panelLayer #panel :is(#fieldHarborMap,#mapCanvas,#pathMap){border:1px solid var(--gl-edge)!important}
 html.sw-glass ::selection{background:rgba(143,212,232,.3)}
 @media (prefers-reduced-transparency:reduce){html.sw-glass{--gl-bg:rgba(10,13,18,.92);--gl-bg-strong:rgba(10,13,18,.97)}}
 @media (max-width:760px){html.sw-glass #bar{top:6px!important;max-width:96vw;overflow-x:auto}html.sw-glass #bar nav button{padding:4px 7px!important;font-size:11px!important}}
