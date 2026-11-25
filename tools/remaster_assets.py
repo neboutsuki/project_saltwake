@@ -108,7 +108,11 @@ def main():
             counts[cat] = counts.get(cat, 0) + 1
             out, _ = process(keep, cat)
             if path.suffix == '.webp':
-                out.save(path, 'WEBP', lossless=True, method=6)
+                # Painted ground/backdrops were shipped as lossy WebP; keep that so the build stays small.
+                if cat in ('tile', 'wide'):
+                    out.save(path, 'WEBP', quality=90, method=6)
+                else:
+                    out.save(path, 'WEBP', lossless=True, method=6)
             elif path.suffix in ('.jpg', '.jpeg'):
                 out.convert('RGB').save(path, 'JPEG', quality=93)
             else:
