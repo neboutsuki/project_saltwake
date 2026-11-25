@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — Esc menu and Options
+- **Esc opens the menu** during play, on the last tab you used (Options the first time); Esc closes it. Esc on a
+  settings page opened from Options returns to Options. Works in the harbor too (its own Esc used to open Controls).
+- **Options tab** after Factions in the menu book (LB/RB, PageUp/PageDown and clicks reach it): Resume, Save game,
+  Controls, Sound, Graphics & performance, interface theme, larger text, hints, Weather & tide forecast, Field guide,
+  Field notes, Back to main menu (locked during an expedition) and Exit to desktop (saves; warns that leaving
+  mid-expedition abandons the run; shows "you can close this tab" where the browser won't close it).
+- **No menu bar during play.** Shortcuts still work (J, Tab, M, G, K, L). The old "Field menu" and the controller
+  Menu button open Options.
+- QA: new `menu` suite; 176/176.
+
 ## Unreleased — Generated art in the game
 - **Item icons:** inventory, stash, shops, loadout and the hotbar use the new `art/icons/*` images (17 items: 11 by
   name, 6 with a close stand-in such as Brineback plate → shell); other items keep their old icons until art exists.

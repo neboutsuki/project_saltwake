@@ -77,7 +77,7 @@ function sync(){if(!cfg.on){cv.hidden=true;active=false;document.documentElement
 // session and tell the player (it can be re-enabled in Graphics & Performance).
 let guardT=0,guardN=0,paused=false;POST.guard={get paused(){return paused}};
 function guard(t){if(!active){guardT=0;guardN=0;return}if(!guardT){guardT=t;guardN=0;return}guardN++;const span=t-guardT;if(span<3000)return;const fps=guardN*1000/span;stats.fps=fps;guardT=t;guardN=0;
- if(fps<45&&cfg.guard!==false){paused=true;cv.hidden=true;active=false;document.documentElement.classList.remove('sw-post-ash');stats.guarded=(stats.guarded||0)+1;window.SALTWAKE_DEV?.game?.notify?.(`Enhanced renderer paused (${Math.round(fps)} fps). Re-enable it in Field menu › Graphics & Performance.`,6)}}
+ if(fps<45&&cfg.guard!==false){paused=true;cv.hidden=true;active=false;document.documentElement.classList.remove('sw-post-ash');stats.guarded=(stats.guarded||0)+1;window.SALTWAKE_DEV?.game?.notify?.(`Enhanced renderer paused (${Math.round(fps)} fps). Re-enable it in Options › Graphics & performance.`,6)}}
 function frame(t){requestAnimationFrame(frame);guard(t);const G=window.SALTWAKE_DEV?.game;if(paused)return;
  if(!cfg.on||!G||G.mode!=='play'||document.hidden){if(!cv.hidden){cv.hidden=true;active=false;document.documentElement.classList.remove('sw-post-ash')}return}
  const pair=sourceCanvas();if(!pair){cv.hidden=true;active=false;document.documentElement.classList.remove('sw-post-ash');return}const [src,el]=pair;if(el.nextElementSibling!==cv){el.after(cv);const ash=document.getElementById('swAsh');if(ash)cv.after(ash)}
