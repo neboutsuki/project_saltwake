@@ -5074,7 +5074,7 @@ const IMG=window.SALTWAKE_ASSETS.images;
 function rng(seed){let s=(seed>>>0)||1;return()=>{s^=s<<13;s^=s>>>17;s^=s<<5;return (s>>>0)/4294967296}}
 const hashStr=str=>{let h=2166136261;for(const ch of String(str)){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0};
 /* ---------- image lookup ---------- */
-const WIDX=window.SALTWAKE_WEATHER_INDEX||{};const sigOf=u=>u?u.length+':'+u.slice(-48):'';
+const WIDX=window.SALTWAKE_WEATHER_INDEX||{};const sigOf=u=>{if(!u)return '';if(!u.startsWith('data:')){const i=u.lastIndexOf('/assets/');if(i>=0)u=u.slice(i+1)}return u.length+':'+u.slice(-48)};
 const loaded=new Map();
 function image(alias){let im=loaded.get(alias);if(im===undefined){const url=IMG[alias];im=url?Object.assign(new Image(),{src:url}):null;loaded.set(alias,im)}return im&&im.complete&&im.naturalWidth?im:null}
 const wcache=new WeakMap(),keyAlias=new Map();
@@ -5464,6 +5464,7 @@ html.sw-glass ::selection{background:rgba(143,212,232,.3)}
 /* Perf: no live backdrop blur over the animating game view (cost scales with screen size); menus keep it. */
 html.sw-glass :is(#bar,#quickSlots>*,#toast,#interactPrompt,#field-readout,#engineMonitor,#missionHud,#tideHud,.vitals,.weaponReadout){backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 html.sw-glass #bar{background:rgba(8,11,15,.62)!important}html.sw-glass #quickSlots>*{background:rgba(8,11,15,.6)!important}
+/* swToastFix */ html.sw-glass #toast{top:auto!important;bottom:96px!important;left:50%!important;transform:translateX(-50%)!important}
 @media (prefers-reduced-transparency:reduce){html.sw-glass{--gl-bg:rgba(10,13,18,.92);--gl-bg-strong:rgba(10,13,18,.97)}}
 @media (max-width:760px){html.sw-glass #bar{top:6px!important;max-width:96vw;overflow-x:auto}html.sw-glass #bar nav button{padding:4px 7px!important;font-size:11px!important}}
 `;

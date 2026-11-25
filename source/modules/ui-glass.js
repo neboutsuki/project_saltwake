@@ -137,6 +137,7 @@ html.sw-glass ::selection{background:rgba(143,212,232,.3)}
 /* Perf: no live backdrop blur over the animating game view (cost scales with screen size); menus keep it. */
 html.sw-glass :is(#bar,#quickSlots>*,#toast,#interactPrompt,#field-readout,#engineMonitor,#missionHud,#tideHud,.vitals,.weaponReadout){backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 html.sw-glass #bar{background:rgba(8,11,15,.62)!important}html.sw-glass #quickSlots>*{background:rgba(8,11,15,.6)!important}
+/* swToastFix */ html.sw-glass #toast{top:auto!important;bottom:96px!important;left:50%!important;transform:translateX(-50%)!important}
 @media (prefers-reduced-transparency:reduce){html.sw-glass{--gl-bg:rgba(10,13,18,.92);--gl-bg-strong:rgba(10,13,18,.97)}}
 @media (max-width:760px){html.sw-glass #bar{top:6px!important;max-width:96vw;overflow-x:auto}html.sw-glass #bar nav button{padding:4px 7px!important;font-size:11px!important}}
 `;

@@ -15,7 +15,7 @@ const IMG=window.SALTWAKE_ASSETS.images;
 function rng(seed){let s=(seed>>>0)||1;return()=>{s^=s<<13;s^=s>>>17;s^=s<<5;return (s>>>0)/4294967296}}
 const hashStr=str=>{let h=2166136261;for(const ch of String(str)){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0};
 /* ---------- image lookup ---------- */
-const WIDX=window.SALTWAKE_WEATHER_INDEX||{};const sigOf=u=>u?u.length+':'+u.slice(-48):'';
+const WIDX=window.SALTWAKE_WEATHER_INDEX||{};const sigOf=u=>{if(!u)return '';if(!u.startsWith('data:')){const i=u.lastIndexOf('/assets/');if(i>=0)u=u.slice(i+1)}return u.length+':'+u.slice(-48)};
 const loaded=new Map();
 function image(alias){let im=loaded.get(alias);if(im===undefined){const url=IMG[alias];im=url?Object.assign(new Image(),{src:url}):null;loaded.set(alias,im)}return im&&im.complete&&im.naturalWidth?im:null}
 const wcache=new WeakMap(),keyAlias=new Map();

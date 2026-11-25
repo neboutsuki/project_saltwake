@@ -9,3 +9,8 @@ Version v0.30.0 — The Unseen War.
 - `qa/` includes existing integrated QA and screenshot. `baseline/` contains the complete recovered previous package. `archive/` contains three standalone historical prototypes; do not run them in parallel with the game.
 
 Extracted 622 unique embedded images from 781 media occurrences, without altering the game. World JSON is exported verbatim. Current source is still monolithic rather than an independently modular engine. Original external layered art and comprehensive lore documents are not included because they were unavailable. No new gameplay or art is claimed by this packaging task.
+
+## Builds
+- `python build.py` creates a single-file playable HTML in `playable/` (double-click to play).
+- `python tools/build_split.py` creates a project-style build in `dist/SALTWAKE/`: `index.html` shell, `css/`, `js/engine/`, `js/modules/`, `data/world.js` and `assets/` as separate files. Run it with `play.bat` or `play.sh`, which start a local server.
+- `docs/GODOT_MIGRATION.md` shows how the art, data and systems map to a Godot port.

@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased — Split project build
+- New `tools/build_split.py` produces `dist/SALTWAKE/`: a plain `index.html` shell, 21 stylesheets in `css/`, 97 original code layers in `js/engine/`, the new systems in `js/modules/`, world data in `data/world.js`, and all 700 art files in `assets/`, referenced by relative path. It includes `play.bat` and `play.sh` launchers that start a local server, because browsers block canvas and WebGL pixel access for files opened from disk. QA passes 122/122 on both builds. `qa/tools/run_qa.js` now also accepts a URL.
+- `docs/GODOT_MIGRATION.md`: mapping of art, data and systems to a Godot port.
+- Notifications moved above the hotbar so they no longer cover the top menu bar.
+
 ## Unreleased — Performance fixes
 - **Large-screen fix:** the frame-time cost grew with window size because of per-pixel browser effects over the animating game view. Removed the CSS color filter on the harbor frame (the main cost; it re-filtered about 4M pixels per frame at 1440p) and the separate ash DOM layer (ash is now drawn into the field scene, or sampled by the GPU renderer), and dropped the live backdrop blur from in-game HUD elements (menus keep it). Harbor at 2560×1440 (headless): 13 → 57 fps. Raid frame rate is now nearly independent of window size.
 - **GPU renderer:** it now processes frames at the scene's own resolution (1024×576 in the field, 1536×864 in the harbor) and lets the browser scale the result. Before, it worked at display size × DPR, up to about 10× the pixels on 1440p or 4K screens. Page layout is cached and only re-measured on resize. Harbor frames that haven't changed are no longer re-uploaded or re-blurred. Falling ash is blended inside the GPU pass, so there's no separate full-screen layer while the renderer is active.
