@@ -480,6 +480,37 @@ def quays():
                {'id': 'ridge', 'name': 'Ravine Ridge', 'x': 134, 'y': 14, 'w': 86, 'h': 44}]
     M.arrivals = {'default': [8, 62], 'legacy': [[8, 24, 8, 62]], 'from': {'hub': [8, 62]}}
     M.spawns = [[96, 106], [40, 50], [150, 78], [200, 104], [36, 104], [140, 60], [56, 30], [122, 22]]
+    # Extra life by district (type, x, y, count, spread in tiles, when): when = 'any' | 'day' | 'night'
+    M.population = [
+        ['brineback', 50, 30, 1, 0, 'any'], ['grazer', 20, 22, 3, 3, 'day'],                      # Salt Yards
+        ['grazer', 150, 20, 4, 4, 'day'], ['widow', 60, 16, 1, 0, 'night'],                       # Ashwood edge
+        ['brineback', 112, 34, 1, 0, 'any'], ['grazer', 80, 30, 3, 3, 'day'],                    # Customs Hill outskirts
+        ['widow', 30, 112, 1, 0, 'night'],                                                          # Wreckers' Camp (humans stay rare: the engine's own Wrecker lives here)
+        ['gull', 90, 100, 3, 3, 'day'], ['gull', 120, 118, 3, 4, 'day'],                           # Fish market, quays
+        ['brineback', 70, 118, 1, 0, 'any'], ['brineback', 180, 42, 1, 0, 'any'],                 # shore, ridge
+        ['grazer', 196, 54, 3, 3, 'day'],                                                           # Ravine Ridge
+        ['widow', 196, 108, 1, 0, 'any'], ['widow', 210, 98, 1, 0, 'night'],                       # Tidal Caverns
+        ['brineworn_drifter', 100, 112, 3, 4, 'night'], ['brineworn_caller', 104, 116, 1, 0, 'night'],   # Broken Quays
+        ['brineworn_breaker', 60, 96, 1, 0, 'night'], ['brineworn_drifter', 150, 90, 2, 3, 'night'],      # Warehouse Row, slip
+        ['brineworn_drifter', 40, 64, 2, 3, 'night'],                                               # West Passage
+    ]
+    M.loot = [  # extra containers: id, name, x, y, loot table
+        ['c_qx_harbormaster', 'Harbor Master\u2019s Strongbox', 'quays.harbormaster', 'customs_docs'],
+        ['c_qx_saltshed', 'Salt Shed Sacks', 'quays.saltshed', 'dock_scrap'],
+        ['c_qx_bonded', 'Bonded Cargo', 'quays.warehouse2', 'dock_scrap'],
+        ['c_qx_fishmarket', 'Fishmonger\u2019s Chest', 'quays.fishmarket', 'provisions'],
+        ['c_qx_pilot', 'Pilot\u2019s Locker', 'quays.pilot', 'provisions'],
+        ['c_qx_netloft', 'Net Loft Tackle', 'quays.shed1', 'dock_scrap'],
+        ['c_qx_shed2', 'Tool Crate', 'quays.shed2', 'dock_scrap'],
+        ['c_qx_cottage', 'Abandoned Cottage Chest', (50, 59.8), 'provisions'],
+        ['c_qx_cabin', 'Ashwood Cabin Cache', (176, 47.8), 'wrecker_cache'],
+        ['c_qx_stonehouse', 'Collapsed House Chest', (138, 93.8), 'provisions'],
+        ['c_qx_sunken', 'Sunken House Box', (172, 124.8), 'cave_salvage'],
+        ['c_qx_lighthouse', 'Keeper\u2019s Box', (200, 119.4), 'customs_docs'],
+        ['c_qx_wreck1', 'Wreck Hold', (44, 125.2), 'dock_scrap'],
+        ['c_qx_wreck2', 'Wreck Captain\u2019s Chest', (152, 125.2), 'customs_docs'],
+        ['c_qx_ruin', 'Ruin Offering Box', (192, 42.5), 'cave_salvage'],
+    ]
     return M
 
 
@@ -519,6 +550,14 @@ def place_content(world, H, Q):
     for i, a in enumerate([a for a in c.get('factionAgents', []) if a.get('mapId') == 'quays']):
         a['x'], a['y'] = homes[i % len(homes)]
         a['homeX'], a['homeY'] = a['x'], a['y']
+    # extra field loot
+    c['containers'] = [k for k in c['containers'] if not k['id'].startswith('c_qx_')]
+    for cid, name, at, table in getattr(Q, 'loot', []):
+        x, y = front(bid[at], 0, 1.4) if isinstance(at, str) else at
+        k = {'id': cid, 'name': name, 'mapId': 'quays', 'x': x, 'y': y, 'lootTableId': table, 'respawn': 'raid'}
+        if isinstance(at, str):
+            k['buildingId'] = at
+        c['containers'].append(k)
     # every service building is closed scenery; no interiors
     art = world['graphics'].setdefault('coastArt', {}).setdefault('buildings', {})
     for b in H.buildings + Q.buildings:
@@ -537,6 +576,8 @@ def to_world(M, old):
               'arrivals': M.arrivals, 'tilemap': True})
     if getattr(M, 'spawns', None):
         m['spawns'] = M.spawns
+    if getattr(M, 'population', None):
+        m['population'] = M.population
     return m
 
 

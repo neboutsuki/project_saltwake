@@ -33420,6 +33420,160 @@
      122,
      22
     ]
+   ],
+   "population": [
+    [
+     "brineback",
+     50,
+     30,
+     1,
+     0,
+     "any"
+    ],
+    [
+     "grazer",
+     20,
+     22,
+     3,
+     3,
+     "day"
+    ],
+    [
+     "grazer",
+     150,
+     20,
+     4,
+     4,
+     "day"
+    ],
+    [
+     "widow",
+     60,
+     16,
+     1,
+     0,
+     "night"
+    ],
+    [
+     "brineback",
+     112,
+     34,
+     1,
+     0,
+     "any"
+    ],
+    [
+     "grazer",
+     80,
+     30,
+     3,
+     3,
+     "day"
+    ],
+    [
+     "widow",
+     30,
+     112,
+     1,
+     0,
+     "night"
+    ],
+    [
+     "gull",
+     90,
+     100,
+     3,
+     3,
+     "day"
+    ],
+    [
+     "gull",
+     120,
+     118,
+     3,
+     4,
+     "day"
+    ],
+    [
+     "brineback",
+     70,
+     118,
+     1,
+     0,
+     "any"
+    ],
+    [
+     "brineback",
+     180,
+     42,
+     1,
+     0,
+     "any"
+    ],
+    [
+     "grazer",
+     196,
+     54,
+     3,
+     3,
+     "day"
+    ],
+    [
+     "widow",
+     196,
+     108,
+     1,
+     0,
+     "any"
+    ],
+    [
+     "widow",
+     210,
+     98,
+     1,
+     0,
+     "night"
+    ],
+    [
+     "brineworn_drifter",
+     100,
+     112,
+     3,
+     4,
+     "night"
+    ],
+    [
+     "brineworn_caller",
+     104,
+     116,
+     1,
+     0,
+     "night"
+    ],
+    [
+     "brineworn_breaker",
+     60,
+     96,
+     1,
+     0,
+     "night"
+    ],
+    [
+     "brineworn_drifter",
+     150,
+     90,
+     2,
+     3,
+     "night"
+    ],
+    [
+     "brineworn_drifter",
+     40,
+     64,
+     2,
+     3,
+     "night"
+    ]
    ]
   }
  },
@@ -35189,6 +35343,148 @@
     "lootTableId": "provisions",
     "respawn": "raid",
     "buildingId": "hub.trade"
+   },
+   {
+    "id": "c_qx_harbormaster",
+    "name": "Harbor Master’s Strongbox",
+    "mapId": "quays",
+    "x": 120.0,
+    "y": 45.4,
+    "lootTableId": "customs_docs",
+    "respawn": "raid",
+    "buildingId": "quays.harbormaster"
+   },
+   {
+    "id": "c_qx_saltshed",
+    "name": "Salt Shed Sacks",
+    "mapId": "quays",
+    "x": 48.0,
+    "y": 42.4,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid",
+    "buildingId": "quays.saltshed"
+   },
+   {
+    "id": "c_qx_bonded",
+    "name": "Bonded Cargo",
+    "mapId": "quays",
+    "x": 64.0,
+    "y": 85.4,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid",
+    "buildingId": "quays.warehouse2"
+   },
+   {
+    "id": "c_qx_fishmarket",
+    "name": "Fishmonger’s Chest",
+    "mapId": "quays",
+    "x": 89.0,
+    "y": 93.4,
+    "lootTableId": "provisions",
+    "respawn": "raid",
+    "buildingId": "quays.fishmarket"
+   },
+   {
+    "id": "c_qx_pilot",
+    "name": "Pilot’s Locker",
+    "mapId": "quays",
+    "x": 64.0,
+    "y": 115.4,
+    "lootTableId": "provisions",
+    "respawn": "raid",
+    "buildingId": "quays.pilot"
+   },
+   {
+    "id": "c_qx_netloft",
+    "name": "Net Loft Tackle",
+    "mapId": "quays",
+    "x": 50.0,
+    "y": 85.4,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid",
+    "buildingId": "quays.shed1"
+   },
+   {
+    "id": "c_qx_shed2",
+    "name": "Tool Crate",
+    "mapId": "quays",
+    "x": 118.0,
+    "y": 107.4,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid",
+    "buildingId": "quays.shed2"
+   },
+   {
+    "id": "c_qx_cottage",
+    "name": "Abandoned Cottage Chest",
+    "mapId": "quays",
+    "x": 50,
+    "y": 59.8,
+    "lootTableId": "provisions",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qx_cabin",
+    "name": "Ashwood Cabin Cache",
+    "mapId": "quays",
+    "x": 176,
+    "y": 47.8,
+    "lootTableId": "wrecker_cache",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qx_stonehouse",
+    "name": "Collapsed House Chest",
+    "mapId": "quays",
+    "x": 138,
+    "y": 93.8,
+    "lootTableId": "provisions",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qx_sunken",
+    "name": "Sunken House Box",
+    "mapId": "quays",
+    "x": 172,
+    "y": 124.8,
+    "lootTableId": "cave_salvage",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qx_lighthouse",
+    "name": "Keeper’s Box",
+    "mapId": "quays",
+    "x": 200,
+    "y": 119.4,
+    "lootTableId": "customs_docs",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qx_wreck1",
+    "name": "Wreck Hold",
+    "mapId": "quays",
+    "x": 44,
+    "y": 125.2,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qx_wreck2",
+    "name": "Wreck Captain’s Chest",
+    "mapId": "quays",
+    "x": 152,
+    "y": 125.2,
+    "lootTableId": "customs_docs",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qx_ruin",
+    "name": "Ruin Offering Box",
+    "mapId": "quays",
+    "x": 192,
+    "y": 42.5,
+    "lootTableId": "cave_salvage",
+    "respawn": "raid"
    }
   ],
   "dialogues": [

@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased — Living Outer Quays
+- **District population** (`source/modules/population.js`, data in `tools/make_maps.py`): on top of the engine's eight
+  wildlife spawns, the Quays gets about 25 more creatures by day (grazer herds on the Salt Yards, Ashwood edge,
+  Customs Hill outskirts and Ravine Ridge; gull flocks at the Fish Market and Broken Quays; Brinebacks on the Salt
+  Yards, shore, ridge and Customs Hill; a Widow at the Tidal Caverns) and about 20 at night (Brineworn groups on the
+  Broken Quays, Warehouse Row, the Boathouse Slip and the West Passage; extra Widows in the Ashwood, camp and caverns).
+  Every spawn is moved to walkable ground and gets the engine's perception state.
+- Rules kept: no extra Wreckers (living hostile humans stay rare), and no Brineworn on the very first expedition.
+- **15 more loot containers** across the districts (harbor master, salt shed, bonded warehouse, fish market, pilot
+  shed, net loft, tool shed, abandoned cottage, Ashwood cabin, collapsed house, sunken house, lighthouse, two wrecks,
+  ruin arch): 26 on the Quays in total.
+- QA: new `population` suite; 217/217.
+
 ## Unreleased — New Salvager's Rest and Outer Quays
 - **Both areas rebuilt from the art pack** by `tools/make_maps.py` (previews in `docs/maps/`; old world in
   `archive/world_pre_v031_maps/`):
