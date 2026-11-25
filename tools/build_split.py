@@ -17,6 +17,8 @@ Browsers restrict pixel reads and WebGL uploads of images opened from file://, s
 """
 from pathlib import Path
 import json, re, shutil, sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import buildinfo
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / 'dist' / 'SALTWAKE'
@@ -48,7 +50,7 @@ s = tpl.replace('@@SALTWAKE_WORLD_JSON@@', 'window.__SALTWAKE_WORLD_DATA')
 # Art packs + weathered index (index keys are computed from the art the runtime actually loads).
 extra = {al: path_of(k) for k, a in manifest.items() if a.get('pack') for al in a.get('aliases', [])}
 packs = sorted({a['pack'] for a in manifest.values() if a.get('pack')})
-s = s.replace('@@SALTWAKE_EXTRA_ASSETS@@', 'Object.assign(window.SALTWAKE_ASSETS.images,' + json.dumps(extra) + ');window.SALTWAKE_ART_PACKS=' + json.dumps(packs) + ';')
+s = s.replace('@@SALTWAKE_EXTRA_ASSETS@@', buildinfo.script() + 'Object.assign(window.SALTWAKE_ASSETS.images,' + json.dumps(extra) + ');window.SALTWAKE_ART_PACKS=' + json.dumps(packs) + ';')
 widx = {}
 for a in manifest.values():
     if a.get('weathers'):
