@@ -34,8 +34,8 @@ html.sw-glass kbd{background:rgba(255,255,255,.07)!important;border:1px solid va
 html.sw-glass #missionHud,html.sw-glass #tideHud,html.sw-glass .vitals,html.sw-glass .weaponReadout,html.sw-glass #toast,html.sw-glass #interactPrompt,html.sw-glass #field-readout,html.sw-glass #engineMonitor{
  background:var(--gl-bg)!important;backdrop-filter:var(--gl-blur);-webkit-backdrop-filter:var(--gl-blur);
  border:1px solid var(--gl-edge)!important;border-radius:var(--gl-radius)!important;box-shadow:var(--gl-shadow)!important;color:var(--gl-text)!important}
-html.sw-glass #missionHud{top:14px!important;left:14px!important;border-left:1px solid var(--gl-edge)!important}
-html.sw-glass #tideHud{top:14px!important;right:14px!important}
+html.sw-glass #missionHud{border-left:1px solid var(--gl-edge)!important}
+
 html.sw-glass #missionHud .questMeta,html.sw-glass #trackerLabel,html.sw-glass .eyebrow,html.sw-glass .weaponState span{color:var(--gl-accent)!important;letter-spacing:.14em!important}
 html.sw-glass #questName{color:var(--gl-text)!important;font-family:inherit!important;font-weight:700!important}
 html.sw-glass #questObjective,html.sw-glass #clockText,html.sw-glass #weatherReadout{color:var(--gl-muted)!important}

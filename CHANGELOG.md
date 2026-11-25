@@ -1,6 +1,14 @@
 # Changelog
 
-## Unreleased — Graphics pass, profile cleanup
+## Unreleased — Hunter-style HUD layout
+- `source/modules/hud-layout.js` moves the HUD. The existing elements are moved, not rebuilt.
+  - **Upper left:** health and stamina, status effects (bleeding and similar) and the pack line. The equipped-weapon card sits directly below, with a translucent white silhouette of the weapon type (arbalest, wickcaster or spear) and the ammunition count with an icon (bolt or cell). The spear shows "Melee · no ammunition".
+  - **Upper right:** the quest tracker, with color-coded type tags: HUNT, RECOVERY/SALVAGE, EXPEDITION, CONTACT, INVESTIGATE/TRACKING, plus MAIN STORY and ON EXPEDITION. Hunt commissions show the target monster and count, for example "Target: Brineback × 2".
+  - **Lower left:** tide, weather and the minimap. The quick-use belt stays at bottom center.
+- Removed the gold ring drawn around the player in the harbor.
+- QA now runs 95 checks, all passing (layout positions, tags, hunt target, weapon silhouette, bleeding shown in vitals).
+
+## Graphics pass, profile cleanup
 - **Asset remaster:** `tools/remaster_assets.py` processes all 622 sprites by category (buildings, foliage, characters/creatures, props, icons, tiling terrain). It applies a unified contrast curve, cool shadows and warm highlights, and saturation control. Sprites and icons are sharpened; tiling terrain is not, so seams stay clean. Characters, creatures, props and foliage get a soft 1px dark rim so they read against busy ground. Sprite sizes don't change, so draw offsets and collisions are unaffected. Originals are kept in `assets/original/`. Run `python tools/remaster_assets.py --restore` to revert.
 - **Living environment** (`source/modules/environment-fx.js`): vegetation sways in the wind (stronger in rain and squalls, anchored at the base), small props get soft contact shadows, and the scene gets a color grade. The harbor hub gets a matching grade. Each effect can be turned off in Graphics & Performance.
 - **Profile portrait removed:** character creation, player info and the load menu no longer show the pixel portrait, and the hair/cloak pickers are hidden. Old saves still load.

@@ -6,4 +6,11 @@ G.setArea('hub',34,36);G.mode='play';G.save.completedRaids=3;G.beginRaid();const
 c.windSway=saltwakeEnvFx.stats.swayed>s0.swayed;c.contactShadows=saltwakeEnvFx.stats.shadowed>s0.shadowed;
 saltwakeEnvFx.set({wind:false});const s1=saltwakeEnvFx.stats.swayed;G.render(performance.now());c.windToggle=saltwakeEnvFx.stats.swayed===s1;saltwakeEnvFx.set({wind:true});
 G.graphicsPanel();c.settingsUI=!!document.getElementById('swTheme')&&!!document.getElementById('envWind');G.close();
+G.hud();const R=el=>document.getElementById(el)?.getBoundingClientRect(),vp=R('viewport'),vit=document.querySelector('#swHudLeft .vitals')?.getBoundingClientRect(),wp=document.querySelector('#swHudLeft .weaponReadout')?.getBoundingClientRect(),mh=R('missionHud'),th=R('tideHud');
+c.vitalsTopLeft=!!vit&&vit.left-vp.left<40&&vit.top-vp.top<40;c.weaponBelowVitals=!!wp&&wp.top>=vit.bottom-1&&Math.abs(wp.left-vit.left)<2;
+c.questTopRight=mh.right>vp.right-40&&mh.top-vp.top<40;c.mapBottomLeft=th.left-vp.left<40&&th.bottom>vp.bottom-40;
+c.weaponSilhouette=!!document.querySelector('#swWeaponSil svg')&&/[0-9]/.test(document.getElementById('swAmmo').textContent);
+c.questTags=document.querySelectorAll('#swQuestType .tag').length>0;
+const hunt=(G.world.content.living_expeditions.contracts||[]).find(x=>x.steps.some(s=>s.kind==='kill'));const keep=G.raid.living;G.raid.living={id:hunt.id,step:0};const qi=saltwakeHudLayout.questInfo(G);c.huntTag=qi.tags.some(t=>t[0]==='hunt')&&/Target/.test(qi.target);G.raid.living=keep;
+G.player.bleed=3;G.hud();c.bleedingInVitals=!document.getElementById('bleedText').hidden&&!!document.getElementById('bleedText').closest('#swHudLeft');G.player.bleed=0;
 G.endRaid(true,'QA v031');c.extract=!G.raid;return c}`;
