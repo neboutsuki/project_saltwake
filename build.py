@@ -35,7 +35,9 @@ def sig(url):
 
 
 # Art packs -> sprite library aliases (resolved to data URLs below with the other media placeholders).
-extra = {al: '@@SALTWAKE_MEDIA:' + k + '@@' for k, a in manifest.items() if a.get('pack') for al in a.get('aliases', [])}
+# Staged art (imported, not yet used by any map) is left out of the single file to keep it small; the split build
+# (tools/build_split.py) references it by path, so it costs nothing there.
+extra = {al: '@@SALTWAKE_MEDIA:' + k + '@@' for k, a in manifest.items() if a.get('pack') and not a.get('staged') for al in a.get('aliases', [])}
 packs = sorted({a['pack'] for a in manifest.values() if a.get('pack')})
 s = s.replace('@@SALTWAKE_EXTRA_ASSETS@@', buildinfo.script() + 'Object.assign(window.SALTWAKE_ASSETS.images,' + json.dumps(extra) + ');window.SALTWAKE_ART_PACKS=' + json.dumps(packs) + ';')
 weather_index = {sig(data_url(a['weathers'])): 'weathered/' + a['weathers'] for a in manifest.values() if a.get('weathers')}

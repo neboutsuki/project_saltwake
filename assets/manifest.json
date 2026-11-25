@@ -6320,5 +6320,2885 @@
   ],
   "pack": "art-v031",
   "sha256": "7615711999e5349cb2da62b8ac2cffbdfc8df7f092ff7eb83cacfdffd235b22e"
+ },
+ "art_new_art_arena_arena_gate_closed": {
+  "path": "assets/art/arena/arena_gate_closed.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/arena/arena_gate_closed"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "606fb65a8dcad0c84e9cf509574e782782aeb5a95b08bbe1008f8f7088d945e1"
+ },
+ "art_new_art_arena_arena_pillar_01": {
+  "path": "assets/art/arena/arena_pillar_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/arena/arena_pillar_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "8a53cf8735caa8e63aa6e81e791d72b0d64f78238832529323e42ab30546b6c2"
+ },
+ "art_new_art_arena_arena_pillar_02": {
+  "path": "assets/art/arena/arena_pillar_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/arena/arena_pillar_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "a5ff737c00dd2dc2bc7f60045d7a3bc6dbf55b6e04e49622f38a99a50b63ba72"
+ },
+ "art_new_art_arena_flood_water_overlay": {
+  "path": "assets/art/arena/flood_water_overlay.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/arena/flood_water_overlay"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "8740d4705b9ff40aa8bc09aacb3ff756d7219a5db85846433b074da2c20d52e4"
+ },
+ "art_new_art_arena_harpoon_stuck": {
+  "path": "assets/art/arena/harpoon_stuck.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/arena/harpoon_stuck"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "d8a6079880a8de5f2f63e9cda4c838b933355480801f77a16d40228a19c16e40"
+ },
+ "art_new_art_arena_lure_lantern": {
+  "path": "assets/art/arena/lure_lantern.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/arena/lure_lantern"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "f8784f2a77eadd0bb3555b23c9c359202485e0ea2912c6d09f61705108e5b854"
+ },
+ "art_new_art_arena_oil_pool": {
+  "path": "assets/art/arena/oil_pool.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/arena/oil_pool"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "39ec4d65576031c962a1cea872fd0d0c53748e0d5ce6f50b6e4b5d4ea16f1a94"
+ },
+ "art_new_art_arena_pillar_broken": {
+  "path": "assets/art/arena/pillar_broken.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/arena/pillar_broken"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "75017e87f5751b327f8c14da6303e1388f7276c5f0a3d3d577cf068c9d344b52"
+ },
+ "art_new_art_arena_salt_boulder": {
+  "path": "assets/art/arena/salt_boulder.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/arena/salt_boulder"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "db971a41b5ba4b5cb4ddc9ca0fd696b70e324f17a23776f7680994ebe50680ab"
+ },
+ "art_new_art_buildings_ancient_ruin_arch_01": {
+  "path": "assets/art/buildings/ancient_ruin_arch_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/ancient_ruin_arch_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "e1e30a7d4204ecfcff489727e9de291d4d3a1aa8ed7ea4e152b1a4bffd960af2"
+ },
+ "art_new_art_buildings_ancient_ruin_arch_02": {
+  "path": "assets/art/buildings/ancient_ruin_arch_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/ancient_ruin_arch_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "cd242cccaa460632b588d52576e58e5327f2e5d10d6bdfae6b2f0b39b21bd659"
+ },
+ "art_new_art_buildings_apothecary": {
+  "path": "assets/art/buildings/apothecary.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/apothecary"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "26b525b5584d4e692a0c22d9eadb2977be4d568ba1bc8275c31369c681532158"
+ },
+ "art_new_art_buildings_ashwood_cabin": {
+  "path": "assets/art/buildings/ashwood_cabin.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/ashwood_cabin"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "873019510c8131908f89067312f62ed25e9954461c668a6233c187ca48bb70f1"
+ },
+ "art_new_art_buildings_bestiary_hall": {
+  "path": "assets/art/buildings/bestiary_hall.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/bestiary_hall"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "2f45ab3fec35206fad7b82066fdbd2cd6dd49b1d6bd9051782b958d247659cad"
+ },
+ "art_new_art_buildings_boathouse": {
+  "path": "assets/art/buildings/boathouse.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/boathouse"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "d1b11f6b69d3db12798d029cf5f592f615957ef310e06d9f8abc3eb2dde3baae"
+ },
+ "art_new_art_buildings_bone_well": {
+  "path": "assets/art/buildings/bone_well.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/bone_well"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "2dc0d51c9919054ffcecefb9296d8209cd8a7994458ec5343d8fb704d9295d1f"
+ },
+ "art_new_art_buildings_chapel": {
+  "path": "assets/art/buildings/chapel.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/chapel"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "9e012a7b28597ee33422b50ddec096a029deb72dad71cafd6430226bc5db914e"
+ },
+ "art_new_art_buildings_cliff_lighthouse": {
+  "path": "assets/art/buildings/cliff_lighthouse.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/cliff_lighthouse"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "2ac098d8525e47f0c8c835df3ce2bd677d655258ad864ebece77d3c5c6d9a5ca"
+ },
+ "art_new_art_buildings_cottage_01": {
+  "path": "assets/art/buildings/cottage_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/cottage_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "bd742d1d1ab088fcf9aa07716fb7265ca28354263390fd9e820f26e1cccbef74"
+ },
+ "art_new_art_buildings_cottage_02": {
+  "path": "assets/art/buildings/cottage_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/cottage_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "bdee7fb93f29f66075b24923c23a8db94e2bbc2b68d57e2cfef606941b3d887b"
+ },
+ "art_new_art_buildings_cottage_03": {
+  "path": "assets/art/buildings/cottage_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/cottage_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "76fbf422e5386014d70d6c809c61148d89e1e7c0c7cda066bc2f1c3a7c723243"
+ },
+ "art_new_art_buildings_cottage_04": {
+  "path": "assets/art/buildings/cottage_04.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/cottage_04"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "4832a4e89549c449ee26ddd03a2abfd55355bf63b77849d85aca69606db49372"
+ },
+ "art_new_art_buildings_crane": {
+  "path": "assets/art/buildings/crane.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/crane"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "1b7b48a13573c4340488212ed76bd532b1ade819f09efa4dc95349fad78165d6"
+ },
+ "art_new_art_buildings_customs_house": {
+  "path": "assets/art/buildings/customs_house.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/customs_house"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "3b742e978489e6723cafddf4c4ffe09ee7187e1eedced38ffe8d521781fd8f2c"
+ },
+ "art_new_art_buildings_fish_market": {
+  "path": "assets/art/buildings/fish_market.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/fish_market"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "0044c5686e18b3fc005ea02a12e3b7ea8df328bb2b7ef8a4f49d9840d7ddedc7"
+ },
+ "art_new_art_buildings_flats_evaporation_pan": {
+  "path": "assets/art/buildings/flats_evaporation_pan.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/flats_evaporation_pan"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "8d0f64e7034dc6c8efb3b9fe0e2b3e5e3aec4f6b803650a25cb2c7034f12b2ed"
+ },
+ "art_new_art_buildings_flats_pump_house": {
+  "path": "assets/art/buildings/flats_pump_house.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/flats_pump_house"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "38203dcf339dd66729a015c38f2c4baa782a8f457a68e3face382b169de4e83d"
+ },
+ "art_new_art_buildings_harbor_master": {
+  "path": "assets/art/buildings/harbor_master.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/harbor_master"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "e3629a3516bb5b5de3b1c4b62290df6ad656b8220bb0dd8791e253e4cc63f1a0"
+ },
+ "art_new_art_buildings_hunt_hall": {
+  "path": "assets/art/buildings/hunt_hall.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/hunt_hall"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6e22a352c48a448271e093a05cf95f90281a2a8db7eabf719db1d6dca158d134"
+ },
+ "art_new_art_buildings_jetty_end": {
+  "path": "assets/art/buildings/jetty_end.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/jetty_end"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "4ac2f57394690bb618684f895a5e4f232cf19a0603b170f6660971904df02606"
+ },
+ "art_new_art_buildings_ledger_house": {
+  "path": "assets/art/buildings/ledger_house.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/ledger_house"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "1c948cbe6ad5091746756c51065fb7af5a16d9c9ff380cae5d56c7bcaeb55714"
+ },
+ "art_new_art_buildings_lighthouse": {
+  "path": "assets/art/buildings/lighthouse.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/lighthouse"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "b757bf0fc23008ac8d5773ccfa5ccdd67bbb06b027c02248f5b0200777608ee2"
+ },
+ "art_new_art_buildings_lighthouse_ruined": {
+  "path": "assets/art/buildings/lighthouse_ruined.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/lighthouse_ruined"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "e1b39d75b8ad31e4c19c6336570e2a9a08e723a0f91d692a1a934bd0a363452e"
+ },
+ "art_new_art_buildings_lodging": {
+  "path": "assets/art/buildings/lodging.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/lodging"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "dbdd8eb0bc5bec0eaaab6d3d8568202861b35048318bd84d2a49fd6bf670a26d"
+ },
+ "art_new_art_buildings_market_stall_01": {
+  "path": "assets/art/buildings/market_stall_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/market_stall_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6d760b6db4981e018bac578eabe2d29eb89af69ce08619f93cbf41beb656a4f3"
+ },
+ "art_new_art_buildings_market_stall_02": {
+  "path": "assets/art/buildings/market_stall_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/market_stall_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "41aa02e99ddd162c79e5158df167cad9aff81b1fc4f476d7100351cdbae6b072"
+ },
+ "art_new_art_buildings_market_stall_03": {
+  "path": "assets/art/buildings/market_stall_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/market_stall_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "a7815affe64255ee7adf38fef519202c6f4f533b86d76ebbe2f1cef34ea35c70"
+ },
+ "art_new_art_buildings_market_stall_04": {
+  "path": "assets/art/buildings/market_stall_04.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/market_stall_04"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "d3c1824fce98a30c36830134b22dba2a3c1763467db5763610a545ca449c7903"
+ },
+ "art_new_art_buildings_net_loft": {
+  "path": "assets/art/buildings/net_loft.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/net_loft"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "497e9d87e543694316723b8108454ecd87007bccbbecd3da75b753c1ff9e50fd"
+ },
+ "art_new_art_buildings_pier_section": {
+  "path": "assets/art/buildings/pier_section.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/pier_section"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "8d38d6d5d530c51cbf95f109c4db3a012eeb18d625339c80f541d85829b02243"
+ },
+ "art_new_art_buildings_pilot_shed": {
+  "path": "assets/art/buildings/pilot_shed.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/pilot_shed"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "8cfb2b28bdab2af664843a24cd57f2220d7628b82305eee691f85e7108e0b6b6"
+ },
+ "art_new_art_buildings_rail_cart_track": {
+  "path": "assets/art/buildings/rail_cart_track.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/rail_cart_track"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "80dffd95700e28d80de1e933fd19881cb9b0af8e750486741ba1b238ea67ab5e"
+ },
+ "art_new_art_buildings_salt_shed_01": {
+  "path": "assets/art/buildings/salt_shed_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/salt_shed_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "71bc74849a80fd5084254c15ce0cbbf7c906c8b0666b7fb232edcb3b4e9a7af1"
+ },
+ "art_new_art_buildings_salt_shed_02": {
+  "path": "assets/art/buildings/salt_shed_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/salt_shed_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "c32521e8c620f4edb6b4eca38872143250f05b55e46b0c27e20202d75ceea796"
+ },
+ "art_new_art_buildings_salvage_shed": {
+  "path": "assets/art/buildings/salvage_shed.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/salvage_shed"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "51ba9bca7259ef7011d8cb37cefff10924879db6cda54c621f74dabed4fe7660"
+ },
+ "art_new_art_buildings_shrine_01": {
+  "path": "assets/art/buildings/shrine_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/shrine_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6336604dab9c7cb543fff640c6586da27b84e1bef34a5bf0f48e9620046b3291"
+ },
+ "art_new_art_buildings_shrine_02": {
+  "path": "assets/art/buildings/shrine_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/shrine_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "ef9a0c64bd53a53e11bca91e4a82686b32291ca2494b0ea7b4e1674901d5a5b9"
+ },
+ "art_new_art_buildings_smithy": {
+  "path": "assets/art/buildings/smithy.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/smithy"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "49a50791e22eb278fc8ef8ca775d2834db2a5559e584c55a1fede9c4c252e74c"
+ },
+ "art_new_art_buildings_stone_house_01": {
+  "path": "assets/art/buildings/stone_house_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/stone_house_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "e4d977162c782941c62999a4f7ff7846d87446aa9a114d667c6b579bdc4aba25"
+ },
+ "art_new_art_buildings_stone_house_02": {
+  "path": "assets/art/buildings/stone_house_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/stone_house_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "2ea53b85ff978cb24121ceac0b0475fd7e9ba1968be0e55f953c3c961d637129"
+ },
+ "art_new_art_buildings_tavern": {
+  "path": "assets/art/buildings/tavern.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/tavern"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "4e8b3dbac5911e19eea13e075547b09222338ff57b8b11c294d9bc3b3b6e907c"
+ },
+ "art_new_art_buildings_trader_shop": {
+  "path": "assets/art/buildings/trader_shop.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/trader_shop"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "fd7633760d47b6a2ccf2755924dabeb9f4679125105b255654696a4c551ed9f3"
+ },
+ "art_new_art_buildings_utility_shack": {
+  "path": "assets/art/buildings/utility_shack.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/utility_shack"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "e2ec8f3a94a4778cb7aaa51c9762140e3b06a60a79a82a0099b88d8c833d3fac"
+ },
+ "art_new_art_buildings_village_chapel_flooded": {
+  "path": "assets/art/buildings/village_chapel_flooded.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/village_chapel_flooded"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "099c5cb08198fdd434859cb8495d1656f9ae309678343e0c55c0170e869e8a94"
+ },
+ "art_new_art_buildings_village_house_sunken_01": {
+  "path": "assets/art/buildings/village_house_sunken_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/village_house_sunken_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "c269fc67a9923aee94ae01e7136fd339d21f8a16447a685ad7b5473faac93105"
+ },
+ "art_new_art_buildings_village_house_sunken_02": {
+  "path": "assets/art/buildings/village_house_sunken_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/village_house_sunken_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "29dd33fadbf1968dc05175e5915d16585b55e5ae26ee04961bf1a825f82c5b7a"
+ },
+ "art_new_art_buildings_village_house_sunken_03": {
+  "path": "assets/art/buildings/village_house_sunken_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/village_house_sunken_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "8b24ab2205d64333469a59f301a04e283cab2bca1343b2a3e883efa0ef175faf"
+ },
+ "art_new_art_buildings_warehouse_01": {
+  "path": "assets/art/buildings/warehouse_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/warehouse_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "769f8ef4f5580f0962835736575612b9480bd54a0d2b5cfa1589e02f327856a8"
+ },
+ "art_new_art_buildings_warehouse_02": {
+  "path": "assets/art/buildings/warehouse_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/warehouse_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6a4496a9ea2a5e31cbe7c4eec89150109a1889105a479fc71091fe24ae55716c"
+ },
+ "art_new_art_buildings_warehouse_ruined": {
+  "path": "assets/art/buildings/warehouse_ruined.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/warehouse_ruined"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "ba3a7d59b92e61126d6c84133a8e9138ea19d7a2e7452ccdee948d704a48325f"
+ },
+ "art_new_art_buildings_watch_beacon": {
+  "path": "assets/art/buildings/watch_beacon.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/watch_beacon"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "4d41807ada315b2f8d205f70df687eae38698a422c1b1124074dfd7673f250bf"
+ },
+ "art_new_art_buildings_wreck_ship_01": {
+  "path": "assets/art/buildings/wreck_ship_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/wreck_ship_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6cbf360965e35fbdcf530d76d8fc03ef69f86daa5e7ec2ed1d6d34d43ac49a81"
+ },
+ "art_new_art_buildings_wreck_ship_02": {
+  "path": "assets/art/buildings/wreck_ship_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/wreck_ship_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "b9e11979f0f1c86f41b21a52dab5a7f03e60fb42de164ebbef337bc4dd6e0666"
+ },
+ "art_new_art_buildings_wreck_small": {
+  "path": "assets/art/buildings/wreck_small.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/wreck_small"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "799f7f09df64b2021b51bb4090fc5b2ca9d25ec11f2f279ad857c93cdebf7572"
+ },
+ "art_new_art_buildings_wrecker_camp_tent_01": {
+  "path": "assets/art/buildings/wrecker_camp_tent_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/wrecker_camp_tent_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "e9deebed1ecbac01a50c5a1fec83f045d38b8986eeb07daa0595a9929d2f51ec"
+ },
+ "art_new_art_buildings_wrecker_camp_tent_02": {
+  "path": "assets/art/buildings/wrecker_camp_tent_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/buildings/wrecker_camp_tent_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "7345c3d77aef235a530fa616800f644d6595b5270c1b5995cbdd326cb7c34d05"
+ },
+ "art_new_art_edges_cliff_corner_inner": {
+  "path": "assets/art/edges/cliff_corner_inner.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/cliff_corner_inner"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "78ffd8615ab78110ada83d8b30e8445cfe311e173779b61c54c6f1f336533d08"
+ },
+ "art_new_art_edges_cliff_corner_outer": {
+  "path": "assets/art/edges/cliff_corner_outer.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/cliff_corner_outer"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "aaa5867c5fac3c6169afe255282a3b386f96de27b391ac9d8bcaa40bd11c1ede"
+ },
+ "art_new_art_edges_cliff_straight": {
+  "path": "assets/art/edges/cliff_straight.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/cliff_straight"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "f31e22cd22c17f5caaec9c3ac42f5993386dc4e14f05f05580417f18711f3c86"
+ },
+ "art_new_art_edges_cliff_top_lip": {
+  "path": "assets/art/edges/cliff_top_lip.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/cliff_top_lip"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "3e3e136293839c2daa7bc1d56703a6e3c1b23be99245fea8cfda57996958c9c4"
+ },
+ "art_new_art_edges_fog_bank": {
+  "path": "assets/art/edges/fog_bank.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/fog_bank"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "62d6e3ee4c2bb5e8ff537e5248913e2caf22d2c2f0088a7d5e49028e8a5458f6"
+ },
+ "art_new_art_edges_marsh_reed_wall": {
+  "path": "assets/art/edges/marsh_reed_wall.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/marsh_reed_wall"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "fe080ae1967a8114a2aa6cad73cd7bb012935ff91c498d36b8d24e9fe6442b32"
+ },
+ "art_new_art_edges_ravine_edge": {
+  "path": "assets/art/edges/ravine_edge.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/ravine_edge"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "fb02cdaf020764896d5f3c91537c53e9df1e91919042f2036c1c07b3f9086b38"
+ },
+ "art_new_art_edges_rubble_heap_01": {
+  "path": "assets/art/edges/rubble_heap_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/rubble_heap_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "9cb5979ca2a19668e844b763bb49b74669d4661cdc105d449aee1429fafd42aa"
+ },
+ "art_new_art_edges_rubble_heap_02": {
+  "path": "assets/art/edges/rubble_heap_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/rubble_heap_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "0c12f9fd68d28dbf43b330de426b6f2cf8ee17532d3cadde9954bad9e71828ef"
+ },
+ "art_new_art_edges_sea_wall": {
+  "path": "assets/art/edges/sea_wall.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/sea_wall"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "cab9324d32b9205693a0c6f7ded31e29bac70e2bb29d97e930cb3fb0adfaa7b2"
+ },
+ "art_new_art_edges_surf_strip": {
+  "path": "assets/art/edges/surf_strip.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/surf_strip"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "758603bc7e571cdf8f9f7594b5f3cd7e0ebacbe38e76eec389a702eb37cc722d"
+ },
+ "art_new_art_edges_town_gate": {
+  "path": "assets/art/edges/town_gate.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/town_gate"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "689e0cf2e29606af8ebc12d53ee6250ce19ca3e9194b4c99878b6afa356a1477"
+ },
+ "art_new_art_edges_town_wall": {
+  "path": "assets/art/edges/town_wall.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/town_wall"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "d171b30d0f759d6494f104f771b0c779a23814771324177fa4a12b26b5003113"
+ },
+ "art_new_art_edges_treeline_mass_01": {
+  "path": "assets/art/edges/treeline_mass_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/treeline_mass_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "afc576f4d745ad5c77d3a0a2f53a4d14c41a656471e908cf0a2770bfd124ae19"
+ },
+ "art_new_art_edges_treeline_mass_02": {
+  "path": "assets/art/edges/treeline_mass_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/treeline_mass_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "b5d0b701e3c85afc2cc37915240ed54c1a75df07b049e73dc0840f042a855c31"
+ },
+ "art_new_art_edges_treeline_mass_03": {
+  "path": "assets/art/edges/treeline_mass_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/edges/treeline_mass_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "f4c1e6a7acdd9822a328d9ae2e2cc44e4b463053dbe9e1fb76146e231c84ce3c"
+ },
+ "art_new_art_icons_antidote": {
+  "path": "assets/art/icons/antidote.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/antidote"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "d9d8b717b130ee806dca9ff033d21d1c51cd8cf39357c1454c457aa73d499148"
+ },
+ "art_new_art_icons_armor_arms_salvager": {
+  "path": "assets/art/icons/armor_arms_salvager.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/armor_arms_salvager"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "1161ad9060ec149471b107ffd466f6aa4f33f7ba19bdf44b875bb25d18c26f8d"
+ },
+ "art_new_art_icons_armor_chest_salvager": {
+  "path": "assets/art/icons/armor_chest_salvager.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/armor_chest_salvager"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "4b3df5631b23ae2073f75d26a012b58edc45f7ace20c6777eb0d8dab538eb940"
+ },
+ "art_new_art_icons_armor_head_salvager": {
+  "path": "assets/art/icons/armor_head_salvager.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/armor_head_salvager"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "956e1c002bfb458f8483ed617e4feddcb77bd732268a48342d497e2bf2e877cd"
+ },
+ "art_new_art_icons_armor_legs_salvager": {
+  "path": "assets/art/icons/armor_legs_salvager.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/armor_legs_salvager"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "9f16582a099d1c5be7185d24476017753a034a954f164446cf99f8aeb4d2b6a1"
+ },
+ "art_new_art_icons_armor_waist_salvager": {
+  "path": "assets/art/icons/armor_waist_salvager.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/armor_waist_salvager"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "c3d63f6db2ff5ba7f54d27226351bb8ca4539037b9cff9224b7004bb00678a5e"
+ },
+ "art_new_art_icons_bandage": {
+  "path": "assets/art/icons/bandage.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/bandage"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "4555bd9679b40b6247690306702ebaeb0b66314766aceeefc7291bbf21a26fdf"
+ },
+ "art_new_art_icons_bolt": {
+  "path": "assets/art/icons/bolt.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/bolt"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "22de51f90cb5704ccd327f4bdfae1b5fd24b5ca0fd31a5e898e956ebd8f5a57f"
+ },
+ "art_new_art_icons_brineback_shell": {
+  "path": "assets/art/icons/brineback_shell.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/brineback_shell"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "b385a092ad09a9275a8577aba644873cc15209cbf75f4a3f9e6ef651963297c5"
+ },
+ "art_new_art_icons_brineworn_crystal": {
+  "path": "assets/art/icons/brineworn_crystal.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/brineworn_crystal"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "3d2907f9560881fdcb86506727f15ee044cc01b953a7d0b812616577037369e8"
+ },
+ "art_new_art_icons_cloth": {
+  "path": "assets/art/icons/cloth.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/cloth"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "bf7806903f74d71b7a7c9cb4791fed1f0c4154c9e8336b89217f533c061c2a12"
+ },
+ "art_new_art_icons_flash_pod": {
+  "path": "assets/art/icons/flash_pod.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/flash_pod"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "86399a1c96b0b8536dde4479f122f67992ab6a6870a9cab54fdfe337b57ff5f9"
+ },
+ "art_new_art_icons_grazer_wool": {
+  "path": "assets/art/icons/grazer_wool.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/grazer_wool"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "9a2149dec224739aee54fa25a25fb061087818ec54779f34ac3df9f4a8663d99"
+ },
+ "art_new_art_icons_gull_feather": {
+  "path": "assets/art/icons/gull_feather.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/gull_feather"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "616834566021b2ee75e2e8b5e32d84d072f362d93618b0aff9829afa840254b0"
+ },
+ "art_new_art_icons_healing_tincture": {
+  "path": "assets/art/icons/healing_tincture.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/healing_tincture"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "b9f8bc2794ff54eb32c042d16a0becbd6b9d9ca465ed61979da67c8152f0be55"
+ },
+ "art_new_art_icons_iron_ingot": {
+  "path": "assets/art/icons/iron_ingot.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/iron_ingot"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "eb619ef14899d24c82e55763cfbd53c61186d6f5f908d40e7638e4a7757b8211"
+ },
+ "art_new_art_icons_lamp_oil": {
+  "path": "assets/art/icons/lamp_oil.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/lamp_oil"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "08e3f4cf892b1c7b020fee30b5a7818a9752507d50b9ebbbe1b0b6f4f4bbb1c5"
+ },
+ "art_new_art_icons_lurker_scale": {
+  "path": "assets/art/icons/lurker_scale.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/lurker_scale"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "541803875588196bce4d8fbd7917925df32a03cc2aff4ff1f062b6a7e4c38cdb"
+ },
+ "art_new_art_icons_oil": {
+  "path": "assets/art/icons/oil.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/oil"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "4f72f937c867fe2b020b55abcb84e1eebb54c38cf856d2d856e241f1aa8dce6a"
+ },
+ "art_new_art_icons_ration": {
+  "path": "assets/art/icons/ration.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/ration"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "b2aa62bf61c13497874bb2efa9f987824e7475ff8ec5ea27a9d2d220dc389b96"
+ },
+ "art_new_art_icons_rope": {
+  "path": "assets/art/icons/rope.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/rope"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "06386a09f8af787ae6078b8e281085042bfff790d018b4b7c15438f297a8a1a9"
+ },
+ "art_new_art_icons_salt_crystals": {
+  "path": "assets/art/icons/salt_crystals.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/salt_crystals"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "18d7cfb23a0c9aae8ec9dc4d332125c5438d27bf7e71012d05dc0a3454e5912a"
+ },
+ "art_new_art_icons_scrap_metal": {
+  "path": "assets/art/icons/scrap_metal.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/scrap_metal"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "87ee666fee403c445baa31daeb6d1f62f0129e64fd9a578ff5823bb73d8fe71a"
+ },
+ "art_new_art_icons_smoke_bomb": {
+  "path": "assets/art/icons/smoke_bomb.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/smoke_bomb"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "dc97f1443995f1990ccb068cc21254700bd650de7299081317d2b7f4a61ca54f"
+ },
+ "art_new_art_icons_stag_antler": {
+  "path": "assets/art/icons/stag_antler.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/stag_antler"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "1797efd3b01b0877f5e60993a820f44527c23cb5f44b57c5a7fbf5118b74aa57"
+ },
+ "art_new_art_icons_stamina_draught": {
+  "path": "assets/art/icons/stamina_draught.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/stamina_draught"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "7f2e34adf7e273ff7f6f3a437d29be18545dd73ad504048762828116c7b81df0"
+ },
+ "art_new_art_icons_tidemaw_gill": {
+  "path": "assets/art/icons/tidemaw_gill.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/tidemaw_gill"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "0a4c6eae33a8d78d3aa1f180aae01601557f2e2f80e82a33b0bf3bfcf8cd3ebe"
+ },
+ "art_new_art_icons_tidemaw_jaw_plate": {
+  "path": "assets/art/icons/tidemaw_jaw_plate.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/tidemaw_jaw_plate"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "c38aeb22e42c674861492f8ef91150ad7891aa280e671221123e96797a7b28ac"
+ },
+ "art_new_art_icons_tidemaw_tail_fin": {
+  "path": "assets/art/icons/tidemaw_tail_fin.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/tidemaw_tail_fin"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "f69535cba7dea63c4a19756c55b91d0522aee8725ffeb228c79b3f75c512c7a9"
+ },
+ "art_new_art_icons_timber": {
+  "path": "assets/art/icons/timber.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/timber"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "c955507b5742e962aa32bd8f604b793a86d9c1ee522e5e7c004d060e7d17cf6c"
+ },
+ "art_new_art_icons_trap_net": {
+  "path": "assets/art/icons/trap_net.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/trap_net"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "c135604851f56a1f4dc53a71930994616b05ae4f6d5e29d990d086c9585da2e6"
+ },
+ "art_new_art_icons_weapon_arbalest": {
+  "path": "assets/art/icons/weapon_arbalest.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/weapon_arbalest"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "dfd78a6ff82008ed66d62ea2726bfd1c27dda1fba2b9961b064a7e24f9f4ea7e"
+ },
+ "art_new_art_icons_weapon_greataxe": {
+  "path": "assets/art/icons/weapon_greataxe.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/weapon_greataxe"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "c68f7ae34034e9bf289443841ab383dae5782172cac6a64306bcc57a34b1b67e"
+ },
+ "art_new_art_icons_weapon_harpoon_gun": {
+  "path": "assets/art/icons/weapon_harpoon_gun.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/weapon_harpoon_gun"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "da80f4fdd82c94f9afd76003deb5ef1a86be6472e1dc4afa0ba3f6b7b089ff1e"
+ },
+ "art_new_art_icons_weapon_spear": {
+  "path": "assets/art/icons/weapon_spear.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/weapon_spear"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "5fcd1e2fb824b9e37dc3338db6d5505313ff4652619853296868a3c6ad2e3e3d"
+ },
+ "art_new_art_icons_weapon_wickcaster": {
+  "path": "assets/art/icons/weapon_wickcaster.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/weapon_wickcaster"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "b1c4449364c75bc6266f1e3a8a296d2af11d62ed97a5bd0a019678ac1c504d48"
+ },
+ "art_new_art_icons_whetstone": {
+  "path": "assets/art/icons/whetstone.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/whetstone"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "895431a0bf420a0d5d8ca0a39243b33f1795638776d276c4770567f0fcd41822"
+ },
+ "art_new_art_icons_wick_cell": {
+  "path": "assets/art/icons/wick_cell.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/wick_cell"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "bd1141ea2fcce6f3903120a8626d506cce83ec94eae8c71cdb4c706135dd1e8b"
+ },
+ "art_new_art_icons_widow_fang": {
+  "path": "assets/art/icons/widow_fang.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/widow_fang"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "bab98ac2b36dc765c0628e87045e8aa692a5bec8ab3f2ecda586e77c9f3dfb25"
+ },
+ "art_new_art_icons_widow_silk": {
+  "path": "assets/art/icons/widow_silk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/widow_silk"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "31bdebaa9105bb4a756f4dcea00058c9b3a74367933249103fb93024306c58de"
+ },
+ "art_new_art_icons_wyrm_spine": {
+  "path": "assets/art/icons/wyrm_spine.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/icons/wyrm_spine"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "10e214782240c4db4769a2a07d0dc653d9ea381bcf6f6959a7137f7e36d47255"
+ },
+ "art_new_art_plants_fern_01": {
+  "path": "assets/art/plants/fern_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/fern_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "4ddbf9a47a6e2c23ffcdd3609c8311f5518f8e49d7b365828090d17dff5850c8"
+ },
+ "art_new_art_plants_fern_02": {
+  "path": "assets/art/plants/fern_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/fern_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "40982daa64cce6c9535c12dd6d6f71fc170e031f1f0cbd07e2050195a43dec45"
+ },
+ "art_new_art_plants_fern_03": {
+  "path": "assets/art/plants/fern_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/fern_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "f0f3f33ff71776165af17ef0e3ebe14bda915b78a397ef4a150f056ddedb7577"
+ },
+ "art_new_art_plants_flowers_01": {
+  "path": "assets/art/plants/flowers_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/flowers_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6a866b69aa45e92e9740020a13d562fda5401366fa56588cdb449595c901f5d8"
+ },
+ "art_new_art_plants_flowers_02": {
+  "path": "assets/art/plants/flowers_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/flowers_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "ebdcf74ad16e3b3750b2a2e7d81dc72f78c136535262bd9cde50d43a1981c47b"
+ },
+ "art_new_art_plants_flowers_03": {
+  "path": "assets/art/plants/flowers_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/flowers_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "96ee7036b331d6fe468b1efd3a821bf03f76872764bef876fe5600d2f5286320"
+ },
+ "art_new_art_plants_grass_tuft_01": {
+  "path": "assets/art/plants/grass_tuft_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/grass_tuft_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "1ec5e9f939ad7b9b7f95f708a1330e10859745333aaa00acd4387352a18f9c0f"
+ },
+ "art_new_art_plants_grass_tuft_02": {
+  "path": "assets/art/plants/grass_tuft_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/grass_tuft_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "aa023df71c806a6c7f694cf5ab5196d5a38de141bb1bf16becaf07fdf6a114b4"
+ },
+ "art_new_art_plants_grass_tuft_03": {
+  "path": "assets/art/plants/grass_tuft_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/grass_tuft_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "b2848a8482367094560ace67bbf48c87388dcafea10b327f2b6a5d2ff712fac4"
+ },
+ "art_new_art_plants_grass_tuft_04": {
+  "path": "assets/art/plants/grass_tuft_04.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/grass_tuft_04"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "92c0c1b65fda0b80f4b8f4f4e34ab5329d96bec63391aaa88c0a4778c4dc8632"
+ },
+ "art_new_art_plants_grass_tuft_05": {
+  "path": "assets/art/plants/grass_tuft_05.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/grass_tuft_05"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "e906d7d9dc74b1202752bb05b831ba490023bd647861826432c9087072f2cea9"
+ },
+ "art_new_art_plants_grass_tuft_06": {
+  "path": "assets/art/plants/grass_tuft_06.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/grass_tuft_06"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "c1a5440997ec212b11ae19b0ffd6a41c2b877d71358bc85573e8c676d017807b"
+ },
+ "art_new_art_plants_kelp_pile_01": {
+  "path": "assets/art/plants/kelp_pile_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/kelp_pile_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "1fd5ac52712596d43601d7d4b59ee65425e411308a210949a6686f991b2b27b0"
+ },
+ "art_new_art_plants_kelp_pile_02": {
+  "path": "assets/art/plants/kelp_pile_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/kelp_pile_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "307e970f248c7744687a802e9d81dcc394a3aab8a05797224fb3ee1b4e162504"
+ },
+ "art_new_art_plants_mushrooms_01": {
+  "path": "assets/art/plants/mushrooms_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/mushrooms_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "1d288a46e7d8ba66cab3f2f423c29a372aeecff30241710027ceb708209da93f"
+ },
+ "art_new_art_plants_mushrooms_02": {
+  "path": "assets/art/plants/mushrooms_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/mushrooms_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "868d91375c239e0c5aedb63501a6668ebe0e7cb091e58f3c3907b9cbf216c491"
+ },
+ "art_new_art_plants_reeds_01": {
+  "path": "assets/art/plants/reeds_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/reeds_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "81189b3370af522c0d7a12e7d8f989b3bd1387c27e3f582d9d796ad4a054e0f8"
+ },
+ "art_new_art_plants_reeds_02": {
+  "path": "assets/art/plants/reeds_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/reeds_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "fcc745f04a210a5a64f9c550b82c3c19fbfff95ab0d0d9138b926dd95ef3d746"
+ },
+ "art_new_art_plants_reeds_03": {
+  "path": "assets/art/plants/reeds_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/reeds_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "a2f765098d90fe29dac388b45cdcf824247fe429a6763660c846a270077d25b9"
+ },
+ "art_new_art_plants_reeds_04": {
+  "path": "assets/art/plants/reeds_04.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/reeds_04"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "824df62434fe83ebe4fd801a1233defba3f669cd3c7ac7377293f7b34c984219"
+ },
+ "art_new_art_plants_shrub_01": {
+  "path": "assets/art/plants/shrub_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/shrub_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "7a524cac53562874b863f720f4a4dc3d29ad161364c48e71ae2d5a06d1db2045"
+ },
+ "art_new_art_plants_shrub_02": {
+  "path": "assets/art/plants/shrub_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/shrub_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "f1c1d4f5b2bd3e9dd4e9e17433cf2b3ce9bef0960ae55b9d640e0d8bc82be8a6"
+ },
+ "art_new_art_plants_shrub_03": {
+  "path": "assets/art/plants/shrub_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/shrub_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "dcdd76f1fa2ebe8f64e9cd4b1df33a64998111701e3a5b0f8dc814917da35b2e"
+ },
+ "art_new_art_plants_shrub_04": {
+  "path": "assets/art/plants/shrub_04.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/plants/shrub_04"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "e45397fcc8d760ccedd10cf5cf0da7a1ae27437fd4ace63e69a4377e6b4b852c"
+ },
+ "art_new_art_props_anchor": {
+  "path": "assets/art/props/anchor.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/anchor"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "f65cdcad591884da627ef66ee51d393c00deb862b2798a827f787e7606a187a4"
+ },
+ "art_new_art_props_barrel_01": {
+  "path": "assets/art/props/barrel_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/barrel_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "f09a79cd45cab08d6971ec35749de00670db26e25798efd43b4d9776895e8bf9"
+ },
+ "art_new_art_props_barrel_02": {
+  "path": "assets/art/props/barrel_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/barrel_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "c6efd94ca0a4a8a21b39910a80b5860c90abb23bd55a50cec31a358e87139013"
+ },
+ "art_new_art_props_bench": {
+  "path": "assets/art/props/bench.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/bench"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "33891def271700baf2e0681b4df1ec6e91b5e67ee4eec5b248e18afb31797626"
+ },
+ "art_new_art_props_body_satchel": {
+  "path": "assets/art/props/body_satchel.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/body_satchel"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "5de05946201cb965ed663c200e04e057f1d7481806b21770b2356deec7b78e49"
+ },
+ "art_new_art_props_bollard": {
+  "path": "assets/art/props/bollard.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/bollard"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "5290b386370986cef56de2db2fc5e344eda219d323d61dfd102460cec8812bc4"
+ },
+ "art_new_art_props_bone_pile_01": {
+  "path": "assets/art/props/bone_pile_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/bone_pile_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "4cf81c5d966f6c85cb89f97ec6576f8877d144f443b8f4bb134c557af3b5e313"
+ },
+ "art_new_art_props_bone_pile_02": {
+  "path": "assets/art/props/bone_pile_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/bone_pile_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "927d1c4e6e3fd731bb3961918f3c9d51b34bcc38da72cc1c446eb27c049dcbb7"
+ },
+ "art_new_art_props_brazier": {
+  "path": "assets/art/props/brazier.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/brazier"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "b5fa8e32523ab521815d14d7495b64f7f510feebd304ef487d65ab50e2362fb2"
+ },
+ "art_new_art_props_broken_fence": {
+  "path": "assets/art/props/broken_fence.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/broken_fence"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "979115a43479f11d5d16ad71c737f168342b9c31eb7fd60a79c1cdafed86e916"
+ },
+ "art_new_art_props_cache_bundle": {
+  "path": "assets/art/props/cache_bundle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/cache_bundle"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "de60c6e88eace7558e8643b7adb9b207d4b49afb20d7855014eabe2a813efe89"
+ },
+ "art_new_art_props_campfire": {
+  "path": "assets/art/props/campfire.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/campfire"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "2632a8d60858f5b0f0f340f764a4f214cbb1fc8a65e0508302d341a089e54f94"
+ },
+ "art_new_art_props_carcass_01": {
+  "path": "assets/art/props/carcass_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/carcass_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6c9b28a40aa1739e4bbb9d17eae6678b08ade577cf519c3deecf0adbb2d58101"
+ },
+ "art_new_art_props_carcass_02": {
+  "path": "assets/art/props/carcass_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/carcass_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "bfb7549551eb9c52e93e833625f381c747efde44df5051c36efb781344cb5c89"
+ },
+ "art_new_art_props_cargo_platform": {
+  "path": "assets/art/props/cargo_platform.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/cargo_platform"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "f181a0cf2c8f55bfaf87fd75f70410a58199c5e628431e84d147e2518b2df55f"
+ },
+ "art_new_art_props_carpenter_workbench": {
+  "path": "assets/art/props/carpenter_workbench.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/carpenter_workbench"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "076fad25eabeb8c78cb10aa4e48e72e49e9f7a95aaf82fc5d2721dba4fd8349d"
+ },
+ "art_new_art_props_cart_wreck": {
+  "path": "assets/art/props/cart_wreck.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/cart_wreck"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "8d1afbe9bd477068188ef9521256dea42f26738627b7cd9edb2c88cd0a547099"
+ },
+ "art_new_art_props_chain_post": {
+  "path": "assets/art/props/chain_post.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/chain_post"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "88ccc6dc090e9b1f172e7c0bd3c82fd0b554bd9be19ad40f9c1ebdf769501c12"
+ },
+ "art_new_art_props_chest_common": {
+  "path": "assets/art/props/chest_common.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/chest_common"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "a488dfb5baa4b4ee751d97feb55f56372602427a99598749bc3ab4e65a90c678"
+ },
+ "art_new_art_props_chest_rare": {
+  "path": "assets/art/props/chest_rare.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/chest_rare"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "7fc4071a6edb6927f284e66ed0c653b5b26b4ad5ece8daa77f9b62a1616aadab"
+ },
+ "art_new_art_props_crate_01": {
+  "path": "assets/art/props/crate_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/crate_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "8f2c7ffbad507f7f432615f87d6d86341cbea3af8680ab529e64a883d96928cf"
+ },
+ "art_new_art_props_crate_02": {
+  "path": "assets/art/props/crate_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/crate_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "e99110a6e67cb9fa40563819f243727dc9dd6104bee796ee93a118a3a006b42d"
+ },
+ "art_new_art_props_crate_03": {
+  "path": "assets/art/props/crate_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/crate_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "cea91a14af0c6526bbefec0b49e76c1e7f3da571362125d419dfab6f69f71f6e"
+ },
+ "art_new_art_props_crate_stack": {
+  "path": "assets/art/props/crate_stack.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/crate_stack"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "94bbe63740640bb6d7194867133895b8ffffbfa936c9bbcd2191e82f525821f9"
+ },
+ "art_new_art_props_dinghy_wrecked": {
+  "path": "assets/art/props/dinghy_wrecked.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/dinghy_wrecked"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "9719991a7fc5b027c2191dd30408a83a86a1579460a9e270c61ebc8030dc50ad"
+ },
+ "art_new_art_props_dock_broken_01": {
+  "path": "assets/art/props/dock_broken_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/dock_broken_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "196606e116847ae1873fde846fe22ae7c48e8cc6ee9a2fde1561f1be883333ca"
+ },
+ "art_new_art_props_dock_straight_01": {
+  "path": "assets/art/props/dock_straight_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/dock_straight_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "0c681e52150d9dcf7cf18ccfe7d75f667da47b99b1d4e4a6614e79c5ebac35cc"
+ },
+ "art_new_art_props_fence_iron": {
+  "path": "assets/art/props/fence_iron.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/fence_iron"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "0e11ff23a88e09756d4a22d1d532e21ffa8106ccb0284dd65e964f42509e2e28"
+ },
+ "art_new_art_props_fence_wood": {
+  "path": "assets/art/props/fence_wood.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/fence_wood"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "82fa67887dccfa76a28c53362d9ddecbf898498360e952a33c9b4f26b065786a"
+ },
+ "art_new_art_props_fish_basket": {
+  "path": "assets/art/props/fish_basket.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/fish_basket"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "2dfb39f6e913b7cd2933ff470636c1d1085f209c848c44b329af3804b83ed130"
+ },
+ "art_new_art_props_fish_cleaning_station": {
+  "path": "assets/art/props/fish_cleaning_station.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/fish_cleaning_station"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "41bec5b51a5d027d6520ed5d6f6990e25109c2178bd107c2701e764379f0cddd"
+ },
+ "art_new_art_props_fish_drying_rack": {
+  "path": "assets/art/props/fish_drying_rack.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/fish_drying_rack"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "51fde949af660fdc3e7ee750661c3056ec83cfb4352b06c2d7bcf2aaa2977244"
+ },
+ "art_new_art_props_fountain": {
+  "path": "assets/art/props/fountain.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/fountain"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "0af657710b111e1edc9af5cdeb48dd973592ee11eeb2225ef2614b666c166a03"
+ },
+ "art_new_art_props_hand_cart": {
+  "path": "assets/art/props/hand_cart.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/hand_cart"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "db32e159844af3f01f0175166ab42490977ec3b60dda2fcb6c8ef62ce3c8ce07"
+ },
+ "art_new_art_props_hand_water_pump": {
+  "path": "assets/art/props/hand_water_pump.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/hand_water_pump"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "c770074a7a393f1242943f3d9742b0b1236a557e9f420fe76a0a7936e5db4ea7"
+ },
+ "art_new_art_props_hanging_lantern": {
+  "path": "assets/art/props/hanging_lantern.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/hanging_lantern"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "05a3d1b5f2d9a7d6d4697c116e83a343a012041b11266dfeeee2a7667bc1d44b"
+ },
+ "art_new_art_props_hanging_net_frame": {
+  "path": "assets/art/props/hanging_net_frame.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/hanging_net_frame"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "f0d75447befceef335a218303a5827893e69c3fb077e99c8be14df5b92a2309b"
+ },
+ "art_new_art_props_lantern_post": {
+  "path": "assets/art/props/lantern_post.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/lantern_post"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "8267823d1091713abd1a5a5b43ca7076e2c3451c45decedeb9a6cbb9de857958"
+ },
+ "art_new_art_props_lantern_post_variant": {
+  "path": "assets/art/props/lantern_post_variant.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/lantern_post_variant"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "0079b3945107274ac454e814ea4627d40eaf69b00f7c4468a2e5e7ddd2c81e7f"
+ },
+ "art_new_art_props_mooring_post_rope": {
+  "path": "assets/art/props/mooring_post_rope.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/mooring_post_rope"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "93e36571417981c7c08a761843f4c243ee24c09b4573cb80c87b0fbca33248ad"
+ },
+ "art_new_art_props_nest_01": {
+  "path": "assets/art/props/nest_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/nest_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "1d934c5de6e7504b0b9f4cafaca58d9c4b0de8dfc57c9538a7e8fb2dd07e5697"
+ },
+ "art_new_art_props_nest_02": {
+  "path": "assets/art/props/nest_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/nest_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "0240c9c28cea82d190cc255f832dca1b9cd5bbd1d5d7da9a8426004682c48754"
+ },
+ "art_new_art_props_net_rack": {
+  "path": "assets/art/props/net_rack.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/net_rack"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "a6188534878287825ada9ea044cab588b5c2652879ca8d09709c73867e87770f"
+ },
+ "art_new_art_props_notice_board": {
+  "path": "assets/art/props/notice_board.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/notice_board"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "2cdf68ea7972abab6fad5cbce9c1f0bcac7c6cfcb8d9f9785b5f614e3bcde954"
+ },
+ "art_new_art_props_open_supply_crate": {
+  "path": "assets/art/props/open_supply_crate.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/open_supply_crate"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "a855dcd8da1aeb426596776e6b71fa3b054429ccf385cdbf8afc527a83e3e6c0"
+ },
+ "art_new_art_props_rope_coil": {
+  "path": "assets/art/props/rope_coil.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/rope_coil"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "801414283ba28b253491dc5af2ae00b3d879a312b8be9d38657e58773b058c5c"
+ },
+ "art_new_art_props_rowboat": {
+  "path": "assets/art/props/rowboat.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/rowboat"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "27cbc061338ca9474b5a0e2a98a3dd1630ec9340fc83ad508051e0edbd67d142"
+ },
+ "art_new_art_props_rowboat_damaged": {
+  "path": "assets/art/props/rowboat_damaged.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/rowboat_damaged"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "68e60fe03b06c1f88f08a52a4d93edfafcb47b13f3f932566b1bdcd0b2be0612"
+ },
+ "art_new_art_props_salt_processing_trough": {
+  "path": "assets/art/props/salt_processing_trough.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/salt_processing_trough"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6befffc38cc0b9fc1d1ad07f0423c8ec27e4c3c9404394197d4a7bc9d160e48f"
+ },
+ "art_new_art_props_salt_sack_pile": {
+  "path": "assets/art/props/salt_sack_pile.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/salt_sack_pile"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "52bb86776f61230c77de2df236a3c9e4c489d55316bacace84e78ef67b140ec5"
+ },
+ "art_new_art_props_salvage_debris": {
+  "path": "assets/art/props/salvage_debris.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/salvage_debris"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "0e1270d4d199a21b5a2a9dfae9a4e9b7349cf253ac49e379e463bf8aab9ec408"
+ },
+ "art_new_art_props_signpost": {
+  "path": "assets/art/props/signpost.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/signpost"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "d48c30f86955e229c6a3b9b53e67c32b757b939d67aa845a1979af446ddf5087"
+ },
+ "art_new_art_props_statue_hunter": {
+  "path": "assets/art/props/statue_hunter.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/statue_hunter"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "bce02f9ce516608ad42b6e701e47bb3f6730e21f69297e1f67f40737004b348d"
+ },
+ "art_new_art_props_storage_shelf": {
+  "path": "assets/art/props/storage_shelf.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/storage_shelf"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "bc45d4134d753be3b53ad2340c183b39d47a87b9a6a31b156704ec5376867416"
+ },
+ "art_new_art_props_supply_sacks": {
+  "path": "assets/art/props/supply_sacks.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/supply_sacks"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "43c969c77ba8e913660cb6a42209130c404bc01c49e5771b80afc457feff7684"
+ },
+ "art_new_art_props_tent_supplies": {
+  "path": "assets/art/props/tent_supplies.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/tent_supplies"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6ded84be868ef7dd55c129b643ae8ec3c61cadc6fdae8a8e3849f32a038f6f15"
+ },
+ "art_new_art_props_tool_rack": {
+  "path": "assets/art/props/tool_rack.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/tool_rack"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "58cb23df9202650ec0e9681bccffc0994514105a91b47df5059a21af99e7160d"
+ },
+ "art_new_art_props_wall_lantern": {
+  "path": "assets/art/props/wall_lantern.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/wall_lantern"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "8b6bcf21933a83de9092396a2cb5b8b22ed3a9a1dc0129493690607e7253c5d8"
+ },
+ "art_new_art_props_well": {
+  "path": "assets/art/props/well.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/well"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "81a35f6f8a4a041b1e94eb368ace6f95569486cf0f260d369e26ba8e993a88d9"
+ },
+ "art_new_art_props_wheelbarrow": {
+  "path": "assets/art/props/wheelbarrow.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/props/wheelbarrow"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "4dde47b78abd490059a9d044b0de66d599fef21e0216ddfbcdcb0fbb4bcdfb75"
+ },
+ "art_new_art_rocks_cliff_rock_01": {
+  "path": "assets/art/rocks/cliff_rock_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/rocks/cliff_rock_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6be1b9fe53c23ea835f1e3908a650bfdddd391c8dd34f4150708048907c68c1e"
+ },
+ "art_new_art_rocks_cliff_rock_02": {
+  "path": "assets/art/rocks/cliff_rock_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/rocks/cliff_rock_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "2ed8b2a35a414caf47d5e08305f6142e1f30e4af4fb3bbf5188cc5fa062c270d"
+ },
+ "art_new_art_rocks_rock_large_01": {
+  "path": "assets/art/rocks/rock_large_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/rocks/rock_large_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "0474fa7aff50fb5fffcbb39b7cac89165fe97f9e847198f19714419e563ca7e6"
+ },
+ "art_new_art_rocks_rock_large_02": {
+  "path": "assets/art/rocks/rock_large_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/rocks/rock_large_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "a1dc6d4664b064cfa3e44e79b03750410a1c2169e3393387f5aff6612b066ffc"
+ },
+ "art_new_art_rocks_rock_small_01": {
+  "path": "assets/art/rocks/rock_small_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/rocks/rock_small_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "17e3aed9dc94668062901199dce6e2515ce67668075f04d8bfab5acd9dd78c8c"
+ },
+ "art_new_art_rocks_rock_small_02": {
+  "path": "assets/art/rocks/rock_small_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/rocks/rock_small_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "a95aa1f9b646ab5cac60ffa513e8680480a9a590b0491c953ed300da433da159"
+ },
+ "art_new_art_rocks_rock_small_03": {
+  "path": "assets/art/rocks/rock_small_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/rocks/rock_small_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "ea1c6df6b3de10f73764ec287cad5f6425ffdc29e22c8cd2ffb3b3d238440c77"
+ },
+ "art_new_art_rocks_salt_crystal_cluster_01": {
+  "path": "assets/art/rocks/salt_crystal_cluster_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/rocks/salt_crystal_cluster_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "5050a352863acde6030269e4ee54fd43995a1a9b9021052baafb026e89dac974"
+ },
+ "art_new_art_rocks_salt_crystal_cluster_02": {
+  "path": "assets/art/rocks/salt_crystal_cluster_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/rocks/salt_crystal_cluster_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "bafbd93fc08c8c9bece74fcd84d03d0dc6a4e29e4203aee866f883013234ad9c"
+ },
+ "art_new_art_tiles_ancient_paving": {
+  "path": "assets/art/tiles/ancient_paving.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/ancient_paving"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "bd7db496d46ed9e3413ddf5f96a2bbfd10c83d87804084e43c617b8a5db98039"
+ },
+ "art_new_art_tiles_ash_drift": {
+  "path": "assets/art/tiles/ash_drift.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/ash_drift"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "e261ca20694d05f6478d88e5052a2c33129b8ccf133ced4a95e3febd78d57696"
+ },
+ "art_new_art_tiles_blight_ground": {
+  "path": "assets/art/tiles/blight_ground.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/blight_ground"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "234c9e0585ecb327c61045186a42c6327aaff38a02e3ebd78ce14089ad08950b"
+ },
+ "art_new_art_tiles_cave_floor": {
+  "path": "assets/art/tiles/cave_floor.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/cave_floor"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "3d44223511c390832bd5a34507d65fc717b269b6dfa1fbc98856992432d6dbd8"
+ },
+ "art_new_art_tiles_cobble_road": {
+  "path": "assets/art/tiles/cobble_road.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/cobble_road"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "15e313cc8673ce388cfcdc429e621dd7093b9c405aef3e2b9bd1711aa6cb7ee4"
+ },
+ "art_new_art_tiles_deep_sea": {
+  "path": "assets/art/tiles/deep_sea.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/deep_sea"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "7d5de5a8607256baf9cfcfd18c0e9461c920af21433d44686c630879bcf226a9"
+ },
+ "art_new_art_tiles_grass_short": {
+  "path": "assets/art/tiles/grass_short.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/grass_short"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "39acf7871bcb344fa681ae4e5004229252fdb84917524154b3ee50592c25975d"
+ },
+ "art_new_art_tiles_grass_tall": {
+  "path": "assets/art/tiles/grass_tall.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/grass_tall"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "5175a6f8daee12a523596f01162c541b1247d04d6b927d235333e658e04d24d3"
+ },
+ "art_new_art_tiles_gravel": {
+  "path": "assets/art/tiles/gravel.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/gravel"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "7d3128333411173c4d91b16ecfb913dd8b66eeefe78a1a2eb733906db63d905c"
+ },
+ "art_new_art_tiles_grove_soil": {
+  "path": "assets/art/tiles/grove_soil.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/grove_soil"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "e35d103c9d88273efad5cf2a460f98a7987240807f1014782d6e8a9ad6de01fd"
+ },
+ "art_new_art_tiles_marsh_water": {
+  "path": "assets/art/tiles/marsh_water.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/marsh_water"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "3401cab3bc8b38176cc0820c3dd31b76da6dfb3d54f3ac81a7227911146d8d20"
+ },
+ "art_new_art_tiles_moss": {
+  "path": "assets/art/tiles/moss.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/moss"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "3efc75aea1b337846e5872551e0190a0ab64a1bc04293d487b209fe4474824df"
+ },
+ "art_new_art_tiles_packed_soil": {
+  "path": "assets/art/tiles/packed_soil.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/packed_soil"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "36345821701ff9f2803ae78a39855b7135d97b223e45646c73f22a9dc809b248"
+ },
+ "art_new_art_tiles_painted_ash_drift_painted_768": {
+  "path": "assets/art/tiles/painted/ash_drift_painted_768.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/painted/ash_drift_painted_768"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "b0ca9cd4e4ba8e0c1cf1499e6bc627bfc810f8f2998fe3ae51f9731fc49b1a5b"
+ },
+ "art_new_art_tiles_painted_blight_ground_painted_768": {
+  "path": "assets/art/tiles/painted/blight_ground_painted_768.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/painted/blight_ground_painted_768"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "7ec38179bc513cf72c40e913694ab7eb61c552322e31127742aaec77b07aa618"
+ },
+ "art_new_art_tiles_painted_cave_floor_painted_768": {
+  "path": "assets/art/tiles/painted/cave_floor_painted_768.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/painted/cave_floor_painted_768"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "014f4694fb1bbd7524b4b390b230b1a912a1856650679f358e9f8fea98c4a3c3"
+ },
+ "art_new_art_tiles_painted_marsh_water_painted_768": {
+  "path": "assets/art/tiles/painted/marsh_water_painted_768.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/painted/marsh_water_painted_768"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6ba3ff8e3c704d599af91e4c91aa03c863509b10827556edc6aa7c2eb12ede51"
+ },
+ "art_new_art_tiles_painted_sand_beach_original_shore": {
+  "path": "assets/art/tiles/painted/sand_beach_original_shore.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/painted/sand_beach_original_shore"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "2e99ab41e84a0014285440eabcb7f06f91c663bc36bb03494e328c77b7d8aa08"
+ },
+ "art_new_art_tiles_painted_sand_beach_painted_768": {
+  "path": "assets/art/tiles/painted/sand_beach_painted_768.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/painted/sand_beach_painted_768"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "49d9a5fcc580c61bfde89ee56a10e3a19090441bddc305d5a78732bd0d5d5d1a"
+ },
+ "art_new_art_tiles_plank_deck": {
+  "path": "assets/art/tiles/plank_deck.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/plank_deck"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "84755a2e5e483a2e680ddddfe2208b879a54064791e736b00107a326f4c7f0a9"
+ },
+ "art_new_art_tiles_red_salt_crust": {
+  "path": "assets/art/tiles/red_salt_crust.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/red_salt_crust"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "1c1fb392ed5f5b7902638fe87b05a79b5281e4947044200ba9bc194f5eb11c4e"
+ },
+ "art_new_art_tiles_salt_flat": {
+  "path": "assets/art/tiles/salt_flat.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/salt_flat"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "2f4bdedd347a4acc80e559a3129a35d6655b1687c548c41ea255ac85744fabf0"
+ },
+ "art_new_art_tiles_sand_beach": {
+  "path": "assets/art/tiles/sand_beach.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/sand_beach"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "88f7c29eae97c50b8f5777b969d77f048d83a13e35a542e4fc02291dcea61fc2"
+ },
+ "art_new_art_tiles_shallows": {
+  "path": "assets/art/tiles/shallows.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/shallows"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "42b5818f73c44958944f14bf4f290814ce0a84a699b598c55629c38c94756c18"
+ },
+ "art_new_art_tiles_stone_plaza": {
+  "path": "assets/art/tiles/stone_plaza.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/stone_plaza"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "c1fd9ee65e4ac9762f4feca2217a5b76c597b1fd701bafe5330d2a0df296f1d3"
+ },
+ "art_new_art_tiles_transition_cobble_road__packed_soil": {
+  "path": "assets/art/tiles/transition_cobble_road__packed_soil.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/transition_cobble_road__packed_soil"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "d0c5bc448008d71a53f85670fe88be328c37b54cae764d4e51bfba1055bde81e"
+ },
+ "art_new_art_tiles_transition_grass_short__packed_soil": {
+  "path": "assets/art/tiles/transition_grass_short__packed_soil.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/transition_grass_short__packed_soil"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "7df7678000ca726f8160c2c3d6f76b7899c7a3fe1ec4303e82b240c4fb84ff0f"
+ },
+ "art_new_art_tiles_transition_packed_soil__sand_beach": {
+  "path": "assets/art/tiles/transition_packed_soil__sand_beach.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/transition_packed_soil__sand_beach"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "2d327cbacaa9c2ab4f60bad82a9d8247a7e8e4cd8aaf9bcbc654494f7c4ec80c"
+ },
+ "art_new_art_tiles_transition_sand_beach__shallows": {
+  "path": "assets/art/tiles/transition_sand_beach__shallows.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/transition_sand_beach__shallows"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "085064edc50415d5fc8501965528ed171cafa1b8769ba6f928b7357399098091"
+ },
+ "art_new_art_tiles_transition_shallows__deep_sea": {
+  "path": "assets/art/tiles/transition_shallows__deep_sea.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/transition_shallows__deep_sea"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "596e7b3abe94f31a85bc3fb34d58fd02573ba8f4c8cf188bfa8c11f123963cb3"
+ },
+ "art_new_art_tiles_transition_stone_plaza__packed_soil": {
+  "path": "assets/art/tiles/transition_stone_plaza__packed_soil.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/transition_stone_plaza__packed_soil"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "2c3e32fc7c5f32126ae078d12de5288f67b850fe3b5531766377200089551c5a"
+ },
+ "art_new_art_tiles_transition_wet_mud__packed_soil": {
+  "path": "assets/art/tiles/transition_wet_mud__packed_soil.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/transition_wet_mud__packed_soil"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "364ca2005b4ae50498ebe1cd4607ffabcd00fd94fbc744b2c7838dcf4e965c41"
+ },
+ "art_new_art_tiles_wet_mud": {
+  "path": "assets/art/tiles/wet_mud.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/tiles/wet_mud"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "c0bf8182550dffcf4237ab5984daa27dc4908e77e2a9e3c25515495ce606fb6e"
+ },
+ "art_new_art_trees_ash_pine_01": {
+  "path": "assets/art/trees/ash_pine_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/ash_pine_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "45009781b8725daa5a716f5bee68e089359a6241d1c9ac3611fd8366dc72326c"
+ },
+ "art_new_art_trees_ash_pine_02": {
+  "path": "assets/art/trees/ash_pine_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/ash_pine_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "d15f3e218150787ba60127cf18e10881546758e23ad600c9efba15e32c82b3c2"
+ },
+ "art_new_art_trees_ash_pine_03": {
+  "path": "assets/art/trees/ash_pine_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/ash_pine_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "656bb0af622ce72a31a7c2b8d7bd8dad9446cedc455d26c3cf901491e6019955"
+ },
+ "art_new_art_trees_ash_pine_04": {
+  "path": "assets/art/trees/ash_pine_04.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/ash_pine_04"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "6903fc5a68d5c047ed33a043f8790c334501966bb9928b11f146078a692c5172"
+ },
+ "art_new_art_trees_blight_tree_01": {
+  "path": "assets/art/trees/blight_tree_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/blight_tree_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "67ba3d547c831a58b64ed1fe4bc7d6364a9adcab5b6e683fe0e43d69729788ea"
+ },
+ "art_new_art_trees_blight_tree_02": {
+  "path": "assets/art/trees/blight_tree_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/blight_tree_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "e5421ce18bf5f0fc766b662dbc55e30c087c0505ed79450f073309191915a51d"
+ },
+ "art_new_art_trees_broadleaf_01": {
+  "path": "assets/art/trees/broadleaf_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/broadleaf_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "68490c808fd423c0be6740b8cf18631b816e191d2a60678238956b520245b77d"
+ },
+ "art_new_art_trees_broadleaf_02": {
+  "path": "assets/art/trees/broadleaf_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/broadleaf_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "943e3afc0c8b54d003da7e9b8794f38a9b75bd7c5e34bda5bed197913691fa4c"
+ },
+ "art_new_art_trees_coastal_pine_01": {
+  "path": "assets/art/trees/coastal_pine_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/coastal_pine_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "4223fc0c83951e873f4ac33b14b7cfd43aa843c1c8543975d351efd5501286a3"
+ },
+ "art_new_art_trees_coastal_pine_02": {
+  "path": "assets/art/trees/coastal_pine_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/coastal_pine_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "146416d2aac5def72bb453ea1a3ddb576779849fbadde7798b5e4abb5323b1cd"
+ },
+ "art_new_art_trees_dead_tree_01": {
+  "path": "assets/art/trees/dead_tree_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/dead_tree_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "77825aa3e4866008d8504fddc0915893f43b7610c19667650a5affc7fb6c3c4c"
+ },
+ "art_new_art_trees_dead_tree_02": {
+  "path": "assets/art/trees/dead_tree_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/dead_tree_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "305085160071a8cd894615c7901cbc080931621ef8c7bc8a8c4a546fe6cda7e4"
+ },
+ "art_new_art_trees_dead_tree_03": {
+  "path": "assets/art/trees/dead_tree_03.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/dead_tree_03"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "30b5c117ca18706daa39d441a9f766e01d321b1c064cda25959b2201cc463c9e"
+ },
+ "art_new_art_trees_fallen_log_01": {
+  "path": "assets/art/trees/fallen_log_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/fallen_log_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "d92deb136065235f15a479967f08fa05e089439346cd669b26e70c409dc2605f"
+ },
+ "art_new_art_trees_fallen_log_02": {
+  "path": "assets/art/trees/fallen_log_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/fallen_log_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "4365680cba1d396440db2c2d16cb40ade1bd33c06e1334facd33155811bfea90"
+ },
+ "art_new_art_trees_giant_grove_tree_01": {
+  "path": "assets/art/trees/giant_grove_tree_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/giant_grove_tree_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "08cd293c018b6b1fbd1976c93b0bbbe6bbd100068708e5274b5cc6a8b72fc0c6"
+ },
+ "art_new_art_trees_giant_grove_tree_02": {
+  "path": "assets/art/trees/giant_grove_tree_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/giant_grove_tree_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "a280846caa8a3e97a405cb26966c7660d1d228cc7c90d6066a2686f3a51a51e6"
+ },
+ "art_new_art_trees_stump_01": {
+  "path": "assets/art/trees/stump_01.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/stump_01"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "cce9c5544ac402876a91910557a258b9f28c447ca822bcb2f6f01d5a23dc66d8"
+ },
+ "art_new_art_trees_stump_02": {
+  "path": "assets/art/trees/stump_02.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/trees/stump_02"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "256ff5e1ba584417225abc85a6390ca93c00ed6dcc88a65b39f6d9a2e4634f48"
+ },
+ "art_new_art_ui_map_marker_boss": {
+  "path": "assets/art/ui/map_marker_boss.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/ui/map_marker_boss"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "bc24fd38992ac366b9a3bfe61f43d4feb4ae9e3c40c49acc45b70ada63c6b3a9"
+ },
+ "art_new_art_ui_map_marker_camp": {
+  "path": "assets/art/ui/map_marker_camp.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/ui/map_marker_camp"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "a849f731390cfa538d929fc461bc246a0809b7a4a685b978094ae4a2a7c7b2f7"
+ },
+ "art_new_art_ui_map_marker_exit": {
+  "path": "assets/art/ui/map_marker_exit.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/ui/map_marker_exit"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "db8cc7487e0524b9cdc64a0e63bcd11498b0fbec13e2d4e7d637b3e001cd5642"
+ },
+ "art_new_art_ui_map_marker_player": {
+  "path": "assets/art/ui/map_marker_player.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/ui/map_marker_player"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "141e954dfebf759f3c3e3959dfccd4357c34505b72f4c4df64bc26649f9513b1"
+ },
+ "art_new_art_ui_map_marker_quest": {
+  "path": "assets/art/ui/map_marker_quest.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/ui/map_marker_quest"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "58f37836972430e88728c536df5ef48da80f3e8149784cb2c5081ca00b764ecf"
+ },
+ "art_new_art_ui_map_marker_track": {
+  "path": "assets/art/ui/map_marker_track.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/ui/map_marker_track"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "319d034167046a971241b2090537c0c2d5f5e8413414ef00162ca5c2a58d8fbf"
+ },
+ "art_new_art_vfx_blood_brine": {
+  "path": "assets/art/vfx/blood_brine.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/blood_brine"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "f8ab2fab18cb42e01266dd341c9d15ff792dd765230269ea4d524ceefadc3cd1"
+ },
+ "art_new_art_vfx_dust_burrow": {
+  "path": "assets/art/vfx/dust_burrow.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/dust_burrow"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "d3e838789ebcfa6806d8e1a6eb539ee74463dee092c2ac931b066aee9b84afaf"
+ },
+ "art_new_art_vfx_fire_burn": {
+  "path": "assets/art/vfx/fire_burn.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/fire_burn"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "5bd053dd86fac61ab0c73e259109612c64bd36b11f4888888a88ad9a6270a188"
+ },
+ "art_new_art_vfx_ground_crack": {
+  "path": "assets/art/vfx/ground_crack.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/ground_crack"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "0160eecd6843d0ac4b89b5ba293c70a952f3455888c156601939c86435604d38"
+ },
+ "art_new_art_vfx_hit_spark": {
+  "path": "assets/art/vfx/hit_spark.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/hit_spark"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "3174ee7f87042fd9111817fb4f166bbbf3bbf162bae21f8735d973e9421d3e16"
+ },
+ "art_new_art_vfx_lightning_bolt": {
+  "path": "assets/art/vfx/lightning_bolt.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/lightning_bolt"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "3c4349ecb93d7f01226e4cddefd273087ae720b528fae0bd3de3a4244dbf1db7"
+ },
+ "art_new_art_vfx_part_break_burst": {
+  "path": "assets/art/vfx/part_break_burst.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/part_break_burst"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "9d2e04140248d6dcdf43a39d690d5652ece4fdc0090c9a2253f68c21c97f0de9"
+ },
+ "art_new_art_vfx_proj_bolt": {
+  "path": "assets/art/vfx/proj_bolt.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/proj_bolt"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "b6b851882d99be92bb755049d3722ae7d06b2db5f03ac8c6f63d54b3a2edf670"
+ },
+ "art_new_art_vfx_proj_salt_shard": {
+  "path": "assets/art/vfx/proj_salt_shard.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/proj_salt_shard"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "66956b0fcc24d3a0b74bb025d2158eaaa80e2c8cf5bcbb55fa62521d98e5b5db"
+ },
+ "art_new_art_vfx_proj_spit_brine": {
+  "path": "assets/art/vfx/proj_spit_brine.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/proj_spit_brine"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "777425858dba4c66606db9d9a82f5d0c1273e95324f67b62dd8adda038b19421"
+ },
+ "art_new_art_vfx_proj_wick_flame": {
+  "path": "assets/art/vfx/proj_wick_flame.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/proj_wick_flame"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "ea21e124385a6ab2c8197ed377a72a100c2a99e50e8c3eb5ec70fc990d5bab7b"
+ },
+ "art_new_art_vfx_smoke_puff": {
+  "path": "assets/art/vfx/smoke_puff.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/smoke_puff"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "ecac5fb2f47a6481a6e000c8f5e3b1c469809941304de706cecef01878eb4cfb"
+ },
+ "art_new_art_vfx_splash": {
+  "path": "assets/art/vfx/splash.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/splash"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "59c1abad0b7024cd1279e4f6084fe6a7c11d78bfc87d2670137b8c3b4b0ecaeb"
+ },
+ "art_new_art_vfx_wave_crash": {
+  "path": "assets/art/vfx/wave_crash.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/vfx/wave_crash"
+  ],
+  "pack": "art-new",
+  "staged": true,
+  "sha256": "cf84e3b8729bdcb89e9e6bb3e26f229cc5965978759b439220470130fe4a68e6"
  }
 }

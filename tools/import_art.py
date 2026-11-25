@@ -6,7 +6,8 @@ Drop files into incoming_art/<category>/<name>.png (see docs/ART_PROMPTS.md for 
     python tools/import_art.py --check    # only report problems
 
 Each valid file is copied to assets/art/<category>/<name>.png and registered in assets/manifest.json with alias
-"art/<category>/<name>" and pack "art-new". Re-importing a file replaces it. Nothing in incoming_art is modified.
+"art/<category>/<name>" and pack "art-new", marked "staged" (not inlined into the single-file build until the game
+uses it; clear the flag when a map starts using the file). Re-importing a file replaces it. Nothing in incoming_art is modified.
 Checks: PNG, has an alpha channel (except tiles/), no semi-transparent fringe (warns), dimensions multiple of 8
 (warns), expected size if listed in EXPECTED.
 """
@@ -38,7 +39,7 @@ def check(path, category):
         problems.append(f'tile size {w}x{h} is not a multiple of 32')
     elif w % 8 or h % 8:
         warnings.append(f'size {w}x{h} is not a multiple of 8')
-    if category != 'tiles':
+    if category not in ('tiles', 'icons', 'ui', 'vfx'):  # UI and effects may use soft edges
         if 'A' not in im.getbands() and im.mode != 'P':
             problems.append('no transparency (needs a transparent background)')
         else:
@@ -78,7 +79,7 @@ def main():
         alias = 'art/' + str(rel.with_suffix('')).replace('\\', '/')
         key = 'art_new_' + re.sub('[^a-z0-9_]', '_', alias.lower())
         man[key] = {'path': 'assets/art/' + str(rel).replace('\\', '/'), 'mime': 'image/png', 'aliases': [alias],
-                    'pack': PACK, 'sha256': hashlib.sha256(dst.read_bytes()).hexdigest()}
+                    'pack': PACK, 'staged': True, 'sha256': hashlib.sha256(dst.read_bytes()).hexdigest()}
     if not only_check:
         MANIFEST.write_text(json.dumps(man, indent=1))
     print(f'\n{ok} ok, {bad} failed' + ('' if only_check else ' — imported. Run: python build.py'))
