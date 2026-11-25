@@ -5,22 +5,26 @@
  */
 (()=>{'use strict';
 const P=Game.prototype;
-const CHAR=1.15;                       // humans, Brineworn, NPCs, player
-const CREATURE={gull:.72,grazer:1,brineback:1,widow:1};   // net scale for non-human creatures
+const CHAR=1.4;                        // field: humans, Brineworn, NPCs, player (matches the new art's building scale)
+const HUB_CHAR=1.15;                   // harbor frame characters (its buildings are still the older, smaller art)
+const CREATURE={gull:.85,grazer:1.2,brineback:1.2,widow:1.2};   // net scale for non-human creatures
 const PROP={'props/crate':.8,'coast/props/crates':.82,'coast/props/bench':.74,'coast/props/barrels':.85,'coast/props/small-cargo':.85,'coast/props/rope-cargo':.85,'coast/props/cargo-hoist':.9,'coast/props/banner':.85};
 const stats={chars:0,creatures:0,props:0};
-const SC=window.saltwakeScale={CHAR,CREATURE,PROP,stats};
+const SC=window.saltwakeScale={CHAR,HUB_CHAR,CREATURE,PROP,stats};
 let depth=0;   // >0 while an outer wrapper already applied a scale
 function around(x,y,s,fn){g.save();g.translate(x,y);g.scale(s,s);g.translate(-x,-y);depth++;try{return fn()}finally{depth--;g.restore()}}
 const human=e=>e.actorType==='human'||/^brineworn_|drifter|caller|breaker|wrecker|guard|medic|smith|ledger|merchant|resident|dock/.test(e.type||'');
 // Raid / field actors.
 const de=P.draw25Enemy;P.draw25Enemy=function(e,...a){if(depth||!e)return de.call(this,e,...a);
  const s=human(e)?CHAR:(CREATURE[e.type]??1);if(s===1)return de.call(this,e,...a);human(e)?stats.chars++:stats.creatures++;return around(e.x,e.y+10,s,()=>de.call(this,e,...a))};
-const dp=P.draw25Player;if(dp)P.draw25Player=function(...a){if(depth)return dp.apply(this,a);stats.chars++;return around(this.player.x,this.player.y+10,CHAR,()=>dp.apply(this,a))};
+const dp=P.draw25Player;if(dp)P.draw25Player=function(...a){if(depth)return dp.apply(this,a);stats.chars++;const p=this.player;
+ // Readability on dark ground: a faint warm light pool under the player and a thin light rim around the sprite.
+ g.save();g.globalCompositeOperation='lighter';const gr=g.createRadialGradient(p.x,p.y+8,0,p.x,p.y+8,58);gr.addColorStop(0,'rgba(255,214,160,.16)');gr.addColorStop(1,'rgba(255,214,160,0)');g.fillStyle=gr;g.beginPath();g.ellipse(p.x,p.y+8,58,30,0,0,Math.PI*2);g.fill();g.restore();
+ g.save();if(SC.rim!==false)g.filter='drop-shadow(0 0 1.2px rgba(255,244,222,.85))';try{return around(p.x,p.y+10,CHAR,()=>dp.apply(this,a))}finally{g.restore()}};
 for(const name of ['coastPlayer','coastPerson']){const f=P[name];if(!f)continue;P[name]=function(o,...a){if(depth)return f.call(this,o,...a);const t=name==='coastPlayer'?this.player:o;if(!t||typeof t.x!=='number')return f.call(this,o,...a);stats.chars++;return around(t.x,t.y+6,CHAR,()=>f.call(this,o,...a))}}
 // Harbor hub (iframe) and any other caller of the shared character renderer: scale the requested height/width.
 function wrapFaces(){const F=window.saltwakeFaces;if(!F||F.__scaled||typeof F.render!=='function')return;const r=F.render;
- F.render=function(ctx,profile,dir,mirror,frame,x,y,w,h,...rest){if(depth||typeof w!=='number'||typeof h!=='number')return r.call(this,ctx,profile,dir,mirror,frame,x,y,w,h,...rest);stats.chars++;return r.call(this,ctx,profile,dir,mirror,frame,x,y,w*CHAR,h*CHAR,...rest)};F.__scaled=true}
+ F.render=function(ctx,profile,dir,mirror,frame,x,y,w,h,...rest){if(depth||typeof w!=='number'||typeof h!=='number')return r.call(this,ctx,profile,dir,mirror,frame,x,y,w,h,...rest);stats.chars++;return r.call(this,ctx,profile,dir,mirror,frame,x,y,w*HUB_CHAR,h*HUB_CHAR,...rest)};F.__scaled=true}
 wrapFaces();setTimeout(wrapFaces,0);
 // Props drawn through the coast sprite entry point.
 if(typeof coastSprite==='function'){const cs=coastSprite;coastSprite=function(key,x,footY,w,h,...a){const s=PROP[key];if(!s)return cs.call(this,key,x,footY,w,h,...a);stats.props++;return cs.call(this,key,x,footY,w*s,h*s,...a)}}

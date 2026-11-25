@@ -16,6 +16,10 @@
   The West Passage and Storm Gate stay open; every exit is reachable.
 - Layout, IDs, coordinates, quests and spawns are unchanged. Toggle: Options › Graphics › "New Outer Quays art".
 - The single-file build now inlines any staged art a module names in full (+5.6 MB).
+- **Scale and readability pass:** field characters drawn 1.4x (was 1.15) and creatures 1.2x so they match the new
+  art; Quays facades sized to 0.86x their footprint (doors about 1.3 characters tall); trees 1.35x their art; ground
+  textures at about 0.4x so cobbles and planks read at human scale; the Quays camera starts closer (0.95, a saved
+  camera choice still wins); ground textures lifted 12%; the player gets a faint warm light pool and a thin light rim.
 - QA: new `tiles` suite; 190/190 on both builds.
 
 ## Unreleased — Esc menu and Options

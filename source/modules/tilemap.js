@@ -59,10 +59,10 @@
     const im = new Image(); im.decoding = 'async'; im.src = src; return (imgs[alias] = im);
   }
   const ok = im => im && im.complete && im.naturalWidth > 0;
-  // Ground textures are drawn at half their pixel size (the generated textures have large features next to 52 px
+  // Ground textures are drawn at about 0.4x their pixel size (the generated textures have large features next to 52 px
   // characters). Downscaling uses a 3x3 tiled copy so the result still wraps seamlessly.
-  const SCALE = { cobble: .5, plaza: .55, gravel: .5, soil: .5, mud: .5, grass: .5, tall: .5, salt: .5, sand: .5, cave: .5, ash: .5, moss: .5,
-    shallows: .5, deep: .5, plank: .5 };
+  const SCALE = { cobble: .36, plaza: .4, gravel: .4, soil: .42, mud: .4, grass: .42, tall: .42, salt: .42, sand: .42, cave: .42, ash: .42, moss: .42,
+    shallows: .45, deep: .45, plank: .42 };
   const texData = {};
   function tex(name) {
     if (texData[name]) return texData[name];
@@ -73,7 +73,9 @@
     const c = document.createElement('canvas'); c.width = W; c.height = H;
     const x = c.getContext('2d', { willReadFrequently: true }); x.imageSmoothingEnabled = true; x.imageSmoothingQuality = 'high';
     x.drawImage(big, w, h, w, h, 0, 0, W, H);
-    return (texData[name] = { w: W, h: H, d: x.getImageData(0, 0, W, H).data, canvas: c });
+    const id = x.getImageData(0, 0, W, H), d = id.data, k = name === 'deep' || name === 'shallows' ? 1 : TX.brighten;
+    if (k !== 1) { for (let i = 0; i < d.length; i += 4) { d[i] = Math.min(255, d[i] * k); d[i + 1] = Math.min(255, d[i + 1] * k); d[i + 2] = Math.min(255, d[i + 2] * k); } x.putImageData(id, 0, 0); }
+    return (texData[name] = { w: W, h: H, d, canvas: c });
   }
   // Natural grounds get "texture bombing": each wavy ~3-tile cell samples the texture at its own offset, so the
   // repeat is not visible. Built grounds (cobble, plaza) keep one continuous pattern.
@@ -125,6 +127,9 @@
   // ---- chunk compose (incremental: a few rows at a time, ~5 ms of work per frame) ---------------------------------
   const chunks = new Map(), jobs = new Map();
   TX.budgetMs = 5;
+  TX.facadeScale = .86;   // facade width vs. collision footprint (doors come out ~1.3x a character's height)
+  TX.treeScale = 1.35;   // trees vs. their art size (about 2.5-3 characters tall)
+  TX.brighten = 1.12;    // ground textures are lifted a little so characters stand out
   function texturesReady() { return MATS.every(n => tex(n)); }
   function startJob(cx, cy) {
     const c = document.createElement('canvas'); c.width = c.height = CPX;
@@ -273,7 +278,7 @@
     if (!active(this)) return coastTree.apply(this, arguments);
     const x = (o.x + o.w * .45) * 32, y = (o.y + o.h * .55) * 32;
     const list = o.y < 20 ? TREES.north : o.y > 60 ? TREES.coast : TREES.mid, name = pick(list, o.x, o.y, 5);
-    const h = (name.includes('broadleaf') ? 150 : name.includes('dead') ? 135 : 168) * (0.92 + hash(o.x * 7 | 0, o.y * 7 | 0, 6) * 0.3);
+    const h = (name.includes('broadleaf') ? 144 : name.includes('dead') ? 128 : 160) * TX.treeScale * (0.9 + hash(o.x * 7 | 0, o.y * 7 | 0, 6) * 0.3);
     this.draw25Shadow?.(x, y + 1, h * .22, 6, .2);
     if (!sprite(name, x, y + 4, h, hash(o.x | 0, o.y | 0, 8) > .5)) return coastTree.apply(this, arguments);
   };
@@ -303,7 +308,7 @@
   P.coastFacade = function (b, view, room) {
     const alias = active(this) && FACADES[b.id], im = alias && img(alias);
     if (!ok(im)) return facade.apply(this, arguments);
-    const T = 32, w = b.w * T * 1.18, h = w * im.naturalHeight / im.naturalWidth, x = (b.x + b.w / 2) * T, foot = (b.y + b.h) * T + 10;
+    const T = 32, w = b.w * T * TX.facadeScale, h = w * im.naturalHeight / im.naturalWidth, x = (b.x + b.w / 2) * T, foot = (b.y + b.h) * T + 10;
     g.save(); g.imageSmoothingEnabled = false; g.drawImage(im, x - w / 2, foot - h, w, h); g.restore();
     TX.stats.facades++;
   };
@@ -351,6 +356,14 @@
     return walkable.apply(this, arguments);
   };
 
+  // Closer default camera on the Quays (the old "Wide" default made characters tiny); a saved choice wins.
+  const camDef = P.cameraScaleDefault;
+  P.cameraScaleDefault = function (id = this.mapId) {
+    const v = camDef.apply(this, arguments);
+    let chosen = null; try { chosen = localStorage.getItem('saltwake.alpha.camera'); } catch (e) { }
+    return TX.enabled && id === MAP && !chosen ? v * (TX.camera / .66) : v;
+  };
+  TX.camera = .95;
   TX.set = on => { TX.enabled = !!on; try { localStorage.setItem('saltwake.tiles', on ? 'on' : 'off'); } catch (e) { } };
   TX.materialAt = (tx, ty) => grid ? MATS[matAt(tx, ty)] : null;
   TX.reset = () => { grid = null; chunks.clear(); jobs.clear(); edgeList = null; };
