@@ -116,7 +116,11 @@ added over time:
 4. **New monsters:** behaviors first (placeholder art), then art.
 5. **Progression:** Hunter Rank, Threat gating, Bestiary, monster gear.
 
-## Open questions
-1. Should the Outer Quays stay as a separate fixed zone, or become one of the isles' fixed landmarks?
-2. Run length: is 15–30 minutes right?
-3. On death: lose carried cargo (extraction-shooter style), or lose nothing and just fail the contract?
+## Decisions (agreed)
+- **The Outer Quays are replaced.** All expeditions go to generated Drowned Isles. The story chain (for example
+  *The Empty Skiff* boathouse cache, Names on the Wall) still needs its locations, so its key places become
+  **fixed story landmarks** that the generator places on the island while that story step is active (boathouse,
+  customs house, and so on). The Quays' hand-made buildings and art are reused as landmark prefabs.
+- **Death:** you lose the cargo you carried that hadn't been extracted. You keep your equipped gear. The contract
+  fails.
+- **Run length:** 15–30 minutes. Island size and tide stages are tuned to that.
