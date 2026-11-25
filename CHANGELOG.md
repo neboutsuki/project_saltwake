@@ -6,6 +6,7 @@
   - **Upper right:** the quest tracker, with color-coded type tags: HUNT, RECOVERY/SALVAGE, EXPEDITION, CONTACT, INVESTIGATE/TRACKING, plus MAIN STORY and ON EXPEDITION. Hunt commissions show the target monster and count, for example "Target: Brineback × 2".
   - **Lower left:** tide, weather and the minimap. The quick-use belt stays at bottom center.
 - **Minimal HUD:** health and stamina have no panel or labels, just a heart and a bolt icon with bars and numbers. Bleeding shows as a pulsing red drop. The weapon shows only its silhouette and ammunition. The minimap is round with one line of info (tide, weather icon, time, raid timer) and a lantern on/off icon. Detection text and the long condition lines are hidden.
+- **Simple quest tracker:** no panel. It shows one type tag (for example HUNT or CONTACT), the quest title and the current objective, plus the target for hunts. The first-voyage steps, location line, raid contract line, detection meter and field notes are hidden; the Journal has the full details. Clicking the title opens the Journal.
 - Removed the gold ring drawn around the player in the harbor.
 - QA now runs 95 checks, all passing (layout positions, tags, hunt target, weapon silhouette, bleeding shown in vitals).
 

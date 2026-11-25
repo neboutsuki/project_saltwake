@@ -5305,6 +5305,16 @@ html #tideHud,html.sw-glass #tideHud{background:none!important;border:0!importan
 #swLantern{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.4);display:grid;place-items:center;cursor:pointer;padding:0;position:absolute;right:-4px;bottom:4px;z-index:2}
 #swLantern svg{width:15px;height:15px;fill:rgba(255,255,255,.4)}
 #swLantern.lit{border-color:rgba(255,190,110,.6);box-shadow:0 0 10px rgba(255,170,80,.5)}#swLantern.lit svg{fill:#ffc27a}
+
+/* ---- Simple quest tracker (v0.31c): type tag, title, objective. Full details live in the Journal. ---- */
+html #missionHud,html.sw-glass #missionHud{background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:0!important;text-align:right;width:min(300px,34vw)!important}
+#missionHud>:not(#swQuestType):not(#questName):not(#questObjective){display:none!important}
+#missionHud #swQuestType{justify-content:flex-end;margin:0 0 4px}
+#missionHud #swQuestType .tag:not(:first-child){display:none}
+#missionHud #swQuestType .target{text-align:right;text-shadow:0 1px 3px #000}
+#missionHud #questName{display:block;width:100%;text-align:right;background:none!important;border:0!important;padding:0!important;font-size:17px!important;color:#fff!important;text-shadow:0 1px 4px #000,0 0 12px rgba(0,0,0,.6);cursor:pointer}
+#missionHud #questObjective{margin:2px 0 0!important;font-size:12.5px!important;color:rgba(238,241,244,.85)!important;text-shadow:0 1px 3px #000}
+#missionHud #questObjective::before{content:'◆ ';color:#8fd4e8;font-size:9px;vertical-align:1px}
 `;
 const style=document.createElement('style');style.id='sw-hud-layout';style.textContent=css;document.head.append(style);
 function mount(){const hud=$('hud'),vp=$('viewport');if(!hud||!vp||$('swHudLeft'))return;const box=document.createElement('div');box.id='swHudLeft';
