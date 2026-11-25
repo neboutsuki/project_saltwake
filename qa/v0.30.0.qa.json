@@ -230,6 +230,8 @@
     "feel.accelerates": true,
     "feel.stopsQuickly": true,
     "feel.cameraPixelSnapped": true,
+    "feel.nightNearBlack": true,
+    "feel.monsterEyesInDark": true,
     "systems.loaded": true,
     "systems.packAlert": true,
     "systems.hitStop": true,

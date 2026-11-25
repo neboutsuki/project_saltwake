@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — Dark nights
+- Night is now near-black away from light (ambient about 4% at midnight, a short blue hour at dusk and a violet
+  pre-dawn). You see by your lantern (bigger glow, longer and brighter cone), fires, lanterns and lit windows; with the
+  lantern off you keep a faint cool glow around yourself.
+- In the dark, monsters show only their eyes, colored by kind (red Widows, amber Brinebacks, sea-green Brineworn, pale
+  gulls and grazers); eyes blink, burn brighter when alerted, and moving monsters kick up faint dust you can track.
+  Lit by your lantern or a fire, they look normal.
+- Falling ash fades out at night so the darkness stays dark. QA 238/238.
+
 ## Unreleased — Day & night, camera and movement
 - **Day & night lighting** (`source/modules/daynight.js`): on the new maps the flat dark wash is replaced by colored
   light. Ambient color follows the clock (cold blue night, violet pre-dawn, warm sunrise, neutral day, golden hour,
