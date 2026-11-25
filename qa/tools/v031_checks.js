@@ -17,7 +17,7 @@ const Cm=saltwakeCamera;Cm.set({smooth:true,lookahead:false});G.player.x=2500;G.
 G.player.x-=200;const z0=G.camera.target;Cm.set({zoom:1.2});c.cameraZoom=Math.abs(G.camera.target/z0-1.2)<.02;Cm.set({zoom:1,lookahead:true});
 const tr=Cm.state.trauma;G.player.iframes=0;G.hurtPlayer(10,0);c.cameraShake=Cm.state.trauma>tr;G.player.hp=100;
 const sc=saltwakeScale.stats.chars;G.render(performance.now());c.charScale=saltwakeScale.stats.chars>sc&&saltwakeScale.CHAR>1;c.propScale=saltwakeScale.stats.props>0;
-c.ashOverlay=!!document.getElementById('swAsh');c.hudScale=!!getComputedStyle(document.documentElement).getPropertyValue('--sw-hud-scale');
+c.ashOverlay=!!saltwakeEnvFx.ashCanvas&&!document.getElementById('swAsh');c.hudScale=!!getComputedStyle(document.documentElement).getPropertyValue('--sw-hud-scale');
 const K=saltwakeSky.state;c.skyState=typeof K.sunElev==='number'&&Array.isArray(K.tint);
 const fc=saltwakeSky.forecast(G);c.forecast=!!fc&&fc.inMinutes>=0&&!!fc.next.id;
 c.skyHudIcon=!!document.getElementById('swSkyInfo');
