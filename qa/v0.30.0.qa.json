@@ -53,7 +53,7 @@
     "v031.cameraShake": true,
     "v031.charScale": true,
     "v031.propScale": true,
-    "v031.ashOverlay": true,
+    "v031.ashOverlay": false,
     "v031.hudScale": true,
     "v031.skyState": true,
     "v031.forecast": true,

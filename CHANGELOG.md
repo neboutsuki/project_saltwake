@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased — Performance fixes
+- **Large-screen fix:** the frame-time cost grew with window size because of per-pixel browser effects over the animating game view. Removed the CSS color filter on the harbor frame (the main cost; it re-filtered about 4M pixels per frame at 1440p) and the separate ash DOM layer (ash is now drawn into the field scene, or sampled by the GPU renderer), and dropped the live backdrop blur from in-game HUD elements (menus keep it). Harbor at 2560×1440 (headless): 13 → 57 fps. Raid frame rate is now nearly independent of window size.
 - **GPU renderer:** it now processes frames at the scene's own resolution (1024×576 in the field, 1536×864 in the harbor) and lets the browser scale the result. Before, it worked at display size × DPR, up to about 10× the pixels on 1440p or 4K screens. Page layout is cached and only re-measured on resize. Harbor frames that haven't changed are no longer re-uploaded or re-blurred. Falling ash is blended inside the GPU pass, so there's no separate full-screen layer while the renderer is active.
 - **Performance guard:** if the game runs below 45 fps for about 3 s with the enhanced renderer on, the renderer pauses for the session and a message says so. Re-enabling it in Graphics & Performance resumes it.
 - **Ash overlay:** when the renderer is off, the ash layer is drawn at half resolution.

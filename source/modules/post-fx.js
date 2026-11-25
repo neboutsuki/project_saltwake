@@ -103,7 +103,7 @@ function frame(t){requestAnimationFrame(frame);guard(t);const G=window.SALTWAKE_
  stats.ms=stats.ms*.9+(performance.now()-t0)*.1}
 requestAnimationFrame(frame);
 // When the GPU grade is live, the 2D/CSS grades step aside so the image is not graded twice.
-const gs=document.createElement('style');document.head.append(gs);setInterval(()=>{const on=active;gs.textContent=on?'#reunionHarbor{filter:none!important}':'';if(window.saltwakeEnvFx)window.saltwakeEnvFx.gpuGrade=on},250);
+const gs=document.createElement('style');document.head.append(gs);setInterval(()=>{const on=active;gs.textContent='';if(window.saltwakeEnvFx)window.saltwakeEnvFx.gpuGrade=on},250);
 const P=Game.prototype,gp=P.graphicsPanel;P.graphicsPanel=function(...a){const out=gp.apply(this,a);const b=$('panel')?.querySelector('.engineOptions');if(b&&!$('postOn')){
  b.insertAdjacentHTML('afterbegin',`<label class="engineCheck"><input id="postOn" type="checkbox" ${cfg.on?'checked':''}> Enhanced renderer (GPU bloom, depth, grade)${paused?' — paused for performance':''}</label><label class="engineCheck"><input id="postTilt" type="checkbox" ${cfg.tilt?'checked':''}> Depth of field (tilt-shift)</label><label class="engineCheck"><input id="postBloom" type="checkbox" ${cfg.bloom?'checked':''}> Light bloom</label><label class="engineCheck"><input id="postGrain" type="checkbox" ${cfg.grain?'checked':''}> Film grain</label>`);
  $('postOn').onchange=e=>{POST.set({on:e.target.checked});if(e.target.checked)POST.resume()};$('postTilt').onchange=e=>POST.set({tilt:e.target.checked});$('postBloom').onchange=e=>POST.set({bloom:e.target.checked});$('postGrain').onchange=e=>POST.set({grain:e.target.checked})}return out};

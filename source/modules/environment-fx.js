@@ -42,12 +42,13 @@ P.render=function(t,...r){const out=render.call(this,t,...r);if(!cfg.grade||this
  g.globalCompositeOperation='screen';g.fillStyle='rgba(40,36,34,.35)';g.fillRect(0,0,VW,VH);
  g.globalCompositeOperation='source-over';const v=g.createLinearGradient(0,0,0,VH);v.addColorStop(0,'rgba(196,186,170,.07)');v.addColorStop(.55,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(18,22,26,.16)');g.fillStyle=v;g.fillRect(0,0,VW,VH);
  g.restore();return out};
+const renderAsh=P.render;P.render=function(t,...r){const out=renderAsh.call(this,t,...r);if(this.mode==='play'&&FX.ashLive&&!window.saltwakePost?.active&&!(this.mapId==='hub'&&!this.raid)){g.save();g.setTransform(1,0,0,1,0,0);g.drawImage(ash,0,0,VW,VH);g.restore()}return out};
 // Brine miasma: a faint green-grey haze pooling at the feet of mutated Brineworn (lore: brine-tainted former humans).
 const de=P.draw25Enemy;P.draw25Enemy=function(e,...a){if(cfg.grade&&e&&!e.dead&&/brineworn|brineback/.test(e.type||'')){const t=performance.now()/1000;g.save();g.translate(e.x,e.y+6);g.scale(1,.4);const r=34+Math.sin(t*1.7+e.x)*4;const gr=g.createRadialGradient(0,0,0,0,0,r);gr.addColorStop(0,'rgba(110,170,135,.22)');gr.addColorStop(1,'rgba(110,170,135,0)');g.fillStyle=gr;g.beginPath();g.arc(0,0,r,0,Math.PI*2);g.fill();g.restore()}return de.call(this,e,...a)};
 // Ashfall: screen-space overlay above both the field canvas and the harbor frame (below HUD). Parallax follows the field camera.
 const ash=document.createElement('canvas');ash.id='swAsh';ash.width=VW/2;ash.height=VH/2;ash.setAttribute('aria-hidden','true');
 const ashStyle=document.createElement('style');ashStyle.textContent='#swAsh{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}';document.head.append(ashStyle);
-document.getElementById('viewport')?.prepend(ash);document.getElementById('world')?.after(ash);
+// Offscreen: the GPU renderer samples it; without the renderer the field scene draws it directly (no extra DOM layer).
 const actx=ash.getContext('2d');actx.scale(.5,.5);FX.ashCanvas=ash;FX.ashLive=false;
 const fxImg=a=>{const u=window.SALTWAKE_ASSETS.images[a];if(!u)return null;const i=new Image();i.src=u;return i};const FXI={};for(const [k,a] of Object.entries({ash:'fx/ash_flake',ashSmall:'fx/ash_flake_small',ember:'fx/ember',rain:'fx/rain_streak',splash:'fx/splash'}))FXI[k]=fxImg(a);const flakes=[];let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
 for(let i=0;i<140;i++)flakes.push({x:rnd()*VW,y:rnd()*VH,z:.35+rnd()*.9,s:1.2+rnd()*2.2,ph:rnd()*6.28,ember:rnd()<.06});
@@ -70,7 +71,7 @@ function ashLoop(t){requestAnimationFrame(ashLoop);const G=window.SALTWAKE_DEV?.
   actx.globalAlpha=1;stats.rainFrames=(stats.rainFrames||0)+1}
  stats.ashFrames++}
 requestAnimationFrame(ashLoop);
-const hubStyle=document.createElement('style');document.head.append(hubStyle);const hubGrade=()=>{hubStyle.textContent=cfg.grade?'#reunionHarbor{filter:saturate(.78) sepia(.1) contrast(1.06) brightness(.97)}':''};hubGrade();const set0=FX.set;FX.set=p=>{const r=set0(p);hubGrade();return r};
+// (Harbor CSS filter removed: a CSS filter on the full-size harbor frame re-filters ~4M pixels per frame on large screens.)
 const gp=P.graphicsPanel;P.graphicsPanel=function(...a){const out=gp.apply(this,a);const b=$('panel')?.querySelector('.engineOptions');if(b&&!$('envWind')){
  b.insertAdjacentHTML('beforeend',`<label class="engineCheck"><input id="envWind" type="checkbox" ${cfg.wind?'checked':''}> Wind-swayed vegetation</label><label class="engineCheck"><input id="envShadow" type="checkbox" ${cfg.shadows?'checked':''}> Prop contact shadows</label><label class="engineCheck"><input id="envGrade" type="checkbox" ${cfg.grade?'checked':''}> Ashen colour grade</label><label class="engineCheck"><input id="envAsh" type="checkbox" ${cfg.ash!==false?'checked':''}> Falling ash</label>`);
  $('envWind').onchange=e=>FX.set({wind:e.target.checked});$('envShadow').onchange=e=>FX.set({shadows:e.target.checked});$('envGrade').onchange=e=>FX.set({grade:e.target.checked});$('envAsh').onchange=e=>FX.set({ash:e.target.checked})}return out};
