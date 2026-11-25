@@ -112,7 +112,7 @@
     const d = Math.hypot(x - m.x, y - m.y);
     if (d < 1.5) { m.dist += d; if (d > .004) { m.last = now; m.since = now; } } m.x = x; m.y = y;
     const moving = now - m.last < 160, D = dir === 'side' ? (mirror ? 'left' : 'right') : dir === 'back' ? 'up' : 'down';
-    // still for a while at their post: work; walking up/down: walk strip; sideways: side idle with a small step bob
+    // walking up/down: walk strip; sideways: side idle with a small step bob; standing: idle
     const action = moving && (D === 'up' || D === 'down') ? 'walk' : 'idle';
     const s = strip(who, action, D); if (!s) return false;
     const fr = action === 'walk' ? Math.floor(m.dist / .16) % s.frames : Math.floor(now / s.ms) % s.frames;
