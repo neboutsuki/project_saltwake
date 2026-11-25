@@ -213,6 +213,43 @@ added over time:
     attacks, that the arena gimmicks work, and that a bot using perfect dodges can survive phase 1. These are
     added to the regression suite.
 
+## 10. Map list (proposal)
+Today the game has two maps: **Salvager's Rest** (the hub) and **The Outer Quays** (160×128 tiles, with the West
+Passage, Storm Gate, cart road and pilot skiff exits). The plan builds on those exits.
+
+### Fixed maps: the Red Salt Coast (story region)
+Unlocked in story order. Each ends in a boss arena, with a random roaming boss and encounter rotation after the
+story clear.
+| # | Map | Biome / mood | Story role | Arena · story boss | Size (tiles) |
+|---|---|---|---|---|---|
+| 0 | **Salvager's Rest** | harbor town, safe | hub: board, smithy, trade, rest | — (safe zone) | existing |
+| 1 | **The Outer Quays** | ruined docks, warehouses, shoreline | Act 1: *The Empty Skiff* | **Boathouse Slip:** Tidemaw (first boss prototype) | 160×128 (existing) |
+| 2 | **Red Salt Flats** | open cracked salt crust, mirages, few hiding spots | Act 2: the missing crew's trail | **Evaporation Pans:** Brineback Matriarch (armored charger; wall stuns) | ~220×180 |
+| 3 | **The Ashwood** | dense dead pine, ash drifts, low sight, night-heavy | Act 2: the Wreckers' hideout | **Burnt Clearing:** Salt Widow Queen (webs, ambush, fire weakness) | ~200×200 |
+| 4 | **Drowned Village (Low Tolland)** | half-sunk houses, bells, Brineworn | Act 3: the source of the Brineworn | **Flooded Chapel:** the Caller Choir (summoner; break the lure) | ~180×160 |
+| 5 | **Storm Cliffs & Lighthouse** | high cliffs, wind, squall-locked | Act 3: signal the fleet | **Lamp Gallery:** Gale Harrier (aerial dives; reflect the spit) | ~160×200 |
+| 6 | **The Brine Gate** | tidal cavern and sea wall, finale | Act 4: what the tide hides | **Tide Throne:** Salt Wyrm (story final) | ~220×220 |
+
+### Generated maps: the Drowned Isles (grind region)
+Reached by pilot skiff from the Rest. Every landfall is a new seed. Each island is built from **2–4 biome
+"themes"** and **ends in a fixed lair arena** chosen by the contract.
+| Island theme | Biome mix | Feel | Typical lair arenas |
+|---|---|---|---|
+| **Ash Isle** | Ashwood + Salt Flats | forest maze opening onto bright flats | Burnt Clearing, Pine Hollow |
+| **Reed Isle** | Reed Marsh + shallows | wading, mist, ambushes from water | Lurker Pool, Sunken Mill |
+| **Wreck Isle** | shoreline + ship graveyard + Drowned Village ruins | loot-heavy, Wreckers and Brineworn | Hull Graveyard, Flooded Chapel |
+| **Grove Isle (Lost World)** | Lost Grove: giant trees, ancient stonework | rare beasts, big sightlines | Root Cathedral |
+| **Blight Isle** | Blight Hollow + marsh, horror | night-only quarry, fog, lantern-dependent | Bone Well, Black Water |
+| **Storm Isle** | cliffs + caves, squall weather locked | wind pushes, lightning | Lamp Gallery, Gale Nest |
+
+**Threat 1–5** scales island size (about 200→320 tiles), monster tiers, tide speed, weather severity and loot.
+Rare **Apex** isles (Threat 5) have a second hidden arena with an apex boss.
+
+### Boss arenas (hand-built, reused)
+Each arena is a fixed prefab that can sit at the end of a story map or be placed by the isle generator:
+Boathouse Slip, Evaporation Pans, Burnt Clearing, Pine Hollow, Flooded Chapel, Lurker Pool, Sunken Mill, Hull
+Graveyard, Root Cathedral, Bone Well, Black Water, Lamp Gallery, Gale Nest, Tide Throne.
+
 ## Build phases (revised)
 1. **Boss combat framework + Tidemaw prototype** in a **boss arena at the end of the Outer Quays,** tested there first, because fun combat is the
    core of everything else.
