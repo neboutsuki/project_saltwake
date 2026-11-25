@@ -59,7 +59,7 @@
 - [ ] `bosses/salt_wyrm.png`
 - [ ] `keyart/bestiary_portrait_<monster>.png`
 
-## Extra files not on the list: 172
+## Extra files not on the list: 162
 
 - `buildings/salvage_shed.png`
 - `buildings/utility_shack.png`
@@ -73,7 +73,6 @@
 - `characters/story/captain_elda_up_design.png`
 - `characters/story/captain_elda_up_idle.png`
 - `characters/story/captain_elda_up_walk.png`
-- `characters/story/captain_elda_work.png`
 - `characters/story/harlan_down_design.png`
 - `characters/story/harlan_down_idle.png`
 - `characters/story/harlan_down_walk.png`
@@ -84,7 +83,6 @@
 - `characters/story/harlan_up_design.png`
 - `characters/story/harlan_up_idle.png`
 - `characters/story/harlan_up_walk.png`
-- `characters/story/harlan_work.png`
 - `characters/story/ivo_down_design.png`
 - `characters/story/ivo_down_idle.png`
 - `characters/story/ivo_down_walk.png`
@@ -95,7 +93,6 @@
 - `characters/story/ivo_up_design.png`
 - `characters/story/ivo_up_idle.png`
 - `characters/story/ivo_up_walk.png`
-- `characters/story/ivo_work.png`
 - `characters/story/kade_down_design.png`
 - `characters/story/kade_down_idle.png`
 - `characters/story/kade_down_walk.png`
@@ -106,7 +103,6 @@
 - `characters/story/kade_up_design.png`
 - `characters/story/kade_up_idle.png`
 - `characters/story/kade_up_walk.png`
-- `characters/story/kade_work.png`
 - `characters/story/lira_down_design.png`
 - `characters/story/lira_down_idle.png`
 - `characters/story/lira_down_walk.png`
@@ -117,7 +113,6 @@
 - `characters/story/lira_up_design.png`
 - `characters/story/lira_up_idle.png`
 - `characters/story/lira_up_walk.png`
-- `characters/story/lira_work.png`
 - `characters/story/marin_down_design.png`
 - `characters/story/marin_down_idle.png`
 - `characters/story/marin_down_walk.png`
@@ -128,7 +123,6 @@
 - `characters/story/marin_up_design.png`
 - `characters/story/marin_up_idle.png`
 - `characters/story/marin_up_walk.png`
-- `characters/story/marin_work.png`
 - `characters/story/master_rook_down_design.png`
 - `characters/story/master_rook_down_idle.png`
 - `characters/story/master_rook_down_walk.png`
@@ -139,7 +133,6 @@
 - `characters/story/master_rook_up_design.png`
 - `characters/story/master_rook_up_idle.png`
 - `characters/story/master_rook_up_walk.png`
-- `characters/story/master_rook_work.png`
 - `characters/story/mira_down_design.png`
 - `characters/story/mira_down_idle.png`
 - `characters/story/mira_down_walk.png`
@@ -150,7 +143,6 @@
 - `characters/story/mira_up_design.png`
 - `characters/story/mira_up_idle.png`
 - `characters/story/mira_up_walk.png`
-- `characters/story/mira_work.png`
 - `characters/story/ren_kagari_down_walk.png`
 - `characters/story/ren_kagari_left_walk.png`
 - `characters/story/ren_kagari_right_walk.png`
@@ -165,7 +157,6 @@
 - `characters/story/soren_up_design.png`
 - `characters/story/soren_up_idle.png`
 - `characters/story/soren_up_walk.png`
-- `characters/story/soren_work.png`
 - `characters/story/tess_down_design.png`
 - `characters/story/tess_down_idle.png`
 - `characters/story/tess_down_walk.png`
@@ -176,7 +167,6 @@
 - `characters/story/tess_up_design.png`
 - `characters/story/tess_up_idle.png`
 - `characters/story/tess_up_walk.png`
-- `characters/story/tess_work.png`
 - `eapon_arbalest.png`
 - `eapon_greataxe.png`
 - `eapon_harpoon_gun.png`

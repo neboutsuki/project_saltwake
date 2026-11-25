@@ -1,13 +1,13 @@
 # Changelog
 
 ## Unreleased — Story cast in the harbor
-- Imported each story character's 8-frame work animation (`<name>_work.png`, 128x96 frames, packed by
-  `tools/pack_frames.py`) and their portraits (`art/portraits/<name>.png`, 192 px).
+- Imported the story characters' portraits (`art/portraits/<name>.png`, 192 px). Their work/station animations were
+  removed and are not used anywhere (`tools/pack_frames.py` skips `work/` folders).
 - Harbor NPCs are drawn as the story cast (one editable table, `saltwakeCast.castOf` in
   `source/modules/characters.js`): Mara Fen → Captain Elda, Neral Brin → Harlan, Edda Voss → Marin, Iven Rusk →
   Master Rook, Sera Moll → Soren, Ola Marr → Lira, Orin Hale → Kade, Teren Sull → Ivo, Mira Vale → Mira, Talla Cor →
   Tess. Names and dialogue are unchanged. They walk (up/down walk strips; sideways uses the side idle with a step
-  bob) and idle when they stop. Their work animations are kept as art for UI stickers, not played in the world.
+  bob) and idle when they stop.
 - The dialogue box shows the story character's portrait for those NPCs; the player portrait is removed from the
   dialogue box. QA 199/199.
 

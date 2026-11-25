@@ -31,7 +31,6 @@
   // 'art/characters/story/mira_down_idle' 'art/characters/story/mira_up_idle' 'art/characters/story/mira_left_idle' 'art/characters/story/mira_right_idle' 'art/characters/story/mira_down_walk' 'art/characters/story/mira_up_walk'
   // 'art/characters/story/soren_down_idle' 'art/characters/story/soren_up_idle' 'art/characters/story/soren_left_idle' 'art/characters/story/soren_right_idle' 'art/characters/story/soren_down_walk' 'art/characters/story/soren_up_walk'
   // 'art/characters/story/tess_down_idle' 'art/characters/story/tess_up_idle' 'art/characters/story/tess_left_idle' 'art/characters/story/tess_right_idle' 'art/characters/story/tess_down_walk' 'art/characters/story/tess_up_walk'
-  for (const n of CAST) STRIPS[n].work = { frames: 8, ms: 160, fw: 128, fh: 96, foot: 88, dirs: { down: `art/characters/story/${n}_work` } };
   // Who looks like whom: harbor NPC id -> story character (appearance, animations and portrait). Names and dialogue
   // stay the NPC's own. Edit this table to recast someone.
   const CAST_OF = C.castOf = {
@@ -114,7 +113,7 @@
     if (d < 1.5) { m.dist += d; if (d > .004) { m.last = now; m.since = now; } } m.x = x; m.y = y;
     const moving = now - m.last < 160, D = dir === 'side' ? (mirror ? 'left' : 'right') : dir === 'back' ? 'up' : 'down';
     // still for a while at their post: work; walking up/down: walk strip; sideways: side idle with a small step bob
-    const action = moving && (D === 'up' || D === 'down') ? 'walk' : 'idle';   // work strips are kept for UI stickers, not the world
+    const action = moving && (D === 'up' || D === 'down') ? 'walk' : 'idle';
     const s = strip(who, action, D); if (!s) return false;
     const fr = action === 'walk' ? Math.floor(m.dist / .16) % s.frames : Math.floor(now / s.ms) % s.frames;
     const bob = moving && action === 'idle' ? Math.abs(Math.sin(m.dist / .16 * Math.PI)) * h * .03 : 0;

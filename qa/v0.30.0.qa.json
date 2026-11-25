@@ -191,7 +191,7 @@
     "cast.weaponArt": true,
     "cast.castDraws": true,
     "cast.castTable": true,
-    "cast.workStrips": true,
+    "cast.noWorkStrips": true,
     "cast.castPortrait": true,
     "systems.loaded": true,
     "systems.packAlert": true,
