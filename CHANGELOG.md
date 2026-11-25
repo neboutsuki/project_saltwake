@@ -1,5 +1,23 @@
 # Changelog
 
+## Unreleased — Outer Quays tile map, stage A
+- **New ground:** the Outer Quays is drawn from the generated seamless tiles instead of the old painted chunks. Each
+  tile gets a material from the map's roads (cobble, gravel), squares (stone plaza), zones (red-salt crust in the Salt
+  Yards, mud in the Wreckers' Camp, gravel and sand on the piers, cave floor at the caverns, grass and ash inland),
+  the coastline (beach) and noise. Borders are warped by noise so they look natural, textures are drawn at half size
+  to match character scale, and natural grounds use texture bombing so repeats don't show. Chunks build a few rows
+  per frame (about 5 ms) and nearby chunks ahead of time; the old painted chunk shows until a new one is ready.
+- **New sea:** deep water and a shallows band from the generated textures, slowly drifting, with the surf strip on
+  the waterline; it follows the live tide.
+- **Docks** use the plank texture; **roads** are part of the ground.
+- **Scenery:** trees, grass, reeds, shrubs, rocks, crates, lanterns, fixtures and loot chests use the new art, and
+  nine Quays buildings use the new facades (interiors unchanged). Wind sway and contact shadows now cover the new art.
+- **Natural edges:** a dense treeline along the north and down the sides, rubble near the shore; that band is solid.
+  The West Passage and Storm Gate stay open; every exit is reachable.
+- Layout, IDs, coordinates, quests and spawns are unchanged. Toggle: Options › Graphics › "New Outer Quays art".
+- The single-file build now inlines any staged art a module names in full (+5.6 MB).
+- QA: new `tiles` suite; 190/190 on both builds.
+
 ## Unreleased — Esc menu and Options
 - **Esc opens the menu** during play, on the last tab you used (Options the first time); Esc closes it. Esc on a
   settings page opened from Options returns to Options. Works in the harbor too (its own Esc used to open Controls).

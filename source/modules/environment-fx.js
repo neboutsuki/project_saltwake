@@ -8,7 +8,7 @@ const KEY='saltwake.envfx.v1';
 let cfg={wind:true,shadows:true,grade:true};try{Object.assign(cfg,JSON.parse(localStorage.getItem(KEY))||{})}catch{}
 const stats={swayed:0,shadowed:0};
 const FX=window.saltwakeEnvFx={stats,get settings(){return {...cfg}},set(p){Object.assign(cfg,p);try{localStorage.setItem(KEY,JSON.stringify(cfg))}catch{}return {...cfg}}};
-const FOLIAGE=/foliage\/|vegetation\/|ashen25d\/|grass|reed|scrub|flowers|bracken|brush|sapling|pine|tree|fern|weed/;
+const FOLIAGE=/foliage\/|vegetation\/|ashen25d\/|art\/trees\/|art\/plants\/|grass|reed|scrub|shrub|flowers|bracken|brush|sapling|pine|tree|fern|weed|kelp/;
 const NO_SHADOW=/foliage|vegetation|ashen25d|grass|reed|scrub|flowers|bracken|brush|actors\/|doorway|awning|rope-net|smoke|banner|sign|shore-debris|forest-debris|lantern/;
 function wind(){const G=window.SALTWAKE_DEV?.game;let w='calm';try{w=G?.climateState?.().weather.id||'calm'}catch{}return w==='squall'?2.3:w==='rain'?1.5:w==='fog'?.6:1}
 function swayAngle(key,x,h){const t=performance.now()/1000,str=wind();const tall=h>90;const amp=(tall?.018:.06)*str;const freq=tall?.9:1.7;
@@ -24,7 +24,7 @@ function cast(key,x,footY,w,h){if(!cfg.shadows||!CAST.test(key)||h<30)return;con
 if(typeof coastSprite==='function'){const base=coastSprite;
  coastSprite=function(key,x,footY,width,height,mirror=false){
   const foliage=FOLIAGE.test(key);cast(key,x,footY,width,height);
-  if(cfg.shadows&&!foliage&&!NO_SHADOW.test(key)&&key.startsWith('coast/props/'))contact(x,footY,width);
+  if(cfg.shadows&&!foliage&&!NO_SHADOW.test(key)&&(key.startsWith('coast/props/')||/^art\/(props|rocks)\//.test(key)))contact(x,footY,width);
   if(!cfg.wind||!foliage)return base.call(this,key,x,footY,width,height,mirror);
   const a=swayAngle(key,x,height);g.save();g.translate(x,footY);g.transform(1,0,-a,1,0,0);g.translate(-x,-footY);
   try{stats.swayed++;return base.call(this,key,x,footY,width,height,mirror)}finally{g.restore()}};}

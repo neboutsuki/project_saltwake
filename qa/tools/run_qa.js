@@ -11,6 +11,7 @@ try{suites.push(['quest',require('./quest_checks.js')])}catch(e){}
 try{suites.push(['dialogue',require('./dialogue_checks.js')])}catch(e){}
 try{suites.push(['art',require('./art_checks.js')])}catch(e){}
 try{suites.push(['menu',require('./menu_checks.js')])}catch(e){}
+try{suites.push(['tiles',require('./tiles_checks.js')])}catch(e){}
 try{suites.push(['systems',require('./systems_checks.js')])}catch(e){}
 (async()=>{const b=await chromium.launch({args:['--no-sandbox','--disable-dev-shm-usage']});
 const page=await b.newPage({viewport:{width:1280,height:800}});const errors=[];page.on('pageerror',e=>errors.push(String(e)));
