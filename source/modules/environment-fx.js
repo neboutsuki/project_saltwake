@@ -20,7 +20,7 @@ const sil=new Map();
 function silhouette(im){let c=sil.get(im);if(c)return c;c=document.createElement('canvas');c.width=im.width;c.height=im.height;const x=c.getContext('2d');x.drawImage(im,0,0);x.globalCompositeOperation='source-in';x.fillStyle='#0b0a0c';x.fillRect(0,0,c.width,c.height);sil.set(im,c);return c}
 const CAST=/foliage\/|ashen25d\/|vegetation\/(tall|short)-pine|coastal-pine|blossom-tree|props\/(lantern|banner|cargo-hoist|warning-bell|brazier|iron-bollard|anchor-sign|barrels|crates|bench|worktable|rope-cargo|small-cargo|noticeboard)|buildings\//;
 function cast(key,x,footY,w,h){if(!cfg.shadows||!CAST.test(key)||h<30)return;const im=SPRITES.image(key);if(!im||!im.width)return;const sc=Math.min(w/im.width,h/im.height),dw=im.width*sc,dh=im.height*sc;
- g.save();g.globalAlpha=h>120?.26:.3;g.translate(x,footY-2);g.transform(1,0,-.62,.42,0,0);g.drawImage(silhouette(im),-dw/2,-dh,dw,dh);g.restore();stats.cast=(stats.cast||0)+1}
+ const SH=window.saltwakeSky?.state.shadow||{shear:-.62,len:.42,alpha:.3};if(SH.alpha<.02)return;g.save();g.globalAlpha=SH.alpha*(h>120?.9:1);g.translate(x,footY-2);g.transform(1,0,SH.shear,SH.len,0,0);g.drawImage(silhouette(im),-dw/2,-dh,dw,dh);g.restore();stats.cast=(stats.cast||0)+1}
 if(typeof coastSprite==='function'){const base=coastSprite;
  coastSprite=function(key,x,footY,width,height,mirror=false){
   const foliage=FOLIAGE.test(key);cast(key,x,footY,width,height);
@@ -55,10 +55,17 @@ function ashLoop(t){requestAnimationFrame(ashLoop);const G=window.SALTWAKE_DEV?.
  const dt=lastT?Math.min(.05,(t-lastT)/1000):0;lastT=t;const w=wind();let cx=0,cy=0;
  if(G.raid&&G.camera){if(lastCam){cx=(G.camera.x-lastCam.x)*(G.camera.zoom||1);cy=(G.camera.y-lastCam.y)*(G.camera.zoom||1)}lastCam={x:G.camera.x,y:G.camera.y}}else lastCam=null;
  actx.clearRect(0,0,VW,VH);
- for(const f of flakes){f.ph+=dt*1.3;f.x+=(14*w+Math.sin(f.ph)*9)*f.z*dt-cx*f.z;f.y+=(16+8*f.z)*f.z*dt-cy*f.z;
+ const SK=window.saltwakeSky,K=SK?.state,ashK=SK?.ownsWeather?K.ash:1,wv=SK?.ownsWeather?K.wind:null;
+ for(const f of flakes){if(ashK<.05)break;if(f.z>ashK*1.3)continue;f.ph+=dt*1.3;f.x+=(14*(wv?wv.x*2.2:w)+Math.sin(f.ph)*9)*f.z*dt-cx*f.z;f.y+=(16+8*f.z)*f.z*dt-cy*f.z;
   if(f.y>VH+4){f.y=-4;f.x=rnd()*VW}if(f.y<-6)f.y=VH+4;if(f.x>VW+4)f.x=-4;if(f.x<-6)f.x=VW+4;
   if(f.ember){const a=.35+.3*Math.sin(f.ph*2.3);actx.fillStyle=`rgba(232,120,70,${a*f.z})`;actx.fillRect(f.x,f.y,f.s*1.1,f.s*1.1)}
   else{actx.fillStyle=`rgba(222,216,206,${.30+.4*f.z})`;actx.fillRect(f.x,f.y,f.s*f.z*1.5,f.s*f.z*1.2)}}
+ if(SK?.ownsWeather&&K.rain>.02){const n=Math.round(260*K.rain*(window.saltwakePerf?.density||1)),ang=Math.atan2(1,Math.max(-1.2,Math.min(1.2,K.wind.x*.55))),len=12+10*K.rain,ca=Math.cos(ang),sa=Math.sin(ang),tt=t/1000;
+  actx.strokeStyle=`rgba(196,210,222,${.16+.22*K.rain})`;actx.lineWidth=1;actx.beginPath();
+  for(let i=0;i<n;i++){const sx=((i*0.6180339)%1),sy=((i*0.7548776)%1),sp=620+260*((i*0.13)%1);let x=(sx*(VW+200)+tt*sp*ca*.9-cx*.6)%(VW+200),y=(sy*(VH+120)+tt*sp*sa-cy*.6)%(VH+120);if(x<0)x+=VW+200;if(y<0)y+=VH+120;x-=100;y-=60;actx.moveTo(x,y);actx.lineTo(x+ca*len,y+sa*len)}
+  actx.stroke();actx.strokeStyle=`rgba(205,218,228,${.25*K.rain})`;
+  for(let i=0;i<Math.round(40*K.rain);i++){const ph=(tt*2.2+i*0.37)%1,x=((i*0.31831+Math.floor(tt*2.2+i*0.37)*0.7071)%1)*VW,y=((i*0.5772+Math.floor(tt*2.2+i*0.37)*0.4142)%1)*VH,r=1+ph*5;actx.globalAlpha=1-ph;actx.beginPath();actx.ellipse(x,y,r,r*.4,0,0,Math.PI*2);actx.stroke()}
+  actx.globalAlpha=1;stats.rainFrames=(stats.rainFrames||0)+1}
  stats.ashFrames++}
 requestAnimationFrame(ashLoop);
 const hubStyle=document.createElement('style');document.head.append(hubStyle);const hubGrade=()=>{hubStyle.textContent=cfg.grade?'#reunionHarbor{filter:saturate(.78) sepia(.1) contrast(1.06) brightness(.97)}':''};hubGrade();const set0=FX.set;FX.set=p=>{const r=set0(p);hubGrade();return r};

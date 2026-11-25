@@ -1,5 +1,22 @@
 # Changelog
 
+## Unreleased — Time of day and weather
+- **Continuous day/night** (`source/modules/sky.js`): a sun model on the existing game clock with color keyframes for night, pre-dawn, dawn, morning, noon, golden hour, sunset and blue hour. Exposure and tint now change smoothly, where before there were only a few light steps (and a simple on/off night in the harbor). Bloom grows at night so lanterns and windows carry the scene. Dawn brings low ground mist.
+- **Sun-driven shadows:** cast shadows swing from west to east through the day, stretch long at dawn and dusk, fade under heavy cloud, and become faint moonlit shadows at night.
+- **Weather fronts blend:** the next weather now rolls in over the last in-game hour before it arrives instead of switching instantly. Gameplay modifiers (sight, hearing, spread, wetness, tide timing) are unchanged.
+- **Weather visuals** (GPU path):
+  - Wind drifts in direction and gusts, and is stronger in rain and squalls.
+  - Rain falls at the wind's angle, with splash ripples.
+  - Ground gets darker and shinier as rain builds wetness, then dries afterwards, faster in sun and wind.
+  - Fog drifts with the wind and is thicker lower on screen.
+  - Cloud shadows move across the ground on cloudy days.
+  - Squalls bring lightning flashes.
+  - Ashfall is heaviest under low cloud, thinner in clear weather, and stops in rain.
+  The original 2D weather overlays take over again if the GPU renderer is off.
+- **HUD:** the minimap line shows a sun or moon icon and the incoming front, for example "→☂ 2h".
+- QA now runs 119 checks, all passing (new `qa/tools/sky_checks.js`).
+
+
 ## Unreleased — Enhanced renderer
 - **GPU post-processing** (`source/modules/post-fx.js`, WebGL2): every frame of the field and the harbor is re-presented through pixel-art sharpening, bloom from lanterns, windows, fire and embers, tilt-shift depth of field (top and bottom of the screen soften so the scene reads as a lit diorama), a filmic ashen grade (drained mid-tones, cool slate shadows, warm ember highlights), a vignette and fine film grain. The source canvases still render and take input underneath. If the GPU path fails it switches itself off, and the old 2D/CSS grade takes over again. Each effect can be toggled in Graphics & Performance.
 - **Projected shadows:** trees, lanterns, banners, cargo, barrels and similar props cast their actual silhouette along a low sun direction, in addition to the existing contact shadows.

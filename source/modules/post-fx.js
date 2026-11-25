@@ -28,22 +28,35 @@ precision mediump float;in vec2 uv;out vec4 o;uniform sampler2D src;uniform vec2
 void main(){vec3 c=texture(src,uv).rgb*.227;c+=(texture(src,uv+dir*1.385).rgb+texture(src,uv-dir*1.385).rgb)*.316;c+=(texture(src,uv+dir*3.231).rgb+texture(src,uv-dir*3.231).rgb)*.07;o=vec4(c,1.);}`;
 const FINAL=`#version 300 es
 precision highp float;in vec2 uv;out vec4 o;uniform sampler2D src;uniform sampler2D soft;uniform vec2 px;uniform float t;uniform vec4 fx;uniform vec2 res;
+uniform vec3 tint;uniform float expo;uniform vec4 wx;uniform vec2 wind;uniform vec2 cam;uniform float night;
 float h(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}
+float vn(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*vn(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}
 void main(){
  vec3 c=texture(src,uv).rgb;
  vec3 n=texture(src,uv+vec2(px.x,0)).rgb+texture(src,uv-vec2(px.x,0)).rgb+texture(src,uv+vec2(0,px.y)).rgb+texture(src,uv-vec2(0,px.y)).rgb;
  c=clamp(c+(c-n*.25)*.32,0.,1.);
  vec3 s=texture(soft,uv).rgb;
  float d=smoothstep(.26,.54,abs(uv.y-.5))*fx.x;c=mix(c,s,d*.62);
- vec3 b=max(s-vec3(.52),0.);float bl=dot(b,vec3(.33));c+=fx.y*(b*1.35+vec3(1.,.62,.32)*bl*.9);
+ // wx: x=fog y=wet z=flash w=cloud
+ vec2 wp=uv*vec2(res.x/res.y,1.)+cam;
+ float cs=fbm(wp*1.3-wind*t*.035);c*=1.-wx.w*.16*smoothstep(.35,.75,cs)*(1.-night);
+ float l0=dot(c,vec3(.299,.587,.114));
+ c*=1.-wx.y*.14*(1.-l0);c+=wx.y*pow(l0,3.)*.22*vec3(.85,.9,1.);
+ float th=.52-.06*night;vec3 b=max(s-vec3(th),0.);float bl=dot(b,vec3(.33));c+=fx.y*(b*(1.35+night*.25)+vec3(1.,.62,.32)*bl*(.9+night*.3));
+ c*=tint*expo;
+ float fg=fbm(wp*vec2(2.2,3.4)+vec2(-wind.x,wind.y)*t*.06+t*.01);float fd=wx.x*(.3+.7*fg)*(.65+.35*uv.y);
+ c=mix(c,vec3(.6,.64,.66)*tint*expo*1.05,clamp(fd*.62,0.,.8));
  float l=dot(c,vec3(.299,.587,.114));
  c=mix(vec3(l),c,.84);
  c=c*c*(3.-2.*c)*.28+c*.72;
  c+=vec3(-.012,.0,.022)*(1.-smoothstep(0.,.45,l));
  c+=vec3(.03,.012,-.02)*smoothstep(.55,1.,l);
- vec2 q=uv-.5;c*=1.-dot(q,q)*.75;
+ c+=wx.z*vec3(.78,.84,1.)*.45;
+ vec2 q=uv-.5;c*=1.-dot(q,q)*(.75+night*.2);
  c+=(h(uv*res+fract(t))-.5)*.035*fx.z;
  o=vec4(c,1.);}`;
+const lerp1=(a,b,t)=>a+(b-a)*t;
 function prog(vs,fs){const p=gl.createProgram();for(const [type,src] of [[gl.VERTEX_SHADER,vs],[gl.FRAGMENT_SHADER,fs]]){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));gl.attachShader(p,s)}gl.bindAttribLocation(p,0,'p');gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));return p}
 let P1,P2,P3;try{P1=prog(VS,DOWN);P2=prog(VS,BLUR);P3=prog(VS,FINAL)}catch(e){stats.errors++;console.warn('post-fx disabled',e);return}
 const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
@@ -73,7 +86,7 @@ function frame(t){requestAnimationFrame(frame);const G=window.SALTWAKE_DEV?.game
    pass(P2,A,A.w,A.h,p=>{gl.bindTexture(gl.TEXTURE_2D,B.t);gl.uniform1i(u(p,'src'),0);gl.uniform2f(u(p,'dir'),0,(1+i)/A.h)})}
   pass(P3,null,W,H,p=>{gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,A.t);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,srcT);
    gl.uniform1i(u(p,'src'),0);gl.uniform1i(u(p,'soft'),1);gl.uniform2f(u(p,'px'),1/src.width,1/src.height);gl.uniform1f(u(p,'t'),t/1000);gl.uniform2f(u(p,'res'),W,H);
-   gl.uniform4f(u(p,'fx'),cfg.tilt?1:0,cfg.bloom?1:0,cfg.grain?1:0,0)});
+   gl.uniform4f(u(p,'fx'),cfg.tilt?1:0,cfg.bloom?1:0,cfg.grain?1:0,0);const K=window.saltwakeSky?.state,GG=window.SALTWAKE_DEV?.game,field=src===document.getElementById('world');const ex=K?(field?lerp1(1,K.expo,.4):lerp1(1,K.expo,.75-.68*K.night)):1;gl.uniform3f(u(p,'tint'),...(K?K.tint.map(v=>lerp1(1,v,field?.75:1-.55*K.night)):[1,1,1]));gl.uniform1f(u(p,'expo'),ex);gl.uniform4f(u(p,'wx'),K?.fog||0,K?.wet||0,K?.flash||0,K?.cloud||0);gl.uniform2f(u(p,'wind'),K?.wind.x||0,K?.wind.y||0);gl.uniform1f(u(p,'night'),K?.night||0);gl.uniform2f(u(p,'cam'),field&&GG?.camera?GG.camera.x/1100:0,field&&GG?.camera?GG.camera.y/1100:0)});
   if(cv.hidden)cv.hidden=false;active=true;stats.frames++;stats.source=src===document.getElementById('world')?'field':'harbor';
  }catch(e){stats.errors++;if(stats.errors>30){cfg.on=false;sync()}}
  stats.ms=stats.ms*.9+(performance.now()-t0)*.1}

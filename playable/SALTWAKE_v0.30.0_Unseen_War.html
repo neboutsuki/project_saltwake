@@ -3307,7 +3307,7 @@ Object.assign(Game.prototype,{
 const climatePriorRender=Game.prototype.render;
 Game.prototype.render=function(now){
  climatePriorRender.call(this,now);
- if(this.mode!=='play')return;
+ if(this.mode!=='play'||window.saltwakeSky?.ownsWeather)return;
  const {weather,period}=this.climateState(),phase=now*.001;
  g.save();g.setTransform(1,0,0,1,0,0);
  if(weather.id==='fog'){
@@ -3458,7 +3458,7 @@ Object.assign(Game.prototype,{
   const label=lit?'◉ LANTERN ON':'○ LANTERN OFF';if(s.textContent!==label)s.textContent=label;
  },
  drawCoastalAtmosphere(now){
-  if(this.mode!=='play')return;
+  if(this.mode!=='play'||window.saltwakeSky?.ownsWeather)return;
   const climate=this.climateState(),w=climate.weather.id;
   const fog=w==='fog',storm=w==='squall',rain=w==='rain';
   const dark=this.climateLightAlpha(),time=now*.001;
@@ -4950,6 +4950,68 @@ const hurt=P.hurtEnemy;P.hurtEnemy=function(e,...a){const prior=e.dead,r=this.ra
 const end=P.endRaid;P.endRaid=function(success,...a){const r=this.raid,w=r?.war,remaining=r?.enemies.filter(e=>e.war&&alive(e)).length||0,out=end.call(this,success,...a);if(w&&!this.raid){const c=w.counts,summary={patrols:c.patrol_started||0,clashes:c.faction_casualty||0,retreats:c.retreat||0,claimed:c.salvage_claimed||0,survivors:remaining};if(success){this.save.flags.unseenWarLast=summary;this.store()}$('panel')?.querySelector('.panelBody')?.insertAdjacentHTML('beforeend',`<section class="alpha-report"><h3>Unseen War · Expedition activity</h3><p>${summary.patrols} patrols · ${summary.clashes} faction combat casualties · ${summary.retreats} retreats · ${summary.claimed} salvage claims · ${summary.survivors} surviving patrol members.</p><small>Activity recorded during this expedition only. Field actors reset on the next departure.</small></section>`)}return out};
 const action=P.doAction;P.doAction=function(a,n){const out=action.call(this,a,n);if(a==='alpha_fieldnotes')$('panel')?.querySelector('.alpha-report')?.insertAdjacentHTML('beforeend','<h3>The Unseen War</h3><p>Rare human scouts choose exterior routes, stop to ambush, fight other factions, retreat when hurt and may claim remains from faction combat. Cargo can be recovered if its carrier falls. Quest containers are never claimed by NPCs. No human patrols or Brineworn on the first expedition.</p>');return out};
 })();
+</script><script>/* SALTWAKE v0.34 — sky, time of day and weather presentation.
+ * Built on the existing deterministic climate (save.environment.clock, COAST_CLIMATE weather buckets and periods).
+ * Gameplay modifiers (sight, hearing, spread, wet rate, tide timing) are untouched; this layer only presents them:
+ *   - continuous sun model with colour keyframes (night, pre-dawn, dawn, morning, noon, golden hour, sunset, blue hour);
+ *   - weather fronts that blend into the next bucket over the final in-game hour instead of switching instantly;
+ *   - wind (direction drifts, gusts), rain with surface wetness that builds and dries, fog density, cloud cover,
+ *     lightning flashes in squalls, and ash intensity per weather;
+ *   - sun-driven cast-shadow direction/length/strength, consumed by environment-fx.
+ * The GPU renderer (post-fx) consumes window.saltwakeSky.state. When the GPU path is unavailable the original 2D
+ * weather overlays stay in charge (ownsWeather=false).
+ */
+(()=>{'use strict';
+const E=window.SALTWAKE_ENV||{weather:[],weatherIntervalMinutes:300};
+const LOOK={clear:{rain:0,fog:0,cloud:.08,wind:.35,ash:.55},overcast:{rain:0,fog:.1,cloud:.7,wind:.55,ash:1},fog:{rain:0,fog:1,cloud:.6,wind:.15,ash:.25},
+ rain:{rain:.6,fog:.22,cloud:.88,wind:.9,ash:.08},squall:{rain:1,fog:.3,cloud:1,wind:1.9,ash:0,storm:1}};
+// minute-of-day, tint rgb, exposure
+const KEYS=[[0,[.52,.62,.95],.66],[300,[.62,.64,.92],.7],[350,[1.12,.8,.74],.84],[430,[1.08,.96,.88],.95],[720,[1,1,1],1.02],[930,[1.17,.95,.76],1],
+ [1060,[1.22,.8,.6],.88],[1130,[.78,.74,.98],.74],[1220,[.52,.62,.95],.66],[1440,[.52,.62,.95],.66]];
+const lerp=(a,b,t)=>a+(b-a)*t,sm=t=>t*t*(3-2*t);
+function keyAt(m){for(let i=0;i<KEYS.length-1;i++){const [a,ca,ea]=KEYS[i],[b,cb,eb]=KEYS[i+1];if(m>=a&&m<=b){const t=sm((m-a)/(b-a||1));return {tint:ca.map((v,k)=>lerp(v,cb[k],t)),expo:lerp(ea,eb,t)}}}return {tint:[1,1,1],expo:1}}
+const S={minute:0,sunElev:0,tint:[1,1,1],expo:1,night:0,weather:'clear',next:'clear',blend:0,rain:0,fog:0,cloud:0,ash:1,wind:{x:.35,y:.05,s:.35},wet:0,flash:0,
+ shadow:{shear:-.62,len:.42,alpha:.3},label:'',icon:'☀'};
+let ownsWeather=false;
+const SKY=window.saltwakeSky={state:S,get ownsWeather(){return ownsWeather},forecast,stats:{ticks:0,flashes:0}};
+function weatherAt(G,clock){try{return G.climateWeather(clock)}catch{return E.weather[0]}}
+function forecast(G=window.SALTWAKE_DEV?.game){if(!G)return null;const c=G.climateClock(),iv=E.weatherIntervalMinutes||300,left=iv-((c%iv)+iv)%iv;const nw=weatherAt(G,c+left+1);return {next:nw,inMinutes:Math.round(left)}}
+let last=0,gust=0,windA=.15,nextFlash=0;
+function tick(t){requestAnimationFrame(tick);const G=window.SALTWAKE_DEV?.game;if(!G?.climateClock)return;
+ const dt=last?Math.min(.1,(t-last)/1000):0;last=t;SKY.stats.ticks++;
+ ownsWeather=!!window.saltwakePost?.active;
+ const clock=G.climateClock(),m=((clock%1440)+1440)%1440;S.minute=m;
+ // Sun: rises ~05:30, sets ~18:30; elevation 0..1.
+ const day=(m-330)/780;S.sunElev=day>0&&day<1?Math.sin(day*Math.PI):0;
+ const k=keyAt(m);
+ // Weather blend: the next bucket's front rolls in over the last 60 in-game minutes.
+ const iv=E.weatherIntervalMinutes||300,pos=((clock%iv)+iv)%iv,override=G.raid?.weatherOverride;
+ const cur=G.climateState().weather,nxt=override?cur:weatherAt(G,clock+(iv-pos)+1);const b=override?0:sm(Math.max(0,(pos-(iv-60))/60));
+ S.weather=cur.id;S.next=nxt.id;S.blend=b;const A=LOOK[cur.id]||LOOK.clear,B=LOOK[nxt.id]||LOOK.clear,mix=key=>lerp(A[key]||0,B[key]||0,b);
+ S.rain=mix('rain');S.cloud=mix('cloud');S.ash=mix('ash');const storm=mix('storm');
+ const mist=(m>300&&m<480)?sm(1-Math.abs(m-390)/90)*.35:0;S.fog=Math.min(1,mix('fog')+mist);
+ // Clouds flatten colour and light.
+ S.night=1-sm(Math.min(1,S.sunElev*3));
+ S.tint=k.tint.map((v,i)=>lerp(v,[.86,.9,.95][i],S.cloud*.55));S.expo=k.expo*(1-.14*S.cloud)*(1-.06*S.rain);
+ // Wind: slowly wandering direction, weather strength, gusts.
+ windA+=(Math.sin(t/23000)*.002+(Math.random()-.5)*.0015);gust+=(Math.random()-.5)*dt*1.4;gust*=.985;const ws=mix('wind')*(1+Math.max(-.4,Math.min(.6,gust)));
+ S.wind={x:Math.cos(windA)*ws,y:Math.sin(windA)*ws*.35,s:ws};
+ // Surface wetness builds in rain and dries slowly afterwards (faster in sun and wind).
+ S.wet=Math.max(0,Math.min(1,S.wet+dt*(S.rain>.05?S.rain*.08:-(.006+.01*S.sunElev+.004*ws))));
+ // Lightning in squall fronts.
+ if(storm>.2&&t>nextFlash){S.flash=.9+Math.random()*.4;nextFlash=t+5000+Math.random()*9000/storm;SKY.stats.flashes++}
+ S.flash=Math.max(0,S.flash-dt*3.2);
+ // Sun-driven cast shadows: swing west→east through the day; long at dawn/dusk; faint under cloud; moonlit at night.
+ const az=Math.max(-1,Math.min(1,(m-720)/390));S.shadow={shear:-az*.95-.1,len:.28+(1-S.sunElev)*.5,alpha:S.sunElev>0?(.16+.2*S.sunElev)*(1-.7*S.cloud):.07};
+ S.icon=S.sunElev>.05?(S.cloud>.6?'☁':'☀'):'☾';
+}
+requestAnimationFrame(tick);
+// HUD: sun/moon glyph and the incoming front in the minimap info line.
+const P=Game.prototype,hud=P.hud;let lastF='';
+P.hud=function(...a){const out=hud.apply(this,a);const info=document.getElementById('swMapInfo');if(info){const f=forecast(this);const sig=S.icon+'|'+(f?.next?.id||'')+(f?Math.ceil(f.inMinutes/60):'');
+ let el=document.getElementById('swSkyInfo');if(!el){el=document.createElement('span');el.id='swSkyInfo';info.prepend(el)}
+ if(sig!==lastF){lastF=sig;const cur=this.climateState().weather;el.innerHTML=`<span title="${S.sunElev>0?'Sun':'Moon'}">${S.icon}</span>`+(f&&f.next.id!==cur.id?`<span style="opacity:.75" title="Incoming: ${f.next.name}">→${f.next.icon} ${Math.max(1,Math.ceil(f.inMinutes/60))}h</span>`:'')}}return out};
+})();
 </script><script>/* SALTWAKE v0.32 — camera system.
  * Smooth damped follow, aim/movement look-ahead, player-controlled zoom (mouse wheel over the world, or - / =),
  * and trauma-based screen shake on damage. Plugs into the native render through Game.prototype.cameraFrame;
@@ -5017,7 +5079,7 @@ const sil=new Map();
 function silhouette(im){let c=sil.get(im);if(c)return c;c=document.createElement('canvas');c.width=im.width;c.height=im.height;const x=c.getContext('2d');x.drawImage(im,0,0);x.globalCompositeOperation='source-in';x.fillStyle='#0b0a0c';x.fillRect(0,0,c.width,c.height);sil.set(im,c);return c}
 const CAST=/foliage\/|ashen25d\/|vegetation\/(tall|short)-pine|coastal-pine|blossom-tree|props\/(lantern|banner|cargo-hoist|warning-bell|brazier|iron-bollard|anchor-sign|barrels|crates|bench|worktable|rope-cargo|small-cargo|noticeboard)|buildings\//;
 function cast(key,x,footY,w,h){if(!cfg.shadows||!CAST.test(key)||h<30)return;const im=SPRITES.image(key);if(!im||!im.width)return;const sc=Math.min(w/im.width,h/im.height),dw=im.width*sc,dh=im.height*sc;
- g.save();g.globalAlpha=h>120?.26:.3;g.translate(x,footY-2);g.transform(1,0,-.62,.42,0,0);g.drawImage(silhouette(im),-dw/2,-dh,dw,dh);g.restore();stats.cast=(stats.cast||0)+1}
+ const SH=window.saltwakeSky?.state.shadow||{shear:-.62,len:.42,alpha:.3};if(SH.alpha<.02)return;g.save();g.globalAlpha=SH.alpha*(h>120?.9:1);g.translate(x,footY-2);g.transform(1,0,SH.shear,SH.len,0,0);g.drawImage(silhouette(im),-dw/2,-dh,dw,dh);g.restore();stats.cast=(stats.cast||0)+1}
 if(typeof coastSprite==='function'){const base=coastSprite;
  coastSprite=function(key,x,footY,width,height,mirror=false){
   const foliage=FOLIAGE.test(key);cast(key,x,footY,width,height);
@@ -5052,10 +5114,17 @@ function ashLoop(t){requestAnimationFrame(ashLoop);const G=window.SALTWAKE_DEV?.
  const dt=lastT?Math.min(.05,(t-lastT)/1000):0;lastT=t;const w=wind();let cx=0,cy=0;
  if(G.raid&&G.camera){if(lastCam){cx=(G.camera.x-lastCam.x)*(G.camera.zoom||1);cy=(G.camera.y-lastCam.y)*(G.camera.zoom||1)}lastCam={x:G.camera.x,y:G.camera.y}}else lastCam=null;
  actx.clearRect(0,0,VW,VH);
- for(const f of flakes){f.ph+=dt*1.3;f.x+=(14*w+Math.sin(f.ph)*9)*f.z*dt-cx*f.z;f.y+=(16+8*f.z)*f.z*dt-cy*f.z;
+ const SK=window.saltwakeSky,K=SK?.state,ashK=SK?.ownsWeather?K.ash:1,wv=SK?.ownsWeather?K.wind:null;
+ for(const f of flakes){if(ashK<.05)break;if(f.z>ashK*1.3)continue;f.ph+=dt*1.3;f.x+=(14*(wv?wv.x*2.2:w)+Math.sin(f.ph)*9)*f.z*dt-cx*f.z;f.y+=(16+8*f.z)*f.z*dt-cy*f.z;
   if(f.y>VH+4){f.y=-4;f.x=rnd()*VW}if(f.y<-6)f.y=VH+4;if(f.x>VW+4)f.x=-4;if(f.x<-6)f.x=VW+4;
   if(f.ember){const a=.35+.3*Math.sin(f.ph*2.3);actx.fillStyle=`rgba(232,120,70,${a*f.z})`;actx.fillRect(f.x,f.y,f.s*1.1,f.s*1.1)}
   else{actx.fillStyle=`rgba(222,216,206,${.30+.4*f.z})`;actx.fillRect(f.x,f.y,f.s*f.z*1.5,f.s*f.z*1.2)}}
+ if(SK?.ownsWeather&&K.rain>.02){const n=Math.round(260*K.rain*(window.saltwakePerf?.density||1)),ang=Math.atan2(1,Math.max(-1.2,Math.min(1.2,K.wind.x*.55))),len=12+10*K.rain,ca=Math.cos(ang),sa=Math.sin(ang),tt=t/1000;
+  actx.strokeStyle=`rgba(196,210,222,${.16+.22*K.rain})`;actx.lineWidth=1;actx.beginPath();
+  for(let i=0;i<n;i++){const sx=((i*0.6180339)%1),sy=((i*0.7548776)%1),sp=620+260*((i*0.13)%1);let x=(sx*(VW+200)+tt*sp*ca*.9-cx*.6)%(VW+200),y=(sy*(VH+120)+tt*sp*sa-cy*.6)%(VH+120);if(x<0)x+=VW+200;if(y<0)y+=VH+120;x-=100;y-=60;actx.moveTo(x,y);actx.lineTo(x+ca*len,y+sa*len)}
+  actx.stroke();actx.strokeStyle=`rgba(205,218,228,${.25*K.rain})`;
+  for(let i=0;i<Math.round(40*K.rain);i++){const ph=(tt*2.2+i*0.37)%1,x=((i*0.31831+Math.floor(tt*2.2+i*0.37)*0.7071)%1)*VW,y=((i*0.5772+Math.floor(tt*2.2+i*0.37)*0.4142)%1)*VH,r=1+ph*5;actx.globalAlpha=1-ph;actx.beginPath();actx.ellipse(x,y,r,r*.4,0,0,Math.PI*2);actx.stroke()}
+  actx.globalAlpha=1;stats.rainFrames=(stats.rainFrames||0)+1}
  stats.ashFrames++}
 requestAnimationFrame(ashLoop);
 const hubStyle=document.createElement('style');document.head.append(hubStyle);const hubGrade=()=>{hubStyle.textContent=cfg.grade?'#reunionHarbor{filter:saturate(.78) sepia(.1) contrast(1.06) brightness(.97)}':''};hubGrade();const set0=FX.set;FX.set=p=>{const r=set0(p);hubGrade();return r};
@@ -5488,22 +5557,35 @@ precision mediump float;in vec2 uv;out vec4 o;uniform sampler2D src;uniform vec2
 void main(){vec3 c=texture(src,uv).rgb*.227;c+=(texture(src,uv+dir*1.385).rgb+texture(src,uv-dir*1.385).rgb)*.316;c+=(texture(src,uv+dir*3.231).rgb+texture(src,uv-dir*3.231).rgb)*.07;o=vec4(c,1.);}`;
 const FINAL=`#version 300 es
 precision highp float;in vec2 uv;out vec4 o;uniform sampler2D src;uniform sampler2D soft;uniform vec2 px;uniform float t;uniform vec4 fx;uniform vec2 res;
+uniform vec3 tint;uniform float expo;uniform vec4 wx;uniform vec2 wind;uniform vec2 cam;uniform float night;
 float h(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}
+float vn(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*vn(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}
 void main(){
  vec3 c=texture(src,uv).rgb;
  vec3 n=texture(src,uv+vec2(px.x,0)).rgb+texture(src,uv-vec2(px.x,0)).rgb+texture(src,uv+vec2(0,px.y)).rgb+texture(src,uv-vec2(0,px.y)).rgb;
  c=clamp(c+(c-n*.25)*.32,0.,1.);
  vec3 s=texture(soft,uv).rgb;
  float d=smoothstep(.26,.54,abs(uv.y-.5))*fx.x;c=mix(c,s,d*.62);
- vec3 b=max(s-vec3(.52),0.);float bl=dot(b,vec3(.33));c+=fx.y*(b*1.35+vec3(1.,.62,.32)*bl*.9);
+ // wx: x=fog y=wet z=flash w=cloud
+ vec2 wp=uv*vec2(res.x/res.y,1.)+cam;
+ float cs=fbm(wp*1.3-wind*t*.035);c*=1.-wx.w*.16*smoothstep(.35,.75,cs)*(1.-night);
+ float l0=dot(c,vec3(.299,.587,.114));
+ c*=1.-wx.y*.14*(1.-l0);c+=wx.y*pow(l0,3.)*.22*vec3(.85,.9,1.);
+ float th=.52-.06*night;vec3 b=max(s-vec3(th),0.);float bl=dot(b,vec3(.33));c+=fx.y*(b*(1.35+night*.25)+vec3(1.,.62,.32)*bl*(.9+night*.3));
+ c*=tint*expo;
+ float fg=fbm(wp*vec2(2.2,3.4)+vec2(-wind.x,wind.y)*t*.06+t*.01);float fd=wx.x*(.3+.7*fg)*(.65+.35*uv.y);
+ c=mix(c,vec3(.6,.64,.66)*tint*expo*1.05,clamp(fd*.62,0.,.8));
  float l=dot(c,vec3(.299,.587,.114));
  c=mix(vec3(l),c,.84);
  c=c*c*(3.-2.*c)*.28+c*.72;
  c+=vec3(-.012,.0,.022)*(1.-smoothstep(0.,.45,l));
  c+=vec3(.03,.012,-.02)*smoothstep(.55,1.,l);
- vec2 q=uv-.5;c*=1.-dot(q,q)*.75;
+ c+=wx.z*vec3(.78,.84,1.)*.45;
+ vec2 q=uv-.5;c*=1.-dot(q,q)*(.75+night*.2);
  c+=(h(uv*res+fract(t))-.5)*.035*fx.z;
  o=vec4(c,1.);}`;
+const lerp1=(a,b,t)=>a+(b-a)*t;
 function prog(vs,fs){const p=gl.createProgram();for(const [type,src] of [[gl.VERTEX_SHADER,vs],[gl.FRAGMENT_SHADER,fs]]){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));gl.attachShader(p,s)}gl.bindAttribLocation(p,0,'p');gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));return p}
 let P1,P2,P3;try{P1=prog(VS,DOWN);P2=prog(VS,BLUR);P3=prog(VS,FINAL)}catch(e){stats.errors++;console.warn('post-fx disabled',e);return}
 const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
@@ -5533,7 +5615,7 @@ function frame(t){requestAnimationFrame(frame);const G=window.SALTWAKE_DEV?.game
    pass(P2,A,A.w,A.h,p=>{gl.bindTexture(gl.TEXTURE_2D,B.t);gl.uniform1i(u(p,'src'),0);gl.uniform2f(u(p,'dir'),0,(1+i)/A.h)})}
   pass(P3,null,W,H,p=>{gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,A.t);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,srcT);
    gl.uniform1i(u(p,'src'),0);gl.uniform1i(u(p,'soft'),1);gl.uniform2f(u(p,'px'),1/src.width,1/src.height);gl.uniform1f(u(p,'t'),t/1000);gl.uniform2f(u(p,'res'),W,H);
-   gl.uniform4f(u(p,'fx'),cfg.tilt?1:0,cfg.bloom?1:0,cfg.grain?1:0,0)});
+   gl.uniform4f(u(p,'fx'),cfg.tilt?1:0,cfg.bloom?1:0,cfg.grain?1:0,0);const K=window.saltwakeSky?.state,GG=window.SALTWAKE_DEV?.game,field=src===document.getElementById('world');const ex=K?(field?lerp1(1,K.expo,.4):lerp1(1,K.expo,.75-.68*K.night)):1;gl.uniform3f(u(p,'tint'),...(K?K.tint.map(v=>lerp1(1,v,field?.75:1-.55*K.night)):[1,1,1]));gl.uniform1f(u(p,'expo'),ex);gl.uniform4f(u(p,'wx'),K?.fog||0,K?.wet||0,K?.flash||0,K?.cloud||0);gl.uniform2f(u(p,'wind'),K?.wind.x||0,K?.wind.y||0);gl.uniform1f(u(p,'night'),K?.night||0);gl.uniform2f(u(p,'cam'),field&&GG?.camera?GG.camera.x/1100:0,field&&GG?.camera?GG.camera.y/1100:0)});
   if(cv.hidden)cv.hidden=false;active=true;stats.frames++;stats.source=src===document.getElementById('world')?'field':'harbor';
  }catch(e){stats.errors++;if(stats.errors>30){cfg.on=false;sync()}}
  stats.ms=stats.ms*.9+(performance.now()-t0)*.1}

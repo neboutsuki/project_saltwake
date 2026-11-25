@@ -3,6 +3,7 @@ const {chromium}=require('playwright');const fs=require('fs'),path=require('path
 const file=path.resolve(process.argv[2]||'playable/SALTWAKE_v0.30.0-alpha.1_Unseen_War.html');
 const out=process.argv[3]||file.replace(/\.html$/,'');
 const suites=[['legacy',require('./legacy_checks.js')]];
+try{suites.push(['sky',require('./sky_checks.js')])}catch(e){}
 try{suites.push(['v031',require('./v031_checks.js')])}catch(e){}
 try{suites.push(['v030',require('./v030_checks.js')])}catch(e){}
 try{suites.push(['audit',require('./audit_checks.js')])}catch(e){}
