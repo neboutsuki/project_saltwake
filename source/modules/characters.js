@@ -114,14 +114,14 @@
     if (d < 1.5) { m.dist += d; if (d > .004) { m.last = now; m.since = now; } } m.x = x; m.y = y;
     const moving = now - m.last < 160, D = dir === 'side' ? (mirror ? 'left' : 'right') : dir === 'back' ? 'up' : 'down';
     // still for a while at their post: work; walking up/down: walk strip; sideways: side idle with a small step bob
-    const action = moving ? (D === 'up' || D === 'down' ? 'walk' : 'idle') : now - m.since > 1500 ? 'work' : 'idle';
-    const s = strip(who, action, action === 'work' ? 'down' : D); if (!s) return false;
+    const action = moving && (D === 'up' || D === 'down') ? 'walk' : 'idle';   // work strips are kept for UI stickers, not the world
+    const s = strip(who, action, D); if (!s) return false;
     const fr = action === 'walk' ? Math.floor(m.dist / .16) % s.frames : Math.floor(now / s.ms) % s.frames;
     const bob = moving && action === 'idle' ? Math.abs(Math.sin(m.dist / .16 * Math.PI)) * h * .03 : 0;
     blit(ctx, s, fr, x, y - bob, h * FW / 52);
     C.stats.npc = (C.stats.npc || 0) + 1; return true;
   }
-  C.npcAction = who => { const m = npcMotion[who]; if (!m) return null; const now = performance.now(); return now - m.last < 160 ? 'moving' : now - m.since > 1500 ? 'work' : 'idle'; };
+  C.npcAction = who => { const m = npcMotion[who]; if (!m) return null; return performance.now() - m.last < 160 ? 'moving' : 'idle'; };
   function wrapFaces() {
     const F = window.saltwakeFaces; if (!F || F.__cast || typeof F.render !== 'function') return; const r = F.render;
     const prof = F.profile;

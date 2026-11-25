@@ -1,6 +1,6 @@
 /* SALTWAKE dialogue presentation (v0.31).
  * Replaces the panel-style conversation with a speech box that floats above the speaker's head, with portraits:
- * the speaker's face on the LEFT, the player's face on the RIGHT. The active side is lit; the other is dimmed.
+ * the speaker's face on the LEFT (no player portrait). The face is lit while they talk and dims while you choose.
  * The existing dialogue engine stays authoritative: world dialogues, choose(), quest emits, actions and close()
  * are unchanged; only dialogueView() is replaced.
  *
@@ -83,7 +83,7 @@
     const npc = d.npc, choices = node.choices || [];
     // No close button: leaving is a line you say. Nodes without a plain exit get a natural farewell.
     const hasExit = choices.some(c => !c.next && !c.action);
-    const np = D.npcPortrait(npc, node.mood), pp = D.playerPortrait(this);
+    const np = D.npcPortrait(npc, node.mood);
     this.open(npc.name, '');                                   // keeps pause, focus trap, Esc and inert HUD
     const layer = document.getElementById('panelLayer'), panel = document.getElementById('panel');
     layer.classList.add('sw-dialogue'); panel.dataset.section = 'dialogue';
@@ -99,13 +99,11 @@
             `<button type="button" data-act="close" class="farewell"><kbd>${choices.length + 1}</kbd>${esc(farewell(npc, d.node))}</button>`}</div>
           <footer class="swHint">Space · continue</footer>
         </div>
-        <figure class="swFace player ${pp.found ? '' : 'placeholder'}"><img alt="" src="${pp.src}"></figure>
       </div>`;
     const box = panel, line = panel.querySelector('.swLine'), list = panel.querySelector('.swChoices');
     const showChoices = () => {
       list.hidden = false;
       panel.querySelector('.swFace.npc').classList.remove('speaking');
-      panel.querySelector('.swFace.player').classList.add('speaking');
       const total = choices.length + (hasExit ? 0 : 1);
       panel.querySelector('.swHint').textContent = total > 1 ? '1–' + Math.min(9, total) + ' · choose' : 'Space · continue';
       place(box, D.anchor);
@@ -161,7 +159,7 @@
   ${Q}{position:fixed!important;right:auto!important;bottom:auto!important;transform:none!important;margin:0!important;display:block!important;
     width:min(660px,calc(100vw - 24px))!important;height:auto!important;max-height:none!important;min-height:0!important;
     padding:0!important;overflow:visible!important;pointer-events:auto;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-  ${Q} .swDlg{display:grid;grid-template-columns:84px 1fr 84px;gap:10px;align-items:end;position:relative;background:transparent!important}
+  ${Q} .swDlg{display:grid;grid-template-columns:84px 1fr;gap:10px;align-items:end;position:relative;background:transparent!important}
   ${Q} .swDlgBody{position:relative;background:rgba(246,244,239,.74)!important;border:1px solid rgba(255,255,255,.75);border-radius:12px;
     padding:10px 14px 8px;box-shadow:0 8px 28px rgba(0,0,0,.35);color:#1c2224;min-height:84px;
     backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
@@ -185,9 +183,8 @@
     border:2px solid rgba(246,244,239,.55);box-shadow:0 6px 18px rgba(0,0,0,.4);transition:filter .2s,opacity .2s,transform .2s;
     filter:grayscale(.6) brightness(.55);opacity:.85}
   ${Q} .swFace img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated;display:block}
-  ${Q} .swFace.player img{transform:scaleX(-1)}
   ${Q} .swFace.speaking{filter:none;opacity:1;transform:translateY(-3px);border-color:rgba(255,255,255,.95)}
-  @media (max-width:560px){${Q} .swDlg{grid-template-columns:56px 1fr 56px}${Q} .swFace{width:56px;height:56px}}
+  @media (max-width:560px){${Q} .swDlg{grid-template-columns:56px 1fr}${Q} .swFace{width:56px;height:56px}}
   @media (prefers-reduced-motion:reduce){${Q} .swFace{transition:none}}`;
   document.head.appendChild(css);
 })();
