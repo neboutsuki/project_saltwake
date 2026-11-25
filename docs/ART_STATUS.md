@@ -1,6 +1,6 @@
 # Art status (written by tools/import_art.py)
 
-## P1: 189/207 delivered
+## P1: 189/220 delivered
 - [ ] `characters/player_male.png`
 - [ ] `characters/player_female.png`
 - [ ] `characters/smith.png`
@@ -19,6 +19,19 @@
 - [ ] `monsters/brineworn_caller.png`
 - [ ] `monsters/brineworn_breaker.png`
 - [ ] `bosses/tidemaw.png`
+- [ ] `portraits/n_dockmaster.png`
+- [ ] `portraits/n_clerk.png`
+- [ ] `portraits/n_quartermaster.png`
+- [ ] `portraits/n_mechanic.png`
+- [ ] `portraits/n_medic.png`
+- [ ] `portraits/n_guard.png`
+- [ ] `portraits/n_salvager.png`
+- [ ] `portraits/n_ropewright.png`
+- [ ] `portraits/n_tidepilot.png`
+- [ ] `portraits/n_apprentice.png`
+- [ ] `portraits/n_crewhand.png`
+- [ ] `portraits/player_male.png`
+- [ ] `portraits/player_female.png`
 
 ## P2: 51/68 delivered
 - [ ] `tiles/transitions_<a>_<b>.png`
@@ -46,10 +59,114 @@
 - [ ] `bosses/salt_wyrm.png`
 - [ ] `keyart/bestiary_portrait_<monster>.png`
 
-## Extra files not on the list: 35
+## Extra files not on the list: 139
 
 - `buildings/salvage_shed.png`
 - `buildings/utility_shack.png`
+- `characters/story/captain_elda_down_design.png`
+- `characters/story/captain_elda_down_idle.png`
+- `characters/story/captain_elda_down_walk.png`
+- `characters/story/captain_elda_left_design.png`
+- `characters/story/captain_elda_left_idle.png`
+- `characters/story/captain_elda_right_design.png`
+- `characters/story/captain_elda_right_idle.png`
+- `characters/story/captain_elda_up_design.png`
+- `characters/story/captain_elda_up_idle.png`
+- `characters/story/captain_elda_up_walk.png`
+- `characters/story/harlan_down_design.png`
+- `characters/story/harlan_down_idle.png`
+- `characters/story/harlan_down_walk.png`
+- `characters/story/harlan_left_design.png`
+- `characters/story/harlan_left_idle.png`
+- `characters/story/harlan_right_design.png`
+- `characters/story/harlan_right_idle.png`
+- `characters/story/harlan_up_design.png`
+- `characters/story/harlan_up_idle.png`
+- `characters/story/harlan_up_walk.png`
+- `characters/story/ivo_down_design.png`
+- `characters/story/ivo_down_idle.png`
+- `characters/story/ivo_down_walk.png`
+- `characters/story/ivo_left_design.png`
+- `characters/story/ivo_left_idle.png`
+- `characters/story/ivo_right_design.png`
+- `characters/story/ivo_right_idle.png`
+- `characters/story/ivo_up_design.png`
+- `characters/story/ivo_up_idle.png`
+- `characters/story/ivo_up_walk.png`
+- `characters/story/kade_down_design.png`
+- `characters/story/kade_down_idle.png`
+- `characters/story/kade_down_walk.png`
+- `characters/story/kade_left_design.png`
+- `characters/story/kade_left_idle.png`
+- `characters/story/kade_right_design.png`
+- `characters/story/kade_right_idle.png`
+- `characters/story/kade_up_design.png`
+- `characters/story/kade_up_idle.png`
+- `characters/story/kade_up_walk.png`
+- `characters/story/lira_down_design.png`
+- `characters/story/lira_down_idle.png`
+- `characters/story/lira_down_walk.png`
+- `characters/story/lira_left_design.png`
+- `characters/story/lira_left_idle.png`
+- `characters/story/lira_right_design.png`
+- `characters/story/lira_right_idle.png`
+- `characters/story/lira_up_design.png`
+- `characters/story/lira_up_idle.png`
+- `characters/story/lira_up_walk.png`
+- `characters/story/marin_down_design.png`
+- `characters/story/marin_down_idle.png`
+- `characters/story/marin_down_walk.png`
+- `characters/story/marin_left_design.png`
+- `characters/story/marin_left_idle.png`
+- `characters/story/marin_right_design.png`
+- `characters/story/marin_right_idle.png`
+- `characters/story/marin_up_design.png`
+- `characters/story/marin_up_idle.png`
+- `characters/story/marin_up_walk.png`
+- `characters/story/master_rook_down_design.png`
+- `characters/story/master_rook_down_idle.png`
+- `characters/story/master_rook_down_walk.png`
+- `characters/story/master_rook_left_design.png`
+- `characters/story/master_rook_left_idle.png`
+- `characters/story/master_rook_right_design.png`
+- `characters/story/master_rook_right_idle.png`
+- `characters/story/master_rook_up_design.png`
+- `characters/story/master_rook_up_idle.png`
+- `characters/story/master_rook_up_walk.png`
+- `characters/story/mira_down_design.png`
+- `characters/story/mira_down_idle.png`
+- `characters/story/mira_down_walk.png`
+- `characters/story/mira_left_design.png`
+- `characters/story/mira_left_idle.png`
+- `characters/story/mira_right_design.png`
+- `characters/story/mira_right_idle.png`
+- `characters/story/mira_up_design.png`
+- `characters/story/mira_up_idle.png`
+- `characters/story/mira_up_walk.png`
+- `characters/story/ren_kagari_down_walk.png`
+- `characters/story/ren_kagari_left_walk.png`
+- `characters/story/ren_kagari_right_walk.png`
+- `characters/story/ren_kagari_up_walk.png`
+- `characters/story/soren_down_design.png`
+- `characters/story/soren_down_idle.png`
+- `characters/story/soren_down_walk.png`
+- `characters/story/soren_left_design.png`
+- `characters/story/soren_left_idle.png`
+- `characters/story/soren_right_design.png`
+- `characters/story/soren_right_idle.png`
+- `characters/story/soren_up_design.png`
+- `characters/story/soren_up_idle.png`
+- `characters/story/soren_up_walk.png`
+- `characters/story/tess_down_design.png`
+- `characters/story/tess_down_idle.png`
+- `characters/story/tess_down_walk.png`
+- `characters/story/tess_left_design.png`
+- `characters/story/tess_left_idle.png`
+- `characters/story/tess_right_design.png`
+- `characters/story/tess_right_idle.png`
+- `characters/story/tess_up_design.png`
+- `characters/story/tess_up_idle.png`
+- `characters/story/tess_up_walk.png`
 - `props/broken_fence.png`
 - `props/cargo_platform.png`
 - `props/carpenter_workbench.png`

@@ -9224,5 +9224,1045 @@
   ],
   "pack": "art-v031",
   "sha256": "8c67ba5001622fb8ba53087e31db4ef0717d85197d338c68ed526b7b228fe1c6"
+ },
+ "art_new_art_characters_story_captain_elda_down_design": {
+  "path": "assets/art/characters/story/captain_elda_down_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/captain_elda_down_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "33b60e6490078f18dc871ef7156fc1ce8232f8fcab6ba8acc2bc1b5ae4a17812"
+ },
+ "art_new_art_characters_story_captain_elda_down_idle": {
+  "path": "assets/art/characters/story/captain_elda_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/captain_elda_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "53318779583c41d875372a22a0f073c786be591bed688d66e5a32e0be5dffe2d"
+ },
+ "art_new_art_characters_story_captain_elda_down_walk": {
+  "path": "assets/art/characters/story/captain_elda_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/captain_elda_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "ec183272caa7ab5a5bd9451769beb38ed4ae0a84f8f020286c43363c33f6ed40"
+ },
+ "art_new_art_characters_story_captain_elda_left_design": {
+  "path": "assets/art/characters/story/captain_elda_left_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/captain_elda_left_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "408db4954e26a66214a37af7d19f2ee84a32724ab2431643c30ebd46faa4d0e4"
+ },
+ "art_new_art_characters_story_captain_elda_left_idle": {
+  "path": "assets/art/characters/story/captain_elda_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/captain_elda_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "c6260b679fa91ff5563788bece3190ccc423edd3036fe6d1867a44dfe22c6487"
+ },
+ "art_new_art_characters_story_captain_elda_right_design": {
+  "path": "assets/art/characters/story/captain_elda_right_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/captain_elda_right_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "58f1b035fec123b2c0c2e31a45b615bbd40cb2d4a263ff40bac7b8703651a244"
+ },
+ "art_new_art_characters_story_captain_elda_right_idle": {
+  "path": "assets/art/characters/story/captain_elda_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/captain_elda_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "5c264fc81e2c15dc0507637d04240eb2e9333aad3701ceb1c3f29f56d192a66b"
+ },
+ "art_new_art_characters_story_captain_elda_up_design": {
+  "path": "assets/art/characters/story/captain_elda_up_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/captain_elda_up_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "c5d68f0a1bcb8af0ffd4415e9e199a56a94cd3ba829d371bd3224bef47899a6e"
+ },
+ "art_new_art_characters_story_captain_elda_up_idle": {
+  "path": "assets/art/characters/story/captain_elda_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/captain_elda_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "55b467b30d8c7b109f0589cff78c99c23252e9e23f92312b5d89bb343354b227"
+ },
+ "art_new_art_characters_story_captain_elda_up_walk": {
+  "path": "assets/art/characters/story/captain_elda_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/captain_elda_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "76b4a7afeea43292d56cb8da0fa84e04cad2c3b912013fa1cafe5c19d7a6a1a4"
+ },
+ "art_new_art_characters_story_harlan_down_design": {
+  "path": "assets/art/characters/story/harlan_down_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/harlan_down_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "6513ce79a9bd330a402dab304d3f02c58d98e244fb97f6e1d6b1a3e122c93e78"
+ },
+ "art_new_art_characters_story_harlan_down_idle": {
+  "path": "assets/art/characters/story/harlan_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/harlan_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "58769b3a00ad156206c936d85cddb5a26cd2c7f3d10735779a14db3ebd1767b3"
+ },
+ "art_new_art_characters_story_harlan_down_walk": {
+  "path": "assets/art/characters/story/harlan_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/harlan_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "624582e478753592459fb935faf3fa08e36f810f35ec1ad4cd39bdf1b3f28380"
+ },
+ "art_new_art_characters_story_harlan_left_design": {
+  "path": "assets/art/characters/story/harlan_left_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/harlan_left_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "58018b08c0c294087331b3cc5889bec07f8197c3e7d39ca30a9718965d72c1a9"
+ },
+ "art_new_art_characters_story_harlan_left_idle": {
+  "path": "assets/art/characters/story/harlan_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/harlan_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "b39b9cf31d6b6743ba2c2071ab5d948636cd2d55c30772a0fe4233a5ca8ef395"
+ },
+ "art_new_art_characters_story_harlan_right_design": {
+  "path": "assets/art/characters/story/harlan_right_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/harlan_right_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "5a8def60b0b6c20e5e97719dca58aa5429c4b198f20a6d858f40c5ef38cf3afa"
+ },
+ "art_new_art_characters_story_harlan_right_idle": {
+  "path": "assets/art/characters/story/harlan_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/harlan_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "2f36cfdc9dc286bbbb7e419312d902e312a7287e5adafe8b164eea71dcaaecaf"
+ },
+ "art_new_art_characters_story_harlan_up_design": {
+  "path": "assets/art/characters/story/harlan_up_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/harlan_up_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "6cf8c0b6f831e30815c47a92bf406a249e3203ee485846651a20700363dae047"
+ },
+ "art_new_art_characters_story_harlan_up_idle": {
+  "path": "assets/art/characters/story/harlan_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/harlan_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "a52c4f671b97b51e098e738419696bb0acb44e4eaa3d40c065f370d411ea34d9"
+ },
+ "art_new_art_characters_story_harlan_up_walk": {
+  "path": "assets/art/characters/story/harlan_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/harlan_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "192c97127f4184c6e02bf6fd3bfd2d77b81bf11e8d2a12da8ab47cd77962d826"
+ },
+ "art_new_art_characters_story_ivo_down_design": {
+  "path": "assets/art/characters/story/ivo_down_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ivo_down_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "9084c1e52fb840eca317e4d770934a980460f4ba5984a6f67754eb3bfc6c36ff"
+ },
+ "art_new_art_characters_story_ivo_down_idle": {
+  "path": "assets/art/characters/story/ivo_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ivo_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "7475c823d92e0018ea8b57e3f9fd74630980a88a04afc8358b93bd89863ea293"
+ },
+ "art_new_art_characters_story_ivo_down_walk": {
+  "path": "assets/art/characters/story/ivo_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ivo_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "a4d612fd2e457a15586fa9ef7a2b7a8c7549c2e3c5f4abbb66e25c9bf95ae3fe"
+ },
+ "art_new_art_characters_story_ivo_left_design": {
+  "path": "assets/art/characters/story/ivo_left_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ivo_left_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "9fed9078d8ac269b98f7049ad5702ec504796b179b042fe12fa3f3d4bb31fad4"
+ },
+ "art_new_art_characters_story_ivo_left_idle": {
+  "path": "assets/art/characters/story/ivo_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ivo_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "9c306f7545c463bf8bb4a19eebadcb0d0d4f341716420b7202bdd0d9ed491212"
+ },
+ "art_new_art_characters_story_ivo_right_design": {
+  "path": "assets/art/characters/story/ivo_right_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ivo_right_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "0b9e3cd7b8882634917c8e77450d4fd21720ae2adc37c7e049c32a8062dd715e"
+ },
+ "art_new_art_characters_story_ivo_right_idle": {
+  "path": "assets/art/characters/story/ivo_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ivo_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "93372f6a986df06fb974d97ad262a337269ec040cb53f703274aeb51460f6356"
+ },
+ "art_new_art_characters_story_ivo_up_design": {
+  "path": "assets/art/characters/story/ivo_up_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ivo_up_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "d0b927d0a4523493892ca70d1cdbbfe3868fc149d3ffcc740c02819ce8110e23"
+ },
+ "art_new_art_characters_story_ivo_up_idle": {
+  "path": "assets/art/characters/story/ivo_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ivo_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "476304888e08a82647fd957fffd522d992f4c7d9b5c5066ac2aae63ba6a2832a"
+ },
+ "art_new_art_characters_story_ivo_up_walk": {
+  "path": "assets/art/characters/story/ivo_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ivo_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "9430494ea37c9d7c36a903137db422e65c9e8e7d684046d80b811ff08b9e558d"
+ },
+ "art_new_art_characters_story_kade_down_design": {
+  "path": "assets/art/characters/story/kade_down_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/kade_down_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "b68b888097bcaf151eb63a91fd7e8a60764ffb41369b751e98d80f4b0058fbb9"
+ },
+ "art_new_art_characters_story_kade_down_idle": {
+  "path": "assets/art/characters/story/kade_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/kade_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "8fc84db4497251e5f33b6bd08202394947fb6dbbfc85d14c14ee958f5297dd8f"
+ },
+ "art_new_art_characters_story_kade_down_walk": {
+  "path": "assets/art/characters/story/kade_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/kade_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "6ecc7b145373e311bc87169e17a1a2ce974c8862b879de5301bcd9bdb796241f"
+ },
+ "art_new_art_characters_story_kade_left_design": {
+  "path": "assets/art/characters/story/kade_left_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/kade_left_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "dcc83795e082d3118d7d90adc9d20b4d347b6bfa43c45b37e1fef11c2efc21f5"
+ },
+ "art_new_art_characters_story_kade_left_idle": {
+  "path": "assets/art/characters/story/kade_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/kade_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "6504baa7ca24bb6e04b731f64e4fdd72ca318f796235fc70c825c1a1af7b0134"
+ },
+ "art_new_art_characters_story_kade_right_design": {
+  "path": "assets/art/characters/story/kade_right_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/kade_right_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "e7486539885b760856d98d997c84c40989498a7b2330aac5d34fcc697265a146"
+ },
+ "art_new_art_characters_story_kade_right_idle": {
+  "path": "assets/art/characters/story/kade_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/kade_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "0272b399013c8dcaf5455e909c0eaa3e74a814a9dc0a50a92ee386cca68b2d8f"
+ },
+ "art_new_art_characters_story_kade_up_design": {
+  "path": "assets/art/characters/story/kade_up_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/kade_up_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "033457d0aa29d859221ee721bbf99d0da1b782e490fe376bc7af94baa51a6024"
+ },
+ "art_new_art_characters_story_kade_up_idle": {
+  "path": "assets/art/characters/story/kade_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/kade_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "7d48ee3d1a255d1618d3186f77f0b6ce20fd5a21f61f9b2c52158033156ff61a"
+ },
+ "art_new_art_characters_story_kade_up_walk": {
+  "path": "assets/art/characters/story/kade_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/kade_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "037ac0508edf73511d1ede80b9f47451a36fa1b736137219479a26b3aa871fe9"
+ },
+ "art_new_art_characters_story_lira_down_design": {
+  "path": "assets/art/characters/story/lira_down_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/lira_down_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "d2c97a87a41968beb185a92d271657c22c74b4f76d1120b4f6b3aa4ed9735204"
+ },
+ "art_new_art_characters_story_lira_down_idle": {
+  "path": "assets/art/characters/story/lira_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/lira_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "514789ab24363d4ccb017878cc1443517caf2838c3640b5b19e4ff9535f058d3"
+ },
+ "art_new_art_characters_story_lira_down_walk": {
+  "path": "assets/art/characters/story/lira_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/lira_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "d622b5700f89e31571dfba5ba2a1ad45652bb44ecfa96ba12672f73dacbddf2f"
+ },
+ "art_new_art_characters_story_lira_left_design": {
+  "path": "assets/art/characters/story/lira_left_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/lira_left_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "34cea5b154c31f8dc2e865b05699f7edb9ed6778e18e5fecd17971ed711d725d"
+ },
+ "art_new_art_characters_story_lira_left_idle": {
+  "path": "assets/art/characters/story/lira_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/lira_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "38c8815c34dc93bb9ab0435f6d939fefb492c0f753c6aa47d58ed4d2020f0c7d"
+ },
+ "art_new_art_characters_story_lira_right_design": {
+  "path": "assets/art/characters/story/lira_right_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/lira_right_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "dd8a43513317be71b84503d20dbd1da55b299fc4983a772e6de3523fe3aa2ff2"
+ },
+ "art_new_art_characters_story_lira_right_idle": {
+  "path": "assets/art/characters/story/lira_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/lira_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "17dc2fcc7c6164c293900181461f605543e7480bd795d45bf7767631abcfa079"
+ },
+ "art_new_art_characters_story_lira_up_design": {
+  "path": "assets/art/characters/story/lira_up_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/lira_up_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "ee57b8c4f920f49e3f168bdb020eb4505648ee0e5c120ac901e7356a579e612a"
+ },
+ "art_new_art_characters_story_lira_up_idle": {
+  "path": "assets/art/characters/story/lira_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/lira_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "da1fc4946c853bc9508963a6e4aea6352aa5c7abbacf1bf5432a8c3a46273e66"
+ },
+ "art_new_art_characters_story_lira_up_walk": {
+  "path": "assets/art/characters/story/lira_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/lira_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "ac27680f4d653f33c8054cf4fe31b98a286f873a8f33bde50649a1c8e97c93f2"
+ },
+ "art_new_art_characters_story_marin_down_design": {
+  "path": "assets/art/characters/story/marin_down_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/marin_down_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "d419b1b33442cda4c5232607062c7da769c36e04788b4920fb4bbfc232f2539a"
+ },
+ "art_new_art_characters_story_marin_down_idle": {
+  "path": "assets/art/characters/story/marin_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/marin_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "cf68cf29b57170b7f113e1d74f92e4bb9cc72ed5125de72c07c421f91cd06127"
+ },
+ "art_new_art_characters_story_marin_down_walk": {
+  "path": "assets/art/characters/story/marin_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/marin_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "4c4e3e41103eaf61d122589799962e0f49e722b5da07801ee2c38f1485ec00a2"
+ },
+ "art_new_art_characters_story_marin_left_design": {
+  "path": "assets/art/characters/story/marin_left_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/marin_left_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "b78bd1cc4a1b401bb2d01b0a52c64094f77aeac560d1f3de9d4a13a22702660e"
+ },
+ "art_new_art_characters_story_marin_left_idle": {
+  "path": "assets/art/characters/story/marin_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/marin_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "9ead742909f374b8c1a94303f8a70891b131b0c05f359992793f3e11298db158"
+ },
+ "art_new_art_characters_story_marin_right_design": {
+  "path": "assets/art/characters/story/marin_right_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/marin_right_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "d20f69b585094987ec5cbf81add12ebf8d93839daa90b0025404214cdbdd57d1"
+ },
+ "art_new_art_characters_story_marin_right_idle": {
+  "path": "assets/art/characters/story/marin_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/marin_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "829f7e4f53b6936f6f136715e68778ad59df6a86cb4eb81ce00c127355683414"
+ },
+ "art_new_art_characters_story_marin_up_design": {
+  "path": "assets/art/characters/story/marin_up_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/marin_up_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "cd83750fe6885ce03d6ac7e0b36c5308c90726386a989ec3a149cac1807f1bcf"
+ },
+ "art_new_art_characters_story_marin_up_idle": {
+  "path": "assets/art/characters/story/marin_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/marin_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "6f6df15e55866071015f98300bb3b8410ed786e5b44fc0b496adb3ec54f67cb6"
+ },
+ "art_new_art_characters_story_marin_up_walk": {
+  "path": "assets/art/characters/story/marin_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/marin_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "e8b7620b51bd2a4a1ead522b69f22c5ddfdb3ac08762bb2b4edf55d31e3097a9"
+ },
+ "art_new_art_characters_story_master_rook_down_design": {
+  "path": "assets/art/characters/story/master_rook_down_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/master_rook_down_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "2475c077b4d1e8c3f826219c1e9c7f7032053b069294206274db54b2d85a2d2a"
+ },
+ "art_new_art_characters_story_master_rook_down_idle": {
+  "path": "assets/art/characters/story/master_rook_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/master_rook_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "3b8892c1c697c5409e135cf5c28c3169e7dfe821db7a970fe256893368fd56d6"
+ },
+ "art_new_art_characters_story_master_rook_down_walk": {
+  "path": "assets/art/characters/story/master_rook_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/master_rook_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "58444895eb3bd09c04dd3240f268af23c5928a6ca4bf5bc5c5320ff49003608c"
+ },
+ "art_new_art_characters_story_master_rook_left_design": {
+  "path": "assets/art/characters/story/master_rook_left_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/master_rook_left_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "bd29835f00cf9072c87890b7395d3c063a5e381b0c91fa4ec9fd72eb8e7f398d"
+ },
+ "art_new_art_characters_story_master_rook_left_idle": {
+  "path": "assets/art/characters/story/master_rook_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/master_rook_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "c13840d65a77df3288f79e7f84e3edbaf57411f84f2799b72ec2a1cdd9d7ff3f"
+ },
+ "art_new_art_characters_story_master_rook_right_design": {
+  "path": "assets/art/characters/story/master_rook_right_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/master_rook_right_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "635ce4ccdc6b0b360254f96a7e4697a1884d240cdfd6854402d89b2b9d3abbcf"
+ },
+ "art_new_art_characters_story_master_rook_right_idle": {
+  "path": "assets/art/characters/story/master_rook_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/master_rook_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "a9a485e15c280a5ec54a41a3b12a859c4b18b3f125ffdfe5addb479d8457329a"
+ },
+ "art_new_art_characters_story_master_rook_up_design": {
+  "path": "assets/art/characters/story/master_rook_up_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/master_rook_up_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "45ff881523261d8f77df406c0ea368a41e23c0e16d22faee80562371b7807022"
+ },
+ "art_new_art_characters_story_master_rook_up_idle": {
+  "path": "assets/art/characters/story/master_rook_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/master_rook_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "6d8466530d3d79e6ed9343ad715047581f8ee2a5b08a8207e7d0a6c795945bc0"
+ },
+ "art_new_art_characters_story_master_rook_up_walk": {
+  "path": "assets/art/characters/story/master_rook_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/master_rook_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "54d982510cfc5cf1fe2c571d4cc6681b927973e648e209bdc8bf8fe53c200f94"
+ },
+ "art_new_art_characters_story_mira_down_design": {
+  "path": "assets/art/characters/story/mira_down_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/mira_down_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "9087d16c30547a1f686653f0d9600c7405b0e95178d85d8317b4445f97136e07"
+ },
+ "art_new_art_characters_story_mira_down_idle": {
+  "path": "assets/art/characters/story/mira_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/mira_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "df9bccd432511684c49e76b369b8d844b737729aea4a66b291a980e51fc9126c"
+ },
+ "art_new_art_characters_story_mira_down_walk": {
+  "path": "assets/art/characters/story/mira_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/mira_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "c51ff36c16ae6a004d05635086053c2a8a466bb737d4a01a93489193c6d41d7b"
+ },
+ "art_new_art_characters_story_mira_left_design": {
+  "path": "assets/art/characters/story/mira_left_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/mira_left_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "27f15606e753294702d3443c7baf06476c359901ac2c7da5886face38f4e7ea1"
+ },
+ "art_new_art_characters_story_mira_left_idle": {
+  "path": "assets/art/characters/story/mira_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/mira_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "db09af06cd1b465c19a0b919e2535d78cead267fc27566f46b48f37b0ea642bd"
+ },
+ "art_new_art_characters_story_mira_right_design": {
+  "path": "assets/art/characters/story/mira_right_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/mira_right_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "e371d2b0f50bd37a681fc167461aa34d637cfb5ff74c5f6a16d775552b9113c8"
+ },
+ "art_new_art_characters_story_mira_right_idle": {
+  "path": "assets/art/characters/story/mira_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/mira_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "5bfb578f71e07ab9a461fa9e70340022a9bf4c9cc46d25ce61d46cc18460b8fa"
+ },
+ "art_new_art_characters_story_mira_up_design": {
+  "path": "assets/art/characters/story/mira_up_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/mira_up_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "606a6a72a029858b17e913c3de9d411fe89d93fd47de974f953522707e5c419f"
+ },
+ "art_new_art_characters_story_mira_up_idle": {
+  "path": "assets/art/characters/story/mira_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/mira_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "08918e123a9713932a1e1da620948fa814412d81f8444abe7c639703df377c5a"
+ },
+ "art_new_art_characters_story_mira_up_walk": {
+  "path": "assets/art/characters/story/mira_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/mira_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "835d211d4f8264a4f4198550b60983b8ce051f40b340baefbd08d9d3f09d591a"
+ },
+ "art_new_art_characters_story_ren_kagari_down_walk": {
+  "path": "assets/art/characters/story/ren_kagari_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ren_kagari_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "bcad732d5e1e22f6efa80818d6080d86859c58763e32b0b1d008b12092553344"
+ },
+ "art_new_art_characters_story_ren_kagari_left_walk": {
+  "path": "assets/art/characters/story/ren_kagari_left_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ren_kagari_left_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "e1274f652a2f0515a3bb26c5aa3c286060d6ebf1627360e4a92009b544e30dbf"
+ },
+ "art_new_art_characters_story_ren_kagari_right_walk": {
+  "path": "assets/art/characters/story/ren_kagari_right_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ren_kagari_right_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "f51ed2d88c923d055f6482079be86bd00599699a9ca3b0dacdf74cd228d81ec9"
+ },
+ "art_new_art_characters_story_ren_kagari_up_walk": {
+  "path": "assets/art/characters/story/ren_kagari_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ren_kagari_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "79bdca915402599d06bad7f0ead39937e9672e2985965ad196a777ba2552f1e6"
+ },
+ "art_new_art_characters_story_soren_down_design": {
+  "path": "assets/art/characters/story/soren_down_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/soren_down_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "0a191d5ae203b33c12d00942beb5c4df3eb7a9ae583344c2c5e9853c61263ba9"
+ },
+ "art_new_art_characters_story_soren_down_idle": {
+  "path": "assets/art/characters/story/soren_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/soren_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "bc3b89319cc005f9f77d52a91b0b7d397eeda444797c58f8b5af8cb0532ff6f5"
+ },
+ "art_new_art_characters_story_soren_down_walk": {
+  "path": "assets/art/characters/story/soren_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/soren_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "6326e04aa5a7e0a49fe9bc2d5ee2ad1b069b0083fe29bb57a18ca3bf5696f830"
+ },
+ "art_new_art_characters_story_soren_left_design": {
+  "path": "assets/art/characters/story/soren_left_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/soren_left_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "85e66cf31301a664d611e02305698d703a44239f41c037874f2411f39c2c5a91"
+ },
+ "art_new_art_characters_story_soren_left_idle": {
+  "path": "assets/art/characters/story/soren_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/soren_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "d15ffb7f8a0856f0ef85ef94edfba1e9b029342daa7f8ff494109553c08d4edf"
+ },
+ "art_new_art_characters_story_soren_right_design": {
+  "path": "assets/art/characters/story/soren_right_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/soren_right_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "57317fec7537c64b259455183288e232ef9e9f0db5789c328def5260c779da27"
+ },
+ "art_new_art_characters_story_soren_right_idle": {
+  "path": "assets/art/characters/story/soren_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/soren_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "4089b632476d8ac8ef484f3e9539c43f74a3d35611190c3feab287520bab15ec"
+ },
+ "art_new_art_characters_story_soren_up_design": {
+  "path": "assets/art/characters/story/soren_up_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/soren_up_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "5ee6cc9d7897a1cdeaff97a6a7962576d7c20718a2abc787dd78618780e72370"
+ },
+ "art_new_art_characters_story_soren_up_idle": {
+  "path": "assets/art/characters/story/soren_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/soren_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "e6c4323eb31c92780378caf77286ad9cb238a87083a0faa61b30708b2e2b52a6"
+ },
+ "art_new_art_characters_story_soren_up_walk": {
+  "path": "assets/art/characters/story/soren_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/soren_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "2d0e13ae82988155b16422231670b39731010037b71b52efa6a86adfad326778"
+ },
+ "art_new_art_characters_story_tess_down_design": {
+  "path": "assets/art/characters/story/tess_down_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/tess_down_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "dbde7dbbd8c7f4d6434226ee69ad6988bbd451e6cebb7ad131e45206a214e176"
+ },
+ "art_new_art_characters_story_tess_down_idle": {
+  "path": "assets/art/characters/story/tess_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/tess_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "89453475494437264e08001db2ae948537b0e574bb37213b48dc8e0e14ec32f4"
+ },
+ "art_new_art_characters_story_tess_down_walk": {
+  "path": "assets/art/characters/story/tess_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/tess_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "b55b266587c322cc4945d5a1222ed50c01e704f3a6a253ba82d5ff9540885958"
+ },
+ "art_new_art_characters_story_tess_left_design": {
+  "path": "assets/art/characters/story/tess_left_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/tess_left_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "e1acb93db59970152b22fa525a174f9ad149c54f4c5fa806f50f8d7638c6a3ad"
+ },
+ "art_new_art_characters_story_tess_left_idle": {
+  "path": "assets/art/characters/story/tess_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/tess_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "6551f165cb7547529b85cd33e731adcb871ea693108662592eb24e4883cecb5a"
+ },
+ "art_new_art_characters_story_tess_right_design": {
+  "path": "assets/art/characters/story/tess_right_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/tess_right_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "63aaf86e814b0d1ab8e584b978695012a0d5926323c101e3bc3ec3d15d7e81bb"
+ },
+ "art_new_art_characters_story_tess_right_idle": {
+  "path": "assets/art/characters/story/tess_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/tess_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "3dda090bcf79f76ff33a985f223dd7a5a02ba89a5eac4aa3a4f235907c253467"
+ },
+ "art_new_art_characters_story_tess_up_design": {
+  "path": "assets/art/characters/story/tess_up_design.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/tess_up_design"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "d4280a5faee2e64676c3be9fa1de6da892bc8e0bce8c382c5b5e170695558c3c"
+ },
+ "art_new_art_characters_story_tess_up_idle": {
+  "path": "assets/art/characters/story/tess_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/tess_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "598cf89d5a0658ec82093fd360e030ef285860726c3c15a92281b72092d25585"
+ },
+ "art_new_art_characters_story_tess_up_walk": {
+  "path": "assets/art/characters/story/tess_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/tess_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "140e17d1ac8155010505f9c3a510049e9742f3bd6f0200000ecca5c835f51807"
  }
 }

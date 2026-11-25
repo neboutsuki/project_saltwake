@@ -1,0 +1,73 @@
+{
+  "scope": "Named story character Ren; separate from generic player_male specification",
+  "animations": [
+    {
+      "file": "characters/story/ren_kagari_down_walk.png",
+      "character": "ren_kagari",
+      "action": "walk",
+      "direction": "down",
+      "frame_width": 64,
+      "frame_height": 64,
+      "frame_count": 6,
+      "layout": "horizontal",
+      "origin": [
+        32,
+        60
+      ],
+      "duration_ms_per_frame": 120,
+      "loop": true,
+      "status": "draft_visual_and_runtime_review_required"
+    },
+    {
+      "file": "characters/story/ren_kagari_up_walk.png",
+      "character": "ren_kagari",
+      "action": "walk",
+      "direction": "up",
+      "frame_width": 64,
+      "frame_height": 64,
+      "frame_count": 6,
+      "layout": "horizontal",
+      "origin": [
+        32,
+        60
+      ],
+      "duration_ms_per_frame": 120,
+      "loop": true,
+      "status": "draft_visual_and_runtime_review_required"
+    },
+    {
+      "file": "characters/story/ren_kagari_left_walk.png",
+      "character": "ren_kagari",
+      "action": "walk",
+      "direction": "left",
+      "frame_width": 64,
+      "frame_height": 64,
+      "frame_count": 6,
+      "layout": "horizontal",
+      "origin": [
+        32,
+        60
+      ],
+      "duration_ms_per_frame": 120,
+      "loop": true,
+      "status": "draft_visual_and_runtime_review_required"
+    },
+    {
+      "file": "characters/story/ren_kagari_right_walk.png",
+      "character": "ren_kagari",
+      "action": "walk",
+      "direction": "right",
+      "frame_width": 64,
+      "frame_height": 64,
+      "frame_count": 6,
+      "layout": "horizontal",
+      "origin": [
+        32,
+        60
+      ],
+      "duration_ms_per_frame": 120,
+      "loop": true,
+      "status": "draft_visual_and_runtime_review_required"
+    }
+  ]
+}

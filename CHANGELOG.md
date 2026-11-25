@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — Ren Kagari and the story cast
+- Imported the character art: Ren Kagari's 6-frame walk in 4 directions, and ten story characters (Captain Elda,
+  Harlan, Ivo, Kade, Lira, Marin, Master Rook, Mira, Soren, Tess) with 4-direction designs, 4-frame idles and
+  8-frame up/down walks (104 files, `assets/art/characters/story/`). The original Ren manifest and README are kept in
+  `docs/art_sources/`.
+- **Ren is the player** in the field and the harbor (`source/modules/characters.js`): faces the aim direction in the
+  field (movement direction in the harbor), walks with frame rate tied to distance, stands on walk frame 0 until idle
+  art exists, squashes during a dodge and flashes when hit. Toggle: Options › Graphics › "New character art (Ren)".
+- The story cast is registered (`saltwakeCast.draw`) for NPC use; it is not assigned to any NPC yet.
+- Characters and portraits import as live art; QA: new `cast` suite, 195/195.
+
 ## Unreleased — Outer Quays tile map, stage A
 - **New ground:** the Outer Quays is drawn from the generated seamless tiles instead of the old painted chunks. Each
   tile gets a material from the map's roads (cobble, gravel), squares (stone plaza), zones (red-salt crust in the Salt

@@ -21,8 +21,8 @@ DEST = ROOT / 'assets' / 'art'
 MANIFEST = ROOT / 'assets' / 'manifest.json'
 PACK = 'art-new'
 LIST = ROOT / 'docs' / 'asset_list.csv'
-SOFT_OK = ('tiles', 'icons', 'ui', 'vfx', 'portraits')  # may keep soft alpha edges
-LIVE = ('portraits', 'icons', 'vfx')  # categories the game already uses: inlined into the single-file build at once
+SOFT_OK = ('tiles', 'icons', 'ui', 'vfx', 'portraits', 'characters')  # may keep soft alpha edges
+LIVE = ('portraits', 'icons', 'vfx', 'characters')  # categories the game already uses: inlined into the single-file build at once
 
 
 def expected_sizes():
