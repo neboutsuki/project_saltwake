@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased — Systems pass and quest safety net
+- **Pack alert:** hurting a monster brings nearby monsters of the same kind into the fight (neutral prey excluded).
+- **Hit-stop:** heavy hits (18+ damage), part breaks and kills briefly slow the simulation so blows feel heavy.
+- **Danger cue:** the round minimap pulses red while an alerted monster is within about 13 tiles (icon-only HUD; a
+  steady ring with reduced motion).
+- **Quest integrity QA** (`qa/tools/quest_checks.js`, runs with every QA pass): every quest and expedition contract
+  must reference real NPCs, containers, interactables, exits, items, monsters and monster parts; prerequisites have no
+  cycles; field targets must be reachable; and every story quest is played start to finish through the real quest
+  engine (the save is restored afterwards). Map and art changes cannot silently break quests.
+- **Art import:** auto-resizes oversized images (nearest-neighbor), hardens soft sprite edges, records VFX frame
+  counts and writes `docs/ART_STATUS.md`. 288 generated art files imported as staged art.
+- QA: 134/134 (adds `quest` and `systems` suites).
+
 ## Unreleased — Split project build
 - New `tools/build_split.py` produces `dist/SALTWAKE/`: a plain `index.html` shell, 21 stylesheets in `css/`, 97 original code layers in `js/engine/`, the new systems in `js/modules/`, world data in `data/world.js`, and all 700 art files in `assets/`, referenced by relative path. It includes `play.bat` and `play.sh` launchers that start a local server, because browsers block canvas and WebGL pixel access for files opened from disk. QA passes 122/122 on both builds. `qa/tools/run_qa.js` now also accepts a URL.
 - `docs/GODOT_MIGRATION.md`: mapping of art, data and systems to a Godot port.
