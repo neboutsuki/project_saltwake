@@ -176,8 +176,45 @@ added over time:
   be severed, which removes the sweep and adds a carve.
 - Phase 3 (enraged at 35%): faster, adds ring bursts. The arena floods between waves.
 
+## 8. Rule: every map ends in a boss arena
+- **Every map's final area is a boss arena.** This applies to each story zone of the Red Salt Coast and to every
+  generated Drowned Isle. The map is built as a journey toward it: landing → exploration and tracking → the
+  approach (a tense, quieter stretch, signs of the boss, a last safe camp or supply cache) → **arena** → extraction
+  route opens.
+- **Arenas are hand-built, fixed set pieces,** even on generated islands. They are designed around their boss's
+  gimmicks: pillars to bait charges, cover from the ultimate, flood levels, light sources, throwable debris. The
+  generator places the arena furthest from the landing and builds the island's routes toward it.
+- **Story zones:** the arena boss is the zone's story boss the first time; afterwards it rotates with random roaming
+  bosses. **Isles:** the arena holds the contract's quarry, or a random boss on free landfall.
+- **Entering the arena commits you:** a gate, a collapse or a fog wall closes behind you. You can still use
+  consumables. Leaving means beating the boss or dying, so preparation matters.
+- After the boss dies, the **extraction route** opens (skiff, lift, or the tide receding) and the boss can be
+  carved.
+
+## 9. Checklist: "fun and difficult" (every boss must pass before it ships)
+1. **At least 3 attack families,** including at least one projectile pattern you must dodge through rather than
+   simply outrun.
+2. **Every damaging attack is telegraphed** (pose, ground marker or sound) with a reaction window of at least
+   0.35 s. A one-hit-kill ultimate gets a long, unmistakable wind-up and a clear counterplay.
+3. **At least 2 gimmicks** that turn the boss's own actions or the arena against it (throw-back, wall stun,
+   ignite, reflect, light).
+4. **At least 2 breakable parts,** at least one of which **disables or weakens** a dangerous attack.
+5. **Phases:** at least 2, with a visible change (new move, speed, arena change) and a short safe beat at the
+   transition.
+6. **Openings to punish:** a stagger meter, a topple, and recovery frames after big moves. The player should
+   always know when it's their turn.
+7. **Fair difficulty targets:** a first-time attempt with starter gear usually fails or barely wins; a prepared,
+   skilled player wins in 6–12 minutes. No damage from off-screen sources without warning. No unavoidable chip
+   damage.
+8. **Readable at a glance:** a boss health bar, part-damage indicators, an enrage glow and a stagger meter.
+9. **Reward that feels earned:** unique carves per broken part, a first-kill bonus, and a Bestiary entry that
+   reveals weaknesses.
+10. **Automated QA:** scripted checks that every attack has a telegraph, that every part break disables its tagged
+    attacks, that the arena gimmicks work, and that a bot using perfect dodges can survive phase 1. These are
+    added to the regression suite.
+
 ## Build phases (revised)
-1. **Boss combat framework + Tidemaw prototype,** tested first inside the existing Quays, because fun combat is the
+1. **Boss combat framework + Tidemaw prototype** in a **boss arena at the end of the Outer Quays,** tested there first, because fun combat is the
    core of everything else.
 2. **Fixed story region expansion:** grow the Quays into a larger, connected hand-built region with random boss and
    encounter rotation.
