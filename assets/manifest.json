@@ -9212,5 +9212,14 @@
   "staged": true,
   "sha256": "1d14b12a79cc40d12e68184056820a97f767d3e2d6888441c115dd8fb6023b2b",
   "frames": 12
+ },
+ "art_ui_portrait_unknown_svg": {
+  "path": "assets/ui/portrait_unknown.svg",
+  "mime": "image/svg+xml",
+  "aliases": [
+   "ui/portrait_unknown"
+  ],
+  "pack": "art-v031",
+  "sha256": "8c67ba5001622fb8ba53087e31db4ef0717d85197d338c68ed526b7b228fe1c6"
  }
 }

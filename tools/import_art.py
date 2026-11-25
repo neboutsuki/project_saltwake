@@ -21,7 +21,8 @@ DEST = ROOT / 'assets' / 'art'
 MANIFEST = ROOT / 'assets' / 'manifest.json'
 PACK = 'art-new'
 LIST = ROOT / 'docs' / 'asset_list.csv'
-SOFT_OK = ('tiles', 'icons', 'ui', 'vfx')  # may keep soft alpha edges
+SOFT_OK = ('tiles', 'icons', 'ui', 'vfx', 'portraits')  # may keep soft alpha edges
+LIVE = ('portraits',)  # categories the game already uses: inlined into the single-file build at once
 
 
 def expected_sizes():
@@ -64,7 +65,7 @@ def frames_of(im, category):
         return w // h
     return None
 EXPECTED = {  # category -> (w, h) when strict; None = any multiple of 8
-    'tiles': (32, 32), 'plants': None, 'trees': None, 'buildings': None, 'props': None, 'edges': None,
+    'tiles': (32, 32), 'portraits': None, 'plants': None, 'trees': None, 'buildings': None, 'props': None, 'edges': None,
     'characters': None, 'bosses': None, 'ui': None,
 }
 
@@ -82,7 +83,7 @@ def check(path, category):
         problems.append(f'tile size {w}x{h} is not a multiple of 32')
     elif w % 8 or h % 8:
         warnings.append(f'size {w}x{h} is not a multiple of 8')
-    if category not in ('tiles', 'icons', 'ui', 'vfx'):  # UI and effects may use soft edges
+    if category not in ('tiles', 'icons', 'ui', 'vfx', 'portraits'):  # UI, effects and portraits: soft edges or opaque OK
         if 'A' not in im.getbands() and im.mode != 'P':
             problems.append('no transparency (needs a transparent background)')
         else:
@@ -129,7 +130,7 @@ def main():
         alias = 'art/' + str(rel.with_suffix('')).replace('\\', '/')
         key = 'art_new_' + re.sub('[^a-z0-9_]', '_', alias.lower())
         man[key] = {'path': 'assets/art/' + str(rel).replace('\\', '/'), 'mime': 'image/png', 'aliases': [alias],
-                    'pack': PACK, 'staged': True, 'sha256': hashlib.sha256(dst.read_bytes()).hexdigest()}
+                    'pack': PACK, 'staged': category not in LIVE, 'sha256': hashlib.sha256(dst.read_bytes()).hexdigest()}
         if frames:
             man[key]['frames'] = frames
     if not only_check:

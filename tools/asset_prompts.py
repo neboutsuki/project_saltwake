@@ -9,6 +9,10 @@ STYLE = ("High-detail pixel art game asset, 2.5D top-down three-quarter view (ca
          "NOT isometric), soft light from the upper-left, 1-pixel dark selective outline, bleak post-apocalyptic coastal fantasy "
          "(\"Ashen Wilds, Red Salt Coast\"): muted ash-grey palette, red-salt crust stains, brine-green rot, weathered salt-eaten wood, "
          "rusted iron, wet stone, warm lantern amber as the only saturated color. Crisp pixels, no text, no watermark.")
+PORTRAIT_STYLE = ('High-detail pixel art character portrait for a dialogue box, head and shoulders bust, three-quarter view facing RIGHT, '
+                  'soft light from the upper-left, 1-pixel dark selective outline, bleak post-apocalyptic coastal fantasy ("Ashen Wilds, Red Salt Coast"): '
+                  'muted ash-grey palette with red-salt stains, warm lantern amber rim light, plain dark slate-grey background, crisp pixels, '
+                  'no text, no frame, no watermark. Same art style and framing for every portrait.')
 TILE_STYLE = ("High-detail pixel art ground texture for a top-down game, viewed straight from above (flat, no perspective, no horizon), "
               "soft light from the upper-left, bleak post-apocalyptic coastal fantasy (\"Ashen Wilds, Red Salt Coast\"): muted ash-grey palette, "
               "red-salt stains, brine-green rot. Crisp pixels, no text, no watermark.")
@@ -50,6 +54,9 @@ for r in csv.DictReader(open(ROOT / 'docs/asset_list.csv')):
                     lines.append((cat, f'tiles/transition_{a}__{b}.png', f'{tag} {TILE_STYLE} Seamless tileable square texture, no objects, 256x256: the left half is {a.replace("_", " ")}, the right half is {b.replace("_", " ")}, with a natural irregular blend between them that tiles vertically.'))
                 continue
             lines.append((cat, f, f'{tag} {TILE_STYLE} Seamless tileable square texture, no objects, 256x256: {desc.replace("seamless tileable top-down ground texture: ", "")}.'))
+        elif cat == 'Portraits':
+            who = desc.replace('dialogue portrait, head and shoulders, facing right: ', '')
+            lines.append((cat, f, f'{tag} {PORTRAIT_STYLE} {who}. Square image, 128x128.'))
         elif cat.startswith('Characters') or cat.startswith('Enemies'):
             npc = 'NPCs need only idle' in r['notes'] and not f.startswith('characters/player')
             name = Path(f).stem

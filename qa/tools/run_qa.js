@@ -8,6 +8,7 @@ try{suites.push(['v031',require('./v031_checks.js')])}catch(e){}
 try{suites.push(['v030',require('./v030_checks.js')])}catch(e){}
 try{suites.push(['audit',require('./audit_checks.js')])}catch(e){}
 try{suites.push(['quest',require('./quest_checks.js')])}catch(e){}
+try{suites.push(['dialogue',require('./dialogue_checks.js')])}catch(e){}
 try{suites.push(['systems',require('./systems_checks.js')])}catch(e){}
 (async()=>{const b=await chromium.launch({args:['--no-sandbox','--disable-dev-shm-usage']});
 const page=await b.newPage({viewport:{width:1280,height:800}});const errors=[];page.on('pageerror',e=>errors.push(String(e)));
