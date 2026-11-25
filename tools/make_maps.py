@@ -115,6 +115,25 @@ class Map:
             placed += 1
         return placed
 
+    def clusters(self, arts, n_clusters, per, area, radius, s=(.8, 1.2), solid=None, r=.25, near=None):
+        """Natural-looking patches: n_clusters centers, each with up to `per` items packed toward the middle."""
+        x0, y0, x1, y1 = area
+        total = 0
+        for _ in range(n_clusters):
+            cx, cy = self.rng.uniform(x0, x1), self.rng.uniform(y0, y1)
+            if near and not near(cx, cy):
+                continue
+            for _ in range(per * 3):
+                a, d = self.rng.uniform(0, 6.283), radius * (self.rng.random() ** .7)
+                x, y = cx + math.cos(a) * d, cy + math.sin(a) * d * .8
+                if not (x0 <= x <= x1 and y0 <= y <= y1) or not self.free(x, y, r):
+                    continue
+                self.obj(self.rng.choice(arts), x, y, self.rng.uniform(*s), solid, self.rng.random() < .5, take=solid is not None)
+                total += 1
+                if total and total % per == 0:
+                    break
+        return total
+
     def road(self, rid, pts, width, mat='cobble'):
         self.roads.append({'id': rid, 'width': width, 'pts': pts})
         self.ground.append({'road': pts, 'w': width, 'm': mat})
@@ -277,8 +296,10 @@ def hub():
     # trees & ground cover
     M.scatter(TREES_COAST + TREES_BROAD, 7, (2, 20, 70, 31), solid='tree', r=1.4)
     M.scatter(TREES_COAST, 4, (2, 34, 70, 44), solid='tree', r=1.4)
-    M.scatter(GRASS + FLOWERS, 90, (2, 8, 70, 46), r=.3)
-    M.scatter(SHRUBS, 26, (2, 8, 70, 46), r=.5)
+    M.scatter(TREES_COAST + TREES_BROAD, 8, (2, 9, 70, 46), solid='tree', r=1.6)
+    M.scatter(GRASS + FLOWERS, 160, (2, 8, 70, 46), r=.25)
+    M.clusters(GRASS + FLOWERS + ['art/plants/fern_01', 'art/plants/fern_02'], 26, 9, (2, 9, 70, 46), 2.2)
+    M.scatter(SHRUBS, 40, (2, 8, 70, 46), r=.45)
     M.scatter(ROCKS_S, 10, (2, 8, 70, 46), r=.4)
     shore_dress(M, 2, 70)
     # North: forest behind a town wall with the city gate on the north road
@@ -493,16 +514,20 @@ def quays():
             if M.free(x, y, .6):
                 M.obj(M.rng.choice(CRATES + ['art/props/crate_stack', 'art/props/supply_sacks', 'art/props/barrel_02']), x, y, 1.0, 'crate')
     # forests: ashwood fringe north, coastal pines, dead trees in the salt yards
-    M.scatter(TREES_DARK, 70, (6, 8, 214, 22), solid='tree', r=1.6)
-    M.scatter(TREES_DARK + TREES_BROAD, 26, (130, 20, 216, 60), solid='tree', r=1.8)
+    M.scatter(TREES_DARK, 130, (6, 8, 214, 22), solid='tree', r=1.3)
+    M.scatter(TREES_DARK + TREES_BROAD, 55, (130, 20, 216, 60), solid='tree', r=1.5)
     M.scatter(TREES_DEAD, 14, (6, 18, 64, 58), solid='tree', r=1.8)
-    M.scatter(TREES_COAST, 34, (6, 56, 214, 116), solid='tree', r=2.0)
+    M.scatter(TREES_COAST, 60, (6, 56, 214, 116), solid='tree', r=1.7)
+    # woodland copses on the open inland ground
+    M.clusters(TREES_DARK + TREES_COAST + TREES_BROAD, 22, 6, (8, 12, 212, 112), 4.5, s=(.85, 1.2), solid='tree', r=1.2)
     M.scatter(ROCKS_L, 30, (6, 10, 214, 118), solid='stone', r=1.2)
     M.scatter(ROCKS_S, 120, (6, 10, 214, 124), r=.4)
     M.scatter(['art/rocks/salt_crystal_cluster_01', 'art/rocks/salt_crystal_cluster_02'], 22, (10, 14, 62, 60), solid='stone', r=.8)
-    M.scatter(GRASS + FLOWERS, 950, (4, 8, 216, 116), r=.25)
-    M.scatter(SHRUBS, 280, (4, 8, 216, 116), r=.5)
+    M.scatter(GRASS + FLOWERS, 1400, (4, 8, 216, 116), r=.22)
+    M.clusters(GRASS + FLOWERS + ['art/plants/fern_01', 'art/plants/fern_02', 'art/plants/fern_03'], 170, 12, (4, 8, 216, 118), 2.6)   # meadows
+    M.scatter(SHRUBS, 420, (4, 8, 216, 116), r=.45)
     M.scatter(REEDS, 60, (4, 112, 216, 127), r=.3)
+    M.clusters(REEDS + KELP, 40, 8, (4, 114, 216, 127), 2.2)   # reed beds along the shore
     M.scatter(['art/trees/fallen_log_01', 'art/trees/fallen_log_02', 'art/trees/stump_01', 'art/trees/stump_02'], 26, (6, 10, 214, 60), solid='stone', r=1.0)
     M.scatter(['art/props/bone_pile_01', 'art/props/bone_pile_02', 'art/props/carcass_02', 'art/props/body_satchel'], 10, (10, 70, 214, 120), r=.8)
     shore_dress(M, 2, 218)

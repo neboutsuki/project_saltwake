@@ -306,7 +306,8 @@
     const list = spawn.apply(this, arguments), m = this.world.maps.quays;
     if (TX.enabled && isTile(m) && Array.isArray(list)) for (const e of list) {
       const i = /^e(\d+)$/.exec(e.id || ''), sp = i && m.spawns?.[+i[1]];
-      if (sp) { e.x = e.homeX = sp[0] * 32; e.y = e.homeY = sp[1] * 32; }
+      if (sp) { const prev = this.mapId; this.mapId = 'quays'; let xy; try { xy = nearestWalkable(this, sp[0], sp[1]); } finally { this.mapId = prev; }
+        e.x = e.homeX = xy[0] * 32; e.y = e.homeY = xy[1] * 32; }
     }
     return list;
   };

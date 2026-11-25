@@ -7,7 +7,7 @@ for(let i=0;i<60&&!X.ready;i++){G.render(performance.now());await new Promise(r=
 const f0=X.stats.facades;G.render(performance.now());c.hubFacadesDrawn=X.stats.facades>f0;c.hubPlaza=X.materialAt(36,22,G)==='plaza';
 c.hubNpcsReachable=G.world.content.npcs.filter(n=>n.mapId==='hub').every(n=>{const [x,y]=X.nearestWalkable(G,n.x,n.y);return Math.hypot(x-n.x,y-n.y)<2.5});
 G.save.completedRaids=3;G.beginRaid();c.raidArrival=G.mapId==='quays'&&G.walkable(G.player.x,G.player.y)&&G.player.x<20*T;
-c.spawnsMoved=G.raid.enemies.filter(e=>/^e[0-9]+$/.test(e.id)).every(e=>Math.abs(e.x/T-Q.spawns[+e.id.slice(1)][0])<.01);
+c.spawnsMoved=G.raid.enemies.filter(e=>/^e[0-9]+$/.test(e.id)).every(e=>Math.hypot(e.x/T-Q.spawns[+e.id.slice(1)][0],e.y/T-Q.spawns[+e.id.slice(1)][1])<6&&G.walkable(e.x,e.y));
 c.roadIsCobble=X.materialAt(15,63,G)==='cobble';c.plazaIsStone=X.materialAt(100,50,G)==='plaza';c.shoreIsSand=X.materialAt(60,126,G)==='sand';
 const ch=X.buildChunk(2,1,G);c.chunkBuilds=!!ch&&ch.width===512;
 c.sceneObjects=(SALTWAKE_VIS.quays?.decor||[]).length>1000&&(SALTWAKE_VIS.hub?.decor||[]).length>100;

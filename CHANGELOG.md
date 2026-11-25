@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — A more alive world
+- **Denser scenery:** the Outer Quays has about 4,000 scenery objects (was about 2,100): twice the Ashwood pines,
+  more coastal pines, 22 woodland copses on the open ground, about 170 grass-and-flower meadows, more shrubs and reed
+  beds along the shore. The hub gets more trees, meadow patches and shrubs. Trees only block at the trunk, so dense
+  groves stay walkable.
+- **Ambient life** (`source/modules/ambient.js`, particles only): leaves drift down from trees and blow with the wind;
+  butterflies flutter over flowers and grass by day, pale moths around lamps at dusk; fireflies glow over grass and
+  reeds at night (on top of the darkness, not in rain); a small flock's shadow crosses the ground now and then on
+  clear days. Everything is culled to the view (60 fps headless on the densest area).
+- Spawn points step to the nearest open ground if new scenery covers them. QA: new `ambient` suite; 254/254.
+
 ## Unreleased — Movement: walk, run, crouch, no snagging
 - **No more getting stuck on trees and rocks:** trees now block only at the trunk (one small circle, not a row across
   the canopy) and rocks and props along a narrower base, and walking into a round obstacle slides you around it. A

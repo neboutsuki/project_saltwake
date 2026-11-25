@@ -10498,7 +10498,7 @@
    "art/maps/hub"
   ],
   "pack": "art-new",
-  "sha256": "ea4444f59ce90afad575e24c1df1de78585050e1ae7092d94f5b623bab4fc2e6"
+  "sha256": "7576e544df044804c4d2a74f3c1d5e6ae5090d355cdf57732f6a680278f1afd9"
  },
  "art_map_quays": {
   "path": "assets/art/maps/quays.webp",
@@ -10507,6 +10507,6 @@
    "art/maps/quays"
   ],
   "pack": "art-new",
-  "sha256": "b469f169daf213b37db7ae5b18a9ceb465a416686257f2b5fa6d05c0bfe0572c"
+  "sha256": "6de73fe00738ccf3487d2a9a9b06187fea4339fabfe291292054245b14225cfc"
  }
 }
