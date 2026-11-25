@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — Living Salvager's Rest
+- **Townsfolk** (`source/modules/hublife.js`, routes in `tools/make_maps.py`): about 11 people by day walk the harbor
+  routes (around Lantern Square, the promenade, the north lane, the road to the departure pier, the Quays gate road,
+  the west lane, the city-gate road and two piers), pause and look around, and now and then say a short line near
+  you. About 4 at night; half as many in rain. Visual only: they never block you.
+- **Harbor:** four rowboats bob at their moorings; fire lights (forge brazier, campfire, square lanterns) flicker.
+- **Fixes:** the round minimap works in the new hub; harbor bollards scaled to the new bollard art.
+- QA: new `hublife` suite; 224/224.
+
 ## Unreleased — Living Outer Quays
 - **District population** (`source/modules/population.js`, data in `tools/make_maps.py`): on top of the engine's eight
   wildlife spawns, the Quays gets about 25 more creatures by day (grazer herds on the Salt Yards, Ashwood edge,

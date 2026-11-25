@@ -267,9 +267,8 @@ def hub():
     o('art/props/fish_cleaning_station', 15, 48.6, 1.0, 'crate')
     o('art/props/net_rack', 55, 48.8, 1.0, 'crate')
     for x in (24, 40, 52, 66):
-        o('art/props/bollard', x, 47.6, 1.0, 'crate', take=False)
+        o('art/props/bollard', x, 47.6, .5, 'crate', take=False)
     o('art/props/anchor', 70, 47, 1.0, take=False)
-    o('art/props/rowboat', 60, 50.5, 1.0, take=False)
     for x, y in ((6, 41), (22, 42.8), (50, 42.8), (66, 41)):
         o('art/props/lantern_post', x, y, 1.0, 'crate', light=130)
     # docks (south)
@@ -297,6 +296,18 @@ def hub():
                {'id': 'forge', 'name': 'Forge Yard', 'x': 48, 'y': 17, 'w': 24, 'h': 21},
                {'id': 'market', 'name': 'Market Row', 'x': 0, 'y': 38, 'w': 72, 'h': 10},
                {'id': 'docks', 'name': 'Rest Docks', 'x': 0, 'y': 46, 'w': 72, 'h': 12}]
+    # Harbor life: townsfolk routes (walked back and forth), boats bobbing in the harbor
+    M.life = {'routes': [
+        [[29, 21.2], [43, 21.2], [43, 27.4], [29, 27.4], [29, 21.2]],          # around Lantern Square
+        [[6, 42.2], [22, 42.4], [36, 42.6], [50, 42.4], [66, 42]],            # harbor promenade
+        [[6, 18.8], [20, 18.6], [36, 18.6], [52, 18.8], [66, 18.8]],          # north lane (homes)
+        [[36.4, 29.5], [36.4, 36], [36.4, 45.5], [36, 53]],                   # square to the departure pier
+        [[46, 24.2], [52, 25.4], [58, 27.5], [64, 31], [68, 32]],             # east road to the Quays gate
+        [[26, 24.2], [17, 24.6], [8, 25.2]],                                  # west lane
+        [[36, 7.5], [36, 13], [36, 18]],                                      # city gate road
+        [[52, 47.6], [52, 53.5]],                                             # east pier
+        [[22, 47.6], [22, 52.5]],                                             # west pier
+    ], 'boats': [[44, 52.5], [58, 51], [12, 53], [28, 55.5]], 'day': 11, 'night': 4}
     M.arrivals = {'default': [36, 23.5], 'legacy': [[33.5, 27.6, 36, 30.5], [50, 46, 36, 30.5], [34.17, 36.6, 36, 44.5], [34, 36, 36, 30.5]],
                   'from': {'quays': [67, 32]}}
     return M
@@ -576,6 +587,8 @@ def to_world(M, old):
               'arrivals': M.arrivals, 'tilemap': True})
     if getattr(M, 'spawns', None):
         m['spawns'] = M.spawns
+    if getattr(M, 'life', None):
+        m['life'] = M.life
     if getattr(M, 'population', None):
         m['population'] = M.population
     return m
