@@ -18,7 +18,9 @@ const hashStr=str=>{let h=2166136261;for(const ch of String(str)){h^=ch.charCode
 const WIDX=window.SALTWAKE_WEATHER_INDEX||{};const sigOf=u=>u?u.length+':'+u.slice(-48):'';
 const loaded=new Map();
 function image(alias){let im=loaded.get(alias);if(im===undefined){const url=IMG[alias];im=url?Object.assign(new Image(),{src:url}):null;loaded.set(alias,im)}return im&&im.complete&&im.naturalWidth?im:null}
-function weatheredFor(im){const alias=WIDX[sigOf(im?.src)];const w=alias&&image(alias);if(!w){stats.missing++;return im}return w}
+const wcache=new WeakMap(),keyAlias=new Map();
+// Cached per image object: reading img.src on an embedded image copies its whole data URL (100-300 KB) every time.
+function weatheredFor(im){if(!im)return im;const hit=wcache.get(im);if(hit)return hit.complete&&hit.naturalWidth?hit:im;if(hit===null)return im;const alias=WIDX[sigOf(im.src)];const w=alias&&image(alias);if(alias){const el=loaded.get(alias);if(el)wcache.set(im,el)}else wcache.set(im,null);if(!w){stats.missing++;return im}return w}
 const DECALS={salt:[1,2,3,4].map(i=>'decals/salt_crust_'+i),ash:[1,2,3,4].map(i=>'decals/ash_drift_'+i),crack:[1,2,3].map(i=>'decals/crack_'+i),pebbles:[1,2,3].map(i=>'decals/pebbles_'+i),puddle:[1,2,3].map(i=>'decals/puddle_'+i)};
 const ready=()=>Object.values(DECALS).flat().every(a=>image(a));
 /* ---------- buildings ---------- */
@@ -27,7 +29,7 @@ if(facade)P.coastFacade=function(b,view,room){
  if(!cfg.houses)return facade.call(this,b,view,room);
  const own=Object.prototype.hasOwnProperty.call(g,'drawImage'),di=g.drawImage,sd=SPRITES.draw;let done=false;
  g.drawImage=function(im,...a){if(!done&&im&&(im.width||0)>=120&&a.length>=4){done=true;stats.houses++;return di.call(this,weatheredFor(im),...a)}return di.call(this,im,...a)};
- SPRITES.draw=function(ctx,key,...a){if(!done&&ctx===g){const al=WIDX[sigOf(window.SALTWAKE_ASSETS.images[key])],w=al&&image(al);if(w){done=true;stats.houses++;const [dx,dy,dw,dh]=a;di.call(g,w,dx,dy,dw,dh);return true}}return sd.call(this,ctx,key,...a)};
+ SPRITES.draw=function(ctx,key,...a){if(!done&&ctx===g){let al=keyAlias.get(key);if(al===undefined){al=WIDX[sigOf(window.SALTWAKE_ASSETS.images[key])]||null;keyAlias.set(key,al)}const w=al&&image(al);if(w){done=true;stats.houses++;const [dx,dy,dw,dh]=a;di.call(g,w,dx,dy,dw,dh);return true}}return sd.call(this,ctx,key,...a)};
  try{return facade.call(this,b,view,room)}finally{if(own)g.drawImage=di;else delete g.drawImage;SPRITES.draw=sd}};
 /* ---------- terrain ---------- */
 function placeDecals(x,ox,oy,w,h,seed,ok,scale=1,set='ground'){const R=rng(seed);const area=(w/scale/512)*(h/scale/512);const cnt=k=>{const v=k*area;return Math.floor(v)+(R()<v%1?1:0)};

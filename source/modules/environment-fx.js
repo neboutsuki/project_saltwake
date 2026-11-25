@@ -37,22 +37,24 @@ const P=Game.prototype,render=P.render;
 // Ashen Wilds grade: drained colour, warm ash-grey haze, darker horizon toward the sea (bottom), cool shadows.
 P.render=function(t,...r){const out=render.call(this,t,...r);if(!cfg.grade||this.mode!=='play'||FX.gpuGrade)return out;
  g.save();g.setTransform(1,0,0,1,0,0);
- g.globalCompositeOperation='saturation';g.fillStyle='rgba(128,128,128,.24)';g.fillRect(0,0,VW,VH);
- g.globalCompositeOperation='soft-light';g.fillStyle='rgba(150,128,110,.22)';g.fillRect(0,0,VW,VH);
+ // Cheap separable blends only (non-separable modes like 'saturation' fall off the fast path in browsers).
+ g.globalCompositeOperation='multiply';g.fillStyle='rgba(214,206,196,.55)';g.fillRect(0,0,VW,VH);
+ g.globalCompositeOperation='screen';g.fillStyle='rgba(40,36,34,.35)';g.fillRect(0,0,VW,VH);
  g.globalCompositeOperation='source-over';const v=g.createLinearGradient(0,0,0,VH);v.addColorStop(0,'rgba(196,186,170,.07)');v.addColorStop(.55,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(18,22,26,.16)');g.fillStyle=v;g.fillRect(0,0,VW,VH);
  g.restore();return out};
 // Brine miasma: a faint green-grey haze pooling at the feet of mutated Brineworn (lore: brine-tainted former humans).
 const de=P.draw25Enemy;P.draw25Enemy=function(e,...a){if(cfg.grade&&e&&!e.dead&&/brineworn|brineback/.test(e.type||'')){const t=performance.now()/1000;g.save();g.translate(e.x,e.y+6);g.scale(1,.4);const r=34+Math.sin(t*1.7+e.x)*4;const gr=g.createRadialGradient(0,0,0,0,0,r);gr.addColorStop(0,'rgba(110,170,135,.22)');gr.addColorStop(1,'rgba(110,170,135,0)');g.fillStyle=gr;g.beginPath();g.arc(0,0,r,0,Math.PI*2);g.fill();g.restore()}return de.call(this,e,...a)};
 // Ashfall: screen-space overlay above both the field canvas and the harbor frame (below HUD). Parallax follows the field camera.
-const ash=document.createElement('canvas');ash.id='swAsh';ash.width=VW;ash.height=VH;ash.setAttribute('aria-hidden','true');
+const ash=document.createElement('canvas');ash.id='swAsh';ash.width=VW/2;ash.height=VH/2;ash.setAttribute('aria-hidden','true');
 const ashStyle=document.createElement('style');ashStyle.textContent='#swAsh{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}';document.head.append(ashStyle);
 document.getElementById('viewport')?.prepend(ash);document.getElementById('world')?.after(ash);
-const actx=ash.getContext('2d');
+const actx=ash.getContext('2d');actx.scale(.5,.5);FX.ashCanvas=ash;FX.ashLive=false;
 const fxImg=a=>{const u=window.SALTWAKE_ASSETS.images[a];if(!u)return null;const i=new Image();i.src=u;return i};const FXI={};for(const [k,a] of Object.entries({ash:'fx/ash_flake',ashSmall:'fx/ash_flake_small',ember:'fx/ember',rain:'fx/rain_streak',splash:'fx/splash'}))FXI[k]=fxImg(a);const flakes=[];let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
 for(let i=0;i<140;i++)flakes.push({x:rnd()*VW,y:rnd()*VH,z:.35+rnd()*.9,s:1.2+rnd()*2.2,ph:rnd()*6.28,ember:rnd()<.06});
 let lastT=0,lastCam=null;stats.ashFrames=0;
 function ashLoop(t){requestAnimationFrame(ashLoop);const G=window.SALTWAKE_DEV?.game;const on=cfg.ash!==false&&cfg.grade&&G&&G.mode==='play'&&!G.panel&&!document.hidden;
- if(!on){if(lastT){actx.clearRect(0,0,VW,VH);lastT=0}return}
+ if(!on){FX.ashLive=false;if(lastT){actx.clearRect(0,0,VW,VH);lastT=0}return}
+ FX.ashLive=true;
  const dt=lastT?Math.min(.05,(t-lastT)/1000):0;lastT=t;const w=wind();let cx=0,cy=0;
  if(G.raid&&G.camera){if(lastCam){cx=(G.camera.x-lastCam.x)*(G.camera.zoom||1);cy=(G.camera.y-lastCam.y)*(G.camera.zoom||1)}lastCam={x:G.camera.x,y:G.camera.y}}else lastCam=null;
  actx.clearRect(0,0,VW,VH);

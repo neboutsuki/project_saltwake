@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — Performance fixes
+- **GPU renderer:** it now processes frames at the scene's own resolution (1024×576 in the field, 1536×864 in the harbor) and lets the browser scale the result. Before, it worked at display size × DPR, up to about 10× the pixels on 1440p or 4K screens. Page layout is cached and only re-measured on resize. Harbor frames that haven't changed are no longer re-uploaded or re-blurred. Falling ash is blended inside the GPU pass, so there's no separate full-screen layer while the renderer is active.
+- **Performance guard:** if the game runs below 45 fps for about 3 s with the enhanced renderer on, the renderer pauses for the session and a message says so. Re-enabling it in Graphics & Performance resumes it.
+- **Ash overlay:** when the renderer is off, the ash layer is drawn at half resolution.
+- **Weathered-building lookup:** cached per image. Before, it read `img.src` on every draw, which copies the whole embedded data URL (100–300 KB) and caused heavy garbage-collection churn in the harbor.
+- **2D fallback grade:** uses separable blend modes (multiply/screen) instead of `saturation`, which falls off the browser's fast path.
+- Headless comparison (software rendering, so not representative of a real GPU): harbor with the renderer on went from 9 fps to 45 fps once the guard engages. Raid with the renderer off is about 31 fps, against about 43 fps for alpha.1 in the same environment.
+
+
 ## Unreleased — Art separated from code
 - **Art is now ordinary image files.** Everything I added since v0.30 is baked by `tools/bake_art.py` into image files in `assets/` (pack `art-v031`) and registered in `assets/manifest.json`:
   - `weathered/`: 47 weathered building sprites, covering every field façade and the harbor house set;
