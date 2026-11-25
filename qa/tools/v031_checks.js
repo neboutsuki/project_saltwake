@@ -22,5 +22,6 @@ const K=saltwakeSky.state;c.skyState=typeof K.sunElev==='number'&&Array.isArray(
 const fc=saltwakeSky.forecast(G);c.forecast=!!fc&&fc.inMinutes>=0&&!!fc.next.id;
 c.skyHudIcon=!!document.getElementById('swSkyInfo');
 c.originalWeatherGated=typeof saltwakeSky.ownsWeather==='boolean';
+const DS=saltwakeDetail.stats;c.weatheredFacades=DS.houses>0;c.terrainChunks=DS.chunks>0;c.facadeRestoresDrawImage=!Object.prototype.hasOwnProperty.call(g,'drawImage')||saltwakePolish.settings.lightRes==='half';
 c.postPipeline=!!window.saltwakePost&&saltwakePost.stats.errors===0;c.castShadows=(saltwakeEnvFx.stats.cast||0)>0;
 G.endRaid(true,'QA v031');c.extract=!G.raid;return c}`;

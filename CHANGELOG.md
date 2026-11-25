@@ -1,5 +1,23 @@
 # Changelog
 
+## Unreleased — Houses and terrain detail
+- **Weathered buildings** (`source/modules/world-detail.js`): every field façade and every harbor house gets a weathering pass, cached once per image. The pass adds:
+  - baked directional light (warm upper-left, cool shade lower-right);
+  - grime and darkening at the footing where the walls meet the ground;
+  - green-grey brine staining along the base;
+  - pale salt streaks running down the walls from the eaves;
+  - ash settled on the roofs, plus a few red-salt blooms;
+  - a fine material texture.
+  Field buildings also get a soft contact shadow along their front wall. The harbor houses are reached by wrapping the harbor frame's `house()` renderer.
+- **Terrain detail:** deterministic procedural decals per 16-tile chunk:
+  - irregular red-salt crusts with crystal glints;
+  - wind-stretched ash drifts;
+  - branching crack networks and pebbles;
+  - rain puddles that fade in as the ground gets wet.
+  Decals are placed only on walkable land and never on water. In the harbor they are baked once into the ground canvas, skipping water pixels.
+- Both can be toggled in Graphics & Performance. Benchmark (half-res lighting): render p95 5.8 ms. QA now runs 122 checks, all passing.
+
+
 ## Unreleased — Time of day and weather
 - **Continuous day/night** (`source/modules/sky.js`): a sun model on the existing game clock with color keyframes for night, pre-dawn, dawn, morning, noon, golden hour, sunset and blue hour. Exposure and tint now change smoothly, where before there were only a few light steps (and a simple on/off night in the harbor). Bloom grows at night so lanterns and windows carry the scene. Dawn brings low ground mist.
 - **Sun-driven shadows:** cast shadows swing from west to east through the day, stretch long at dawn and dusk, fade under heavy cloud, and become faint moonlit shadows at night.
