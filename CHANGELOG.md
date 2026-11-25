@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — Better dodge
+- **Burst and ease:** the roll starts fast (about 2.3x the old speed) and eases out, covering the same distance; Ren
+  leans into it and dips.
+- **Buffered input:** pressing dodge up to 0.2 s before it is ready (still rolling or cooling down) dodges as soon as
+  it can. **Cooldown 0.75 s** (was 1.05 s). Stamina cost and invulnerability time are unchanged.
+- **Perfect dodge:** rolling through an attack (hit during the invulnerability window) gives a brief slow-motion, a
+  white ring, "DODGED" and +12 stamina, once per roll.
+- **Feedback:** afterimages trail the roll, dust puffs at the start and end, and the vitals shake when you lack
+  stamina to dodge.
+- QA: new `dodge` suite; 245/245.
+
 ## Unreleased — Dark nights
 - Night is now near-black away from light (ambient about 4% at midnight, a short blue hour at dusk and a violet
   pre-dawn). You see by your lantern (bigger glow, longer and brighter cone), fires, lanterns and lit windows; with the
