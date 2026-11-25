@@ -121,7 +121,19 @@
     "audit.saveRoundTripStash": true,
     "audit.saveRoundTripFlags": true,
     "audit.applySaveLandsWalkable": true,
-    "audit.noPageErrorsDuringAudit": true
+    "audit.noPageErrorsDuringAudit": true,
+    "quest.questReferences": true,
+    "quest.noPrerequisiteCycles": true,
+    "quest.questItemsExist": true,
+    "quest.questTargetsReachable": true,
+    "quest.contractReferences": true,
+    "quest.allStoryQuestsCompletable": true,
+    "systems.loaded": true,
+    "systems.packAlert": true,
+    "systems.hitStop": true,
+    "systems.hitStopSlowsSim": true,
+    "systems.dangerCue": true,
+    "systems.dangerClears": true
   },
   "page_errors": []
 }
