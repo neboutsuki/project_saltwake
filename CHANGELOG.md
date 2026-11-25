@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased — Generated art in the game
+- **Item icons:** inventory, stash, shops, loadout and the hotbar use the new `art/icons/*` images (17 items: 11 by
+  name, 6 with a close stand-in such as Brineback plate → shell); other items keep their old icons until art exists.
+- **Projectiles:** bolts and Wickcaster shots are drawn with the `proj_bolt` / `proj_wick_flame` sprite strips,
+  rotated to their flight direction, instead of lines.
+- **Hit effects:** hits and armor glances play `hit_spark`, part breaks `part_break_burst`, cover hits `smoke_puff`
+  (6-frame strips); damage numbers are kept.
+- **Wading:** walking through water kicks up `splash` sprites.
+- **Rain puddles:** `tools/cut_puddles.py` cuts the puddles out of the generated `wet_mud` ground art and writes them
+  as the terrain puddle decals (see-through water with bright glints), replacing the earlier flat ovals.
+- Icons and effects are no longer staged, so they are in the single-file build (+1 MB). The import tool treats new
+  icons, effects and portraits as live.
+- QA: new `art` suite; 161/161 on both the single-file and split builds.
+
 ## Unreleased — Dialogue with portraits
 - Conversations now appear as a speech box above the speaker's head (it follows them if the camera or they move; it
   drops below the head near the top edge). The speaker's portrait sits on the left, the player's on the right; the

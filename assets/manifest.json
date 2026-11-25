@@ -6175,7 +6175,8 @@
    "decals/puddle_1"
   ],
   "pack": "art-v031",
-  "sha256": "072c1415e2fd339bdeabda972bc0e1277f6ea3b7e84f5f89be85baec9e51a3c2"
+  "sha256": "2fef3da7d400e68dadf598e859c4ca50de3a276eaa1157f49c8ac337f2620d30",
+  "source": "cut from art/tiles/wet_mud (tools/cut_puddles.py)"
  },
  "art_decals_puddle_2_png": {
   "path": "assets/decals/puddle_2.png",
@@ -6184,7 +6185,8 @@
    "decals/puddle_2"
   ],
   "pack": "art-v031",
-  "sha256": "1794c84f7f38fca8d23c19bddee0496f6ce4e9ff011286efe7aabd46ffb78e0b"
+  "sha256": "fbeda682c688235c852f98694db15c2714f45916a68e2bbf0c092b479630f5d5",
+  "source": "cut from art/tiles/wet_mud (tools/cut_puddles.py)"
  },
  "art_decals_puddle_3_png": {
   "path": "assets/decals/puddle_3.png",
@@ -6193,7 +6195,8 @@
    "decals/puddle_3"
   ],
   "pack": "art-v031",
-  "sha256": "656a54956e7a3ae869aa187588c3caad93181963d95310b74e8d7e3b89f19a9a"
+  "sha256": "20af0c899cb8614424fc2f36cd242a9eeed47471a21afdb72293398a1437f8a2",
+  "source": "cut from art/tiles/wet_mud (tools/cut_puddles.py)"
  },
  "art_fx_ash_flake_png": {
   "path": "assets/fx/ash_flake.png",
@@ -7148,7 +7151,7 @@
    "art/icons/antidote"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "7b08f2b000ce68e3891ef72189ce74a858760c75b31cb1adefc649916d1f2f31"
  },
  "art_new_art_icons_armor_arms_salvager": {
@@ -7158,7 +7161,7 @@
    "art/icons/armor_arms_salvager"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "1161ad9060ec149471b107ffd466f6aa4f33f7ba19bdf44b875bb25d18c26f8d"
  },
  "art_new_art_icons_armor_chest_salvager": {
@@ -7168,7 +7171,7 @@
    "art/icons/armor_chest_salvager"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "4b3df5631b23ae2073f75d26a012b58edc45f7ace20c6777eb0d8dab538eb940"
  },
  "art_new_art_icons_armor_head_salvager": {
@@ -7178,7 +7181,7 @@
    "art/icons/armor_head_salvager"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "956e1c002bfb458f8483ed617e4feddcb77bd732268a48342d497e2bf2e877cd"
  },
  "art_new_art_icons_armor_legs_salvager": {
@@ -7188,7 +7191,7 @@
    "art/icons/armor_legs_salvager"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "9f16582a099d1c5be7185d24476017753a034a954f164446cf99f8aeb4d2b6a1"
  },
  "art_new_art_icons_armor_waist_salvager": {
@@ -7198,7 +7201,7 @@
    "art/icons/armor_waist_salvager"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "c3d63f6db2ff5ba7f54d27226351bb8ca4539037b9cff9224b7004bb00678a5e"
  },
  "art_new_art_icons_bandage": {
@@ -7208,7 +7211,7 @@
    "art/icons/bandage"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "acf035df3290b9d2e0c350b33801fa356eac800d4ec193c09276a938a112e572"
  },
  "art_new_art_icons_bolt": {
@@ -7218,7 +7221,7 @@
    "art/icons/bolt"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "b4e9a66bb49aefb007fdee5627a13f553b3e3dde2690b810dd2f80ddf1630c1c"
  },
  "art_new_art_icons_brineback_shell": {
@@ -7228,7 +7231,7 @@
    "art/icons/brineback_shell"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "b5e9fbc68db18fda9ab51b8f5518ebdfd808cd7c7d742ebade4d06a71523b04b"
  },
  "art_new_art_icons_brineworn_crystal": {
@@ -7238,7 +7241,7 @@
    "art/icons/brineworn_crystal"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "3d2907f9560881fdcb86506727f15ee044cc01b953a7d0b812616577037369e8"
  },
  "art_new_art_icons_cloth": {
@@ -7248,7 +7251,7 @@
    "art/icons/cloth"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "40cc48223874e941864ea44958273fbce611d0587e29548a4805eefa9e03c84e"
  },
  "art_new_art_icons_flash_pod": {
@@ -7258,7 +7261,7 @@
    "art/icons/flash_pod"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "02824c8be6d497fda3f6b0f534cb919df3330b6b711a14afdd3402f96810c718"
  },
  "art_new_art_icons_grazer_wool": {
@@ -7268,7 +7271,7 @@
    "art/icons/grazer_wool"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "9a2149dec224739aee54fa25a25fb061087818ec54779f34ac3df9f4a8663d99"
  },
  "art_new_art_icons_gull_feather": {
@@ -7278,7 +7281,7 @@
    "art/icons/gull_feather"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "616834566021b2ee75e2e8b5e32d84d072f362d93618b0aff9829afa840254b0"
  },
  "art_new_art_icons_healing_tincture": {
@@ -7288,7 +7291,7 @@
    "art/icons/healing_tincture"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "1b25bc6dd4f293b8ab2caccaa50bbf6ee59c9b9eb2dda01fff291df200268d6d"
  },
  "art_new_art_icons_iron_ingot": {
@@ -7298,7 +7301,7 @@
    "art/icons/iron_ingot"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "6283bef631bc9cbdc316b3e68f3733be5776f21aed47e18a28a6d5ebea55d75e"
  },
  "art_new_art_icons_lamp_oil": {
@@ -7308,7 +7311,7 @@
    "art/icons/lamp_oil"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "c53b0a6665b95364ae1de4a9fda00a77c31b224072f36679cf6ae095ef3beae6"
  },
  "art_new_art_icons_lurker_scale": {
@@ -7318,7 +7321,7 @@
    "art/icons/lurker_scale"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "541803875588196bce4d8fbd7917925df32a03cc2aff4ff1f062b6a7e4c38cdb"
  },
  "art_new_art_icons_oil": {
@@ -7328,7 +7331,7 @@
    "art/icons/oil"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "b3c3a90d26fb8a3590f8638e2ed43ff5b6064766d4470bde67b25f9642d395c5"
  },
  "art_new_art_icons_ration": {
@@ -7338,7 +7341,7 @@
    "art/icons/ration"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "12941ab935f5cc241e4100113fbed6dc4fae7e5803b64bb1510b15ef3aa9d888"
  },
  "art_new_art_icons_rope": {
@@ -7348,7 +7351,7 @@
    "art/icons/rope"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "19defcfe330bd2798d90a9af9161ce99d31a15e3bdead1e220a23a02cc312b42"
  },
  "art_new_art_icons_salt_crystals": {
@@ -7358,7 +7361,7 @@
    "art/icons/salt_crystals"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "41383ad9429c1cca87c8e0f14a7a6a8c70579f9052b49ec05781bcc09e5f8622"
  },
  "art_new_art_icons_scrap_metal": {
@@ -7368,7 +7371,7 @@
    "art/icons/scrap_metal"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "9de081772c5ab652da2de9e0eabd40184d62b96d36dd5f201e034ed09110eab3"
  },
  "art_new_art_icons_smoke_bomb": {
@@ -7378,7 +7381,7 @@
    "art/icons/smoke_bomb"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "52755eb9a0c09effe60c867200d044be11794c67247fcdf64a9543e7238cb4a4"
  },
  "art_new_art_icons_stag_antler": {
@@ -7388,7 +7391,7 @@
    "art/icons/stag_antler"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "1797efd3b01b0877f5e60993a820f44527c23cb5f44b57c5a7fbf5118b74aa57"
  },
  "art_new_art_icons_stamina_draught": {
@@ -7398,7 +7401,7 @@
    "art/icons/stamina_draught"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "3238adbebf228c02b4290499077529ef78e76649499092729f40cbf8d0ea4893"
  },
  "art_new_art_icons_tidemaw_gill": {
@@ -7408,7 +7411,7 @@
    "art/icons/tidemaw_gill"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "5afc21d5c6f8dfec9aef727bef1f6640bd8d2e611fc89933ea2c13e2df1df248"
  },
  "art_new_art_icons_tidemaw_jaw_plate": {
@@ -7418,7 +7421,7 @@
    "art/icons/tidemaw_jaw_plate"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "e3ccf9c50f10111b82f2b9890cf62014731b0353125039477309ee48440fb6b4"
  },
  "art_new_art_icons_tidemaw_tail_fin": {
@@ -7428,7 +7431,7 @@
    "art/icons/tidemaw_tail_fin"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "bbd0c3b07b1a336b2e4579a25756d0e998ea700ce8cdafee2020fab58a0969e7"
  },
  "art_new_art_icons_timber": {
@@ -7438,7 +7441,7 @@
    "art/icons/timber"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "1d45c8334a341da556d69c39061a6baa5f69a2132e213398eaace754654ea5a2"
  },
  "art_new_art_icons_trap_net": {
@@ -7448,7 +7451,7 @@
    "art/icons/trap_net"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "2e3eb066174498830e6dfcefa2eb7051d26abb3ca613090e10055c1259c8bf70"
  },
  "art_new_art_icons_weapon_arbalest": {
@@ -7458,7 +7461,7 @@
    "art/icons/weapon_arbalest"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "bccc3eaf2a8bf0af0c8a9794a8160dcc57492487219cedd4f1edadc772909364"
  },
  "art_new_art_icons_weapon_greataxe": {
@@ -7468,7 +7471,7 @@
    "art/icons/weapon_greataxe"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "c933cb330b32cc285519e10bb6dae6d706aea4fb63e7ed22ef045e66a31a81f2"
  },
  "art_new_art_icons_weapon_harpoon_gun": {
@@ -7478,7 +7481,7 @@
    "art/icons/weapon_harpoon_gun"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "a2ba322ab9e6f8df55b59e4fee9822bd72172b35d12479d2075f22ddb418f286"
  },
  "art_new_art_icons_weapon_spear": {
@@ -7488,7 +7491,7 @@
    "art/icons/weapon_spear"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "771b0cfeded3433a5451e3623705701a10bcb91c3f9a567b523c8023932d3d27"
  },
  "art_new_art_icons_weapon_wickcaster": {
@@ -7498,7 +7501,7 @@
    "art/icons/weapon_wickcaster"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "2aa12e5d13aa623b9912ef954ab8c3f6f65eb3ef5bba31df51968899c6b30b7d"
  },
  "art_new_art_icons_whetstone": {
@@ -7508,7 +7511,7 @@
    "art/icons/whetstone"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "c0672d012e9dfc7f9f219d1bbd29173cb032bcc7a15f50ab35e88cb50725fd14"
  },
  "art_new_art_icons_wick_cell": {
@@ -7518,7 +7521,7 @@
    "art/icons/wick_cell"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "3586246cc7992254005fead517bc68353da252090ba455f1b6c4d586b3899e4c"
  },
  "art_new_art_icons_widow_fang": {
@@ -7528,7 +7531,7 @@
    "art/icons/widow_fang"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "e00c27fc2cb6780eee1e4acacb280b824b239e1b39e73a34c8fbd9aa429208d8"
  },
  "art_new_art_icons_widow_silk": {
@@ -7538,7 +7541,7 @@
    "art/icons/widow_silk"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "e8b7c063c0d7427f401d3f1a26f6d3526d12c86a15d46953c2e45f3e557bb593"
  },
  "art_new_art_icons_wyrm_spine": {
@@ -7548,7 +7551,7 @@
    "art/icons/wyrm_spine"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "10e214782240c4db4769a2a07d0dc653d9ea381bcf6f6959a7137f7e36d47255"
  },
  "art_new_art_plants_fern_01": {
@@ -9068,7 +9071,7 @@
    "art/vfx/blood_brine"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "91f66af2c10afc247b8905095dfa8e5b44f822e0e55ace610311aec9c60c7b91",
   "frames": 6
  },
@@ -9079,7 +9082,7 @@
    "art/vfx/dust_burrow"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "43979803ae7834eda25ba81a2e643b07629d4b67ca8735bcb1840a8ebb00fabb",
   "frames": 9
  },
@@ -9090,7 +9093,7 @@
    "art/vfx/fire_burn"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "073737d5e397ab1ea702ae73bac70cb5a0e1531f287ede4456a2ef8419645c69"
  },
  "art_new_art_vfx_ground_crack": {
@@ -9100,7 +9103,7 @@
    "art/vfx/ground_crack"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "786199b8865f92a977c632228c20dad296040e54634845aadfadb08ce9abff22",
   "frames": 12
  },
@@ -9111,7 +9114,7 @@
    "art/vfx/hit_spark"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "7f48fffaab4e8ec9eea388599610102aba084b1dab61b5c2d34ae18f92093ce6",
   "frames": 6
  },
@@ -9122,7 +9125,7 @@
    "art/vfx/lightning_bolt"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "f49fa106f6000ca686cd86fefa8a5b3230d4473a3a5bbd7690e08d2c53d3b8eb"
  },
  "art_new_art_vfx_part_break_burst": {
@@ -9132,7 +9135,7 @@
    "art/vfx/part_break_burst"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "7ebdb0bd844ed63d7ddaee5d78f1efed4bba7ce01feb0031bdb3a16caaa127fd",
   "frames": 6
  },
@@ -9143,7 +9146,7 @@
    "art/vfx/proj_bolt"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "6d53cad844619a23b07659d41828ce89b09b548737c2b39f8e68ff40bf00ddd6",
   "frames": 24
  },
@@ -9154,7 +9157,7 @@
    "art/vfx/proj_salt_shard"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "0a8408029fcc3e8f87f32858c4576db7130c2e514eca825114f41206856c518a",
   "frames": 6
  },
@@ -9165,7 +9168,7 @@
    "art/vfx/proj_spit_brine"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "eccdd51aa21b066a7519d9206fe01ceb4a3cca7839430ceb18852fac699abc83",
   "frames": 6
  },
@@ -9176,7 +9179,7 @@
    "art/vfx/proj_wick_flame"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "502acb4c725085b4e1a5aa6f2b41439cab77a0981c490b1ec3ed3a9d8aca44f6",
   "frames": 6
  },
@@ -9187,7 +9190,7 @@
    "art/vfx/smoke_puff"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "8d418c0c0f1d3023f8d3759cbe1d923953fd1c55117300d3496905a23f79ab79",
   "frames": 6
  },
@@ -9198,7 +9201,7 @@
    "art/vfx/splash"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "b501d696393315a0d6b02c13888047ff790282fbd5e894562226ca8d2b1c54ae",
   "frames": 12
  },
@@ -9209,7 +9212,7 @@
    "art/vfx/wave_crash"
   ],
   "pack": "art-new",
-  "staged": true,
+  "staged": false,
   "sha256": "1d14b12a79cc40d12e68184056820a97f767d3e2d6888441c115dd8fb6023b2b",
   "frames": 12
  },
