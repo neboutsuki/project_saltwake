@@ -7455,7 +7455,8 @@
    "art/icons/weapon_arbalest"
   ],
   "pack": "art-new",
-  "sha256": "d48cd5ac7d0a2b12e800260f10df97210eb8c4f973305b9cff30b7b4c28f3501"
+  "staged": false,
+  "sha256": "bccc3eaf2a8bf0af0c8a9794a8160dcc57492487219cedd4f1edadc772909364"
  },
  "art_new_art_icons_weapon_greataxe": {
   "path": "assets/art/icons/weapon_greataxe.png",
@@ -7464,7 +7465,8 @@
    "art/icons/weapon_greataxe"
   ],
   "pack": "art-new",
-  "sha256": "6dee920574a313198d16f7108c8bd093993eee0406f2e07e274dc63a9374dc19"
+  "staged": false,
+  "sha256": "c933cb330b32cc285519e10bb6dae6d706aea4fb63e7ed22ef045e66a31a81f2"
  },
  "art_new_art_icons_weapon_harpoon_gun": {
   "path": "assets/art/icons/weapon_harpoon_gun.png",
@@ -7473,7 +7475,8 @@
    "art/icons/weapon_harpoon_gun"
   ],
   "pack": "art-new",
-  "sha256": "3d3c9630f7d3152832b544dffb50bedc0310da6f8ca08143d9ba92525e259fe8"
+  "staged": false,
+  "sha256": "a2ba322ab9e6f8df55b59e4fee9822bd72172b35d12479d2075f22ddb418f286"
  },
  "art_new_art_icons_weapon_spear": {
   "path": "assets/art/icons/weapon_spear.png",
@@ -7482,7 +7485,8 @@
    "art/icons/weapon_spear"
   ],
   "pack": "art-new",
-  "sha256": "fa23a320fe5d0dda1421f0bd403a2c35bb0607a283181557e20f97ac302a36b7"
+  "staged": false,
+  "sha256": "771b0cfeded3433a5451e3623705701a10bcb91c3f9a567b523c8023932d3d27"
  },
  "art_new_art_icons_weapon_wickcaster": {
   "path": "assets/art/icons/weapon_wickcaster.png",
@@ -7491,7 +7495,8 @@
    "art/icons/weapon_wickcaster"
   ],
   "pack": "art-new",
-  "sha256": "7636e48d1dd72e98c9d7700991c6b392e56ed3106622cc5cbcb147a00c22c476"
+  "staged": false,
+  "sha256": "2aa12e5d13aa623b9912ef954ab8c3f6f65eb3ef5bba31df51968899c6b30b7d"
  },
  "art_new_art_icons_whetstone": {
   "path": "assets/art/icons/whetstone.png",
@@ -10370,5 +10375,205 @@
   ],
   "pack": "art-new",
   "sha256": "f7a317d1407ade6e0b9ff7ee55d25565d40161316ed46250ff3362c40311c687"
+ },
+ "art_new_art_characters_story_captain_elda_work": {
+  "path": "assets/art/characters/story/captain_elda_work.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/captain_elda_work"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "ae5e1b90bbe6671df8448b31135e433da19bbf6e6f2e67f35cfdfee058adfd88"
+ },
+ "art_new_art_characters_story_harlan_work": {
+  "path": "assets/art/characters/story/harlan_work.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/harlan_work"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "9875a6bd9530f80f01b9fbaea840c5a0de268ff8a83bbb681786b839a688c90c"
+ },
+ "art_new_art_characters_story_ivo_work": {
+  "path": "assets/art/characters/story/ivo_work.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/ivo_work"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "e80db81d41689f6c4293c77ffbed07eefc76c4c6cf47e984175d4f4187f450ac"
+ },
+ "art_new_art_characters_story_kade_work": {
+  "path": "assets/art/characters/story/kade_work.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/kade_work"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "f6b9c0323929d4177326f28a7f68b2e319919b8899167b55a5eb1076988cedde"
+ },
+ "art_new_art_characters_story_lira_work": {
+  "path": "assets/art/characters/story/lira_work.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/lira_work"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "dc6541c561ac0d6a12831076f4264252d2c640f7aca77f4fdb0a77a3bd45cd04"
+ },
+ "art_new_art_characters_story_marin_work": {
+  "path": "assets/art/characters/story/marin_work.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/marin_work"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "9681657c4fe70b6d163a6f56e82fc13f049968592e2643ba89fe026a6130da09"
+ },
+ "art_new_art_characters_story_master_rook_work": {
+  "path": "assets/art/characters/story/master_rook_work.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/master_rook_work"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "ee6738f01b59b3b8103e688badf1d4948391ea6dec391465e60b450aafef96ed"
+ },
+ "art_new_art_characters_story_mira_work": {
+  "path": "assets/art/characters/story/mira_work.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/mira_work"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "72c12165dffa0884052072fc566e6c3412ff48ea0a9ef35610f8af772c2f204f"
+ },
+ "art_new_art_characters_story_soren_work": {
+  "path": "assets/art/characters/story/soren_work.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/soren_work"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "02403693ffed5be4f631149165d7e5343657ff0f71ac241d1d530f7d58e07527"
+ },
+ "art_new_art_characters_story_tess_work": {
+  "path": "assets/art/characters/story/tess_work.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/story/tess_work"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "e86b5f8fc1402f17125a8ed2324f58ed82b6731e33d42dae443c97c9062a6448"
+ },
+ "art_new_art_portraits_captain_elda": {
+  "path": "assets/art/portraits/captain_elda.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/portraits/captain_elda"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "08c00e3b6845e55abb12562ec9f53246814bfb52766ad20ff26d173e71329e06"
+ },
+ "art_new_art_portraits_harlan": {
+  "path": "assets/art/portraits/harlan.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/portraits/harlan"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "710cb681f0608babef3de0f2ccef7b98de4ffb305e80bbf91507920515db8815"
+ },
+ "art_new_art_portraits_ivo": {
+  "path": "assets/art/portraits/ivo.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/portraits/ivo"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "1006f7bcbdf241e5b4f69a53fa0168a2a45d16ecf42ef6228d30db949bae8044"
+ },
+ "art_new_art_portraits_kade": {
+  "path": "assets/art/portraits/kade.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/portraits/kade"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "d5b6178817e9a046c6880de6dd42ac0ebfe0a0d0e3feaba0ec5215488e62d501"
+ },
+ "art_new_art_portraits_lira": {
+  "path": "assets/art/portraits/lira.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/portraits/lira"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "128cfa74574c9c21a3c224ac544efa89561e73167e4e905b82b74d7ab2a5b333"
+ },
+ "art_new_art_portraits_marin": {
+  "path": "assets/art/portraits/marin.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/portraits/marin"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "6302d84d780de656c8b45a0785c60e2e9531684d61d08d96ccddba77c4b2e3fd"
+ },
+ "art_new_art_portraits_master_rook": {
+  "path": "assets/art/portraits/master_rook.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/portraits/master_rook"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "d6b12669f737eccfff9ae17c9a09c64a633b0bd6a44a0265ae5bf4f61018334f"
+ },
+ "art_new_art_portraits_mira": {
+  "path": "assets/art/portraits/mira.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/portraits/mira"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "d2866df946baa380a2f04305db7a7084f79aa60664ad549049cef43ff9b566d0"
+ },
+ "art_new_art_portraits_soren": {
+  "path": "assets/art/portraits/soren.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/portraits/soren"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "3f679b10ea7ff715144393bb4d2d6778440320c4fd26eaf00dd51b8338c3939b"
+ },
+ "art_new_art_portraits_tess": {
+  "path": "assets/art/portraits/tess.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/portraits/tess"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "76909d8b4d7c083ca6ec0d0633fc888114ee1ee788df627090844997aa9bba5b"
  }
 }

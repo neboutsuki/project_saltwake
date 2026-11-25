@@ -26,7 +26,8 @@
   }
   const FAREWELLS = ['Maybe next time.', 'I’ll pass.', 'Goodbye.', 'Another time.', 'I should go.'];
   const farewell = (npc, node) => FAREWELLS[[...(npc.id + node)].reduce((a, ch) => a + ch.charCodeAt(0), 0) % FAREWELLS.length];
-  D.npcPortrait = (npc, mood) => portrait([mood && `art/portraits/${npc.id}_${mood}`, `art/portraits/${npc.id}`]);
+  D.npcPortrait = (npc, mood) => { const cast = window.saltwakeCast?.castOf?.[npc.id];
+    return portrait([mood && `art/portraits/${npc.id}_${mood}`, `art/portraits/${npc.id}`, cast && mood && `art/portraits/${cast}_${mood}`, cast && `art/portraits/${cast}`]); };
   D.playerPortrait = g => {
     const body = g.save?.appearance?.body || g.save?.profile?.body || g.save?.body || 'male';
     return portrait([`art/portraits/player_${body}`, 'art/portraits/player', 'art/portraits/player_male']);

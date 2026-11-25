@@ -31,6 +31,13 @@
   // 'art/characters/story/mira_down_idle' 'art/characters/story/mira_up_idle' 'art/characters/story/mira_left_idle' 'art/characters/story/mira_right_idle' 'art/characters/story/mira_down_walk' 'art/characters/story/mira_up_walk'
   // 'art/characters/story/soren_down_idle' 'art/characters/story/soren_up_idle' 'art/characters/story/soren_left_idle' 'art/characters/story/soren_right_idle' 'art/characters/story/soren_down_walk' 'art/characters/story/soren_up_walk'
   // 'art/characters/story/tess_down_idle' 'art/characters/story/tess_up_idle' 'art/characters/story/tess_left_idle' 'art/characters/story/tess_right_idle' 'art/characters/story/tess_down_walk' 'art/characters/story/tess_up_walk'
+  for (const n of CAST) STRIPS[n].work = { frames: 8, ms: 160, fw: 128, fh: 96, foot: 88, dirs: { down: `art/characters/story/${n}_work` } };
+  // Who looks like whom: harbor NPC id -> story character (appearance, animations and portrait). Names and dialogue
+  // stay the NPC's own. Edit this table to recast someone.
+  const CAST_OF = C.castOf = {
+    n_dockmaster: 'captain_elda', n_quartermaster: 'harlan', n_clerk: 'marin', n_mechanic: 'master_rook', n_medic: 'soren',
+    n_apprentice: 'lira', n_guard: 'kade', n_tidepilot: 'ivo', n_ropewright: 'mira', n_salvager: 'tess',
+  };
   const FW = 64, FOOT = 60;
 
   const imgs = {};
@@ -41,7 +48,7 @@
     const S = STRIPS[who]; if (!S) return null;
     for (const [a, d] of [[action, dir], ['idle', dir], ['walk', dir], [action, 'down'], ['walk', 'down']]) {
       const s = S[a], al = s && s.dirs[d], im = al && img(al);
-      if (ok(im)) return { im, frames: s.frames, ms: s.ms, action: a, still: a === 'walk' && action !== 'walk' };
+      if (ok(im)) return { im, frames: s.frames, ms: s.ms, action: a, still: a === 'walk' && action !== 'walk', fw: s.fw || FW, fh: s.fh || FW, foot: s.foot || FOOT };
     }
     return null;
   }
@@ -51,11 +58,11 @@
 
   // Draw one frame with its feet at (x, footY); h = drawn frame height (frame is FW x FW).
   function blit(ctx, s, frame, x, footY, h, flash, squash) {
-    const k = h / FW, f = Math.max(0, Math.min(s.frames - 1, frame | 0));
+    const k = h / FW, f = Math.max(0, Math.min(s.frames - 1, frame | 0)), fw = s.fw || FW, fh = s.fh || FW, foot = s.foot || FOOT;
     ctx.save(); ctx.imageSmoothingEnabled = false; ctx.translate(x, footY);
     if (squash) ctx.scale(1 + squash * .25, 1 - squash * .3);
     if (flash) ctx.filter = 'brightness(2.4) saturate(.2)';
-    ctx.drawImage(s.im, f * FW, 0, FW, FW, -FW / 2 * k, -FOOT * k, FW * k, FW * k);
+    ctx.drawImage(s.im, f * fw, 0, fw, fh, -fw / 2 * k, -foot * k, fw * k, fh * k);
     ctx.restore();
   }
   C.draw = (ctx, who, action, dir, t, x, footY, h) => { const s = strip(who, action, dir); if (!s) return false; blit(ctx, s, s.still ? 0 : Math.floor(t / s.ms) % s.frames, x, footY, h); return true; };
@@ -100,9 +107,27 @@
 
   // ---- harbor player ---------------------------------------------------------------------------------------------
   const hub = { x: null, y: null, dist: 0, last: 0 };
+  const npcMotion = {};
+  function npc(ctx, who, dir, mirror, x, y, h) {
+    const now = performance.now(), m = npcMotion[who] || (npcMotion[who] = { x, y, dist: 0, last: 0, since: now });
+    const d = Math.hypot(x - m.x, y - m.y);
+    if (d < 1.5) { m.dist += d; if (d > .004) { m.last = now; m.since = now; } } m.x = x; m.y = y;
+    const moving = now - m.last < 160, D = dir === 'side' ? (mirror ? 'left' : 'right') : dir === 'back' ? 'up' : 'down';
+    // still for a while at their post: work; walking up/down: walk strip; sideways: side idle with a small step bob
+    const action = moving ? (D === 'up' || D === 'down' ? 'walk' : 'idle') : now - m.since > 1500 ? 'work' : 'idle';
+    const s = strip(who, action, action === 'work' ? 'down' : D); if (!s) return false;
+    const fr = action === 'walk' ? Math.floor(m.dist / .16) % s.frames : Math.floor(now / s.ms) % s.frames;
+    const bob = moving && action === 'idle' ? Math.abs(Math.sin(m.dist / .16 * Math.PI)) * h * .03 : 0;
+    blit(ctx, s, fr, x, y - bob, h * FW / 52);
+    C.stats.npc = (C.stats.npc || 0) + 1; return true;
+  }
+  C.npcAction = who => { const m = npcMotion[who]; if (!m) return null; const now = performance.now(); return now - m.last < 160 ? 'moving' : now - m.since > 1500 ? 'work' : 'idle'; };
   function wrapFaces() {
     const F = window.saltwakeFaces; if (!F || F.__cast || typeof F.render !== 'function') return; const r = F.render;
+    const prof = F.profile;
+    F.profile = function (role, a) { const p = prof.apply(this, arguments); if (a && CAST_OF[a.id]) p.cast = CAST_OF[a.id]; return p; };
     F.render = function (ctx, profile, dir, mirror, frame, x, y, w, h, isPlayer) {
+      if (isPlayer !== true && profile && profile.cast && C.enabled && npc(ctx, profile.cast, dir, mirror, x, y, h)) return true;
       if (isPlayer !== true || !C.enabled || !C.ready()) return r.apply(this, arguments);
       const now = performance.now(), d = hub.x === null ? 0 : Math.hypot(x - hub.x, y - hub.y);
       if (d < 1.5) { hub.dist += d; if (d > .004) hub.last = now; } hub.x = x; hub.y = y;
