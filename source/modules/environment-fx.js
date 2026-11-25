@@ -28,11 +28,35 @@ if(typeof SPRITES!=='undefined'){const sd=SPRITES.draw.bind(SPRITES);
   const fx=x+w/2,fy=y+h,a=swayAngle(key,fx,h);ctx.save();ctx.translate(fx,fy);ctx.transform(1,0,-a,1,0,0);ctx.translate(-fx,-fy);try{stats.swayed++;return sd(ctx,key,x,y,w,h)}finally{ctx.restore()}};}
 // Colour grade: cool shadows / warm light, applied once per frame in screen space after the scene.
 const P=Game.prototype,render=P.render;
+// Ashen Wilds grade: drained colour, warm ash-grey haze, darker horizon toward the sea (bottom), cool shadows.
 P.render=function(t,...r){const out=render.call(this,t,...r);if(!cfg.grade||this.mode!=='play')return out;
- g.save();g.setTransform(1,0,0,1,0,0);g.globalCompositeOperation='soft-light';g.fillStyle='rgba(70,96,128,.16)';g.fillRect(0,0,VW,VH);
- g.globalCompositeOperation='overlay';const v=g.createLinearGradient(0,0,0,VH);v.addColorStop(0,'rgba(255,214,170,.06)');v.addColorStop(1,'rgba(20,30,45,.10)');g.fillStyle=v;g.fillRect(0,0,VW,VH);g.restore();return out};
-const hubStyle=document.createElement('style');document.head.append(hubStyle);const hubGrade=()=>{hubStyle.textContent=cfg.grade?'#reunionHarbor{filter:contrast(1.06) saturate(.93) brightness(.98)}':''};hubGrade();const set0=FX.set;FX.set=p=>{const r=set0(p);hubGrade();return r};
+ g.save();g.setTransform(1,0,0,1,0,0);
+ g.globalCompositeOperation='saturation';g.fillStyle='rgba(128,128,128,.24)';g.fillRect(0,0,VW,VH);
+ g.globalCompositeOperation='soft-light';g.fillStyle='rgba(150,128,110,.22)';g.fillRect(0,0,VW,VH);
+ g.globalCompositeOperation='source-over';const v=g.createLinearGradient(0,0,0,VH);v.addColorStop(0,'rgba(196,186,170,.07)');v.addColorStop(.55,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(18,22,26,.16)');g.fillStyle=v;g.fillRect(0,0,VW,VH);
+ g.restore();return out};
+// Brine miasma: a faint green-grey haze pooling at the feet of mutated Brineworn (lore: brine-tainted former humans).
+const de=P.draw25Enemy;P.draw25Enemy=function(e,...a){if(cfg.grade&&e&&!e.dead&&/brineworn|brineback/.test(e.type||'')){const t=performance.now()/1000;g.save();g.translate(e.x,e.y+6);g.scale(1,.4);const r=34+Math.sin(t*1.7+e.x)*4;const gr=g.createRadialGradient(0,0,0,0,0,r);gr.addColorStop(0,'rgba(110,170,135,.22)');gr.addColorStop(1,'rgba(110,170,135,0)');g.fillStyle=gr;g.beginPath();g.arc(0,0,r,0,Math.PI*2);g.fill();g.restore()}return de.call(this,e,...a)};
+// Ashfall: screen-space overlay above both the field canvas and the harbor frame (below HUD). Parallax follows the field camera.
+const ash=document.createElement('canvas');ash.id='swAsh';ash.width=VW;ash.height=VH;ash.setAttribute('aria-hidden','true');
+const ashStyle=document.createElement('style');ashStyle.textContent='#swAsh{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}';document.head.append(ashStyle);
+document.getElementById('viewport')?.prepend(ash);document.getElementById('world')?.after(ash);
+const actx=ash.getContext('2d');const flakes=[];let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+for(let i=0;i<140;i++)flakes.push({x:rnd()*VW,y:rnd()*VH,z:.35+rnd()*.9,s:1.2+rnd()*2.2,ph:rnd()*6.28,ember:rnd()<.06});
+let lastT=0,lastCam=null;stats.ashFrames=0;
+function ashLoop(t){requestAnimationFrame(ashLoop);const G=window.SALTWAKE_DEV?.game;const on=cfg.ash!==false&&cfg.grade&&G&&G.mode==='play'&&!G.panel&&!document.hidden;
+ if(!on){if(lastT){actx.clearRect(0,0,VW,VH);lastT=0}return}
+ const dt=lastT?Math.min(.05,(t-lastT)/1000):0;lastT=t;const w=wind();let cx=0,cy=0;
+ if(G.raid&&G.camera){if(lastCam){cx=(G.camera.x-lastCam.x)*(G.camera.zoom||1);cy=(G.camera.y-lastCam.y)*(G.camera.zoom||1)}lastCam={x:G.camera.x,y:G.camera.y}}else lastCam=null;
+ actx.clearRect(0,0,VW,VH);
+ for(const f of flakes){f.ph+=dt*1.3;f.x+=(14*w+Math.sin(f.ph)*9)*f.z*dt-cx*f.z;f.y+=(16+8*f.z)*f.z*dt-cy*f.z;
+  if(f.y>VH+4){f.y=-4;f.x=rnd()*VW}if(f.y<-6)f.y=VH+4;if(f.x>VW+4)f.x=-4;if(f.x<-6)f.x=VW+4;
+  if(f.ember){const a=.35+.3*Math.sin(f.ph*2.3);actx.fillStyle=`rgba(232,120,70,${a*f.z})`;actx.fillRect(f.x,f.y,f.s*1.1,f.s*1.1)}
+  else{actx.fillStyle=`rgba(222,216,206,${.30+.4*f.z})`;actx.fillRect(f.x,f.y,f.s*f.z*1.5,f.s*f.z*1.2)}}
+ stats.ashFrames++}
+requestAnimationFrame(ashLoop);
+const hubStyle=document.createElement('style');document.head.append(hubStyle);const hubGrade=()=>{hubStyle.textContent=cfg.grade?'#reunionHarbor{filter:saturate(.78) sepia(.1) contrast(1.06) brightness(.97)}':''};hubGrade();const set0=FX.set;FX.set=p=>{const r=set0(p);hubGrade();return r};
 const gp=P.graphicsPanel;P.graphicsPanel=function(...a){const out=gp.apply(this,a);const b=$('panel')?.querySelector('.engineOptions');if(b&&!$('envWind')){
- b.insertAdjacentHTML('beforeend',`<label class="engineCheck"><input id="envWind" type="checkbox" ${cfg.wind?'checked':''}> Wind-swayed vegetation</label><label class="engineCheck"><input id="envShadow" type="checkbox" ${cfg.shadows?'checked':''}> Prop contact shadows</label><label class="engineCheck"><input id="envGrade" type="checkbox" ${cfg.grade?'checked':''}> Cinematic colour grade</label>`);
- $('envWind').onchange=e=>FX.set({wind:e.target.checked});$('envShadow').onchange=e=>FX.set({shadows:e.target.checked});$('envGrade').onchange=e=>FX.set({grade:e.target.checked})}return out};
+ b.insertAdjacentHTML('beforeend',`<label class="engineCheck"><input id="envWind" type="checkbox" ${cfg.wind?'checked':''}> Wind-swayed vegetation</label><label class="engineCheck"><input id="envShadow" type="checkbox" ${cfg.shadows?'checked':''}> Prop contact shadows</label><label class="engineCheck"><input id="envGrade" type="checkbox" ${cfg.grade?'checked':''}> Ashen colour grade</label><label class="engineCheck"><input id="envAsh" type="checkbox" ${cfg.ash!==false?'checked':''}> Falling ash</label>`);
+ $('envWind').onchange=e=>FX.set({wind:e.target.checked});$('envShadow').onchange=e=>FX.set({shadows:e.target.checked});$('envGrade').onchange=e=>FX.set({grade:e.target.checked});$('envAsh').onchange=e=>FX.set({ash:e.target.checked})}return out};
 })();

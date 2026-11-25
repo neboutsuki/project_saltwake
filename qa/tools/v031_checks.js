@@ -13,4 +13,9 @@ c.weaponSilhouette=!!document.querySelector('#swWeaponSil svg')&&/[0-9]/.test(do
 c.questTags=document.querySelectorAll('#swQuestType .tag').length>0;
 const hunt=(G.world.content.living_expeditions.contracts||[]).find(x=>x.steps.some(s=>s.kind==='kill'));const keep=G.raid.living;G.raid.living={id:hunt.id,step:0};const qi=saltwakeHudLayout.questInfo(G);c.huntTag=qi.tags.some(t=>t[0]==='hunt')&&/Target/.test(qi.target);G.raid.living=keep;
 G.player.bleed=3;G.hud();c.bleedingInVitals=!document.getElementById('bleedText').hidden&&!!document.getElementById('bleedText').closest('#swHudLeft');G.player.bleed=0;
+const Cm=saltwakeCamera;Cm.set({smooth:true,lookahead:false});G.player.x=2500;G.player.y=1200;Cm.state.x=null;G.render(performance.now());const cx0=G.camera.x;G.player.x+=200;Cm.state.t-=.05;G.render(performance.now());c.cameraSmooth=G.camera.x>cx0&&G.camera.x<cx0+200;
+G.player.x-=200;const z0=G.camera.target;Cm.set({zoom:1.2});c.cameraZoom=Math.abs(G.camera.target/z0-1.2)<.02;Cm.set({zoom:1,lookahead:true});
+const tr=Cm.state.trauma;G.player.iframes=0;G.hurtPlayer(10,0);c.cameraShake=Cm.state.trauma>tr;G.player.hp=100;
+const sc=saltwakeScale.stats.chars;G.render(performance.now());c.charScale=saltwakeScale.stats.chars>sc&&saltwakeScale.CHAR>1;c.propScale=saltwakeScale.stats.props>0;
+c.ashOverlay=!!document.getElementById('swAsh');c.hudScale=!!getComputedStyle(document.documentElement).getPropertyValue('--sw-hud-scale');
 G.endRaid(true,'QA v031');c.extract=!G.raid;return c}`;

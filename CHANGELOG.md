@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — Camera, scale and ashen atmosphere
+- **Camera** (`source/modules/camera.js`): smooth follow; look-ahead toward your aim and movement, stronger during raids; zoom with the mouse wheel over the world or `-` / `=` (0.8×–1.45× of each map's base scale); screen shake on damage that grows with the damage taken. The map-edge limits and the long-range aiming offset still work. Each option can be set in Graphics & Performance (zoom slider plus toggles). The base render now calls `Game.prototype.cameraFrame`.
+- **Scale** (`source/modules/scale.js`): characters (player, NPCs, wreckers, Brineworn) are drawn 1.15× larger in both the field and the harbor. Gulls are reduced to 0.72×. Crates, benches, barrels, cargo and banners are reduced to roughly human scale. All scaling is anchored at the feet; hitboxes, collision radii, ranges and positions are unchanged. The HUD scales with the game's width (0.8×–1.55×).
+- **Ashen Wilds atmosphere:** a drained, ash-grey grade with a warm haze and a darker seaward horizon, plus falling ash with occasional red embers that drift with the wind and parallax with the camera. A faint green brine haze pools at the feet of Brineworn and Brinebacks. The harbor gets a matching filter. "Falling ash" is a separate toggle.
+- QA now runs 102 checks, all passing. Benchmark (half-res lighting): render p95 4.3 ms.
+
+
 ## Unreleased — Hunter-style HUD layout
 - `source/modules/hud-layout.js` moves the HUD. The existing elements are moved, not rebuilt.
   - **Upper left:** health and stamina, status effects (bleeding and similar) and the pack line. The equipped-weapon card sits directly below, with a translucent white silhouette of the weapon type (arbalest, wickcaster or spear) and the ammunition count with an icon (bolt or cell). The spear shows "Melee · no ammunition".
