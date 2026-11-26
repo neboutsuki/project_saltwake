@@ -16,4 +16,7 @@ c.westEdgeBlocks=!G.walkable(1*T,40*T);c.westPassageOpen=G.walkable(1.5*T,62*T);
 c.buildingsSolid=Q.buildings.filter(b=>b.art).every(b=>!G.walkable((b.x+b.w/2)*T,(b.y+b.h/2)*T));
 const w=G.map().portals.every(p=>{for(let r=0;r<=3;r+=.5)for(let k=0;k<12;k++){const a=k/12*Math.PI*2;if(G.walkable((p.x+Math.cos(a)*r)*T,(p.y+Math.sin(a)*r)*T))return true}return false});c.exitsReachable=w;
 c.customsPlateauCliff=!G.walkable(80*T,57*T)&&G.walkable(99*T,57*T);c.overviewArt=!!SALTWAKE_ASSETS.images['art/maps/quays']&&Q.overview==='art/maps/quays';
+// ground never shows a blank fill: a not-yet-composed chunk draws its low-res preview, full chunks come from the worker
+const TXs=window.saltwakeTiles,pv=TXs.stats.previews;G.player.x=200*T;G.player.y=30*T;try{G.render(performance.now())}catch(e){}
+c.groundPreviews=TXs.stats.previews>pv||TXs.stats.chunks>0;c.groundWorker=TXs.useWorker===true&&TXs.cacheSize>=90;
 G.endRaid(true,'QA tiles');c.hubTownWall=!G.walkable(20*T,7*T)&&G.walkable(36*T,8*T);c.backInHub=G.mapId==='hub'&&G.walkable(G.player.x,G.player.y);return c}`;

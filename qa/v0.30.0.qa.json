@@ -196,6 +196,8 @@
     "tiles.exitsReachable": true,
     "tiles.customsPlateauCliff": true,
     "tiles.overviewArt": true,
+    "tiles.groundPreviews": true,
+    "tiles.groundWorker": true,
     "tiles.hubTownWall": true,
     "tiles.backInHub": true,
     "cast.loaded": true,

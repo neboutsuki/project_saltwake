@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.31-dev — Map fix: no more blank ground, straight edges or blocky fog
+- **Cause:** field ground is painted in 512 px chunks, pixel by pixel. It ran on the main thread at 5 ms a frame with only 48 chunks cached (the Outer Quays have 140). Walking around kept re-painting chunks, and every unpainted chunk showed as flat brown with straight edges.
+- **Fix:**
+  - Chunks are now painted in a background Web Worker, nearest first, with a 2-chunk prefetch ring around the view and a 96-chunk cache.
+  - A chunk not painted yet shows an instant soft low-res preview of the same warped materials, never a flat fill.
+  - Falls back to the old main-thread path if workers are unavailable.
+- **Field map / minimap:** the fog of war is a soft blurred mask instead of hard 4×4-tile squares.
+- QA: tiles suite checks the previews and the worker path. 379 checks, all passing.
+
 ## v0.31-dev — Survival operations (Helldivers-style)
 - New **SURVIVAL** commissions on the board:
   - Hold the Pilot Shed (2:30).

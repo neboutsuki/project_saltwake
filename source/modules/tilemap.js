@@ -17,7 +17,7 @@
   const P = Game.prototype, IMGS = () => (window.SALTWAKE_ASSETS && window.SALTWAKE_ASSETS.images) || {};
   const CH = 16, CPX = CH * 32, ART_SCALE = 1.4;
   window.SALTWAKE_NEW_HUB = true;
-  const TX = window.saltwakeTiles = { enabled: true, ready: false, stats: { chunks: 0, built: 0, sprites: 0, facades: 0, remaps: 0 }, cacheSize: 48,
+  const TX = window.saltwakeTiles = { enabled: true, ready: false, stats: { chunks: 0, built: 0, sprites: 0, facades: 0, remaps: 0 }, cacheSize: 96,
     budgetMs: 5, camera: .95, brighten: 1.1, desat: .18 };
   const isTile = m => !!(m && m.tilemap);
 
@@ -95,7 +95,7 @@
       if (cy > coast(cx * T) - 2.6) mat = 'sand';
       grid[y * gw + x] = id(mat);
     }
-    s.grid = grid; s.gw = gw; s.gh = gh;
+    s.grid = grid; s.gw = gw; s.gh = gh; s.gen = (s.gen || 0) + 1 + Math.random();
   }
   const matAt = (s, tx, ty) => s.grid[Math.max(0, Math.min(s.gh - 1, ty)) * s.gw + Math.max(0, Math.min(s.gw - 1, tx))];
 
@@ -132,6 +132,69 @@
     if (J.row < CPX) return null;
     J.ctx.putImageData(J.out, 0, 0); TX.stats.built++; return J.c;
   }
+  // ---- background composition (Web Worker) + instant low-res previews -----------------------------------------------
+  // Full-res chunks are composed off the main thread, nearest first, and kept in a large cache; until one is ready the
+  // chunk shows a soft 1/8-scale preview of the same warped materials (never a flat fill), so nothing pops in from blank.
+  const WORKER_SRC = `
+    const hash=(x,y,s)=>{let h=(Math.imul(x,374761393)+Math.imul(y,668265263)+Math.imul(s,2147483647))|0;h=Math.imul(h^(h>>>13),1274126177);return((h^(h>>>16))>>>0)/4294967296};
+    const smooth=t=>t*t*(3-2*t);
+    function vnoise(x,y,s){const xi=Math.floor(x),yi=Math.floor(y),xf=smooth(x-xi),yf=smooth(y-yi);const a=hash(xi,yi,s),b=hash(xi+1,yi,s),c=hash(xi,yi+1,s),d=hash(xi+1,yi+1,s);return a+(b-a)*xf+(c-a)*yf+(a-b-c+d)*xf*yf}
+    let Tx=null,bomb=null,CPX=512;const grids={};
+    onmessage=async ev=>{const m=ev.data;
+      if(m.type==='init'){Tx=m.mats;bomb=m.bomb;CPX=m.CPX;return}
+      if(m.type==='grid'){grids[m.key]=m;return}
+      if(m.type!=='job')return;const G=grids[m.key];if(!G||!Tx)return;
+      const {cx,cy}=m,ox=cx*CPX,oy=cy*CPX,St=8,n=CPX/St+2,wx=new Float32Array(n*n),wy=new Float32Array(n*n);
+      for(let j=0;j<n;j++)for(let i=0;i<n;i++){const X=(ox+i*St)/23,Y=(oy+j*St)/23;wx[j*n+i]=(vnoise(X,Y,11)-.5)*44+(vnoise(X*3,Y*3,12)-.5)*12;wy[j*n+i]=(vnoise(X,Y,21)-.5)*44+(vnoise(X*3,Y*3,22)-.5)*12}
+      const o=new Uint8ClampedArray(CPX*CPX*4),gw=G.gw,gh=G.gh,grid=G.grid;
+      for(let py=0;py<CPX;py++){const fj=py/St,j0=fj|0,tj=fj-j0;for(let px=0;px<CPX;px++){const fi=px/St,i0=fi|0,ti=fi-i0,k=j0*n+i0;
+        const dx=(wx[k]*(1-ti)+wx[k+1]*ti)*(1-tj)+(wx[k+n]*(1-ti)+wx[k+n+1]*ti)*tj,dy=(wy[k]*(1-ti)+wy[k+1]*ti)*(1-tj)+(wy[k+n]*(1-ti)+wy[k+n+1]*ti)*tj;
+        const gx=ox+px,gy=oy+py,tx=Math.max(0,Math.min(gw-1,Math.floor((gx+dx)/32))),ty=Math.max(0,Math.min(gh-1,Math.floor((gy+dy)/32))),mt=grid[ty*gw+tx],t=Tx[mt];
+        let sx=gx,sy=gy;if(bomb[mt]){const c2=Math.floor((gx+dx*.8)/100),d2=Math.floor((gy+dy*.8)/100),hk=c2*7919+d2*104729;sx+=(Math.imul(hk,2654435761)>>>0)%t.w;sy+=(Math.imul(hk,2246822519)>>>0)%t.h}
+        const q=(((sy%t.h)*t.w)+(sx%t.w))*4,p=(py*CPX+px)*4;o[p]=t.d[q];o[p+1]=t.d[q+1];o[p+2]=t.d[q+2];o[p+3]=255}}
+      const img=new ImageData(o,CPX,CPX);
+      if(self.createImageBitmap){const bmp=await createImageBitmap(img);postMessage({key:m.key,cx,cy,bmp},[bmp])}else postMessage({key:m.key,cx,cy,buf:o.buffer},[o.buffer]);
+    };`;
+  let worker = null, workerReady = false, workerFailed = false;
+  const grids = new Set(), inflight = new Map();
+  TX.stats.worker = 0; TX.stats.previews = 0;
+  function initWorker() {
+    if (worker || workerFailed) return !!worker;
+    if (!MATS.every(n => tex(n))) return false;
+    try {
+      worker = new Worker(URL.createObjectURL(new Blob([WORKER_SRC], { type: 'text/javascript' })));
+      worker.onmessage = ev => {
+        const { key, cx, cy, bmp, buf } = ev.data, k = cx + ',' + cy, st = state[key]; inflight.delete(key + ':' + k);
+        if (!st) return; let c = bmp;
+        if (!c && buf) { c = document.createElement('canvas'); c.width = c.height = CPX; c.getContext('2d').putImageData(new ImageData(new Uint8ClampedArray(buf), CPX, CPX), 0, 0); }
+        st.chunks.set(k, c); TX.stats.built++; TX.stats.worker++;
+        while (st.chunks.size > TX.cacheSize) { const old = st.chunks.keys().next().value; const v = st.chunks.get(old); st.chunks.delete(old); v?.close?.(); }
+      };
+      worker.onerror = () => { workerFailed = true; worker = null; };
+      worker.postMessage({ type: 'init', CPX, mats: MATS.map(n => { const t = tex(n); return { w: t.w, h: t.h, d: t.d.slice() }; }), bomb: MATS.map(n => BOMB.has(n)) });
+      workerReady = true; return true;
+    } catch (e) { workerFailed = true; worker = null; return false; }
+  }
+  TX.useWorker = true;
+  function request(game, s, cx, cy) {
+    const key = game.mapId, k = cx + ',' + cy;
+    if (s.chunks.has(k) || inflight.has(key + ':' + k) || inflight.size >= 4) return;
+    if (!grids.has(key + ':' + s.gen)) { worker.postMessage({ type: 'grid', key, gw: s.gw, gh: s.gh, grid: s.grid }); grids.add(key + ':' + s.gen); }
+    inflight.set(key + ':' + k, performance.now()); worker.postMessage({ type: 'job', key, cx, cy });
+  }
+  // average colour per material, for the previews
+  const avg = {};
+  function avgOf(i) { if (avg[i]) return avg[i]; const t = tex(MATS[i]); let r = 0, gg = 0, b = 0, n = 0; for (let q = 0; q < t.d.length; q += 4 * 7) { r += t.d[q]; gg += t.d[q + 1]; b += t.d[q + 2]; n++; } return (avg[i] = [r / n, gg / n, b / n]); }
+  function preview(s, cx, cy) {
+    const k = cx + ',' + cy; s.previews ||= new Map(); let c = s.previews.get(k); if (c) return c;
+    const N = CPX / 8; c = document.createElement('canvas'); c.width = c.height = N; const x = c.getContext('2d'), id = x.createImageData(N, N), o = id.data;
+    for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) {
+      const gx = cx * CPX + i * 8 + 4, gy = cy * CPX + j * 8 + 4, X = gx / 23, Y = gy / 23;
+      const dx = (vnoise(X, Y, 11) - .5) * 44, dy = (vnoise(X, Y, 21) - .5) * 44, m = matAt(s, Math.floor((gx + dx) / 32), Math.floor((gy + dy) / 32)), a = avgOf(m), v = .9 + vnoise(gx / 40, gy / 40, 5) * .2, p = (j * N + i) * 4;
+      o[p] = a[0] * v; o[p + 1] = a[1] * v; o[p + 2] = a[2] * v; o[p + 3] = 255;
+    }
+    x.putImageData(id, 0, 0); s.previews.set(k, c); TX.stats.previews++; return c;
+  }
   let frameUntil = 0;
   function chunk(s, cx, cy) {
     const k = cx + ',' + cy; let c = s.chunks.get(k);
@@ -154,13 +217,26 @@
     const x0 = Math.max(0, Math.floor(view.x0 / span)), x1 = Math.min(mw, Math.ceil(view.x1 / span));
     const y0 = Math.max(0, Math.floor(view.y0 / span)), y1 = Math.min(mh, Math.ceil(view.y1 / span));
     g.imageSmoothingEnabled = false;
-    for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) {
-      const c = chunk(s, x, y); if (c) { g.drawImage(c, x * span, y * span); TX.stats.chunks++; } else this.fill(x * span, y * span, span, span, '#4f4639');
-    }
-    for (let y = y0 - 1; y <= y1 && performance.now() < frameUntil; y++) for (let x = x0 - 1; x <= x1; x++) {
-      if (performance.now() >= frameUntil) break;
-      if (x < 0 || y < 0 || x >= mw || y >= mh || s.chunks.has(x + ',' + y)) continue;
-      chunk(s, x, y);
+    const W = TX.useWorker && initWorker();
+    if (W) {
+      for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) {
+        const k = x + ',' + y, c = s.chunks.get(k);
+        if (c) { s.chunks.delete(k); s.chunks.set(k, c); g.drawImage(c, x * span, y * span); TX.stats.chunks++; }
+        else { g.imageSmoothingEnabled = true; g.drawImage(preview(s, x, y), x * span, y * span, span, span); g.imageSmoothingEnabled = false; request(this, s, x, y); }
+      }
+      // prefetch a ring of 2 chunks around the view, nearest first
+      const ring = []; for (let y = y0 - 2; y < y1 + 2; y++) for (let x = x0 - 2; x < x1 + 2; x++) if (x >= 0 && y >= 0 && x < mw && y < mh && !s.chunks.has(x + ',' + y)) ring.push([x, y, Math.hypot(x + .5 - (x0 + x1) / 2, y + .5 - (y0 + y1) / 2)]);
+      ring.sort((a, b) => a[2] - b[2]); for (const [x, y] of ring) request(this, s, x, y);
+      for (const [k, t] of inflight) if (performance.now() - t > 4000) inflight.delete(k);   // lost job: retry
+    } else {
+      for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) {
+        const c = chunk(s, x, y); if (c) { g.drawImage(c, x * span, y * span); TX.stats.chunks++; } else { g.imageSmoothingEnabled = true; g.drawImage(preview(s, x, y), x * span, y * span, span, span); g.imageSmoothingEnabled = false; }
+      }
+      for (let y = y0 - 1; y <= y1 && performance.now() < frameUntil; y++) for (let x = x0 - 1; x <= x1; x++) {
+        if (performance.now() >= frameUntil) break;
+        if (x < 0 || y < 0 || x >= mw || y >= mh || s.chunks.has(x + ',' + y)) continue;
+        chunk(s, x, y);
+      }
     }
     // Rest of the terrain chain (terrain decals + rain puddles) with the old painted chunks and old sea hidden.
     const draw = SPRITES.draw;
