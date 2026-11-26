@@ -21,7 +21,7 @@ try{const C=G.world.content.living_expeditions.contracts;c.contracts=['surv_pilo
  // a wrong code resets
  SV.input(G,'U');SV.input(G,'U');c.wrongCodeResets=S.input.length===0;
  // mortar damages monsters around the mark; cannon is one big blast; friendly fire hurts the player
- const tgt=G.raid.enemies.find(e=>e.surv&&!e.dead);tgt.hp=tgt.maxHp=2000;tgt.x=p.x+200;tgt.y=p.y;const hp0=tgt.hp;
+ const tgt=G.raid.enemies.find(e=>e.surv&&!e.dead);tgt.hp=tgt.maxHp=2000;tgt.x=p.x+200;tgt.y=p.y;tgt.staggerTime=6;tgt.staggerGrace=9;const hp0=tgt.hp;
  SV.call(G,'cannon',tgt.x,tgt.y);step(3);c.cannonHits=tgt.hp<hp0-150&&SV.stats.blasts>0;
  S.cd.mortar=0;SV.call(G,'mortar',p.x+400,p.y);step(2.7);c.mortarShells=S.shells.length===6;step(4);
  p.iframes=0;p.hp=100;S.shells.push({x:p.x,y:p.y,t:.05,max:.9,R:58,dmg:150,ff:30});step(.2);c.mortarFriendlyFire=p.hp<100&&!!G.raid;p.iframes=999;p.hp=100;

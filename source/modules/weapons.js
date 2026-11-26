@@ -1,21 +1,22 @@
 /* SALTWAKE weapons overhaul (v0.31).
  * 1. Hit feel: hitstop scaled by weapon and damage, screen shake, recoil kick, muzzle flash, impact sparks; heavy hits
  *    knock monsters back. All effects are code (no drawn art).
- * 2. Melee (slot 3): Spear, Knife, Greataxe from the weapon sheet. Tap = light attack, chaining into a 3-hit combo
- *    (the 3rd hit is a finisher). Hold = charge a heavy attack, release to strike. Each weapon has its own reach, arc,
- *    speed, stamina cost, stagger and part power. Knife backstabs (unaware or from behind) deal x2.5. Greataxe sweeps
- *    hit everything in the arc. Melee weapons are crafted and upgraded (Lv 1-3) at the forge's new Melee tab.
- * 3. Charged ranged shots: hold fire to charge, release. Partial charge = stronger shot; full charge = special:
- *    Bow Piercing Arrow · Longwatch Deadeye · Arbalest Breaker Bolt · Wickcaster Flare Burst (fan of every loaded
- *    cell) · Harpoon Gun Reel Shot. Quick taps still fire normally.
- *    New Harpoon Gun family (fires bolts): small monsters are reeled in, big ones are anchored (slowed).
+ * 2. Melee (slot 3): Spear, Knife, Greataxe from the weapon sheet. LEFT CLICK = light attack, chaining into a 3-hit
+ *    combo (click again or hold; the 3rd hit is a finisher). RIGHT CLICK = heavy attack (Spear Impaling Lunge, Knife Dash
+ *    Stab, Greataxe Overhead Cleave). Each weapon has its own reach, arc, speed, stamina, stagger and part power. Knife
+ *    backstabs (unaware or from behind) deal x2.5. Greataxe sweeps hit everything in the arc. Crafted/upgraded (Lv 1-3)
+ *    at the forge's Melee tab.
+ * 3. Ranged: LEFT CLICK = normal shot (hold for auto-fire). RIGHT CLICK = the weapon's special shot, short cooldown:
+ *    Bow Piercing Arrow · Arbalest Breaker Bolt · Wickcaster Flare Burst (fan of every loaded cell) · Harpoon Gun Reel
+ *    Shot. Longwatch keeps right click = steady aim; a shot fired fully steady is a Deadeye. No charging.
+ *    Harpoon Gun (fires bolts): small monsters are reeled in, big ones are anchored (slowed).
  * 4. Crafting: rank V "Tidemaw" upgrades for every weapon branch (Tidemaw parts), harpoon gun tree, melee upgrades;
  *    material lists say which monster part drops what you are missing.
  * window.saltwakeWeapons exposes data, state and stats for QA.
  */
 (() => {
   const P = Game.prototype, T = 32, TAU = Math.PI * 2;
-  const W = window.saltwakeWeapons = { stats: { hitstops: 0, light: 0, heavy: 0, combo3: 0, charged: 0, specials: 0, pulls: 0, anchors: 0, pierces: 0, backstabs: 0, shakes: 0 }, stop: 0, flashes: [], trails: [] };
+  const W = window.saltwakeWeapons = { stats: { hitstops: 0, light: 0, heavy: 0, combo3: 0, specials: 0, pulls: 0, anchors: 0, pierces: 0, backstabs: 0, shakes: 0 }, stop: 0, flashes: [], trails: [] };
   const AL = window.saltwakeAlpha, CAM = () => window.saltwakeCamera, AU = () => window.saltwakeAudio;
   const HUNT = () => window.saltwakeHunt;
   const has = typeof ARMORY !== 'undefined';
@@ -31,18 +32,18 @@
   const MELEE = W.MELEE = {
     spear: { name: 'Salvager Spear', art: 'art/weapons/spear', icon: 'weapon_spear', len: 62, pen: 17, stagger: 1.1, part: .8, multi: 2, sound: 'knife', stop: .05,
       combo: [{ dmg: 27, reach: 94, arc: .48, wind: .16, rec: .24, st: 12, lunge: 8 }, { dmg: 25, reach: 96, arc: .5, wind: .13, rec: .24, st: 11, lunge: 12 }, { dmg: 44, reach: 112, arc: .45, wind: .2, rec: .38, st: 16, lunge: 24 }],
-      heavy: { dmg: 78, reach: 128, arc: .36, wind: .12, rec: .42, st: 24, lunge: 42, charge: .55 },
+      heavy: { name: 'Impaling Lunge', dmg: 78, reach: 128, arc: .36, wind: .3, rec: .42, st: 24, lunge: 42 },
       blurb: 'Long reach thrusts. Hits up to two in a line. Heavy: lunging impale.', craft: null, up: [{ scrap_metal: 4, rope: 2 }, { scrap_metal: 6, brineback_tusk: 1 }], upPrice: [80, 160] },
     knife: { name: 'Gutting Knife', art: 'art/weapons/knife', icon: 'weapon_knife', len: 32, pen: 8, stagger: .6, part: .6, multi: 1, sound: 'knife', stop: .03, backstab: 2.5,
       combo: [{ dmg: 14, reach: 60, arc: .8, wind: .07, rec: .13, st: 5, lunge: 10 }, { dmg: 14, reach: 60, arc: .8, wind: .07, rec: .13, st: 5, lunge: 10 }, { dmg: 24, reach: 66, arc: .9, wind: .1, rec: .26, st: 8, lunge: 18 }],
-      heavy: { dmg: 46, reach: 74, arc: .6, wind: .08, rec: .3, st: 14, lunge: 56, charge: .4 },
+      heavy: { name: 'Dash Stab', dmg: 46, reach: 74, arc: .6, wind: .2, rec: .3, st: 14, lunge: 56 },
       blurb: 'Fast and quiet. x2.5 damage on unaware targets or from behind. Heavy: dashing stab.', craft: { scrap_metal: 3, rope: 1 }, price: 60, up: [{ scrap_metal: 4, widow_claw: 1 }, { scrap_metal: 5, widow_claw: 2, redhook_beak: 1 }], upPrice: [70, 150] },
     greataxe: { name: 'Salvager Greataxe', art: 'art/weapons/greataxe', icon: 'weapon_greataxe', len: 60, pen: 30, stagger: 2.2, part: 1.8, multi: 6, sound: 'hammer', stop: .1, knock: 34,
       combo: [{ dmg: 50, reach: 88, arc: 1.15, wind: .3, rec: .42, st: 18, lunge: 6 }, { dmg: 58, reach: 88, arc: 1.2, wind: .28, rec: .46, st: 20, lunge: 10 }, { dmg: 96, reach: 96, arc: 1.4, wind: .36, rec: .62, st: 26, lunge: 16 }],
-      heavy: { dmg: 165, reach: 104, arc: 1.5, wind: .18, rec: .7, st: 34, lunge: 22, charge: .85 },
+      heavy: { name: 'Overhead Cleave', dmg: 165, reach: 104, arc: 1.5, wind: .45, rec: .7, st: 34, lunge: 22 },
       blurb: 'Slow sweeping chops that hit everything in the arc. Huge stagger and part breaking.', craft: { scrap_metal: 8, brineback_plate: 2, brineback_tusk: 1 }, price: 220, up: [{ scrap_metal: 8, brineback_plate: 3 }, { scrap_metal: 10, tidemaw_jaw_plate: 1, brineback_tusk: 2 }], upPrice: [180, 320] },
   };
-  const CHARGE = W.CHARGE = { bow: .7, longwatch: 1.0, arbalest: .8, wickcaster: .6, harpoon: .8 };
+  const ALT_CD = W.ALT_CD = { bow: 1.0, arbalest: 2.0, wickcaster: 2.5, harpoon: 3.0 };   // right-click special cooldowns (s)
   const SPECIAL = W.SPECIAL = { bow: 'Piercing Arrow', longwatch: 'Deadeye', arbalest: 'Breaker Bolt', wickcaster: 'Flare Burst', harpoon: 'Reel Shot' };
   const FEEL = { bow: [.02, .05, 2], longwatch: [.06, .22, 6], arbalest: [.04, .14, 5], wickcaster: [.03, .09, 3], harpoon: [.05, .16, 6] }; // hitstop, shake, recoil px
   const FIRE_SOUND = { bow: 'bow', longwatch: 'longwatch', arbalest: 'arbalest', wickcaster: 'wickcaster', harpoon: 'arbalest' };
@@ -78,7 +79,7 @@
 
   // ---- melee attacks ----------------------------------------------------------------------------------------------
   // state per raid: { id, kind, step, age, wind, end, angle, hit, data }
-  const ST = new WeakMap(), S = r => { let s = ST.get(r); if (!s) { s = { att: null, buffer: 0, lastEnd: -9, combo: 0, charge: null }; ST.set(r, s); } return s; };
+  const ST = new WeakMap(), S = r => { let s = ST.get(r); if (!s) { s = { att: null, buffer: 0, lastEnd: -9, combo: 0, altCD: 0 }; ST.set(r, s); } return s; };
   W.state = g => g.raid && S(g.raid);
   function startMelee(g, heavy) {
     const p = g.player, r = g.raid; if (!r || g.isPaused() || p.roll > 0 || p.weapon !== 2) return false;
@@ -149,25 +150,37 @@
     };
   }
 
-  // ---- input: charge on hold for melee heavy and ranged specials --------------------------------------------------
+  // ---- input: left click = main attack, right click = special ------------------------------------------------------
+  // Melee: LMB light combo (hold to keep swinging), RMB heavy. Ranged: LMB normal shot (hold = auto-fire as before),
+  // RMB the weapon's special shot with a short cooldown. Longwatch keeps RMB = steady aim (scope); a LMB shot fired
+  // while fully steady is a Deadeye. No charging anywhere.
   const famOf = g => { const w = g.player.weapon < 2 && g.weapon?.(); return w?.family || null; };
   const shoot = P.shoot;
   P.shoot = function () {
     const p = this.player, r = this.raid;
     if (!r || this.isPaused() || p.harpoon) return shoot.apply(this, arguments);
     const s = S(r);
-    if (p.weapon === 2) {
-      if (!this.mouse.down) return startMelee(this, false);           // scripted / gamepad tap: immediate light attack
-      if (s.att) { if (!s.charge) { if (s.att.age > s.att.wind) s.buffer = .35; } return; }
-      if (!s.charge) s.charge = { t: 0, melee: true, ready: false };
-      return;
-    }
+    if (p.weapon === 2) { if (s.att) { if (s.att.age > s.att.wind) s.buffer = .35; return; } return startMelee(this, false); }
     const fam = famOf(this);
-    if (!fam || !CHARGE[fam] || !this.mouse.down) return fire.call(this, fam, 0);
-    if (p.cooldown > 0 || p.roll > 0 || p.reload > 0) return;
-    if (!p.mag[p.weapon]) return shoot.apply(this, arguments);        // empty: original reload path
-    if (!s.charge) s.charge = { t: 0, melee: false, fam, ready: false };
+    const deadeye = fam === 'longwatch' && typeof this.longwatchSpread === 'function' && this.longwatchSpread() <= .5;
+    return fire.call(this, fam, deadeye ? 1 : 0);
   };
+  P.altAttack = function () {
+    const p = this.player, r = this.raid;
+    if (!r || this.isPaused() || this.panel || p.roll > 0 || p.harpoon) return false;
+    const s = S(r);
+    if (p.weapon === 2) { if (s.att) return false; return startMelee(this, true); }
+    const fam = famOf(this); if (!fam || !ALT_CD[fam]) return false;          // longwatch: RMB is the scope
+    if ((s.altCD || 0) > 0) { this.notify?.(`${SPECIAL[fam]} ready in ${s.altCD.toFixed(1)} s`, .8); return false; }
+    if (p.cooldown > 0 || p.reload > 0) return false;
+    if (!p.mag[p.weapon]) { this.reload?.(); return false; }
+    const before = W.stats.specials; fire.call(this, fam, 1);
+    if (W.stats.specials > before) { s.altCD = ALT_CD[fam]; p.cooldown = Math.max(p.cooldown, (this.weapon()?.cooldown || .5) * 1.4); return true; }
+    return false;
+  };
+  W.alt = g => g.altAttack();
+  const canvas = typeof C !== 'undefined' ? C : document.getElementById('world');
+  canvas?.addEventListener('pointerdown', e => { const G = window.SALTWAKE_DEV?.game; if (e.button !== 2 || !G || G.mode !== 'play' || !G.raid) return; e.preventDefault(); G.altAttack(); });
   function fire(fam, level) {
     const p = this.player, r = this.raid, before = r ? r.bullets.length : 0, mag = p.mag?.[p.weapon], cd = p.cooldown;
     const out = shoot.call(this);
@@ -176,11 +189,9 @@
     const f = FEEL[fam] || [.03, .08, 3], ang = p.angle;
     for (const b of made) b.fam = fam;
     if (level > 0 && made.length) {
-      W.stats.charged++;
       const b = made[0], sp = Math.hypot(b.vx, b.vy);
       const aim = (k) => { b.vx = Math.cos(ang) * sp * k; b.vy = Math.sin(ang) * sp * k; b.t = b.t / k; };
-      if (level < 1) { b.damage *= 1 + .5 * level; b.stagger = (b.stagger || 1) * (1 + .4 * level); }
-      else {
+      {
         W.stats.specials++; const label = SPECIAL[fam];
         if (fam === 'bow') { b.damage *= 1.9; b.pierce = 2; aim(1.25); }
         else if (fam === 'longwatch') { b.damage *= 2; b.pierce = 3; b.partPower = (b.partPower || 1) * 1.5; aim(1.2); }
@@ -203,15 +214,8 @@
     return out;
   }
   W.fire = (g, fam, level) => fire.call(g, fam, level);
-  function releaseCharge(g, s) {
-    const c = s.charge; s.charge = null; if (!c) return;
-    if (c.melee) { if (c.t >= W.melee(g).heavy.charge) startMelee(g, true); else startMelee(g, false); return; }
-    const need = CHARGE[c.fam] || .8, lv = c.t < .22 ? 0 : c.t >= need ? 1 : (c.t - .22) / (need - .22) * .99;
-    fire.call(g, c.fam, lv);
-  }
-  W.release = g => g.raid && releaseCharge(g, S(g.raid));
 
-  // ---- per-frame: hitstop, charge, pulls/anchors, effect lifetimes ------------------------------------------------
+  // ---- per-frame: hitstop, special cooldown, pulls/anchors, effect lifetimes ------------------------------------------------
   const update = P.update;
   P.update = function (dt) {
     const r = this.raid;
@@ -220,14 +224,7 @@
     const out = update.call(this, dt);
     if (!this.raid || this.isPaused()) return out;
     const s = S(this.raid), p = this.player;
-    if (s.charge) {
-      const c = s.charge;
-      if (p.roll > 0 || (c.melee ? p.weapon !== 2 : p.weapon === 2)) s.charge = null;
-      else if (this.mouse.down) {
-        c.t += dt; const need = c.melee ? W.melee(this).heavy.charge : CHARGE[c.fam] || .8;
-        if (!c.ready && c.t >= need) { c.ready = true; sound('loaded', 1); }
-      } else releaseCharge(this, s);
-    }
+    if (s.altCD > 0) s.altCD = Math.max(0, s.altCD - dt);
     for (const e of this.raid.enemies) {
       if (e.swReel) { const k = Math.min(1, dt / e.swReel.t); const ang = Math.atan2(p.y - e.y, p.x - e.x), dist = Math.hypot(p.x - e.x, p.y - e.y);
         if (dist > 46) knock(this, e, ang, Math.min(dist - 46, e.swReel.px * k)); e.swReel.t -= dt; e.swReel.px *= 1 - k; if (e.swReel.t <= 0 || e.dead) e.swReel = null; }
@@ -263,7 +260,7 @@
     return out;
   };
 
-  // ---- drawing: swing trails, muzzle flashes, charge ring, harpoon lines --------------------------------------------
+  // ---- drawing: swing trails, muzzle flashes, harpoon lines --------------------------------------------
   const render = P.render;
   P.render = function (now) {
     const out = render.apply(this, arguments);
@@ -281,12 +278,6 @@
       g.globalAlpha = .85; g.strokeStyle = '#d8c9a0'; g.lineWidth = Math.max(1, 1.6 * z); g.setLineDash([5 * z, 3 * z]);
       g.beginPath(); g.moveTo((p.x - cx) * z, (p.y - 14 - cy) * z); g.lineTo((e.x - cx) * z, (e.y - 10 - cy) * z); g.stroke(); g.setLineDash([]);
     }
-    if (s.charge && s.charge.t > .12) {
-      const c = s.charge, need = c.melee ? W.melee(this).heavy.charge : CHARGE[c.fam] || .8, k = Math.min(1, c.t / need), X = (p.x - cx) * z, Y = (p.y - 26 - cy) * z, R = 30 * z;
-      g.globalAlpha = .9; g.lineWidth = 3; g.strokeStyle = 'rgba(20,16,10,.6)'; g.beginPath(); g.arc(X, Y, R, 0, TAU); g.stroke();
-      g.strokeStyle = k >= 1 ? (Math.floor(now / 90) % 2 ? '#fff6d2' : '#f0c66a') : '#e8d18f'; g.beginPath(); g.arc(X, Y, R, -Math.PI / 2, -Math.PI / 2 + TAU * k); g.stroke();
-      if (k >= 1) { g.font = '700 11px system-ui,sans-serif'; g.textAlign = 'center'; g.fillStyle = '#fff2c4'; g.shadowColor = '#000'; g.shadowBlur = 3; g.fillText(c.melee ? 'HEAVY' : SPECIAL[c.fam], X, Y - R - 6); }
-    }
     g.restore();
     return out;
   };
@@ -296,18 +287,21 @@
     const p = g.player;
     if (p.weapon === 2) { const w = W.melee(g), a = g.raid && S(g.raid).att; let swing = 0;
       if (a && w.id !== 'spear') { const t = Math.min(1, Math.max(0, (a.age - a.wind * .6) / (a.wind * .4 + .1))); swing = (a.step === 1 ? 1 : -1) * a.data.arc * (1 - 2 * t); }
-      else if (s0(g)) swing = -.6;
       return { alias: w.art, len: w.len, swing }; }
     const fam = famOf(g); const A = { arbalest: 'art/weapons/arbalest', wickcaster: 'art/weapons/wickcaster', harpoon: 'art/weapons/harpoon_gun' };
     return A[fam] ? { alias: A[fam], len: fam === 'harpoon' ? 50 : fam === 'wickcaster' ? 44 : 46, swing: 0 } : null;
   };
-  const s0 = g => { const c = g.raid && S(g.raid).charge; return c && c.melee && c.t > .15; };
   const hud = P.hud;
   P.hud = function () {
     const out = hud.apply(this, arguments);
     const el = document.getElementById('weaponName'), am = document.getElementById('ammoText');
+    const ro = el?.closest('.weaponReadout'); let alt = document.getElementById('swAlt');
+    if (ro && !alt) { alt = document.createElement('div'); alt.id = 'swAlt'; ro.appendChild(alt); }
+    if (alt) { const fam = famOf(this), s = this.raid && S(this.raid), cd = s?.altCD || 0;
+      const t = this.player.weapon === 2 ? `RMB · ${W.melee(this).heavy.name}` : fam === 'longwatch' ? 'RMB · steady aim → Deadeye' : fam && SPECIAL[fam] ? `RMB · ${SPECIAL[fam]}${cd > 0 ? ' · ' + cd.toFixed(1) + 's' : ''}` : '';
+      if (alt.textContent !== t) alt.textContent = t; alt.classList.toggle('cd', cd > 0); }
     if (el && this.player.weapon === 2) { const w = W.melee(this), t = `${w.name}${w.lvl > 1 ? ' +' + (w.lvl - 1) : ''}`; if (el.textContent !== t) el.textContent = t;
-      const s = this.raid && S(this.raid), txt = s?.att ? (s.att.kind === 'heavy' ? 'HEAVY' : `Combo ${s.att.step + 1}/3`) : 'Tap · hold for heavy'; if (am && am.textContent !== txt) am.textContent = txt; }
+      const s = this.raid && S(this.raid), txt = s?.att ? (s.att.kind === 'heavy' ? 'HEAVY' : `Combo ${s.att.step + 1}/3`) : 'LMB combo'; if (am && am.textContent !== txt) am.textContent = txt; }
     return out;
   };
 
@@ -331,13 +325,13 @@
       tabs?.querySelector('[data-tab="weapons"]')?.setAttribute('aria-pressed', 'false');
       for (const n of body.querySelectorAll('.smithWeaponTab')) n.remove();
       const m = ml(this), icon = id => { const s = window.saltwakeArt?.iconFor?.(id); return s ? `<img class="swwIcon" src="${s}" alt="">` : ''; };
-      body.insertAdjacentHTML('beforeend', `<p>Your melee weapon is slot 3 (Q to cycle). Tap to attack, keep tapping for a 3-hit combo, hold to charge a heavy attack.</p><div class="armList">${Object.entries(MELEE).map(([id, w]) => {
+      body.insertAdjacentHTML('beforeend', `<p>Your melee weapon is slot 3 (Q to cycle). Left click: attack (keep clicking or hold for a 3-hit combo). Right click: heavy attack.</p><div class="armList">${Object.entries(MELEE).map(([id, w]) => {
         const own = !!m.owned[id], lvl = m.level[id] || 1, eq = m.equipped === id, up = own && lvl < 3 ? { mat: w.up[lvl - 1], price: w.upPrice[lvl - 1] } : null;
         const c = w.combo, dps = Math.round(c.reduce((s, x) => s + x.dmg, 0) * mult(lvl));
         const btn = !own ? `<button data-act="sww_craft" data-id="${id}" ${w.craft && this.hasMaterials(w.craft) && this.save.gold >= w.price ? '' : 'disabled'}>CRAFT</button>`
           : `${eq ? '<b class="swwEq">EQUIPPED</b>' : `<button data-act="sww_equip" data-id="${id}">EQUIP</button>`}${up ? `<button data-act="sww_up" data-id="${id}" ${this.hasMaterials(up.mat) && this.save.gold >= up.price ? '' : 'disabled'}>UPGRADE TO LV ${lvl + 1}</button>` : ''}`;
         return `<div class="armNode ${own ? 'owned' : ''}"><div class="row">${icon(w.icon)}<b>${safeText(w.name)}</b><span class="badge">${own ? 'LV ' + lvl : 'NOT OWNED'}</span></div><p class="fine">${safeText(w.blurb)}</p>
-          <small>Combo damage ${dps} · heavy ${Math.round(w.heavy.dmg * mult(lvl))} · reach ${c[0].reach} · stamina ${c[0].st}/swing</small>
+          <small>Combo damage ${dps} · RMB ${w.heavy.name} ${Math.round(w.heavy.dmg * mult(lvl))} · reach ${c[0].reach} · stamina ${c[0].st}/swing</small>
           ${!own && w.craft ? `<p class="fine">${this.armoryRequirements(w.craft)} · ${w.price} scrip</p>` : up ? `<p class="fine">Next: ${this.armoryRequirements(up.mat)} · ${up.price} scrip</p>` : ''}<div class="fieldActions">${btn}</div></div>`; }).join('')}</div>`);
     }
     return out;
@@ -356,7 +350,10 @@
     return act.apply(this, arguments);
   };
 
+  const help = P.help;
+  if (help) P.help = function () { const out = help.apply(this, arguments);
+    document.querySelector('#panel .panelBody')?.insertAdjacentHTML('beforeend', '<p class="callout"><b>Weapons:</b> left click = attack (hold to keep firing / keep swinging the 3-hit melee combo). Right click = special: Bow Piercing Arrow, Arbalest Breaker Bolt, Wickcaster Flare Burst, Harpoon Gun Reel Shot (each with a short cooldown); melee heavy attack. Longwatch: hold right click to steady your aim; a fully steady shot is a Deadeye.</p>'); return out; };
   const css = document.createElement('style');
-  css.textContent = `.swwSrc{color:#9ad4c0;font-size:11px}.smithMaterial .swwSrc{flex-basis:100%;display:block}.smithMaterial{flex-wrap:wrap}.swwIcon{width:28px;height:28px;object-fit:contain;margin-right:8px;vertical-align:middle}.swwEq{color:#e8d18f;font-size:12px;letter-spacing:.1em;align-self:center}`;
+  css.textContent = `.swwSrc{color:#9ad4c0;font-size:11px}.smithMaterial .swwSrc{flex-basis:100%;display:block}.smithMaterial{flex-wrap:wrap}.swwIcon{width:28px;height:28px;object-fit:contain;margin-right:8px;vertical-align:middle}#swAlt,#swHudLeft .weaponReadout #swAlt{display:block!important;grid-column:2!important;font-size:10px!important;color:#9fd8ff!important;letter-spacing:.04em}#swAlt.cd{color:#7d8a92!important}.swwEq{color:#e8d18f;font-size:12px;letter-spacing:.1em;align-self:center}`;
   document.head.appendChild(css);
 })();

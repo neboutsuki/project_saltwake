@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.31-dev — Left click / right click attacks, no charging
+- **Charge attacks removed.** Every weapon now has two attacks:
+
+| Weapon | Left click | Right click |
+|---|---|---|
+| Spear | 3-hit combo (click or hold) | Impaling Lunge (heavy) |
+| Gutting Knife | fast 3-hit combo, backstabs x2.5 | Dash Stab |
+| Greataxe | slow sweeping combo | Overhead Cleave |
+| Bow | normal shot (hold = auto-fire) | Piercing Arrow (goes through 2), 1 s cooldown |
+| Arbalest | normal shot | Breaker Bolt (huge stagger + knockback), 2 s |
+| Wickcaster | normal shot | Flare Burst (fan of every loaded cell), 2.5 s |
+| Harpoon Gun | harpoon (reel small / anchor big) | Reel Shot (stronger pull), 3 s |
+| Longwatch | normal shot; fully steady = Deadeye | hold to steady your aim (scope) |
+
+- Heavy melee attacks have their own readable wind-up instead of a charge.
+- The HUD weapon card shows the right-click move and its cooldown. The forge Melee tab and the in-game help explain the controls.
+- QA: weapons suite updated (right-click heavy/special, cooldown, hold = combo/auto-fire, no charge). 382 checks, all passing.
+
 ## v0.31-dev — Map fix: no more blank ground, straight edges or blocky fog
 - **Cause:** field ground is painted in 512 px chunks, pixel by pixel. It ran on the main thread at 5 ms a frame with only 48 chunks cached (the Outer Quays have 140). Walking around kept re-painting chunks, and every unpainted chunk showed as flat brown with straight edges.
 - **Fix:**

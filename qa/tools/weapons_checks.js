@@ -18,18 +18,23 @@ try{
  melee('spear');let e=put(pick(x=>x.type!=='tidemaw'),62);let hp0=e.hp,c0=W.stats.combo3;
  for(let i=0;i<3;i++){aim();G.player.cooldown=0;W.startMelee(G,false);step(.45)}
  c.spearCombo=W.stats.combo3===c0+1&&e.hp<hp0;
- // heavy: hold to charge, release to strike; hits harder than a light
- setup();melee('spear');e=put(pick(x=>x.type!=='tidemaw'),62);hp0=e.hp;const h0=W.stats.heavy;aim();G.mouse.down=true;G.shoot();step(.75);G.mouse.down=false;step(.7);
- const heavyDmg=hp0-e.hp;c.heavyCharge=W.stats.heavy===h0+1&&heavyDmg>30;
+ // right click = heavy attack, no charging; hits harder than a light
+ setup();melee('spear');e=put(pick(x=>x.type!=='tidemaw'),62);hp0=e.hp;const h0=W.stats.heavy;aim();const okAlt=G.altAttack();step(.8);
+ const heavyDmg=hp0-e.hp;c.rmbHeavy=okAlt===true&&W.stats.heavy===h0+1&&heavyDmg>30;
+ // holding left click keeps swinging (combo), never charges
+ setup();melee('spear');e=put(pick(x=>x.type!=='tidemaw'),62);const lc0=W.stats.light;aim();G.mouse.down=true;G.shoot();step(1.2);G.mouse.down=false;c.holdCombo=W.stats.light>=lc0+2&&W.state(G).charge===undefined;
  // knife backstab on an unaware monster
  setup();melee('knife');e=put(pick(x=>x.type!=='tidemaw'),40);hp0=e.hp;const b0=W.stats.backstabs;aim();W.startMelee(G,false);step(.3);c.knifeBackstab=W.stats.backstabs===b0+1&&hp0-e.hp>20;
  // greataxe sweep hits everything in the arc
  setup();melee('greataxe');const two=G.raid.enemies.filter(x=>x.type!=='tidemaw').slice(0,2);put(two[0],60,-30);put(two[1],60,30);const a0=two[0].hp,a1=two[1].hp;aim();W.startMelee(G,false);step(.6);
  c.axeSweep=two[0].hp<a0&&two[1].hp<a1;
- // charged ranged: full charge = special with pierce
- setup();const A=G.ensureArmory();A.owned.bow_I1=1;A.equipped[0]='bow_I1';G.player.weapon=0;G.player.mag[0]=1;addItem(G.save.bag,'arrow',10);G.player.reload=0;
- const s0=W.stats.specials,bl=G.raid.bullets.length;aim();G.mouse.down=true;G.shoot();step(.8);G.mouse.down=false;G.update(dt);
- const shot=G.raid.bullets.find(b=>b.fam==='bow');c.chargedSpecial=W.stats.specials===s0+1&&!!shot&&shot.pierce===2;
+ // right click = special shot (Piercing Arrow), then a cooldown
+ setup();const A=G.ensureArmory();A.owned.bow_I1=1;A.equipped[0]='bow_I1';G.player.weapon=0;G.player.mag[0]=1;addItem(G.save.bag,'arrow',10);G.player.reload=0;G.player.cooldown=0;
+ const s0=W.stats.specials,bl=G.raid.bullets.length;aim();const fired=G.altAttack();
+ const shot=G.raid.bullets.slice(bl).find(b=>b.fam==='bow');c.rmbSpecial=fired===true&&W.stats.specials===s0+1&&!!shot&&shot.pierce===2;
+ G.player.mag[0]=1;G.player.cooldown=0;c.specialCooldown=G.altAttack()===false&&W.state(G).altCD>0;
+ // hold left click with a ranged weapon = auto-fire normal shots, no charge
+ G.player.cooldown=0;G.player.mag[0]=1;const nb=G.raid.bullets.length,sp0=W.stats.specials;G.mouse.down=true;G.shoot();G.mouse.down=false;c.lmbNormal=G.raid.bullets.length>nb&&W.stats.specials===sp0;
  // quick tap still fires a normal shot immediately
  setup();G.player.weapon=0;G.player.mag[0]=1;G.player.cooldown=0;aim();G.mouse.down=false;const n0=G.raid.bullets.length;G.shoot();c.tapFires=G.raid.bullets.length===n0+1&&!G.raid.bullets[n0].pierce;
  // pierce: one arrow through two monsters in a line
@@ -47,7 +52,7 @@ try{
  c.hitFeel=W.stats.hitstops>3&&W.stats.shakes>3&&W.stop<.3;
  // drawing with every weapon, mid-attack and mid-charge
  let drew=true;for(const id of ['spear','knife','greataxe']){setup();melee(id);aim();W.startMelee(G,false);step(.1);try{G.render(performance.now())}catch(x){drew=false;errs.push(String(x))}
-  G.mouse.down=true;step(.2);G.mouse.down=false;G.player.cooldown=0;try{G.render(performance.now())}catch(x){drew=false}}
+  G.player.cooldown=0;G.altAttack();step(.2);try{G.render(performance.now())}catch(x){drew=false}}
  c.renders=drew;
  G.endRaid(true,'QA');G.close();G.mode='play';
  // forge: harpoon tree + rank V Tidemaw upgrades + melee tab crafting
