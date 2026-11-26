@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased — Hunter Rank and the hunting loop
+- **Hunter Rank HR1–HR8** (`source/modules/hunter.js`, save `save.hunter`): XP from monster kills (gull 4 … Widow 45,
+  Brineworn 15–35), part breaks (15), extraction (20), fulfilled commissions (50 × tier) and story quests (100). XP
+  earned on an expedition is banked when you extract; if you fall, half is kept. Thresholds 0/120/300/550/900/1350/
+  1900/2600. Rank-ups announce what they unlock.
+- **Rank gates progression:** weapon ranks 2/3/4 need HR2/4/6; Brineback armor HR2, Salt Widow armor HR3; masterwork
+  modifications HR5; commission tiers 1–3 need HR1–3; HR3 and HR5 each add one commission to the board. The smithy
+  marks locked items "Requires HR n". (Crafting already used monster parts: Brineback plates and tusks, Redhook
+  feathers and beaks, Salt Widow shells and claws.)
+- **Commission board:** threat stars, colored type, a plain target line ("Hunt 2 × Redhook Gull", "Break a Salt Widow
+  claw"), rewards with XP, locked cards for tiers above your rank, and your rank with a progress bar.
+- **New higher-tier commissions:** Salt Yard Bulls (tier 2: three Brinebacks plus a plate), Widows of the Caverns
+  (tier 3: trails plus two Widows), Quiet the Broken Quays (tier 3, night: four Brineworn).
+- Rank and XP show in Player Info, the smithy and the expedition debrief. QA: new `hunter` suite; 267/267.
+
 ## Unreleased — Character pop
 - Ren gets a dark pixel outline (scaled to screen pixels) and a rim light on the side facing the light: warm by day
   and at sunset, from the lantern side at night when it is lit, pale blue in the dark (`source/modules/pop.js`).

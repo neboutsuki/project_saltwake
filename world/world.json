@@ -52270,6 +52270,106 @@
       ]
      },
      "weight": 7
+    },
+    {
+     "id": "brineback_hunt",
+     "title": "Salt Yard Bulls",
+     "category": "HUNT",
+     "tier": 2,
+     "description": "Three Brinebacks have claimed the Salt Yards and the ridge. Bring them down and break a plate for the smith.",
+     "steps": [
+      {
+       "kind": "kill",
+       "target": "brineback",
+       "need": 3,
+       "label": "Defeat Brinebacks"
+      },
+      {
+       "kind": "part",
+       "target": "brineback",
+       "part": "plate",
+       "need": 1,
+       "label": "Break a Brineback dorsal plate"
+      }
+     ],
+     "reward": {
+      "scrip": 320,
+      "items": [
+       {
+        "itemId": "brineback_tusk",
+        "quantity": 1
+       },
+       {
+        "itemId": "brineback_plate",
+        "quantity": 1
+       }
+      ]
+     },
+     "weight": 6
+    },
+    {
+     "id": "widow_hunt",
+     "title": "Widows of the Caverns",
+     "category": "HUNT",
+     "tier": 3,
+     "description": "Widows nest in the Tidal Caverns and the Ashwood edge. Find their trail and kill two.",
+     "steps": [
+      {
+       "kind": "trace",
+       "need": 2,
+       "label": "Find Widow trails"
+      },
+      {
+       "kind": "kill",
+       "target": "widow",
+       "need": 2,
+       "label": "Defeat Salt Widows"
+      }
+     ],
+     "reward": {
+      "scrip": 460,
+      "items": [
+       {
+        "itemId": "widow_claw",
+        "quantity": 1
+       },
+       {
+        "itemId": "salt_widow_shell",
+        "quantity": 1
+       }
+      ]
+     },
+     "weight": 5
+    },
+    {
+     "id": "brineworn_purge",
+     "title": "Quiet the Broken Quays",
+     "category": "NIGHT HUNT",
+     "tier": 3,
+     "conditions": {
+      "period": [
+       "night"
+      ]
+     },
+     "description": "Brineworn gather on the Broken Quays after dark. Put four of them to rest.",
+     "steps": [
+      {
+       "kind": "kill",
+       "target": "brineworn_drifter",
+       "need": 4,
+       "label": "Defeat Brineworn Drifters"
+      }
+     ],
+     "reward": {
+      "scrip": 380,
+      "items": [
+       {
+        "itemId": "healing_tincture",
+        "quantity": 2
+       }
+      ]
+     },
+     "weight": 5
     }
    ]
   },
