@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.31-dev — Survival operations (Helldivers-style)
+- New **SURVIVAL** commissions on the board:
+  - Hold the Pilot Shed (2:30).
+  - Siege of the Fish Market (3:30, tier 2).
+  - The Long Night (4:30, tier 3, night only, more Brineworn).
+- **Flow:** go to the site, press E to light the signal beacon, then HOLD THE LINE: escalating waves close in from all sides and always know where you are. The last 30 s are a surge while the boat comes in. Then EVAC: reach the boat at the nearest shore and stand in the circle for 2 s. That completes the commission and ends the raid as a safe extraction, with a kill and wave bonus in scrip.
+- **Call-ins (stratagems):** hold X and type the code with WASD/arrows (you stop moving while typing). Each is thrown at your aim and has a cooldown:
+  - Supply Drop ↓↓↑→: a pod with ammo for your weapons, bandages and a tincture.
+  - Mortar Barrage →→↓←: 6 shells around the mark, with friendly fire!
+  - Harbor Cannon ↑→↓↓↓: one huge blast.
+- **HUD:** banner with timer, wave, kills and next wave; call-in panel with live code progress and cooldowns. The quest marker points at the site, then at the boat.
+- Art reused: brazier (beacon), rowboat (evac), open supply crate (pod). Beams, blasts and zones are code effects.
+- QA: new `survival` suite covering the real keyboard code entry. 377 checks, all passing.
+
 ## v0.31-dev — Impact pass (shooting feel) + left/right monsters
 - **Monsters face left/right** (simple, Zero Sievert-style): field monster sprites mirror toward what they are doing, with hysteresis so they don't flicker. Their breakable-part hitboxes mirror with them. Fixed the Salt Widow's claw hitbox, which was on the wrong side of its art.
 - **Firing:**

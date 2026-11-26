@@ -53321,6 +53321,100 @@
       ]
      },
      "weight": 3
+    },
+    {
+     "id": "surv_pilot",
+     "title": "Hold the Pilot Shed",
+     "category": "SURVIVAL",
+     "description": "Light the signal fire at the Pilot Shed and hold out until the guild boat comes. Every beast on the quays will hear it. You get call-ins: supply drops, mortar barrage, harbor cannon.",
+     "steps": [
+      {
+       "kind": "survive",
+       "target": "pilot",
+       "seconds": 150,
+       "need": 1,
+       "label": "Light the beacon at the Pilot Shed and survive until evac"
+      }
+     ],
+     "reward": {
+      "scrip": 280,
+      "items": [
+       {
+        "itemId": "healing_tincture",
+        "quantity": 1
+       },
+       {
+        "itemId": "scrap_metal",
+        "quantity": 4
+       }
+      ]
+     },
+     "weight": 6
+    },
+    {
+     "id": "surv_market",
+     "title": "Siege of the Fish Market",
+     "category": "SURVIVAL",
+     "tier": 2,
+     "description": "The guild needs the Old Fish Market held while a crew salvages the ice-house. Longer, harder waves.",
+     "steps": [
+      {
+       "kind": "survive",
+       "target": "fishmarket",
+       "seconds": 210,
+       "need": 1,
+       "label": "Light the beacon at the Old Fish Market and survive until evac"
+      }
+     ],
+     "reward": {
+      "scrip": 460,
+      "items": [
+       {
+        "itemId": "brineback_plate",
+        "quantity": 1
+       },
+       {
+        "itemId": "salt_crystals",
+        "quantity": 4
+       }
+      ]
+     },
+     "weight": 5
+    },
+    {
+     "id": "surv_night",
+     "title": "The Long Night",
+     "category": "SURVIVAL",
+     "tier": 3,
+     "conditions": {
+      "period": [
+       "night"
+      ]
+     },
+     "description": "At night the Brineworn come in numbers. Hold the Customs Forecourt until dawn boat. Bring everything.",
+     "steps": [
+      {
+       "kind": "survive",
+       "target": "customs",
+       "seconds": 270,
+       "need": 1,
+       "label": "Light the beacon at the Customs Forecourt and survive until evac"
+      }
+     ],
+     "reward": {
+      "scrip": 720,
+      "items": [
+       {
+        "itemId": "masterwork_core",
+        "quantity": 1
+       },
+       {
+        "itemId": "healing_tincture",
+        "quantity": 2
+       }
+      ]
+     },
+     "weight": 4
     }
    ]
   },
