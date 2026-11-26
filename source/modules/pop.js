@@ -45,8 +45,8 @@
       if (!POP.enabled || this.mode !== 'play') return f.apply(this, arguments);
       const p = this.player, H = window.saltwakeHiRes, px = Math.max(1, Math.round((H?.scale || 1) * (this.camera?.zoom || 1) * .75));
       // soft shadow + crisp contact shadow at the feet
-      g.save(); g.fillStyle = 'rgba(8,8,10,.22)'; g.beginPath(); g.ellipse(p.x + 3, p.y + 6, 17, 6, 0, 0, Math.PI * 2); g.fill();
-      g.fillStyle = 'rgba(8,8,10,.38)'; g.beginPath(); g.ellipse(p.x, p.y + 5, 10, 3.2, 0, 0, Math.PI * 2); g.fill(); g.restore();
+      if (!POP.noShadow) { g.save(); g.fillStyle = 'rgba(8,8,10,.22)'; g.beginPath(); g.ellipse(p.x + 3, p.y + 6, 17, 6, 0, 0, Math.PI * 2); g.fill();
+      g.fillStyle = 'rgba(8,8,10,.38)'; g.beginPath(); g.ellipse(p.x, p.y + 5, 10, 3.2, 0, 0, Math.PI * 2); g.fill(); g.restore(); }
       // Outline + rim light without canvas filters: every sprite image drawn for the player is swapped for a cached copy
       // that already has a 1-source-pixel dark outline and a lit rim baked in. (The old 5x drop-shadow filter re-rendered
       // a large layer on every draw call and was by far the most expensive thing in a frame.)

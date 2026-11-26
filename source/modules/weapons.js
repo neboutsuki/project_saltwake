@@ -150,6 +150,40 @@
     };
   }
 
+  // ---- leap attack: attack during a dodge roll (melee) ----------------------------------------------------------------
+  // The roll turns into a leap toward your aim: Ren rises in an arc (shadow stays on the ground), the weapon goes up
+  // overhead, and the landing is a ground slam around the impact point (hitstop, shake, dust ring, crack). Short
+  // i-frames at take-off. Greataxe: Leaping Cleave (wide, heavy) · Spear: Plunge (long reach) · Knife: Pounce (far, fast).
+  const LEAP = W.LEAP = {
+    greataxe: { name: 'Leaping Cleave', dist: 92, dur: .58, h: 40, r: 80, dmg: 1.25, st: 26 },
+    spear: { name: 'Plunge', dist: 118, dur: .52, h: 34, r: 58, dmg: 1.15, st: 20 },
+    knife: { name: 'Pounce', dist: 140, dur: .46, h: 30, r: 50, dmg: 1.3, st: 14 },
+  };
+  W.rings = []; W.leapZ = 0; W.stats.leaps = 0; W.stats.leapHits = 0;
+  function startLeap(g) {
+    const p = g.player, r = g.raid; if (!r || g.isPaused()) return false;
+    const s = S(r), w = W.melee(g), L = LEAP[w.id]; if (!L || s.leap) return false;
+    if (p.st < L.st) { g.notify('Not enough stamina'); return false; }
+    p.st -= L.st; p.roll = 0; p.iframes = Math.max(p.iframes || 0, .28); s.att = null; s.buffer = 0;
+    s.leap = { t: 0, dur: L.dur, a: p.angle || 0, L, w }; W.stats.leaps++;
+    g.makeSound?.(p.x, p.y, 80, 'spear'); sound('roll', .8);
+    return true;
+  }
+  W.startLeap = startLeap;
+  function leapLand(g, s) {
+    const p = g.player, r = g.raid, { L, w, a } = s.leap, cx = p.x + Math.cos(a) * 16, cy = p.y + Math.sin(a) * 12;
+    const heavy = w.heavy, k = mult(w.lvl) * L.dmg; let hits = 0;
+    for (const e of r.enemies) { if (e.dead) continue; const d = Math.hypot(e.x - cx, e.y - cy); if (d > L.r + (isBoss(e) ? 40 : 14)) continue;
+      const before = e.hp; g.hitMonster(e, heavy.dmg * k * (d < L.r * .5 ? 1 : .75), { penetration: w.pen + 10, stagger: w.stagger * 2, partPower: w.part * 1.2, weaponId: 'melee_' + w.id, melee: true }, e.x, e.y);
+      if (!e.dead && !isBoss(e)) knock(g, e, Math.atan2(e.y - cy, e.x - cx), (w.knock || 14) * 1.8);
+      const f = HUNT()?.fx?.(r); if (f) { f.events.push({ x: e.x, y: e.y - 6, kind: 'hit', amount: Math.max(0, before - e.hp), part: L.name.toUpperCase(), life: .6, max: .6 }); if (f.events.length > 36) f.events.shift(); }
+      hits++; W.stats.leapHits++; }
+    hitstop(hits ? .11 : .05); shake(hits ? .45 : .25); sound('hammer', 1.2); if (hits) sound('hit', 1.3);
+    W.rings.push({ x: cx, y: cy, r: L.r, life: .38, max: .38 });
+    sparks(g, cx, cy, -Math.PI / 2, 14, '#d8c9a8');
+    const IM = window.saltwakeImpact; if (IM) { const blobs = []; for (let i = 0; i < 6; i++) { const t = i / 6 * Math.PI * 2; blobs.push([Math.cos(t) * L.r * .35, Math.sin(t) * L.r * .2, 3 + Math.random() * 3]); } blobs.push([0, 0, 7]); IM.decals.push({ x: cx, y: cy - 14, blobs, color: '#2a221a', life: 20 }); }
+    s.land = .14; s.lastLeapA = a; s.leap = null; W.leapZ = 0;
+  }
   // ---- input: left click = main attack, right click = special ------------------------------------------------------
   // Melee: LMB light combo (hold to keep swinging), RMB heavy. Ranged: LMB normal shot (hold = auto-fire as before),
   // RMB the weapon's special shot with a short cooldown. Longwatch keeps RMB = steady aim (scope); a LMB shot fired
@@ -160,6 +194,7 @@
     const p = this.player, r = this.raid;
     if (!r || this.isPaused() || p.harpoon) return shoot.apply(this, arguments);
     const s = S(r);
+    if (p.weapon === 2 && (p.roll > 0 || s.leap)) return s.leap ? undefined : startLeap(this);
     if (p.weapon === 2) { if (s.att) { if (s.att.age > s.att.wind) s.buffer = .35; return; } return startMelee(this, false); }
     const fam = famOf(this);
     const deadeye = fam === 'longwatch' && typeof this.longwatchSpread === 'function' && this.longwatchSpread() <= .5;
@@ -167,8 +202,10 @@
   };
   P.altAttack = function () {
     const p = this.player, r = this.raid;
-    if (!r || this.isPaused() || this.panel || p.roll > 0 || p.harpoon) return false;
+    if (!r || this.isPaused() || this.panel || p.harpoon) return false;
     const s = S(r);
+    if (p.weapon === 2 && (p.roll > 0 || s.leap)) return s.leap ? false : startLeap(this);
+    if (p.roll > 0) return false;
     if (p.weapon === 2) { if (s.att) return false; return startMelee(this, true); }
     const fam = famOf(this); if (!fam || !ALT_CD[fam]) return false;          // longwatch: RMB is the scope
     if ((s.altCD || 0) > 0) { this.notify?.(`${SPECIAL[fam]} ready in ${s.altCD.toFixed(1)} s`, .8); return false; }
@@ -219,6 +256,12 @@
   // ---- per-frame: hitstop, special cooldown, pulls/anchors, effect lifetimes ------------------------------------------------
   const update = P.update;
   P.update = function (dt) {
+    const r = this.raid, sl = r && !this.isPaused() && S(r).leap;
+    if (sl) { const saved = {}; for (const k of ['KeyW', 'KeyA', 'KeyS', 'KeyD', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']) if (this.keys[k]) { saved[k] = true; delete this.keys[k]; }
+      try { return leapFrame.call(this, dt); } finally { Object.assign(this.keys, saved); } }
+    return leapFrame.call(this, dt);
+  };
+  function leapFrame(dt) {
     const r = this.raid;
     if (r && !this.isPaused() && W.stop > 0 && dt > 0) { const d = Math.min(W.stop, dt); W.stop -= d; dt = dt - d + d * .08; }
     else if (!r) W.stop = 0;
@@ -226,6 +269,12 @@
     if (!this.raid || this.isPaused()) return out;
     const s = S(this.raid), p = this.player;
     if (s.altCD > 0) s.altCD = Math.max(0, s.altCD - dt);
+    if (s.land > 0) s.land = Math.max(0, s.land - dt);
+    if (s.leap) { const Lp = s.leap, prev = Lp.t; Lp.t = Math.min(Lp.dur, Lp.t + dt); const u0 = prev / Lp.dur, u1 = Lp.t / Lp.dur;
+      const ez = x => 1 - Math.pow(1 - x, 1.6), step = (ez(u1) - ez(u0)) * Lp.L.dist; this.move(Math.cos(Lp.a) * step, Math.sin(Lp.a) * step);
+      W.leapZ = 4 * Lp.L.h * u1 * (1 - u1); if (Lp.t >= Lp.dur) leapLand(this, s); }
+    else W.leapZ = 0;
+    for (const ring of W.rings) ring.life -= dt; for (let i = W.rings.length - 1; i >= 0; i--) if (W.rings[i].life <= 0) W.rings.splice(i, 1);
     for (const e of this.raid.enemies) {
       if (e.swReel) { const k = Math.min(1, dt / e.swReel.t); const ang = Math.atan2(p.y - e.y, p.x - e.x), dist = Math.hypot(p.x - e.x, p.y - e.y);
         if (dist > 46) knock(this, e, ang, Math.min(dist - 46, e.swReel.px * k)); e.swReel.t -= dt; e.swReel.px *= 1 - k; if (e.swReel.t <= 0 || e.dead) e.swReel = null; }
@@ -275,6 +324,9 @@
     for (const f of W.flashes) { const k = f.life / f.max, X = (f.x - cx) * z, Y = (f.y - cy) * z, R = (f.big ? 34 : 20) * z;
       const gr = g.createRadialGradient(X, Y, 0, X, Y, R); gr.addColorStop(0, `rgba(255,240,200,${.9 * k})`); gr.addColorStop(1, 'rgba(255,200,120,0)'); g.globalAlpha = 1; g.fillStyle = gr; g.fillRect(X - R, Y - R, R * 2, R * 2); }
     g.globalCompositeOperation = 'source-over';
+    for (const ring of W.rings) { const k = ring.life / ring.max, R = ring.r * (1.15 - .55 * k) * z, X = (ring.x - cx) * z, Y = (ring.y - cy) * z;
+      g.globalAlpha = .8 * k; g.strokeStyle = '#e8dcc0'; g.lineWidth = (2 + 5 * k) * z; g.beginPath(); g.ellipse(X, Y, R, R * .62, 0, 0, TAU); g.stroke();
+      g.globalAlpha = .35 * k; g.fillStyle = '#b9ab90'; g.beginPath(); g.ellipse(X, Y, R * .8, R * .5, 0, 0, TAU); g.fill(); g.globalAlpha = 1; }
     for (const e of this.raid.enemies) if (e.swLine && !e.dead && (e.swReel || e.swAnchor)) {
       g.globalAlpha = .85; g.strokeStyle = '#d8c9a0'; g.lineWidth = Math.max(1, 1.6 * z); g.setLineDash([5 * z, 3 * z]);
       g.beginPath(); g.moveTo((p.x - cx) * z, (p.y - 14 - cy) * z); g.lineTo((e.x - cx) * z, (e.y - 10 - cy) * z); g.stroke(); g.setLineDash([]);
@@ -344,8 +396,13 @@
   }
   W.pose = g => {
     const p = g.player, aim = p.angle || 0;
-    if (p.weapon === 2) { const w = W.melee(g), a = g.raid && S(g.raid).att;
+    if (p.weapon === 2) { const w = W.melee(g), st = g.raid && S(g.raid), a = st && st.att;
       const base = { alias: w.art, len: w.len, aim };
+      if (st && st.leap) { const Lp = st.leap, u = Lp.t / Lp.dur, side = Math.cos(Lp.a) < 0 ? -1 : 1, down = clamp01((u - .55) / .45);
+        const ang = Lp.a + side * lerp(-2.4 * ease.out(clamp01(u / .5)), 0, ease.in(down)), sm = [];
+        if (down > 0) for (let i = 1; i <= 3; i++) { const v = clamp01(down - i * .15); if (v <= 0) break; sm.push({ angle: Lp.a + side * lerp(-2.4, 0, ease.in(v)), ext: 6, alpha: .35 - i * .09 }); }
+        return { ...base, angle: ang, ext: lerp(-8, 10, down), scale: lerp(1.2, 1, down), smear: sm, body: { dx: 0, dy: -W.leapZ, sx: 1 - .05 * Math.sin(u * Math.PI), sy: 1 + .06 * Math.sin(u * Math.PI) }, air: W.leapZ }; }
+      if (st && st.land > 0) { const k = st.land / .14; return { ...base, angle: (st.lastLeapA ?? aim), ext: 10, scale: 1, smear: [], body: { dx: 0, dy: 0, sx: 1 + .16 * k, sy: 1 - .14 * k } }; }
       return a ? { ...base, ...meleePose(g, w, a, a.angle) } : { ...base, angle: aim, ext: 0, scale: 1, smear: [], body: null }; }
     const fam = famOf(g); const A = { arbalest: 'art/weapons/arbalest', wickcaster: 'art/weapons/wickcaster', harpoon: 'art/weapons/harpoon_gun' };
     if (!A[fam] && !fam) return null;
@@ -357,8 +414,10 @@
     const f = P[name]; if (!f) continue;
     P[name] = function () {
       const q = this.raid && W.pose(this), b = q?.body; if (!b || (!b.dx && !b.dy && b.sx === 1 && b.sy === 1)) return f.apply(this, arguments);
-      const p = this.player, fy = p.y + 4; g.save(); g.translate(p.x + b.dx, fy + b.dy); g.scale(b.sx, b.sy); g.translate(-p.x, -fy);
-      try { return f.apply(this, arguments); } finally { g.restore(); }
+      const p = this.player, fy = p.y + 4, air = q.air || 0;
+      if (air > 0) { const k = 1 - Math.min(.6, air / 70); g.save(); g.fillStyle = `rgba(8,8,10,${.32 * k})`; g.beginPath(); g.ellipse(p.x, p.y + 5, 15 * k, 5 * k, 0, 0, Math.PI * 2); g.fill(); g.restore(); if (window.saltwakePop) window.saltwakePop.noShadow = true; }
+      g.save(); g.translate(p.x + b.dx, fy + b.dy); g.scale(b.sx, b.sy); g.translate(-p.x, -fy);
+      try { return f.apply(this, arguments); } finally { g.restore(); if (window.saltwakePop) window.saltwakePop.noShadow = false; }
     };
   }
   const hud = P.hud;

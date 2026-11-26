@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.31-dev — Leap attacks (attack during a dodge roll)
+- With a melee weapon, left or right click while rolling turns the roll into a **leap** toward your aim:
+  - Ren rises in an arc while his shadow stays on the ground and shrinks.
+  - The weapon swings up overhead, then slams down with afterimages.
+  - The landing is a ground slam around the impact point: damage, big stagger, knockback, hitstop, shake, a dust ring and a crack on the ground.
+  - Brief i-frames at take-off; a squash on landing; walking input is ignored while airborne.
+
+| Weapon | Leap | Distance | Slam radius | Stamina |
+|---|---|---|---|---|
+| Greataxe | Leaping Cleave | 92 px | 80 px | 26 |
+| Spear | Plunge | 118 px | 58 px | 20 |
+| Knife | Pounce | 140 px | 50 px | 14 |
+
+- All motion is code (transforms of the existing character and weapon art). Ranged weapons keep their normal roll.
+- QA: weapons suite checks the leap start from a roll, the airborne arc, the landing hit and the stamina gate. 394 checks, all passing.
+
 ## v0.31-dev — Smooth ground scrolling + weapon attack animations
 - **Ground scrolling:**
   - The camera snapped to 1024×576 pixels while the screen renders at ~1.9× that, so the ground moved in visible steps. It now snaps to real screen pixels.

@@ -58,6 +58,12 @@ try{
  setup();melee('greataxe');aim();W.startMelee(G,false);const st=W.state(G);st.att.age=.05;const pw=W.pose(G);st.att.age=st.att.wind+.05;const ps=W.pose(G);st.att.age=st.att.end-.01;const pr=W.pose(G);
  c.meleeAnimates=Math.abs(pw.angle-ps.angle)>.3&&ps.smear.length>0&&Math.abs(pr.angle-st.att.angle)<.2&&ps.body.dx!==0;
  {const AR=G.ensureArmory();AR.owned.arbalest_I1=1;AR.equipped[0]='arbalest_I1';}G.player.weapon=0;G.player.reload=0;W.shotAnim={t:G.raid.time-.03,fam:'arbalest',big:false};c.recoilAnimates=W.pose(G).ext<-2;
+ // leap attack: attack during a dodge roll -> leap toward the aim, airborne arc, ground slam on landing
+ setup();melee('greataxe');aim();const lt=put(pick(x=>x.type!=='tidemaw'),100);const lhp=lt.hp,lx0=G.player.x,lp0=W.stats.leaps;
+ G.player.roll=.2;G.mouse.down=false;G.shoot();const lst=W.state(G);c.leapStarts=W.stats.leaps===lp0+1&&!!lst.leap&&G.player.roll===0;
+ step(.28);c.leapAirborne=W.leapZ>15&&W.pose(G).air>15;step(.5);
+ c.leapLands=!lst.leap&&W.leapZ===0&&G.player.x>lx0+40&&lt.hp<lhp&&W.rings.length+1>0;
+ G.player.roll=.2;G.player.st=5;c.leapNeedsStamina=G.altAttack()===false;G.player.roll=0;G.player.st=100;
  G.endRaid(true,'QA');G.close();G.mode='play';
  // forge: harpoon tree + rank V Tidemaw upgrades + melee tab crafting
  const fam=Object.keys(ARMORY.families);c.harpoonFamily=fam.includes('harpoon')&&ARMORY.weapons.filter(n=>n.family==='harpoon').length===15;
