@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.31-dev — One quest at a time + errands
+- **Quest slot (Monster Hunter style):** you carry one quest at a time: a story quest OR a field commission. You must finish or abandon it before you can take another. The commission board and the journal both explain why when it is locked.
+- **Errands:** small jobs that run alongside your quest (up to 5) and never affect the story. The old side quests count as errands, plus 12 new ones:
+  - 5 lost-item errands: find someone's belonging in a container out on the Outer Quays and return it to them (Ola's hammer, Mara's locket, Senn's tally book, Neral's spectacles, Talla's compass);
+  - 7 delivery errands: bring a person a few of an item (scrap, salt, rope, feathers, lamp oil, a Brineback plate).
+- **New quest step type "give":** hand items to a person. It completes when you talk to them while carrying the items (taken from your backpack first, then your stash). Otherwise they tell you how many you still need. The quest marker points at that person.
+- **Journal:** Story · Errands · Commissions tabs. A "Quest" banner shows your one quest with an Abandon button and an errand count (x/5). Errands have "Drop errand", and give steps show your progress (e.g. 3/6). Abandoning a story quest resets it so you can take it again later.
+- QA: new `errands` suite. The quest and audit checks now know the give step. 309 checks, all passing.
+
 ## Unreleased — New commission types and a story choice
 - **Four new commission types** (`source/modules/contracts.js`), still counted through the engine and paid on a safe
   extraction:

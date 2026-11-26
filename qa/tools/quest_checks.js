@@ -6,12 +6,12 @@ const ids=a=>new Set((a||[]).map(x=>x.id));
 const npcs=ids(C.npcs),conts=ids(C.containers),inter=ids(C.interactables),items=ids(C.items),quests=ids(C.quests);
 const portals=new Set(Object.values(G.world.maps).flatMap(m=>(m.portals||[]).map(p=>p.id)));
 const byId={};for(const a of [...C.npcs,...C.containers,...C.interactables])byId[a.id]=a;
-const target={talk:npcs,loot:conts,interact:inter,extract:portals};
+const target={talk:npcs,give:npcs,loot:conts,interact:inter,extract:portals};
 for(const q of C.quests){
  if(q.offeredBy&&!npcs.has(q.offeredBy))bad.push(q.id+': offeredBy '+q.offeredBy);
  for(const p of q.prerequisites||[])if(!quests.has(p))bad.push(q.id+': prerequisite '+p);
  if(!(q.stages||[]).length)bad.push(q.id+': no stages');
- for(const s of q.stages||[]){const set=target[s.type];if(!set)bad.push(q.id+'.'+s.id+': unknown stage type '+s.type);else if(!set.has(s.targetId))bad.push(q.id+'.'+s.id+': target '+s.targetId);if(!s.description)bad.push(q.id+'.'+s.id+': no description')}
+ for(const s of q.stages||[]){const set=target[s.type];if(!set)bad.push(q.id+'.'+s.id+': unknown stage type '+s.type);else if(!set.has(s.targetId))bad.push(q.id+'.'+s.id+': target '+s.targetId);if(!s.description)bad.push(q.id+'.'+s.id+': no description');if(s.type==='give'&&!items.has(s.itemId))bad.push(q.id+'.'+s.id+': give item '+s.itemId)}
  for(const it of q.rewards?.items||[])if(!items.has(it.itemId))bad.push(q.id+': reward item '+it.itemId)}
 c.questReferences=bad.length===0;
 // Prerequisite cycles
@@ -43,10 +43,10 @@ for(const k of C.living_expeditions?.contracts||[]){if(!(k.steps||[]).length)cba
 c.contractReferences=cbad.length===0;
 // Play every story quest start to finish through the real engine, in prerequisite order; restore the save after.
 const backup=JSON.stringify(G.save),notify=G.notify;G.notify=()=>{};let played=0,stuck=[];
-try{G.save.quests={};let guard=0,progress=true;
+try{G.save.quests={};if(G.save.livingContracts)G.save.livingContracts.active=null;let guard=0,progress=true;
  while(progress&&guard++<50){progress=false;for(const q of C.quests){if(!G.quest.available(q))continue;
   if(!G.quest.accept(q.id)){stuck.push(q.id+': accept');continue}
-  for(const s of q.stages){if(!G.quest.emit(s.type,s.targetId)){stuck.push(q.id+'.'+s.id);break}}
+  for(const s of q.stages){if(s.type==='give')addItem(G.save.bag,s.itemId,s.count||1);if(!G.quest.emit(s.type,s.targetId)){stuck.push(q.id+'.'+s.id);break}}
   if(G.quest.state(q.id)?.status==='done'){played++;progress=true}}}
  for(const q of C.quests)if(G.quest.state(q.id)?.status!=='done'&&!stuck.some(x=>x.startsWith(q.id)))stuck.push(q.id+': never available')}
 finally{G.save=JSON.parse(backup);G.quest=new G.quest.constructor(G);G.notify=notify;G.store()}

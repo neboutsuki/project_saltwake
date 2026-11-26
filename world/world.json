@@ -50748,6 +50748,81 @@
     "rare": true
    },
    {
+    "id": "c_er_hammer",
+    "name": "Dropped Tool Bag",
+    "mapId": "quays",
+    "x": 88.5,
+    "y": 82.5,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid",
+    "guaranteedItems": [
+     {
+      "itemId": "olas_hammer",
+      "quantity": 1
+     }
+    ]
+   },
+   {
+    "id": "c_er_locket",
+    "name": "Washed-Up Bundle",
+    "mapId": "quays",
+    "x": 56,
+    "y": 120.8,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid",
+    "guaranteedItems": [
+     {
+      "itemId": "mara_locket",
+      "quantity": 1
+     }
+    ]
+   },
+   {
+    "id": "c_er_tally",
+    "name": "Soaked Satchel",
+    "mapId": "quays",
+    "x": 70.5,
+    "y": 88.6,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid",
+    "guaranteedItems": [
+     {
+      "itemId": "senn_tally",
+      "quantity": 1
+     }
+    ]
+   },
+   {
+    "id": "c_er_specs",
+    "name": "Crushed Crate",
+    "mapId": "quays",
+    "x": 114,
+    "y": 47.6,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid",
+    "guaranteedItems": [
+     {
+      "itemId": "neral_spectacles",
+      "quantity": 1
+     }
+    ]
+   },
+   {
+    "id": "c_er_compass",
+    "name": "Rusted Lockbox",
+    "mapId": "quays",
+    "x": 144,
+    "y": 58.5,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid",
+    "guaranteedItems": [
+     {
+      "itemId": "talla_compass",
+      "quantity": 1
+     }
+    ]
+   },
+   {
     "id": "c_qx_harbormaster",
     "name": "Harbor Master’s Strongbox",
     "mapId": "quays",
@@ -52339,6 +52414,56 @@
     "weight": 1.2,
     "stackLimit": 10,
     "description": "A barnacled tail fin, heavy as a door."
+   },
+   {
+    "id": "olas_hammer",
+    "name": "Ola’s Hammer",
+    "category": "quest",
+    "rarity": "unique",
+    "baseValue": 0,
+    "weight": 0.2,
+    "stackLimit": 1,
+    "description": "A small smithing hammer with O.M. scratched into the grip."
+   },
+   {
+    "id": "mara_locket",
+    "name": "Tarnished Locket",
+    "category": "quest",
+    "rarity": "unique",
+    "baseValue": 0,
+    "weight": 0.2,
+    "stackLimit": 1,
+    "description": "A salt-green locket with a faded portrait of a sailor."
+   },
+   {
+    "id": "senn_tally",
+    "name": "Senn’s Tally Book",
+    "category": "quest",
+    "rarity": "unique",
+    "baseValue": 0,
+    "weight": 0.2,
+    "stackLimit": 1,
+    "description": "A water-stained ledger of crates, names and dates."
+   },
+   {
+    "id": "neral_spectacles",
+    "name": "Wire Spectacles",
+    "category": "quest",
+    "rarity": "unique",
+    "baseValue": 0,
+    "weight": 0.2,
+    "stackLimit": 1,
+    "description": "Bent wire spectacles, one lens cracked."
+   },
+   {
+    "id": "talla_compass",
+    "name": "Brass Compass",
+    "category": "quest",
+    "rarity": "unique",
+    "baseValue": 0,
+    "weight": 0.2,
+    "stackLimit": 1,
+    "description": "A brass compass engraved with a crew’s initials."
    }
   ],
   "living_expeditions": {
@@ -54577,6 +54702,335 @@
       },
       {
        "itemId": "healing_tincture",
+       "quantity": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "er_ola_hammer",
+    "title": "Ola’s Hammer",
+    "kind": "errand",
+    "offeredBy": "n_apprentice",
+    "prerequisites": [],
+    "summary": "Ola dropped her first hammer by the crane when the bell rang. Iven gave it to her. She would rather not tell him.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Find the Ola’s Hammer out on the Outer Quays",
+      "type": "loot",
+      "targetId": "c_er_hammer",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Return the Ola’s Hammer to Ola Marr",
+      "type": "give",
+      "targetId": "n_apprentice",
+      "itemId": "olas_hammer",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 90,
+     "items": []
+    }
+   },
+   {
+    "id": "er_mara_locket",
+    "title": "The Tarnished Locket",
+    "kind": "errand",
+    "offeredBy": "n_dockmaster",
+    "prerequisites": [],
+    "summary": "Mara lost her mother’s locket on the beach below the warehouses. The tide may have left it.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Find the tarnished locket out on the Outer Quays",
+      "type": "loot",
+      "targetId": "c_er_locket",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Return the Tarnished Locket to Mara Fen",
+      "type": "give",
+      "targetId": "n_dockmaster",
+      "itemId": "mara_locket",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 110,
+     "items": []
+    }
+   },
+   {
+    "id": "er_senn_tally",
+    "title": "The Tally Book",
+    "kind": "errand",
+    "offeredBy": "n_crewhand",
+    "prerequisites": [],
+    "summary": "Senn left his tally book in the Bonded Warehouse yard. Without it, half the harbor’s cargo is unaccounted for.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Find the senn’s tally book out on the Outer Quays",
+      "type": "loot",
+      "targetId": "c_er_tally",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Return the Senn’s Tally Book to Senn Bri",
+      "type": "give",
+      "targetId": "n_crewhand",
+      "itemId": "senn_tally",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 80,
+     "items": []
+    }
+   },
+   {
+    "id": "er_neral_specs",
+    "title": "Neral’s Spectacles",
+    "kind": "errand",
+    "offeredBy": "n_quartermaster",
+    "prerequisites": [],
+    "summary": "Neral lost his spectacles at the Harbor Master’s Lodge counting stock. He can’t read his own ledger.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Find the wire spectacles out on the Outer Quays",
+      "type": "loot",
+      "targetId": "c_er_specs",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Return the Wire Spectacles to Neral Brin",
+      "type": "give",
+      "targetId": "n_quartermaster",
+      "itemId": "neral_spectacles",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 85,
+     "items": []
+    }
+   },
+   {
+    "id": "er_talla_compass",
+    "title": "The Crew Compass",
+    "kind": "errand",
+    "offeredBy": "n_salvager",
+    "prerequisites": [],
+    "summary": "Talla’s old crew compass was left at the ruined watch store. It points true even now.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Find the brass compass out on the Outer Quays",
+      "type": "loot",
+      "targetId": "c_er_compass",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Return the Brass Compass to Talla Cor",
+      "type": "give",
+      "targetId": "n_salvager",
+      "itemId": "talla_compass",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 120,
+     "items": []
+    }
+   },
+   {
+    "id": "er_scrap_forge",
+    "title": "Scrap for the Forge",
+    "kind": "errand",
+    "offeredBy": "n_mechanic",
+    "prerequisites": [],
+    "summary": "Iven’s forge eats scrap faster than the harbor can find it. Six pieces will do.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Bring 6 × Salt-bitten Scrap to Iven Rusk",
+      "type": "give",
+      "targetId": "n_mechanic",
+      "itemId": "scrap_metal",
+      "count": 6
+     }
+    ],
+    "rewards": {
+     "coins": 70,
+     "items": []
+    }
+   },
+   {
+    "id": "er_salt_kitchen",
+    "title": "Salt for the Kitchen",
+    "kind": "errand",
+    "offeredBy": "n_quartermaster",
+    "prerequisites": [],
+    "summary": "The kitchen needs salt to cure the catch. Four handfuls of crystals.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Bring 4 × Red Salt Crystals to Neral Brin",
+      "type": "give",
+      "targetId": "n_quartermaster",
+      "itemId": "salt_crystals",
+      "count": 4
+     }
+    ],
+    "rewards": {
+     "coins": 60,
+     "items": [
+      {
+       "itemId": "ration",
+       "quantity": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "er_rope_docks",
+    "title": "Rope for the Docks",
+    "kind": "errand",
+    "offeredBy": "n_crewhand",
+    "prerequisites": [],
+    "summary": "The cranes need new lines. Bring Senn three coils of rope.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Bring 3 × Dry Rope to Senn Bri",
+      "type": "give",
+      "targetId": "n_crewhand",
+      "itemId": "rope",
+      "count": 3
+     }
+    ],
+    "rewards": {
+     "coins": 65,
+     "items": [
+      {
+       "itemId": "bandage",
+       "quantity": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "er_feathers",
+    "title": "Feathers for Fletching",
+    "kind": "errand",
+    "offeredBy": "n_guard",
+    "prerequisites": [],
+    "summary": "The watch fletches its own bolts. Three Redhook feathers, if you can get them.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Bring 3 × Redhook Gull Feather to Orin Hale",
+      "type": "give",
+      "targetId": "n_guard",
+      "itemId": "redhook_feather",
+      "count": 3
+     }
+    ],
+    "rewards": {
+     "coins": 90,
+     "items": [
+      {
+       "itemId": "bolt",
+       "quantity": 8
+      }
+     ]
+    }
+   },
+   {
+    "id": "er_lamp_oil",
+    "title": "Oil for the Beacon",
+    "kind": "errand",
+    "offeredBy": "n_tidepilot",
+    "prerequisites": [],
+    "summary": "Teren keeps a lamp burning on the pilot pier. Two flasks of lamp oil.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Bring 2 × Lantern Oil to Teren Sull",
+      "type": "give",
+      "targetId": "n_tidepilot",
+      "itemId": "lamp_oil",
+      "count": 2
+     }
+    ],
+    "rewards": {
+     "coins": 70,
+     "items": [
+      {
+       "itemId": "ration",
+       "quantity": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "er_plate_hall",
+    "title": "A Plate for the Hall",
+    "kind": "errand",
+    "offeredBy": "n_clerk",
+    "prerequisites": [],
+    "summary": "The Hunters’ Hall wants a Brineback plate mounted over the door. Edda keeps the record.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Bring 1 × Brineback Salt Plate to Edda Voss",
+      "type": "give",
+      "targetId": "n_clerk",
+      "itemId": "brineback_plate",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 150,
+     "items": [
+      {
+       "itemId": "healing_tincture",
+       "quantity": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "er_tincture",
+    "title": "Ash Tea Leaves",
+    "kind": "errand",
+    "offeredBy": "n_medic",
+    "prerequisites": [],
+    "summary": "Sera brews her remedies in salted water. Two crystals for the clinic.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Bring 2 × Red Salt Crystals to Sera Moll",
+      "type": "give",
+      "targetId": "n_medic",
+      "itemId": "salt_crystals",
+      "count": 2
+     }
+    ],
+    "rewards": {
+     "coins": 50,
+     "items": [
+      {
+       "itemId": "bandage",
        "quantity": 2
       }
      ]

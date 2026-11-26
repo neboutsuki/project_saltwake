@@ -740,6 +740,46 @@ def place_content(world, H, Q):
             ('c_rare_ridge', 'Ravine Edge Satchel', (200, 34.5)), ('c_rare_caverns', 'Drowned Explorer\u2019s Chest', (212, 100.5))]
     c['containers'] = [k for k in c['containers'] if not k['id'].startswith('c_rare_')] + [
         {'id': i, 'name': n, 'mapId': 'quays', 'x': x, 'y': y, 'lootTableId': 'deep_cache', 'respawn': 'raid', 'rare': True} for i, n, (x, y) in RARE]
+    # ---- errands: small jobs that run alongside your one quest (lost items, deliveries) ----------------------------
+    LOST = [  # item id, item name, description, container id, container name, (x, y), owner, quest id, title, summary, coins
+        ('olas_hammer', 'Ola\u2019s Hammer', 'A small smithing hammer with O.M. scratched into the grip.', 'c_er_hammer', 'Dropped Tool Bag', (88.5, 82.5), 'n_apprentice',
+         'er_ola_hammer', 'Ola\u2019s Hammer', 'Ola dropped her first hammer by the crane when the bell rang. Iven gave it to her. She would rather not tell him.', 90),
+        ('mara_locket', 'Tarnished Locket', 'A salt-green locket with a faded portrait of a sailor.', 'c_er_locket', 'Washed-Up Bundle', (56, 120.8), 'n_dockmaster',
+         'er_mara_locket', 'The Tarnished Locket', 'Mara lost her mother\u2019s locket on the beach below the warehouses. The tide may have left it.', 110),
+        ('senn_tally', 'Senn\u2019s Tally Book', 'A water-stained ledger of crates, names and dates.', 'c_er_tally', 'Soaked Satchel', (70.5, 88.6), 'n_crewhand',
+         'er_senn_tally', 'The Tally Book', 'Senn left his tally book in the Bonded Warehouse yard. Without it, half the harbor\u2019s cargo is unaccounted for.', 80),
+        ('neral_spectacles', 'Wire Spectacles', 'Bent wire spectacles, one lens cracked.', 'c_er_specs', 'Crushed Crate', (114, 47.6), 'n_quartermaster',
+         'er_neral_specs', 'Neral\u2019s Spectacles', 'Neral lost his spectacles at the Harbor Master\u2019s Lodge counting stock. He can\u2019t read his own ledger.', 85),
+        ('talla_compass', 'Brass Compass', 'A brass compass engraved with a crew\u2019s initials.', 'c_er_compass', 'Rusted Lockbox', (144, 58.5), 'n_salvager',
+         'er_talla_compass', 'The Crew Compass', 'Talla\u2019s old crew compass was left at the ruined watch store. It points true even now.', 120),
+    ]
+    have = {i['id'] for i in c['items']}
+    c['containers'] = [k for k in c['containers'] if not k['id'].startswith('c_er_')]
+    ER = []
+    for iid, nm, desc, cid, cname, (x, y), owner, qid, title, summary, coins in LOST:
+        if iid not in have:
+            c['items'].append({'id': iid, 'name': nm, 'category': 'quest', 'rarity': 'unique', 'baseValue': 0, 'weight': .2, 'stackLimit': 1, 'description': desc})
+        c['containers'].append({'id': cid, 'name': cname, 'mapId': 'quays', 'x': x, 'y': y, 'lootTableId': 'dock_scrap', 'respawn': 'raid', 'guaranteedItems': [{'itemId': iid, 'quantity': 1}]})
+        on = next(n['name'] for n in c['npcs'] if n['id'] == owner)
+        ER.append({'id': qid, 'title': title, 'kind': 'errand', 'offeredBy': owner, 'prerequisites': [], 'summary': summary,
+                   'stages': [{'id': 'a', 'description': f'Find the {nm.lower() if not nm.startswith(chr(79)) else nm} out on the Outer Quays', 'type': 'loot', 'targetId': cid, 'count': 1},
+                              {'id': 'b', 'description': f'Return the {nm} to {on}', 'type': 'give', 'targetId': owner, 'itemId': iid, 'count': 1}],
+                   'rewards': {'coins': coins, 'items': []}})
+    DELIVER = [  # quest id, title, giver, item, count, summary, coins, reward items
+        ('er_scrap_forge', 'Scrap for the Forge', 'n_mechanic', 'scrap_metal', 6, 'Iven\u2019s forge eats scrap faster than the harbor can find it. Six pieces will do.', 70, [('whetstone', 0)]),
+        ('er_salt_kitchen', 'Salt for the Kitchen', 'n_quartermaster', 'salt_crystals', 4, 'The kitchen needs salt to cure the catch. Four handfuls of crystals.', 60, [('ration', 2)]),
+        ('er_rope_docks', 'Rope for the Docks', 'n_crewhand', 'rope', 3, 'The cranes need new lines. Bring Senn three coils of rope.', 65, [('bandage', 1)]),
+        ('er_feathers', 'Feathers for Fletching', 'n_guard', 'redhook_feather', 3, 'The watch fletches its own bolts. Three Redhook feathers, if you can get them.', 90, [('bolt', 8)]),
+        ('er_lamp_oil', 'Oil for the Beacon', 'n_tidepilot', 'lamp_oil', 2, 'Teren keeps a lamp burning on the pilot pier. Two flasks of lamp oil.', 70, [('ration', 1)]),
+        ('er_plate_hall', 'A Plate for the Hall', 'n_clerk', 'brineback_plate', 1, 'The Hunters\u2019 Hall wants a Brineback plate mounted over the door. Edda keeps the record.', 150, [('healing_tincture', 1)]),
+        ('er_tincture', 'Ash Tea Leaves', 'n_medic', 'salt_crystals', 2, 'Sera brews her remedies in salted water. Two crystals for the clinic.', 50, [('bandage', 2)]),
+    ]
+    for qid, title, giver, item, n, summary, coins, items in DELIVER:
+        gn = next(x['name'] for x in c['npcs'] if x['id'] == giver)
+        ER.append({'id': qid, 'title': title, 'kind': 'errand', 'offeredBy': giver, 'prerequisites': [], 'summary': summary,
+                   'stages': [{'id': 'a', 'description': f'Bring {n} \u00d7 {next(i["name"] for i in c["items"] if i["id"] == item)} to {gn}', 'type': 'give', 'targetId': giver, 'itemId': item, 'count': n}],
+                   'rewards': {'coins': coins, 'items': [{'itemId': a, 'quantity': b} for a, b in items if b > 0]}})
+    QS += ER
     c['quests'] = [q for q in c['quests'] if q['id'] not in {x['id'] for x in QS}] + QS
     # more repeatable commissions
     L = c['living_expeditions']['contracts']

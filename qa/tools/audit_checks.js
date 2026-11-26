@@ -49,7 +49,7 @@ const qids=new Set(C.quests.map(q=>q.id));
 c.questIdsUnique=qids.size===C.quests.length;
 c.questGiversExist=C.quests.every(q=>!q.offeredBy||nid.has(q.offeredBy));
 c.questPrereqsExist=C.quests.every(q=>(q.prerequisites||[]).every(p=>qids.has(p)&&p!==q.id));
-const tgt={talk:nid,loot:cid,interact:iid,extract:new Set(maps.flatMap(m=>G.world.maps[m].portals.map(p=>p.id)))};
+const tgt={talk:nid,give:nid,loot:cid,interact:iid,extract:new Set(maps.flatMap(m=>G.world.maps[m].portals.map(p=>p.id)))};
 c.questStageTargetsExist=C.quests.every(q=>q.stages.every(s=>{const r=tgt[s.type]?.has(s.targetId);if(!r)fail('questStageTargetsExist',q.id+'/'+s.id+':'+s.type+':'+s.targetId);return r}));
 c.questRewardItemsExist=C.quests.every(q=>(q.rewards?.items||[]).every(i=>items.has(i.itemId)));
 const lt=new Set(C.lootTables.map(t=>t.id));
