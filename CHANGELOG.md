@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — Sharp rendering
+- **Why it looked blurry:** the game drew into a fixed 1024x576 canvas that the browser stretched to the window
+  (2.5x at 1440p), and the enhanced renderer's tilt-shift blurred the top and bottom of the screen.
+- **Now** (`source/modules/hires.js`): the world canvas renders at up to screen resolution (default cap 1920x1080,
+  up to 4K in Graphics › "Max render scale"); all game code still draws in its 1024x576 coordinates. Pixel-art
+  sprites are drawn from a cached integer nearest-neighbour upscale with smoothing, so pixels stay crisp and evenly
+  sized instead of blocky and shimmering; large paintings use high-quality smoothing. Tilt-shift is off by default.
+- If the game runs below ~48 fps for 3 s, the render resolution steps down automatically (1.875x → 1.5x → 1.25x →
+  1x) with a message. Toggle: Graphics › "Sharp high-resolution rendering".
+- QA: new `hires` suite; 259/259.
+
 ## Unreleased — A more alive world
 - **Denser scenery:** the Outer Quays has about 4,000 scenery objects (was about 2,100): twice the Ashwood pines,
   more coastal pines, 22 woodland copses on the open ground, about 170 grass-and-flower meadows, more shrubs and reed

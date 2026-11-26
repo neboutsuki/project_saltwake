@@ -18,6 +18,7 @@ try{suites.push(['hublife',require('./hublife_checks.js')])}catch(e){}
 try{suites.push(['feel',require('./feel_checks.js')])}catch(e){}
 try{suites.push(['dodge',require('./dodge_checks.js')])}catch(e){}
 try{suites.push(['ambient',require('./ambient_checks.js')])}catch(e){}
+try{suites.push(['hires',require('./hires_checks.js')])}catch(e){}
 try{suites.push(['systems',require('./systems_checks.js')])}catch(e){}
 (async()=>{const b=await chromium.launch({args:['--no-sandbox','--disable-dev-shm-usage']});
 const page=await b.newPage({viewport:{width:1280,height:800}});const errors=[];page.on('pageerror',e=>errors.push(String(e)));
