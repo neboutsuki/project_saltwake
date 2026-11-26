@@ -711,6 +711,35 @@ def place_content(world, H, Q):
           'Mara\u2019s mother left offerings at the ridge shrine. Mara wants to know if the relic near the Ashwood edge survived.',
           [('interact', 'i_qs_shrine', 'Visit the ridge shrine'), ('interact', 'i_qs_relic', 'Find the salt-worn relic near the Ashwood edge')], 130, [('salt_crystals', 2)]),
     ]
+    QS.append(mkq('q_tidemaw', 'The Thing Under the Slip', 'main', 'n_dockmaster', ['q_slip_warnings'],
+        'The logbook names it: the Tidemaw. It burrows under the Boathouse Slip and floods it when it rises. Break its gills before it calls the tide, and bring it down.',
+        [('interact', 'i_qs_tidemaw', 'Slay the Tidemaw at the Boathouse Slip')], 600, [('masterwork_core', 1), ('healing_tincture', 2)]))
+    c['interactables'] = [k for k in c['interactables'] if k['id'] != 'i_qs_tidemaw'] + [
+        {'id': 'i_qs_tidemaw', 'name': 'The Tidemaw\u2019s Wallow', 'mapId': 'quays', 'x': 168, 'y': 112.5, 'kind': 'inspect'}]
+    # boss, trophies, deep loot
+    c['enemies'] = [e for e in c['enemies'] if e['id'] != 'tidemaw'] + [{
+        'id': 'tidemaw', 'name': 'The Tidemaw', 'health': 2400, 'speed': 0, 'damage': 30, 'aggroRange': 0, 'attackRange': 0, 'attackCooldown': 2,
+        'drop': 'tidemaw_jaw_plate', 'neutral': False, 'vision': 0, 'hearing': 0, 'bodyArmor': 38, 'staggerThreshold': 280, 'boss': True,
+        'parts': [{'id': 'gill_left', 'name': 'Left gill sac', 'dx': 0, 'dy': 0, 'radius': 22, 'hp': 300, 'armor': 8, 'drop': 'tidemaw_gill'},
+                  {'id': 'gill_right', 'name': 'Right gill sac', 'dx': 0, 'dy': 0, 'radius': 22, 'hp': 300, 'armor': 8, 'drop': 'tidemaw_gill'},
+                  {'id': 'jaw', 'name': 'Jaw plate', 'dx': 0, 'dy': 0, 'radius': 24, 'hp': 420, 'armor': 70, 'drop': 'tidemaw_jaw_plate'},
+                  {'id': 'tail', 'name': 'Tail', 'dx': 0, 'dy': 0, 'radius': 22, 'hp': 380, 'armor': 30, 'drop': 'tidemaw_tail_fin'}]}]
+    have = {i['id'] for i in c['items']}
+    for iid, nm, val, desc in (('tidemaw_gill', 'Tidemaw Gill Sac', 260, 'A ruptured teal gill sac. It still smells of the deep tide.'),
+                               ('tidemaw_jaw_plate', 'Tidemaw Jaw Plate', 340, 'A crab-armored jaw plate studded with salt-crystal teeth.'),
+                               ('tidemaw_tail_fin', 'Tidemaw Tail Fin', 300, 'A barnacled tail fin, heavy as a door.')):
+        if iid not in have:
+            c['items'].append({'id': iid, 'name': nm, 'category': 'monster_part', 'rarity': 'rare', 'baseValue': val, 'weight': 1.2, 'stackLimit': 10, 'description': desc})
+    c['lootTables'] = [t for t in c['lootTables'] if t['id'] != 'deep_cache'] + [{'id': 'deep_cache', 'name': 'Deep Salvage', 'rolls': 3, 'entries': [
+        {'itemId': 'lens', 'weight': 14, 'min': 1, 'max': 1}, {'itemId': 'pressure_seal', 'weight': 18, 'min': 1, 'max': 2},
+        {'itemId': 'healing_tincture', 'weight': 16, 'min': 1, 'max': 1}, {'itemId': 'ship_gears', 'weight': 18, 'min': 1, 'max': 2},
+        {'itemId': 'widow_claw', 'weight': 6, 'min': 1, 'max': 1}, {'itemId': 'masterwork_core', 'weight': 3, 'min': 1, 'max': 1},
+        {'itemId': 'broken_compass', 'weight': 12, 'min': 1, 'max': 1}, {'itemId': 'salt_crystals', 'weight': 20, 'min': 2, 'max': 4}]}]
+    RARE = [('c_rare_grove_west', 'Hunter\u2019s Cache under the Grove Tree', (38.5, 15.2)), ('c_rare_grove_east', 'Moss-Covered Strongbox', (152.5, 16.2)),
+            ('c_rare_arch_north', 'Ruin Vault', (118, 19.6)), ('c_rare_arch_west', 'Old Arch Cache', (66, 27.6)),
+            ('c_rare_ridge', 'Ravine Edge Satchel', (200, 34.5)), ('c_rare_caverns', 'Drowned Explorer\u2019s Chest', (212, 100.5))]
+    c['containers'] = [k for k in c['containers'] if not k['id'].startswith('c_rare_')] + [
+        {'id': i, 'name': n, 'mapId': 'quays', 'x': x, 'y': y, 'lootTableId': 'deep_cache', 'respawn': 'raid', 'rare': True} for i, n, (x, y) in RARE]
     c['quests'] = [q for q in c['quests'] if q['id'] not in {x['id'] for x in QS}] + QS
     # more repeatable commissions
     L = c['living_expeditions']['contracts']

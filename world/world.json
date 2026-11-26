@@ -50688,6 +50688,66 @@
     "respawn": "raid"
    },
    {
+    "id": "c_rare_grove_west",
+    "name": "Hunter’s Cache under the Grove Tree",
+    "mapId": "quays",
+    "x": 38.5,
+    "y": 15.2,
+    "lootTableId": "deep_cache",
+    "respawn": "raid",
+    "rare": true
+   },
+   {
+    "id": "c_rare_grove_east",
+    "name": "Moss-Covered Strongbox",
+    "mapId": "quays",
+    "x": 152.5,
+    "y": 16.2,
+    "lootTableId": "deep_cache",
+    "respawn": "raid",
+    "rare": true
+   },
+   {
+    "id": "c_rare_arch_north",
+    "name": "Ruin Vault",
+    "mapId": "quays",
+    "x": 118,
+    "y": 19.6,
+    "lootTableId": "deep_cache",
+    "respawn": "raid",
+    "rare": true
+   },
+   {
+    "id": "c_rare_arch_west",
+    "name": "Old Arch Cache",
+    "mapId": "quays",
+    "x": 66,
+    "y": 27.6,
+    "lootTableId": "deep_cache",
+    "respawn": "raid",
+    "rare": true
+   },
+   {
+    "id": "c_rare_ridge",
+    "name": "Ravine Edge Satchel",
+    "mapId": "quays",
+    "x": 200,
+    "y": 34.5,
+    "lootTableId": "deep_cache",
+    "respawn": "raid",
+    "rare": true
+   },
+   {
+    "id": "c_rare_caverns",
+    "name": "Drowned Explorer’s Chest",
+    "mapId": "quays",
+    "x": 212,
+    "y": 100.5,
+    "lootTableId": "deep_cache",
+    "respawn": "raid",
+    "rare": true
+   },
+   {
     "id": "c_qx_harbormaster",
     "name": "Harbor Master’s Strongbox",
     "mapId": "quays",
@@ -51436,6 +51496,65 @@
       "drop": "shed_horn"
      }
     ]
+   },
+   {
+    "id": "tidemaw",
+    "name": "The Tidemaw",
+    "health": 2400,
+    "speed": 0,
+    "damage": 30,
+    "aggroRange": 0,
+    "attackRange": 0,
+    "attackCooldown": 2,
+    "drop": "tidemaw_jaw_plate",
+    "neutral": false,
+    "vision": 0,
+    "hearing": 0,
+    "bodyArmor": 38,
+    "staggerThreshold": 280,
+    "boss": true,
+    "parts": [
+     {
+      "id": "gill_left",
+      "name": "Left gill sac",
+      "dx": 0,
+      "dy": 0,
+      "radius": 22,
+      "hp": 300,
+      "armor": 8,
+      "drop": "tidemaw_gill"
+     },
+     {
+      "id": "gill_right",
+      "name": "Right gill sac",
+      "dx": 0,
+      "dy": 0,
+      "radius": 22,
+      "hp": 300,
+      "armor": 8,
+      "drop": "tidemaw_gill"
+     },
+     {
+      "id": "jaw",
+      "name": "Jaw plate",
+      "dx": 0,
+      "dy": 0,
+      "radius": 24,
+      "hp": 420,
+      "armor": 70,
+      "drop": "tidemaw_jaw_plate"
+     },
+     {
+      "id": "tail",
+      "name": "Tail",
+      "dx": 0,
+      "dy": 0,
+      "radius": 22,
+      "hp": 380,
+      "armor": 30,
+      "drop": "tidemaw_tail_fin"
+     }
+    ]
    }
   ],
   "environment": {
@@ -51840,6 +51959,14 @@
     "x": 188.5,
     "y": 42.5,
     "kind": "inspect"
+   },
+   {
+    "id": "i_qs_tidemaw",
+    "name": "The Tidemaw’s Wallow",
+    "mapId": "quays",
+    "x": 168,
+    "y": 112.5,
+    "kind": "inspect"
    }
   ],
   "items": [
@@ -52182,6 +52309,36 @@
     "weight": 0.075,
     "stackLimit": 20,
     "description": "Longwatch precision ammunition. Sold by the quartermaster; not interchangeable with arbalest bolts."
+   },
+   {
+    "id": "tidemaw_gill",
+    "name": "Tidemaw Gill Sac",
+    "category": "monster_part",
+    "rarity": "rare",
+    "baseValue": 260,
+    "weight": 1.2,
+    "stackLimit": 10,
+    "description": "A ruptured teal gill sac. It still smells of the deep tide."
+   },
+   {
+    "id": "tidemaw_jaw_plate",
+    "name": "Tidemaw Jaw Plate",
+    "category": "monster_part",
+    "rarity": "rare",
+    "baseValue": 340,
+    "weight": 1.2,
+    "stackLimit": 10,
+    "description": "A crab-armored jaw plate studded with salt-crystal teeth."
+   },
+   {
+    "id": "tidemaw_tail_fin",
+    "name": "Tidemaw Tail Fin",
+    "category": "monster_part",
+    "rarity": "rare",
+    "baseValue": 300,
+    "weight": 1.2,
+    "stackLimit": 10,
+    "description": "A barnacled tail fin, heavy as a door."
    }
   ],
   "living_expeditions": {
@@ -53062,6 +53219,61 @@
      }
     ],
     "guaranteed": []
+   },
+   {
+    "id": "deep_cache",
+    "name": "Deep Salvage",
+    "rolls": 3,
+    "entries": [
+     {
+      "itemId": "lens",
+      "weight": 14,
+      "min": 1,
+      "max": 1
+     },
+     {
+      "itemId": "pressure_seal",
+      "weight": 18,
+      "min": 1,
+      "max": 2
+     },
+     {
+      "itemId": "healing_tincture",
+      "weight": 16,
+      "min": 1,
+      "max": 1
+     },
+     {
+      "itemId": "ship_gears",
+      "weight": 18,
+      "min": 1,
+      "max": 2
+     },
+     {
+      "itemId": "widow_claw",
+      "weight": 6,
+      "min": 1,
+      "max": 1
+     },
+     {
+      "itemId": "masterwork_core",
+      "weight": 3,
+      "min": 1,
+      "max": 1
+     },
+     {
+      "itemId": "broken_compass",
+      "weight": 12,
+      "min": 1,
+      "max": 1
+     },
+     {
+      "itemId": "salt_crystals",
+      "weight": 20,
+      "min": 2,
+      "max": 4
+     }
+    ]
    }
   ],
   "mechanics": {
@@ -54107,6 +54319,52 @@
      "items": [
       {
        "itemId": "salt_crystals",
+       "quantity": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_tidemaw",
+    "title": "The Thing Under the Slip",
+    "kind": "main",
+    "offeredBy": "n_dockmaster",
+    "prerequisites": [
+     "q_slip_warnings"
+    ],
+    "summary": "The logbook names it: the Tidemaw. It burrows under the Boathouse Slip and floods it when it rises. Break its gills before it calls the tide, and bring it down.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Slay the Tidemaw at the Boathouse Slip",
+      "type": "interact",
+      "targetId": "i_qs_tidemaw",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Report back to Mara Fen",
+      "type": "talk",
+      "targetId": "n_dockmaster",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 600,
+     "items": [
+      {
+       "itemId": "masterwork_core",
+       "quantity": 1
+      },
+      {
+       "itemId": "healing_tincture",
        "quantity": 2
       }
      ]

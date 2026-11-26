@@ -10508,5 +10508,15 @@
   ],
   "pack": "art-new",
   "sha256": "6de73fe00738ccf3487d2a9a9b06187fea4339fabfe291292054245b14225cfc"
+ },
+ "placeholder_art_bosses_tidemaw": {
+  "path": "assets/art/bosses/tidemaw.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/bosses/tidemaw"
+  ],
+  "pack": "art-new",
+  "placeholder": true,
+  "sha256": "2b65047a6a760acf547957dd708a990b99f4e9ebc29e39a4586dcf703ebc7793"
  }
 }

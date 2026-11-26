@@ -1,5 +1,27 @@
 # Changelog
 
+## Unreleased — The Tidemaw (first boss) and deeper loot
+- **The Tidemaw** (`source/modules/boss.js`) rises when you step into the Boathouse Slip on an expedition. Normal
+  combat rules: bullets hit its body and four breakable parts (left and right gill sacs, jaw plate, tail) that drop
+  trophies; stagger opens it up; Hunter XP 400.
+  - **Bite lunge** (locked red lane, then a dash); dashing into a Slip pillar stuns it (wall stun).
+  - **Tail sweep** if you stand behind it (red arc).
+  - **Brine spit**, a three-shot spread; missed spits leave **harpoon wrecks**: pick one up with E and your next shot
+    hurls it back (150 damage, heavy stagger).
+  - **Phase 2 (below 60%): burrow** under the sand and erupt where you stood (red circle).
+  - **RIPTIDE** (ultimate, phase 2, then about every 28 s): a 3.4 s wind-up with glowing gills and the whole Slip
+    lit blue, then a flood for 85 damage. **Break both gills** and it can never call the tide again; a stagger
+    during the wind-up cancels it. A perfectly timed dodge also avoids it.
+  - **Enraged below 30%**: faster, shorter pauses. Leave the Slip and it sinks to recover; step back in and it rises.
+  - Boss bar with health and part status; a placeholder image (`tools/make_placeholders.py` writes
+    `art/bosses/tidemaw.png`) until the real art is delivered under the same name.
+- **New story finale for act 1:** The Thing Under the Slip (Mara Fen, after Warnings at the Slip): slay the Tidemaw.
+  Trophy items: Tidemaw Gill Sac, Jaw Plate, Tail Fin.
+- **Deeper = richer:** six rare caches at landmarks (grove trees, ruin arches, ravine edge, drowned caverns) use a new
+  Deep Salvage table (lens, pressure seals, tinctures, gears, Widow claws, a chance of a masterwork core), and every
+  container far from the West Passage has a growing chance of an extra deep-salvage roll.
+- QA: new `boss` suite; 287/287.
+
 ## Unreleased — Quest display and many more quests
 - **14 new story and side quests** (19 total), built into the maps by `tools/make_maps.py` with 13 new containers and
   11 new inspect points on the Outer Quays. Story continues with The Harbor Master's Seal and Warnings at the Slip
