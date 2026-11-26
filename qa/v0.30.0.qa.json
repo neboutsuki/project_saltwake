@@ -252,6 +252,7 @@
     "hires.canvasScaled": true,
     "hires.gameCoordsKept": true,
     "hires.overrideSurvivesDelete": true,
+    "hires.characterPop": true,
     "hires.sharpPathUsed": true,
     "systems.loaded": true,
     "systems.packAlert": true,

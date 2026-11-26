@@ -18,7 +18,7 @@
   const CH = 16, CPX = CH * 32, ART_SCALE = 1.4;
   window.SALTWAKE_NEW_HUB = true;
   const TX = window.saltwakeTiles = { enabled: true, ready: false, stats: { chunks: 0, built: 0, sprites: 0, facades: 0, remaps: 0 }, cacheSize: 48,
-    budgetMs: 5, camera: .95, brighten: 1.12 };
+    budgetMs: 5, camera: .95, brighten: 1.1, desat: .18 };
   const isTile = m => !!(m && m.tilemap);
 
   // ---- art -------------------------------------------------------------------------------------------------------
@@ -52,7 +52,9 @@
     const x = c.getContext('2d', { willReadFrequently: true }); x.imageSmoothingEnabled = true; x.imageSmoothingQuality = 'high';
     x.drawImage(big, w, h, w, h, 0, 0, W, H);
     const id = x.getImageData(0, 0, W, H), d = id.data, k = name === 'deep' || name === 'shallows' ? 1 : TX.brighten;
-    if (k !== 1) { for (let i = 0; i < d.length; i += 4) { d[i] = Math.min(255, d[i] * k); d[i + 1] = Math.min(255, d[i + 1] * k); d[i + 2] = Math.min(255, d[i + 2] * k); } x.putImageData(id, 0, 0); }
+    const ds = name === 'deep' || name === 'shallows' ? 0 : TX.desat;   // muted ground so characters read first
+    if (k !== 1 || ds) { for (let i = 0; i < d.length; i += 4) { const L = (d[i] * .3 + d[i + 1] * .59 + d[i + 2] * .11);
+      d[i] = Math.min(255, (d[i] + (L - d[i]) * ds) * k); d[i + 1] = Math.min(255, (d[i + 1] + (L - d[i + 1]) * ds) * k); d[i + 2] = Math.min(255, (d[i + 2] + (L - d[i + 2]) * ds) * k); } x.putImageData(id, 0, 0); }
     return (texData[name] = { w: W, h: H, d, canvas: c });
   }
   const pats = {};

@@ -49,13 +49,25 @@
   new ResizeObserver(resize).observe(C); addEventListener('resize', resize); resize();
 
   // Sharp pixel art: integer nearest-neighbour pre-scale, then smooth down to the exact size.
-  const cache = new WeakMap();
+  const cache = new WeakMap(), kind = new WeakMap();
+  H.grade = { desat: .2, bright: .94 };
+  let SCENERY = null;
+  function scenery(src) {
+    let v = kind.get(src); if (v !== undefined) return v;
+    if (!SCENERY) { SCENERY = new Set(); const I = window.SALTWAKE_ASSETS?.images || {}; for (const [a, u] of Object.entries(I)) if (/^art\/(plants|rocks|trees|props|buildings|edges|arena)\//.test(a)) SCENERY.add(u); }
+    v = SCENERY.has(src.getAttribute?.('src') || src.src); kind.set(src, v); return v;
+  }
   function upscaled(src, k) {
     let m = cache.get(src); if (!m) cache.set(src, m = {});
     if (m[k]) return m[k];
     const w = src.naturalWidth || src.width, h = src.naturalHeight || src.height;
     const c = document.createElement('canvas'); c.width = w * k; c.height = h * k;
-    const x = c.getContext('2d'); x.imageSmoothingEnabled = false; x.drawImage(src, 0, 0, c.width, c.height);
+    const x = c.getContext('2d', { willReadFrequently: true }); x.imageSmoothingEnabled = false; x.drawImage(src, 0, 0, c.width, c.height);
+    if (scenery(src) && H.grade) {                    // scenery is muted a little so characters stand out
+      try { const id = x.getImageData(0, 0, c.width, c.height), d = id.data, ds = H.grade.desat, br = H.grade.bright;
+        for (let i = 0; i < d.length; i += 4) { const L = d[i] * .3 + d[i + 1] * .59 + d[i + 2] * .11; d[i] = (d[i] + (L - d[i]) * ds) * br; d[i + 1] = (d[i + 1] + (L - d[i + 1]) * ds) * br; d[i + 2] = (d[i + 2] + (L - d[i + 2]) * ds) * br; }
+        x.putImageData(id, 0, 0); } catch (e) { }
+    }
     H.stats.cached++; return (m[k] = c);
   }
   proto.drawImage = function (src) {

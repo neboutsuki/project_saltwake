@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — Character pop
+- Ren gets a dark pixel outline (scaled to screen pixels) and a rim light on the side facing the light: warm by day
+  and at sunset, from the lantern side at night when it is lit, pale blue in the dark (`source/modules/pop.js`).
+- A soft shadow plus a crisp contact shadow at the feet ground Ren (drawn outside the outline effect).
+- The background is muted slightly: ground textures 18% desaturated, scenery sprites 20% desaturated and 6% darker;
+  characters keep full color. QA 260/260.
+
 ## Unreleased — Sharp rendering
 - **Why it looked blurry:** the game drew into a fixed 1024x576 canvas that the browser stretched to the window
   (2.5x at 1440p), and the enhanced renderer's tilt-shift blurred the top and bottom of the screen.
