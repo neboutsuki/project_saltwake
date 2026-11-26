@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.31-dev — Impact pass (shooting feel) + left/right monsters
+- **Monsters face left/right** (simple, Zero Sievert-style): field monster sprites mirror toward what they are doing, with hysteresis so they don't flicker. Their breakable-part hitboxes mirror with them. Fixed the Salt Widow's claw hitbox, which was on the wrong side of its art.
+- **Firing:**
+  - Directional camera kick (scaled by weapon) and muzzle smoke.
+  - Spent cell casings that stay on the ground (Wickcaster, Harpoon Gun).
+  - Punchy layered shot sounds: thump + crack.
+  - Brighter glowing tracers.
+  - Crosshair bloom: spam-firing widens the spread, which recovers in about half a second, so tap-firing is accurate.
+- **Hitting:**
+  - White hit-flash and squash on the monster, plus knockback per bullet.
+  - Blood/ichor spray in the shot direction and ground splats that fade over ~25 s.
+  - Hit marker on the crosshair; "thwack" sound, or an armour "ping" when the armour soaks the hit.
+- **Killing:** red hit marker, longer hitstop and shake, a burst, a kill sound, and a corpse that stays on the ground for ~14 s.
+- QA: new `impact` suite. 358 checks, all passing.
+
 ## v0.31-dev — Monster attack telegraphs
 - Every monster attack on the player now has a readable wind-up (0.45–0.85 s, up from 0.30–0.42 s) with its own ground shape:
   - Brineback: Bite (wedge) and **Tusk Charge** (a long lane it dashes down; hitting a wall stuns it for 1.5 s, "strike now").
