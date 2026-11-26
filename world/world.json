@@ -50571,6 +50571,123 @@
     "buildingId": "hub.trade"
    },
    {
+    "id": "c_qs_hm_strongbox",
+    "name": "Harbor Master’s Seal Box",
+    "mapId": "quays",
+    "x": 123.0,
+    "y": 45.4,
+    "lootTableId": "customs_docs",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qs_slip_log",
+    "name": "Boathouse Slip Logbook",
+    "mapId": "quays",
+    "x": 172.0,
+    "y": 97.5,
+    "lootTableId": "customs_docs",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qs_net_tackle",
+    "name": "Net Loft Tackle Chest",
+    "mapId": "quays",
+    "x": 52.5,
+    "y": 85.4,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qs_tool_crate",
+    "name": "Apprentice’s Tool Crate",
+    "mapId": "quays",
+    "x": 115.5,
+    "y": 107.4,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qs_herb_cache",
+    "name": "Medic’s Herb Cache",
+    "mapId": "quays",
+    "x": 179,
+    "y": 48.2,
+    "lootTableId": "provisions",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qs_herb_cache2",
+    "name": "Ruin Herb Cache",
+    "mapId": "quays",
+    "x": 190.5,
+    "y": 43.2,
+    "lootTableId": "provisions",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qs_fish_store",
+    "name": "Salted Fish Store",
+    "mapId": "quays",
+    "x": 93.0,
+    "y": 93.4,
+    "lootTableId": "provisions",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qs_salt_sacks",
+    "name": "Salt Shed Ration Sacks",
+    "mapId": "quays",
+    "x": 51.0,
+    "y": 42.4,
+    "lootTableId": "provisions",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qs_crew_satchel",
+    "name": "Missing Crew Satchel",
+    "mapId": "quays",
+    "x": 20,
+    "y": 104.5,
+    "lootTableId": "wrecker_cache",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qs_crate_tally",
+    "name": "Crane Yard Tally Crate",
+    "mapId": "quays",
+    "x": 86,
+    "y": 87.5,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qs_gearbox",
+    "name": "Saltworks Gearbox",
+    "mapId": "quays",
+    "x": 24.0,
+    "y": 31.4,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qs_rail_parts",
+    "name": "Rail Cart Parts",
+    "mapId": "quays",
+    "x": 76,
+    "y": 51,
+    "lootTableId": "dock_scrap",
+    "respawn": "raid"
+   },
+   {
+    "id": "c_qs_keeper_log",
+    "name": "Lighthouse Keeper’s Log",
+    "mapId": "quays",
+    "x": 199,
+    "y": 121,
+    "lootTableId": "customs_docs",
+    "respawn": "raid"
+   },
+   {
     "id": "c_qx_harbormaster",
     "name": "Harbor Master’s Strongbox",
     "mapId": "quays",
@@ -51635,6 +51752,94 @@
     "x": 113,
     "y": 54.5,
     "kind": "inspect"
+   },
+   {
+    "id": "i_qs_beacon",
+    "name": "Watch Beacon Signal Fire",
+    "mapId": "quays",
+    "x": 128,
+    "y": 32.2,
+    "kind": "inspect"
+   },
+   {
+    "id": "i_qs_slip_marks",
+    "name": "Harpoon Scars on the Slip",
+    "mapId": "quays",
+    "x": 161.5,
+    "y": 108.5,
+    "kind": "inspect"
+   },
+   {
+    "id": "i_qs_signpost_west",
+    "name": "West Passage Waymark",
+    "mapId": "quays",
+    "x": 8,
+    "y": 60.8,
+    "kind": "inspect"
+   },
+   {
+    "id": "i_qs_signpost_storm",
+    "name": "Storm Gate Waymark",
+    "mapId": "quays",
+    "x": 101.8,
+    "y": 13.8,
+    "kind": "inspect"
+   },
+   {
+    "id": "i_qs_lighthouse",
+    "name": "Lighthouse Stump",
+    "mapId": "quays",
+    "x": 203,
+    "y": 121.5,
+    "kind": "inspect"
+   },
+   {
+    "id": "i_qs_pier_bell1",
+    "name": "West Pier Buoy Bell",
+    "mapId": "quays",
+    "x": 77.5,
+    "y": 139,
+    "kind": "inspect"
+   },
+   {
+    "id": "i_qs_pier_bell2",
+    "name": "East Pier Buoy Bell",
+    "mapId": "quays",
+    "x": 129.5,
+    "y": 142,
+    "kind": "inspect"
+   },
+   {
+    "id": "i_qs_wreck_marker",
+    "name": "Wreck Crew Marker",
+    "mapId": "quays",
+    "x": 152,
+    "y": 121.5,
+    "kind": "inspect"
+   },
+   {
+    "id": "i_qs_shrine",
+    "name": "Ridge Shrine",
+    "mapId": "quays",
+    "x": 160,
+    "y": 58.2,
+    "kind": "inspect"
+   },
+   {
+    "id": "i_qs_relic",
+    "name": "Salt-Worn Relic",
+    "mapId": "quays",
+    "x": 85.5,
+    "y": 17.5,
+    "kind": "inspect"
+   },
+   {
+    "id": "i_qs_ridge_cairn",
+    "name": "Ridge Cairn",
+    "mapId": "quays",
+    "x": 188.5,
+    "y": 42.5,
+    "kind": "inspect"
    }
   ],
   "items": [
@@ -52370,6 +52575,258 @@
       ]
      },
      "weight": 5
+    },
+    {
+     "id": "gull_flock",
+     "title": "Thin the Gull Flocks",
+     "category": "HUNT",
+     "description": "Redhook gulls are stripping the fish racks. Drive four of them off for good.",
+     "steps": [
+      {
+       "kind": "kill",
+       "target": "gull",
+       "need": 4,
+       "label": "Defeat Redhook Gulls"
+      }
+     ],
+     "reward": {
+      "scrip": 110,
+      "items": [
+       {
+        "itemId": "redhook_feather",
+        "quantity": 2
+       }
+      ]
+     },
+     "weight": 7
+    },
+    {
+     "id": "cache_run",
+     "title": "Salvage Run",
+     "category": "SALVAGE",
+     "description": "Open four salvage caches anywhere on the Quays and bring the haul home.",
+     "steps": [
+      {
+       "kind": "cache",
+       "need": 4,
+       "label": "Search salvage caches"
+      }
+     ],
+     "reward": {
+      "scrip": 150,
+      "items": [
+       {
+        "itemId": "scrap_metal",
+        "quantity": 3
+       }
+      ]
+     },
+     "weight": 8
+    },
+    {
+     "id": "track_survey",
+     "title": "Read the Ground",
+     "category": "TRACKING",
+     "description": "The guild wants fresh tracks recorded across the Quays.",
+     "steps": [
+      {
+       "kind": "trace",
+       "need": 4,
+       "label": "Inspect coastal tracks"
+      }
+     ],
+     "reward": {
+      "scrip": 130,
+      "items": [
+       {
+        "itemId": "ration",
+        "quantity": 2
+       }
+      ]
+     },
+     "weight": 7
+    },
+    {
+     "id": "grazer_horns",
+     "title": "Shed Horns",
+     "category": "PART BREAK",
+     "description": "The apothecary pays for grazer horn. Break one without killing the herd.",
+     "steps": [
+      {
+       "kind": "part",
+       "target": "grazer",
+       "part": "horn",
+       "need": 1,
+       "label": "Break a Grazer horn"
+      }
+     ],
+     "reward": {
+      "scrip": 120,
+      "items": [
+       {
+        "itemId": "shed_horn",
+        "quantity": 1
+       }
+      ]
+     },
+     "weight": 6
+    },
+    {
+     "id": "gull_beaks",
+     "title": "Redhook Beaks",
+     "category": "PART BREAK",
+     "description": "The smith wants two cracked Redhook beaks for fletching tools.",
+     "steps": [
+      {
+       "kind": "part",
+       "target": "gull",
+       "part": "beak",
+       "need": 2,
+       "label": "Break Redhook beaks"
+      }
+     ],
+     "reward": {
+      "scrip": 170,
+      "items": [
+       {
+        "itemId": "redhook_beak",
+        "quantity": 1
+       }
+      ]
+     },
+     "weight": 5
+    },
+    {
+     "id": "tusk_trophy",
+     "title": "Tusk for the Hall",
+     "category": "PART BREAK",
+     "tier": 2,
+     "description": "The Hunters’ Hall wants a Brineback tusk broken in the field.",
+     "steps": [
+      {
+       "kind": "part",
+       "target": "brineback",
+       "part": "tusk",
+       "need": 1,
+       "label": "Break a Brineback tusk"
+      }
+     ],
+     "reward": {
+      "scrip": 240,
+      "items": [
+       {
+        "itemId": "brineback_tusk",
+        "quantity": 1
+       }
+      ]
+     },
+     "weight": 5
+    },
+    {
+     "id": "wrecker_cache",
+     "title": "Wrecker Stash",
+     "category": "STEALTH",
+     "tier": 2,
+     "description": "Wreckers hid scrip in the camp. Open two caches and get out before they notice.",
+     "steps": [
+      {
+       "kind": "quiet_cache",
+       "need": 2,
+       "label": "Open caches without raising an alarm"
+      }
+     ],
+     "reward": {
+      "scrip": 280,
+      "items": [
+       {
+        "itemId": "smoke_pot",
+        "quantity": 1
+       }
+      ]
+     },
+     "weight": 4
+    },
+    {
+     "id": "widow_shell",
+     "title": "Widow Shell Sample",
+     "category": "PART BREAK",
+     "tier": 3,
+     "description": "Crack a Salt Widow’s shell for the clinic’s study of brine poison.",
+     "steps": [
+      {
+       "kind": "part",
+       "target": "widow",
+       "part": "shell",
+       "need": 1,
+       "label": "Break a Salt Widow shell"
+      }
+     ],
+     "reward": {
+      "scrip": 360,
+      "items": [
+       {
+        "itemId": "salt_widow_shell",
+        "quantity": 1
+       }
+      ]
+     },
+     "weight": 4
+    },
+    {
+     "id": "night_callers",
+     "title": "Silence the Callers",
+     "category": "NIGHT HUNT",
+     "tier": 3,
+     "conditions": {
+      "period": [
+       "night"
+      ]
+     },
+     "description": "A Caller is drawing Brineworn to the quays. Find it at night and end the song.",
+     "steps": [
+      {
+       "kind": "kill",
+       "target": "brineworn_caller",
+       "need": 1,
+       "label": "Defeat the Brineworn Caller"
+      }
+     ],
+     "reward": {
+      "scrip": 340,
+      "items": [
+       {
+        "itemId": "healing_tincture",
+        "quantity": 1
+       }
+      ]
+     },
+     "weight": 4
+    },
+    {
+     "id": "brineback_double",
+     "title": "Two Bulls, One Tide",
+     "category": "HUNT",
+     "tier": 2,
+     "description": "Two Brinebacks have been seen on the shore at low tide. Bring both down.",
+     "steps": [
+      {
+       "kind": "kill",
+       "target": "brineback",
+       "need": 2,
+       "label": "Defeat Brinebacks",
+       "tide": "low"
+      }
+     ],
+     "reward": {
+      "scrip": 230,
+      "items": [
+       {
+        "itemId": "brineback_plate",
+        "quantity": 1
+       }
+      ]
+     },
+     "weight": 5
     }
    ]
   },
@@ -53007,6 +53464,650 @@
       {
        "itemId": "broken_compass",
        "quantity": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_harbor_master_seal",
+    "title": "The Harbor Master’s Seal",
+    "kind": "main",
+    "offeredBy": "n_clerk",
+    "prerequisites": [
+     "q_cargo_without_name"
+    ],
+    "summary": "The nameless cargo was cleared under a harbor master’s seal. Find the seal box on Customs Hill and see what the watch beacon signalled that night.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Recover the seal box from the Harbor Master’s Lodge",
+      "type": "loot",
+      "targetId": "c_qs_hm_strongbox",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Inspect the watch beacon on Customs Hill",
+      "type": "interact",
+      "targetId": "i_qs_beacon",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "d",
+      "description": "Report back to Edda Voss",
+      "type": "talk",
+      "targetId": "n_clerk",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 280,
+     "items": [
+      {
+       "itemId": "lens",
+       "quantity": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_slip_warnings",
+    "title": "Warnings at the Slip",
+    "kind": "main",
+    "offeredBy": "n_dockmaster",
+    "prerequisites": [
+     "q_harbor_master_seal"
+    ],
+    "summary": "The beacon pointed the crews to the Boathouse Slip. Something there scarred the stones and the crews stopped writing. Read the slip logbook.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Examine the harpoon scars on the Boathouse Slip",
+      "type": "interact",
+      "targetId": "i_qs_slip_marks",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Recover the Boathouse Slip logbook",
+      "type": "loot",
+      "targetId": "c_qs_slip_log",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "d",
+      "description": "Report back to Mara Fen",
+      "type": "talk",
+      "targetId": "n_dockmaster",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 320,
+     "items": [
+      {
+       "itemId": "healing_tincture",
+       "quantity": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_rope_for_mira",
+    "title": "Good Rope Brings Boats Home",
+    "kind": "side",
+    "offeredBy": "n_ropewright",
+    "prerequisites": [],
+    "summary": "Mira needs sound tackle from the old net loft before the next tide. Most of the harbor’s rope rotted in the storm.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Search the net loft on Warehouse Row",
+      "type": "loot",
+      "targetId": "c_qs_net_tackle",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Report back to Mira Vale",
+      "type": "talk",
+      "targetId": "n_ropewright",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 120,
+     "items": [
+      {
+       "itemId": "rope",
+       "quantity": 3
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_apprentice_tools",
+    "title": "Ola’s Lost Tools",
+    "kind": "side",
+    "offeredBy": "n_apprentice",
+    "prerequisites": [],
+    "summary": "Ola left a crate of good tools in a shed near the Old Fish Market when the bell rang. Iven does not know yet.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Find the tool crate by the quay shed",
+      "type": "loot",
+      "targetId": "c_qs_tool_crate",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Report back to Ola Marr",
+      "type": "talk",
+      "targetId": "n_apprentice",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 110,
+     "items": [
+      {
+       "itemId": "scrap_metal",
+       "quantity": 4
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_medic_herbs",
+    "title": "Ash-Grown Remedies",
+    "kind": "side",
+    "offeredBy": "n_medic",
+    "prerequisites": [],
+    "summary": "Sera keeps two herb caches out past the Ashwood edge. The clinic is down to its last tinctures.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Recover the cache near the Ashwood cabin",
+      "type": "loot",
+      "targetId": "c_qs_herb_cache",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Recover the cache under the ruin arch",
+      "type": "loot",
+      "targetId": "c_qs_herb_cache2",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "d",
+      "description": "Report back to Sera Moll",
+      "type": "talk",
+      "targetId": "n_medic",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 150,
+     "items": [
+      {
+       "itemId": "healing_tincture",
+       "quantity": 1
+      },
+      {
+       "itemId": "bandage",
+       "quantity": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_guard_patrol",
+    "title": "Walk the Old Patrol",
+    "kind": "side",
+    "offeredBy": "n_guard",
+    "prerequisites": [],
+    "summary": "The watch used to mark three waymarks every night. Nobody has walked the route since the storm. Check that they still stand.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Check the West Passage waymark",
+      "type": "interact",
+      "targetId": "i_qs_signpost_west",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Check the Storm Gate waymark",
+      "type": "interact",
+      "targetId": "i_qs_signpost_storm",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Check the lighthouse stump",
+      "type": "interact",
+      "targetId": "i_qs_lighthouse",
+      "count": 1
+     },
+     {
+      "id": "d",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "e",
+      "description": "Report back to Orin Hale",
+      "type": "talk",
+      "targetId": "n_guard",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 180,
+     "items": [
+      {
+       "itemId": "longbolt",
+       "quantity": 6
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_ridge_cairn",
+    "title": "The Cairn on the Ridge",
+    "kind": "side",
+    "offeredBy": "n_guard",
+    "prerequisites": [
+     "q_guard_patrol"
+    ],
+    "summary": "Orin swears the old watch left a cairn on Ravine Ridge for the dead of the Ninth Tide. See if it still stands.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Find the cairn on Ravine Ridge",
+      "type": "interact",
+      "targetId": "i_qs_ridge_cairn",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Report back to Orin Hale",
+      "type": "talk",
+      "targetId": "n_guard",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 150,
+     "items": [
+      {
+       "itemId": "salt_crystals",
+       "quantity": 3
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_rations",
+    "title": "Short Rations",
+    "kind": "side",
+    "offeredBy": "n_quartermaster",
+    "prerequisites": [],
+    "summary": "Neral’s count is short. There should still be salted fish at the market and sacks in the salt shed.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Recover the salted fish store at the Old Fish Market",
+      "type": "loot",
+      "targetId": "c_qs_fish_store",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Recover ration sacks from the salt shed",
+      "type": "loot",
+      "targetId": "c_qs_salt_sacks",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "d",
+      "description": "Report back to Neral Brin",
+      "type": "talk",
+      "targetId": "n_quartermaster",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 140,
+     "items": [
+      {
+       "itemId": "ration",
+       "quantity": 3
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_buoy_bells",
+    "title": "Bells on the Water",
+    "kind": "side",
+    "offeredBy": "n_tidepilot",
+    "prerequisites": [],
+    "summary": "Teren needs to know if the buoy bells on the west and east piers still ring. Without them nobody sails at night.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Ring the west pier buoy bell",
+      "type": "interact",
+      "targetId": "i_qs_pier_bell1",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Ring the east pier buoy bell",
+      "type": "interact",
+      "targetId": "i_qs_pier_bell2",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "d",
+      "description": "Report back to Teren Sull",
+      "type": "talk",
+      "targetId": "n_tidepilot",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 160,
+     "items": [
+      {
+       "itemId": "lamp_oil",
+       "quantity": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_lost_crew",
+    "title": "Talla’s Missing Crew",
+    "kind": "side",
+    "offeredBy": "n_salvager",
+    "prerequisites": [
+     "q_false_kings_wake"
+    ],
+    "summary": "Talla’s old crew marked the wreck they worked last. One of them carried a satchel to the Wreckers’ Camp and never came back.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Find the crew marker by the eastern wreck",
+      "type": "interact",
+      "targetId": "i_qs_wreck_marker",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Recover the crew satchel in the Wreckers’ Camp",
+      "type": "loot",
+      "targetId": "c_qs_crew_satchel",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "d",
+      "description": "Report back to Talla Cor",
+      "type": "talk",
+      "targetId": "n_salvager",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 220,
+     "items": [
+      {
+       "itemId": "lens",
+       "quantity": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_crate_tally",
+    "title": "Every Crate Counted",
+    "kind": "side",
+    "offeredBy": "n_crewhand",
+    "prerequisites": [],
+    "summary": "Senn keeps the tally. A crate in the Crane Yard was never signed for.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Open the unsigned crate in the Crane Yard",
+      "type": "loot",
+      "targetId": "c_qs_crate_tally",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Report back to Senn Bri",
+      "type": "talk",
+      "targetId": "n_crewhand",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 100,
+     "items": [
+      {
+       "itemId": "scrap_metal",
+       "quantity": 3
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_saltworks_gears",
+    "title": "Gears for the Forge",
+    "kind": "side",
+    "offeredBy": "n_mechanic",
+    "prerequisites": [],
+    "summary": "Iven needs good gears. The old saltworks pumps and the rail carts on Customs Hill had the best in the harbor.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Salvage the saltworks gearbox",
+      "type": "loot",
+      "targetId": "c_qs_gearbox",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Salvage the rail cart parts on Customs Hill",
+      "type": "loot",
+      "targetId": "c_qs_rail_parts",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "d",
+      "description": "Report back to Iven Rusk",
+      "type": "talk",
+      "targetId": "n_mechanic",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 200,
+     "items": [
+      {
+       "itemId": "ship_gears",
+       "quantity": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_keeper_log",
+    "title": "The Keeper’s Last Entry",
+    "kind": "side",
+    "offeredBy": "n_clerk",
+    "prerequisites": [
+     "q_second_record"
+    ],
+    "summary": "The lighthouse keeper wrote everything down. Edda wants the log for the ledger before the salt eats it.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Recover the keeper’s log at the lighthouse point",
+      "type": "loot",
+      "targetId": "c_qs_keeper_log",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Report back to Edda Voss",
+      "type": "talk",
+      "targetId": "n_clerk",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 190,
+     "items": [
+      {
+       "itemId": "broken_compass",
+       "quantity": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "q_ridge_shrine",
+    "title": "Salt and Shrines",
+    "kind": "side",
+    "offeredBy": "n_dockmaster",
+    "prerequisites": [],
+    "summary": "Mara’s mother left offerings at the ridge shrine. Mara wants to know if the relic near the Ashwood edge survived.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Visit the ridge shrine",
+      "type": "interact",
+      "targetId": "i_qs_shrine",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Find the salt-worn relic near the Ashwood edge",
+      "type": "interact",
+      "targetId": "i_qs_relic",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "d",
+      "description": "Report back to Mara Fen",
+      "type": "talk",
+      "targetId": "n_dockmaster",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 130,
+     "items": [
+      {
+       "itemId": "salt_crystals",
+       "quantity": 2
       }
      ]
     }

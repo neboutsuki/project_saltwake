@@ -1,5 +1,22 @@
 # Changelog
 
+## Unreleased — Quest display and many more quests
+- **14 new story and side quests** (19 total), built into the maps by `tools/make_maps.py` with 13 new containers and
+  11 new inspect points on the Outer Quays. Story continues with The Harbor Master's Seal and Warnings at the Slip
+  (leading to the Boathouse Slip). Every harbor character now has work: rope from the net loft (Mira), lost tools
+  (Ola), herb caches past the Ashwood (Sera), the old patrol route and the ridge cairn (Orin), short rations (Neral),
+  buoy bells on the piers (Teren), Talla's missing crew, the crane-yard tally (Senn), saltworks gears (Iven), the
+  lighthouse keeper's log (Edda) and the ridge shrine (Mara).
+- **10 more commissions** (24 total): gull flocks, salvage runs, track surveys, grazer horns, Redhook beaks, Brineback
+  tusk (★★), Wrecker stash (★★ stealth), two bulls at low tide (★★), Widow shell (★★★), Caller at night (★★★).
+- **New quest journal** (`source/modules/questui.js`): tabs for Story, Side quests and Commissions; quest cards with
+  the giver's portrait and progress; a detail view with summary, a step checklist (done / current / upcoming),
+  location, rewards with item icons and Hunter XP, and Track / Accept / Show on map.
+- **Tracking:** pick the tracked quest (accepting a quest tracks it). The HUD tracker shows step and distance
+  ("2/4 · 80 m"); a marker floats over the objective on screen, or an arrow at the screen edge points to it.
+- **Accept from conversation:** quest givers add "Any work for me? (quest)" to their dialogue.
+- QA: new `questui` suite; all 19 story/side quests verified completable; 275/275.
+
 ## Unreleased — Hunter Rank and the hunting loop
 - **Hunter Rank HR1–HR8** (`source/modules/hunter.js`, save `save.hunter`): XP from monster kills (gull 4 … Widow 45,
   Brineworn 15–35), part breaks (15), extraction (20), fulfilled commissions (50 × tier) and story quests (100). XP

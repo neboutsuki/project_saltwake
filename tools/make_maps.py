@@ -626,6 +626,107 @@ def place_content(world, H, Q):
     for i, a in enumerate([a for a in c.get('factionAgents', []) if a.get('mapId') == 'quays']):
         a['x'], a['y'] = homes[i % len(homes)]
         a['homeX'], a['homeY'] = a['x'], a['y']
+    # ---- quest pack: story continuation + side quests on the new maps --------------------------------------------
+    B_ = lambda b, dx=0, dy=1.4: front(bid[b], dx, dy)
+    QC = [  # containers: id, name, at, loot table
+        ('c_qs_hm_strongbox', 'Harbor Master\u2019s Seal Box', B_('quays.harbormaster', 3), 'customs_docs'),
+        ('c_qs_slip_log', 'Boathouse Slip Logbook', B_('quays.boathouse', 4, 1.5), 'customs_docs'),
+        ('c_qs_net_tackle', 'Net Loft Tackle Chest', B_('quays.shed1', 2.5), 'dock_scrap'),
+        ('c_qs_tool_crate', 'Apprentice\u2019s Tool Crate', B_('quays.shed2', -2.5), 'dock_scrap'),
+        ('c_qs_herb_cache', 'Medic\u2019s Herb Cache', (179, 48.2), 'provisions'),
+        ('c_qs_herb_cache2', 'Ruin Herb Cache', (190.5, 43.2), 'provisions'),
+        ('c_qs_fish_store', 'Salted Fish Store', B_('quays.fishmarket', 4), 'provisions'),
+        ('c_qs_salt_sacks', 'Salt Shed Ration Sacks', B_('quays.saltshed', 3), 'provisions'),
+        ('c_qs_crew_satchel', 'Missing Crew Satchel', (20, 104.5), 'wrecker_cache'),
+        ('c_qs_crate_tally', 'Crane Yard Tally Crate', (86, 87.5), 'dock_scrap'),
+        ('c_qs_gearbox', 'Saltworks Gearbox', B_('quays.salt', 2), 'dock_scrap'),
+        ('c_qs_rail_parts', 'Rail Cart Parts', (76, 51), 'dock_scrap'),
+        ('c_qs_keeper_log', 'Lighthouse Keeper\u2019s Log', (199, 121), 'customs_docs'),
+    ]
+    QI = [  # interactables (inspect): id, name, at
+        ('i_qs_beacon', 'Watch Beacon Signal Fire', (128, 32.2)),
+        ('i_qs_slip_marks', 'Harpoon Scars on the Slip', (161.5, 108.5)),
+        ('i_qs_signpost_west', 'West Passage Waymark', (8, 60.8)),
+        ('i_qs_signpost_storm', 'Storm Gate Waymark', (101.8, 13.8)),
+        ('i_qs_lighthouse', 'Lighthouse Stump', (203, 121.5)),
+        ('i_qs_pier_bell1', 'West Pier Buoy Bell', (77.5, 139)),
+        ('i_qs_pier_bell2', 'East Pier Buoy Bell', (129.5, 142)),
+        ('i_qs_wreck_marker', 'Wreck Crew Marker', (152, 121.5)),
+        ('i_qs_shrine', 'Ridge Shrine', (160, 58.2)),
+        ('i_qs_relic', 'Salt-Worn Relic', (85.5, 17.5)),
+        ('i_qs_ridge_cairn', 'Ridge Cairn', (188.5, 42.5)),
+    ]
+    c['containers'] = [k for k in c['containers'] if not k['id'].startswith('c_qs_')] + [
+        {'id': i, 'name': n, 'mapId': 'quays', 'x': round(x, 2), 'y': round(y, 2), 'lootTableId': t, 'respawn': 'raid'} for i, n, (x, y), t in QC]
+    c['interactables'] = [k for k in c['interactables'] if not k['id'].startswith('i_qs_')] + [
+        {'id': i, 'name': n, 'mapId': 'quays', 'x': round(x, 2), 'y': round(y, 2), 'kind': 'inspect'} for i, n, (x, y) in QI]
+    X = ('extract', 'quays.west', 'Extract to Salvager\u2019s Rest')
+    def mkq(qid, title, kind, giver, pre, summary, steps, coins, items):
+        stages = []
+        for i, (t, tid, desc) in enumerate(steps + [X, ('talk', giver, 'Report back to ' + next(n['name'] for n in c['npcs'] if n['id'] == giver))]):
+            stages.append({'id': 'abcdefgh'[i], 'description': desc, 'type': t, 'targetId': tid, 'count': 1})
+        return {'id': qid, 'title': title, 'kind': kind, 'offeredBy': giver, 'prerequisites': pre, 'summary': summary, 'stages': stages,
+                'rewards': {'coins': coins, 'items': [{'itemId': a, 'quantity': b} for a, b in items]}}
+    QS = [
+        mkq('q_harbor_master_seal', 'The Harbor Master\u2019s Seal', 'main', 'n_clerk', ['q_cargo_without_name'],
+          'The nameless cargo was cleared under a harbor master\u2019s seal. Find the seal box on Customs Hill and see what the watch beacon signalled that night.',
+          [('loot', 'c_qs_hm_strongbox', 'Recover the seal box from the Harbor Master\u2019s Lodge'), ('interact', 'i_qs_beacon', 'Inspect the watch beacon on Customs Hill')], 280, [('lens', 1)]),
+        mkq('q_slip_warnings', 'Warnings at the Slip', 'main', 'n_dockmaster', ['q_harbor_master_seal'],
+          'The beacon pointed the crews to the Boathouse Slip. Something there scarred the stones and the crews stopped writing. Read the slip logbook.',
+          [('interact', 'i_qs_slip_marks', 'Examine the harpoon scars on the Boathouse Slip'), ('loot', 'c_qs_slip_log', 'Recover the Boathouse Slip logbook')], 320, [('healing_tincture', 2)]),
+        mkq('q_rope_for_mira', 'Good Rope Brings Boats Home', 'side', 'n_ropewright', [],
+          'Mira needs sound tackle from the old net loft before the next tide. Most of the harbor\u2019s rope rotted in the storm.',
+          [('loot', 'c_qs_net_tackle', 'Search the net loft on Warehouse Row')], 120, [('rope', 3)]),
+        mkq('q_apprentice_tools', 'Ola\u2019s Lost Tools', 'side', 'n_apprentice', [],
+          'Ola left a crate of good tools in a shed near the Old Fish Market when the bell rang. Iven does not know yet.',
+          [('loot', 'c_qs_tool_crate', 'Find the tool crate by the quay shed')], 110, [('scrap_metal', 4)]),
+        mkq('q_medic_herbs', 'Ash-Grown Remedies', 'side', 'n_medic', [],
+          'Sera keeps two herb caches out past the Ashwood edge. The clinic is down to its last tinctures.',
+          [('loot', 'c_qs_herb_cache', 'Recover the cache near the Ashwood cabin'), ('loot', 'c_qs_herb_cache2', 'Recover the cache under the ruin arch')], 150, [('healing_tincture', 1), ('bandage', 2)]),
+        mkq('q_guard_patrol', 'Walk the Old Patrol', 'side', 'n_guard', [],
+          'The watch used to mark three waymarks every night. Nobody has walked the route since the storm. Check that they still stand.',
+          [('interact', 'i_qs_signpost_west', 'Check the West Passage waymark'), ('interact', 'i_qs_signpost_storm', 'Check the Storm Gate waymark'), ('interact', 'i_qs_lighthouse', 'Check the lighthouse stump')], 180, [('longbolt', 6)]),
+        mkq('q_ridge_cairn', 'The Cairn on the Ridge', 'side', 'n_guard', ['q_guard_patrol'],
+          'Orin swears the old watch left a cairn on Ravine Ridge for the dead of the Ninth Tide. See if it still stands.',
+          [('interact', 'i_qs_ridge_cairn', 'Find the cairn on Ravine Ridge')], 150, [('salt_crystals', 3)]),
+        mkq('q_rations', 'Short Rations', 'side', 'n_quartermaster', [],
+          'Neral\u2019s count is short. There should still be salted fish at the market and sacks in the salt shed.',
+          [('loot', 'c_qs_fish_store', 'Recover the salted fish store at the Old Fish Market'), ('loot', 'c_qs_salt_sacks', 'Recover ration sacks from the salt shed')], 140, [('ration', 3)]),
+        mkq('q_buoy_bells', 'Bells on the Water', 'side', 'n_tidepilot', [],
+          'Teren needs to know if the buoy bells on the west and east piers still ring. Without them nobody sails at night.',
+          [('interact', 'i_qs_pier_bell1', 'Ring the west pier buoy bell'), ('interact', 'i_qs_pier_bell2', 'Ring the east pier buoy bell')], 160, [('lamp_oil', 2)]),
+        mkq('q_lost_crew', 'Talla\u2019s Missing Crew', 'side', 'n_salvager', ['q_false_kings_wake'],
+          'Talla\u2019s old crew marked the wreck they worked last. One of them carried a satchel to the Wreckers\u2019 Camp and never came back.',
+          [('interact', 'i_qs_wreck_marker', 'Find the crew marker by the eastern wreck'), ('loot', 'c_qs_crew_satchel', 'Recover the crew satchel in the Wreckers\u2019 Camp')], 220, [('lens', 1)]),
+        mkq('q_crate_tally', 'Every Crate Counted', 'side', 'n_crewhand', [],
+          'Senn keeps the tally. A crate in the Crane Yard was never signed for.',
+          [('loot', 'c_qs_crate_tally', 'Open the unsigned crate in the Crane Yard')], 100, [('scrap_metal', 3)]),
+        mkq('q_saltworks_gears', 'Gears for the Forge', 'side', 'n_mechanic', [],
+          'Iven needs good gears. The old saltworks pumps and the rail carts on Customs Hill had the best in the harbor.',
+          [('loot', 'c_qs_gearbox', 'Salvage the saltworks gearbox'), ('loot', 'c_qs_rail_parts', 'Salvage the rail cart parts on Customs Hill')], 200, [('ship_gears', 2)]),
+        mkq('q_keeper_log', 'The Keeper\u2019s Last Entry', 'side', 'n_clerk', ['q_second_record'],
+          'The lighthouse keeper wrote everything down. Edda wants the log for the ledger before the salt eats it.',
+          [('loot', 'c_qs_keeper_log', 'Recover the keeper\u2019s log at the lighthouse point')], 190, [('broken_compass', 1)]),
+        mkq('q_ridge_shrine', 'Salt and Shrines', 'side', 'n_dockmaster', [],
+          'Mara\u2019s mother left offerings at the ridge shrine. Mara wants to know if the relic near the Ashwood edge survived.',
+          [('interact', 'i_qs_shrine', 'Visit the ridge shrine'), ('interact', 'i_qs_relic', 'Find the salt-worn relic near the Ashwood edge')], 130, [('salt_crystals', 2)]),
+    ]
+    c['quests'] = [q for q in c['quests'] if q['id'] not in {x['id'] for x in QS}] + QS
+    # more repeatable commissions
+    L = c['living_expeditions']['contracts']
+    ADD = [
+        {'id': 'gull_flock', 'title': 'Thin the Gull Flocks', 'category': 'HUNT', 'description': 'Redhook gulls are stripping the fish racks. Drive four of them off for good.', 'steps': [{'kind': 'kill', 'target': 'gull', 'need': 4, 'label': 'Defeat Redhook Gulls'}], 'reward': {'scrip': 110, 'items': [{'itemId': 'redhook_feather', 'quantity': 2}]}, 'weight': 7},
+        {'id': 'cache_run', 'title': 'Salvage Run', 'category': 'SALVAGE', 'description': 'Open four salvage caches anywhere on the Quays and bring the haul home.', 'steps': [{'kind': 'cache', 'need': 4, 'label': 'Search salvage caches'}], 'reward': {'scrip': 150, 'items': [{'itemId': 'scrap_metal', 'quantity': 3}]}, 'weight': 8},
+        {'id': 'track_survey', 'title': 'Read the Ground', 'category': 'TRACKING', 'description': 'The guild wants fresh tracks recorded across the Quays.', 'steps': [{'kind': 'trace', 'need': 4, 'label': 'Inspect coastal tracks'}], 'reward': {'scrip': 130, 'items': [{'itemId': 'ration', 'quantity': 2}]}, 'weight': 7},
+        {'id': 'grazer_horns', 'title': 'Shed Horns', 'category': 'PART BREAK', 'description': 'The apothecary pays for grazer horn. Break one without killing the herd.', 'steps': [{'kind': 'part', 'target': 'grazer', 'part': 'horn', 'need': 1, 'label': 'Break a Grazer horn'}], 'reward': {'scrip': 120, 'items': [{'itemId': 'shed_horn', 'quantity': 1}]}, 'weight': 6},
+        {'id': 'gull_beaks', 'title': 'Redhook Beaks', 'category': 'PART BREAK', 'description': 'The smith wants two cracked Redhook beaks for fletching tools.', 'steps': [{'kind': 'part', 'target': 'gull', 'part': 'beak', 'need': 2, 'label': 'Break Redhook beaks'}], 'reward': {'scrip': 170, 'items': [{'itemId': 'redhook_beak', 'quantity': 1}]}, 'weight': 5},
+        {'id': 'tusk_trophy', 'title': 'Tusk for the Hall', 'category': 'PART BREAK', 'tier': 2, 'description': 'The Hunters\u2019 Hall wants a Brineback tusk broken in the field.', 'steps': [{'kind': 'part', 'target': 'brineback', 'part': 'tusk', 'need': 1, 'label': 'Break a Brineback tusk'}], 'reward': {'scrip': 240, 'items': [{'itemId': 'brineback_tusk', 'quantity': 1}]}, 'weight': 5},
+        {'id': 'wrecker_cache', 'title': 'Wrecker Stash', 'category': 'STEALTH', 'tier': 2, 'description': 'Wreckers hid scrip in the camp. Open two caches and get out before they notice.', 'steps': [{'kind': 'quiet_cache', 'need': 2, 'label': 'Open caches without raising an alarm'}], 'reward': {'scrip': 280, 'items': [{'itemId': 'smoke_pot', 'quantity': 1}]}, 'weight': 4},
+        {'id': 'widow_shell', 'title': 'Widow Shell Sample', 'category': 'PART BREAK', 'tier': 3, 'description': 'Crack a Salt Widow\u2019s shell for the clinic\u2019s study of brine poison.', 'steps': [{'kind': 'part', 'target': 'widow', 'part': 'shell', 'need': 1, 'label': 'Break a Salt Widow shell'}], 'reward': {'scrip': 360, 'items': [{'itemId': 'salt_widow_shell', 'quantity': 1}]}, 'weight': 4},
+        {'id': 'night_callers', 'title': 'Silence the Callers', 'category': 'NIGHT HUNT', 'tier': 3, 'conditions': {'period': ['night']}, 'description': 'A Caller is drawing Brineworn to the quays. Find it at night and end the song.', 'steps': [{'kind': 'kill', 'target': 'brineworn_caller', 'need': 1, 'label': 'Defeat the Brineworn Caller'}], 'reward': {'scrip': 340, 'items': [{'itemId': 'healing_tincture', 'quantity': 1}]}, 'weight': 4},
+        {'id': 'brineback_double', 'title': 'Two Bulls, One Tide', 'category': 'HUNT', 'tier': 2, 'description': 'Two Brinebacks have been seen on the shore at low tide. Bring both down.', 'steps': [{'kind': 'kill', 'target': 'brineback', 'need': 2, 'label': 'Defeat Brinebacks', 'tide': 'low'}], 'reward': {'scrip': 230, 'items': [{'itemId': 'brineback_plate', 'quantity': 1}]}, 'weight': 5},
+    ]
+    L[:] = [k for k in L if k['id'] not in {a['id'] for a in ADD}] + ADD
     # extra field loot
     c['containers'] = [k for k in c['containers'] if not k['id'].startswith('c_qx_')]
     for cid, name, at, table in getattr(Q, 'loot', []):
