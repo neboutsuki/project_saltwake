@@ -94,13 +94,23 @@
     P[name] = function () {
       if (!MV.enabled) return f.apply(this, arguments);
       const p = this.player, foot = p.y + 4;
-      for (const d of MV.dust) { const u = d.t / .5; g.save(); g.globalAlpha = (1 - u) * .35; g.fillStyle = '#9d958a'; g.beginPath(); g.ellipse(d.x, d.y - u * 5, 4 + u * 8, 2 + u * 3, 0, 0, Math.PI * 2); g.fill(); g.restore(); }
       const c = MV.crouchBlend, lean = MV.vel.x * .09 * MV.sprintBlend;
       if (c < .02 && Math.abs(lean) < .005) return f.apply(this, arguments);
-      g.save(); g.translate(p.x, foot); g.rotate(lean); g.scale(1 + c * .08, 1 - c * .16); g.translate(-p.x, -foot);
+      // axis-aligned lean (no rotation): a rotated transform makes the player's outline filter (pop.js) render over a
+      // much larger layer every frame, which halved the frame rate while sprinting
+      g.save(); g.translate(p.x + lean * 18, foot); g.scale((1 + c * .08) * (1 + Math.abs(lean) * .35), (1 - c * .16) * (1 - Math.abs(lean) * .25)); g.translate(-p.x, -foot);
       try { return f.apply(this, arguments); } finally { g.restore(); }
     };
   }
+  // Dust is drawn on the ground layer, outside the player draw: inside it, the outline filter (pop.js) would have to
+  // cover every dust cloud too, which made sprinting much slower to render.
+  const scene = P.drawCoastScene;
+  if (scene) P.drawCoastScene = function () {
+    if (MV.enabled && MV.dust.length) { g.save(); g.fillStyle = '#9d958a';
+      for (const d of MV.dust) { const u = d.t / .5; g.globalAlpha = (1 - u) * .35; g.beginPath(); g.ellipse(d.x, d.y - u * 5, 4 + u * 8, 2 + u * 3, 0, 0, Math.PI * 2); g.fill(); }
+      g.restore(); }
+    return scene.apply(this, arguments);
+  };
   // a roll or a teleport resets the eased velocity
   const roll = P.roll; if (roll) P.roll = function () { const r = roll.apply(this, arguments); if (this.player.roll > 0) { MV.vel.x = MV.vel.y = 0; lastStep = 0; } return r; };
   const setArea = P.setArea; P.setArea = function () { MV.vel.x = MV.vel.y = 0; lastStep = 0; return setArea.apply(this, arguments); };

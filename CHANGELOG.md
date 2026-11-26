@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.31-dev — Big performance fix, fullscreen option, full-screen menus
+- **Lag fix (the main one):**
+  - The player's outline/rim light used five stacked canvas `drop-shadow` filters on every player draw. Measured: the game ran ~8× slower with it on.
+  - It now draws cached copies of each sprite frame with the outline and rim baked in: same look, no filter. Test machine: 26 → 227 frames per 4 s.
+- **Sprint lag fix:**
+  - Sprint dust was drawn inside the player draw, so the outline had to cover every dust cloud. Dust now draws on the ground layer.
+  - The sprint lean is axis-aligned instead of rotated. Sprint now runs as fast as walking.
+- **Fullscreen without F11:**
+  - A Fullscreen button in Options (Settings) and on the title menu, plus Alt+Enter.
+  - The choice is remembered and re-applied on your first click (browsers require a click or key first).
+  - In fullscreen, Esc still opens the game menu where the browser supports Keyboard Lock; hold Esc to leave fullscreen.
+- **Menus fill the whole screen:** the menu book (journal, backpack, map, factions, options, smithy and every other panel) now covers the entire window instead of a centered box.
+- New module `screen.js`. QA: new `screen` suite (menus fill the window, fullscreen buttons, outline draws without filters). 388 checks, all passing.
+
 ## v0.31-dev — Ground disk cache: each map is painted once, ever
 - Every painted 512 px ground chunk is saved as WebP in the browser's IndexedDB (`saltwake-ground`). Later sessions load chunks already painted instead of recomposing them.
 - While you are on a map, the rest of that map and then the other maps (the Outer Quays while you're in the harbor) are baked in the background, one chunk at a time, so the first trip to the field is already painted too. On a slow test machine the whole harbor (20 chunks) and Outer Quays (140) baked in about 25 s.
