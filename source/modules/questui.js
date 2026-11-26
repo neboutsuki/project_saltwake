@@ -111,6 +111,7 @@
 
   // ---- world marker --------------------------------------------------------------------------------------------------
   function target(g) {
+    const ex = UI.extraTarget?.(g); if (ex) return ex;
     const q = tracked(g); if (!q) return null;
     const loc = g.quest.location(q); if (!loc) return null;
     let x = loc.x * T, y = loc.y * T;
@@ -147,7 +148,7 @@
   const hud = P.hud;
   P.hud = function () {
     const out = hud.apply(this, arguments), t = this.mode === 'play' && target(this), el = $('questObjective');
-    if (el && t && t.q.stages) {
+    if (el && t && t.q && t.q.stages) {
       const st = this.quest.state(t.q.id), d = t.loc.mapId === this.mapId ? Math.round(Math.hypot(t.x - this.player.x, t.y - this.player.y) / T) + ' m' : this.world.maps[t.loc.mapId]?.name;
       const tag = el.querySelector('.swqStep') || el.appendChild(Object.assign(document.createElement('span'), { className: 'swqStep' }));
       tag.textContent = ` · ${st ? st.stage + 1 : 1}/${t.q.stages.length} · ${d}`;

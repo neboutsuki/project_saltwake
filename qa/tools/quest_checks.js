@@ -31,7 +31,7 @@ for(const q of C.quests)for(const s of q.stages||[]){const a=byId[s.targetId];if
  if(!ok)unreach.push(s.targetId+' @'+a.mapId+' '+a.x+','+a.y)}
 G.mapId=keepMap;c.questTargetsReachable=unreach.length===0;
 // Expedition contracts: kill/part targets are real monsters with that part; cache counts are achievable.
-const en=Object.fromEntries(C.enemies.map(e=>[e.id,e]).concat(['brineworn_drifter','brineworn_caller','brineworn_breaker'].map(t=>[t,{parts:[]}]))),kinds=new Set(['cache','kill','part','trace','quiet_cache']),cbad=[];
+const en=Object.fromEntries(C.enemies.map(e=>[e.id,e]).concat(['brineworn_drifter','brineworn_caller','brineworn_breaker'].map(t=>[t,{parts:[]}]))),kinds=new Set(['cache','kill','part','trace','quiet_cache','escort','deliver','wound','hold']),cbad=[];
 const quaysCaches=C.containers.filter(k=>k.mapId==='quays').length;
 for(const k of C.living_expeditions?.contracts||[]){if(!(k.steps||[]).length)cbad.push(k.id+': no steps');
  for(const s of k.steps||[]){if(!kinds.has(s.kind))cbad.push(k.id+': kind '+s.kind);

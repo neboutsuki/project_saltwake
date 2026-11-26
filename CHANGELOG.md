@@ -1,5 +1,25 @@
 # Changelog
 
+## Unreleased — New commission types and a story choice
+- **Four new commission types** (`source/modules/contracts.js`), still counted through the engine and paid on a safe
+  extraction:
+  - **Escort:** a salvager walks with you to a site; monsters near them hurt them (health bar over their head); if
+    they fall the commission fails.
+  - **Delivery:** take fragile cargo at one site (E) and bring it to another; more hits than the cargo allows and it
+    breaks.
+  - **Capture (wound):** bring a monster below a third of its health without killing it; it is tagged and flees.
+  - **Defense (hold):** stand at a site for 30–45 s while waves of Brineworn come (night).
+  A marker and edge arrow point to the current pickup or destination.
+- **Eight new commissions:** Records Run and The Keeper's Heir (escort), Medicine for the Pilot and Volatile Cargo
+  (delivery), Tag a Bull and Mark the Widow (capture), Keep the Beacon Lit and Vigil at the Shrine (night defense).
+  32 commissions in total.
+- **Fix:** commissions were read from an old embedded copy of 11 entries, so the commissions added in the last two
+  updates never reached the board. The board now uses the world data (all 32).
+- **Story choice:** after Talla's Missing Crew, Talla asks what to do with the Wreckers' ledger: give it to the Guild
+  (+220 scrip, Salvagers +15, Wreckers −20), sell it back to the Wreckers (+380, Wreckers +20, Salvagers −10) or burn
+  it (+120, crews +10). Saved as `save.flags.wreckerLedger`.
+- QA: new `contracts` suite; 295/295.
+
 ## Unreleased — The Tidemaw (first boss) and deeper loot
 - **The Tidemaw** (`source/modules/boss.js`) rises when you step into the Boathouse Slip on an expedition. Normal
   combat rules: bullets hit its body and four breakable parts (left and right gill sacs, jaw plate, tail) that drop
