@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.31-dev — Ground disk cache: each map is painted once, ever
+- Every painted 512 px ground chunk is saved as WebP in the browser's IndexedDB (`saltwake-ground`). Later sessions load chunks already painted instead of recomposing them.
+- While you are on a map, the rest of that map and then the other maps (the Outer Quays while you're in the harbor) are baked in the background, one chunk at a time, so the first trip to the field is already painted too. On a slow test machine the whole harbor (20 chunks) and Outer Quays (140) baked in about 25 s.
+- Cache keys carry a signature of the map's ground data and the tile textures. Editing a map or re-importing tile art repaints it automatically, and old chunks for that map are pruned.
+- Falls back cleanly when IndexedDB or workers are unavailable (soft previews, then live painting).
+- Verified with two browser sessions on one profile: the second session's harbor and field load 100% from the cache (0 chunks repainted). 382 checks, all passing.
+
 ## v0.31-dev — Left click / right click attacks, no charging
 - **Charge attacks removed.** Every weapon now has two attacks:
 

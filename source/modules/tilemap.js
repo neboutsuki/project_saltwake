@@ -96,6 +96,9 @@
       grid[y * gw + x] = id(mat);
     }
     s.grid = grid; s.gw = gw; s.gh = gh; s.gen = (s.gen || 0) + 1 + Math.random();
+    let sig = JSON.stringify(m.ground || []) + '|' + gw + 'x' + gh + '|' + m.waterStart + '|' + TX.desat + '|' + TX.brighten + '|' + CPX + '|v1';
+    for (const n of MATS) { const t = tex(n); if (t) { let a = 0; for (let i = 0; i < t.d.length; i += 997) a = (a * 31 + t.d[i]) | 0; sig += '|' + n + t.w + 'x' + t.h + ':' + a; } }
+    let h = 2166136261; for (let i = 0; i < sig.length; i++) h = Math.imul(h ^ sig.charCodeAt(i), 16777619); s.sig = (h >>> 0).toString(36);
   }
   const matAt = (s, tx, ty) => s.grid[Math.max(0, Math.min(s.gh - 1, ty)) * s.gw + Math.max(0, Math.min(s.gw - 1, tx))];
 
@@ -153,7 +156,9 @@
         let sx=gx,sy=gy;if(bomb[mt]){const c2=Math.floor((gx+dx*.8)/100),d2=Math.floor((gy+dy*.8)/100),hk=c2*7919+d2*104729;sx+=(Math.imul(hk,2654435761)>>>0)%t.w;sy+=(Math.imul(hk,2246822519)>>>0)%t.h}
         const q=(((sy%t.h)*t.w)+(sx%t.w))*4,p=(py*CPX+px)*4;o[p]=t.d[q];o[p+1]=t.d[q+1];o[p+2]=t.d[q+2];o[p+3]=255}}
       const img=new ImageData(o,CPX,CPX);
-      if(self.createImageBitmap){const bmp=await createImageBitmap(img);postMessage({key:m.key,cx,cy,bmp},[bmp])}else postMessage({key:m.key,cx,cy,buf:o.buffer},[o.buffer]);
+      let blob=null;if(m.store&&self.OffscreenCanvas){try{const oc=new OffscreenCanvas(CPX,CPX);oc.getContext('2d').putImageData(img,0,0);blob=await oc.convertToBlob({type:'image/webp',quality:.9})}catch(e){blob=null}}
+      if(m.bg){postMessage({key:m.key,cx,cy,blob,bg:true});return}
+      if(self.createImageBitmap){const bmp=await createImageBitmap(img);postMessage({key:m.key,cx,cy,bmp,blob},[bmp])}else postMessage({key:m.key,cx,cy,buf:o.buffer,blob},[o.buffer]);
     };`;
   let worker = null, workerReady = false, workerFailed = false;
   const grids = new Set(), inflight = new Map();
@@ -164,7 +169,9 @@
     try {
       worker = new Worker(URL.createObjectURL(new Blob([WORKER_SRC], { type: 'text/javascript' })));
       worker.onmessage = ev => {
-        const { key, cx, cy, bmp, buf } = ev.data, k = cx + ',' + cy, st = state[key]; inflight.delete(key + ':' + k);
+        const { key, cx, cy, bmp, buf, blob, bg } = ev.data, k = cx + ',' + cy, st = state[key]; inflight.delete(key + ':' + k);
+        if (blob && st?.sig) DISK.put(DISK.key(key, st.sig, k), blob);
+        if (bg) { TX.stats.baked++; if (!blob && st?.sig) (DISK.skip ||= new Set()).add(DISK.key(key, st.sig, k)); return; }
         if (!st) return; let c = bmp;
         if (!c && buf) { c = document.createElement('canvas'); c.width = c.height = CPX; c.getContext('2d').putImageData(new ImageData(new Uint8ClampedArray(buf), CPX, CPX), 0, 0); }
         st.chunks.set(k, c); TX.stats.built++; TX.stats.worker++;
@@ -176,12 +183,66 @@
     } catch (e) { workerFailed = true; worker = null; return false; }
   }
   TX.useWorker = true;
-  function request(game, s, cx, cy) {
-    const key = game.mapId, k = cx + ',' + cy;
-    if (s.chunks.has(k) || inflight.has(key + ':' + k) || inflight.size >= 4) return;
-    if (!grids.has(key + ':' + s.gen)) { worker.postMessage({ type: 'grid', key, gw: s.gw, gh: s.gh, grid: s.grid }); grids.add(key + ':' + s.gen); }
-    inflight.set(key + ':' + k, performance.now()); worker.postMessage({ type: 'job', key, cx, cy });
+  // ---- disk cache (IndexedDB): every chunk is painted once, then loaded already painted in later sessions -----------
+  // Keys carry a signature of the map's ground data and the textures, so editing the map or the art repaints it.
+  const DISK = TX.disk = { db: null, ready: false, known: new Set(), failed: false, t0: performance.now(),
+    key: (map, sig, k) => map + '|' + sig + '|' + k,
+    open() {
+      if (this.db || this.failed || this.opening) return; this.opening = true;
+      try { const rq = indexedDB.open('saltwake-ground', 1);
+        rq.onupgradeneeded = () => rq.result.createObjectStore('chunks');
+        rq.onsuccess = () => { this.db = rq.result; const t = this.db.transaction('chunks').objectStore('chunks').getAllKeys();
+          t.onsuccess = () => { for (const k of t.result) this.known.add(k); this.ready = true; }; t.onerror = () => { this.ready = true; }; };
+        rq.onerror = () => { this.failed = true; }; } catch (e) { this.failed = true; }
+    },
+    pending: new Set(), errors: 0,
+    put(k, blob) { if (!this.db) return; this.pending.add(k);
+      try { const tx = this.db.transaction('chunks', 'readwrite'); tx.objectStore('chunks').put(blob, k);
+        tx.oncomplete = () => { this.known.add(k); this.pending.delete(k); }; tx.onerror = tx.onabort = () => { this.pending.delete(k); this.errors++; }; }
+      catch (e) { this.pending.delete(k); this.errors++; } },
+    get(k) { return new Promise(res => { if (!this.db) return res(null); try { const r = this.db.transaction('chunks').objectStore('chunks').get(k); r.onsuccess = () => res(r.result || null); r.onerror = () => res(null); } catch (e) { res(null); } }); },
+    prune(prefix, sig) {   // drop chunks painted from an older version of a map
+      if (!this.db) return; try { const st = this.db.transaction('chunks', 'readwrite').objectStore('chunks');
+        for (const k of [...this.known]) if (k.startsWith(prefix + '|') && !k.startsWith(prefix + '|' + sig + '|')) { st.delete(k); this.known.delete(k); } } catch (e) { } },
+  };
+  try { if (window.indexedDB) DISK.open(); else DISK.failed = true; } catch (e) { DISK.failed = true; }
+  TX.stats.disk = 0; TX.stats.baked = 0;
+  function sendGrid(key, s) { if (!grids.has(key + ':' + s.gen)) { worker.postMessage({ type: 'grid', key, gw: s.gw, gh: s.gh, grid: s.grid }); grids.add(key + ':' + s.gen); } }
+  function request(game, s, cx, cy, key = game.mapId, bg = false) {
+    const k = cx + ',' + cy, id = key + ':' + k;
+    if (!DISK.ready && !DISK.failed && performance.now() - DISK.t0 < 2500) return;   // wait (briefly) for the saved-chunk list
+    if ((!bg && s.chunks.has(k)) || inflight.has(id) || inflight.size >= (bg ? 2 : 4)) return;
+    const dk = s.sig && DISK.key(key, s.sig, k), store = !!(DISK.db && s.sig);
+    if (bg && dk && DISK.known.has(dk)) return;
+    inflight.set(id, performance.now());
+    const viaWorker = () => { sendGrid(key, s); worker.postMessage({ type: 'job', key, cx, cy, store, bg }); };
+    if (!bg && dk && DISK.known.has(dk)) {
+      DISK.get(dk).then(b => b ? createImageBitmap(b) : null).then(bmp => {
+        if (!bmp) { DISK.known.delete(dk); return viaWorker(); }
+        inflight.delete(id); s.chunks.set(k, bmp); TX.stats.disk++;
+        while (s.chunks.size > TX.cacheSize) { const old = s.chunks.keys().next().value; const v = s.chunks.get(old); s.chunks.delete(old); v?.close?.(); }
+      }).catch(viaWorker);
+      return;
+    }
+    viaWorker();
   }
+  // Bake the rest of a map to the disk cache in the background (current map first, then the field while in the hub).
+  function bakeNext(game) {
+    if (!DISK.db || !DISK.ready || inflight.size) return;
+    const order = [game.mapId, ...Object.keys(game.world.maps).filter(id => id !== game.mapId && isTile(game.world.maps[id]))];
+    for (const id of order) {
+      let s = state[id]; const m = game.world.maps[id];
+      if (!s || s.m !== m) { s = state[id] = { m, grid: null, chunks: new Map(), jobs: new Map(), bins: null }; }
+      if (!s.grid) buildGrid(game, s);
+      if (!s.pruned) { DISK.prune(id, s.sig); s.pruned = true; }
+      const mw = Math.ceil(m.w / CH), mh = Math.ceil(m.h / CH);
+      for (let y = 0; y < mh; y++) for (let x = 0; x < mw; x++) {
+        const dk = DISK.key(id, s.sig, x + ',' + y); if (DISK.known.has(dk) || DISK.pending.has(dk) || (DISK.skip && DISK.skip.has(dk)) || inflight.has(id + ':' + x + ',' + y)) continue;
+        request(game, s, x, y, id, true); return;
+      }
+    }
+  }
+  TX.bakeNext = bakeNext;
   // average colour per material, for the previews
   const avg = {};
   function avgOf(i) { if (avg[i]) return avg[i]; const t = tex(MATS[i]); let r = 0, gg = 0, b = 0, n = 0; for (let q = 0; q < t.d.length; q += 4 * 7) { r += t.d[q]; gg += t.d[q + 1]; b += t.d[q + 2]; n++; } return (avg[i] = [r / n, gg / n, b / n]); }
@@ -228,6 +289,7 @@
       const ring = []; for (let y = y0 - 2; y < y1 + 2; y++) for (let x = x0 - 2; x < x1 + 2; x++) if (x >= 0 && y >= 0 && x < mw && y < mh && !s.chunks.has(x + ',' + y)) ring.push([x, y, Math.hypot(x + .5 - (x0 + x1) / 2, y + .5 - (y0 + y1) / 2)]);
       ring.sort((a, b) => a[2] - b[2]); for (const [x, y] of ring) request(this, s, x, y);
       for (const [k, t] of inflight) if (performance.now() - t > 4000) inflight.delete(k);   // lost job: retry
+      if (TX.bake !== false) bakeNext(this);
     } else {
       for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) {
         const c = chunk(s, x, y); if (c) { g.drawImage(c, x * span, y * span); TX.stats.chunks++; } else { g.imageSmoothingEnabled = true; g.drawImage(preview(s, x, y), x * span, y * span, span, span); g.imageSmoothingEnabled = false; }
