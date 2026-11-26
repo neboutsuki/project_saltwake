@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.31-dev — Monster attack telegraphs
+- Every monster attack on the player now has a readable wind-up (0.45–0.85 s, up from 0.30–0.42 s) with its own ground shape:
+  - Brineback: Bite (wedge) and **Tusk Charge** (a long lane it dashes down; hitting a wall stuns it for 1.5 s, "strike now").
+  - Salt Widow: Claw Swipe (wide wedge) and **Pounce** (a circle where you stood; it leaps there).
+  - Redhook gull: Spit (aim line). Wrecker gunners: aimed shot (laser line).
+  - Grazer: Horn Butt (wedge).
+  - Brineworn: Drifter Lunge, Caller Rake, Breaker **Overhead Slam** (circle).
+- **Honest hits:** a strike lands only if you are inside its shape when it resolves. Ranged aims lock on shortly before firing, so moving sideways dodges them. Rolling i-frames and perfect dodges work as before.
+- **Readability:** shapes fill amber → red as the attack charges and flash white at the strike (the moment to roll). "!" over the head, red "!!" plus the move name for heavy moves, and a warning sound for heavy moves. At night, shapes only show within ~300 px.
+- Replaces the old instant Brineback charge and the generic wedge. The Tidemaw keeps its own boss telegraphs. Monster-vs-monster fights use the original logic. The existing Settings toggle hides the shapes.
+- QA: new `telegraphs` suite. 349 checks, all passing.
+
 ## v0.31-dev — Weapons overhaul
 - **Hit feel:** hitstop (a short freeze on impact, scaled by weapon and damage), screen shake, recoil kick, muzzle flashes, impact sparks, swing trails. Heavy hits knock monsters back.
 - **Melee (slot 3), now three weapons** from the weapon sheet:
