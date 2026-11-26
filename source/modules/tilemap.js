@@ -282,8 +282,8 @@
     if (W) {
       for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) {
         const k = x + ',' + y, c = s.chunks.get(k);
-        if (c) { s.chunks.delete(k); s.chunks.set(k, c); g.drawImage(c, x * span, y * span); TX.stats.chunks++; }
-        else { g.imageSmoothingEnabled = true; g.drawImage(preview(s, x, y), x * span, y * span, span, span); g.imageSmoothingEnabled = false; request(this, s, x, y); }
+        if (c) { s.chunks.delete(k); s.chunks.set(k, c); g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'medium'; g.drawImage(c, x * span, y * span, span + 1, span + 1); g.imageSmoothingEnabled = false; TX.stats.chunks++; }
+        else { g.imageSmoothingEnabled = true; g.drawImage(preview(s, x, y), x * span, y * span, span + 1, span + 1); g.imageSmoothingEnabled = false; request(this, s, x, y); }
       }
       // prefetch a ring of 2 chunks around the view, nearest first
       const ring = []; for (let y = y0 - 2; y < y1 + 2; y++) for (let x = x0 - 2; x < x1 + 2; x++) if (x >= 0 && y >= 0 && x < mw && y < mh && !s.chunks.has(x + ',' + y)) ring.push([x, y, Math.hypot(x + .5 - (x0 + x1) / 2, y + .5 - (y0 + y1) / 2)]);
@@ -292,7 +292,7 @@
       if (TX.bake !== false) bakeNext(this);
     } else {
       for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) {
-        const c = chunk(s, x, y); if (c) { g.drawImage(c, x * span, y * span); TX.stats.chunks++; } else { g.imageSmoothingEnabled = true; g.drawImage(preview(s, x, y), x * span, y * span, span, span); g.imageSmoothingEnabled = false; }
+        const c = chunk(s, x, y); if (c) { g.imageSmoothingEnabled = true; g.drawImage(c, x * span, y * span, span + 1, span + 1); g.imageSmoothingEnabled = false; TX.stats.chunks++; } else { g.imageSmoothingEnabled = true; g.drawImage(preview(s, x, y), x * span, y * span, span + 1, span + 1); g.imageSmoothingEnabled = false; }
       }
       for (let y = y0 - 1; y <= y1 && performance.now() < frameUntil; y++) for (let x = x0 - 1; x <= x1; x++) {
         if (performance.now() >= frameUntil) break;

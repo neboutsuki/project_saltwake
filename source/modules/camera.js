@@ -32,7 +32,8 @@ P.cameraFrame=function(viewW,viewH){const p=this.player,now=performance.now()/10
   for(const [a,v,g] of [['x','vx',gx],['y','vy',gy]]){const c=st[a]-g,tmp=((st[v]||0)+w*c)*dt;st[v]=((st[v]||0)-w*tmp)*ex;st[a]=g+(c+tmp)*ex}}
  let sx=0,sy=0;if(st.trauma>0){const a=st.trauma*st.trauma*11;sx=noise(now,1)*a;sy=noise(now,7)*a;st.trauma=Math.max(0,st.trauma-dt*1.5)}
  // snap to whole screen pixels so pixel art does not shimmer while the camera glides
- const z=this.camera?.zoom||1,snap=v=>Math.round(v*z)/z;
+ // snap to real device pixels (render scale x zoom), not to 1024x576 pixels: the coarser grid made the ground step
+ const z=(this.camera?.zoom||1)*(window.saltwakeHiRes?.enabled!==false?(window.saltwakeHiRes?.scale||1):1),snap=v=>Math.round(v*z)/z;
  return {x:snap(st.x),y:snap(st.y),sx,sy}};
 // Snap on map changes / teleports.
 const sa=P.setArea;P.setArea=function(...a){const r=sa.apply(this,a);st.x=null;st.lx=st.ly=0;st.trauma=0;return r};

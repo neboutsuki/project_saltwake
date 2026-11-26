@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.31-dev — Smooth ground scrolling + weapon attack animations
+- **Ground scrolling:**
+  - The camera snapped to 1024×576 pixels while the screen renders at ~1.9× that, so the ground moved in visible steps. It now snaps to real screen pixels.
+  - Ground chunks were drawn unsmoothed at a non-whole scale, so the texture shimmered as it moved. They are now drawn smoothed, with a 1 px overlap so no seams show.
+- **Attack animations** (procedural motion of the existing weapon and character art, no new drawings):
+  - Melee: every attack has a wind-up (eased pull-back), a fast strike with afterimage smears, and a follow-through/recovery.
+    - Knife and greataxe slashes alternate sides through the combo; the greataxe finisher is a full spin.
+    - Spear and knife stabs pull back, then thrust.
+    - Greataxe RMB raises the axe overhead and slams it down; spear RMB is a deep lunge.
+  - Body: Ren leans back on the wind-up and lunges forward with a squash on the strike.
+  - Ranged:
+    - Recoil kick and muzzle rise on every shot (bigger for specials).
+    - Bow string snap; Wickcaster pump.
+    - Reload animation: the weapon dips, racks and comes back up.
+- QA: weapons suite checks the pose changes through the attack phases and the recoil. 390 checks, all passing.
+
 ## v0.31-dev — Big performance fix, fullscreen option, full-screen menus
 - **Lag fix (the main one):**
   - The player's outline/rim light used five stacked canvas `drop-shadow` filters on every player draw. Measured: the game ran ~8× slower with it on.

@@ -54,6 +54,10 @@ try{
  let drew=true;for(const id of ['spear','knife','greataxe']){setup();melee(id);aim();W.startMelee(G,false);step(.1);try{G.render(performance.now())}catch(x){drew=false;errs.push(String(x))}
   G.player.cooldown=0;G.altAttack();step(.2);try{G.render(performance.now())}catch(x){drew=false}}
  c.renders=drew;
+ // attack animation: the weapon pose moves through wind-up, strike and recovery; shots kick the weapon back
+ setup();melee('greataxe');aim();W.startMelee(G,false);const st=W.state(G);st.att.age=.05;const pw=W.pose(G);st.att.age=st.att.wind+.05;const ps=W.pose(G);st.att.age=st.att.end-.01;const pr=W.pose(G);
+ c.meleeAnimates=Math.abs(pw.angle-ps.angle)>.3&&ps.smear.length>0&&Math.abs(pr.angle-st.att.angle)<.2&&ps.body.dx!==0;
+ {const AR=G.ensureArmory();AR.owned.arbalest_I1=1;AR.equipped[0]='arbalest_I1';}G.player.weapon=0;G.player.reload=0;W.shotAnim={t:G.raid.time-.03,fam:'arbalest',big:false};c.recoilAnimates=W.pose(G).ext<-2;
  G.endRaid(true,'QA');G.close();G.mode='play';
  // forge: harpoon tree + rank V Tidemaw upgrades + melee tab crafting
  const fam=Object.keys(ARMORY.families);c.harpoonFamily=fam.includes('harpoon')&&ARMORY.weapons.filter(n=>n.family==='harpoon').length===15;

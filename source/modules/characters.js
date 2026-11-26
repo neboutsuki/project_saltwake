@@ -88,12 +88,19 @@
   const WEAPON_ART = ['art/weapons/arbalest', 'art/weapons/wickcaster', 'art/weapons/spear'];   // by player.weapon slot
   const WEAPON_LEN = [46, 44, 62];
   function weapon(game, p, footOffset) {
-    const sel = window.saltwakeWeapons?.art?.(game);
-    const im = img(sel?.alias || WEAPON_ART[p.weapon] || WEAPON_ART[0]); if (!ok(im)) return;
-    const a = (p.angle || 0) + (sel?.swing || 0), len = sel?.len || WEAPON_LEN[p.weapon] || 46, h = len * im.naturalHeight / im.naturalWidth, left = Math.cos(a) < 0;
-    g.save(); g.imageSmoothingEnabled = false;
-    g.translate(p.x + Math.cos(a) * 6, p.y + footOffset - 30 + Math.sin(a) * 4); g.rotate(a); if (left) g.scale(1, -1);
-    g.drawImage(im, -len * .32, -h / 2, len, h); g.restore();
+    const q = window.saltwakeWeapons?.pose?.(game);
+    const im = img(q?.alias || WEAPON_ART[p.weapon] || WEAPON_ART[0]); if (!ok(im)) return;
+    const aim = p.angle || 0, len = q?.len || WEAPON_LEN[p.weapon] || 46, h = len * im.naturalHeight / im.naturalWidth;
+    const left = Math.cos(aim) < 0;                       // flip by the aim, so a swing crossing the vertical never pops
+    const b = q?.body || { dx: 0, dy: 0 };
+    const one = (a, ext, sc, alpha) => {
+      g.save(); g.imageSmoothingEnabled = false; if (alpha < 1) g.globalAlpha *= alpha;
+      g.translate(p.x + b.dx + Math.cos(a) * (6 + ext), p.y + b.dy + footOffset - 30 + Math.sin(a) * (4 + ext * .8)); g.rotate(a); if (left) g.scale(1, -1);
+      if (sc !== 1) g.scale(sc, sc);
+      g.drawImage(im, -len * .32, -h / 2, len, h); g.restore();
+    };
+    for (const sm of q?.smear || []) one(sm.angle, sm.ext, q.scale || 1, Math.max(0, sm.alpha));
+    one(q ? q.angle : aim, q?.ext || 0, q?.scale || 1, 1);
     C.stats.weapon = (C.stats.weapon || 0) + 1;
   }
   // Coast renderer (Quays and other field maps) and the older 2.5D renderer.

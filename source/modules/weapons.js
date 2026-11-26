@@ -210,6 +210,7 @@
     const kick = f[2] * (level >= 1 ? 2 : 1); this.move(-Math.cos(ang) * kick, -Math.sin(ang) * kick);
     shake(f[1] * (level >= 1 ? 1.8 : 1) * .6);
     W.flashes.push({ x: p.x + Math.cos(ang) * 28, y: p.y - 8 + Math.sin(ang) * 28, life: .07, max: .07, big: level >= 1 });
+    W.shotAnim = { t: r.time, fam, big: level >= 1 };
     if (level >= 1) sound(FIRE_SOUND[fam] || 'arbalest', 1.3);
     return out;
   }
@@ -283,14 +284,83 @@
   };
 
   // ---- held-weapon art + HUD name ---------------------------------------------------------------------------------
-  W.art = g => {
-    const p = g.player;
-    if (p.weapon === 2) { const w = W.melee(g), a = g.raid && S(g.raid).att; let swing = 0;
-      if (a && w.id !== 'spear') { const t = Math.min(1, Math.max(0, (a.age - a.wind * .6) / (a.wind * .4 + .1))); swing = (a.step === 1 ? 1 : -1) * a.data.arc * (1 - 2 * t); }
-      return { alias: w.art, len: w.len, swing }; }
+  // ---- attack animation (procedural motion of the existing weapon + character art) ---------------------------------
+  // W.pose(g) -> { alias, len, angle, ext, scale, smear[], body{dx,dy,sx,sy} }. Phases per attack: wind-up (eased pull
+  // back), strike (fast eased sweep/thrust with afterimages), recovery (ease back). Ranged: recoil kick + muzzle rise,
+  // bow string snap, Wickcaster pump, reload dip-and-rack.
+  const ease = { out: t => 1 - (1 - t) * (1 - t), in: t => t * t, io: t => t < .5 ? 2 * t * t : 1 - 2 * (1 - t) * (1 - t), back: t => { const c = 1.7; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); } };
+  const lerp = (a, b, t) => a + (b - a) * t, clamp01 = t => Math.max(0, Math.min(1, t));
+  W.shotAnim = null;
+  function meleePose(g, w, a, aim) {
+    const side = Math.cos(aim) < 0 ? -1 : 1, t = a.age, wind = a.wind, strikeEnd = wind + .09, end = a.end, heavy = a.kind === 'heavy', fin = a.step === 2;
+    // per style: [start offset, end offset] relative to the aim (radians, mirrored by side), reach in/out (ext)
+    let style = w.id === 'spear' ? 'thrust' : w.id === 'knife' ? (heavy ? 'thrust' : a.step === 1 ? 'thrust' : 'slash') : heavy ? 'overhead' : 'slash';
+    if (w.id === 'greataxe' && fin && !heavy) style = 'spin';
+    const dir = a.step === 1 ? -1 : 1;                                     // alternate slash direction through the combo
+    const arc = Math.min(1.6, (a.data.arc || .6) * 1.25);
+    let ang = aim, ext = 0, sc = 1, body = { dx: 0, dy: 0, sx: 1, sy: 1 }, smear = [];
+    const ca = Math.cos(aim), sa = Math.sin(aim);
+    const angAt = u => {                                                   // angle of the weapon along the strike, u 0..1
+      if (style === 'slash') return aim + side * dir * lerp(arc, -arc, ease.io(u));
+      if (style === 'spin') return aim + side * lerp(arc, arc - Math.PI * 2, ease.io(u));
+      if (style === 'overhead') return aim + side * lerp(-2.3, 0, ease.in(u));
+      return aim;
+    };
+    const extAt = u => style === 'thrust' ? lerp(-12, heavy ? 34 : 24, ease.out(u)) : style === 'overhead' ? lerp(-10, 8, ease.in(u)) : lerp(-4, 8, ease.io(u));
+    if (t < wind) {                                                        // wind-up: pull back to the start pose
+      const u = ease.out(clamp01(t / wind)); ang = lerp(aim, angAt(0), u); ext = lerp(0, extAt(0), u);
+      if (style === 'overhead') sc = lerp(1, 1.2, u);                       // raised = closer to the camera
+      body = { dx: -ca * 4 * u, dy: -sa * 3 * u, sx: 1 - .04 * u, sy: 1 + .05 * u };
+    } else if (t < strikeEnd) {                                            // strike
+      const u = clamp01((t - wind) / (strikeEnd - wind)); ang = angAt(u); ext = extAt(u);
+      if (style === 'overhead') sc = lerp(1.2, .95, ease.in(u));
+      body = { dx: ca * 7 * u, dy: sa * 5 * u, sx: 1 + .07 * u, sy: 1 - .07 * u };
+      for (let i = 1; i <= 3; i++) { const v = clamp01(u - i * .14); if (v <= 0) break; smear.push({ angle: angAt(v), ext: extAt(v), alpha: .38 - i * .1 }); }
+    } else {                                                               // follow-through + recovery
+      const u = clamp01((t - strikeEnd) / Math.max(.05, end - strikeEnd)), k = ease.out(u);
+      ang = lerp(angAt(1), aim, k); ext = lerp(extAt(1), 0, k); sc = style === 'overhead' ? lerp(.95, 1, k) : 1;
+      body = { dx: ca * 7 * (1 - k), dy: sa * 5 * (1 - k), sx: 1 + .07 * (1 - k), sy: 1 - .07 * (1 - k) };
+    }
+    return { angle: ang, ext, scale: sc, smear, body };
+  }
+  function rangedPose(g, fam, aim) {
+    const p = g.player, side = Math.cos(aim) < 0 ? -1 : 1, r = g.raid, now = r ? r.time : 0, w = g.weapon?.();
+    let ang = aim, ext = 0, body = { dx: 0, dy: 0, sx: 1, sy: 1 };
+    if (p.reload > 0 && w?.reload) {                                         // reload: dip down, rack, back up
+      const u = 1 - p.reload / w.reload, dip = Math.sin(clamp01(u) * Math.PI);
+      ang = aim + side * .95 * dip; ext = -8 * dip;
+      if (u > .55 && u < .8) ext += Math.sin((u - .55) / .25 * Math.PI) * -5;  // rack
+    }
+    const S0 = W.shotAnim;
+    if (S0 && r && now - S0.t < .45) {
+      const t = now - S0.t, big = S0.big ? 1.7 : 1, kick = { bow: 3, arbalest: 7, wickcaster: 5, longwatch: 9, harpoon: 9 }[fam] || 6;
+      const k = t < .04 ? t / .04 : Math.max(0, 1 - ease.out(clamp01((t - .04) / .3)));
+      ext -= kick * big * k; ang -= side * .16 * big * k;                 // recoil back + muzzle rise
+      body = { dx: -Math.cos(aim) * 3 * big * k, dy: -Math.sin(aim) * 2 * big * k, sx: 1, sy: 1 };
+      if (fam === 'bow' && t < .12) ext += Math.sin(t / .12 * Math.PI * 3) * 1.5;   // string snap
+      if (fam === 'wickcaster' && t > .14 && t < .34) ext -= Math.sin((t - .14) / .2 * Math.PI) * 5;   // pump
+    }
+    return { angle: ang, ext, scale: 1, smear: [], body };
+  }
+  W.pose = g => {
+    const p = g.player, aim = p.angle || 0;
+    if (p.weapon === 2) { const w = W.melee(g), a = g.raid && S(g.raid).att;
+      const base = { alias: w.art, len: w.len, aim };
+      return a ? { ...base, ...meleePose(g, w, a, a.angle) } : { ...base, angle: aim, ext: 0, scale: 1, smear: [], body: null }; }
     const fam = famOf(g); const A = { arbalest: 'art/weapons/arbalest', wickcaster: 'art/weapons/wickcaster', harpoon: 'art/weapons/harpoon_gun' };
-    return A[fam] ? { alias: A[fam], len: fam === 'harpoon' ? 50 : fam === 'wickcaster' ? 44 : 46, swing: 0 } : null;
+    if (!A[fam] && !fam) return null;
+    return { alias: A[fam] || 'art/weapons/arbalest', len: fam === 'harpoon' ? 50 : fam === 'wickcaster' ? 44 : 46, aim, ...rangedPose(g, fam, aim) };
   };
+  W.art = g => { const q = W.pose(g); return q && { alias: q.alias, len: q.len, swing: q.angle - (g.player.angle || 0) }; };
+  // body lean/lunge during attacks (wraps the player draw, outline included)
+  for (const name of ['coastPlayer', 'draw25Player']) {
+    const f = P[name]; if (!f) continue;
+    P[name] = function () {
+      const q = this.raid && W.pose(this), b = q?.body; if (!b || (!b.dx && !b.dy && b.sx === 1 && b.sy === 1)) return f.apply(this, arguments);
+      const p = this.player, fy = p.y + 4; g.save(); g.translate(p.x + b.dx, fy + b.dy); g.scale(b.sx, b.sy); g.translate(-p.x, -fy);
+      try { return f.apply(this, arguments); } finally { g.restore(); }
+    };
+  }
   const hud = P.hud;
   P.hud = function () {
     const out = hud.apply(this, arguments);

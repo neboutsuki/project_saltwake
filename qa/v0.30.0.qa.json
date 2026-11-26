@@ -321,6 +321,8 @@
     "weapons.harpoonAnchor": true,
     "weapons.hitFeel": true,
     "weapons.renders": true,
+    "weapons.meleeAnimates": true,
+    "weapons.recoilAnimates": true,
     "weapons.harpoonFamily": true,
     "weapons.rankFive": true,
     "weapons.materialSources": true,
