@@ -88,8 +88,9 @@
   const WEAPON_ART = ['art/weapons/arbalest', 'art/weapons/wickcaster', 'art/weapons/spear'];   // by player.weapon slot
   const WEAPON_LEN = [46, 44, 62];
   function weapon(game, p, footOffset) {
-    const im = img(WEAPON_ART[p.weapon] || WEAPON_ART[0]); if (!ok(im)) return;
-    const a = p.angle || 0, len = WEAPON_LEN[p.weapon] || 46, h = len * im.naturalHeight / im.naturalWidth, left = Math.cos(a) < 0;
+    const sel = window.saltwakeWeapons?.art?.(game);
+    const im = img(sel?.alias || WEAPON_ART[p.weapon] || WEAPON_ART[0]); if (!ok(im)) return;
+    const a = (p.angle || 0) + (sel?.swing || 0), len = sel?.len || WEAPON_LEN[p.weapon] || 46, h = len * im.naturalHeight / im.naturalWidth, left = Math.cos(a) < 0;
     g.save(); g.imageSmoothingEnabled = false;
     g.translate(p.x + Math.cos(a) * 6, p.y + footOffset - 30 + Math.sin(a) * 4); g.rotate(a); if (left) g.scale(1, -1);
     g.drawImage(im, -len * .32, -h / 2, len, h); g.restore();

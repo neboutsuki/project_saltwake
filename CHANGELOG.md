@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.31-dev — Weapons overhaul
+- **Hit feel:** hitstop (a short freeze on impact, scaled by weapon and damage), screen shake, recoil kick, muzzle flashes, impact sparks, swing trails. Heavy hits knock monsters back.
+- **Melee (slot 3), now three weapons** from the weapon sheet:
+  - Spear: long reach, hits 2 in a line.
+  - Gutting Knife: fast; backstabs do x2.5 on unaware monsters or from behind.
+  - Greataxe: slow sweeping chops that hit everything in the arc; huge stagger and part breaking.
+  - Tap = light attack, chaining into a 3-hit combo with a finisher. Hold = charge a heavy attack. The HUD shows the combo step.
+- **Charged shots:** hold fire to charge, release to shoot (a quick tap still fires normally). A full charge fires a special:
+  - Bow: Piercing Arrow.
+  - Longwatch: Deadeye.
+  - Arbalest: Breaker Bolt.
+  - Wickcaster: Flare Burst (a fan of every loaded cell).
+  - Harpoon Gun: Reel Shot.
+- **New Harpoon Gun** (fires bolts): reels small monsters in and anchors (slows) big ones. Its own forge tree has 2 branches (Reelhook, Anchorline).
+- **Crafting:**
+  - Rank V "Tidemaw" upgrades at the end of every weapon branch, forged from Tidemaw parts (needs HR7). Masterwork mods carry over.
+  - New Melee tab at the forge: craft the knife and greataxe, and upgrade melee weapons to Lv 3.
+  - Missing materials now say which monster part drops them.
+- New modules: `weapons-data.js` (armory data, loaded before the forge) and `weapons.js` (behaviour).
+- QA: new `weapons` suite. 330 checks, all passing.
+
 ## v0.31-dev — One quest at a time + errands
 - **Quest slot (Monster Hunter style):** you carry one quest at a time: a story quest OR a field commission. You must finish or abandon it before you can take another. The commission board and the journal both explain why when it is locked.
 - **Errands:** small jobs that run alongside your quest (up to 5) and never affect the story. The old side quests count as errands, plus 12 new ones:

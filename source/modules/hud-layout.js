@@ -9,10 +9,10 @@ const P=Game.prototype;
 // Icons are image files (assets/ui/*.svg, pack art-v031); the HUD only references them.
 const ART=window.SALTWAKE_ASSETS.images,ui=n=>ART['ui/'+n]||'';
 const img=(n,cls='')=>ui(n)?`<img class="${cls}" src="${ui(n)}" alt="" draggable="false">`:'';
-const SIL={arbalest:img('weapon_arbalest'),wickcaster:img('weapon_wickcaster'),spear:img('weapon_spear'),unknown:''};
+const SIL={arbalest:img('weapon_arbalest'),wickcaster:img('weapon_wickcaster'),spear:img('weapon_spear'),knife:img('weapon_knife'),greataxe:img('weapon_greataxe'),harpoon:img('weapon_harpoon_gun'),unknown:''};
 const AMMO={bolt:img('ammo_bolt'),cell:img('ammo_cell')};
 for(const n of ['heart','stamina','bleed'])document.documentElement.style.setProperty('--sw-icon-'+n,`url("${ui(n)}")`);
-const weaponKind=t=>/arbalest/i.test(t)?'arbalest':/wick/i.test(t)?'wickcaster':/spear|melee/i.test(t)?'spear':'unknown';
+const weaponKind=t=>/harpoon/i.test(t)?'harpoon':/knife/i.test(t)?'knife':/axe/i.test(t)?'greataxe':/arbalest|bow|watch|tidecaller|tidebreaker|tidewatch/i.test(t)?'arbalest':/wick/i.test(t)?'wickcaster':/spear|melee/i.test(t)?'spear':'unknown';
 const css=`
 #swHudLeft{position:absolute;top:14px;left:14px;width:262px;display:flex;flex-direction:column;gap:8px;z-index:4;pointer-events:none}
 #swHudLeft>*{position:static!important;width:auto!important;max-width:none!important;margin:0!important;pointer-events:auto}
@@ -115,8 +115,8 @@ let lastQ='',lastW='';
 const hud=P.hud;P.hud=function(...a){const out=hud.apply(this,a);mount();updateMap(this);
  const box=$('swQuestType');if(box){const {tags,target}=questInfo(this);const html=tags.map(([c,l])=>`<span class="tag ${c}">${safe(l)}</span>`).join('')+(target?`<div class="target">${target}</div>`:'');if(html!==lastQ){lastQ=html;box.innerHTML=html}}
  const name=$('weaponName')?.textContent||'',ammo=$('ammoText')?.textContent||'',kind=weaponKind(name);const sig=kind+'|'+ammo;
- if(sig!==lastW){lastW=sig;const s=$('swWeaponSil');if(s)s.innerHTML=SIL[kind];const am=$('swAmmo');if(am){const m=ammo.match(/(\d+)\s*\/\s*(\d+)/);const icon=kind==='wickcaster'?AMMO.cell:kind==='arbalest'?AMMO.bolt:'';
-   const n=ammo.match(/\d+/);am.innerHTML=m?`${icon}<b>${m[1]}</b><small>/ ${m[2]}</small>`:kind==='spear'?'':n?`${icon}<b>${n[0]}</b>`:''}}
+ if(sig!==lastW){lastW=sig;const s=$('swWeaponSil');if(s)s.innerHTML=SIL[kind];const am=$('swAmmo');if(am){const m=ammo.match(/(\d+)\s*\/\s*(\d+)/);const icon=kind==='wickcaster'?AMMO.cell:kind==='arbalest'||kind==='harpoon'?AMMO.bolt:'';
+   const n=ammo.match(/\d+/);am.innerHTML=m?`${icon}<b>${m[1]}</b><small>/ ${m[2]}</small>`:['spear','knife','greataxe'].includes(kind)?'':n?`${icon}<b>${n[0]}</b>`:''}}
  return out};
 window.saltwakeHudLayout={questInfo:G=>questInfo(G||SALTWAKE_DEV.game),weaponKind};
 })();
