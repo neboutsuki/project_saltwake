@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.31-dev — Harbor town re-planned
+- **Salvager's Rest layout:** the buildings are now laid out as a proper town grid instead of a loose scatter.
+  - North lane: the homes, the chapel, the guardhouse, your quarters and the cart shelter, evenly spaced on both sides of the city gate.
+  - Guild Row: a new straight street from the west edge to the (barricaded) east passage. The clinic and ledger house sit west of Lantern Square, the forge and tool shed east, with a small forge yard between them.
+  - Market row: the Quartermaster, Salvage Buyer, Ration Vendor and a second stall face the harbor promenade beside the main road, with the Hunters' Hall and Harbor Stores to the east.
+  - The quay is now an open strip along the water with the three piers, the crane, fish racks, nets, bollards and lanterns. Buildings no longer crowd the waterline.
+  - The diagonal road to the barricaded passage and the old west lane are gone. The well moved into Lantern Square.
+  - Building IDs are unchanged. NPCs, doors, the stash, bed, workbench and containers follow their buildings. Townsfolk routes and zones are updated. Only the harbor changed in the world data.
+
 ## v0.31-dev — Departures fixed, consistent proportions, sharper rendering
 - **Fixed: could not choose a destination or depart.**
   - A global `aside { pointer-events: none }` HUD rule made the Expedition Chart's brief panel ignore real mouse clicks: missions, Wait and DEPART were all dead. The brief panel is clickable again.

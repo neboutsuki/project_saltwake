@@ -264,73 +264,11 @@
      ]
     },
     {
-     "id": "east_gate",
-     "width": 4,
-     "pts": [
-      [
-       46,
-       24
-      ],
-      [
-       56,
-       26
-      ],
-      [
-       64,
-       31
-      ],
-      [
-       72,
-       32
-      ]
-     ]
-    },
-    {
-     "id": "west_lane",
-     "width": 3,
-     "pts": [
-      [
-       26,
-       24
-      ],
-      [
-       17,
-       24.5
-      ],
-      [
-       8,
-       25
-      ],
-      [
-       3,
-       25
-      ]
-     ]
-    },
-    {
-     "id": "promenade",
-     "width": 3.2,
-     "pts": [
-      [
-       6,
-       41.5
-      ],
-      [
-       36,
-       42
-      ],
-      [
-       66,
-       41.5
-      ]
-     ]
-    },
-    {
      "id": "north_lane",
      "width": 2.6,
      "pts": [
       [
-       6,
+       4,
        18.5
       ],
       [
@@ -338,8 +276,48 @@
        18.2
       ],
       [
-       66,
+       68,
        18.5
+      ]
+     ]
+    },
+    {
+     "id": "guild_row",
+     "width": 3,
+     "pts": [
+      [
+       0,
+       31.6
+      ],
+      [
+       26,
+       31.6
+      ],
+      [
+       46,
+       31.6
+      ],
+      [
+       72,
+       31.8
+      ]
+     ]
+    },
+    {
+     "id": "promenade",
+     "width": 3,
+     "pts": [
+      [
+       3,
+       44.2
+      ],
+      [
+       36,
+       44.2
+      ],
+      [
+       69,
+       44.2
       ]
      ]
     }
@@ -373,8 +351,8 @@
      "name": "Well",
      "type": "fixture",
      "kind": "cistern",
-     "x": 12.5,
-     "y": 24.5,
+     "x": 29,
+     "y": 24,
      "w": 1,
      "h": 1,
      "variant": 0,
@@ -422,7 +400,7 @@
      "id": "hub.nhome1",
      "name": "Saltworker Home A",
      "type": "house",
-     "x": 5.39,
+     "x": 4.89,
      "y": 12.58,
      "w": 7.22,
      "h": 3.92,
@@ -434,7 +412,7 @@
      "id": "hub.nhome2",
      "name": "Saltworker Home B",
      "type": "house",
-     "x": 15.39,
+     "x": 14.39,
      "y": 12.58,
      "w": 7.22,
      "h": 3.92,
@@ -446,7 +424,7 @@
      "id": "hub.chapel",
      "name": "Tide Chapel",
      "type": "house",
-     "x": 24.29,
+     "x": 23.79,
      "y": 11.46,
      "w": 8.43,
      "h": 5.04,
@@ -458,7 +436,7 @@
      "id": "hub.guard",
      "name": "Harbor Guardhouse",
      "type": "office",
-     "x": 40.78,
+     "x": 39.78,
      "y": 12.02,
      "w": 8.43,
      "h": 4.48,
@@ -470,7 +448,7 @@
      "id": "hub.player",
      "name": "Player Quarters",
      "type": "house",
-     "x": 51.28,
+     "x": 50.28,
      "y": 12.02,
      "w": 8.43,
      "h": 4.48,
@@ -482,7 +460,7 @@
      "id": "hub.stables",
      "name": "Cart Shelter",
      "type": "house",
-     "x": 62.55,
+     "x": 61.55,
      "y": 13.92,
      "w": 6.91,
      "h": 2.58,
@@ -494,8 +472,8 @@
      "id": "hub.clinic",
      "name": "Harbor Clinic",
      "type": "house",
-     "x": 4.89,
-     "y": 29.58,
+     "x": 5.39,
+     "y": 25.58,
      "w": 7.22,
      "h": 3.92,
      "variant": 0,
@@ -506,8 +484,8 @@
      "id": "hub.ledger",
      "name": "Ledger House / Contracts",
      "type": "office",
-     "x": 14.29,
-     "y": 29.58,
+     "x": 15.29,
+     "y": 25.58,
      "w": 8.43,
      "h": 3.92,
      "variant": 0,
@@ -518,8 +496,8 @@
      "id": "hub.mech",
      "name": "Launcher Workshop",
      "type": "workshop",
-     "x": 49.19,
-     "y": 29.58,
+     "x": 47.19,
+     "y": 25.58,
      "w": 9.63,
      "h": 3.92,
      "variant": 0,
@@ -530,8 +508,8 @@
      "id": "hub.tools",
      "name": "Tool Shed",
      "type": "workshop",
-     "x": 61.42,
-     "y": 30.17,
+     "x": 61.92,
+     "y": 26.17,
      "w": 7.16,
      "h": 3.33,
      "variant": 0,
@@ -542,8 +520,8 @@
      "id": "hub.trade",
      "name": "Quartermaster Hall",
      "type": "merchant",
-     "x": 4.79,
-     "y": 42.58,
+     "x": 5.59,
+     "y": 38.58,
      "w": 8.43,
      "h": 3.92,
      "variant": 0,
@@ -554,8 +532,8 @@
      "id": "hub.buyer",
      "name": "Salvage Buyer",
      "type": "warehouse",
-     "x": 14.79,
-     "y": 42.58,
+     "x": 15.68,
+     "y": 38.58,
      "w": 8.43,
      "h": 3.92,
      "variant": 0,
@@ -567,7 +545,7 @@
      "name": "Ration Vendor",
      "type": "merchant",
      "x": 25.59,
-     "y": 36.76,
+     "y": 40.26,
      "w": 4.82,
      "h": 2.24,
      "variant": 0,
@@ -578,8 +556,8 @@
      "id": "hub.hunt",
      "name": "Hunters’ Hall",
      "type": "office",
-     "x": 42.58,
-     "y": 42.47,
+     "x": 46.88,
+     "y": 38.47,
      "w": 10.84,
      "h": 4.03,
      "variant": 0,
@@ -590,13 +568,13 @@
      "id": "hub.store",
      "name": "Harbor Stores",
      "type": "warehouse",
-     "x": 58.06,
-     "y": 42.83,
-     "w": 9.87,
-     "h": 3.67,
+     "x": 60.26,
+     "y": 39.27,
+     "w": 8.67,
+     "h": 3.23,
      "variant": 0,
      "art": "art/buildings/warehouse_01",
-     "artScale": 0.82
+     "artScale": 0.72
     },
     {
      "id": "hub.pilot",
@@ -677,7 +655,7 @@
      "x": 0,
      "y": 17,
      "w": 24,
-     "h": 21
+     "h": 16
     },
     {
      "id": "forge",
@@ -685,23 +663,23 @@
      "x": 48,
      "y": 17,
      "w": 24,
-     "h": 21
+     "h": 16
     },
     {
      "id": "market",
      "name": "Market Row",
      "x": 0,
-     "y": 38,
+     "y": 33,
      "w": 72,
-     "h": 10
+     "h": 12
     },
     {
      "id": "docks",
      "name": "Rest Docks",
      "x": 0,
-     "y": 46,
+     "y": 45,
      "w": 72,
-     "h": 12
+     "h": 13
     }
    ],
    "decor": [
@@ -830,8 +808,8 @@
      "id": "hub.ghost.11",
      "name": "collision",
      "type": "stone",
-     "x": 13.0,
-     "y": 25.35,
+     "x": 29.5,
+     "y": 24.75,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -841,8 +819,8 @@
      "id": "hub.ghost.12",
      "name": "collision",
      "type": "crate",
-     "x": 21.88,
-     "y": 38.75,
+     "x": 39.88,
+     "y": 42.25,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -852,8 +830,8 @@
      "id": "hub.ghost.13",
      "name": "collision",
      "type": "crate",
-     "x": 23.0,
-     "y": 38.75,
+     "x": 41.0,
+     "y": 42.25,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -863,8 +841,8 @@
      "id": "hub.ghost.14",
      "name": "collision",
      "type": "crate",
-     "x": 24.12,
-     "y": 38.75,
+     "x": 42.12,
+     "y": 42.25,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -874,8 +852,8 @@
      "id": "hub.ghost.15",
      "name": "collision",
      "type": "crate",
-     "x": 25.5,
-     "y": 39.75,
+     "x": 32.3,
+     "y": 42.35,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -885,8 +863,8 @@
      "id": "hub.ghost.16",
      "name": "collision",
      "type": "crate",
-     "x": 13.58,
-     "y": 40.75,
+     "x": 43.98,
+     "y": 42.15,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -896,8 +874,8 @@
      "id": "hub.ghost.17",
      "name": "collision",
      "type": "crate",
-     "x": 14.42,
-     "y": 40.75,
+     "x": 44.82,
+     "y": 42.15,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -907,8 +885,8 @@
      "id": "hub.ghost.18",
      "name": "collision",
      "type": "crate",
-     "x": 3.48,
-     "y": 39.75,
+     "x": 58.98,
+     "y": 29.05,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -918,8 +896,8 @@
      "id": "hub.ghost.19",
      "name": "collision",
      "type": "crate",
-     "x": 4.53,
-     "y": 39.75,
+     "x": 60.03,
+     "y": 29.05,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -929,8 +907,8 @@
      "id": "hub.ghost.20",
      "name": "collision",
      "type": "crate",
-     "x": 59.48,
-     "y": 34.75,
+     "x": 45.6,
+     "y": 29.55,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -940,8 +918,8 @@
      "id": "hub.ghost.21",
      "name": "collision",
      "type": "crate",
-     "x": 60.53,
-     "y": 34.75,
+     "x": 58.6,
+     "y": 29.95,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -951,8 +929,8 @@
      "id": "hub.ghost.22",
      "name": "collision",
      "type": "crate",
-     "x": 47.02,
-     "y": 36.25,
+     "x": 22.58,
+     "y": 17.95,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -962,8 +940,8 @@
      "id": "hub.ghost.23",
      "name": "collision",
      "type": "crate",
-     "x": 48.0,
-     "y": 36.25,
+     "x": 23.42,
+     "y": 17.95,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -973,8 +951,8 @@
      "id": "hub.ghost.24",
      "name": "collision",
      "type": "crate",
-     "x": 48.98,
-     "y": 36.25,
+     "x": 59.17,
+     "y": 18.15,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -984,8 +962,8 @@
      "id": "hub.ghost.25",
      "name": "collision",
      "type": "crate",
-     "x": 59.0,
-     "y": 36.75,
+     "x": 60.43,
+     "y": 18.15,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -993,61 +971,6 @@
     },
     {
      "id": "hub.ghost.26",
-     "name": "collision",
-     "type": "crate",
-     "x": 47.5,
-     "y": 34.25,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "hub.ghost.27",
-     "name": "collision",
-     "type": "crate",
-     "x": 23.08,
-     "y": 17.95,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "hub.ghost.28",
-     "name": "collision",
-     "type": "crate",
-     "x": 23.92,
-     "y": 17.95,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "hub.ghost.29",
-     "name": "collision",
-     "type": "crate",
-     "x": 60.87,
-     "y": 18.25,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "hub.ghost.30",
-     "name": "collision",
-     "type": "crate",
-     "x": 62.13,
-     "y": 18.25,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "hub.ghost.31",
      "name": "collision",
      "type": "stone",
      "x": 42.95,
@@ -1058,7 +981,7 @@
      "ghost": true
     },
     {
-     "id": "hub.ghost.32",
+     "id": "hub.ghost.27",
      "name": "collision",
      "type": "stone",
      "x": 44.0,
@@ -1069,7 +992,7 @@
      "ghost": true
     },
     {
-     "id": "hub.ghost.33",
+     "id": "hub.ghost.28",
      "name": "collision",
      "type": "stone",
      "x": 45.05,
@@ -1080,11 +1003,66 @@
      "ghost": true
     },
     {
-     "id": "hub.ghost.34",
+     "id": "hub.ghost.29",
      "name": "collision",
      "type": "crate",
      "x": 8.37,
-     "y": 48.75,
+     "y": 48.15,
+     "w": 0,
+     "h": 0,
+     "variant": 0,
+     "ghost": true
+    },
+    {
+     "id": "hub.ghost.30",
+     "name": "collision",
+     "type": "crate",
+     "x": 9.63,
+     "y": 48.15,
+     "w": 0,
+     "h": 0,
+     "variant": 0,
+     "ghost": true
+    },
+    {
+     "id": "hub.ghost.31",
+     "name": "collision",
+     "type": "crate",
+     "x": 13.52,
+     "y": 47.35,
+     "w": 0,
+     "h": 0,
+     "variant": 0,
+     "ghost": true
+    },
+    {
+     "id": "hub.ghost.32",
+     "name": "collision",
+     "type": "crate",
+     "x": 14.5,
+     "y": 47.35,
+     "w": 0,
+     "h": 0,
+     "variant": 0,
+     "ghost": true
+    },
+    {
+     "id": "hub.ghost.33",
+     "name": "collision",
+     "type": "crate",
+     "x": 15.48,
+     "y": 47.35,
+     "w": 0,
+     "h": 0,
+     "variant": 0,
+     "ghost": true
+    },
+    {
+     "id": "hub.ghost.34",
+     "name": "collision",
+     "type": "crate",
+     "x": 16.87,
+     "y": 46.35,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1094,8 +1072,8 @@
      "id": "hub.ghost.35",
      "name": "collision",
      "type": "crate",
-     "x": 9.63,
-     "y": 48.75,
+     "x": 17.92,
+     "y": 46.35,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1105,8 +1083,8 @@
      "id": "hub.ghost.36",
      "name": "collision",
      "type": "crate",
-     "x": 14.02,
-     "y": 48.35,
+     "x": 56.58,
+     "y": 47.95,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1116,8 +1094,8 @@
      "id": "hub.ghost.37",
      "name": "collision",
      "type": "crate",
-     "x": 15.0,
-     "y": 48.35,
+     "x": 57.42,
+     "y": 47.95,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1127,8 +1105,8 @@
      "id": "hub.ghost.38",
      "name": "collision",
      "type": "crate",
-     "x": 15.98,
-     "y": 48.35,
+     "x": 61.02,
+     "y": 46.75,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1138,8 +1116,8 @@
      "id": "hub.ghost.39",
      "name": "collision",
      "type": "crate",
-     "x": 54.58,
-     "y": 48.55,
+     "x": 62.0,
+     "y": 46.75,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1149,8 +1127,8 @@
      "id": "hub.ghost.40",
      "name": "collision",
      "type": "crate",
-     "x": 55.42,
-     "y": 48.55,
+     "x": 62.98,
+     "y": 46.75,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1182,7 +1160,7 @@
      "id": "hub.ghost.43",
      "name": "collision",
      "type": "crate",
-     "x": 52.0,
+     "x": 48.6,
      "y": 47.35,
      "w": 0,
      "h": 0,
@@ -1204,8 +1182,8 @@
      "id": "hub.ghost.45",
      "name": "collision",
      "type": "crate",
-     "x": 5.58,
-     "y": 40.75,
+     "x": 4.58,
+     "y": 45.35,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1215,8 +1193,8 @@
      "id": "hub.ghost.46",
      "name": "collision",
      "type": "crate",
-     "x": 6.42,
-     "y": 40.75,
+     "x": 5.42,
+     "y": 45.35,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1226,8 +1204,8 @@
      "id": "hub.ghost.47",
      "name": "collision",
      "type": "crate",
-     "x": 21.58,
-     "y": 42.55,
+     "x": 24.78,
+     "y": 45.35,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1237,8 +1215,8 @@
      "id": "hub.ghost.48",
      "name": "collision",
      "type": "crate",
-     "x": 22.42,
-     "y": 42.55,
+     "x": 25.62,
+     "y": 45.35,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1248,8 +1226,8 @@
      "id": "hub.ghost.49",
      "name": "collision",
      "type": "crate",
-     "x": 49.58,
-     "y": 42.55,
+     "x": 46.78,
+     "y": 45.35,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1259,8 +1237,8 @@
      "id": "hub.ghost.50",
      "name": "collision",
      "type": "crate",
-     "x": 50.42,
-     "y": 42.55,
+     "x": 47.62,
+     "y": 45.35,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1270,8 +1248,8 @@
      "id": "hub.ghost.51",
      "name": "collision",
      "type": "crate",
-     "x": 65.58,
-     "y": 40.75,
+     "x": 67.08,
+     "y": 45.35,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1281,8 +1259,8 @@
      "id": "hub.ghost.52",
      "name": "collision",
      "type": "crate",
-     "x": 66.42,
-     "y": 40.75,
+     "x": 67.92,
+     "y": 45.35,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1292,8 +1270,8 @@
      "id": "hub.ghost.53",
      "name": "collision",
      "type": "tree",
-     "x": 44.67,
-     "y": 30.17,
+     "x": 24.02,
+     "y": 21.41,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1303,8 +1281,19 @@
      "id": "hub.ghost.54",
      "name": "collision",
      "type": "tree",
-     "x": 64.79,
-     "y": 23.73,
+     "x": 57.5,
+     "y": 21.74,
+     "w": 0,
+     "h": 0,
+     "variant": 0,
+     "ghost": true
+    },
+    {
+     "id": "hub.ghost.55",
+     "name": "collision",
+     "type": "tree",
+     "x": 53.49,
+     "y": 21.42,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1314,8 +1303,8 @@
      "id": "hub.ghost.56",
      "name": "collision",
      "type": "tree",
-     "x": 2.13,
-     "y": 29.75,
+     "x": 7.64,
+     "y": 21.41,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1325,8 +1314,8 @@
      "id": "hub.ghost.57",
      "name": "collision",
      "type": "tree",
-     "x": 56.84,
-     "y": 21.36,
+     "x": 69.09,
+     "y": 21.89,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1336,8 +1325,8 @@
      "id": "hub.ghost.58",
      "name": "collision",
      "type": "tree",
-     "x": 68.81,
-     "y": 23.52,
+     "x": 12.19,
+     "y": 21.31,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1347,8 +1336,8 @@
      "id": "hub.ghost.59",
      "name": "collision",
      "type": "tree",
-     "x": 69.92,
-     "y": 26.23,
+     "x": 63.0,
+     "y": 21.45,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1358,8 +1347,8 @@
      "id": "hub.ghost.60",
      "name": "collision",
      "type": "tree",
-     "x": 68.03,
-     "y": 38.11,
+     "x": 67.79,
+     "y": 35.95,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1369,8 +1358,8 @@
      "id": "hub.ghost.61",
      "name": "collision",
      "type": "tree",
-     "x": 8.17,
-     "y": 37.17,
+     "x": 44.43,
+     "y": 38.87,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1380,8 +1369,8 @@
      "id": "hub.ghost.62",
      "name": "collision",
      "type": "tree",
-     "x": 16.28,
-     "y": 36.45,
+     "x": 43.36,
+     "y": 35.97,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1391,8 +1380,8 @@
      "id": "hub.ghost.63",
      "name": "collision",
      "type": "tree",
-     "x": 62.98,
-     "y": 37.6,
+     "x": 18.21,
+     "y": 34.84,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1402,8 +1391,8 @@
      "id": "hub.ghost.64",
      "name": "collision",
      "type": "tree",
-     "x": 63.91,
-     "y": 10.84,
+     "x": 69.63,
+     "y": 10.12,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1413,8 +1402,8 @@
      "id": "hub.ghost.65",
      "name": "collision",
      "type": "tree",
-     "x": 29.73,
-     "y": 32.78,
+     "x": 2.07,
+     "y": 22.87,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1424,8 +1413,8 @@
      "id": "hub.ghost.66",
      "name": "collision",
      "type": "tree",
-     "x": 42.76,
-     "y": 32.86,
+     "x": 29.57,
+     "y": 35.66,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1435,8 +1424,8 @@
      "id": "hub.ghost.67",
      "name": "collision",
      "type": "tree",
-     "x": 3.24,
-     "y": 37.12,
+     "x": 62.08,
+     "y": 35.86,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1446,8 +1435,8 @@
      "id": "hub.ghost.68",
      "name": "collision",
      "type": "tree",
-     "x": 2.24,
-     "y": 45.24,
+     "x": 13.51,
+     "y": 8.86,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1457,8 +1446,8 @@
      "id": "hub.ghost.69",
      "name": "collision",
      "type": "tree",
-     "x": 2.12,
-     "y": 10.0,
+     "x": 4.52,
+     "y": 8.92,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1466,17 +1455,6 @@
     },
     {
      "id": "hub.ghost.70",
-     "name": "collision",
-     "type": "tree",
-     "x": 52.7,
-     "y": 37.95,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "hub.ghost.71",
      "name": "collision",
      "type": "tree",
      "x": 4.0,
@@ -1487,7 +1465,7 @@
      "ghost": true
     },
     {
-     "id": "hub.ghost.72",
+     "id": "hub.ghost.71",
      "name": "collision",
      "type": "tree",
      "x": 4.0,
@@ -1498,11 +1476,22 @@
      "ghost": true
     },
     {
-     "id": "hub.ghost.73",
+     "id": "hub.ghost.72",
      "name": "collision",
      "type": "tree",
      "x": 4.0,
      "y": 26.25,
+     "w": 0,
+     "h": 0,
+     "variant": 0,
+     "ghost": true
+    },
+    {
+     "id": "hub.ghost.73",
+     "name": "collision",
+     "type": "tree",
+     "x": 4.0,
+     "y": 32.75,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1536,6 +1525,17 @@
      "type": "tree",
      "x": 68.0,
      "y": 26.25,
+     "w": 0,
+     "h": 0,
+     "variant": 0,
+     "ghost": true
+    },
+    {
+     "id": "hub.ghost.77",
+     "name": "collision",
+     "type": "tree",
+     "x": 68.0,
+     "y": 32.75,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -1599,69 +1599,7 @@
     {
      "road": [
       [
-       46,
-       24
-      ],
-      [
-       56,
-       26
-      ],
-      [
-       64,
-       31
-      ],
-      [
-       72,
-       32
-      ]
-     ],
-     "w": 4,
-     "m": "cobble"
-    },
-    {
-     "road": [
-      [
-       26,
-       24
-      ],
-      [
-       17,
-       24.5
-      ],
-      [
-       8,
-       25
-      ],
-      [
-       3,
-       25
-      ]
-     ],
-     "w": 3,
-     "m": "gravel"
-    },
-    {
-     "road": [
-      [
-       6,
-       41.5
-      ],
-      [
-       36,
-       42
-      ],
-      [
-       66,
-       41.5
-      ]
-     ],
-     "w": 3.2,
-     "m": "gravel"
-    },
-    {
-     "road": [
-      [
-       6,
+       4,
        18.5
       ],
       [
@@ -1669,11 +1607,51 @@
        18.2
       ],
       [
-       66,
+       68,
        18.5
       ]
      ],
      "w": 2.6,
+     "m": "gravel"
+    },
+    {
+     "road": [
+      [
+       0,
+       31.6
+      ],
+      [
+       26,
+       31.6
+      ],
+      [
+       46,
+       31.6
+      ],
+      [
+       72,
+       31.8
+      ]
+     ],
+     "w": 3,
+     "m": "cobble"
+    },
+    {
+     "road": [
+      [
+       3,
+       44.2
+      ],
+      [
+       36,
+       44.2
+      ],
+      [
+       69,
+       44.2
+      ]
+     ],
+     "w": 3,
      "m": "gravel"
     }
    ],
@@ -1706,9 +1684,9 @@
     ],
     [
      0,
-     22,
+     28,
      5,
-     6
+     7
     ],
     [
      67,
@@ -1746,83 +1724,47 @@
       "strength": 0.8
      },
      {
-      "x": 59,
-      "y": 35.29,
+      "x": 45.6,
+      "y": 28.09,
       "radius": 140,
       "strength": 0.8
      },
      {
-      "x": 50,
-      "y": 18.77,
+      "x": 49.4,
+      "y": 18.97,
       "radius": 170,
       "strength": 0.8
      },
      {
-      "x": 6,
-      "y": 38.06,
+      "x": 5,
+      "y": 42.66,
       "radius": 130,
       "strength": 0.8
      },
      {
-      "x": 22,
-      "y": 39.86,
+      "x": 25.2,
+      "y": 42.66,
       "radius": 130,
       "strength": 0.8
      },
      {
-      "x": 50,
-      "y": 39.86,
+      "x": 47.2,
+      "y": 42.66,
       "radius": 130,
       "strength": 0.8
      },
      {
-      "x": 66,
-      "y": 38.06,
+      "x": 67.5,
+      "y": 42.66,
       "radius": 130,
       "strength": 0.8
      }
     ],
     "decor": [
      {
-      "asset": "art/edges/treeline_mass_02",
-      "x": 65,
-      "y": 3.97,
-      "w": 14.0,
-      "h": 11.2,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/edges/treeline_mass_03",
-      "x": 9,
-      "y": 3.98,
-      "w": 14.0,
-      "h": 11.2,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/edges/treeline_mass_02",
-      "x": 25,
-      "y": 4.07,
-      "w": 14.0,
-      "h": 11.2,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/edges/treeline_mass_02",
-      "x": 17,
-      "y": 4.08,
-      "w": 14.0,
-      "h": 11.2,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
       "asset": "art/edges/treeline_mass_01",
-      "x": 41,
-      "y": 4.09,
+      "x": 73,
+      "y": 3.77,
       "w": 14.0,
       "h": 11.2,
       "anchor": "bottom"
@@ -1830,24 +1772,16 @@
      {
       "asset": "art/edges/treeline_mass_02",
       "x": 1,
-      "y": 4.12,
-      "w": 14.0,
-      "h": 11.2,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/edges/treeline_mass_02",
-      "x": 57,
-      "y": 4.13,
+      "y": 3.83,
       "w": 14.0,
       "h": 11.2,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/edges/treeline_mass_01",
-      "x": 73,
-      "y": 4.14,
+      "asset": "art/edges/treeline_mass_02",
+      "x": 41,
+      "y": 3.89,
       "w": 14.0,
       "h": 11.2,
       "anchor": "bottom",
@@ -1856,7 +1790,15 @@
      {
       "asset": "art/edges/treeline_mass_02",
       "x": 33,
-      "y": 4.15,
+      "y": 3.91,
+      "w": 14.0,
+      "h": 11.2,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/edges/treeline_mass_03",
+      "x": 17,
+      "y": 3.97,
       "w": 14.0,
       "h": 11.2,
       "anchor": "bottom",
@@ -1865,51 +1807,71 @@
      {
       "asset": "art/edges/treeline_mass_02",
       "x": 49,
-      "y": 4.39,
+      "y": 4.08,
       "w": 14.0,
       "h": 11.2,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/rocks/rock_small_01",
-      "x": 22.52,
-      "y": 8.06,
-      "w": 1.44,
-      "h": 1.08,
+      "asset": "art/edges/treeline_mass_03",
+      "x": 25,
+      "y": 4.16,
+      "w": 14.0,
+      "h": 11.2,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/rocks/rock_small_01",
+      "asset": "art/edges/treeline_mass_03",
+      "x": 57,
+      "y": 4.24,
+      "w": 14.0,
+      "h": 11.2,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/edges/treeline_mass_02",
+      "x": 65,
+      "y": 4.24,
+      "w": 14.0,
+      "h": 11.2,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/edges/treeline_mass_03",
+      "x": 9,
+      "y": 4.26,
+      "w": 14.0,
+      "h": 11.2,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/fern_01",
+      "x": 65.14,
+      "y": 8.02,
+      "w": 1.55,
+      "h": 1.24,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/shrub_03",
+      "x": 69.7,
+      "y": 8.04,
+      "w": 2.18,
+      "h": 1.81,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/shrub_02",
       "x": 29.46,
       "y": 8.09,
-      "w": 1.2,
-      "h": 0.9,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 14.64,
-      "y": 8.1,
-      "w": 1.34,
-      "h": 1.34,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_04",
-      "x": 49.32,
-      "y": 8.15,
-      "w": 1.26,
-      "h": 1.26,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/flowers_02",
-      "x": 55.92,
-      "y": 8.17,
-      "w": 1.08,
-      "h": 1.08,
+      "w": 1.79,
+      "h": 1.49,
       "anchor": "bottom"
      },
      {
@@ -1922,6 +1884,14 @@
       "mirror": true
      },
      {
+      "asset": "art/plants/grass_tuft_06",
+      "x": 60.68,
+      "y": 8.25,
+      "w": 1.39,
+      "h": 1.39,
+      "anchor": "bottom"
+     },
+     {
       "asset": "art/plants/flowers_02",
       "x": 46.08,
       "y": 8.26,
@@ -1931,29 +1901,13 @@
       "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 27.77,
-      "y": 8.29,
-      "w": 1.36,
-      "h": 1.36,
+      "asset": "art/plants/grass_tuft_04",
+      "x": 53.19,
+      "y": 8.36,
+      "w": 1.5,
+      "h": 1.5,
       "anchor": "bottom",
       "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 51.59,
-      "y": 8.32,
-      "w": 1.36,
-      "h": 1.36,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 31.04,
-      "y": 8.35,
-      "w": 0.93,
-      "h": 0.93,
-      "anchor": "bottom"
      },
      {
       "asset": "art/edges/town_wall",
@@ -2004,20 +1958,20 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 3.02,
-      "y": 8.44,
-      "w": 1.47,
-      "h": 1.47,
+      "asset": "art/plants/mushrooms_02",
+      "x": 32.34,
+      "y": 8.45,
+      "w": 0.96,
+      "h": 0.96,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/mushrooms_01",
-      "x": 6.22,
-      "y": 8.47,
-      "w": 0.99,
-      "h": 0.99,
+      "asset": "art/plants/shrub_02",
+      "x": 26.35,
+      "y": 8.45,
+      "w": 1.95,
+      "h": 1.63,
       "anchor": "bottom"
      },
      {
@@ -2030,113 +1984,115 @@
       "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_03",
-      "x": 65.27,
-      "y": 8.51,
-      "w": 1.52,
-      "h": 1.52,
+      "asset": "art/plants/grass_tuft_05",
+      "x": 61.84,
+      "y": 8.58,
+      "w": 1.57,
+      "h": 1.57,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/grass_tuft_01",
-      "x": 8.7,
+      "asset": "art/plants/grass_tuft_03",
+      "x": 51.35,
       "y": 8.59,
-      "w": 1.27,
-      "h": 1.27,
+      "w": 1.44,
+      "h": 1.44,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/flowers_03",
-      "x": 68.55,
-      "y": 8.61,
-      "w": 1.0,
-      "h": 1.0,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 13.16,
-      "y": 8.67,
-      "w": 1.07,
-      "h": 1.07,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_01",
-      "x": 10.77,
-      "y": 8.68,
-      "w": 0.97,
-      "h": 0.97,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 66.48,
-      "y": 8.7,
-      "w": 1.01,
-      "h": 1.01,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/shrub_01",
-      "x": 60.76,
-      "y": 8.72,
-      "w": 1.85,
-      "h": 1.54,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_03",
-      "x": 19.51,
-      "y": 8.88,
-      "w": 1.45,
-      "h": 1.45,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_03",
-      "x": 7.35,
-      "y": 8.89,
-      "w": 0.92,
-      "h": 0.92,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_03",
-      "x": 20.98,
-      "y": 8.96,
-      "w": 1.29,
-      "h": 1.29,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_01",
-      "x": 39.59,
-      "y": 9.06,
-      "w": 1.3,
-      "h": 1.3,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_01",
-      "x": 54.01,
-      "y": 9.09,
-      "w": 0.94,
-      "h": 0.94,
+      "asset": "art/plants/flowers_02",
+      "x": 49.58,
+      "y": 8.59,
+      "w": 1.18,
+      "h": 1.18,
       "anchor": "bottom",
       "mirror": true
      },
      {
       "asset": "art/plants/grass_tuft_02",
-      "x": 57.57,
-      "y": 9.14,
-      "w": 1.58,
-      "h": 1.58,
+      "x": 10.35,
+      "y": 8.63,
+      "w": 1.2,
+      "h": 1.2,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_04",
+      "x": 27.92,
+      "y": 8.68,
+      "w": 1.19,
+      "h": 1.19,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_06",
+      "x": 30.63,
+      "y": 8.68,
+      "w": 1.31,
+      "h": 1.31,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/mushrooms_01",
+      "x": 66.57,
+      "y": 8.89,
+      "w": 1.17,
+      "h": 1.17,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/flowers_03",
+      "x": 54.56,
+      "y": 8.98,
+      "w": 1.2,
+      "h": 1.2,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_03",
+      "x": 56.55,
+      "y": 9.05,
+      "w": 1.04,
+      "h": 1.04,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/trees/broadleaf_01",
+      "x": 13.51,
+      "y": 9.11,
+      "w": 4.9,
+      "h": 5.51,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/trees/coastal_pine_02",
+      "x": 4.52,
+      "y": 9.17,
+      "w": 6.17,
+      "h": 7.72,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_01",
+      "x": 19.96,
+      "y": 9.17,
+      "w": 1.09,
+      "h": 1.09,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_06",
+      "x": 57.68,
+      "y": 9.18,
+      "w": 1.28,
+      "h": 1.28,
       "anchor": "bottom"
      },
      {
@@ -2148,19 +2104,11 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/fern_02",
-      "x": 43.1,
-      "y": 9.25,
-      "w": 1.64,
-      "h": 1.31,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/fern_01",
-      "x": 43.12,
-      "y": 9.28,
-      "w": 1.64,
-      "h": 1.31,
+      "asset": "art/plants/grass_tuft_04",
+      "x": 55.49,
+      "y": 9.23,
+      "w": 1.25,
+      "h": 1.25,
       "anchor": "bottom"
      },
      {
@@ -2173,12 +2121,29 @@
       "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_06",
-      "x": 69.03,
-      "y": 9.39,
-      "w": 1.43,
-      "h": 1.43,
+      "asset": "art/plants/mushrooms_02",
+      "x": 9.61,
+      "y": 9.31,
+      "w": 0.92,
+      "h": 0.92,
       "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/mushrooms_02",
+      "x": 18.13,
+      "y": 9.33,
+      "w": 0.9,
+      "h": 0.9,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_01",
+      "x": 42.99,
+      "y": 9.38,
+      "w": 1.52,
+      "h": 1.52,
+      "anchor": "bottom",
+      "mirror": true
      },
      {
       "asset": "art/plants/grass_tuft_06",
@@ -2189,47 +2154,64 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/rocks/rock_small_03",
-      "x": 13.59,
-      "y": 9.44,
-      "w": 1.36,
-      "h": 1.02,
+      "asset": "art/plants/flowers_02",
+      "x": 51.73,
+      "y": 9.41,
+      "w": 1.07,
+      "h": 1.07,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_01",
+      "x": 53.36,
+      "y": 9.41,
+      "w": 1.14,
+      "h": 1.14,
       "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 17.08,
-      "y": 9.47,
-      "w": 1.59,
-      "h": 1.59,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/shrub_04",
-      "x": 51.34,
-      "y": 9.47,
-      "w": 2.24,
-      "h": 1.87,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 40.59,
-      "y": 9.5,
-      "w": 1.51,
-      "h": 1.51,
-      "anchor": "bottom",
-      "mirror": true
      },
      {
       "asset": "art/plants/mushrooms_01",
-      "x": 18.28,
-      "y": 9.57,
-      "w": 1.15,
-      "h": 1.15,
+      "x": 53.54,
+      "y": 9.46,
+      "w": 0.99,
+      "h": 0.99,
       "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/mushrooms_02",
+      "x": 7.64,
+      "y": 9.5,
+      "w": 1.04,
+      "h": 1.04,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_02",
+      "x": 38.84,
+      "y": 9.54,
+      "w": 1.55,
+      "h": 1.55,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_05",
+      "x": 50.35,
+      "y": 9.56,
+      "w": 1.34,
+      "h": 1.34,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_05",
+      "x": 40.65,
+      "y": 9.6,
+      "w": 1.34,
+      "h": 1.34,
+      "anchor": "bottom",
+      "mirror": true
      },
      {
       "asset": "art/plants/flowers_01",
@@ -2241,44 +2223,62 @@
       "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_03",
-      "x": 14.74,
-      "y": 9.91,
-      "w": 1.5,
-      "h": 1.5,
+      "asset": "art/plants/flowers_02",
+      "x": 22.42,
+      "y": 9.84,
+      "w": 1.12,
+      "h": 1.12,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/flowers_02",
-      "x": 22.6,
-      "y": 10.01,
-      "w": 1.15,
-      "h": 1.15,
+      "asset": "art/plants/mushrooms_01",
+      "x": 65.5,
+      "y": 10.08,
+      "w": 1.06,
+      "h": 1.06,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/grass_tuft_03",
-      "x": 12.53,
-      "y": 10.15,
-      "w": 1.21,
-      "h": 1.21,
+      "asset": "art/plants/mushrooms_02",
+      "x": 4.17,
+      "y": 10.3,
+      "w": 1.11,
+      "h": 1.11,
       "anchor": "bottom"
      },
      {
-      "asset": "art/trees/coastal_pine_02",
-      "x": 2.12,
-      "y": 10.25,
-      "w": 5.25,
-      "h": 6.56,
+      "asset": "art/plants/grass_tuft_01",
+      "x": 2.03,
+      "y": 10.34,
+      "w": 1.36,
+      "h": 1.36,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/trees/coastal_pine_01",
+      "x": 69.63,
+      "y": 10.37,
+      "w": 5.99,
+      "h": 7.49,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/flowers_02",
-      "x": 10.92,
-      "y": 10.36,
-      "w": 1.14,
-      "h": 1.14,
+      "asset": "art/plants/grass_tuft_05",
+      "x": 13.49,
+      "y": 10.52,
+      "w": 1.49,
+      "h": 1.49,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/flowers_03",
+      "x": 19.67,
+      "y": 10.52,
+      "w": 0.86,
+      "h": 0.86,
       "anchor": "bottom"
      },
      {
@@ -2291,77 +2291,131 @@
       "mirror": true
      },
      {
-      "asset": "art/rocks/rock_small_02",
-      "x": 16.76,
-      "y": 10.57,
+      "asset": "art/plants/flowers_01",
+      "x": 10.63,
+      "y": 10.55,
+      "w": 0.93,
+      "h": 0.93,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/mushrooms_01",
+      "x": 20.71,
+      "y": 10.56,
+      "w": 1.08,
+      "h": 1.08,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_01",
+      "x": 17.74,
+      "y": 10.58,
       "w": 1.47,
-      "h": 1.1,
+      "h": 1.47,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/flowers_01",
-      "x": 39.28,
-      "y": 10.58,
-      "w": 1.0,
-      "h": 1.0,
+      "asset": "art/plants/grass_tuft_03",
+      "x": 19.68,
+      "y": 10.59,
+      "w": 1.25,
+      "h": 1.25,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_03",
+      "x": 9.31,
+      "y": 10.62,
+      "w": 0.93,
+      "h": 0.93,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_03",
+      "x": 18.55,
+      "y": 10.65,
+      "w": 0.92,
+      "h": 0.92,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_03",
+      "x": 62.26,
+      "y": 10.66,
+      "w": 0.93,
+      "h": 0.93,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_05",
+      "x": 11.38,
+      "y": 10.67,
+      "w": 1.45,
+      "h": 1.45,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_05",
+      "x": 16.26,
+      "y": 10.74,
+      "w": 1.3,
+      "h": 1.3,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_03",
+      "x": 61.04,
+      "y": 11.32,
+      "w": 1.34,
+      "h": 1.34,
       "anchor": "bottom",
       "mirror": true
      },
      {
       "asset": "art/plants/grass_tuft_01",
-      "x": 20.0,
-      "y": 10.62,
-      "w": 1.27,
-      "h": 1.27,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_06",
-      "x": 67.87,
-      "y": 10.71,
-      "w": 1.49,
-      "h": 1.49,
+      "x": 68.15,
+      "y": 11.33,
+      "w": 1.36,
+      "h": 1.36,
       "anchor": "bottom"
      },
      {
-      "asset": "art/trees/coastal_pine_02",
-      "x": 63.91,
-      "y": 11.09,
-      "w": 6.31,
-      "h": 7.89,
-      "anchor": "bottom",
-      "mirror": true
+      "asset": "art/plants/grass_tuft_04",
+      "x": 63.78,
+      "y": 11.33,
+      "w": 1.43,
+      "h": 1.43,
+      "anchor": "bottom"
      },
      {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 3.45,
-      "y": 11.38,
+      "asset": "art/plants/grass_tuft_04",
+      "x": 69.44,
+      "y": 11.71,
       "w": 1.57,
       "h": 1.57,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/fern_02",
-      "x": 2.43,
-      "y": 11.47,
-      "w": 1.63,
-      "h": 1.3,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/flowers_03",
-      "x": 3.24,
-      "y": 11.56,
-      "w": 0.96,
-      "h": 0.96,
+      "asset": "art/plants/flowers_01",
+      "x": 2.51,
+      "y": 11.79,
+      "w": 1.16,
+      "h": 1.16,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/edges/treeline_mass_01",
+      "asset": "art/plants/flowers_01",
+      "x": 38.6,
+      "y": 11.83,
+      "w": 1.14,
+      "h": 1.14,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/edges/treeline_mass_03",
       "x": 1.5,
       "y": 12,
       "w": 14.0,
@@ -2369,7 +2423,7 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/edges/treeline_mass_02",
+      "asset": "art/edges/treeline_mass_03",
       "x": 70.5,
       "y": 12,
       "w": 14.0,
@@ -2378,73 +2432,83 @@
       "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 66.32,
-      "y": 12.4,
-      "w": 1.51,
-      "h": 1.51,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/flowers_02",
-      "x": 39.28,
-      "y": 12.76,
-      "w": 1.0,
-      "h": 1.0,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/ash_pine_01",
-      "x": 4.0,
-      "y": 13.5,
-      "w": 4.82,
-      "h": 8.03,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/ash_pine_04",
-      "x": 68.0,
-      "y": 13.5,
-      "w": 4.42,
-      "h": 7.37,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 3.05,
-      "y": 13.74,
-      "w": 1.44,
-      "h": 1.44,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_01",
-      "x": 3.21,
-      "y": 15.63,
+      "asset": "art/plants/flowers_01",
+      "x": 63.36,
+      "y": 12.41,
       "w": 0.97,
       "h": 0.97,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/flowers_03",
-      "x": 39.61,
-      "y": 15.82,
-      "w": 1.1,
-      "h": 1.1,
+      "asset": "art/plants/grass_tuft_05",
+      "x": 65.78,
+      "y": 12.42,
+      "w": 1.35,
+      "h": 1.35,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_02",
+      "x": 61.78,
+      "y": 12.45,
+      "w": 0.98,
+      "h": 0.98,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_06",
+      "x": 60.27,
+      "y": 12.57,
+      "w": 1.45,
+      "h": 1.45,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_02",
+      "x": 3.61,
+      "y": 12.98,
+      "w": 1.27,
+      "h": 1.27,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/trees/ash_pine_01",
+      "x": 4.0,
+      "y": 13.5,
+      "w": 4.03,
+      "h": 6.72,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/trees/ash_pine_02",
+      "x": 68.0,
+      "y": 13.5,
+      "w": 4.24,
+      "h": 7.06,
       "anchor": "bottom"
      },
      {
       "asset": "art/plants/grass_tuft_04",
-      "x": 2.65,
-      "y": 16.83,
-      "w": 1.36,
-      "h": 1.36,
+      "x": 2.54,
+      "y": 14.7,
+      "w": 1.29,
+      "h": 1.29,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/mushrooms_01",
+      "x": 2.88,
+      "y": 16.13,
+      "w": 1.06,
+      "h": 1.06,
       "anchor": "bottom",
       "mirror": true
      },
      {
       "asset": "art/props/fence_wood",
-      "x": 4,
+      "x": 3.6,
       "y": 18,
       "w": 2.8,
       "h": 2.1,
@@ -2452,7 +2516,7 @@
      },
      {
       "asset": "art/props/hand_water_pump",
-      "x": 23.5,
+      "x": 23.0,
       "y": 18.2,
       "w": 2.8,
       "h": 4.2,
@@ -2484,7 +2548,7 @@
      },
      {
       "asset": "art/props/fence_wood",
-      "x": 22.4,
+      "x": 21.4,
       "y": 18.2,
       "w": 2.24,
       "h": 1.68,
@@ -2492,8 +2556,8 @@
      },
      {
       "asset": "art/props/storage_shelf",
-      "x": 61.5,
-      "y": 18.5,
+      "x": 59.8,
+      "y": 18.4,
       "w": 4.2,
       "h": 4.9,
       "anchor": "bottom"
@@ -2517,8 +2581,8 @@
      },
      {
       "asset": "art/props/wheelbarrow",
-      "x": 14,
-      "y": 19,
+      "x": 13.4,
+      "y": 18.9,
       "w": 4.2,
       "h": 3.15,
       "anchor": "bottom"
@@ -2540,27 +2604,11 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/mushrooms_02",
-      "x": 4.67,
-      "y": 19.81,
-      "w": 1.19,
-      "h": 1.19,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/props/campfire",
-      "x": 50,
-      "y": 20,
-      "w": 2.1,
-      "h": 1.75,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/ash_pine_02",
+      "asset": "art/trees/ash_pine_01",
       "x": 4.0,
       "y": 20.0,
-      "w": 4.36,
-      "h": 7.26,
+      "w": 4.4,
+      "h": 7.34,
       "anchor": "bottom"
      },
      {
@@ -2572,11 +2620,36 @@
       "anchor": "bottom"
      },
      {
+      "asset": "art/plants/flowers_01",
+      "x": 69.04,
+      "y": 20.18,
+      "w": 1.16,
+      "h": 1.16,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
       "asset": "art/props/notice_board",
       "x": 31,
       "y": 20.2,
       "w": 2.8,
       "h": 3.5,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/props/campfire",
+      "x": 49.4,
+      "y": 20.2,
+      "w": 2.1,
+      "h": 1.75,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_01",
+      "x": 20.17,
+      "y": 20.38,
+      "w": 1.46,
+      "h": 1.46,
       "anchor": "bottom"
      },
      {
@@ -2588,105 +2661,63 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/flowers_03",
-      "x": 18.84,
-      "y": 20.41,
-      "w": 1.0,
-      "h": 1.0,
+      "asset": "art/plants/fern_01",
+      "x": 58.06,
+      "y": 20.5,
+      "w": 1.91,
+      "h": 1.52,
       "anchor": "bottom",
       "mirror": true
      },
      {
       "asset": "art/plants/grass_tuft_02",
-      "x": 47.26,
+      "x": 65.64,
       "y": 20.52,
-      "w": 1.22,
-      "h": 1.22,
+      "w": 1.37,
+      "h": 1.37,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 65.34,
-      "y": 20.56,
-      "w": 1.4,
-      "h": 1.4,
+      "asset": "art/plants/fern_02",
+      "x": 66.08,
+      "y": 20.66,
+      "w": 1.46,
+      "h": 1.17,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/mushrooms_01",
-      "x": 25.13,
-      "y": 20.58,
-      "w": 0.97,
-      "h": 0.97,
+      "asset": "art/plants/flowers_03",
+      "x": 66.03,
+      "y": 20.67,
+      "w": 1.24,
+      "h": 1.24,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/shrub_03",
-      "x": 16.51,
-      "y": 20.59,
-      "w": 1.96,
-      "h": 1.63,
+      "asset": "art/plants/flowers_01",
+      "x": 18.35,
+      "y": 20.73,
+      "w": 1.16,
+      "h": 1.16,
       "anchor": "bottom"
      },
      {
       "asset": "art/plants/grass_tuft_05",
-      "x": 53.32,
-      "y": 20.69,
-      "w": 1.22,
-      "h": 1.22,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/fern_01",
-      "x": 23.46,
-      "y": 20.93,
+      "x": 4.64,
+      "y": 20.75,
       "w": 1.49,
-      "h": 1.2,
-      "anchor": "bottom"
+      "h": 1.49,
+      "anchor": "bottom",
+      "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_03",
-      "x": 61.54,
-      "y": 20.96,
+      "asset": "art/plants/mushrooms_02",
+      "x": 16.26,
+      "y": 21.2,
       "w": 1.19,
       "h": 1.19,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_03",
-      "x": 2.94,
-      "y": 21.01,
-      "w": 1.39,
-      "h": 1.39,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 13.43,
-      "y": 21.19,
-      "w": 1.27,
-      "h": 1.27,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_02",
-      "x": 21.77,
-      "y": 21.22,
-      "w": 1.17,
-      "h": 1.17,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_01",
-      "x": 15.59,
-      "y": 21.23,
-      "w": 1.04,
-      "h": 1.04,
       "anchor": "bottom",
       "mirror": true
      },
@@ -2699,63 +2730,69 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/flowers_03",
-      "x": 65.65,
-      "y": 21.5,
-      "w": 1.12,
-      "h": 1.12,
+      "asset": "art/plants/grass_tuft_04",
+      "x": 2.81,
+      "y": 21.4,
+      "w": 1.33,
+      "h": 1.33,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/shrub_04",
-      "x": 19.51,
-      "y": 21.5,
-      "w": 2.02,
-      "h": 1.68,
+      "asset": "art/trees/coastal_pine_01",
+      "x": 12.19,
+      "y": 21.56,
+      "w": 5.69,
+      "h": 7.12,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_04",
+      "x": 15.43,
+      "y": 21.6,
+      "w": 1.34,
+      "h": 1.34,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/fern_03",
-      "x": 62.51,
-      "y": 21.57,
-      "w": 1.61,
-      "h": 1.28,
-      "anchor": "bottom",
-      "mirror": true
+      "asset": "art/trees/coastal_pine_01",
+      "x": 24.02,
+      "y": 21.66,
+      "w": 4.88,
+      "h": 6.1,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/trees/coastal_pine_02",
+      "x": 7.64,
+      "y": 21.66,
+      "w": 4.78,
+      "h": 5.98,
+      "anchor": "bottom"
      },
      {
       "asset": "art/trees/broadleaf_02",
-      "x": 56.84,
-      "y": 21.61,
-      "w": 5.86,
-      "h": 6.6,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_02",
-      "x": 6.62,
-      "y": 21.72,
-      "w": 0.97,
-      "h": 0.97,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_06",
-      "x": 8.27,
-      "y": 21.78,
-      "w": 1.6,
-      "h": 1.6,
+      "x": 53.49,
+      "y": 21.67,
+      "w": 5.47,
+      "h": 6.15,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/flowers_01",
-      "x": 20.73,
-      "y": 21.78,
-      "w": 1.06,
-      "h": 1.06,
+      "asset": "art/trees/broadleaf_01",
+      "x": 63.0,
+      "y": 21.7,
+      "w": 5.0,
+      "h": 5.63,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_02",
+      "x": 47.08,
+      "y": 21.73,
+      "w": 1.49,
+      "h": 1.49,
       "anchor": "bottom",
       "mirror": true
      },
@@ -2768,108 +2805,233 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/grass_tuft_06",
-      "x": 9.86,
-      "y": 21.91,
-      "w": 1.28,
-      "h": 1.28,
+      "asset": "art/trees/coastal_pine_02",
+      "x": 57.5,
+      "y": 21.99,
+      "w": 5.39,
+      "h": 6.73,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/trees/coastal_pine_02",
+      "x": 69.09,
+      "y": 22.14,
+      "w": 4.81,
+      "h": 6.01,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_04",
-      "x": 18.33,
-      "y": 21.98,
-      "w": 1.49,
-      "h": 1.49,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 63.68,
-      "y": 22.27,
-      "w": 1.09,
-      "h": 1.09,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_01",
-      "x": 50.78,
-      "y": 22.28,
-      "w": 1.49,
-      "h": 1.49,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 52.54,
-      "y": 22.4,
-      "w": 1.36,
-      "h": 1.36,
+      "asset": "art/plants/grass_tuft_05",
+      "x": 65.26,
+      "y": 22.48,
+      "w": 1.25,
+      "h": 1.25,
       "anchor": "bottom"
      },
      {
       "asset": "art/plants/flowers_01",
-      "x": 4.94,
-      "y": 22.49,
-      "w": 0.93,
-      "h": 0.93,
+      "x": 18.3,
+      "y": 22.7,
+      "w": 1.12,
+      "h": 1.12,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/mushrooms_02",
-      "x": 13.9,
-      "y": 22.57,
-      "w": 0.89,
-      "h": 0.89,
+      "asset": "art/plants/grass_tuft_06",
+      "x": 21.33,
+      "y": 22.85,
+      "w": 1.3,
+      "h": 1.3,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_02",
+      "x": 48.54,
+      "y": 22.91,
+      "w": 1.5,
+      "h": 1.5,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_04",
+      "x": 5.91,
+      "y": 23.03,
+      "w": 1.58,
+      "h": 1.58,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_03",
+      "x": 24.91,
+      "y": 23.05,
+      "w": 1.55,
+      "h": 1.55,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/mushrooms_01",
+      "x": 9.99,
+      "y": 23.1,
+      "w": 0.94,
+      "h": 0.94,
       "anchor": "bottom"
      },
      {
       "asset": "art/plants/grass_tuft_02",
-      "x": 11.77,
-      "y": 22.61,
-      "w": 1.4,
-      "h": 1.4,
+      "x": 64.36,
+      "y": 23.11,
+      "w": 1.44,
+      "h": 1.44,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/trees/broadleaf_02",
+      "x": 2.07,
+      "y": 23.12,
+      "w": 5.23,
+      "h": 5.88,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_06",
+      "x": 50.81,
+      "y": 23.17,
+      "w": 1.42,
+      "h": 1.42,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/flowers_02",
-      "x": 54.92,
-      "y": 22.77,
-      "w": 1.18,
-      "h": 1.18,
+      "asset": "art/plants/flowers_03",
+      "x": 22.64,
+      "y": 23.22,
+      "w": 1.2,
+      "h": 1.2,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_05",
+      "x": 14.91,
+      "y": 23.31,
+      "w": 1.51,
+      "h": 1.51,
       "anchor": "bottom",
       "mirror": true
      },
      {
       "asset": "art/plants/fern_01",
-      "x": 58.31,
-      "y": 23.12,
-      "w": 2.01,
-      "h": 1.61,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/coastal_pine_02",
-      "x": 68.81,
-      "y": 23.77,
-      "w": 5.44,
-      "h": 6.8,
+      "x": 52.31,
+      "y": 23.37,
+      "w": 1.68,
+      "h": 1.35,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/trees/coastal_pine_02",
-      "x": 64.79,
-      "y": 23.98,
-      "w": 6.09,
-      "h": 7.62,
+      "asset": "art/plants/flowers_01",
+      "x": 47.65,
+      "y": 23.39,
+      "w": 1.07,
+      "h": 1.07,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/mushrooms_02",
+      "x": 16.72,
+      "y": 23.4,
+      "w": 1.19,
+      "h": 1.19,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_02",
+      "x": 58.15,
+      "y": 23.44,
+      "w": 1.29,
+      "h": 1.29,
       "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/fern_01",
+      "x": 69.72,
+      "y": 23.45,
+      "w": 1.75,
+      "h": 1.4,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_01",
+      "x": 11.53,
+      "y": 23.46,
+      "w": 1.56,
+      "h": 1.56,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/mushrooms_02",
+      "x": 66.91,
+      "y": 23.54,
+      "w": 1.17,
+      "h": 1.17,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_02",
+      "x": 8.14,
+      "y": 23.56,
+      "w": 0.93,
+      "h": 0.93,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_03",
+      "x": 20.11,
+      "y": 23.65,
+      "w": 1.2,
+      "h": 1.2,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_02",
+      "x": 59.67,
+      "y": 23.65,
+      "w": 1.31,
+      "h": 1.31,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/mushrooms_02",
+      "x": 53.69,
+      "y": 23.71,
+      "w": 1.17,
+      "h": 1.17,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/mushrooms_02",
+      "x": 56.27,
+      "y": 23.74,
+      "w": 0.95,
+      "h": 0.95,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/flowers_01",
+      "x": 60.73,
+      "y": 24.27,
+      "w": 0.94,
+      "h": 0.94,
+      "anchor": "bottom",
+      "mirror": true
      },
      {
       "asset": "art/props/fountain",
@@ -2880,23 +3042,15 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/grass_tuft_04",
-      "x": 60.09,
-      "y": 24.59,
-      "w": 1.4,
-      "h": 1.4,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/props/signpost",
-      "x": 47.5,
+      "asset": "art/props/well",
+      "x": 29.5,
       "y": 25,
-      "w": 1.75,
-      "h": 2.8,
+      "w": 2.8,
+      "h": 3.5,
       "anchor": "bottom"
      },
      {
-      "asset": "art/edges/treeline_mass_03",
+      "asset": "art/edges/treeline_mass_01",
       "x": 1.5,
       "y": 25.0,
       "w": 14.0,
@@ -2904,7 +3058,7 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/edges/treeline_mass_02",
+      "asset": "art/edges/treeline_mass_03",
       "x": 70.5,
       "y": 25.0,
       "w": 14.0,
@@ -2913,52 +3067,46 @@
       "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 61.21,
-      "y": 25.41,
-      "w": 1.55,
-      "h": 1.55,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/props/well",
-      "x": 13,
-      "y": 25.6,
-      "w": 2.8,
-      "h": 3.5,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_04",
-      "x": 61.52,
-      "y": 26.41,
-      "w": 1.23,
-      "h": 1.23,
+      "asset": "art/plants/grass_tuft_06",
+      "x": 59.32,
+      "y": 25.02,
+      "w": 1.43,
+      "h": 1.43,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/mushrooms_01",
-      "x": 23.78,
-      "y": 26.43,
-      "w": 1.09,
-      "h": 1.09,
-      "anchor": "bottom"
+      "asset": "art/plants/flowers_01",
+      "x": 25.72,
+      "y": 25.09,
+      "w": 0.9,
+      "h": 0.9,
+      "anchor": "bottom",
+      "mirror": true
      },
      {
-      "asset": "art/trees/broadleaf_01",
-      "x": 69.92,
-      "y": 26.48,
-      "w": 6.31,
-      "h": 7.1,
+      "asset": "art/plants/grass_tuft_06",
+      "x": 60.57,
+      "y": 25.5,
+      "w": 1.54,
+      "h": 1.54,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/mushrooms_02",
+      "x": 2.65,
+      "y": 26.06,
+      "w": 1.13,
+      "h": 1.13,
       "anchor": "bottom"
      },
      {
       "asset": "art/trees/ash_pine_03",
       "x": 4.0,
       "y": 26.5,
-      "w": 4.05,
-      "h": 6.75,
+      "w": 4.59,
+      "h": 7.65,
       "anchor": "bottom"
      },
      {
@@ -2970,156 +3118,21 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/flowers_02",
-      "x": 66.45,
-      "y": 26.64,
-      "w": 1.09,
-      "h": 1.09,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/flowers_03",
-      "x": 17.48,
-      "y": 26.92,
-      "w": 0.97,
-      "h": 0.97,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_06",
-      "x": 63.69,
-      "y": 26.93,
-      "w": 1.48,
-      "h": 1.48,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 21.22,
-      "y": 27.07,
-      "w": 1.27,
-      "h": 1.27,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/shrub_03",
-      "x": 11.99,
-      "y": 27.2,
-      "w": 2.25,
-      "h": 1.88,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
       "asset": "art/plants/grass_tuft_03",
-      "x": 64.62,
-      "y": 27.25,
-      "w": 1.38,
-      "h": 1.38,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 19.5,
-      "y": 27.36,
-      "w": 1.1,
-      "h": 1.1,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/fern_01",
-      "x": 48.82,
-      "y": 27.38,
-      "w": 1.58,
-      "h": 1.27,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_03",
-      "x": 66.94,
-      "y": 27.41,
-      "w": 1.43,
-      "h": 1.43,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_03",
-      "x": 23.16,
-      "y": 27.47,
-      "w": 1.5,
-      "h": 1.5,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/flowers_03",
-      "x": 10.35,
-      "y": 27.5,
-      "w": 1.16,
-      "h": 1.16,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 14.5,
-      "y": 27.52,
-      "w": 1.5,
-      "h": 1.5,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/flowers_01",
-      "x": 46.99,
-      "y": 27.56,
-      "w": 1.17,
-      "h": 1.17,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_02",
-      "x": 18.44,
-      "y": 27.58,
-      "w": 0.93,
-      "h": 0.93,
+      "x": 58.68,
+      "y": 27.43,
+      "w": 1.31,
+      "h": 1.31,
       "anchor": "bottom"
      },
      {
       "asset": "art/plants/mushrooms_02",
-      "x": 5.64,
-      "y": 27.66,
+      "x": 60.38,
+      "y": 27.69,
       "w": 1.19,
       "h": 1.19,
       "anchor": "bottom",
       "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_03",
-      "x": 69.89,
-      "y": 27.66,
-      "w": 1.12,
-      "h": 1.12,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_01",
-      "x": 24.73,
-      "y": 27.69,
-      "w": 1.27,
-      "h": 1.27,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 7.87,
-      "y": 27.75,
-      "w": 0.92,
-      "h": 0.92,
-      "anchor": "bottom"
      },
      {
       "asset": "art/props/statue_hunter",
@@ -3130,21 +3143,21 @@
       "anchor": "bottom"
      },
      {
+      "asset": "art/plants/grass_tuft_02",
+      "x": 25.34,
+      "y": 28.15,
+      "w": 1.26,
+      "h": 1.26,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
       "asset": "art/props/bench",
       "x": 32,
       "y": 28.2,
       "w": 2.8,
       "h": 1.75,
       "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/flowers_03",
-      "x": 3.02,
-      "y": 28.32,
-      "w": 0.98,
-      "h": 0.98,
-      "anchor": "bottom",
-      "mirror": true
      },
      {
       "asset": "art/props/lantern_post_variant",
@@ -3163,143 +3176,82 @@
       "anchor": "bottom"
      },
      {
+      "asset": "art/plants/grass_tuft_04",
+      "x": 2.84,
+      "y": 28.94,
+      "w": 1.25,
+      "h": 1.25,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/props/tool_rack",
+      "x": 59.5,
+      "y": 29.3,
+      "w": 3.5,
+      "h": 3.85,
+      "anchor": "bottom"
+     },
+     {
       "asset": "art/plants/flowers_03",
-      "x": 46.41,
-      "y": 28.67,
-      "w": 1.0,
-      "h": 1.0,
+      "x": 25.94,
+      "y": 29.31,
+      "w": 0.9,
+      "h": 0.9,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_03",
+      "x": 39.57,
+      "y": 29.41,
+      "w": 1.48,
+      "h": 1.48,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_04",
-      "x": 24.42,
-      "y": 28.75,
-      "w": 1.19,
-      "h": 1.19,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/flowers_02",
-      "x": 24.4,
-      "y": 29.46,
-      "w": 0.89,
-      "h": 0.89,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 31.24,
-      "y": 29.81,
-      "w": 1.03,
-      "h": 1.03,
+      "asset": "art/plants/flowers_03",
+      "x": 29.91,
+      "y": 29.49,
+      "w": 0.91,
+      "h": 0.91,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/flowers_01",
-      "x": 29.61,
-      "y": 29.81,
-      "w": 0.99,
-      "h": 0.99,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/shrub_02",
-      "x": 26.29,
-      "y": 29.86,
-      "w": 1.82,
-      "h": 1.51,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_01",
-      "x": 47.41,
-      "y": 29.96,
-      "w": 0.96,
-      "h": 0.96,
+      "asset": "art/props/brazier",
+      "x": 45.6,
+      "y": 29.8,
+      "w": 1.4,
+      "h": 2.45,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/mushrooms_01",
-      "x": 28.2,
-      "y": 29.99,
-      "w": 0.95,
-      "h": 0.95,
+      "asset": "art/props/barrel_01",
+      "x": 58.6,
+      "y": 30.2,
+      "w": 1.4,
+      "h": 1.75,
       "anchor": "bottom"
      },
      {
-      "asset": "art/trees/broadleaf_01",
-      "x": 2.13,
-      "y": 30.0,
-      "w": 6.1,
-      "h": 6.87,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 33.04,
-      "y": 30.25,
-      "w": 1.11,
-      "h": 1.11,
+      "asset": "art/props/signpost",
+      "x": 38.6,
+      "y": 30.8,
+      "w": 1.75,
+      "h": 2.8,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/grass_tuft_04",
-      "x": 40.45,
-      "y": 30.3,
-      "w": 1.3,
-      "h": 1.3,
+      "asset": "art/edges/treeline_mass_01",
+      "x": 1.5,
+      "y": 31.5,
+      "w": 14.0,
+      "h": 11.2,
       "anchor": "bottom"
      },
      {
-      "asset": "art/trees/broadleaf_02",
-      "x": 44.67,
-      "y": 30.42,
-      "w": 4.84,
-      "h": 5.45,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_01",
-      "x": 24.26,
-      "y": 30.92,
-      "w": 1.58,
-      "h": 1.58,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/flowers_02",
-      "x": 39.27,
-      "y": 31.29,
-      "w": 1.15,
-      "h": 1.15,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 43.6,
-      "y": 31.43,
-      "w": 1.1,
-      "h": 1.1,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/rocks/rock_small_02",
-      "x": 40.47,
-      "y": 31.46,
-      "w": 1.51,
-      "h": 1.14,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/edges/treeline_mass_02",
+      "asset": "art/edges/treeline_mass_01",
       "x": 70.5,
       "y": 31.5,
       "w": 14.0,
@@ -3308,152 +3260,282 @@
       "mirror": true
      },
      {
-      "asset": "art/plants/shrub_02",
-      "x": 32.51,
-      "y": 31.51,
-      "w": 2.32,
-      "h": 1.94,
+      "asset": "art/trees/ash_pine_03",
+      "x": 4.0,
+      "y": 33.0,
+      "w": 4.24,
+      "h": 7.06,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/flowers_01",
-      "x": 45.85,
-      "y": 31.93,
-      "w": 1.04,
-      "h": 1.04,
+      "asset": "art/trees/ash_pine_01",
+      "x": 68.0,
+      "y": 33.0,
+      "w": 3.85,
+      "h": 6.41,
       "anchor": "bottom"
      },
      {
       "asset": "art/plants/mushrooms_02",
-      "x": 3.56,
-      "y": 32.07,
-      "w": 1.02,
-      "h": 1.02,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_01",
-      "x": 26.51,
-      "y": 32.57,
-      "w": 1.45,
-      "h": 1.45,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/broadleaf_02",
-      "x": 29.73,
-      "y": 33.03,
-      "w": 5.69,
-      "h": 6.4,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/trees/coastal_pine_02",
-      "x": 42.76,
-      "y": 33.11,
-      "w": 6.13,
-      "h": 7.66,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_01",
-      "x": 32.87,
-      "y": 33.94,
-      "w": 1.04,
-      "h": 1.04,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/shrub_02",
-      "x": 46.46,
-      "y": 34.24,
-      "w": 1.91,
-      "h": 1.6,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/shrub_04",
-      "x": 26.02,
-      "y": 34.35,
-      "w": 2.22,
-      "h": 1.85,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_03",
-      "x": 24.29,
-      "y": 34.39,
-      "w": 1.24,
-      "h": 1.24,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_01",
-      "x": 30.08,
-      "y": 34.47,
-      "w": 1.07,
-      "h": 1.07,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_03",
-      "x": 38.8,
-      "y": 34.48,
+      "x": 52.61,
+      "y": 33.72,
       "w": 1.18,
       "h": 1.18,
       "anchor": "bottom"
      },
      {
-      "asset": "art/props/barrel_01",
-      "x": 47.5,
-      "y": 34.5,
-      "w": 1.4,
-      "h": 1.75,
+      "asset": "art/plants/flowers_01",
+      "x": 16.91,
+      "y": 33.74,
+      "w": 0.91,
+      "h": 0.91,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/mushrooms_02",
+      "x": 4.01,
+      "y": 33.83,
+      "w": 1.11,
+      "h": 1.11,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/mushrooms_01",
+      "x": 6.57,
+      "y": 33.84,
+      "w": 1.08,
+      "h": 1.08,
       "anchor": "bottom"
      },
      {
       "asset": "art/plants/grass_tuft_04",
-      "x": 27.96,
-      "y": 34.59,
-      "w": 1.19,
-      "h": 1.19,
-      "anchor": "bottom"
+      "x": 60.91,
+      "y": 33.88,
+      "w": 1.48,
+      "h": 1.48,
+      "anchor": "bottom",
+      "mirror": true
      },
      {
-      "asset": "art/plants/shrub_04",
-      "x": 42.12,
-      "y": 34.65,
-      "w": 1.87,
-      "h": 1.56,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/shrub_01",
-      "x": 2.93,
-      "y": 34.88,
-      "w": 1.8,
-      "h": 1.5,
-      "anchor": "bottom"
+      "asset": "art/plants/grass_tuft_06",
+      "x": 29.41,
+      "y": 33.9,
+      "w": 1.36,
+      "h": 1.36,
+      "anchor": "bottom",
+      "mirror": true
      },
      {
       "asset": "art/plants/flowers_02",
-      "x": 44.75,
-      "y": 34.95,
+      "x": 23.6,
+      "y": 33.97,
+      "w": 1.19,
+      "h": 1.19,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_02",
+      "x": 2.33,
+      "y": 33.98,
+      "w": 1.6,
+      "h": 1.6,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/mushrooms_01",
+      "x": 27.61,
+      "y": 34.02,
+      "w": 1.14,
+      "h": 1.14,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/flowers_02",
+      "x": 56.88,
+      "y": 34.02,
+      "w": 1.0,
+      "h": 1.0,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/flowers_01",
+      "x": 49.89,
+      "y": 34.12,
+      "w": 1.11,
+      "h": 1.11,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_06",
+      "x": 32.69,
+      "y": 34.17,
+      "w": 1.3,
+      "h": 1.3,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/mushrooms_01",
+      "x": 42.4,
+      "y": 34.19,
+      "w": 1.1,
+      "h": 1.1,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/flowers_02",
+      "x": 60.53,
+      "y": 34.21,
+      "w": 0.96,
+      "h": 0.96,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/flowers_03",
+      "x": 62.83,
+      "y": 34.22,
+      "w": 1.17,
+      "h": 1.17,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_01",
+      "x": 12.9,
+      "y": 34.22,
+      "w": 1.22,
+      "h": 1.22,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/shrub_04",
+      "x": 66.89,
+      "y": 34.27,
+      "w": 2.29,
+      "h": 1.9,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/mushrooms_02",
+      "x": 65.25,
+      "y": 34.28,
+      "w": 1.09,
+      "h": 1.09,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_03",
+      "x": 8.51,
+      "y": 34.42,
+      "w": 1.6,
+      "h": 1.6,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_01",
+      "x": 45.1,
+      "y": 34.49,
+      "w": 1.22,
+      "h": 1.22,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_01",
+      "x": 41.09,
+      "y": 34.54,
+      "w": 1.21,
+      "h": 1.21,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_04",
+      "x": 54.64,
+      "y": 34.6,
+      "w": 1.48,
+      "h": 1.48,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_01",
+      "x": 68.46,
+      "y": 34.63,
+      "w": 1.21,
+      "h": 1.21,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_03",
+      "x": 60.34,
+      "y": 34.73,
+      "w": 1.58,
+      "h": 1.58,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_05",
+      "x": 10.9,
+      "y": 34.85,
+      "w": 1.44,
+      "h": 1.44,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/flowers_02",
+      "x": 5.49,
+      "y": 34.97,
       "w": 1.1,
       "h": 1.1,
       "anchor": "bottom"
      },
      {
-      "asset": "art/props/tool_rack",
-      "x": 60,
-      "y": 35,
-      "w": 3.5,
-      "h": 3.85,
+      "asset": "art/plants/flowers_02",
+      "x": 48.31,
+      "y": 35.02,
+      "w": 1.16,
+      "h": 1.16,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_02",
+      "x": 46.28,
+      "y": 35.05,
+      "w": 1.07,
+      "h": 1.07,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/trees/coastal_pine_01",
+      "x": 18.21,
+      "y": 35.09,
+      "w": 5.2,
+      "h": 6.5,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_02",
+      "x": 39.44,
+      "y": 35.15,
+      "w": 1.45,
+      "h": 1.45,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/mushrooms_01",
+      "x": 52.7,
+      "y": 35.28,
+      "w": 1.13,
+      "h": 1.13,
       "anchor": "bottom"
      },
      {
@@ -3466,320 +3548,256 @@
       "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 11.78,
-      "y": 35.35,
-      "w": 1.5,
-      "h": 1.5,
+      "asset": "art/plants/grass_tuft_04",
+      "x": 8.78,
+      "y": 35.43,
+      "w": 1.26,
+      "h": 1.26,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_03",
+      "x": 26.73,
+      "y": 35.46,
+      "w": 1.35,
+      "h": 1.35,
       "anchor": "bottom"
      },
      {
       "asset": "art/plants/grass_tuft_01",
-      "x": 23.45,
-      "y": 35.41,
-      "w": 1.52,
-      "h": 1.52,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 68.37,
-      "y": 35.42,
-      "w": 1.5,
-      "h": 1.5,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 39.9,
-      "y": 35.45,
+      "x": 14.98,
+      "y": 35.47,
       "w": 1.2,
       "h": 1.2,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/grass_tuft_06",
-      "x": 43.75,
-      "y": 35.52,
-      "w": 1.26,
-      "h": 1.26,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 32.04,
-      "y": 35.6,
-      "w": 1.22,
-      "h": 1.22,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_02",
-      "x": 66.52,
-      "y": 35.66,
-      "w": 1.11,
-      "h": 1.11,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_06",
-      "x": 9.8,
-      "y": 35.67,
-      "w": 1.26,
-      "h": 1.26,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 64.06,
-      "y": 35.89,
-      "w": 0.91,
-      "h": 0.91,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 24.56,
-      "y": 36.08,
-      "w": 1.24,
-      "h": 1.24,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_03",
-      "x": 53.91,
-      "y": 36.1,
-      "w": 1.16,
-      "h": 1.16,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 69.55,
-      "y": 36.32,
-      "w": 1.36,
-      "h": 1.36,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_04",
-      "x": 50.75,
-      "y": 36.44,
-      "w": 1.42,
-      "h": 1.42,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
       "asset": "art/plants/fern_01",
-      "x": 62.09,
-      "y": 36.48,
-      "w": 1.94,
-      "h": 1.55,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/props/carpenter_workbench",
-      "x": 48,
-      "y": 36.5,
-      "w": 4.9,
-      "h": 3.85,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 20.17,
-      "y": 36.56,
-      "w": 1.31,
-      "h": 1.31,
+      "x": 32.97,
+      "y": 35.47,
+      "w": 1.68,
+      "h": 1.35,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/mushrooms_02",
-      "x": 51.95,
-      "y": 36.62,
-      "w": 1.01,
-      "h": 1.01,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/fern_02",
-      "x": 55.52,
-      "y": 36.64,
-      "w": 1.65,
-      "h": 1.32,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/coastal_pine_01",
-      "x": 16.28,
-      "y": 36.7,
-      "w": 5.6,
-      "h": 7.0,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_04",
-      "x": 56.75,
-      "y": 36.82,
-      "w": 1.22,
-      "h": 1.22,
+      "asset": "art/plants/grass_tuft_06",
+      "x": 22.31,
+      "y": 35.48,
+      "w": 1.43,
+      "h": 1.43,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/fern_02",
-      "x": 65.51,
-      "y": 36.82,
-      "w": 1.59,
+      "asset": "art/plants/grass_tuft_02",
+      "x": 33.41,
+      "y": 35.5,
+      "w": 1.28,
       "h": 1.28,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 12.66,
-      "y": 36.86,
-      "w": 1.2,
-      "h": 1.2,
+      "asset": "art/plants/grass_tuft_06",
+      "x": 3.71,
+      "y": 35.51,
+      "w": 1.49,
+      "h": 1.49,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_01",
+      "x": 58.15,
+      "y": 35.63,
+      "w": 1.02,
+      "h": 1.02,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/props/brazier",
-      "x": 59,
-      "y": 37,
-      "w": 1.4,
-      "h": 2.45,
+      "asset": "art/trees/broadleaf_02",
+      "x": 29.57,
+      "y": 35.91,
+      "w": 5.34,
+      "h": 6.01,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_03",
+      "x": 24.57,
+      "y": 35.97,
+      "w": 1.49,
+      "h": 1.49,
       "anchor": "bottom"
      },
      {
       "asset": "art/plants/grass_tuft_03",
-      "x": 22.09,
-      "y": 37.34,
-      "w": 1.42,
-      "h": 1.42,
+      "x": 13.03,
+      "y": 36.06,
+      "w": 1.48,
+      "h": 1.48,
       "anchor": "bottom"
      },
      {
-      "asset": "art/trees/broadleaf_01",
-      "x": 3.24,
-      "y": 37.37,
-      "w": 5.84,
-      "h": 6.57,
+      "asset": "art/trees/coastal_pine_01",
+      "x": 62.08,
+      "y": 36.11,
+      "w": 6.33,
+      "h": 7.91,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/trees/coastal_pine_01",
+      "x": 67.79,
+      "y": 36.2,
+      "w": 5.43,
+      "h": 6.79,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/trees/coastal_pine_02",
+      "x": 43.36,
+      "y": 36.22,
+      "w": 6.21,
+      "h": 7.76,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/flowers_01",
+      "x": 21.56,
+      "y": 36.33,
+      "w": 0.9,
+      "h": 0.9,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_01",
+      "x": 7.31,
+      "y": 36.4,
+      "w": 1.52,
+      "h": 1.52,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_01",
+      "x": 8.46,
+      "y": 36.52,
+      "w": 1.21,
+      "h": 1.21,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/mushrooms_02",
+      "x": 10.54,
+      "y": 36.53,
+      "w": 1.05,
+      "h": 1.05,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_02",
+      "x": 19.68,
+      "y": 36.6,
+      "w": 1.19,
+      "h": 1.19,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_05",
+      "x": 15.68,
+      "y": 36.71,
+      "w": 1.5,
+      "h": 1.5,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_02",
+      "x": 26.5,
+      "y": 37.06,
+      "w": 0.96,
+      "h": 0.96,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_04",
+      "x": 33.4,
+      "y": 37.22,
+      "w": 1.19,
+      "h": 1.19,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/mushrooms_01",
+      "x": 31.84,
+      "y": 37.39,
+      "w": 0.97,
+      "h": 0.97,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_03",
+      "x": 42.48,
+      "y": 37.47,
+      "w": 1.21,
+      "h": 1.21,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_02",
+      "x": 65.74,
+      "y": 37.56,
+      "w": 1.03,
+      "h": 1.03,
       "anchor": "bottom",
       "mirror": true
      },
      {
       "asset": "art/plants/grass_tuft_06",
-      "x": 44.62,
-      "y": 37.41,
-      "w": 1.54,
-      "h": 1.54,
+      "x": 45.32,
+      "y": 37.59,
+      "w": 1.21,
+      "h": 1.21,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/trees/coastal_pine_01",
-      "x": 8.17,
-      "y": 37.42,
-      "w": 5.3,
-      "h": 6.62,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 23.74,
-      "y": 37.43,
-      "w": 1.06,
-      "h": 1.06,
+      "asset": "art/plants/flowers_01",
+      "x": 64.05,
+      "y": 37.61,
+      "w": 1.07,
+      "h": 1.07,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/shrub_03",
-      "x": 48.59,
-      "y": 37.5,
-      "w": 2.08,
-      "h": 1.73,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_02",
-      "x": 39.25,
-      "y": 37.53,
-      "w": 1.0,
-      "h": 1.0,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/fern_03",
-      "x": 20.04,
-      "y": 37.54,
-      "w": 1.84,
-      "h": 1.47,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 43.37,
-      "y": 37.69,
-      "w": 1.18,
-      "h": 1.18,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/coastal_pine_02",
-      "x": 62.98,
-      "y": 37.85,
-      "w": 5.49,
-      "h": 6.86,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/edges/rubble_heap_01",
-      "x": 1.5,
-      "y": 38.0,
-      "w": 8.4,
-      "h": 5.6,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_01",
-      "x": 31.89,
-      "y": 38.05,
+      "asset": "art/plants/flowers_03",
+      "x": 60.19,
+      "y": 37.61,
       "w": 0.9,
       "h": 0.9,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/trees/coastal_pine_01",
-      "x": 52.7,
-      "y": 38.2,
-      "w": 5.49,
-      "h": 6.87,
       "anchor": "bottom"
      },
      {
       "asset": "art/plants/mushrooms_02",
-      "x": 6.74,
-      "y": 38.28,
-      "w": 1.02,
-      "h": 1.02,
+      "x": 30.53,
+      "y": 37.73,
+      "w": 0.94,
+      "h": 0.94,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/grass_tuft_03",
+      "x": 38.64,
+      "y": 37.94,
+      "w": 1.28,
+      "h": 1.28,
       "anchor": "bottom",
       "mirror": true
      },
@@ -3792,308 +3810,139 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/trees/coastal_pine_02",
-      "x": 68.03,
-      "y": 38.36,
-      "w": 5.08,
-      "h": 6.35,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
       "asset": "art/plants/grass_tuft_03",
-      "x": 43.47,
-      "y": 38.41,
-      "w": 1.21,
-      "h": 1.21,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_03",
-      "x": 41.87,
-      "y": 38.44,
-      "w": 1.2,
-      "h": 1.2,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 60.14,
-      "y": 38.51,
-      "w": 1.0,
-      "h": 1.0,
+      "x": 27.05,
+      "y": 38.36,
+      "w": 1.54,
+      "h": 1.54,
       "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_06",
-      "x": 11.86,
-      "y": 38.54,
-      "w": 1.5,
-      "h": 1.5,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/flowers_01",
-      "x": 3.05,
-      "y": 38.66,
-      "w": 1.1,
-      "h": 1.1,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_03",
-      "x": 58.58,
-      "y": 38.74,
-      "w": 1.04,
-      "h": 1.04,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_06",
-      "x": 8.79,
-      "y": 38.75,
-      "w": 1.25,
-      "h": 1.25,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/mushrooms_02",
-      "x": 7.54,
-      "y": 38.77,
-      "w": 1.0,
-      "h": 1.0,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 13.77,
-      "y": 38.81,
-      "w": 1.37,
-      "h": 1.37,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_03",
-      "x": 46.31,
-      "y": 38.92,
-      "w": 1.14,
-      "h": 1.14,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/buildings/market_stall_03",
-      "x": 23,
-      "y": 39,
-      "w": 5.6,
-      "h": 5.6,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 44.45,
-      "y": 39.07,
-      "w": 1.5,
-      "h": 1.5,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/flowers_01",
-      "x": 45.44,
-      "y": 39.11,
-      "w": 1.04,
-      "h": 1.04,
-      "anchor": "bottom",
-      "mirror": true
      },
      {
       "asset": "art/plants/flowers_02",
-      "x": 16.37,
-      "y": 39.13,
-      "w": 1.0,
-      "h": 1.0,
-      "anchor": "bottom",
-      "mirror": true
+      "x": 25.41,
+      "y": 38.42,
+      "w": 0.96,
+      "h": 0.96,
+      "anchor": "bottom"
      },
      {
-      "asset": "art/plants/shrub_01",
-      "x": 19.46,
-      "y": 39.2,
-      "w": 2.0,
-      "h": 1.67,
+      "asset": "art/plants/grass_tuft_03",
+      "x": 2.96,
+      "y": 38.46,
+      "w": 1.38,
+      "h": 1.38,
       "anchor": "bottom",
       "mirror": true
      },
      {
       "asset": "art/plants/mushrooms_01",
-      "x": 55.59,
-      "y": 39.21,
+      "x": 32.46,
+      "y": 38.62,
+      "w": 1.06,
+      "h": 1.06,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/grass_tuft_06",
+      "x": 33.32,
+      "y": 38.86,
+      "w": 1.32,
+      "h": 1.32,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/trees/coastal_pine_01",
+      "x": 44.43,
+      "y": 39.12,
+      "w": 4.95,
+      "h": 6.19,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_03",
+      "x": 31.6,
+      "y": 39.36,
+      "w": 0.99,
+      "h": 0.99,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/flowers_03",
+      "x": 41.11,
+      "y": 39.38,
+      "w": 1.0,
+      "h": 1.0,
+      "anchor": "bottom",
+      "mirror": true
+     },
+     {
+      "asset": "art/plants/mushrooms_01",
+      "x": 32.38,
+      "y": 39.85,
+      "w": 1.03,
+      "h": 1.03,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/plants/mushrooms_01",
+      "x": 39.15,
+      "y": 39.91,
       "w": 1.11,
       "h": 1.11,
       "anchor": "bottom",
       "mirror": true
      },
      {
-      "asset": "art/plants/grass_tuft_06",
-      "x": 17.77,
-      "y": 39.22,
-      "w": 1.33,
-      "h": 1.33,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_02",
-      "x": 48.28,
-      "y": 39.37,
-      "w": 1.29,
-      "h": 1.29,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/flowers_02",
-      "x": 46.45,
-      "y": 39.39,
-      "w": 1.0,
-      "h": 1.0,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_06",
-      "x": 49.82,
-      "y": 39.44,
-      "w": 1.56,
-      "h": 1.56,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/rocks/rock_small_03",
-      "x": 42.21,
-      "y": 39.45,
-      "w": 1.32,
-      "h": 0.99,
-      "anchor": "bottom"
-     },
-     {
       "asset": "art/plants/grass_tuft_05",
-      "x": 52.83,
-      "y": 39.49,
-      "w": 1.41,
-      "h": 1.41,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/props/supply_sacks",
-      "x": 25.5,
-      "y": 40,
-      "w": 2.1,
-      "h": 2.45,
+      "x": 31.6,
+      "y": 40.3,
+      "w": 1.45,
+      "h": 1.45,
       "anchor": "bottom"
      },
      {
-      "asset": "art/props/hand_cart",
-      "x": 4,
-      "y": 40,
-      "w": 3.5,
-      "h": 2.45,
+      "asset": "art/plants/flowers_01",
+      "x": 2.86,
+      "y": 40.46,
+      "w": 1.11,
+      "h": 1.11,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/flowers_02",
-      "x": 68.57,
-      "y": 40.33,
-      "w": 0.95,
-      "h": 0.95,
+      "asset": "art/plants/grass_tuft_01",
+      "x": 2.19,
+      "y": 41.47,
+      "w": 1.4,
+      "h": 1.4,
       "anchor": "bottom"
      },
      {
       "asset": "art/props/crate_stack",
-      "x": 14,
-      "y": 41,
+      "x": 44.4,
+      "y": 42.4,
       "w": 2.8,
       "h": 2.8,
       "anchor": "bottom"
      },
      {
-      "asset": "art/props/lantern_post",
-      "x": 6,
-      "y": 41,
-      "w": 2.8,
-      "h": 4.2,
+      "asset": "art/buildings/market_stall_03",
+      "x": 41,
+      "y": 42.5,
+      "w": 5.6,
+      "h": 5.6,
       "anchor": "bottom"
      },
      {
-      "asset": "art/props/lantern_post",
-      "x": 66,
-      "y": 41,
-      "w": 2.8,
-      "h": 4.2,
+      "asset": "art/props/supply_sacks",
+      "x": 32.3,
+      "y": 42.6,
+      "w": 2.1,
+      "h": 2.45,
       "anchor": "bottom"
      },
      {
-      "asset": "art/plants/flowers_02",
-      "x": 3.05,
-      "y": 42.59,
-      "w": 0.93,
-      "h": 0.93,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/grass_tuft_06",
-      "x": 69.36,
-      "y": 42.65,
-      "w": 1.39,
-      "h": 1.39,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/props/lantern_post",
-      "x": 22,
-      "y": 42.8,
-      "w": 2.8,
-      "h": 4.2,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/props/lantern_post",
-      "x": 50,
-      "y": 42.8,
-      "w": 2.8,
-      "h": 4.2,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/flowers_01",
-      "x": 2.73,
-      "y": 43.73,
-      "w": 1.14,
-      "h": 1.14,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/plants/grass_tuft_05",
-      "x": 55.69,
-      "y": 44.17,
-      "w": 1.19,
-      "h": 1.19,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/plants/flowers_02",
-      "x": 33.16,
-      "y": 44.36,
-      "w": 1.09,
-      "h": 1.09,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/edges/rubble_heap_02",
+      "asset": "art/edges/rubble_heap_01",
       "x": 1.5,
       "y": 44.5,
       "w": 8.4,
@@ -4101,7 +3950,7 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/edges/rubble_heap_02",
+      "asset": "art/edges/rubble_heap_01",
       "x": 70.5,
       "y": 44.5,
       "w": 8.4,
@@ -4110,43 +3959,56 @@
       "mirror": true
      },
      {
-      "asset": "art/plants/flowers_02",
-      "x": 69.61,
-      "y": 44.51,
-      "w": 0.96,
-      "h": 0.96,
-      "anchor": "bottom",
-      "mirror": true
+      "asset": "art/props/lantern_post",
+      "x": 5,
+      "y": 45.6,
+      "w": 2.8,
+      "h": 4.2,
+      "anchor": "bottom"
      },
      {
-      "asset": "art/plants/flowers_01",
-      "x": 39.12,
-      "y": 44.85,
-      "w": 0.9,
-      "h": 0.9,
-      "anchor": "bottom",
-      "mirror": true
+      "asset": "art/props/lantern_post",
+      "x": 25.2,
+      "y": 45.6,
+      "w": 2.8,
+      "h": 4.2,
+      "anchor": "bottom"
      },
      {
-      "asset": "art/plants/flowers_03",
-      "x": 24.69,
-      "y": 45.4,
-      "w": 1.0,
-      "h": 1.0,
-      "anchor": "bottom",
-      "mirror": true
+      "asset": "art/props/lantern_post",
+      "x": 47.2,
+      "y": 45.6,
+      "w": 2.8,
+      "h": 4.2,
+      "anchor": "bottom"
      },
      {
-      "asset": "art/trees/broadleaf_02",
-      "x": 2.24,
-      "y": 45.49,
-      "w": 5.16,
-      "h": 5.8,
+      "asset": "art/props/lantern_post",
+      "x": 67.5,
+      "y": 45.6,
+      "w": 2.8,
+      "h": 4.2,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/props/hand_cart",
+      "x": 17.4,
+      "y": 46.6,
+      "w": 3.5,
+      "h": 2.45,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/props/carpenter_workbench",
+      "x": 62,
+      "y": 47,
+      "w": 4.9,
+      "h": 3.85,
       "anchor": "bottom"
      },
      {
       "asset": "art/props/anchor",
-      "x": 70,
+      "x": 69.6,
       "y": 47,
       "w": 2.1,
       "h": 2.1,
@@ -4158,6 +4020,14 @@
       "y": 47.3,
       "w": 6.3,
       "h": 11.34,
+      "anchor": "bottom"
+     },
+     {
+      "asset": "art/props/fish_cleaning_station",
+      "x": 14.5,
+      "y": 47.6,
+      "w": 4.9,
+      "h": 4.2,
       "anchor": "bottom"
      },
      {
@@ -4178,7 +4048,7 @@
      },
      {
       "asset": "art/props/bollard",
-      "x": 52,
+      "x": 48.6,
       "y": 47.6,
       "w": 1.05,
       "h": 1.05,
@@ -4193,17 +4063,9 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/props/fish_cleaning_station",
-      "x": 15,
-      "y": 48.6,
-      "w": 4.9,
-      "h": 4.2,
-      "anchor": "bottom"
-     },
-     {
       "asset": "art/props/net_rack",
-      "x": 55,
-      "y": 48.8,
+      "x": 57,
+      "y": 48.2,
       "w": 2.8,
       "h": 2.8,
       "anchor": "bottom"
@@ -4211,7 +4073,7 @@
      {
       "asset": "art/props/fish_drying_rack",
       "x": 9,
-      "y": 49,
+      "y": 48.4,
       "w": 4.2,
       "h": 3.5,
       "anchor": "bottom"
@@ -4283,24 +4145,24 @@
      ],
      [
       [
-       6,
-       42.2
+       5,
+       44.3
       ],
       [
        22,
-       42.4
+       44.2
       ],
       [
        36,
-       42.6
+       44.4
       ],
       [
        50,
-       42.4
+       44.2
       ],
       [
-       66,
-       42
+       67,
+       44.3
       ]
      ],
      [
@@ -4346,37 +4208,29 @@
      [
       [
        46,
-       24.2
+       31.7
       ],
       [
-       52,
-       25.4
-      ],
-      [
-       58,
-       27.5
-      ],
-      [
-       64,
-       31
+       56,
+       31.7
       ],
       [
        68,
-       32
+       31.8
       ]
      ],
      [
       [
        26,
-       24.2
+       31.6
       ],
       [
-       17,
-       24.6
+       16,
+       31.6
       ],
       [
-       8,
-       25.2
+       5,
+       31.6
       ]
      ],
      [
@@ -50121,8 +49975,8 @@
     "id": "c_hub_supplies",
     "name": "Quartermaster Inventory Case",
     "mapId": "hub",
-    "x": 12.0,
-    "y": 47.9,
+    "x": 12.8,
+    "y": 43.9,
     "lootTableId": "provisions",
     "respawn": "raid",
     "buildingId": "hub.trade"
@@ -51445,7 +51299,7 @@
     "id": "i_stash",
     "name": "Personal Stash",
     "mapId": "hub",
-    "x": 53.0,
+    "x": 52.0,
     "y": 17.8,
     "kind": "stash",
     "buildingId": "hub.player"
@@ -51454,7 +51308,7 @@
     "id": "i_bed",
     "name": "Resting Cot",
     "mapId": "hub",
-    "x": 58.0,
+    "x": 57.0,
     "y": 17.8,
     "kind": "rest",
     "buildingId": "hub.player"
@@ -51463,8 +51317,8 @@
     "id": "i_workbench",
     "name": "Outdoor Forge · Workbench",
     "mapId": "hub",
-    "x": 55.0,
-    "y": 34.9,
+    "x": 53.0,
+    "y": 30.9,
     "kind": "smithy",
     "buildingId": "hub.mech"
    },
@@ -53316,8 +53170,8 @@
     "name": "Edda Voss",
     "role": "Ledger Clerk",
     "mapId": "hub",
-    "x": 18.5,
-    "y": 34.8,
+    "x": 19.5,
+    "y": 30.8,
     "dialogueId": "d_clerk",
     "buildingId": "hub.ledger",
     "faction": "harbor_compact",
@@ -53328,8 +53182,8 @@
     "name": "Neral Brin",
     "role": "Quartermaster",
     "mapId": "hub",
-    "x": 9.0,
-    "y": 47.8,
+    "x": 9.8,
+    "y": 43.8,
     "dialogueId": "d_quartermaster",
     "buildingId": "hub.trade",
     "faction": "salvagers",
@@ -53341,8 +53195,8 @@
     "name": "Iven Rusk",
     "role": "Harbor Blacksmith & Launcher Mechanic",
     "mapId": "hub",
-    "x": 52.0,
-    "y": 34.9,
+    "x": 50.0,
+    "y": 30.9,
     "dialogueId": "d_mechanic",
     "buildingId": "hub.mech",
     "faction": "salvagers",
@@ -53354,8 +53208,8 @@
     "name": "Sera Moll",
     "role": "Harbor Medic",
     "mapId": "hub",
-    "x": 8.5,
-    "y": 34.8,
+    "x": 9.0,
+    "y": 30.8,
     "dialogueId": "d_medic",
     "buildingId": "hub.clinic",
     "faction": "salvagers",
@@ -53367,7 +53221,7 @@
     "name": "Orin Hale",
     "role": "Harbor Guard",
     "mapId": "hub",
-    "x": 45.0,
+    "x": 44.0,
     "y": 17.8,
     "dialogueId": "d_guard",
     "buildingId": "hub.guard",
@@ -53379,8 +53233,8 @@
     "name": "Talla Cor",
     "role": "Licensed Salvager",
     "mapId": "hub",
-    "x": 60.0,
-    "y": 47.9,
+    "x": 61.59,
+    "y": 43.9,
     "dialogueId": "d_salvager",
     "buildingId": "hub.store",
     "faction": "salvagers",
@@ -53391,8 +53245,8 @@
     "name": "Mira Vale",
     "role": "Ropewright",
     "mapId": "hub",
-    "x": 38,
-    "y": 44.5,
+    "x": 39.4,
+    "y": 45.6,
     "dialogueId": "d_ropewright",
     "buildingId": null,
     "faction": "neutral_crews",
@@ -53417,8 +53271,8 @@
     "name": "Ola Marr",
     "role": "Workshop Apprentice",
     "mapId": "hub",
-    "x": 57.0,
-    "y": 35.1,
+    "x": 55.0,
+    "y": 31.1,
     "dialogueId": "d_apprentice",
     "buildingId": null,
     "faction": "licensed_salvagers",
@@ -53430,8 +53284,8 @@
     "name": "Senn Bri",
     "role": "Dock Worker",
     "mapId": "hub",
-    "x": 57,
-    "y": 44.6,
+    "x": 55.4,
+    "y": 45.8,
     "dialogueId": "d_crewhand",
     "buildingId": null,
     "faction": "neutral_crews",

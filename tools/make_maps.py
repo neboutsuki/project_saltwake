@@ -229,30 +229,29 @@ def hub():
     M.spaces.append({'id': 'square', 'type': 'square', 'x': 26, 'y': 18, 'w': 20, 'h': 11, 'tag': 'Lantern Square'})
     M.ground.append({'rect': [26, 18, 20, 11], 'm': 'plaza'})
     M.take(26, 18, 46, 29)
-    # roads
+    # roads: a town grid - north lane (homes), Lantern Square, Guild Row (clinic/ledger/forge), harbor promenade + quay
     M.road('north_gate', [[36, 0], [36, 18]], 4)
     M.road('south_dock', [[36, 29], [36, 47.5]], 4)
-    M.road('east_gate', [[46, 24], [56, 26], [64, 31], [72, 32]], 4)
-    M.road('west_lane', [[26, 24], [17, 24.5], [8, 25], [3, 25]], 3, 'gravel')
-    M.road('promenade', [[6, 41.5], [36, 42], [66, 41.5]], 3.2, 'gravel')
-    M.road('north_lane', [[6, 18.5], [36, 18.2], [66, 18.5]], 2.6, 'gravel')
-    # buildings (IDs kept)
+    M.road('north_lane', [[4, 18.5], [36, 18.2], [68, 18.5]], 2.6, 'gravel')
+    M.road('guild_row', [[0, 31.6], [26, 31.6], [46, 31.6], [72, 31.8]], 3)
+    M.road('promenade', [[3, 44.2], [36, 44.2], [69, 44.2]], 3, 'gravel')
+    # buildings (IDs kept). Three rows, each facing its street: feet on 16.5 (north lane), 29.5 (Guild Row), 42.5 (market row)
     B = M.building
-    B('hub.nhome1', 'Saltworker Home A', 'house', 'art/buildings/cottage_01', 9, 16.5)
-    B('hub.nhome2', 'Saltworker Home B', 'house', 'art/buildings/cottage_02', 19, 16.5)
-    B('hub.chapel', 'Tide Chapel', 'house', 'art/buildings/chapel', 28.5, 16.5)
-    B('hub.guard', 'Harbor Guardhouse', 'office', 'art/buildings/stone_house_01', 45, 16.5)
-    B('hub.player', 'Player Quarters', 'house', 'art/buildings/lodging', 55.5, 16.5)
-    B('hub.stables', 'Cart Shelter', 'house', 'art/buildings/salt_shed_01', 66, 16.5, .45, .82)
-    B('hub.clinic', 'Harbor Clinic', 'house', 'art/buildings/apothecary', 8.5, 33.5)
-    B('hub.ledger', 'Ledger House / Contracts', 'office', 'art/buildings/ledger_house', 18.5, 33.5)
-    B('hub.mech', 'Launcher Workshop', 'workshop', 'art/buildings/smithy', 54, 33.5)
-    B('hub.tools', 'Tool Shed', 'workshop', 'art/buildings/utility_shack', 65, 33.5, .4, .85)
-    B('hub.trade', 'Quartermaster Hall', 'merchant', 'art/buildings/trader_shop', 9, 46.5)
-    B('hub.buyer', 'Salvage Buyer', 'warehouse', 'art/buildings/salvage_shed', 19, 46.5)
-    B('hub.ration', 'Ration Vendor', 'merchant', 'art/buildings/market_stall_02', 28, 39)
-    B('hub.hunt', 'Hunters’ Hall', 'office', 'art/buildings/hunt_hall', 48, 46.5, .4, .9)
-    B('hub.store', 'Harbor Stores', 'warehouse', 'art/buildings/warehouse_01', 63, 46.5, .4, .82)
+    B('hub.nhome1', 'Saltworker Home A', 'house', 'art/buildings/cottage_01', 8.5, 16.5)
+    B('hub.nhome2', 'Saltworker Home B', 'house', 'art/buildings/cottage_02', 18, 16.5)
+    B('hub.chapel', 'Tide Chapel', 'house', 'art/buildings/chapel', 28, 16.5)
+    B('hub.guard', 'Harbor Guardhouse', 'office', 'art/buildings/stone_house_01', 44, 16.5)
+    B('hub.player', 'Player Quarters', 'house', 'art/buildings/lodging', 54.5, 16.5)
+    B('hub.stables', 'Cart Shelter', 'house', 'art/buildings/salt_shed_01', 65, 16.5, .45, .82)
+    B('hub.clinic', 'Harbor Clinic', 'house', 'art/buildings/apothecary', 9, 29.5)
+    B('hub.ledger', 'Ledger House / Contracts', 'office', 'art/buildings/ledger_house', 19.5, 29.5)
+    B('hub.mech', 'Launcher Workshop', 'workshop', 'art/buildings/smithy', 52, 29.5)
+    B('hub.tools', 'Tool Shed', 'workshop', 'art/buildings/utility_shack', 65.5, 29.5, .4, .85)
+    B('hub.trade', 'Quartermaster Hall', 'merchant', 'art/buildings/trader_shop', 9.8, 42.5)
+    B('hub.buyer', 'Salvage Buyer', 'warehouse', 'art/buildings/salvage_shed', 19.9, 42.5)
+    B('hub.ration', 'Ration Vendor', 'merchant', 'art/buildings/market_stall_02', 28, 42.5)
+    B('hub.hunt', 'Hunters’ Hall', 'office', 'art/buildings/hunt_hall', 52.3, 42.5, .4, .9)
+    B('hub.store', 'Harbor Stores', 'warehouse', 'art/buildings/warehouse_01', 64.6, 42.5, .4, .72)
     B('hub.pilot', 'Pilot Station', 'office', 'art/buildings/pilot_shed', 28.5, 47.2, .45, .8)
     # square dressing
     o = M.obj
@@ -263,33 +262,33 @@ def hub():
     o('art/props/bench', 40.5, 20.4, 1.0)
     o('art/props/bench', 32, 28.2, 1.0)
     o('art/props/statue_hunter', 41, 27.8, .8, 'stone')
-    o('art/props/well', 13, 25.6, 1.0, 'stone')
-    o('art/props/signpost', 47.5, 25, 1.0)
-    # market & trade clutter
-    o('art/buildings/market_stall_03', 23, 39, 1.0, 'crate')
-    o('art/props/supply_sacks', 25.5, 40, 1.0, 'crate')
-    o('art/props/crate_stack', 14, 41, 1.0, 'crate')
-    o('art/props/hand_cart', 4, 40, 1.0, 'crate')
-    # smithy yard
-    o('art/props/tool_rack', 60, 35, 1.0, 'crate')
-    o('art/props/carpenter_workbench', 48, 36.5, 1.0, 'crate')
-    o('art/props/brazier', 59, 37, 1.0, 'crate', light=140)
-    o('art/props/barrel_01', 47.5, 34.5, 1.0, 'crate')
+    o('art/props/well', 29.5, 25, 1.0, 'stone')
+    o('art/props/signpost', 38.6, 30.8, 1.0)
+    # market row: stalls beside the main road
+    o('art/buildings/market_stall_03', 41, 42.5, 1.0, 'crate')
+    o('art/props/supply_sacks', 32.3, 42.6, 1.0, 'crate')
+    o('art/props/crate_stack', 44.4, 42.4, 1.0, 'crate')
+    # forge yard between the smithy and the tool shed
+    o('art/props/tool_rack', 59.5, 29.3, 1.0, 'crate')
+    o('art/props/brazier', 45.6, 29.8, 1.0, 'crate', light=140)
+    o('art/props/barrel_01', 58.6, 30.2, 1.0, 'crate')
     # homes
-    o('art/props/fence_wood', 4, 18, 1.0)
-    o('art/props/wheelbarrow', 14, 19, 1.0)
-    o('art/props/hand_water_pump', 23.5, 18.2, 1.0, 'crate')
-    o('art/props/storage_shelf', 61.5, 18.5, 1.0, 'crate')
-    o('art/props/campfire', 50, 20, 1.0, None, light=170)
-    # harbor front
+    o('art/props/fence_wood', 3.6, 18, 1.0)
+    o('art/props/wheelbarrow', 13.4, 18.9, 1.0)
+    o('art/props/hand_water_pump', 23.0, 18.2, 1.0, 'crate')
+    o('art/props/storage_shelf', 59.8, 18.4, 1.0, 'crate')
+    o('art/props/campfire', 49.4, 20.2, 1.0, None, light=170)
+    # the quay: an open strip between the promenade and the water
     o('art/buildings/crane', 44, 47.3, .9, 'stone')
-    o('art/props/fish_drying_rack', 9, 49, 1.0, 'crate')
-    o('art/props/fish_cleaning_station', 15, 48.6, 1.0, 'crate')
-    o('art/props/net_rack', 55, 48.8, 1.0, 'crate')
-    for x in (24, 40, 52, 66):
+    o('art/props/fish_drying_rack', 9, 48.4, 1.0, 'crate')
+    o('art/props/fish_cleaning_station', 14.5, 47.6, 1.0, 'crate')
+    o('art/props/hand_cart', 17.4, 46.6, 1.0, 'crate')
+    o('art/props/net_rack', 57, 48.2, 1.0, 'crate')
+    o('art/props/carpenter_workbench', 62, 47, 1.0, 'crate')
+    for x in (24, 40, 48.6, 66):
         o('art/props/bollard', x, 47.6, .5, 'crate', take=False)
-    o('art/props/anchor', 70, 47, 1.0, take=False)
-    for x, y in ((6, 41), (22, 42.8), (50, 42.8), (66, 41)):
+    o('art/props/anchor', 69.6, 47, 1.0, take=False)
+    for x, y in ((5, 45.6), (25.2, 45.6), (47.2, 45.6), (67.5, 45.6)):
         o('art/props/lantern_post', x, y, 1.0, 'crate', light=130)
     # docks (south)
     M.docks = [{'x': 34, 'y': 48, 'w': 4, 'h': 8}, {'x': 50, 'y': 48, 'w': 4, 'h': 7}, {'x': 20, 'y': 48, 'w': 4, 'h': 6}]
@@ -309,12 +308,12 @@ def hub():
         M.obj('art/edges/town_wall', x, 8.4, 1.0, take=False)
     M.obj('art/edges/town_gate', 36, 9.2, 1.0, take=False)
     M.blocked.append([0, 0, M.w, 7.6]); M.openings.append([33.5, 0, 5, 8.6]); M.take(0, 0, M.w, 8.6)
-    edges(M, north=False, gaps_e=((28, 36),), west=True, gaps_w=((22, 28),))
+    edges(M, north=False, gaps_e=((28, 36),), west=True, gaps_w=((28, 35),))
     # garden fences in front of the homes, a little more street life
-    for x, y in ((5, 18.2), (8.2, 18.2), (15, 18.2), (22.4, 18.2)):
+    for x, y in ((5, 18.2), (8.2, 18.2), (15, 18.2), (21.4, 18.2)):
         M.obj('art/props/fence_wood', x, y, .8, take=False)
-    for x, y, a in ((12, 39.6, 'art/props/barrel_01'), (16.5, 39.8, 'art/props/crate_02'), (59.5, 39.8, 'art/props/crate_stack'), (67, 39.6, 'art/props/barrel_02'),
-                    (52, 28.6, 'art/props/wheelbarrow'), (24, 29, 'art/props/bench'), (47.5, 29.2, 'art/props/bench'), (5, 29.5, 'art/props/hanging_net_frame')):
+    for x, y, a in ((14.1, 42.6, 'art/props/barrel_01'), (24.6, 42.6, 'art/props/crate_02'), (59.9, 42.6, 'art/props/crate_stack'), (71, 43, 'art/props/barrel_02'),
+                    (25, 29.6, 'art/props/bench'), (47.2, 18.9, 'art/props/bench'), (13.9, 29.6, 'art/props/hanging_net_frame')):
         if M.free(x, y, .6):
             M.obj(a, x, y, 1.0, 'crate')
     # portals / features
@@ -322,24 +321,24 @@ def hub():
                  {'id': 'hub.outer', 'name': 'Outer Quays Passage →', 'x': 69.5, 'y': 32, 'target': 'quays.west'},
                  {'id': 'hub.depart', 'name': 'Rest Docks — Departure', 'x': 36, 'y': 54, 'target': 'raid departures'}]
     M.features = [{'id': 'hub.lantern', 'name': 'Square Brazier', 'type': 'fixture', 'kind': 'lantern', 'x': 35.5, 'y': 21, 'w': 1, 'h': 1, 'variant': 0, 'hidden': True},
-                  {'id': 'hub.well', 'name': 'Well', 'type': 'fixture', 'kind': 'cistern', 'x': 12.5, 'y': 24.5, 'w': 1, 'h': 1, 'variant': 0, 'hidden': True},
+                  {'id': 'hub.well', 'name': 'Well', 'type': 'fixture', 'kind': 'cistern', 'x': 29, 'y': 24, 'w': 1, 'h': 1, 'variant': 0, 'hidden': True},
                   {'id': 'hub.board', 'name': 'Notice Board', 'type': 'fixture', 'kind': 'board', 'x': 30.5, 'y': 19.5, 'w': 1, 'h': 1, 'variant': 0, 'hidden': True},
                   {'id': 'hub.hoist', 'name': 'Harbor Crane', 'type': 'fixture', 'kind': 'hoist', 'x': 43.5, 'y': 46.5, 'w': 1, 'h': 1, 'variant': 0, 'hidden': True},
                   {'id': 'hub.tidepost', 'name': 'Tide Post', 'type': 'fixture', 'kind': 'tide', 'x': 39, 'y': 47, 'w': 1, 'h': 1, 'variant': 0, 'hidden': True}]
     M.zones = [{'id': 'square', 'name': 'Lantern Square', 'x': 24, 'y': 17, 'w': 24, 'h': 14},
                {'id': 'oldtown', 'name': 'Old Town', 'x': 0, 'y': 0, 'w': 72, 'h': 17},
-               {'id': 'westrow', 'name': 'Clinic & Ledger Row', 'x': 0, 'y': 17, 'w': 24, 'h': 21},
-               {'id': 'forge', 'name': 'Forge Yard', 'x': 48, 'y': 17, 'w': 24, 'h': 21},
-               {'id': 'market', 'name': 'Market Row', 'x': 0, 'y': 38, 'w': 72, 'h': 10},
-               {'id': 'docks', 'name': 'Rest Docks', 'x': 0, 'y': 46, 'w': 72, 'h': 12}]
+               {'id': 'westrow', 'name': 'Clinic & Ledger Row', 'x': 0, 'y': 17, 'w': 24, 'h': 16},
+               {'id': 'forge', 'name': 'Forge Yard', 'x': 48, 'y': 17, 'w': 24, 'h': 16},
+               {'id': 'market', 'name': 'Market Row', 'x': 0, 'y': 33, 'w': 72, 'h': 12},
+               {'id': 'docks', 'name': 'Rest Docks', 'x': 0, 'y': 45, 'w': 72, 'h': 13}]
     # Harbor life: townsfolk routes (walked back and forth), boats bobbing in the harbor
     M.life = {'routes': [
         [[29, 21.2], [43, 21.2], [43, 27.4], [29, 27.4], [29, 21.2]],          # around Lantern Square
-        [[6, 42.2], [22, 42.4], [36, 42.6], [50, 42.4], [66, 42]],            # harbor promenade
+        [[5, 44.3], [22, 44.2], [36, 44.4], [50, 44.2], [67, 44.3]],          # harbor promenade
         [[6, 18.8], [20, 18.6], [36, 18.6], [52, 18.8], [66, 18.8]],          # north lane (homes)
         [[36.4, 29.5], [36.4, 36], [36.4, 45.5], [36, 53]],                   # square to the departure pier
-        [[46, 24.2], [52, 25.4], [58, 27.5], [64, 31], [68, 32]],             # east road to the Quays gate
-        [[26, 24.2], [17, 24.6], [8, 25.2]],                                  # west lane
+        [[46, 31.7], [56, 31.7], [68, 31.8]],                                 # Guild Row east (forge)
+        [[26, 31.6], [16, 31.6], [5, 31.6]],                                  # Guild Row west (clinic, ledger)
         [[36, 7.5], [36, 13], [36, 18]],                                      # city gate road
         [[52, 47.6], [52, 53.5]],                                             # east pier
         [[22, 47.6], [22, 52.5]],                                             # west pier
@@ -600,7 +599,7 @@ def place_content(world, H, Q):
     npc_at = {'n_dockmaster': ('hub.pilot', 3.2, -.4), 'n_clerk': ('hub.ledger', 0, 1.3), 'n_quartermaster': ('hub.trade', 0, 1.3),
               'n_mechanic': ('hub.mech', -2, 1.4), 'n_medic': ('hub.clinic', 0, 1.3), 'n_guard': ('hub.guard', 0, 1.3),
               'n_salvager': ('hub.store', -3, 1.4), 'n_apprentice': ('hub.mech', 3, 1.6)}
-    free_npc = {'n_ropewright': (38, 44.5), 'n_tidepilot': (33, 46.5), 'n_crewhand': (57, 44.6)}
+    free_npc = {'n_ropewright': (39.4, 45.6), 'n_tidepilot': (33, 46.5), 'n_crewhand': (55.4, 45.8)}
     for n in c['npcs']:
         if n['id'] in npc_at:
             b, dx, dy = npc_at[n['id']]
