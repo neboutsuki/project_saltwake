@@ -24,6 +24,10 @@ try{G.save.completedRaids=5;G.save.hunter={xp:5000,rank:8};
  c.opStampedeHunt=!!bull&&bull.apex==='herdbull'&&op.objectives.find(o=>o.kind==='mast')?.need===40;
  bull.hp=1;G.hitMonster(bull,999,{penetration:99},bull.x,bull.y);c.opHuntObjective=hu.done===true;
  start('front','op_rookery');c.opRookery=G.raid.operation.id==='rookery'&&G.raid.enemies.filter(e=>e.type==='gull').length>=5;
+ // fixed major areas: always the same layout, residents + their apex in its lair, area hunt completes on extraction
+ c.areasFixed=['flats','ashwood','village','cliffs'].every(k=>{const m=G.world.maps[k];return !!m&&!m.procedural&&m.expedition&&JSON.stringify(IS.genArea(k).ground)===JSON.stringify(m.ground)});
+ for(const k of ['flats','ashwood','village','cliffs']){start(k,k+'_free');const ap=G.raid.enemies.find(e=>e.apex===IS.AREAS[k].apex);if(!(G.mapId===k&&ap&&G.walkable(G.player.x,G.player.y))){c['area_'+k]=false}else c['area_'+k]=true}
+ start('cliffs','cliffs_hunt');const H2=G.raid.hunt,har=G.raid.enemies.find(e=>e.id===H2?.id);har.hp=1;G.hitMonster(har,999,{penetration:99},har.x,har.y);const g2=G.save.gold,pt2=G.map().portals[1];G.player.x=pt2.x*T;G.player.y=pt2.y*T;G.portal(pt2);c.areaHuntPaid=!G.raid&&G.save.gold>=g2+IS.APEX.harrier.reward.scrip;G.close();
  try{G.render(performance.now())}catch(x){errs.push(String(x))}
  // rank gate: high-rank hunts are locked for a new hunter
  G.save.hunter={xp:0,rank:1};c.rankGate=IS.mission(G,'isle').id!=='hunt_bellhulk'||true;G.save.missions={isle:'hunt_bellhulk'};c.rankGateBlocks=IS.mission(G,'isle').id==='isle_free';

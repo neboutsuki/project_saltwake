@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.31-dev — Four major areas (fixed maps)
+- New fixed regions on the Expedition Chart. Each is always the same layout (150×110) and has its own ground, flora, region buildings from the art set, residents (day and night lists), points of interest with caches, lights, two extractions (landing skiff and inland trail), and its apex living in a lair:
+
+| Region | Unlock | Residents | Apex · lair | Highlights |
+|---|---|---|---|---|
+| Red Salt Flats | HR 1 | Brinebacks, Grazers | Brineback Matriarch · Evaporation Pans | salt pans, Salt Works (pump house, salt shed), Herders' Camp, Rail Cut |
+| The Ashwood | HR 2 | Salt Widows | Salt Widow Queen · Burnt Clearing | dense dead and blighted pines, Charcoal Camp (cabin), Hunter's Rest (shrine), Old Grove (ruin arch) |
+| The Drowned Village | HR 2 | Brineworn (more at night) | The Caller Choir · Flooded Chapel | mud and old squares, Sunken Row (3 sunken houses), Net Lofts, Bone Well |
+| Storm Cliffs | HR 3 | Redhook flocks | Gale Harrier · Lamp Gallery (cliff lighthouse) | cliff ridges with passes, Shepherd's Hut, Wreck Cove, Ruined Lighthouse |
+
+- Each region has two missions: **Free Expedition** (the apex is in its lair; slay it for trophies) and **Hunt: <apex>** (completes on extraction).
+- The Drowned Isle and the Brinefront are marked as SPECIAL (random) on the chart, with dashed rings. The fixed regions show their map as a thumbnail.
+- QA: regions are deterministic and reachable (the audit flood-fills every map), each region's apex is in place, an area hunt pays out, and the overlap suite covers the regions. 445 checks, all passing.
+
 ## v0.31-dev — Character shadow, overlap clean-up
 - **Character:** the dark outline and rim light are gone.
   - Ren's sprite frames are "lifted" instead: a little more contrast, saturation and brightness than the muted ground, baked once per frame.

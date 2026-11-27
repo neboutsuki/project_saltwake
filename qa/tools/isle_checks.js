@@ -17,7 +17,7 @@ try{if(G.raid)G.endRaid(true,'x');G.close();G.setArea('hub',33.5,27.6);G.mode='p
  G.beginRaid();G.close();G.mode='play';c.newLayoutNextVisit=G.mapId==='isle'&&G.map().seed!==firstSeed;G.endRaid(true,'x');G.close();G.mode='play';
  // the expedition chart: one departure point, full-screen chart with every destination
  G.close();G.mode='play';G.setArea('hub',33.5,27.6);G.save.destination='front';G.showClimateForecast(true);const pn=document.getElementById('panel');
- c.chart=!!pn.querySelector('.swChart .swSea')&&pn.querySelectorAll('.swNode').length===3&&!pn.querySelector('.swNode.t-maw')&&!!pn.querySelector('.swNode.on.t-front')&&!!pn.querySelector('[data-act="env_deploy"]');G.close();
+ c.chart=!!pn.querySelector('.swChart .swSea')&&pn.querySelectorAll('.swNode').length===IS.DEST.length-1&&!pn.querySelector('.swNode.t-maw')&&!!pn.querySelector('.swNode.on.t-front')&&!!pn.querySelector('[data-act="env_deploy"]');G.close();
  const outer=G.world.maps.hub.portals.find(p=>p.id==='hub.outer');G.mode='play';G.portal(outer);c.singleDeparture=!G.panel&&!G.raid;
  // the Brinefront operation: objectives -> call extraction -> hold -> boat
  G.save.destination='front';G.beginRaid();G.close();G.mode='play';const op=G.raid.operation,FM=G.map();

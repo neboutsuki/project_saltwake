@@ -12,8 +12,8 @@
  */
 (() => {
   const P = Game.prototype, T = 32, TAU = Math.PI * 2;
-  const SIZE = {"art/trees/ash_pine_01": [4.2, 7.0], "art/trees/ash_pine_02": [4.2, 7.0], "art/trees/ash_pine_03": [4.2, 7.0], "art/trees/ash_pine_04": [4.2, 7.0], "art/trees/blight_tree_01": [5.6, 7.0], "art/trees/blight_tree_02": [5.6, 7.0], "art/trees/broadleaf_01": [5.6, 6.3], "art/trees/broadleaf_02": [5.6, 6.3], "art/trees/coastal_pine_01": [5.6, 7.0], "art/trees/coastal_pine_02": [5.6, 7.0], "art/trees/dead_tree_01": [4.2, 5.6], "art/trees/dead_tree_02": [4.2, 5.6], "art/trees/dead_tree_03": [4.2, 5.6], "art/trees/fallen_log_01": [4.2, 2.1], "art/trees/fallen_log_02": [4.2, 2.1], "art/trees/giant_grove_tree_01": [11.2, 14.0], "art/trees/giant_grove_tree_02": [11.2, 14.0], "art/trees/stump_01": [2.1, 1.75], "art/trees/stump_02": [2.1, 1.75], "art/rocks/cliff_rock_01": [5.6, 4.2], "art/rocks/cliff_rock_02": [5.6, 4.2], "art/rocks/rock_large_01": [4.2, 3.15], "art/rocks/rock_large_02": [4.2, 3.15], "art/rocks/rock_small_01": [1.4, 1.05], "art/rocks/rock_small_02": [1.4, 1.05], "art/rocks/rock_small_03": [1.4, 1.05], "art/rocks/salt_crystal_cluster_01": [2.1, 2.1], "art/rocks/salt_crystal_cluster_02": [2.1, 2.1], "art/plants/fern_01": [1.75, 1.4], "art/plants/fern_02": [1.75, 1.4], "art/plants/fern_03": [1.75, 1.4], "art/plants/flowers_01": [1.05, 1.05], "art/plants/flowers_02": [1.05, 1.05], "art/plants/flowers_03": [1.05, 1.05], "art/plants/grass_tuft_01": [1.4, 1.4], "art/plants/grass_tuft_02": [1.4, 1.4], "art/plants/grass_tuft_03": [1.4, 1.4], "art/plants/grass_tuft_04": [1.4, 1.4], "art/plants/grass_tuft_05": [1.4, 1.4], "art/plants/grass_tuft_06": [1.4, 1.4], "art/plants/kelp_pile_01": [2.1, 1.05], "art/plants/kelp_pile_02": [2.1, 1.05], "art/plants/mushrooms_01": [1.05, 1.05], "art/plants/mushrooms_02": [1.05, 1.05], "art/plants/reeds_01": [1.4, 2.1], "art/plants/reeds_02": [1.4, 2.1], "art/plants/reeds_03": [1.4, 2.1], "art/plants/reeds_04": [1.4, 2.1], "art/plants/shrub_01": [2.1, 1.75], "art/plants/shrub_02": [2.1, 1.75], "art/plants/shrub_03": [2.1, 1.75], "art/plants/shrub_04": [2.1, 1.75], "art/arena/arena_gate_closed": [8.4, 7.0], "art/arena/arena_pillar_01": [4.2, 8.4], "art/arena/arena_pillar_02": [4.2, 8.4], "art/arena/flood_water_overlay": [22.4, 22.4], "art/arena/harpoon_stuck": [2.8, 4.2], "art/arena/lure_lantern": [2.1, 4.2], "art/arena/oil_pool": [4.2, 2.1], "art/arena/pillar_broken": [4.2, 5.6], "art/arena/salt_boulder": [2.1, 1.75], "art/edges/treeline_mass_01": [14.0, 11.2], "art/edges/treeline_mass_02": [14.0, 11.2], "art/edges/treeline_mass_03": [14.0, 11.2], "art/edges/rubble_heap_01": [8.4, 5.6], "art/edges/rubble_heap_02": [8.4, 5.6], "art/props/anchor": [2.1, 2.1], "art/props/barrel_01": [1.4, 1.75], "art/props/barrel_02": [1.4, 1.75], "art/props/bench": [2.8, 1.75], "art/props/body_satchel": [1.75, 1.05], "art/props/bollard": [2.1, 2.1], "art/props/bone_pile_01": [2.1, 1.4], "art/props/bone_pile_02": [2.1, 1.4], "art/props/brazier": [1.4, 2.45], "art/props/broken_fence": [4.2, 2.45], "art/props/cache_bundle": [1.75, 1.4], "art/props/campfire": [2.1, 1.75], "art/props/carcass_01": [3.5, 2.1], "art/props/carcass_02": [3.5, 2.1], "art/props/cargo_platform": [8.4, 7.7], "art/props/carpenter_workbench": [4.9, 3.85], "art/props/cart_wreck": [4.2, 2.8], "art/props/chain_post": [1.4, 2.8], "art/props/chest_common": [1.75, 1.75], "art/props/chest_rare": [1.75, 1.75], "art/props/crate_01": [1.75, 1.75], "art/props/crate_02": [1.75, 1.75], "art/props/crate_03": [1.75, 1.75], "art/props/crate_stack": [2.8, 2.8], "art/props/dinghy_wrecked": [5.6, 4.2], "art/props/dock_broken_01": [8.4, 6.3], "art/props/dock_straight_01": [8.4, 6.3], "art/props/fence_iron": [2.8, 2.1], "art/props/fence_wood": [2.8, 2.1], "art/props/fish_basket": [1.4, 1.4], "art/props/fish_cleaning_station": [4.9, 4.2], "art/props/fish_drying_rack": [4.2, 3.5], "art/props/fountain": [5.6, 5.6], "art/props/hand_cart": [3.5, 2.45], "art/props/hand_water_pump": [2.8, 4.2], "art/props/hanging_lantern": [1.05, 1.75], "art/props/hanging_net_frame": [4.2, 3.5], "art/props/lantern_post": [2.8, 4.2], "art/props/lantern_post_variant": [1.4, 4.2], "art/props/mooring_post_rope": [2.1, 2.45], "art/props/nest_01": [4.2, 2.8], "art/props/nest_02": [4.2, 2.8], "art/props/net_rack": [2.8, 2.8], "art/props/notice_board": [2.8, 3.5], "art/props/open_supply_crate": [2.8, 2.8], "art/props/rope_coil": [1.4, 1.05], "art/props/rowboat": [4.2, 2.45], "art/props/rowboat_damaged": [5.6, 4.2], "art/props/salt_processing_trough": [4.9, 3.5], "art/props/salt_sack_pile": [2.1, 1.75], "art/props/salvage_debris": [5.6, 4.2], "art/props/signpost": [1.75, 2.8], "art/props/statue_hunter": [4.2, 7.0], "art/props/stone_relic": [4.2, 4.2], "art/props/storage_shelf": [4.2, 4.9], "art/props/supply_sacks": [2.1, 2.45], "art/props/tent_supplies": [2.8, 2.45], "art/props/tool_rack": [3.5, 3.85], "art/props/wall_lantern": [1.05, 1.4], "art/props/well": [2.8, 3.5], "art/props/wheelbarrow": [4.2, 3.15]};
-  const IS = window.saltwakeIsle = { stats: { generated: 0, visits: 0, extractions: 0 }, DEST: ['quays', 'isle', 'front', 'maw'] };
+  const SIZE = {"art/buildings/flats_evaporation_pan": [11.2, 5.6], "art/buildings/flats_pump_house": [9.8, 9.8], "art/buildings/salt_shed_01": [9.8, 7.0], "art/buildings/salt_shed_02": [9.8, 7.0], "art/buildings/wrecker_camp_tent_01": [7.0, 5.6], "art/buildings/wrecker_camp_tent_02": [7.0, 5.6], "art/buildings/rail_cart_track": [11.2, 2.8], "art/buildings/ashwood_cabin": [8.4, 8.4], "art/buildings/shrine_01": [4.2, 5.6], "art/buildings/shrine_02": [4.2, 5.6], "art/buildings/ancient_ruin_arch_01": [9.8, 9.8], "art/buildings/ancient_ruin_arch_02": [9.8, 9.8], "art/buildings/village_chapel_flooded": [12.6, 14.0], "art/buildings/village_house_sunken_01": [9.8, 9.8], "art/buildings/village_house_sunken_02": [9.8, 9.8], "art/buildings/village_house_sunken_03": [9.8, 9.8], "art/buildings/net_loft": [8.4, 9.8], "art/buildings/bone_well": [7.0, 7.0], "art/buildings/cliff_lighthouse": [8.4, 16.8], "art/buildings/cottage_01": [8.4, 9.8], "art/buildings/cottage_02": [8.4, 9.8], "art/buildings/wreck_small": [8.4, 5.6], "art/buildings/wreck_ship_01": [16.8, 9.8], "art/buildings/lighthouse_ruined": [7.0, 11.2], "art/edges/cliff_straight": [16.8, 5.6], "art/edges/cliff_corner_outer": [5.6, 5.6], "art/edges/ravine_edge": [16.8, 5.6],"art/trees/ash_pine_01": [4.2, 7.0], "art/trees/ash_pine_02": [4.2, 7.0], "art/trees/ash_pine_03": [4.2, 7.0], "art/trees/ash_pine_04": [4.2, 7.0], "art/trees/blight_tree_01": [5.6, 7.0], "art/trees/blight_tree_02": [5.6, 7.0], "art/trees/broadleaf_01": [5.6, 6.3], "art/trees/broadleaf_02": [5.6, 6.3], "art/trees/coastal_pine_01": [5.6, 7.0], "art/trees/coastal_pine_02": [5.6, 7.0], "art/trees/dead_tree_01": [4.2, 5.6], "art/trees/dead_tree_02": [4.2, 5.6], "art/trees/dead_tree_03": [4.2, 5.6], "art/trees/fallen_log_01": [4.2, 2.1], "art/trees/fallen_log_02": [4.2, 2.1], "art/trees/giant_grove_tree_01": [11.2, 14.0], "art/trees/giant_grove_tree_02": [11.2, 14.0], "art/trees/stump_01": [2.1, 1.75], "art/trees/stump_02": [2.1, 1.75], "art/rocks/cliff_rock_01": [5.6, 4.2], "art/rocks/cliff_rock_02": [5.6, 4.2], "art/rocks/rock_large_01": [4.2, 3.15], "art/rocks/rock_large_02": [4.2, 3.15], "art/rocks/rock_small_01": [1.4, 1.05], "art/rocks/rock_small_02": [1.4, 1.05], "art/rocks/rock_small_03": [1.4, 1.05], "art/rocks/salt_crystal_cluster_01": [2.1, 2.1], "art/rocks/salt_crystal_cluster_02": [2.1, 2.1], "art/plants/fern_01": [1.75, 1.4], "art/plants/fern_02": [1.75, 1.4], "art/plants/fern_03": [1.75, 1.4], "art/plants/flowers_01": [1.05, 1.05], "art/plants/flowers_02": [1.05, 1.05], "art/plants/flowers_03": [1.05, 1.05], "art/plants/grass_tuft_01": [1.4, 1.4], "art/plants/grass_tuft_02": [1.4, 1.4], "art/plants/grass_tuft_03": [1.4, 1.4], "art/plants/grass_tuft_04": [1.4, 1.4], "art/plants/grass_tuft_05": [1.4, 1.4], "art/plants/grass_tuft_06": [1.4, 1.4], "art/plants/kelp_pile_01": [2.1, 1.05], "art/plants/kelp_pile_02": [2.1, 1.05], "art/plants/mushrooms_01": [1.05, 1.05], "art/plants/mushrooms_02": [1.05, 1.05], "art/plants/reeds_01": [1.4, 2.1], "art/plants/reeds_02": [1.4, 2.1], "art/plants/reeds_03": [1.4, 2.1], "art/plants/reeds_04": [1.4, 2.1], "art/plants/shrub_01": [2.1, 1.75], "art/plants/shrub_02": [2.1, 1.75], "art/plants/shrub_03": [2.1, 1.75], "art/plants/shrub_04": [2.1, 1.75], "art/arena/arena_gate_closed": [8.4, 7.0], "art/arena/arena_pillar_01": [4.2, 8.4], "art/arena/arena_pillar_02": [4.2, 8.4], "art/arena/flood_water_overlay": [22.4, 22.4], "art/arena/harpoon_stuck": [2.8, 4.2], "art/arena/lure_lantern": [2.1, 4.2], "art/arena/oil_pool": [4.2, 2.1], "art/arena/pillar_broken": [4.2, 5.6], "art/arena/salt_boulder": [2.1, 1.75], "art/edges/treeline_mass_01": [14.0, 11.2], "art/edges/treeline_mass_02": [14.0, 11.2], "art/edges/treeline_mass_03": [14.0, 11.2], "art/edges/rubble_heap_01": [8.4, 5.6], "art/edges/rubble_heap_02": [8.4, 5.6], "art/props/anchor": [2.1, 2.1], "art/props/barrel_01": [1.4, 1.75], "art/props/barrel_02": [1.4, 1.75], "art/props/bench": [2.8, 1.75], "art/props/body_satchel": [1.75, 1.05], "art/props/bollard": [2.1, 2.1], "art/props/bone_pile_01": [2.1, 1.4], "art/props/bone_pile_02": [2.1, 1.4], "art/props/brazier": [1.4, 2.45], "art/props/broken_fence": [4.2, 2.45], "art/props/cache_bundle": [1.75, 1.4], "art/props/campfire": [2.1, 1.75], "art/props/carcass_01": [3.5, 2.1], "art/props/carcass_02": [3.5, 2.1], "art/props/cargo_platform": [8.4, 7.7], "art/props/carpenter_workbench": [4.9, 3.85], "art/props/cart_wreck": [4.2, 2.8], "art/props/chain_post": [1.4, 2.8], "art/props/chest_common": [1.75, 1.75], "art/props/chest_rare": [1.75, 1.75], "art/props/crate_01": [1.75, 1.75], "art/props/crate_02": [1.75, 1.75], "art/props/crate_03": [1.75, 1.75], "art/props/crate_stack": [2.8, 2.8], "art/props/dinghy_wrecked": [5.6, 4.2], "art/props/dock_broken_01": [8.4, 6.3], "art/props/dock_straight_01": [8.4, 6.3], "art/props/fence_iron": [2.8, 2.1], "art/props/fence_wood": [2.8, 2.1], "art/props/fish_basket": [1.4, 1.4], "art/props/fish_cleaning_station": [4.9, 4.2], "art/props/fish_drying_rack": [4.2, 3.5], "art/props/fountain": [5.6, 5.6], "art/props/hand_cart": [3.5, 2.45], "art/props/hand_water_pump": [2.8, 4.2], "art/props/hanging_lantern": [1.05, 1.75], "art/props/hanging_net_frame": [4.2, 3.5], "art/props/lantern_post": [2.8, 4.2], "art/props/lantern_post_variant": [1.4, 4.2], "art/props/mooring_post_rope": [2.1, 2.45], "art/props/nest_01": [4.2, 2.8], "art/props/nest_02": [4.2, 2.8], "art/props/net_rack": [2.8, 2.8], "art/props/notice_board": [2.8, 3.5], "art/props/open_supply_crate": [2.8, 2.8], "art/props/rope_coil": [1.4, 1.05], "art/props/rowboat": [4.2, 2.45], "art/props/rowboat_damaged": [5.6, 4.2], "art/props/salt_processing_trough": [4.9, 3.5], "art/props/salt_sack_pile": [2.1, 1.75], "art/props/salvage_debris": [5.6, 4.2], "art/props/signpost": [1.75, 2.8], "art/props/statue_hunter": [4.2, 7.0], "art/props/stone_relic": [4.2, 4.2], "art/props/storage_shelf": [4.2, 4.9], "art/props/supply_sacks": [2.1, 2.45], "art/props/tent_supplies": [2.8, 2.45], "art/props/tool_rack": [3.5, 3.85], "art/props/wall_lantern": [1.05, 1.4], "art/props/well": [2.8, 3.5], "art/props/wheelbarrow": [4.2, 3.15]};
+  const IS = window.saltwakeIsle = { stats: { generated: 0, visits: 0, extractions: 0 }, DEST: ['quays', 'flats', 'ashwood', 'village', 'cliffs', 'isle', 'front', 'maw'] };
   // ---- monsters, apexes, operations, missions --------------------------------------------------------------------
   // Apexes are oversized, named, tinted versions of species that already have art (lore from docs/BESTIARY_LORE.md).
   const LORE = {
@@ -63,6 +63,9 @@
       .concat(Object.entries(APEX).filter(([, a]) => !a.hidden).map(([id, a]) => ({ id: 'hunt_' + id, kind: 'hunt', apex: id, name: 'Hunt: ' + a.name, threat: Math.min(5, a.hr + 1), hr: a.hr,
         desc: `A random isle where only ${a.name.replace(/^The /, '')}'s kind lives. Track it down, slay it, extract.` }))),
     front: OPS.map(o => ({ id: 'op_' + o.id, kind: 'op', op: o.id, name: o.name, threat: o.threat, hr: o.hr, desc: o.lore })),
+    ...Object.fromEntries(Object.entries({ flats: 'matriarch', ashwood: 'widowqueen', village: 'choir', cliffs: 'harrier' }).map(([k, ap]) => [k, [
+      { id: k + '_free', kind: 'free', name: 'Free Expedition', threat: 2, hr: 1, desc: 'Explore the region, salvage its caches and stores. Its apex lives in its lair: slay it for trophies if you dare.' },
+      { id: k + '_hunt', kind: 'hunt', apex: ap, name: 'Hunt: ' + APEX[ap].name, threat: Math.min(5, APEX[ap].hr + 1), hr: APEX[ap].hr, desc: 'Go straight for the apex in its lair. Slay it and extract to complete the hunt.' }]])),
     maw: [{ id: 'maw_story', kind: 'story', name: 'Into the Maw', threat: 5, hr: 1, desc: 'Story quest. The Elder Tidemaw waits in the drowned crater.' }],
   };
   IS.LORE = LORE;
@@ -156,7 +159,7 @@
     B.edges(); B.trees(.55 + R() * .1, R() < .5 ? ['ash', 'coastal', 'broad', 'dead'] : ['coastal', 'broad', 'blight', 'ash']); B.rocks(70); B.plants(1100);
     // monster spawn points: away from the landing
     for (let i = 0; i < 24; i++) { const x = 10 + R() * (W - 20), y = 10 + R() * (WS - 20); if (Math.hypot(x - land[0], y - land[1]) > 30) M.spawns.push([+x.toFixed(1), +y.toFixed(1)]); }
-    M.procedural = true; M.pois = pois; M.containers = containers; M.isleName = isle;
+    M.procedural = true; M.expedition = true; M.pois = pois; M.containers = containers; M.isleName = isle;
     return M;
   }
   IS.genIsle = genIsle;
@@ -185,7 +188,7 @@
     B.zone('maw.arena', 'The Maw · Drowned Crater', cx - rx, cy - ry, rx * 2, ry * 2); B.zone('maw.shore', 'The Maw · Landing', 40, WS - 14, 40, 14); B.zone('maw.all', 'The Maw', 0, 0, W, H);
     B.edges(); B.trees(.62, ['dead', 'blight', 'ash']); B.rocks(50); B.plants(700);
     for (let i = 0; i < 10; i++) { const x = 15 + R() * (W - 30), y = cy + ry + 6 + R() * (WS - cy - ry - 14); M.spawns.push([+x.toFixed(1), +y.toFixed(1)]); }
-    M.arena = { x0: cx - rx + 1.5, y0: cy - ry + 1, x1: cx + rx - 1.5, y1: cy + ry - .5, cx, cy, gate: [cx - 3, cy + ry, 6, 2] };
+    M.expedition = true; M.arena = { x0: cx - rx + 1.5, y0: cy - ry + 1, x1: cx + rx - 1.5, y1: cy + ry - .5, cx, cy, gate: [cx - 3, cy + ry, 6, 2] };
     M.containers = [{ id: 'maw_c_0', name: 'Hunter’s Cache', mapId: 'maw', x: 52, y: 76, lootTableId: 'deep_cache', respawn: 'raid' }, { id: 'maw_c_1', name: 'Drowned Offering', mapId: 'maw', x: 72, y: 70, lootTableId: 'cave_salvage', respawn: 'raid' }];
     return M;
   }
@@ -226,11 +229,87 @@
     B.zone('front.all', 'The Brinefront', 0, 0, W, H);
     B.edges(); B.trees(.5, ['dead', 'blight', 'ash']); B.rocks(80); B.plants(800);
     for (let i = 0; i < 30; i++) { const x = 10 + R() * (W - 20), y = 10 + R() * (WS - 20); if (Math.hypot(x - land[0], y - land[1]) > 30) M.spawns.push([+x.toFixed(1), +y.toFixed(1)]); }
-    M.procedural = true; M.containers = containers; M.objectives = objectives; M.evac = { x: evac[0], y: evac[1] }; M.opName = pick(R, FRONT_NAMES) + ' · ' + op.name; M.op = op.id;
+    M.procedural = true; M.expedition = true; M.containers = containers; M.objectives = objectives; M.evac = { x: evac[0], y: evac[1] }; M.opName = pick(R, FRONT_NAMES) + ' · ' + op.name; M.op = op.id;
     return M;
   }
   IS.genFront = genFront;
 
+  // ---- MAJOR AREAS (fixed maps, always the same layout) ---------------------------------------------------------
+  // Each region has its own ground, flora, buildings, residents and an apex living in its lair.
+  const P_ = a => 'art/props/' + a, BLD = a => 'art/buildings/' + a;
+  const AREAS = IS.AREAS = {
+    flats: { name: 'Red Salt Flats', seed: 31337, hr: 1, threat: 2, apex: 'matriarch', lairName: 'Evaporation Pans', pos: [58, 66],
+      desc: 'Wide salt pans where the crust cracks like old porcelain. Brineback herds graze here and the Matriarch rules the evaporation pans.',
+      ground: [{ area: [0, 0, 150, 94], m: 'salt', alt: 'sand', p: .45, base: .55 }], blobs: ['gravel', 'soil', 'sand', 'salt', 'mud'],
+      trees: [.2, ['dead', 'ash']], rocks: 130, plants: 420, residents: ['brineback', 'brineback', 'grazer', 'grazer', 'gull'], night: ['brineback', 'grazer', 'brineworn_drifter', 'gull'],
+      pois: [['Salt Works', ['flats_pump_house', 'salt_shed_01'], ['salt_processing_trough', 'salt_sack_pile', 'hand_cart', 'tool_rack', 'wheelbarrow'], 'provisions'],
+        ['Herders’ Camp', ['wrecker_camp_tent_01'], ['campfire', 'fence_wood', 'hand_water_pump', 'supply_sacks'], 'provisions', true],
+        ['Rail Cut', ['salt_shed_02'], ['cart_wreck', 'crate_stack', 'barrel_01'], 'dock_scrap']],
+      lair: (B, x, y) => { B.building('flats_evaporation_pan', x - 8, y + 2); B.building('flats_evaporation_pan', x + 8, y + 2); for (const [dx, dy] of [[-12, -6], [12, -6], [0, -9]]) { B.put('art/arena/pillar_broken', x + dx, y + dy); B.ghost(x + dx, y + dy - .3, 'stone'); } B.put('art/arena/salt_boulder', x - 4, y + 6); B.put('art/rocks/salt_crystal_cluster_02', x + 5, y + 7); } },
+    ashwood: { name: 'The Ashwood', seed: 51719, hr: 2, threat: 3, apex: 'widowqueen', lairName: 'Burnt Clearing', pos: [80, 48],
+      desc: 'A pine forest that burned and never stopped smouldering. Salt Widows string glass-hard webs between the dead trunks; their Queen nests in the clearing her fire made.',
+      ground: [{ area: [0, 0, 150, 94], m: 'ash', alt: 'soil', p: .45, base: .55 }], blobs: ['soil', 'mud', 'ash', 'gravel'],
+      trees: [.8, ['dead', 'blight', 'ash']], rocks: 60, plants: 700, residents: ['widow', 'widow', 'grazer', 'gull'], night: ['widow', 'widow', 'brineworn_drifter'],
+      pois: [['Charcoal Camp', ['ashwood_cabin'], ['campfire', 'tent_supplies', 'cart_wreck', 'barrel_02'], 'provisions', true],
+        ['Hunter’s Rest', ['shrine_01'], ['statue_hunter', 'tool_rack', 'crate_02'], 'cave_salvage'],
+        ['Old Grove', ['ancient_ruin_arch_01'], ['stone_relic', 'bone_pile_01'], 'deep_cache']],
+      lair: (B, x, y) => { B.M.ground.push({ blob: [x, y, 9], m: 'ash', alt: 'mud', p: .5 }); for (let i = 0; i < 8; i++) { const a = i / 8 * TAU, r = 6 + B.R() * 3; B.put(B.R() < .5 ? P_('carcass_01') : P_('bone_pile_02'), x + Math.cos(a) * r, y + Math.sin(a) * r * .8); } B.put(P_('nest_02'), x, y - 1, 1.4); B.light(x, y, 200, .7); } },
+    village: { name: 'The Drowned Village', seed: 70421, hr: 2, threat: 3, apex: 'choir', lairName: 'Flooded Chapel', pos: [12, 48],
+      desc: 'A fishing village the tide took one night. The people never left: they are Brineworn now, and the Callers sing them home from the flooded chapel.',
+      ground: [{ area: [0, 0, 150, 94], m: 'mud', alt: 'soil', p: .5, base: .5 }], blobs: ['gravel', 'plaza', 'sand', 'mud'],
+      trees: [.28, ['coastal', 'dead']], rocks: 50, plants: 500, residents: ['brineworn_drifter', 'brineworn_drifter', 'brineworn_caller', 'brineworn_breaker'], night: ['brineworn_drifter', 'brineworn_drifter', 'brineworn_caller', 'brineworn_breaker', 'brineworn_breaker'],
+      pois: [['Sunken Row', ['village_house_sunken_01', 'village_house_sunken_02', 'village_house_sunken_03'], ['broken_fence', 'barrel_01', 'fish_basket'], 'dock_scrap'],
+        ['Net Lofts', ['net_loft'], ['net_rack', 'fish_drying_rack', 'hanging_net_frame'], 'provisions'],
+        ['Bone Well', ['bone_well'], ['bone_pile_01', 'lantern_post'], 'cave_salvage', true]],
+      lair: (B, x, y) => { B.building('village_chapel_flooded', x, y - 1); for (const dx of [-8, 8]) { B.put('art/arena/lure_lantern', x + dx, y + 3); B.light(x + dx, y + 2, 180, .8); } B.put(P_('statue_hunter'), x - 4, y + 5); } },
+    cliffs: { name: 'Storm Cliffs', seed: 88813, hr: 3, threat: 3, apex: 'harrier', lairName: 'Lamp Gallery', pos: [60, 30],
+      desc: 'Wind-scoured headlands above the shoals. Redhook flocks wheel around the old lighthouse, and something much bigger nests in its lamp gallery.',
+      ground: [{ area: [0, 0, 150, 94], m: 'grass', alt: 'tall', p: .45, base: .55 }], blobs: ['gravel', 'soil', 'tall', 'grass'],
+      trees: [.32, ['coastal', 'ash']], rocks: 150, plants: 650, residents: ['gull', 'gull', 'gull', 'grazer', 'widow'], night: ['gull', 'widow', 'brineworn_drifter'], ridges: true,
+      pois: [['Shepherd’s Hut', ['cottage_01'], ['fence_wood', 'well', 'supply_sacks'], 'provisions'],
+        ['Wreck Cove', ['wreck_small'], ['dinghy_wrecked', 'salvage_debris', 'rope_coil'], 'dock_scrap'],
+        ['Ruined Lighthouse', ['lighthouse_ruined'], ['rubble_heap', 'crate_01'], 'cave_salvage']],
+      lair: (B, x, y) => { B.building('cliff_lighthouse', x, y); for (const dx of [-6, 6]) { B.put(P_('lantern_post'), x + dx, y + 2); B.light(x + dx, y + 1, 180, .8); } B.put(P_('nest_01'), x - 3, y + 4, 1.3); B.put(P_('nest_02'), x + 4, y + 5, 1.2); } },
+  };
+  function genArea(key) {
+    const A = AREAS[key], W = 150, H = 110, WS = 94, B = builder(key, A.name, W, H, A.seed, WS), { M, R } = B;
+    B.M = M; B.R = R;
+    B.building = (name, x, y) => { const asset = BLD(name), s = SIZE[asset]; if (!s) return; M.scene.decor.push({ asset, x: +x.toFixed(2), y: +y.toFixed(2), w: s[0], h: s[1], anchor: 'bottom' });
+      const depth = Math.max(2, s[1] * .42); for (let gx = x - s[0] * .4; gx <= x + s[0] * .4; gx += 1.2) for (let gy = y - depth; gy <= y - .3; gy += 1.2) B.ghost(gx, gy, 'crate');
+      B.keep.push([x, y - depth / 2, Math.max(s[0], depth) * .62]); B.bigs.push([x, y - depth / 2, s[0]]); };
+    M.desc = A.desc; M.expedition = true;
+    M.ground.push(...A.ground, { area: [0, WS - 8, W, 8], m: 'mud', alt: 'sand', p: .45, base: .5 });
+    for (let i = 0; i < 12; i++) M.ground.push({ blob: [8 + R() * (W - 16), 10 + R() * (WS - 22), 5 + R() * 9], m: pick(R, A.blobs), alt: pick(R, A.blobs), p: .3 });
+    const land = [40 + R() * 70, WS - 4], trail = [20 + R() * 110, 7.5], lair = [30 + R() * 90, 18 + R() * 10];
+    M.arrivals = { default: [land[0], land[1] - 1.5], legacy: [], from: { hub: [land[0], land[1] - 1.5] } };
+    M.portals.push({ id: key + '.skiff', name: 'Landing Skiff / Extraction', x: land[0] + 2, y: land[1] + 1.5, target: 'sea departure' }, { id: key + '.trail', name: 'Inland Trail / Extraction', x: trail[0], y: trail[1], target: 'inland' });
+    B.keep.push([land[0], land[1], 6], [trail[0], trail[1], 4], [lair[0], lair[1], 12]);
+    B.put('art/props/rowboat', land[0] + 2, land[1] + 2.6, .9); B.put('art/props/signpost', trail[0] - 1.6, trail[1] + 1.2);
+    A.lair(B, lair[0], lair[1]); B.zone(key + '.lair', A.lairName, lair[0] - 12, lair[1] - 9, 24, 18);
+    const pois = [{ x: lair[0], y: lair[1], name: A.lairName, lair: true }], containers = []; let ci = 0;
+    for (const [name, blds, props, loot, fire] of A.pois) { let spot = null;
+      for (let t = 0; t < 200 && !spot; t++) { const x = 18 + R() * (W - 36), y = 22 + R() * (WS - 40); if (pois.every(p => Math.hypot(p.x - x, p.y - y) > 28) && Math.hypot(x - land[0], y - land[1]) > 18) spot = [x, y]; }
+      if (!spot) continue; const [x, y] = spot; pois.push({ x, y, name });
+      M.ground.push({ blob: [x, y, 7], m: pick(R, ['gravel', 'soil', 'plaza']), alt: 'gravel', p: .3 });
+      blds.forEach((b, i) => B.building(b, x + (i - (blds.length - 1) / 2) * 11, y - 1));
+      for (const pr of props) { for (let t = 0; t < 6; t++) { const a = R() * TAU, r = 4 + R() * 3, px = x + Math.cos(a) * r, py = y + 1.5 + Math.abs(Math.sin(a)) * r * .6;
+        if (B.put(P_(pr) in SIZE ? P_(pr) : 'art/edges/rubble_heap_01', px, py, 1, R() < .5) !== false) break; } }
+      if (fire) B.light(x, y + 2, 190, .85);
+      for (let i = 0; i < 2; i++) containers.push({ id: `${key}_c_${ci++}`, name: name + (i ? ' Store' : ' Cache'), mapId: key, x: +(x - 2.5 + i * 5).toFixed(2), y: +(y + 3).toFixed(2), lootTableId: loot, respawn: 'raid' });
+      B.zone(key + '.poi' + ci, name, x - 11, y - 8, 22, 16); }
+    containers.push({ id: `${key}_c_${ci++}`, name: A.lairName + ' Hoard', mapId: key, x: +(lair[0] + 3).toFixed(2), y: +(lair[1] + 7).toFixed(2), lootTableId: 'deep_cache', respawn: 'raid', rare: true });
+    // tracks: landing -> points of interest -> lair -> trail
+    let cur = land, left = pois.filter(p => !p.lair).map(p => [p.x, p.y + 3]); while (left.length) { left.sort((a, b) => Math.hypot(a[0] - cur[0], a[1] - cur[1]) - Math.hypot(b[0] - cur[0], b[1] - cur[1])); const n = left.shift(); B.path(cur, n, 3); cur = n; }
+    B.path(cur, [lair[0], lair[1] + 9], 3); B.path([lair[0], lair[1] + 9], trail, 3);
+    if (A.ridges) for (const ry of [36, 60]) for (let x = 6; x < W - 12; x += 13.4) { if (!B.clear(x + 6.7, ry, 2) || !B.clear(x + 2, ry, 1.5) || !B.clear(x + 11, ry, 1.5)) continue;
+      M.scene.decor.push({ asset: 'art/edges/cliff_straight', x: +(x + 6.7).toFixed(2), y: ry, w: 13.44, h: 4.48, anchor: 'bottom' }); for (let gx = x; gx <= x + 13.4; gx += 1.2) B.ghost(gx, ry - .6, 'stone'); B.keep.push([x + 6.7, ry - 1, 7]); }
+    B.zone(key + '.all', A.name, 0, 0, W, H);
+    B.edges(); B.trees(A.trees[0], A.trees[1]); B.rocks(A.rocks); B.plants(A.plants);
+    for (let i = 0; i < 26; i++) { const x = 10 + R() * (W - 20), y = 10 + R() * (WS - 20); if (Math.hypot(x - land[0], y - land[1]) > 26 && Math.hypot(x - lair[0], y - lair[1]) > 14) M.spawns.push([+x.toFixed(1), +y.toFixed(1)]); }
+    M.containers = containers; M.pois = pois; M.lair = { x: lair[0], y: lair[1] }; M.areaKey = key;
+    return M;
+  }
+  IS.genArea = genArea;
   // register the fixed map at load (so it is preloaded and cached like the others)
   const G0 = () => window.SALTWAKE_DEV?.game;
   function install(G, M) {
@@ -239,34 +318,37 @@
     if (M.arena && window.saltwakeBoss) window.saltwakeBoss.ARENAS[M.id] = M.arena;
   }
   IS.install = install;
+  try { const W0 = window.SALTWAKE_WORLD || WORLD; for (const k of Object.keys(AREAS)) { const m = genArea(k); W0.maps[k] = m; window.saltwakeTiles?.installScene?.(k, m); W0.content.containers = W0.content.containers.filter(c => c.mapId !== k).concat(m.containers); } } catch (e) { console.warn('areas', e); }
   try { const W0 = window.SALTWAKE_WORLD || WORLD; const maw = genMaw(); W0.maps.maw = maw; window.saltwakeTiles?.installScene?.('maw', maw); W0.content.containers = W0.content.containers.filter(k => k.mapId !== 'maw').concat(maw.containers); if (window.saltwakeBoss) window.saltwakeBoss.ARENAS.maw = maw.arena; } catch (e) { }
 
   // ---- destinations ----------------------------------------------------------------------------------------------
   // Quest destinations: a map that exists only while a story quest that names it is active (the Maw: "Into the Maw").
   const questFor = (G, d) => (G.world.content.quests || []).find(q => q.destination === d && G.quest?.progress?.(q)) || null;
   IS.questFor = questFor;
-  const unlocked = (G, d) => d !== 'maw' || !!questFor(G, d);
+  const unlocked = (G, d) => d === 'maw' ? !!questFor(G, d) : AREAS[d] ? rank(G) >= AREAS[d].hr : true;
   IS.unlocked = unlocked;
   // ---- EXPEDITION CHART (Monster Hunter-style destination map) ----------------------------------------------------
   // The one departure point is the Rest Docks pier. It opens a full-screen sea chart of the Red Salt Coast; pick a
   // region, read its brief, check the weather windows, depart.
   const DEST_INFO = {
-    quays: { name: 'The Outer Quays', tag: 'FIXED MAP', threat: 2, pos: [44, 58], desc: 'The ruined waterfront south-west of the Rest. Story quests, field commissions, survival operations and the Tidemaw at the Boathouse Slip.',
+    quays: { name: 'The Outer Quays', tag: 'FIXED MAP', threat: 2, pos: [34, 66], desc: 'The ruined waterfront south-west of the Rest. Story quests, field commissions, survival operations and the Tidemaw at the Boathouse Slip.',
       facts: ['Story & commissions', 'Tide-gated extractions', 'Boss: the Tidemaw'] },
-    isle: { name: 'The Drowned Isle', tag: 'RANDOM ISLAND', threat: 2, pos: [20, 30], desc: 'An unmapped isle that is different every time the fog lifts. Landmarks, salvage caches and monster packs in a new layout every visit.',
+    isle: { name: 'The Drowned Isle', tag: 'SPECIAL · RANDOM', threat: 2, pos: [28, 22], desc: 'An unmapped isle that is different every time the fog lifts. Landmarks, salvage caches and monster packs in a new layout every visit.',
       facts: ['New layout every visit', '12-16 salvage caches', 'Extract: landing skiff or cliff rope'] },
-    front: { name: 'The Brinefront', tag: 'OPERATION', threat: 3, pos: [72, 30], desc: 'A Brineworn breeding ground. Burn the brood nests, raise the signal mast, then call extraction and hold the line until the boat comes. Call-ins available all mission.',
+    front: { name: 'The Brinefront', tag: 'SPECIAL · OPERATION', threat: 3, pos: [86, 20], desc: 'A Brineworn breeding ground. Burn the brood nests, raise the signal mast, then call extraction and hold the line until the boat comes. Call-ins available all mission.',
       facts: ['Objectives: 3 nests + signal mast', 'Call-ins: hold X', 'Hold for extraction · bonus 250 scrip'] },
-    maw: { name: 'The Maw', tag: 'STORY QUEST', threat: 5, pos: [52, 12], desc: 'A drowned crater ringed by old pillars, charted by Teren Sull. The Elder Tidemaw waits at its heart. Bring everything.',
+    maw: { name: 'The Maw', tag: 'STORY QUEST', threat: 5, pos: [48, 8], desc: 'A drowned crater ringed by old pillars, charted by Teren Sull. The Elder Tidemaw waits at its heart. Bring everything.',
       facts: ['Story quest: Into the Maw', 'Boss: the Elder Tidemaw', 'Appears only while the quest is active'] },
   };
+  for (const [k, A] of Object.entries(AREAS)) DEST_INFO[k] = { name: A.name, tag: 'FIXED MAP · HR ' + A.hr, threat: A.threat, pos: A.pos, desc: A.desc,
+    facts: ['Residents: ' + [...new Set(A.residents)].map(t => t.replace('brineworn_', 'Brineworn ').replace(/^./, c => c.toUpperCase())).join(', '), 'Apex: ' + APEX[A.apex].name + ' (' + A.lairName + ')', 'Extract: landing skiff or inland trail'] };
   IS.DEST_INFO = DEST_INFO;
   const thumbs = {};
   function thumb(G, d) {
     if (thumbs[d] !== undefined) return thumbs[d];
     const imgs = window.SALTWAKE_ASSETS?.images || {};
     if (d === 'quays') return (thumbs[d] = imgs['art/maps/quays'] || null);
-    if (d === 'maw') { try { const c = window.saltwakeTiles?.renderOverview?.(G, 'maw', 3); return (thumbs[d] = c ? c.toDataURL('image/png') : null); } catch (e) { return null; } }
+    if (d === 'maw' || AREAS[d]) { try { const c = window.saltwakeTiles?.renderOverview?.(G, d, 3); return (thumbs[d] = c ? c.toDataURL('image/png') : null); } catch (e) { return null; } }
     return (thumbs[d] = null);
   }
   const IMGS2 = () => window.SALTWAKE_ASSETS?.images || {};
@@ -304,7 +386,7 @@
         <div class="swCompass">N</div><div class="swSeaName">THE RED SALT COAST</div></section>
       <aside class="swBrief"><span class="swTag t-${sel}">${D.tag}</span><h2>${D.name}</h2><div class="swThreat">Threat <b>${stars(D.threat)}</b></div>
         <p>${D.desc}</p><ul>${D.facts.map(f => `<li>${f}</li>`).join('')}</ul>
-        ${sel === 'maw' && ok ? `<p class="swQuest">◆ Story quest · ${questFor(G, 'maw').title}</p>` : ''}
+        ${sel === 'maw' && ok ? `<p class="swQuest">◆ Story quest · ${questFor(G, 'maw').title}</p>` : ''}${!ok && AREAS[sel] ? `<p class="swLock">Locked · Hunter Rank ${AREAS[sel].hr} required</p>` : ''}
         ${sel !== 'quays' && this.livingState?.().active ? '<p class="fine">Your commission’s sites are on the Outer Quays; hunt-type commissions still count anywhere.</p>' : ''}
         ${missionsHtml(G, sel)}
         <h4>Conditions now · ${ct(cs.clock)}</h4><div class="swNow">${weather.icon} <b>${weather.name}</b> · ${cs.period.name}</div>
@@ -351,6 +433,7 @@
     let M; const mission = IS.mission(this, dest), seed = (Date.now() ^ (Math.random() * 1e9)) >>> 0, op = mission.kind === 'op' ? OPS.find(o => o.id === mission.op) : null;
     if (dest === 'isle') { M = genIsle(seed); IS.stats.generated++; }
     else if (dest === 'front') { M = genFront(seed, op || OPS[0]); IS.stats.generated++; }
+    else if (AREAS[dest]) M = this.world.maps[dest]?.tilemap ? this.world.maps[dest] : genArea(dest);
     else M = this.world.maps.maw?.tilemap ? this.world.maps.maw : genMaw();
     r.mission = mission.id;
     install(this, M);
@@ -358,7 +441,9 @@
     try { if (!M.overview) { const c = window.saltwakeTiles?.renderOverview?.(this, M.id, 6); if (c) { const al = `art/maps/${M.id}_${M.seed}`; window.SALTWAKE_ASSETS.images[al] = c.toDataURL('image/png'); M.overview = al; } } } catch (e) { }
     r.destination = dest; r.tidemaw = null; r.contract = {};
     const huntA = mission.kind === 'hunt' ? APEX[mission.apex] : null;
-    r.enemies = populate(this, M, r.seed || 1, huntA ? [huntA.type, huntA.type, huntA.minion.type] : op ? op.monsters : null);
+    const AR = AREAS[dest], night0 = !!this.climateState?.().night;
+    r.enemies = populate(this, M, r.seed || 1, AR ? (night0 ? AR.night : AR.residents) : huntA ? [huntA.type, huntA.type, huntA.minion.type] : op ? op.monsters : null);
+    if (AR) { const e = spawnApex(this, AR.apex, M.lair.x * T, (M.lair.y + 6) * T); if (e) { e.patrolRadius = 5; if (huntA) r.hunt = { apex: AR.apex, id: e.id, name: APEX[AR.apex].name, done: false, reward: APEX[AR.apex].reward }; else r.roamer = { apex: AR.apex, id: e.id, seen: false }; } }
     if (dest === 'front') { const O = op || OPS[0]; r.operation = { id: O.id, name: M.opName, tier: 3, reward: O.reward, hold: 90, evac: M.evac, monsters: O.monsters, objectives: M.objectives.map(o => ({ ...o })) };
       for (const o of r.operation.objectives) if (o.kind === 'hunt') { const e = spawnApex(this, o.apex, o.x * T, o.y * T); if (e) o.apexId = e.id; } }
     if (dest === 'isle') { const far = (M.pois || []).slice().sort((a, b) => Math.hypot(b.x - M.arrivals.default[0], b.y - M.arrivals.default[1]) - Math.hypot(a.x - M.arrivals.default[0], a.y - M.arrivals.default[1]))[0] || { x: M.w / 2, y: M.h / 3 };
@@ -369,13 +454,13 @@
       else if (e) r.roamer = { apex: key, id: e.id, seen: false }; }
     IS.stats.visits++;
     const [ax, ay] = M.arrivals.default; this.setArea(M.id, ax, ay);
-    this.notify(r.hunt ? `HUNT · ${r.hunt.name.toUpperCase()} · ${M.name}. Track it down and slay it, then extract.` : dest === 'isle' ? `${M.name.toUpperCase()} · A new isle rises from the fog. Something big hunts here.` : dest === 'front' ? `${M.opName.toUpperCase()} · Complete the objectives, then call extraction. Hold X for call-ins.` : 'INTO THE MAW · The Elder Tidemaw waits in the drowned crater.', 5);
+    this.notify(AR && !r.hunt ? `${M.name.toUpperCase()} · ${APEX[AR.apex].name} rules the ${AREAS[dest].lairName}.` : r.hunt ? `HUNT · ${r.hunt.name.toUpperCase()} · ${M.name}. Track it down and slay it, then extract.` : dest === 'isle' ? `${M.name.toUpperCase()} · A new isle rises from the fog. Something big hunts here.` : dest === 'front' ? `${M.opName.toUpperCase()} · Complete the objectives, then call extraction. Hold X for call-ins.` : 'INTO THE MAW · The Elder Tidemaw waits in the drowned crater.', 5);
     return out;
   };
   // extraction on the new maps
   const portal = P.portal;
   P.portal = function (o) {
-    if (this.raid && (this.mapId === 'isle' || this.mapId === 'maw') && o && String(o.id).startsWith(this.mapId + '.')) { IS.stats.extractions++; this.endRaid(true, 'Reached ' + o.name); return; }
+    if (this.raid && this.map()?.expedition && o && String(o.id).startsWith(this.mapId + '.')) { IS.stats.extractions++; this.endRaid(true, 'Reached ' + o.name); return; }
     return portal.apply(this, arguments);
   };
 
@@ -514,7 +599,7 @@
   .swThumb img{width:100%;height:100%;object-fit:cover}.swThumb i{font-style:normal;font-size:34px;color:#e8d18f;opacity:.85}
   .swNode b{font-size:14px;color:#f3ead8;text-shadow:0 1px 3px #000}.swNode small{font-size:10px;letter-spacing:.14em;color:#9fd8ff;opacity:.85}
   .swNode.on .swThumb{border-color:#e8d18f;box-shadow:0 0 0 6px rgba(232,209,143,.18),0 6px 18px rgba(0,0,0,.5)}.swNode.locked{opacity:.5}
-  .swNode.t-maw .swThumb{border-color:rgba(255,110,90,.6)}.swNode.t-front .swThumb{border-color:rgba(255,170,90,.6)}.swNode.t-isle .swThumb{border-color:rgba(140,210,240,.6)}
+  .swNode.t-maw .swThumb{border-color:rgba(255,110,90,.6)}.swNode.t-isle .swThumb,.swNode.t-front .swThumb{border-style:dashed}.swThumb{width:80px!important;height:80px!important}.swNode.t-front .swThumb{border-color:rgba(255,170,90,.6)}.swNode.t-isle .swThumb{border-color:rgba(140,210,240,.6)}
   .swHome{position:absolute;transform:translate(-50%,-50%);text-align:center;padding:8px 12px;border-radius:10px;background:rgba(20,16,10,.65);border:1px solid rgba(232,209,143,.45);z-index:2}.swHome b{display:block;color:#e8d18f}.swHome small{opacity:.7}
   .swCompass{position:absolute;right:16px;top:12px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.25);color:#e8d18f;font-weight:800}
   .swSeaName{position:absolute;left:16px;top:14px;letter-spacing:.3em;font-size:11px;color:rgba(232,209,143,.6)}
