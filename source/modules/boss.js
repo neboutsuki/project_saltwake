@@ -20,7 +20,11 @@
   const P = Game.prototype, T = 32;
   const ARENA = { x0: 147.5, y0: 92.2, x1: 189, y1: 117.5, cx: 168, cy: 104, gate: [157.4, 89.6, 9.2, 2.6] };
   const OFF = { gill_left: [52, -34], gill_right: [52, 34], jaw: [132, 0], tail: [-128, 0] }, K = 1.4 * .85;
-  const B = window.saltwakeBoss = { ARENA, enabled: true, stats: { fights: 0, kills: 0, riptides: 0, cancelled: 0, harpoons: 0, wallStuns: 0 } };
+  // Arenas per map: the Slip on the Outer Quays (Tidemaw), and the final arena (the Elder Tidemaw, registered by isle.js).
+  const ARENAS = { quays: { ...ARENA } };
+  const B = window.saltwakeBoss = { ARENA, ARENAS, map: 'quays', enabled: true, stats: { fights: 0, kills: 0, riptides: 0, cancelled: 0, harpoons: 0, wallStuns: 0, elderKills: 0 } };
+  const setupArena = id => { const a = ARENAS[id]; if (!a) return false; Object.assign(ARENA, a); B.map = id; return true; };
+  B.setupArena = setupArena;
   const IMG = () => (window.SALTWAKE_ASSETS && window.SALTWAKE_ASSETS.images) || {};
   let art = null; const pic = () => { if (!art) { const s = IMG()['art/bosses/tidemaw']; if (s) { art = new Image(); art.src = s; } } return art && art.complete && art.naturalWidth ? art : null; };
   const inArena = (x, y) => x / T > ARENA.x0 && x / T < ARENA.x1 && y / T > ARENA.y0 && y / T < ARENA.y1;
@@ -35,12 +39,13 @@
     const e = { id: 'tidemaw', type: 'tidemaw', name: d.name, x: ARENA.cx * T, y: (ARENA.cy + 3) * T, homeX: ARENA.cx * T, homeY: ARENA.cy * T,
       hp: d.health, maxHp: d.health, dead: false, aggro: 9, attackCD: 1.5, walk: 0, phase: 0, factionId: 'wildlife', actorType: 'monster', provoked: true, boss: true,
       parts: d.parts.map(p => ({ ...p, current: p.hp, broken: false })), facing: -Math.PI / 2, stagger: 0, staggerTime: 0, staggerGrace: 0 };
+    if (B.map === 'maw') { e.elder = true; e.name = 'The Elder Tidemaw'; e.hp = e.maxHp = Math.round(d.health * 2.4); }
     try { g.initSense?.(e); } catch (err) { }
     e.awareness = 'alert';
     r.enemies.push(e);
     r.tidemaw = { e, state: 'emerge', t: 1.6, next: 2, ripAt: null, phase: 1, harpoons: [], tele: null, done: false };
     B.stats.fights++;
-    g.notify('THE TIDEMAW RISES', 4);
+    g.notify(e.elder ? 'THE ELDER TIDEMAW RISES FROM THE MAW' : 'THE TIDEMAW RISES', 4);
     g.makeSound?.(e.x, e.y, 400, 'boss');
     window.saltwakeCamera?.shake?.(.5);
   }
@@ -51,18 +56,20 @@
   }
   function moveBoss(g, e, dx, dy) {
     const nx = Math.max(ARENA.x0 * T + 40, Math.min(ARENA.x1 * T - 40, e.x + dx)), ny = Math.max(ARENA.y0 * T + 40, Math.min(ARENA.y1 * T - 30, e.y + dy));
-    const prev = g.mapId; g.mapId = 'quays'; let ok; try { ok = g.walkable(nx, ny); } finally { g.mapId = prev; }
+    const prev = g.mapId; g.mapId = B.map; let ok; try { ok = g.walkable(nx, ny); } finally { g.mapId = prev; }
     if (ok) { e.x = nx; e.y = ny; return true; }
     return false;
   }
-  const hurt = (g, dmg, why) => { const p = g.player, before = p.hp; g.hurtPlayer(dmg, .1); return p.hp < before; };
+  const hurt = (g, dmg, why) => { const p = g.player, before = p.hp; g.hurtPlayer(dmg * (fight(g)?.e?.elder ? 1.25 : 1), .1); return p.hp < before; };
 
   function step(g, dt) {
     const F = fight(g); if (!F || F.done) return;
     const e = F.e, p = g.player, d = Math.hypot(p.x - e.x, p.y - e.y), toP = Math.atan2(p.y - e.y, p.x - e.x);
-    const frac = e.hp / e.maxHp, enraged = frac < .3, gillsLeft = e.parts.filter(q => /^gill/.test(q.id) && !q.broken).length;
+    const frac = e.hp / e.maxHp, enraged = frac < (e.elder ? .4 : .3), gillsLeft = e.parts.filter(q => /^gill/.test(q.id) && !q.broken).length;
     if (e.dead) { finish(g, F); return; }
-    if (F.phase === 1 && frac < .6) { F.phase = 2; F.ripAt = 0; g.notify('The Tidemaw thrashes: the tide stirs under the Slip', 3); }
+    if (F.phase === 1 && frac < (e.elder ? .75 : .6)) { F.phase = 2; F.ripAt = 0; g.notify(e.elder ? 'The Elder Tidemaw calls its brood!' : 'The Tidemaw thrashes: the tide stirs under the Slip', 3);
+      if (e.elder) brood(g, 3); }
+    if (e.elder && enraged && !F.brood2) { F.brood2 = true; brood(g, 2); }
     if (enraged && !F.enraged) { F.enraged = true; g.notify('THE TIDEMAW IS ENRAGED', 3); }
     const speed = (enraged ? 1.35 : F.phase === 2 ? 1.15 : 1) * dt;
     e.staggerTime = Math.max(0, (e.staggerTime || 0) - dt); e.staggerGrace = Math.max(0, (e.staggerGrace || 0) - dt);
@@ -92,7 +99,7 @@
         const v = 560 * speed, dx = Math.cos(F.tele.a) * v, dy = Math.sin(F.tele.a) * v, x0 = e.x, y0 = e.y;
         const moved = moveBoss(g, e, dx, dy);
         if (!F.hit && segDist(p.x, p.y, x0, y0, e.x + Math.cos(F.tele.a) * 90, e.y + Math.sin(F.tele.a) * 90) < 46) { F.hit = true; hurt(g, enraged ? 38 : 32); }
-        if (!moved) { const near = (g.world.maps.quays.decor || []).some(o => o.type === 'stone' && Math.hypot(o.x * T - e.x - Math.cos(F.tele.a) * 60, o.y * T - e.y - Math.sin(F.tele.a) * 60) < 90);
+        if (!moved) { const near = (g.world.maps[B.map].decor || []).some(o => o.type === 'stone' && Math.hypot(o.x * T - e.x - Math.cos(F.tele.a) * 60, o.y * T - e.y - Math.sin(F.tele.a) * 60) < 90);
           if (near) { F.state = 'stun'; F.t = 2.6; e.staggerTime = 2.6; e.exposed = true; B.stats.wallStuns++; g.notify('The Tidemaw slammed into the pillar! Strike now!', 3); window.saltwakeCamera?.shake?.(.45); F.tele = null; break; }
           F.t = 0; }
         if (F.t <= 0) { F.state = 'recover'; F.t = enraged ? .5 : .9; F.tele = null; }
@@ -113,7 +120,7 @@
       case 'riptide': {
         if (gillsLeft === 0) { B.stats.cancelled++; F.state = 'stun'; F.t = 2.2; F.tele = null; g.notify('Both gills broken: the Tidemaw cannot call the tide!', 3.5); break; }
         F.tele.u = 1 - F.t / F.tele.d;
-        if (F.t <= 0) { B.stats.riptides++; if (inArena(p.x, p.y) && p.iframes <= 0) hurt(g, 85); window.saltwakeCamera?.shake?.(.8); g.notify('RIPTIDE', 2); F.state = 'recover'; F.t = 1.4; F.tele = { kind: 'flood', t: 0 }; F.ripAt = 28; }
+        if (F.t <= 0) { B.stats.riptides++; if (inArena(p.x, p.y) && p.iframes <= 0) hurt(g, 85); window.saltwakeCamera?.shake?.(.8); g.notify('RIPTIDE', 2); F.state = 'recover'; F.t = 1.4; F.tele = { kind: 'flood', t: 0 }; F.ripAt = e.elder ? 20 : 28; }
         break;
       }
       case 'recover': if (F.t <= 0) { F.state = 'chase'; F.next = enraged ? .5 : 1.1; if (F.tele?.kind === 'flood') F.tele = null; } break;
@@ -133,12 +140,24 @@
     if (d < 420) { e.facing = toP; F.state = 'lunge_tele'; F.t = F.enraged ? .55 : .75; F.tele = { kind: 'lunge', a: toP, len: 300 }; F.hit = false; return; }
     F.next = .4;
   }
+  function brood(g, n) {
+    const A = window.saltwakeAlpha; if (!A?.makeAltered) return;
+    for (let i = 0; i < n; i++) { const a = Math.random() * Math.PI * 2, x = (ARENA.cx + Math.cos(a) * (ARENA.x1 - ARENA.x0) * .4) * T, y = (ARENA.cy + Math.sin(a) * (ARENA.y1 - ARENA.y0) * .4) * T;
+      const m = A.makeAltered(g, i % 3 === 2 ? 'brineworn_breaker' : 'brineworn_drifter', x, y, 'brood_' + Date.now() + '_' + i); if (!m) continue; m.provoked = true; m.awareness = 'alert'; m.aggro = 9; g.raid.enemies.push(m); }
+  }
   function finish(g, F) {
     if (F.done) return; F.done = true; B.stats.kills++;
     const e = F.e; for (const id of ['tidemaw_jaw_plate', 'tidemaw_tail_fin']) g.raid.drops.push({ x: e.x + (Math.random() - .5) * 60, y: e.y + 20, id, n: 1, got: false });
-    g.save.flags = g.save.flags || {}; g.save.flags.tidemawSlain = (g.save.flags.tidemawSlain || 0) + 1;
-    g.quest?.emit('interact', 'i_qs_tidemaw');
-    g.notify('THE TIDEMAW IS SLAIN · Gather the trophies and extract!', 5);
+    g.save.flags = g.save.flags || {};
+    if (e.elder) { B.stats.elderKills++; g.save.flags.elderSlain = (g.save.flags.elderSlain || 0) + 1;
+      for (const id of ['masterwork_core', 'tidemaw_gill', 'tidemaw_gill']) g.raid.drops.push({ x: e.x + (Math.random() - .5) * 80, y: e.y + 30, id, n: 1, got: false });
+      (window.saltwakeHunter?.bank || window.saltwakeHunter?.grant)?.(g, 900, 'Elder Tidemaw');
+      g.notify('THE ELDER TIDEMAW IS SLAIN · The Red Salt Coast breathes again. Gather the trophies and extract!', 7);
+    } else {
+      g.save.flags.tidemawSlain = (g.save.flags.tidemawSlain || 0) + 1;
+      g.quest?.emit('interact', 'i_qs_tidemaw');
+      g.notify('THE TIDEMAW IS SLAIN · Gather the trophies and extract!', 5);
+    }
     window.saltwakeCamera?.shake?.(.7);
   }
 
@@ -148,7 +167,7 @@
   P.updateEnemies = function (dt) {
     const r = this.raid; if (!r) return upd.apply(this, arguments);
     const F = r.tidemaw, all = r.enemies;
-    if (B.enabled && !F && this.mapId === 'quays' && inArena(this.player.x, this.player.y)) start(this);
+    if (B.enabled && !F && ARENAS[this.mapId] && setupArena(this.mapId) && inArena(this.player.x, this.player.y)) start(this);
     if (!r.tidemaw) return upd.apply(this, arguments);
     r.enemies = all.filter(e => !e.boss);
     try { upd.apply(this, arguments); } finally { if (this.raid === r) { const rest = r.enemies; r.enemies = rest.concat(all.filter(e => e.boss)); } }
@@ -212,7 +231,7 @@
   const scene = P.drawCoastScene;
   P.drawCoastScene = function () {
     const out = scene.apply(this, arguments), F = fight(this);
-    if (this.mapId !== 'quays' || !F) return out;
+    if (this.mapId !== B.map || !F) return out;
     const e = F.e, tl = F.tele, t = performance.now() / 1000;
     g.save();
     for (const h of F.harpoons) { g.fillStyle = 'rgba(230,210,150,.9)'; g.strokeStyle = 'rgba(20,16,10,.9)'; g.lineWidth = 2; g.save(); g.translate(h.x, h.y); g.rotate(.6); g.fillRect(-18, -2, 36, 4); g.strokeRect(-18, -2, 36, 4); g.restore();
@@ -237,9 +256,10 @@
   document.getElementById('viewport')?.appendChild(bar);
   const hud = P.hud;
   P.hud = function () {
-    const out = hud.apply(this, arguments), F = this.raid && fight(this), show = !!F && !F.done && this.mapId === 'quays';
+    const out = hud.apply(this, arguments), F = this.raid && fight(this), show = !!F && !F.done && this.mapId === B.map;
     bar.hidden = !show; document.getElementById('placeRail')?.classList.toggle('swBossHide', show);
     if (show) { const e = F.e; bar.querySelector('.hp i').style.width = Math.max(0, e.hp / e.maxHp * 100) + '%';
+      { const nm = bar.querySelector('.n'); if (nm && nm.textContent !== e.name) nm.textContent = e.name; }
       bar.querySelector('.parts').innerHTML = e.parts.map(p => `<span class="${p.broken ? 'broken' : ''}">${p.name}</span>`).join('') + (this.player.harpoon ? '<span class="harpoon">Harpoon ready</span>' : '');
       bar.classList.toggle('enraged', !!F.enraged); }
     return out;

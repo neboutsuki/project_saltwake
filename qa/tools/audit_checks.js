@@ -13,8 +13,8 @@ try{
 for(let i=0;i<60&&!saltwakeReunion.hub();i++)await new Promise(r=>setTimeout(r,50));
 const H=saltwakeReunion.hub();c.harborBridgeLoaded=!!SALTWAKE_DEV.game.world.maps.hub.tilemap||(!!H&&!!H.plan&&typeof H.walk==='function');
 const ok=(id,x,y)=>id==='hub'&&H?H.walk(x/T,y/T):(G.mapId===id||G.setArea(id,...SPAWN[id]),G.walkable(x,y)&&!G.isWater(x,y));
-const SPAWN={hub:H?H.plan.spawn:[33.5,27.6],quays:[8,24]};
-const DEST={hub:['quays',8,24],quays:['hub',...SPAWN.hub]};
+const SPAWN={hub:H?H.plan.spawn:[33.5,27.6],quays:[8,24]};for(const id of Object.keys(G.world.maps))if(!SPAWN[id])SPAWN[id]=G.world.maps[id].arrivals?.default||[8,8];
+const DEST={hub:['quays',8,24],quays:['hub',...SPAWN.hub]};for(const id of Object.keys(G.world.maps))if(!DEST[id])DEST[id]=['hub',...SPAWN.hub];
 const dims=id=>id==='hub'&&H?[H.plan.w,H.plan.h]:[G.world.maps[id].w,G.world.maps[id].h];
 const portals=id=>id==='hub'&&H?H.plan.portals:G.world.maps[id].portals;
 c.worldHasMaps=maps.length>=2&&maps.includes('hub')&&maps.includes('quays');

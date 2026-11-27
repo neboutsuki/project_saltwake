@@ -23,6 +23,7 @@
   const tierOf = c => c.tier || (c.steps || []).reduce((t, s) => Math.max(t, s.target === 'widow' || /^brineworn/.test(s.target || '') || s.kind === 'quiet_cache' ? 3 : s.target === 'brineback' || s.kind === 'part' ? 2 : 1), 1);
   HU.tierOf = tierOf;
 
+  HU.bank = (...a) => bank(...a);
   function bank(g, amount, why) {
     if (!(amount > 0)) return;
     const h = state(g), before = h.rank; h.xp += Math.round(amount); h.rank = rankOf(h.xp);

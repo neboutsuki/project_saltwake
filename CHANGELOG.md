@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.31-dev — Random isle every visit + fixed final boss arena
+- **Destination picker** in Expedition Planning (harbor exit):
+  - The Outer Quays: story, commissions, Tidemaw.
+  - The Drowned Isle.
+  - The Maw · Final Hunt: locked until the Tidemaw is slain.
+- **The Drowned Isle**, a new random map every expedition (seeded generator, 150×112 tiles):
+  - A random name (Gullwrack Isle, Hookmoor Isle, Saltgrave Isle…).
+  - Terrain: meadows plus random salt/mud/gravel/ash flats; groves (pine, coastal, broadleaf, dead, blight); rock fields and plants; treeline edges.
+  - 5–6 points of interest linked by tracks: Beached Wreck, Abandoned Camp, Bone Nest (monster pack), Drowned Shrine (rare deep cache), Salt Ruin.
+  - About 12–16 loot caches; 14–20 monsters (Brineworn at night).
+  - Two extractions: Landing Skiff and Cliff Rope.
+  - A generated overview picture for the field map and minimap.
+  - Its ground is painted fresh each visit behind the loading screen, using a pool of up to 4 background workers. It is never cached to disk.
+- **The Maw**, one large fixed map (120×100):
+  - A beach landing, a forest approach, and a walled crater arena with 8 pillars, gates, harpoons and lure lanterns.
+  - The **Elder Tidemaw**: 2.4× health and 1.25× damage; tide phase at 75% and enrage at 40%; RIPTIDE every 20 s; it calls Brineworn broods at phase 2 and at enrage.
+  - Dash it into a pillar to stun it.
+  - Slaying it sets `elderSlain`, gives 900 Hunter XP, and drops a masterwork core plus Tidemaw gills.
+  - The Maw is fixed, so it is preloaded and disk-cached like the other maps.
+- `boss.js` now supports an arena per map. New module `isle.js`; the map module gained `installScene` and `renderOverview`.
+- QA: new `isle` suite (seeded randomness, reachability of caches and extractions, a new layout per visit, Maw fixed and locked, Elder fight and kill). The audit suite handles any map. 412 checks, all passing.
+
 ## v0.31-dev — Maps preload up front
 - **Title screen:** every map's ground is painted once and saved while you are on the main menu. A small "Preparing maps… %" box in the corner shows progress, and the menu stays usable. Test machine: ~14 s the first time, 0.5 s on later launches.
 - **Entering a map** (new game, continue, expedition start, return to the harbor): a loading screen ("Loading The Outer Quays", progress bar and count) holds the game until the whole map's ground is in memory. The game is paused meanwhile, so nothing can attack you.

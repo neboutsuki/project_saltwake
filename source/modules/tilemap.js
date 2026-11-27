@@ -167,7 +167,12 @@
     if (worker || workerFailed) return !!worker;
     if (!MATS.every(n => tex(n))) return false;
     try {
-      worker = new Worker(URL.createObjectURL(new Blob([WORKER_SRC], { type: 'text/javascript' })));
+      const url = URL.createObjectURL(new Blob([WORKER_SRC], { type: 'text/javascript' }));
+      const n = Math.max(1, Math.min(4, (navigator.hardwareConcurrency || 2) - 1)), list = Array.from({ length: n }, () => new Worker(url)); let rr = 0;
+      // facade: grids/init go to every worker, jobs round-robin
+      worker = { list, postMessage(m) { if (m.type === 'job') list[rr++ % list.length].postMessage(m); else for (const w of list) w.postMessage(m); },
+        set onmessage(f) { for (const w of list) w.onmessage = f; }, set onerror(f) { for (const w of list) w.onerror = f; } };
+      TX.workers = n;
       worker.onmessage = ev => {
         const { key, cx, cy, bmp, buf, blob, bg } = ev.data, k = cx + ',' + cy, st = state[key]; inflight.delete(key + ':' + k);
         const wait = waiters.get(key + ':' + k); if (wait) { waiters.delete(key + ':' + k); queueMicrotask(() => wait(true)); }
@@ -213,7 +218,7 @@
     const k = cx + ',' + cy, id = key + ':' + k;
     if (!DISK.ready && !DISK.failed && performance.now() - DISK.t0 < 2500) return;   // wait (briefly) for the saved-chunk list
     if ((!bg && s.chunks.has(k)) || inflight.has(id) || inflight.size >= (bg ? 2 : 4)) return;
-    const dk = s.sig && DISK.key(key, s.sig, k), store = !!(DISK.db && s.sig);
+    const dk = s.sig && DISK.key(key, s.sig, k), store = !!(DISK.db && s.sig && !s.m.procedural);
     if (bg && dk && DISK.known.has(dk)) return;
     inflight.set(id, performance.now());
     const viaWorker = () => { sendGrid(key, s); worker.postMessage({ type: 'job', key, cx, cy, store, bg }); };
@@ -230,7 +235,7 @@
   // Bake the rest of a map to the disk cache in the background (current map first, then the field while in the hub).
   function bakeNext(game) {
     if (!DISK.db || !DISK.ready || inflight.size) return;
-    const order = [game.mapId, ...Object.keys(game.world.maps).filter(id => id !== game.mapId && isTile(game.world.maps[id]))];
+    const order = [game.mapId, ...Object.keys(game.world.maps).filter(id => id !== game.mapId && isTile(game.world.maps[id]))].filter(id => !game.world.maps[id]?.procedural);
     for (const id of order) {
       let s = state[id]; const m = game.world.maps[id];
       if (!s || s.m !== m) { s = state[id] = { m, grid: null, chunks: new Map(), jobs: new Map(), bins: null }; }
@@ -261,7 +266,7 @@
       const k = cx + ',' + cy; if (keep && s.chunks.has(k)) return res(true);
       const dk = DISK.key(key, s.sig, k);
       const viaWorker = () => { if (!worker) return res(false); waiters.set(key + ':' + k, res); inflight.set(key + ':' + k, performance.now()); sendGrid(key, s);
-        worker.postMessage({ type: 'job', key, cx, cy, store: !!DISK.db, bg: !keep }); };
+        worker.postMessage({ type: 'job', key, cx, cy, store: !!DISK.db && !s.m.procedural, bg: !keep }); };
       if (DISK.known.has(dk)) {
         if (!keep) return res(true);
         DISK.get(dk).then(b => b ? createImageBitmap(b) : null).then(bmp => { if (!bmp) { DISK.known.delete(dk); return viaWorker(); } s.chunks.set(k, bmp); TX.stats.disk++; res(true); }).catch(viaWorker);
@@ -274,7 +279,7 @@
   TX.prepareAll = async function (game, onProgress) {
     if (!(await waitReady()) || !DISK.db) return false;
     const jobs = [];
-    for (const id of Object.keys(game.world.maps)) { const m = game.world.maps[id]; if (!isTile(m)) continue; const s = ensureState(game, id);
+    for (const id of Object.keys(game.world.maps)) { const m = game.world.maps[id]; if (!isTile(m) || m.procedural) continue; const s = ensureState(game, id);
       if (!s.pruned) { DISK.prune(id, s.sig); s.pruned = true; }
       const mw = Math.ceil(m.w / CH), mh = Math.ceil(m.h / CH);
       for (let y = 0; y < mh; y++) for (let x = 0; x < mw; x++) if (!DISK.known.has(DISK.key(id, s.sig, x + ',' + y))) jobs.push(() => loadChunk(game, s, id, x, y, false)); }
@@ -290,6 +295,19 @@
     for (let y = 0; y < mh; y++) for (let x = 0; x < mw; x++) if (!s.chunks.has(x + ',' + y)) list.push([x, y, Math.hypot(x + .5 - px, y + .5 - py)]);
     list.sort((a, b) => a[2] - b[2]); for (const [x, y] of list) jobs.push(() => loadChunk(game, s, id, x, y, true));
     await pool(jobs, 10, onProgress); return true;
+  };
+  // A small painted overview for maps without overview art (random maps): material colours, sea, trees and rocks.
+  TX.renderOverview = function (game, id, k = 6) {
+    const m = game.world.maps[id]; if (!MATS.every(n => tex(n))) return null; const s = ensureState(game, id);
+    const c = document.createElement('canvas'); c.width = m.w * k; c.height = m.h * k; const x = c.getContext('2d');
+    for (let ty = 0; ty < m.h; ty++) for (let tx = 0; tx < m.w; tx++) { const a = avgOf(s.grid[ty * m.w + tx]), v = .92 + vnoise(tx / 3, ty / 3, 9) * .16;
+      x.fillStyle = `rgb(${a[0] * v | 0},${a[1] * v | 0},${a[2] * v | 0})`; x.fillRect(tx * k, ty * k, k, k); }
+    x.fillStyle = '#2c4f5a'; x.beginPath(); x.moveTo(0, m.h * k);
+    for (let px = 0; px <= m.w * k; px += 4) x.lineTo(px, (m.waterStart + Math.sin(px / k * 32 / 360) * .7 + Math.sin(px / k * 32 / 93) * .25) * k);
+    x.lineTo(m.w * k, m.h * k); x.closePath(); x.fill();
+    for (const d of m.scene?.decor || []) { const t = /\/trees\//.test(d.asset) ? '#26382a' : /\/rocks\//.test(d.asset) ? '#77736b' : /\/arena\//.test(d.asset) ? '#9c927e' : /\/props\//.test(d.asset) ? '#8a6c4a' : null; if (!t) continue;
+      x.fillStyle = t; x.beginPath(); x.arc(d.x * k, (d.y - .3) * k, Math.max(1.5, Math.min(d.w || 1, 3) * k * .45), 0, Math.PI * 2); x.fill(); }
+    return c;
   };
   TX.mapLoaded = (game, id) => { const m = game.world.maps[id], s = state[id]; if (!isTile(m)) return true; if (!s || s.m !== m) return false; return s.chunks.size >= Math.ceil(m.w / CH) * Math.ceil(m.h / CH); };
   // average colour per material, for the previews
@@ -413,6 +431,7 @@
     }
   }
   try { installScenes(WORLD); } catch (e) { }
+  TX.installScene = (id, m) => { SALTWAKE_VIS[id] = { ambience: m.scene?.ambience || null, darkness: m.scene?.darkness, lights: m.scene?.lights || [], decor: m.scene?.decor || [] }; };
   function sprite(alias, x, footY, h, mirror) {
     const im = img(alias); if (!ok(im)) return false;
     TX.stats.sprites++; return coastSprite(alias, x, footY, h * im.naturalWidth / im.naturalHeight, h, mirror) !== false;
