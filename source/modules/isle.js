@@ -80,7 +80,12 @@
     const keep = [], segs = [];
     const B = { M, R, n, keep, segs, gid: 0,
       clear(x, y, pad) { for (const k of keep) if (Math.hypot(x - k[0], y - k[1]) < k[2] + pad) return false; for (const s of segs) if (segDist(x, y, s[0], s[1], s[2], s[3]) < s[4] + pad) return false; return true; },
-      put(asset, x, y, sc = 1, mirror) { const s = SIZE[asset]; if (!s) return; M.scene.decor.push({ asset, x: +x.toFixed(2), y: +y.toFixed(2), w: +(s[0] * sc).toFixed(2), h: +(s[1] * sc).toFixed(2), anchor: 'bottom', ...(mirror ? { mirror: true } : {}) }); },
+      bigs: [],
+      put(asset, x, y, sc = 1, mirror) { const s = SIZE[asset]; if (!s) return false;
+        // big scenery never overlaps other big scenery
+        if (/\/(trees|rocks|props|arena)\//.test(asset) && !/stump|fallen_log|bone_pile|rock_small|mooring|chain_post|signpost/.test(asset)) {
+          const w = s[0] * sc; for (const b of B.bigs) if (Math.abs(b[0] - x) < 8 && Math.hypot(b[0] - x, (b[1] - y) * 1.4) < Math.min(b[2], w) * .42) return false; B.bigs.push([x, y, w]); }
+        M.scene.decor.push({ asset, x: +x.toFixed(2), y: +y.toFixed(2), w: +(s[0] * sc).toFixed(2), h: +(s[1] * sc).toFixed(2), anchor: 'bottom', ...(mirror ? { mirror: true } : {}) }); },
       ghost(x, y, type = 'tree') { M.decor.push({ id: id + '.ghost.' + (B.gid++), name: 'collision', type, x: +x.toFixed(2), y: +y.toFixed(2), w: 0, h: 0, variant: 0, ghost: true }); },
       road(pts, w = 3, m = 'gravel') { M.ground.push({ road: pts, w, m }); for (let i = 1; i < pts.length; i++) segs.push([pts[i - 1][0], pts[i - 1][1], pts[i][0], pts[i][1], w / 2 + .6]); },
       path(a, b, w = 3, m = 'gravel') { const pts = [a]; const k = 3 + Math.floor(R() * 2); for (let i = 1; i < k; i++) { const t = i / k; pts.push([a[0] + (b[0] - a[0]) * t + (R() - .5) * 10, a[1] + (b[1] - a[1]) * t + (R() - .5) * 8]); } pts.push(b); B.road(pts, w, m); },
@@ -93,13 +98,13 @@
           const jx = x + (R() - .5) * 1.8, jy = y + (R() - .5) * 1.6, v = n(jx, jy), edge = jx < 9 || jx > W - 9 ? .22 : 0;
           if (v + edge < 1 - density || !B.clear(jx, jy, 2.2)) continue;
           const kind = kinds[Math.floor(n(jx * .5 + 40, jy * .5) * kinds.length * .999)], asset = pick(R, KIND[kind] || KIND.ash), sc = .9 + R() * .25;
-          B.put(asset, jx, jy, sc, R() < .5); B.ghost(jx, jy - .25); keep.push([jx, jy, .9]);
+          if (B.put(asset, jx, jy, sc, R() < .5) === false) continue; B.ghost(jx, jy - .25); keep.push([jx, jy, .9]);
           if (R() < .05) { B.put(pick(R, ['art/trees/stump_01', 'art/trees/stump_02', 'art/trees/fallen_log_01']), jx + 1.6, jy + 1.2); }
         }
       },
       rocks(count) { for (let i = 0; i < count; i++) { const x = 6 + R() * (W - 12), y = 8 + R() * (waterStart - 14); if (!B.clear(x, y, 1.8)) continue;
           const big = R() < .35, a = big ? pick(R, ['art/rocks/rock_large_01', 'art/rocks/rock_large_02', 'art/rocks/salt_crystal_cluster_01', 'art/rocks/salt_crystal_cluster_02']) : pick(R, ['art/rocks/rock_small_01', 'art/rocks/rock_small_02', 'art/rocks/rock_small_03']);
-          B.put(a, x, y, .9 + R() * .2, R() < .5); if (big) { B.ghost(x, y - .3, 'stone'); keep.push([x, y, 1.4]); } } },
+          if (B.put(a, x, y, .9 + R() * .2, R() < .5) === false) continue; if (big) { B.ghost(x, y - .3, 'stone'); keep.push([x, y, 1.4]); } } },
       plants(count) { const PL = ['art/plants/grass_tuft_01', 'art/plants/grass_tuft_02', 'art/plants/grass_tuft_03', 'art/plants/grass_tuft_05', 'art/plants/grass_tuft_06', 'art/plants/flowers_01', 'art/plants/flowers_03', 'art/plants/fern_01', 'art/plants/fern_02', 'art/plants/mushrooms_01', 'art/plants/mushrooms_02', 'art/plants/shrub_01', 'art/plants/shrub_02', 'art/plants/shrub_04'];
         for (let i = 0; i < count; i++) { const x = 4 + R() * (W - 8), y = 6 + R() * (waterStart - 8); let onRoad = false; for (const s of segs) if (segDist(x, y, s[0], s[1], s[2], s[3]) < s[4] - .4) { onRoad = true; break; } if (onRoad) continue; B.put(pick(R, PL), x, y, .85 + R() * .3, R() < .5); } },
       zone(id2, nm, x, y, w, h) { M.zones.push({ id: id2, name: nm, x, y, w, h }); },
@@ -137,14 +142,15 @@
     B.path(cur, rope, 3);
     const containers = []; let ci = 0;
     for (const p of pois) { const D = POI[p.kind]; B.keep.push([p.x, p.y, 7]); M.ground.push({ blob: [p.x, p.y, 5.5], m: D.ground, alt: 'gravel', p: .3 });
-      for (let i = 0; i < 6; i++) { const a = R() * TAU, r = 2.5 + R() * 3.5, x = p.x + Math.cos(a) * r, y = p.y + Math.sin(a) * r * .8, asset = pick(R, D.props); B.put(asset, x, y, .95, R() < .5); if (SIZE[asset] && SIZE[asset][0] > 2.5) B.ghost(x, y - .3, 'crate'); }
+      for (let i = 0; i < 6; i++) { const a = R() * TAU, r = 2.5 + R() * 3.5, x = p.x + Math.cos(a) * r, y = p.y + Math.sin(a) * r * .8, asset = pick(R, D.props); if (B.put(asset, x, y, .95, R() < .5) !== false && SIZE[asset] && SIZE[asset][0] > 2.5) B.ghost(x, y - .3, 'crate'); }
       if (D.fire) B.light(p.x, p.y, 190, .85);
       const nCache = D.rare ? 1 : 1 + (R() < .5 ? 1 : 0);
-      for (let i = 0; i < nCache; i++) { const a = R() * TAU, x = p.x + Math.cos(a) * 1.6, y = p.y + Math.sin(a) * 1.2;
+      for (let i = 0; i < nCache; i++) { const a = (i / nCache) * TAU + R() * .5, x = p.x + Math.cos(a) * 1.8, y = p.y + Math.sin(a) * 1.4;
         containers.push({ id: 'isle_c_' + (ci++), name: D.cname, mapId: 'isle', x: +x.toFixed(2), y: +y.toFixed(2), lootTableId: D.loot, respawn: 'raid', ...(D.rare ? { rare: true } : {}) }); }
       B.zone('isle.' + p.kind + ci, D.name, p.x - 10, p.y - 8, 20, 16); p.name = D.name; }
     // stray caches along the tracks
     for (let i = 0; i < 5; i++) { const s = pick(R, B.segs), t = R(), x = s[0] + (s[2] - s[0]) * t + (R() - .5) * 4, y = s[1] + (s[3] - s[1]) * t + (R() - .5) * 3;
+      if (containers.some(k => Math.hypot(k.x - x, k.y - y) < 2)) continue;
       containers.push({ id: 'isle_c_' + (ci++), name: pick(R, ['Lost Satchel', 'Salvage Crate', 'Washed-up Chest']), mapId: 'isle', x: +x.toFixed(2), y: +y.toFixed(2), lootTableId: pick(R, ['dock_scrap', 'provisions', 'wrecker_cache']), respawn: 'raid' }); B.keep.push([x, y, 1.2]); }
     B.zone('isle.all', M.name, 0, 0, W, H);
     B.edges(); B.trees(.55 + R() * .1, R() < .5 ? ['ash', 'coastal', 'broad', 'dead'] : ['coastal', 'broad', 'blight', 'ash']); B.rocks(70); B.plants(1100);

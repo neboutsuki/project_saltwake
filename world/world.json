@@ -1311,17 +1311,6 @@
      "ghost": true
     },
     {
-     "id": "hub.ghost.55",
-     "name": "collision",
-     "type": "tree",
-     "x": 68.65,
-     "y": 21.05,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
      "id": "hub.ghost.56",
      "name": "collision",
      "type": "tree",
@@ -1547,17 +1536,6 @@
      "type": "tree",
      "x": 68.0,
      "y": 26.25,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "hub.ghost.77",
-     "name": "collision",
-     "type": "tree",
-     "x": 68.0,
-     "y": 32.75,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -2721,15 +2699,6 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/trees/broadleaf_02",
-      "x": 68.65,
-      "y": 21.3,
-      "w": 5.04,
-      "h": 5.67,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
       "asset": "art/plants/flowers_03",
       "x": 65.65,
       "y": 21.5,
@@ -3368,14 +3337,6 @@
       "y": 32.57,
       "w": 1.45,
       "h": 1.45,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/ash_pine_04",
-      "x": 68.0,
-      "y": 33.0,
-      "w": 4.16,
-      "h": 6.94,
       "anchor": "bottom"
      },
      {
@@ -9103,17 +9064,6 @@
      "ghost": true
     },
     {
-     "id": "quays.ghost.364",
-     "name": "collision",
-     "type": "tree",
-     "x": 30.62,
-     "y": 8.88,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
      "id": "quays.ghost.365",
      "name": "collision",
      "type": "tree",
@@ -9196,17 +9146,6 @@
      "type": "tree",
      "x": 193.21,
      "y": 17.88,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.373",
-     "name": "collision",
-     "type": "tree",
-     "x": 120.02,
-     "y": 9.27,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -9317,17 +9256,6 @@
      "type": "tree",
      "x": 71.79,
      "y": 8.65,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.384",
-     "name": "collision",
-     "type": "tree",
-     "x": 160.77,
-     "y": 9.03,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -9532,17 +9460,6 @@
      "ghost": true
     },
     {
-     "id": "quays.ghost.403",
-     "name": "collision",
-     "type": "tree",
-     "x": 195.29,
-     "y": 8.69,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
      "id": "quays.ghost.404",
      "name": "collision",
      "type": "tree",
@@ -9570,17 +9487,6 @@
      "type": "tree",
      "x": 174.06,
      "y": 11.42,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.407",
-     "name": "collision",
-     "type": "tree",
-     "x": 170.83,
-     "y": 7.8,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -10027,17 +9933,6 @@
      "ghost": true
     },
     {
-     "id": "quays.ghost.448",
-     "name": "collision",
-     "type": "tree",
-     "x": 140.24,
-     "y": 9.19,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
      "id": "quays.ghost.449",
      "name": "collision",
      "type": "tree",
@@ -10109,17 +10004,6 @@
      "type": "tree",
      "x": 167.97,
      "y": 18.49,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.456",
-     "name": "collision",
-     "type": "tree",
-     "x": 111.32,
-     "y": 8.68,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -10214,17 +10098,6 @@
      "ghost": true
     },
     {
-     "id": "quays.ghost.465",
-     "name": "collision",
-     "type": "tree",
-     "x": 135.41,
-     "y": 7.85,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
      "id": "quays.ghost.466",
      "name": "collision",
      "type": "tree",
@@ -10274,28 +10147,6 @@
      "type": "tree",
      "x": 171.61,
      "y": 13.22,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.471",
-     "name": "collision",
-     "type": "tree",
-     "x": 18.57,
-     "y": 8.26,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.472",
-     "name": "collision",
-     "type": "tree",
-     "x": 115.43,
-     "y": 8.52,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -10489,17 +10340,6 @@
      "ghost": true
     },
     {
-     "id": "quays.ghost.490",
-     "name": "collision",
-     "type": "tree",
-     "x": 211.34,
-     "y": 8.27,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
      "id": "quays.ghost.491",
      "name": "collision",
      "type": "tree",
@@ -10582,17 +10422,6 @@
      "type": "tree",
      "x": 182.96,
      "y": 34.35,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.499",
-     "name": "collision",
-     "type": "tree",
-     "x": 215.37,
-     "y": 58.08,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -12139,17 +11968,6 @@
      "ghost": true
     },
     {
-     "id": "quays.ghost.640",
-     "name": "collision",
-     "type": "tree",
-     "x": 25.16,
-     "y": 57.56,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
      "id": "quays.ghost.641",
      "name": "collision",
      "type": "tree",
@@ -13448,33 +13266,11 @@
      "ghost": true
     },
     {
-     "id": "quays.ghost.759",
-     "name": "collision",
-     "type": "tree",
-     "x": 30.96,
-     "y": 8.16,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
      "id": "quays.ghost.760",
      "name": "collision",
      "type": "tree",
      "x": 34.28,
      "y": 8.09,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.761",
-     "name": "collision",
-     "type": "tree",
-     "x": 37.98,
-     "y": 8.19,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -13635,17 +13431,6 @@
      "ghost": true
     },
     {
-     "id": "quays.ghost.776",
-     "name": "collision",
-     "type": "tree",
-     "x": 83.0,
-     "y": 7.95,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
      "id": "quays.ghost.777",
      "name": "collision",
      "type": "tree",
@@ -13712,39 +13497,6 @@
      "ghost": true
     },
     {
-     "id": "quays.ghost.783",
-     "name": "collision",
-     "type": "tree",
-     "x": 111.72,
-     "y": 8.58,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.784",
-     "name": "collision",
-     "type": "tree",
-     "x": 115.61,
-     "y": 8.29,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.785",
-     "name": "collision",
-     "type": "tree",
-     "x": 118.93,
-     "y": 8.53,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
      "id": "quays.ghost.786",
      "name": "collision",
      "type": "tree",
@@ -13794,17 +13546,6 @@
      "type": "tree",
      "x": 132.61,
      "y": 8.47,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.791",
-     "name": "collision",
-     "type": "tree",
-     "x": 135.33,
-     "y": 8.52,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -13932,17 +13673,6 @@
      "ghost": true
     },
     {
-     "id": "quays.ghost.803",
-     "name": "collision",
-     "type": "tree",
-     "x": 172.95,
-     "y": 7.87,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
      "id": "quays.ghost.804",
      "name": "collision",
      "type": "tree",
@@ -14020,17 +13750,6 @@
      "ghost": true
     },
     {
-     "id": "quays.ghost.811",
-     "name": "collision",
-     "type": "tree",
-     "x": 195.59,
-     "y": 8.6,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
      "id": "quays.ghost.812",
      "name": "collision",
      "type": "tree",
@@ -14069,17 +13788,6 @@
      "type": "tree",
      "x": 208.03,
      "y": 7.9,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.816",
-     "name": "collision",
-     "type": "tree",
-     "x": 211.56,
-     "y": 8.63,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -14355,17 +14063,6 @@
      "type": "tree",
      "x": 216.0,
      "y": 52.25,
-     "w": 0,
-     "h": 0,
-     "variant": 0,
-     "ghost": true
-    },
-    {
-     "id": "quays.ghost.842",
-     "name": "collision",
-     "type": "tree",
-     "x": 216.0,
-     "y": 58.75,
      "w": 0,
      "h": 0,
      "variant": 0,
@@ -15453,14 +15150,6 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/trees/ash_pine_04",
-      "x": 170.83,
-      "y": 8.05,
-      "w": 4.25,
-      "h": 7.08,
-      "anchor": "bottom"
-     },
-     {
       "asset": "art/plants/fern_02",
       "x": 65.12,
       "y": 8.08,
@@ -15519,14 +15208,6 @@
       "h": 1.07,
       "anchor": "bottom",
       "mirror": true
-     },
-     {
-      "asset": "art/trees/ash_pine_03",
-      "x": 172.95,
-      "y": 8.12,
-      "w": 4.4,
-      "h": 7.33,
-      "anchor": "bottom"
      },
      {
       "asset": "art/trees/ash_pine_02",
@@ -15590,14 +15271,6 @@
       "y": 8.17,
       "w": 4.41,
       "h": 7.36,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/ash_pine_02",
-      "x": 83.0,
-      "y": 8.2,
-      "w": 4.54,
-      "h": 7.56,
       "anchor": "bottom"
      },
      {
@@ -15748,14 +15421,6 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/trees/ash_pine_01",
-      "x": 37.98,
-      "y": 8.44,
-      "w": 4.89,
-      "h": 8.15,
-      "anchor": "bottom"
-     },
-     {
       "asset": "art/plants/grass_tuft_02",
       "x": 65.71,
       "y": 8.45,
@@ -15771,14 +15436,6 @@
       "h": 6.74,
       "anchor": "bottom",
       "mirror": true
-     },
-     {
-      "asset": "art/trees/ash_pine_03",
-      "x": 18.57,
-      "y": 8.51,
-      "w": 4.26,
-      "h": 7.09,
-      "anchor": "bottom"
      },
      {
       "asset": "art/trees/ash_pine_04",
@@ -15881,30 +15538,6 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/trees/ash_pine_02",
-      "x": 115.43,
-      "y": 8.77,
-      "w": 4.5,
-      "h": 7.51,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/ash_pine_02",
-      "x": 135.33,
-      "y": 8.77,
-      "w": 4.39,
-      "h": 7.32,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/ash_pine_02",
-      "x": 118.93,
-      "y": 8.78,
-      "w": 4.91,
-      "h": 8.19,
-      "anchor": "bottom"
-     },
-     {
       "asset": "art/plants/mushrooms_01",
       "x": 131.63,
       "y": 8.81,
@@ -15962,14 +15595,6 @@
       "mirror": true
      },
      {
-      "asset": "art/trees/ash_pine_04",
-      "x": 211.56,
-      "y": 8.88,
-      "w": 4.74,
-      "h": 7.9,
-      "anchor": "bottom"
-     },
-     {
       "asset": "art/trees/ash_pine_01",
       "x": 0.5,
       "y": 8.89,
@@ -16010,28 +15635,11 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/trees/ash_pine_01",
-      "x": 111.32,
-      "y": 8.93,
-      "w": 4.54,
-      "h": 7.56,
-      "anchor": "bottom"
-     },
-     {
       "asset": "art/plants/grass_tuft_04",
       "x": 65.61,
       "y": 8.93,
       "w": 1.23,
       "h": 1.23,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/trees/ash_pine_03",
-      "x": 195.29,
-      "y": 8.94,
-      "w": 4.43,
-      "h": 7.38,
       "anchor": "bottom",
       "mirror": true
      },
@@ -16066,15 +15674,6 @@
       "y": 9.0,
       "w": 1.1,
       "h": 1.1,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
-      "asset": "art/trees/ash_pine_03",
-      "x": 30.62,
-      "y": 9.13,
-      "w": 4.26,
-      "h": 7.1,
       "anchor": "bottom",
       "mirror": true
      },
@@ -16137,15 +15736,6 @@
       "anchor": "bottom"
      },
      {
-      "asset": "art/trees/ash_pine_04",
-      "x": 160.77,
-      "y": 9.28,
-      "w": 4.02,
-      "h": 6.7,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
       "asset": "art/plants/grass_tuft_01",
       "x": 53.25,
       "y": 9.29,
@@ -16198,15 +15788,6 @@
       "mirror": true
      },
      {
-      "asset": "art/trees/ash_pine_01",
-      "x": 140.24,
-      "y": 9.44,
-      "w": 3.71,
-      "h": 6.18,
-      "anchor": "bottom",
-      "mirror": true
-     },
-     {
       "asset": "art/plants/grass_tuft_02",
       "x": 130.37,
       "y": 9.46,
@@ -16230,14 +15811,6 @@
       "y": 9.5,
       "w": 1.59,
       "h": 1.59,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/ash_pine_01",
-      "x": 120.02,
-      "y": 9.52,
-      "w": 4.81,
-      "h": 8.02,
       "anchor": "bottom"
      },
      {
@@ -30810,14 +30383,6 @@
       "mirror": true
      },
      {
-      "asset": "art/trees/coastal_pine_02",
-      "x": 25.16,
-      "y": 57.81,
-      "w": 6.16,
-      "h": 7.7,
-      "anchor": "bottom"
-     },
-     {
       "asset": "art/plants/grass_tuft_06",
       "x": 34.18,
       "y": 57.83,
@@ -31227,14 +30792,6 @@
       "y": 59.0,
       "w": 4.74,
       "h": 7.9,
-      "anchor": "bottom"
-     },
-     {
-      "asset": "art/trees/ash_pine_02",
-      "x": 216.0,
-      "y": 59.0,
-      "w": 3.85,
-      "h": 6.42,
       "anchor": "bottom"
      },
      {

@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.31-dev — Character shadow, overlap clean-up
+- **Character:** the dark outline and rim light are gone.
+  - Ren's sprite frames are "lifted" instead: a little more contrast, saturation and brightness than the muted ground, baked once per frame.
+  - A soft cast shadow (his silhouette lying on the ground, falling down-right; fainter at night) is drawn under him, plus the contact shadow at his feet.
+- **Overlaps and duplicates:**
+  - Audited every map. Removed 17 overlapping big objects on the Outer Quays (mostly trees crowding the edge treeline, plus one exact duplicate) and 2 in the harbor (one tree on another, one tree inside a building), with their collision helpers.
+  - Random maps now refuse to place big scenery on top of other big scenery, and loot caches keep 1.5–2 tiles apart.
+  - No duplicate IDs; no caches in blocked spots.
+- QA: new `overlap` suite (fixed maps plus 5 seeds of every random isle and operation). 439 checks, all passing.
+
 ## v0.31-dev — Missions: hunts, apex monsters, monster-themed operations
 - **Expedition Chart missions:** each destination lists its missions (name, type, threat, Hunter Rank requirement). The briefing shows a target or enemy card with its sprite, lore and rewards. The choice is saved per destination.
 - **Apex monsters:** oversized, tinted, named versions of species that have art, with lore from the bestiary:

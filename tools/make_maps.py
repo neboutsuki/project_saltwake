@@ -962,6 +962,25 @@ def main():
     world['maps']['quays']['desc'] = 'The ruined commercial waterfront south-west of the Rest: Salt Yards, Customs Hill, Warehouse Row, the Old Fish Market, the Wreckers’ Camp, the Broken Quays and the Boathouse Slip. North is the Ashwood; south is the sea.'
     world['maps']['hub']['desc'] = 'Salvager’s Rest: a compact walled harbor town around Lantern Square. North is the city road, south the Rest Docks, east the passage to the Outer Quays.'
     place_content(world, H, Q)
+    # Overlap pass: drop big scenery that overlaps other big scenery (or exact duplicates), and trees standing inside
+    # building footprints; their collision helpers go with them.
+    import re as _re
+    BIG = _re.compile(r'/(trees|rocks|props|arena)/')
+    SMALLISH = _re.compile(r'stump|fallen_log|bone_pile|rock_small')
+    for mid in ('hub', 'quays'):
+        m = world['maps'][mid]; dec = m['scene']['decor']; kept, removed = [], []
+        for d in dec:
+            if BIG.search(d['asset']) and not SMALLISH.search(d['asset']):
+                clash = any(abs(k['x'] - d['x']) < 6 and ((k['asset'] == d['asset'] and ((k['x'] - d['x']) ** 2 + ((k['y'] - d['y']) * 1.4) ** 2) ** .5 < .4) or
+                            ((k['x'] - d['x']) ** 2 + ((k['y'] - d['y']) * 1.4) ** 2) ** .5 < min(k['w'], d['w']) * .42) for k in kept if BIG.search(k['asset']) and not SMALLISH.search(k['asset']))
+                inside = '/trees/' in d['asset'] and any(b['x'] + .5 < d['x'] < b['x'] + b['w'] - .5 and b['y'] + .5 < d['y'] < b['y'] + b['h'] + .5 for b in m.get('buildings', []))
+                if clash or inside: removed.append(d); continue
+            kept.append(d)
+        m['scene']['decor'] = kept
+        if removed:
+            gone = [(r['x'], r['y']) for r in removed]
+            m['decor'] = [g for g in m['decor'] if not (g.get('ghost') and any(abs(g['x'] - x) < .7 and -1.2 < (g['y'] - y) < .6 for x, y in gone))]
+        print(mid, 'overlap pass removed', len(removed))
     world['layoutRelease'] = 'tilemap-v0.31.0'
     WORLD.write_text(json.dumps(world, indent=1, ensure_ascii=False))
     print('hub', H.w, H.h, len(H.buildings), 'buildings', len(H.objects), 'objects', len(H.ghosts), 'colliders')
