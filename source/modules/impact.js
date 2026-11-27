@@ -83,6 +83,8 @@
       g.save();
       if (flip) { g.translate(2 * e.x, 0); g.scale(-1, 1); e.facing = Math.PI - (face || 0); }
       if (sq > 0) { const fy = e.y + 18; g.translate(e.x, fy); g.scale(1 + .14 * sq, 1 - .12 * sq); g.translate(-e.x, -fy); }
+      if (e.apexScale && e.apexScale !== 1) { const fy = e.y + 18, k = e.apexScale; g.translate(e.x, fy); g.scale(k, k); g.translate(-e.x, -fy); }
+      if (e.apexTint) g.filter = e.apexTint;
       let out;
       try {
         out = draw(G, e, rest);

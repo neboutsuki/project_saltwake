@@ -9,7 +9,7 @@ try{if(G.raid)G.endRaid(true,'x');G.close();G.setArea('hub',33.5,27.6);G.mode='p
  G.save.flags=G.save.flags||{};delete G.save.quests.q_into_the_maw;c.mawLocked=!IS.unlocked(G,'maw')&&IS.unlocked(G,'isle');
  // an expedition to the isle: new map, walkable arrival, reachable caches and extractions, monsters, extraction works
  G.save.destination='isle';G.beginRaid();G.close();G.mode='play';const M=G.map();
- c.isleRaid=G.mapId==='isle'&&G.walkable(G.player.x,G.player.y)&&G.raid.enemies.length>=10&&G.raid.enemies.every(e=>e.id.startsWith('isle_'));
+ c.isleRaid=G.mapId==='isle'&&G.walkable(G.player.x,G.player.y)&&G.raid.enemies.length>=10&&G.raid.enemies.every(e=>e.id.startsWith('isle_')||e.apex)&&G.raid.enemies.some(e=>e.apex);
  c.isleReachable=M.portals.every(p=>near(p.x,p.y))&&M.containers.every(k=>near(k.x,k.y));
  c.isleOverview=!!M.overview&&!!SALTWAKE_ASSETS.images[M.overview];
  try{for(let i=0;i<20;i++)G.update(dt);G.render(performance.now())}catch(x){errs.push(String(x))}

@@ -1,5 +1,32 @@
 # Changelog
 
+## v0.31-dev — Missions: hunts, apex monsters, monster-themed operations
+- **Expedition Chart missions:** each destination lists its missions (name, type, threat, Hunter Rank requirement). The briefing shows a target or enemy card with its sprite, lore and rewards. The choice is saved per destination.
+- **Apex monsters:** oversized, tinted, named versions of species that have art, with lore from the bestiary:
+
+| Apex | Species | Health | Young it summons |
+|---|---|---|---|
+| Gale Harrier | Redhook gull | 1000 | gull flock |
+| Brineback Matriarch | Brineback | 1500 | Brineback Calves |
+| Salt Widow Queen | Salt Widow | 1300 | Widowlings |
+| The Caller Choir | Brineworn Caller | 1200 | Drifters |
+| Bell Hulk | Brineworn Breaker | 1800 | Drifters |
+| Hollow Elk-King | Grazer (aggressive) | 1600 | Hollow Stags |
+
+  - Each apex uses its species' telegraphed moves, scaled to its size, with harder and faster hits. Extra hitboxes cover the big sprite.
+  - It summons its young while fighting and enrages below 40%.
+  - It has its own health bar ("HUNT TARGET" / "APEX"); trophies drop on death, plus 250 Hunter XP.
+- **Drowned Isle:**
+  - **Free Expedition:** a random isle with a random roaming apex ("APEX SIGHTED").
+  - **Hunt quests (6):** a random isle where only the target's species lives, plus the apex. The quest marker tracks the target. Slay it, then extract to complete: scrip, trophies and +200 Hunter XP. Each hunt has a Hunter Rank requirement.
+- **Brinefront operations by monster family:**
+  - Brood Purge (Brineworn: 3 nests + mast).
+  - Rookery Raid (Redhook gulls: 3 rookeries + mast).
+  - Widow Clutch Burn (Salt Widows: 4 egg clutches).
+  - Stampede Break (Brinebacks: slay the Herd Bull + hold the mast for 40 s).
+  - Enemies and defenders follow the operation's monster family.
+- QA: new `missions` suite. 436 checks, all passing.
+
 ## v0.31-dev — One departure pier + Expedition Chart, Brinefront operation, the Maw as a story quest
 - **One departure point:** the Rest Docks pier ("Departure Pier · Expedition Chart", with a sign and a lantern). The old Outer Quays road passage is barricaded and points you to the pier.
 - **Expedition Chart** (Monster Hunter-style, full screen):

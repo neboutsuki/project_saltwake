@@ -31,6 +31,7 @@ try{suites.push(['survival',require('./survival_checks.js')])}catch(e){}
 try{suites.push(['screen',require('./screen_checks.js')])}catch(e){}
 try{suites.push(['preload',require('./preload_checks.js')])}catch(e){}
 try{suites.push(['isle',require('./isle_checks.js')])}catch(e){}
+try{suites.push(['missions',require('./missions_checks.js')])}catch(e){}
 try{suites.push(['systems',require('./systems_checks.js')])}catch(e){}
 (async()=>{const b=await chromium.launch({args:['--no-sandbox','--disable-dev-shm-usage']});
 const page=await b.newPage({viewport:{width:1280,height:800}});const errors=[];page.on('pageerror',e=>errors.push(String(e)));

@@ -14,6 +14,60 @@
   const P = Game.prototype, T = 32, TAU = Math.PI * 2;
   const SIZE = {"art/trees/ash_pine_01": [4.2, 7.0], "art/trees/ash_pine_02": [4.2, 7.0], "art/trees/ash_pine_03": [4.2, 7.0], "art/trees/ash_pine_04": [4.2, 7.0], "art/trees/blight_tree_01": [5.6, 7.0], "art/trees/blight_tree_02": [5.6, 7.0], "art/trees/broadleaf_01": [5.6, 6.3], "art/trees/broadleaf_02": [5.6, 6.3], "art/trees/coastal_pine_01": [5.6, 7.0], "art/trees/coastal_pine_02": [5.6, 7.0], "art/trees/dead_tree_01": [4.2, 5.6], "art/trees/dead_tree_02": [4.2, 5.6], "art/trees/dead_tree_03": [4.2, 5.6], "art/trees/fallen_log_01": [4.2, 2.1], "art/trees/fallen_log_02": [4.2, 2.1], "art/trees/giant_grove_tree_01": [11.2, 14.0], "art/trees/giant_grove_tree_02": [11.2, 14.0], "art/trees/stump_01": [2.1, 1.75], "art/trees/stump_02": [2.1, 1.75], "art/rocks/cliff_rock_01": [5.6, 4.2], "art/rocks/cliff_rock_02": [5.6, 4.2], "art/rocks/rock_large_01": [4.2, 3.15], "art/rocks/rock_large_02": [4.2, 3.15], "art/rocks/rock_small_01": [1.4, 1.05], "art/rocks/rock_small_02": [1.4, 1.05], "art/rocks/rock_small_03": [1.4, 1.05], "art/rocks/salt_crystal_cluster_01": [2.1, 2.1], "art/rocks/salt_crystal_cluster_02": [2.1, 2.1], "art/plants/fern_01": [1.75, 1.4], "art/plants/fern_02": [1.75, 1.4], "art/plants/fern_03": [1.75, 1.4], "art/plants/flowers_01": [1.05, 1.05], "art/plants/flowers_02": [1.05, 1.05], "art/plants/flowers_03": [1.05, 1.05], "art/plants/grass_tuft_01": [1.4, 1.4], "art/plants/grass_tuft_02": [1.4, 1.4], "art/plants/grass_tuft_03": [1.4, 1.4], "art/plants/grass_tuft_04": [1.4, 1.4], "art/plants/grass_tuft_05": [1.4, 1.4], "art/plants/grass_tuft_06": [1.4, 1.4], "art/plants/kelp_pile_01": [2.1, 1.05], "art/plants/kelp_pile_02": [2.1, 1.05], "art/plants/mushrooms_01": [1.05, 1.05], "art/plants/mushrooms_02": [1.05, 1.05], "art/plants/reeds_01": [1.4, 2.1], "art/plants/reeds_02": [1.4, 2.1], "art/plants/reeds_03": [1.4, 2.1], "art/plants/reeds_04": [1.4, 2.1], "art/plants/shrub_01": [2.1, 1.75], "art/plants/shrub_02": [2.1, 1.75], "art/plants/shrub_03": [2.1, 1.75], "art/plants/shrub_04": [2.1, 1.75], "art/arena/arena_gate_closed": [8.4, 7.0], "art/arena/arena_pillar_01": [4.2, 8.4], "art/arena/arena_pillar_02": [4.2, 8.4], "art/arena/flood_water_overlay": [22.4, 22.4], "art/arena/harpoon_stuck": [2.8, 4.2], "art/arena/lure_lantern": [2.1, 4.2], "art/arena/oil_pool": [4.2, 2.1], "art/arena/pillar_broken": [4.2, 5.6], "art/arena/salt_boulder": [2.1, 1.75], "art/edges/treeline_mass_01": [14.0, 11.2], "art/edges/treeline_mass_02": [14.0, 11.2], "art/edges/treeline_mass_03": [14.0, 11.2], "art/edges/rubble_heap_01": [8.4, 5.6], "art/edges/rubble_heap_02": [8.4, 5.6], "art/props/anchor": [2.1, 2.1], "art/props/barrel_01": [1.4, 1.75], "art/props/barrel_02": [1.4, 1.75], "art/props/bench": [2.8, 1.75], "art/props/body_satchel": [1.75, 1.05], "art/props/bollard": [2.1, 2.1], "art/props/bone_pile_01": [2.1, 1.4], "art/props/bone_pile_02": [2.1, 1.4], "art/props/brazier": [1.4, 2.45], "art/props/broken_fence": [4.2, 2.45], "art/props/cache_bundle": [1.75, 1.4], "art/props/campfire": [2.1, 1.75], "art/props/carcass_01": [3.5, 2.1], "art/props/carcass_02": [3.5, 2.1], "art/props/cargo_platform": [8.4, 7.7], "art/props/carpenter_workbench": [4.9, 3.85], "art/props/cart_wreck": [4.2, 2.8], "art/props/chain_post": [1.4, 2.8], "art/props/chest_common": [1.75, 1.75], "art/props/chest_rare": [1.75, 1.75], "art/props/crate_01": [1.75, 1.75], "art/props/crate_02": [1.75, 1.75], "art/props/crate_03": [1.75, 1.75], "art/props/crate_stack": [2.8, 2.8], "art/props/dinghy_wrecked": [5.6, 4.2], "art/props/dock_broken_01": [8.4, 6.3], "art/props/dock_straight_01": [8.4, 6.3], "art/props/fence_iron": [2.8, 2.1], "art/props/fence_wood": [2.8, 2.1], "art/props/fish_basket": [1.4, 1.4], "art/props/fish_cleaning_station": [4.9, 4.2], "art/props/fish_drying_rack": [4.2, 3.5], "art/props/fountain": [5.6, 5.6], "art/props/hand_cart": [3.5, 2.45], "art/props/hand_water_pump": [2.8, 4.2], "art/props/hanging_lantern": [1.05, 1.75], "art/props/hanging_net_frame": [4.2, 3.5], "art/props/lantern_post": [2.8, 4.2], "art/props/lantern_post_variant": [1.4, 4.2], "art/props/mooring_post_rope": [2.1, 2.45], "art/props/nest_01": [4.2, 2.8], "art/props/nest_02": [4.2, 2.8], "art/props/net_rack": [2.8, 2.8], "art/props/notice_board": [2.8, 3.5], "art/props/open_supply_crate": [2.8, 2.8], "art/props/rope_coil": [1.4, 1.05], "art/props/rowboat": [4.2, 2.45], "art/props/rowboat_damaged": [5.6, 4.2], "art/props/salt_processing_trough": [4.9, 3.5], "art/props/salt_sack_pile": [2.1, 1.75], "art/props/salvage_debris": [5.6, 4.2], "art/props/signpost": [1.75, 2.8], "art/props/statue_hunter": [4.2, 7.0], "art/props/stone_relic": [4.2, 4.2], "art/props/storage_shelf": [4.2, 4.9], "art/props/supply_sacks": [2.1, 2.45], "art/props/tent_supplies": [2.8, 2.45], "art/props/tool_rack": [3.5, 3.85], "art/props/wall_lantern": [1.05, 1.4], "art/props/well": [2.8, 3.5], "art/props/wheelbarrow": [4.2, 3.15]};
   const IS = window.saltwakeIsle = { stats: { generated: 0, visits: 0, extractions: 0 }, DEST: ['quays', 'isle', 'front', 'maw'] };
+  // ---- monsters, apexes, operations, missions --------------------------------------------------------------------
+  // Apexes are oversized, named, tinted versions of species that already have art (lore from docs/BESTIARY_LORE.md).
+  const LORE = {
+    brineback: 'Big shell-backed grazers. The salt grows their shell bigger every year. Old ones can flatten a cart.',
+    gull: 'Redhook gulls learned that salvagers mean food. They follow lanterns and open crates, and they dive in flocks.',
+    widow: 'Spiders that spin salt-thread webs between dead pines. The thread hardens like glass in the cold.',
+    grazer: 'Herd animals that lick the salt crust. Their panic warns the whole flat that a hunter is near.',
+    brineworn_drifter: 'Fishers and villagers who stayed in the brine too long. They drift toward light and warmth.',
+    brineworn_caller: 'Brineworn who still remember their voices. Their song calls the others.',
+    brineworn_breaker: 'Dock workers and smiths whose bodies grew huge in the brine. They break doors and walls.',
+  };
+  const APEX = IS.APEX = {
+    harrier: { name: 'Gale Harrier', type: 'gull', hp: 1000, scale: 2.4, dmg: 2.2, cd: .6, hr: 1, icon: 'gull_idle', tint: 'brightness(.72) saturate(.55) contrast(1.25)',
+      lore: 'A storm bird as big as a boat that nests in the old lamp towers. Sailors believe it brings the squalls.', minion: { type: 'gull', scale: 1, hp: 1, dmg: 1, name: 'Redhook Gull' },
+      reward: { scrip: 320, items: [['redhook_feather', 4], ['redhook_beak', 2]] } },
+    matriarch: { name: 'Brineback Matriarch', type: 'brineback', hp: 1500, scale: 1.75, dmg: 1.5, cd: .8, hr: 2, icon: 'brineback_0_0', tint: 'sepia(.3) saturate(1.4) hue-rotate(-14deg) brightness(1.06)',
+      lore: 'The oldest Brineback, her shell covered in a crown of salt. Her calves ride on her back and answer her cry.', minion: { type: 'brineback', scale: .62, hp: .3, dmg: .5, name: 'Brineback Calf' },
+      reward: { scrip: 420, items: [['brineback_plate', 3], ['brineback_tusk', 2]] } },
+    widowqueen: { name: 'Salt Widow Queen', type: 'widow', hp: 1300, scale: 1.85, dmg: 1.5, cd: .8, hr: 3, icon: 'widow_0_0', tint: 'saturate(1.6) hue-rotate(-22deg) contrast(1.12)',
+      lore: 'Mother of every widow in the Ashwood. Her egg sac is never empty; her brood bursts out when she is wounded.', minion: { type: 'widow', scale: .55, hp: .3, dmg: .45, name: 'Widowling' },
+      reward: { scrip: 480, items: [['salt_widow_shell', 3], ['widow_claw', 2]] } },
+    choir: { name: 'The Caller Choir', type: 'brineworn_caller', hp: 1200, scale: 1.8, dmg: 1.4, cd: .85, hr: 3, icon: 'caller', tint: 'hue-rotate(60deg) saturate(1.3) brightness(.9)',
+      lore: 'Callers who sang together so long they fused into one body. Their song never stops; Drifters climb out of the water to answer.', minion: { type: 'brineworn_drifter', scale: 1, hp: 1, dmg: 1, name: 'Drifter' },
+      reward: { scrip: 460, items: [['salt_crystals', 6], ['masterwork_core', 1]] } },
+    bellhulk: { name: 'Bell Hulk', type: 'brineworn_breaker', hp: 1800, scale: 1.55, dmg: 1.6, cd: .85, hr: 4, icon: 'breaker', tint: 'sepia(.45) hue-rotate(60deg) saturate(1.2) brightness(.92)',
+      lore: 'A Breaker who hid in the bell tower when the tide came. The bell grew into his body; its toll still stuns.', minion: { type: 'brineworn_drifter', scale: 1, hp: 1, dmg: 1, name: 'Drifter' },
+      reward: { scrip: 540, items: [['scrap_metal', 8], ['masterwork_core', 1]] } },
+    elkking: { name: 'Hollow Elk-King', type: 'grazer', hp: 1600, scale: 2.0, dmg: 1.9, cd: .75, hr: 4, icon: 'grazer_right', aggressive: true, tint: 'brightness(.5) contrast(1.35) saturate(.45)',
+      lore: 'King of the hollow stags. His antlers never stopped burning after the great fire. His herd follows him into the dark.', minion: { type: 'grazer', scale: .9, hp: .6, dmg: .7, name: 'Hollow Stag', aggressive: true },
+      reward: { scrip: 520, items: [['shed_horn', 3], ['masterwork_core', 1]] } },
+    herdbull: { name: 'Herd Bull', type: 'brineback', hp: 1000, scale: 1.45, dmg: 1.35, cd: .85, hr: 3, icon: 'brineback_0_0', tint: 'saturate(1.25) contrast(1.1)', hidden: true,
+      lore: 'The bull that leads a stampede. Bring it down and the herd scatters.', minion: { type: 'brineback', scale: .62, hp: .3, dmg: .5, name: 'Brineback Calf' }, reward: { scrip: 0, items: [['brineback_tusk', 1]] } },
+  };
+  const OPS = IS.OPS = [
+    { id: 'brood', name: 'Brood Purge', family: 'Brineworn', icon: 'drifter', monsters: ['brineworn_drifter', 'brineworn_drifter', 'brineworn_caller', 'brineworn_breaker'], nests: 3, nestName: 'Brood Nest', mast: 25, hr: 1, reward: 250, threat: 3,
+      lore: 'The Brineworn breed where the tide pools never drain. Burn their nests before the next spring tide, then signal the guild.' },
+    { id: 'rookery', name: 'Rookery Raid', family: 'Redhook Gulls', icon: 'gull_flight', monsters: ['gull', 'gull', 'gull', 'widow'], nests: 3, nestName: 'Rookery', mast: 20, hr: 1, reward: 220, threat: 2,
+      lore: 'A Redhook rookery has grown so big the flocks strip whole salvage camps. Burn the rookeries; expect the sky to fight back.' },
+    { id: 'clutch', name: 'Widow Clutch Burn', family: 'Salt Widows', icon: 'widow_0_0', monsters: ['widow', 'widow', 'widow'], minion: 'widowling', nests: 4, nestName: 'Egg Clutch', mast: 0, hr: 2, reward: 300, threat: 3,
+      lore: 'Widow egg clutches hidden among the dead pines. When they hatch, nothing on the isle survives. Burn all four.' },
+    { id: 'stampede', name: 'Stampede Break', family: 'Brinebacks', icon: 'brineback_0_0', monsters: ['brineback', 'brineback', 'grazer'], nests: 0, mast: 40, hunt: 'herdbull', hr: 3, reward: 380, threat: 4,
+      lore: 'A Brineback stampede is heading for the salt road. Hold the signal mast while the guild diverts the carts, and bring down the Herd Bull.' },
+  ];
+  const MISSIONS = IS.MISSIONS = {
+    quays: [{ id: 'quays_free', kind: 'free', name: 'Free Expedition', threat: 2, hr: 1, desc: 'Salvage, follow your story and commission steps. Tide-gated extractions.' }],
+    isle: [{ id: 'isle_free', kind: 'free', name: 'Free Expedition', threat: 2, hr: 1, desc: 'A new random isle. Something big roams it: an unknown apex. Salvage, hunt it if you dare, extract.' }]
+      .concat(Object.entries(APEX).filter(([, a]) => !a.hidden).map(([id, a]) => ({ id: 'hunt_' + id, kind: 'hunt', apex: id, name: 'Hunt: ' + a.name, threat: Math.min(5, a.hr + 1), hr: a.hr,
+        desc: `A random isle where only ${a.name.replace(/^The /, '')}'s kind lives. Track it down, slay it, extract.` }))),
+    front: OPS.map(o => ({ id: 'op_' + o.id, kind: 'op', op: o.id, name: o.name, threat: o.threat, hr: o.hr, desc: o.lore })),
+    maw: [{ id: 'maw_story', kind: 'story', name: 'Into the Maw', threat: 5, hr: 1, desc: 'Story quest. The Elder Tidemaw waits in the drowned crater.' }],
+  };
+  IS.LORE = LORE;
+  const rank = G => window.saltwakeHunter?.rank?.(G) || 1;
+  IS.mission = (G, dest) => { const list = MISSIONS[dest] || []; const id = G.save.missions?.[dest]; const m = list.find(x => x.id === id && rank(G) >= (x.hr || 1)); return m || list[0]; };
   const rng = seed => { let a = seed >>> 0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; };
   const pick = (R, a) => a[Math.floor(R() * a.length)];
   const segDist = (px, py, ax, ay, bx, by) => { const dx = bx - ax, dy = by - ay, L = dx * dx + dy * dy; let t = L ? ((px - ax) * dx + (py - ay) * dy) / L : 0; t = Math.max(0, Math.min(1, t)); return Math.hypot(px - ax - dx * t, py - ay - dy * t); };
@@ -133,7 +187,7 @@
 
   // ---- THE BRINEFRONT (Helldivers-style operation, random every time) --------------------------------------------
   const FRONT_NAMES = ['Operation Ashtide', 'Operation Saltfang', 'Operation Grey Wake', 'Operation Hollow Bell', 'Operation Red Shoal', 'Operation Cinder Reef'];
-  function genFront(seed) {
+  function genFront(seed, op = OPS[0]) {
     const W = 160, H = 120, WS = 104, B = builder('front', 'The Brinefront', W, H, seed, WS), { M, R } = B;
     M.desc = 'A Brineworn breeding ground the guild wants burned out. Destroy the nests, raise the signal mast, call extraction and hold.';
     M.ground.push({ area: [0, 0, W, WS], m: 'ash', alt: 'soil', p: .45, base: .55 }, { area: [0, WS - 9, W, 9], m: 'mud', alt: 'sand', p: .45, base: .5 });
@@ -145,11 +199,12 @@
     const spots = []; const far = (x, y, d) => spots.every(p => Math.hypot(p[0] - x, p[1] - y) > d) && Math.hypot(x - land[0], y - land[1]) > 28;
     const place = () => { for (let t = 0; t < 200; t++) { const x = 16 + R() * (W - 32), y = 14 + R() * (WS - 34); if (far(x, y, 30)) { spots.push([x, y]); return [x, y]; } } const x = 20 + R() * (W - 40), y = 20 + R() * (WS - 40); spots.push([x, y]); return [x, y]; };
     const objectives = [];
-    for (let i = 0; i < 3; i++) { const [x, y] = place(); objectives.push({ id: 'nest' + i, kind: 'nest', label: `Burn Brood Nest ${i + 1}`, x, y, done: false });
+    for (let i = 0; i < op.nests; i++) { const [x, y] = place(); objectives.push({ id: 'nest' + i, kind: 'nest', label: `Burn ${op.nestName} ${i + 1}`, x, y, done: false });
       B.keep.push([x, y, 6]); M.ground.push({ blob: [x, y, 6], m: 'mud', alt: 'ash', p: .4 });
       for (let k = 0; k < 5; k++) { const a = R() * TAU, r = 2.5 + R() * 3; B.put(pick(R, ['art/props/bone_pile_01', 'art/props/bone_pile_02', 'art/props/carcass_01', 'art/props/carcass_02', 'art/props/nest_01']), x + Math.cos(a) * r, y + Math.sin(a) * r * .8, 1, R() < .5); }
-      B.zone('front.nest' + i, 'Brood Nest', x - 9, y - 7, 18, 14); }
-    { const [x, y] = place(); objectives.push({ id: 'mast', kind: 'mast', label: 'Raise the Signal Mast', x, y, done: false, progress: 0, need: 25 });
+      B.zone('front.nest' + i, op.nestName, x - 9, y - 7, 18, 14); }
+    if (op.hunt) { const [x, y] = place(); objectives.push({ id: 'hunt', kind: 'hunt', apex: op.hunt, label: 'Slay the ' + APEX[op.hunt].name, x, y, done: false }); B.keep.push([x, y, 6]); B.zone('front.hunt', APEX[op.hunt].name + '’s ground', x - 9, y - 7, 18, 14); }
+    if (op.mast) { const [x, y] = place(); objectives.push({ id: 'mast', kind: 'mast', label: 'Raise the Signal Mast', x, y, done: false, progress: 0, need: op.mast });
       B.keep.push([x, y, 7]); M.ground.push({ blob: [x, y, 6], m: 'plaza', alt: 'gravel', p: .3 });
       B.put('art/props/lantern_post', x, y - .5, 1.3); B.put('art/props/signpost', x - 2.2, y + 1.2); B.put('art/props/crate_stack', x + 2.6, y + 1.4); B.ghost(x, y - .6, 'crate'); B.light(x, y, 200, .9);
       B.zone('front.mast', 'Signal Mast', x - 9, y - 7, 18, 14); }
@@ -165,7 +220,7 @@
     B.zone('front.all', 'The Brinefront', 0, 0, W, H);
     B.edges(); B.trees(.5, ['dead', 'blight', 'ash']); B.rocks(80); B.plants(800);
     for (let i = 0; i < 30; i++) { const x = 10 + R() * (W - 20), y = 10 + R() * (WS - 20); if (Math.hypot(x - land[0], y - land[1]) > 30) M.spawns.push([+x.toFixed(1), +y.toFixed(1)]); }
-    M.procedural = true; M.containers = containers; M.objectives = objectives; M.evac = { x: evac[0], y: evac[1] }; M.opName = pick(R, FRONT_NAMES);
+    M.procedural = true; M.containers = containers; M.objectives = objectives; M.evac = { x: evac[0], y: evac[1] }; M.opName = pick(R, FRONT_NAMES) + ' · ' + op.name; M.op = op.id;
     return M;
   }
   IS.genFront = genFront;
@@ -208,6 +263,21 @@
     if (d === 'maw') { try { const c = window.saltwakeTiles?.renderOverview?.(G, 'maw', 3); return (thumbs[d] = c ? c.toDataURL('image/png') : null); } catch (e) { return null; } }
     return (thumbs[d] = null);
   }
+  const IMGS2 = () => window.SALTWAKE_ASSETS?.images || {};
+  const spriteSrc = k => IMGS2()[k] || (typeof veinArt !== 'undefined' && (veinArt.get(k)?.src || veinArt.get(k + '_0_0')?.src)) || null;
+  function monsterCard(img, tint, name, lore, tag) { const src = spriteSrc(img) || spriteSrc(String(img).replace(/_(idle|flight|right)$/, '') + '_0_0'); return `<div class="swMon">${src ? `<img src="${src}" alt="" style="filter:${tint || 'none'}">` : '<i>?</i>'}<div><span>${tag}</span><b>${name}</b><small>${lore}</small></div></div>`; }
+  function missionsHtml(G, dest) {
+    const list = MISSIONS[dest] || []; if (list.length < 2 && dest !== 'front') return '';
+    const cur = IS.mission(G, dest), hr = rank(G);
+    const rows = list.map(m => { const lock = hr < (m.hr || 1); return `<button class="swMis ${m.id === cur.id ? 'on' : ''}" data-act="sw_mission" data-id="${m.id}" ${lock ? 'disabled' : ''}><b>${m.name}</b><small>${m.kind === 'hunt' ? 'HUNT' : m.kind === 'op' ? 'OPERATION' : m.kind === 'story' ? 'STORY' : 'EXPEDITION'} · ${'★'.repeat(m.threat)}${lock ? ' · HR ' + m.hr + ' required' : ''}</small></button>`; }).join('');
+    let detail = `<p class="swMisDesc">${cur.desc}</p>`;
+    if (cur.kind === 'hunt') { const A = APEX[cur.apex]; detail += monsterCard(A.icon, A.tint, A.name, A.lore, 'TARGET · APEX ' + A.type.replace('brineworn_', '').toUpperCase()) +
+      `<p class="fine">Reward on extraction: ${A.reward.scrip} scrip · ${A.reward.items.map(([id, n]) => `${Math.ceil(n / 2)} × ${itemDef(id).name}`).join(' · ')} · +450 HR XP</p>`; }
+    if (cur.kind === 'op') { const O = OPS.find(o => o.id === cur.op); detail += monsterCard(O.icon, '', O.family, LORE[O.monsters[0]] || '', 'ENEMY · ' + O.family.toUpperCase()) +
+      `<ul>${[O.nests ? `Burn ${O.nests} × ${O.nestName}` : '', O.hunt ? `Slay the ${APEX[O.hunt].name}` : '', O.mast ? `Hold the signal mast ${O.mast} s` : '', 'Call extraction and hold until the boat'].filter(Boolean).map(x => `<li>${x}</li>`).join('')}</ul><p class="fine">Bonus ${O.reward} scrip + kills</p>`; }
+    if (cur.kind === 'free' && dest === 'isle') detail += '<p class="fine">A random apex roams this isle. Slaying it pays trophies and Hunter XP.</p>';
+    return `<h4>Missions</h4><div class="swMisList">${rows}</div>${detail}`;
+  }
   const fc = P.showClimateForecast;
   if (fc) P.showClimateForecast = function (departure) {
     if (!departure) return fc.apply(this, arguments);
@@ -230,13 +300,15 @@
         <p>${D.desc}</p><ul>${D.facts.map(f => `<li>${f}</li>`).join('')}</ul>
         ${sel === 'maw' && ok ? `<p class="swQuest">◆ Story quest · ${questFor(G, 'maw').title}</p>` : ''}
         ${sel !== 'quays' && this.livingState?.().active ? '<p class="fine">Your commission’s sites are on the Outer Quays; hunt-type commissions still count anywhere.</p>' : ''}
+        ${missionsHtml(G, sel)}
         <h4>Conditions now · ${ct(cs.clock)}</h4><div class="swNow">${weather.icon} <b>${weather.name}</b> · ${cs.period.name}</div>
         <h4>Departure windows</h4><div class="swWins">${windows}</div>
-        <button class="primary swGo" data-act="env_deploy" ${inPort && ok ? '' : 'disabled'}>DEPART · ${D.name.toUpperCase()}</button>
+        <button class="primary swGo" data-act="env_deploy" ${inPort && ok ? '' : 'disabled'}>DEPART · ${(IS.mission(G, sel)?.kind === 'free' ? D.name : IS.mission(G, sel)?.name || D.name).toUpperCase()}</button>
         <p class="fine">Gear carried on death is lost. Extract to bring it home.</p></aside></div>`);
   };
   const act = P.doAction;
-  P.doAction = function (a, n) { if (a === 'sw_dest') { const d = n.dataset.id; if (IS.DEST.includes(d)) { this.save.destination = d; this.store(); } return this.showClimateForecast(true); } return act.apply(this, arguments); };
+  P.doAction = function (a, n) { if (a === 'sw_mission') { const id = n.dataset.id, d = Object.keys(MISSIONS).find(k => MISSIONS[k].some(m => m.id === id)); if (d) { (this.save.missions ||= {})[d] = id; this.store(); } return this.showClimateForecast(true); }
+    if (a === 'sw_dest') { const d = n.dataset.id; if (IS.DEST.includes(d)) { this.save.destination = d; this.store(); } return this.showClimateForecast(true); } return act.apply(this, arguments); };
 
   // one departure point: the Rest Docks pier; the old road passage is barricaded
   const hubPortal = P.portal;
@@ -255,13 +327,13 @@
     return { id, type, name: d.name, x, y, homeX: x, homeY: y, hp: d.health, maxHp: d.health, dead: false, aggro: 0, attackCD: 1.2, walk: Math.random() * 5, phase: Math.floor(Math.random() * 9),
       factionId: 'wildlife', actorType: 'monster', provoked: false, parts: (d.parts || []).map(p => ({ ...p, current: p.hp, broken: false })) };
   };
-  function populate(G, M, seed) {
+  function populate(G, M, seed, only) {
     const R = rng(seed ^ 0x51ed), night = !!G.climateState?.().night, out = [], TX = window.saltwakeTiles;
     const types = M.id === 'front' ? ['brineworn_drifter', 'brineworn_drifter', 'brineworn_caller', 'brineworn_breaker', 'widow', 'gull'] : M.id === 'maw' ? ['brineworn_drifter', 'brineworn_drifter', 'brineworn_breaker', 'widow', 'gull'] : night ? ['brineworn_drifter', 'widow', 'brineback', 'gull', 'brineworn_breaker'] : ['gull', 'gull', 'widow', 'brineback', 'grazer', 'grazer', 'brineworn_drifter'];
-    const n = M.id === 'maw' ? 6 : 12 + Math.floor(R() * 5);
+    const types2 = only || types, n = M.id === 'maw' ? 6 : 12 + Math.floor(R() * 5);
     for (let i = 0; i < n; i++) { const sp = M.spawns[i % M.spawns.length]; let x = sp[0] + (R() - .5) * 6, y = sp[1] + (R() - .5) * 5;
-      const nw = TX?.nearestWalkable?.(G, x, y); if (nw) [x, y] = nw; const e = MON(G, pick(R, types), x * T, y * T, `${M.id}_${seed}_${i}`); if (!e) continue; try { G.initSense?.(e); } catch (er) { } out.push(e); }
-    for (const p of M.pois || []) if (POI[p.kind]?.pack) for (let i = 0; i < 2; i++) { const e = MON(G, night ? 'brineworn_drifter' : 'widow', (p.x + (R() - .5) * 6) * T, (p.y + (R() - .5) * 5) * T, `${M.id}_${seed}_nest_${i}_${p.x | 0}`); if (e) { try { G.initSense?.(e); } catch (er) { } out.push(e); } }
+      const nw = TX?.nearestWalkable?.(G, x, y); if (nw) [x, y] = nw; const e = MON(G, pick(R, types2), x * T, y * T, `${M.id}_${seed}_${i}`); if (!e) continue; try { G.initSense?.(e); } catch (er) { } out.push(e); }
+    for (const p of M.pois || []) if (POI[p.kind]?.pack) for (let i = 0; i < 2; i++) { const e = MON(G, only ? only[0] : night ? 'brineworn_drifter' : 'widow', (p.x + (R() - .5) * 6) * T, (p.y + (R() - .5) * 5) * T, `${M.id}_${seed}_nest_${i}_${p.x | 0}`); if (e) { try { G.initSense?.(e); } catch (er) { } out.push(e); } }
     return out;
   }
   const begin = P.beginRaid;
@@ -270,19 +342,28 @@
     if (had || !r) return out;
     const dest = this.save.destination && unlocked(this, this.save.destination) ? this.save.destination : 'quays';
     if (dest === 'quays') return out;
-    let M;
-    if (dest === 'isle') { const seed = (Date.now() ^ (Math.random() * 1e9)) >>> 0; M = genIsle(seed); IS.stats.generated++; }
-    else if (dest === 'front') { const seed = (Date.now() ^ (Math.random() * 1e9)) >>> 0; M = genFront(seed); IS.stats.generated++; }
+    let M; const mission = IS.mission(this, dest), seed = (Date.now() ^ (Math.random() * 1e9)) >>> 0, op = mission.kind === 'op' ? OPS.find(o => o.id === mission.op) : null;
+    if (dest === 'isle') { M = genIsle(seed); IS.stats.generated++; }
+    else if (dest === 'front') { M = genFront(seed, op || OPS[0]); IS.stats.generated++; }
     else M = this.world.maps.maw?.tilemap ? this.world.maps.maw : genMaw();
+    r.mission = mission.id;
     install(this, M);
     // overview picture for the map screen (random maps have no painted overview)
     try { if (!M.overview) { const c = window.saltwakeTiles?.renderOverview?.(this, M.id, 6); if (c) { const al = `art/maps/${M.id}_${M.seed}`; window.SALTWAKE_ASSETS.images[al] = c.toDataURL('image/png'); M.overview = al; } } } catch (e) { }
     r.destination = dest; r.tidemaw = null; r.contract = {};
-    r.enemies = populate(this, M, r.seed || 1);
-    if (dest === 'front') r.operation = { name: M.opName, tier: 3, reward: 250, hold: 90, evac: M.evac, objectives: M.objectives.map(o => ({ ...o })) };
+    const huntA = mission.kind === 'hunt' ? APEX[mission.apex] : null;
+    r.enemies = populate(this, M, r.seed || 1, huntA ? [huntA.type, huntA.type, huntA.minion.type] : op ? op.monsters : null);
+    if (dest === 'front') { const O = op || OPS[0]; r.operation = { id: O.id, name: M.opName, tier: 3, reward: O.reward, hold: 90, evac: M.evac, monsters: O.monsters, objectives: M.objectives.map(o => ({ ...o })) };
+      for (const o of r.operation.objectives) if (o.kind === 'hunt') { const e = spawnApex(this, o.apex, o.x * T, o.y * T); if (e) o.apexId = e.id; } }
+    if (dest === 'isle') { const far = (M.pois || []).slice().sort((a, b) => Math.hypot(b.x - M.arrivals.default[0], b.y - M.arrivals.default[1]) - Math.hypot(a.x - M.arrivals.default[0], a.y - M.arrivals.default[1]))[0] || { x: M.w / 2, y: M.h / 3 };
+      let key = huntA ? mission.apex : null;
+      if (!key) { const pool = Object.entries(APEX).filter(([, a]) => !a.hidden && a.hr <= rank(this) + 1).map(([k]) => k); key = pool[Math.floor(Math.random() * pool.length)] || 'harrier'; }
+      const e = spawnApex(this, key, far.x * T, (far.y + 3) * T);
+      if (huntA && e) r.hunt = { apex: key, id: e.id, name: huntA.name, done: false, reward: huntA.reward };
+      else if (e) r.roamer = { apex: key, id: e.id, seen: false }; }
     IS.stats.visits++;
     const [ax, ay] = M.arrivals.default; this.setArea(M.id, ax, ay);
-    this.notify(dest === 'isle' ? `${M.name.toUpperCase()} · A new isle rises from the fog. Salvage and reach an extraction.` : dest === 'front' ? `${M.opName.toUpperCase()} · Burn the nests, raise the mast, then call extraction. Hold X for call-ins.` : 'INTO THE MAW · The Elder Tidemaw waits in the drowned crater.', 5);
+    this.notify(r.hunt ? `HUNT · ${r.hunt.name.toUpperCase()} · ${M.name}. Track it down and slay it, then extract.` : dest === 'isle' ? `${M.name.toUpperCase()} · A new isle rises from the fog. Something big hunts here.` : dest === 'front' ? `${M.opName.toUpperCase()} · Complete the objectives, then call extraction. Hold X for call-ins.` : 'INTO THE MAW · The Elder Tidemaw waits in the drowned crater.', 5);
     return out;
   };
   // extraction on the new maps
@@ -292,10 +373,84 @@
     return portal.apply(this, arguments);
   };
 
+  // ---- apex monsters --------------------------------------------------------------------------------------------
+  // Oversized named versions of a species: more health, harder and faster hits, extra "hide" hitboxes covering the big
+  // sprite, summons its young/flock when it is fighting, enrages below 40 %. Uses the species' own telegraphed moves.
+  function spawnApex(G, key, x, y) {
+    const A = APEX[key]; if (!A || !G.raid) return null;
+    const TX = window.saltwakeTiles; const nw = TX?.nearestWalkable?.(G, x / T, y / T); if (nw) { x = nw[0] * T; y = nw[1] * T; }
+    const e = MON(G, A.type, x, y, `apex_${key}_${Date.now()}`); if (!e) return null;
+    try { G.initSense?.(e); } catch (er) { }   // (initSense rebuilds parts from the species: do it before the apex parts)
+    const k = A.scale, armor = (typeof COMBAT_PARTS !== 'undefined' && COMBAT_PARTS[A.type]?.bodyArmor) || 8;
+    Object.assign(e, { apex: key, name: A.name, hp: A.hp, maxHp: A.hp, apexScale: k, apexTint: A.tint, dmgMul: A.dmg, cdMul: A.cd, apexSummon: 8, provoked: !!A.aggressive, homeX: x, homeY: y, patrolRadius: 8 });
+    e.parts = (e.parts || []).map(p => ({ ...p, dx: p.dx * k, dy: p.dy * k, radius: p.radius * Math.sqrt(k) }))
+      .concat([[0, -12], [-18, -4], [18, -4]].map(([dx, dy], i) => ({ id: 'hide' + i, name: '', dx: dx * k, dy: dy * k, radius: 17 * k, hp: 1e9, current: 1e9, armor, drop: null, broken: false, hide: true })));
+    G.raid.enemies.push(e); IS.stats.apex = (IS.stats.apex || 0) + 1; return e;
+  }
+  IS.spawnApex = spawnApex;
+  function minions(G, e, n) {
+    const A = APEX[e.apex], m = A.minion; if (!m) return;
+    for (let i = 0; i < n; i++) { const a = Math.random() * TAU, x = e.x + Math.cos(a) * 70, y = e.y + Math.sin(a) * 50;
+      const c = MON(G, m.type, x, y, `brood_${e.id}_${Date.now()}_${i}`); if (!c) continue; try { G.initSense?.(c); } catch (er) { }
+      if (m.scale !== 1) { c.apexScale = m.scale; c.parts = (c.parts || []).map(p => ({ ...p, dx: p.dx * m.scale, dy: p.dy * m.scale, radius: p.radius * m.scale })); }
+      c.hp = c.maxHp = Math.max(8, Math.round(c.maxHp * m.hp)); c.dmgMul = m.dmg; c.name = m.name; c.provoked = true; c.awareness = 'alert'; c.aggro = 9; G.raid.enemies.push(c); }
+  }
+  const apexUpd = P.update;
+  P.update = function (dt) {
+    const out = apexUpd.apply(this, arguments), r = this.raid; if (!r || this.isPaused()) return out; dt = Math.min(.1, dt || 0);
+    const p = this.player;
+    for (const e of r.enemies) { if (!e.apex || e.dead) continue; const A = APEX[e.apex], d = Math.hypot(e.x - p.x, e.y - p.y);
+      if (A.aggressive && d < 520) { e.provoked = true; }
+      const fighting = e.awareness === 'alert' || e.aggro > 0 || e.provoked && d < 520;
+      if (fighting) { e.apexSummon -= dt; if (e.apexSummon <= 0) { minions(this, e, e.hp < e.maxHp * .4 ? 3 : 2); e.apexSummon = e.hp < e.maxHp * .4 ? 11 : 17; this.notify(`${A.name} calls its ${A.minion.name.toLowerCase()}s!`, 1.8); } }
+      if (!e.apexEnraged && e.hp < e.maxHp * .4) { e.apexEnraged = true; e.cdMul = (e.cdMul || 1) * .75; this.notify(`${A.name.toUpperCase()} IS ENRAGED`, 2.5); window.saltwakeCamera?.shake?.(.3); }
+      if (r.roamer && r.roamer.id === e.id && !r.roamer.seen && d < 620) { r.roamer.seen = true; this.notify(`APEX SIGHTED · ${A.name}`, 3); window.saltwakeAudio?.event?.('warning', .8); }
+    }
+    return out;
+  };
+  const apexHit = P.hitMonster;
+  P.hitMonster = function (e) {
+    const was = e.dead, out = apexHit.apply(this, arguments), r = this.raid;
+    if (!was && e.dead && e.apex && r) { const A = APEX[e.apex];
+      for (const [id, n] of A.reward.items) for (let i = 0; i < Math.min(n, 3); i++) r.drops.push({ x: e.x + (Math.random() - .5) * 70, y: e.y + 10 + Math.random() * 20, id, n: Math.ceil(n / Math.min(n, 3)), got: false });
+      window.saltwakeHunter?.bank?.(this, 250, A.name); IS.stats.apexKills = (IS.stats.apexKills || 0) + 1;
+      if (r.hunt && r.hunt.id === e.id) { r.hunt.done = true; this.notify(`TARGET HUNTED · ${A.name} · Collect the trophies and extract to complete the hunt`, 5); }
+      else this.notify(`APEX SLAIN · ${A.name}`, 4);
+      for (const o of r.operation?.objectives || []) if (o.kind === 'hunt' && o.apexId === e.id && !o.done) { o.done = true; this.notify(`${A.name.toUpperCase()} DOWN · objective complete`, 3); }
+      window.saltwakeCamera?.shake?.(.5); }
+    return out;
+  };
+  // hunt reward on a safe extraction
+  const huntEnd = P.endRaid;
+  P.endRaid = function (success) {
+    const r = this.raid, h = r?.hunt; const out = huntEnd.apply(this, arguments);
+    if (h && h.done && success) { this.save.gold += h.reward.scrip; for (const [id, n] of h.reward.items) addItem(this.save.bag, id, Math.ceil(n / 2)); window.saltwakeHunter?.bank?.(this, 200, 'Hunt');
+      this.save.huntsDone = (this.save.huntsDone || 0) + 1; this.store?.(); this.notify(`HUNT COMPLETE · ${h.name} · +${h.reward.scrip} scrip`, 5); IS.stats.hunts = (IS.stats.hunts || 0) + 1; }
+    return out;
+  };
+  // HUD: apex bar (hunt target always; other apexes when close)
+  const apexHud = P.hud;
+  P.hud = function () {
+    const out = apexHud.apply(this, arguments); let el = document.getElementById('swApex');
+    if (!el) { el = document.createElement('div'); el.id = 'swApex'; el.innerHTML = '<span></span><b></b><div><i></i></div>'; (document.getElementById('world')?.parentElement || document.body).appendChild(el); }
+    const r = this.raid, p = this.player; let e = null;
+    if (r && this.mode === 'play') { const live = r.enemies.filter(x => x.apex && !x.dead && !APEX[x.apex].hidden || x.apex && !x.dead && r.operation);
+      e = live.find(x => r.hunt && x.id === r.hunt.id) || live.filter(x => Math.hypot(x.x - p.x, x.y - p.y) < 700).sort((a, b) => Math.hypot(a.x - p.x, a.y - p.y) - Math.hypot(b.x - p.x, b.y - p.y))[0] || null; }
+    el.hidden = !e; if (e) { el.querySelector('span').textContent = r.hunt && e.id === r.hunt.id ? 'HUNT TARGET' : 'APEX'; el.querySelector('b').textContent = e.name; el.querySelector('i').style.width = Math.max(0, e.hp / e.maxHp * 100) + '%'; }
+    return out;
+  };
+  // quest marker: the hunt target, then an extraction
+  const QUI = window.saltwakeQuestUI;
+  if (QUI) { const ex = QUI.extraTarget; QUI.extraTarget = g => { const r = g.raid;
+    if (r?.hunt) { const e = r.enemies.find(x => x.id === r.hunt.id);
+      if (!r.hunt.done && e && !e.dead) return { q: null, loc: { mapId: g.mapId, name: r.hunt.name }, x: e.x, y: e.y };
+      const pt = g.map().portals?.[0]; if (r.hunt.done && pt) return { q: null, loc: { mapId: g.mapId, name: pt.name }, x: pt.x * T, y: pt.y * T }; }
+    return ex ? ex(g) : null; }; }
+
   // ---- operation objectives (Brinefront) -------------------------------------------------------------------------
   const opNear = (G, o, r) => Math.hypot(G.player.x - o.x * T, G.player.y - o.y * T) < r * T;
   function defenders(G, o, n) { const R = Math.random; for (let i = 0; i < n; i++) { const a = R() * TAU, x = (o.x + Math.cos(a) * 9) * T, y = (o.y + Math.sin(a) * 7) * T;
-      const e = MON(G, pick(R, ['brineworn_drifter', 'brineworn_drifter', 'widow', 'brineworn_breaker']), x, y, `op_${o.id}_${Date.now()}_${i}`); if (!e) continue; try { G.initSense?.(e); } catch (er) { } e.surv = true; e.provoked = true; e.awareness = 'alert'; e.aggro = 9; G.raid.enemies.push(e); } }
+      const e = MON(G, pick(R, G.raid.operation?.monsters || ['brineworn_drifter', 'brineworn_drifter', 'widow', 'brineworn_breaker']), x, y, `op_${o.id}_${Date.now()}_${i}`); if (!e) continue; try { G.initSense?.(e); } catch (er) { } e.surv = true; e.provoked = true; e.awareness = 'alert'; e.aggro = 9; G.raid.enemies.push(e); } }
   IS.opDefenders = defenders;
   const inter = P.interact;
   P.interact = function () {
@@ -362,6 +517,14 @@
   .swThreat b{color:#e8a05a;letter-spacing:.1em}.swLock{color:#ff9a86}.swQuest{color:#e8d18f;font-weight:600}.swWins{display:flex;flex-direction:column;gap:6px}.swWin{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.04)}
   .swWin small{display:block;opacity:.7}.swGo{margin-top:8px;padding:12px!important;font-size:15px!important;letter-spacing:.08em}
   @media (max-width:860px){.swChart{grid-template-columns:1fr;height:auto}.swSea{height:60vh}}
+  .swMisList{display:flex;flex-direction:column;gap:5px}.swMis{display:flex!important;flex-direction:column;align-items:flex-start;text-align:left;padding:7px 10px!important;gap:1px}
+  .swMis small{opacity:.7;font-size:11px;letter-spacing:.06em}.swMis.on{outline:2px solid rgba(232,209,143,.65);background:rgba(232,209,143,.12)!important}.swMisDesc{margin:6px 0 2px;opacity:.9}
+  .swMon{display:flex;gap:12px;align-items:center;padding:10px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+  .swMon img{width:84px;height:84px;object-fit:contain;image-rendering:pixelated;flex:none}.swMon i{width:84px;height:84px;display:grid;place-items:center;font-size:30px;font-style:normal;opacity:.6}
+  .swMon span{display:block;font-size:10px;letter-spacing:.14em;color:#ff9a86}.swMon b{display:block;font-size:16px}.swMon small{opacity:.8;line-height:1.35}
+  #swApex{position:absolute;top:44px;left:50%;transform:translateX(-50%);z-index:5;width:min(460px,60vw);pointer-events:none;text-align:center;font:600 12px system-ui,sans-serif;color:#f3ead8;text-shadow:0 1px 3px #000}
+  #swApex span{display:block;font-size:10px;letter-spacing:.2em;color:#ff9a86}#swApex b{display:block;font-size:15px;letter-spacing:.1em;text-transform:uppercase;margin:1px 0 4px}
+  #swApex div{height:7px;border-radius:5px;background:rgba(0,0,0,.55);overflow:hidden;border:1px solid rgba(255,255,255,.15)}#swApex i{display:block;height:100%;background:linear-gradient(90deg,#c9543f,#e8a05a)}
   .swDest{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-bottom:12px}.swDest button{display:flex!important;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;padding:10px 12px!important}
   .swDest button[aria-pressed="true"]{outline:2px solid rgba(143,212,232,.65);background:rgba(143,212,232,.14)!important}.swDest small{opacity:.75;font-size:12px;line-height:1.35}`;
   document.head.appendChild(css);

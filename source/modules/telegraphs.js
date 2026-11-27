@@ -38,9 +38,13 @@
     brineworn_breaker: [{ id: 'slam', name: 'Overhead Slam', kind: 'circle', wind: .85, lock: .65, r: 50, off: 34, dmg: 1.4, min: 0, max: 70, heavy: true }],
     _gunner: [{ id: 'shot', name: 'Aimed Shot', kind: 'aim', wind: .5, lock: .7, ranged: true }],
   };
-  const movesFor = (g, e) => e.type === 'tidemaw' || e.boss ? null : MOVES[e.type] || (g.actorFaction?.(e) !== 'wildlife' && e.weapon ? MOVES._gunner : null);
+  const baseMoves = (g, e) => e.type === 'tidemaw' || e.boss ? null : MOVES[e.type] || (g.actorFaction?.(e) !== 'wildlife' && e.weapon ? MOVES._gunner : null);
+  // apex monsters (bigger sprites) get shapes and reach scaled to their size
+  const scaled = new Map();
+  const movesFor = (g, e) => { const b = baseMoves(g, e), k = e.apexScale || 1; if (!b || k === 1) return b;
+    const key = e.type + ':' + k; if (!scaled.has(key)) scaled.set(key, b.map(m => ({ ...m, len: m.len && m.len * k, r: m.r && m.r * Math.sqrt(k), w: m.w && m.w * Math.sqrt(k), off: m.off && m.off * k, min: m.min && m.min * k, max: m.max && m.max * k, wind: m.wind * .92 }))); return scaled.get(key); };
   const hit = (g, e, m) => {
-    const def = defOf(e), p = g.player, dmg = (def.damage || 14) * (e.weakened ? .67 : 1) * (m.dmg || 1);
+    const def = defOf(e), p = g.player, dmg = (def.damage || 14) * (e.weakened ? .67 : 1) * (m.dmg || 1) * (e.dmgMul || 1);
     g.hurtPlayer(dmg, e.type === 'widow' ? .36 : .08);
     if (e.type === 'brineback') p.wet = Math.min(100, (p.wet || 0) + 17 * (1 - Math.min(.6, (g.armorSkill?.('brine_resist') || 0) * .15)));
     TG.stats.hits++;
@@ -88,7 +92,7 @@
     window.saltwakeNight?.cue?.(game, e, 'strike');
     if (m.cd) (e.swMoveCD ||= {})[m.id] = game.raid.time + m.cd;
     if (m.ranged) { e.swAim = { x: t.tx, y: t.ty, until: game.raid.time + .05 }; return true; }   // native code fires, aimed at the lock
-    const cd = defOf(e).attackCooldown || 1.4;
+    const cd = (defOf(e).attackCooldown || 1.4) * (e.cdMul || 1);
     if (typeof motionAttack === 'function') motionAttack(e);
     if (m.kind === 'lane') { e.swDash = { a: t.a, t: m.dash, speed: m.speed, m, hitDone: false, sx: e.x, sy: e.y }; e.instinctAttack = { id: 'player', left: 99, total: 99, moving: true }; TG.stats.charges++; e.attackCD = cd; return false; }
     if (m.leap) { e.swLeap = { x0: e.x, y0: e.y, x1: t.tx, y1: t.ty, t: 0, dur: m.leap, m, tele: { ...t } }; e.instinctAttack = { id: 'player', left: 99, total: 99, moving: true }; TG.stats.leaps++; e.attackCD = cd; return false; }
@@ -102,7 +106,7 @@
   const mb = P.makeBullet;
   if (mb) P.makeBullet = function (from, target, ...rest) {
     if (from?.swAim && this.raid && this.raid.time <= from.swAim.until && target && (target.kind === 'player' || target === this.player)) {
-      const a = from.swAim; from.swAim = null; return mb.call(this, from, { ...target, x: a.x, y: a.y }, ...rest);
+      const a = from.swAim; from.swAim = null; if (from.dmgMul && typeof rest[0] === 'number') rest[0] *= from.dmgMul; return mb.call(this, from, { ...target, x: a.x, y: a.y }, ...rest);
     }
     return mb.apply(this, arguments);
   };
