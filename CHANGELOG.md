@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.31-dev — Smarter monsters, a livelier world
+- **Monster behavior layer** (`monster-ai.js`, on top of the engine's sense/chase/attack step and the telegraphs):
+  - **Pack alarm:** a monster that spots you alerts its kind nearby; a Caller's cry alerts every Brineworn in earshot.
+  - **Surround:** several hunters spread into slots around you instead of stacking; bodies keep apart.
+  - **Flee:** wounded wildlife (below 25%) breaks off and runs. Apexes and Brineworn never flee.
+  - **Grazers** are prey: get close (closer if you crouch, farther if you sprint) and the herd bolts. They fight only when cornered or provoked.
+  - **Brinebacks** are territorial: close in and the bull turns and stomps a warning for 1.6 s before it charges. Back off and it calms down.
+  - **Salt Widows** ambush: still in cover until you are close, then pounce. After striking they back off.
+  - **Redhook gulls** steal loot lying on the ground that is closer to them than you are. Kill the thief to drop it again.
+  - **Brineworn** are drawn to your lantern at night from far away.
+  - Small floating cues: "! it stomps a warning", "ambush!", "flees!", "a gull snatches the loot!".
+- **Living world** (`life.js`):
+  - Grass, flowers and shrubs sway and tree tops lean in the wind; gusts are stronger in rain and squalls.
+  - Camp and campfire smoke drifts with the wind.
+  - Waves break along the shoreline and fish jump.
+  - Gull flocks cross the sky by day.
+- QA: new `ai` suite (alarm, herd bolt, territorial warning, ambush, gull theft and drop-back, flee, spacing, wind sway, smoke). 456 checks, all passing.
+
 ## v0.31-dev — Four major areas (fixed maps)
 - New fixed regions on the Expedition Chart. Each is always the same layout (150×110) and has its own ground, flora, region buildings from the art set, residents (day and night lists), points of interest with caches, lights, two extractions (landing skiff and inland trail), and its apex living in a lair:
 
