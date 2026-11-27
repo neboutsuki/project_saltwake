@@ -1,6 +1,6 @@
 # Art status (written by tools/import_art.py)
 
-## P1: 189/220 delivered
+## P1: 190/220 delivered
 - [ ] `characters/player_male.png`
 - [ ] `characters/player_female.png`
 - [ ] `characters/smith.png`
@@ -18,7 +18,6 @@
 - [ ] `monsters/brineworn_drifter.png`
 - [ ] `monsters/brineworn_caller.png`
 - [ ] `monsters/brineworn_breaker.png`
-- [ ] `bosses/tidemaw.png`
 - [ ] `portraits/n_dockmaster.png`
 - [ ] `portraits/n_clerk.png`
 - [ ] `portraits/n_quartermaster.png`
@@ -59,7 +58,7 @@
 - [ ] `bosses/salt_wyrm.png`
 - [ ] `keyart/bestiary_portrait_<monster>.png`
 
-## Extra files not on the list: 164
+## Extra files not on the list: 166
 
 - `buildings/salvage_shed.png`
 - `buildings/utility_shack.png`
@@ -175,6 +174,8 @@
 - `eapon_wickcaster.png`
 - `edges/cliff_face.png`
 - `icons/weapon_knife.png`
+- `maps/hub.png`
+- `maps/quays.png`
 - `portraits/captain_elda.png`
 - `portraits/harlan.png`
 - `portraits/ivo.png`

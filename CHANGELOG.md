@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.31-dev — One departure pier + Expedition Chart, Brinefront operation, the Maw as a story quest
+- **One departure point:** the Rest Docks pier ("Departure Pier · Expedition Chart", with a sign and a lantern). The old Outer Quays road passage is barricaded and points you to the pier.
+- **Expedition Chart** (Monster Hunter-style, full screen):
+  - A sea chart of the Red Salt Coast with destination nodes (thumbnails or "?" for random maps) and routes from Salvager's Rest.
+  - A briefing panel: type, threat stars, description, features, current conditions, departure windows (Wait) and a big DEPART button.
+- **The Brinefront** (new, Helldivers-style operation on a random map every time, 160×120):
+  - Objectives: burn 3 Brood Nests (E plants a charge; 5 s; get clear; it summons defenders), then raise the Signal Mast (stand near it for 25 s while Brineworn pour in).
+  - Call-ins (hold X) work the whole mission; patrols pick up your trail every ~60 s.
+  - Then call extraction at the beacon (E), hold for 90 s plus the 30 s boat surge, and board.
+  - Reward: 250 scrip bonus plus a kill bonus. The HUD shows the operation's objective checklist.
+- **The Maw is now part of the story:**
+  - New main quest **Into the Maw** (from Teren Sull, after The Thing Under the Slip): slay the Elder Tidemaw, extract, report back. Rewards: 1200 scrip, 2 masterwork cores, 3 tinctures.
+  - The Maw appears on the chart only while that quest is active, tagged STORY QUEST. Killing the Elder advances the quest.
+- **Art:** the 10 cast portraits (Tess, Harlan, Master Rook, Soren, Kade, Marin, Mira, Lira, Captain Elda, Ivo) are back at the 512×512 originals. The import had stored them at 192×192. Every other uploaded image was already in the game at its uploaded size.
+- QA: isle suite covers the chart, the single departure, a full Brinefront run (nests → mast → extraction → boat → reward), and the quest-gated Maw. 421 checks, all passing.
+
 ## v0.31-dev — Random isle every visit + fixed final boss arena
 - **Destination picker** in Expedition Planning (harbor exit):
   - The Outer Quays: story, commissions, Tidemaw.

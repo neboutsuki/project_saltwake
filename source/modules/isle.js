@@ -6,14 +6,14 @@
  * - THE MAW: one large fixed map (always the same layout): a beach landing, a forest approach and a walled arena of
  *   pillars where the FINAL BOSS waits, the Elder Tidemaw (boss.js variant: more health, harder hits, earlier tide
  *   phase and enrage, calls Brineworn broods). Unlocked once the Tidemaw of the Outer Quays has been slain.
- * - Destination picker in Expedition Planning (harbor exit): Outer Quays (story, commissions) · Drowned Isle · The Maw.
+ * - Expedition Chart at the Departure Pier: Outer Quays · Drowned Isle · Brinefront operation · the Maw (story quest only).
  * Art: existing image files only (trees, rocks, plants, props, arena pieces); sizes come from the images (px/32*1.4).
  * window.saltwakeIsle exposes the generators and state for QA.
  */
 (() => {
   const P = Game.prototype, T = 32, TAU = Math.PI * 2;
   const SIZE = {"art/trees/ash_pine_01": [4.2, 7.0], "art/trees/ash_pine_02": [4.2, 7.0], "art/trees/ash_pine_03": [4.2, 7.0], "art/trees/ash_pine_04": [4.2, 7.0], "art/trees/blight_tree_01": [5.6, 7.0], "art/trees/blight_tree_02": [5.6, 7.0], "art/trees/broadleaf_01": [5.6, 6.3], "art/trees/broadleaf_02": [5.6, 6.3], "art/trees/coastal_pine_01": [5.6, 7.0], "art/trees/coastal_pine_02": [5.6, 7.0], "art/trees/dead_tree_01": [4.2, 5.6], "art/trees/dead_tree_02": [4.2, 5.6], "art/trees/dead_tree_03": [4.2, 5.6], "art/trees/fallen_log_01": [4.2, 2.1], "art/trees/fallen_log_02": [4.2, 2.1], "art/trees/giant_grove_tree_01": [11.2, 14.0], "art/trees/giant_grove_tree_02": [11.2, 14.0], "art/trees/stump_01": [2.1, 1.75], "art/trees/stump_02": [2.1, 1.75], "art/rocks/cliff_rock_01": [5.6, 4.2], "art/rocks/cliff_rock_02": [5.6, 4.2], "art/rocks/rock_large_01": [4.2, 3.15], "art/rocks/rock_large_02": [4.2, 3.15], "art/rocks/rock_small_01": [1.4, 1.05], "art/rocks/rock_small_02": [1.4, 1.05], "art/rocks/rock_small_03": [1.4, 1.05], "art/rocks/salt_crystal_cluster_01": [2.1, 2.1], "art/rocks/salt_crystal_cluster_02": [2.1, 2.1], "art/plants/fern_01": [1.75, 1.4], "art/plants/fern_02": [1.75, 1.4], "art/plants/fern_03": [1.75, 1.4], "art/plants/flowers_01": [1.05, 1.05], "art/plants/flowers_02": [1.05, 1.05], "art/plants/flowers_03": [1.05, 1.05], "art/plants/grass_tuft_01": [1.4, 1.4], "art/plants/grass_tuft_02": [1.4, 1.4], "art/plants/grass_tuft_03": [1.4, 1.4], "art/plants/grass_tuft_04": [1.4, 1.4], "art/plants/grass_tuft_05": [1.4, 1.4], "art/plants/grass_tuft_06": [1.4, 1.4], "art/plants/kelp_pile_01": [2.1, 1.05], "art/plants/kelp_pile_02": [2.1, 1.05], "art/plants/mushrooms_01": [1.05, 1.05], "art/plants/mushrooms_02": [1.05, 1.05], "art/plants/reeds_01": [1.4, 2.1], "art/plants/reeds_02": [1.4, 2.1], "art/plants/reeds_03": [1.4, 2.1], "art/plants/reeds_04": [1.4, 2.1], "art/plants/shrub_01": [2.1, 1.75], "art/plants/shrub_02": [2.1, 1.75], "art/plants/shrub_03": [2.1, 1.75], "art/plants/shrub_04": [2.1, 1.75], "art/arena/arena_gate_closed": [8.4, 7.0], "art/arena/arena_pillar_01": [4.2, 8.4], "art/arena/arena_pillar_02": [4.2, 8.4], "art/arena/flood_water_overlay": [22.4, 22.4], "art/arena/harpoon_stuck": [2.8, 4.2], "art/arena/lure_lantern": [2.1, 4.2], "art/arena/oil_pool": [4.2, 2.1], "art/arena/pillar_broken": [4.2, 5.6], "art/arena/salt_boulder": [2.1, 1.75], "art/edges/treeline_mass_01": [14.0, 11.2], "art/edges/treeline_mass_02": [14.0, 11.2], "art/edges/treeline_mass_03": [14.0, 11.2], "art/edges/rubble_heap_01": [8.4, 5.6], "art/edges/rubble_heap_02": [8.4, 5.6], "art/props/anchor": [2.1, 2.1], "art/props/barrel_01": [1.4, 1.75], "art/props/barrel_02": [1.4, 1.75], "art/props/bench": [2.8, 1.75], "art/props/body_satchel": [1.75, 1.05], "art/props/bollard": [2.1, 2.1], "art/props/bone_pile_01": [2.1, 1.4], "art/props/bone_pile_02": [2.1, 1.4], "art/props/brazier": [1.4, 2.45], "art/props/broken_fence": [4.2, 2.45], "art/props/cache_bundle": [1.75, 1.4], "art/props/campfire": [2.1, 1.75], "art/props/carcass_01": [3.5, 2.1], "art/props/carcass_02": [3.5, 2.1], "art/props/cargo_platform": [8.4, 7.7], "art/props/carpenter_workbench": [4.9, 3.85], "art/props/cart_wreck": [4.2, 2.8], "art/props/chain_post": [1.4, 2.8], "art/props/chest_common": [1.75, 1.75], "art/props/chest_rare": [1.75, 1.75], "art/props/crate_01": [1.75, 1.75], "art/props/crate_02": [1.75, 1.75], "art/props/crate_03": [1.75, 1.75], "art/props/crate_stack": [2.8, 2.8], "art/props/dinghy_wrecked": [5.6, 4.2], "art/props/dock_broken_01": [8.4, 6.3], "art/props/dock_straight_01": [8.4, 6.3], "art/props/fence_iron": [2.8, 2.1], "art/props/fence_wood": [2.8, 2.1], "art/props/fish_basket": [1.4, 1.4], "art/props/fish_cleaning_station": [4.9, 4.2], "art/props/fish_drying_rack": [4.2, 3.5], "art/props/fountain": [5.6, 5.6], "art/props/hand_cart": [3.5, 2.45], "art/props/hand_water_pump": [2.8, 4.2], "art/props/hanging_lantern": [1.05, 1.75], "art/props/hanging_net_frame": [4.2, 3.5], "art/props/lantern_post": [2.8, 4.2], "art/props/lantern_post_variant": [1.4, 4.2], "art/props/mooring_post_rope": [2.1, 2.45], "art/props/nest_01": [4.2, 2.8], "art/props/nest_02": [4.2, 2.8], "art/props/net_rack": [2.8, 2.8], "art/props/notice_board": [2.8, 3.5], "art/props/open_supply_crate": [2.8, 2.8], "art/props/rope_coil": [1.4, 1.05], "art/props/rowboat": [4.2, 2.45], "art/props/rowboat_damaged": [5.6, 4.2], "art/props/salt_processing_trough": [4.9, 3.5], "art/props/salt_sack_pile": [2.1, 1.75], "art/props/salvage_debris": [5.6, 4.2], "art/props/signpost": [1.75, 2.8], "art/props/statue_hunter": [4.2, 7.0], "art/props/stone_relic": [4.2, 4.2], "art/props/storage_shelf": [4.2, 4.9], "art/props/supply_sacks": [2.1, 2.45], "art/props/tent_supplies": [2.8, 2.45], "art/props/tool_rack": [3.5, 3.85], "art/props/wall_lantern": [1.05, 1.4], "art/props/well": [2.8, 3.5], "art/props/wheelbarrow": [4.2, 3.15]};
-  const IS = window.saltwakeIsle = { stats: { generated: 0, visits: 0, extractions: 0 }, DEST: ['quays', 'isle', 'maw'] };
+  const IS = window.saltwakeIsle = { stats: { generated: 0, visits: 0, extractions: 0 }, DEST: ['quays', 'isle', 'front', 'maw'] };
   const rng = seed => { let a = seed >>> 0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; };
   const pick = (R, a) => a[Math.floor(R() * a.length)];
   const segDist = (px, py, ax, ay, bx, by) => { const dx = bx - ax, dy = by - ay, L = dx * dx + dy * dy; let t = L ? ((px - ax) * dx + (py - ay) * dy) / L : 0; t = Math.max(0, Math.min(1, t)); return Math.hypot(px - ax - dx * t, py - ay - dy * t); };
@@ -131,6 +131,45 @@
   }
   IS.genMaw = genMaw;
 
+  // ---- THE BRINEFRONT (Helldivers-style operation, random every time) --------------------------------------------
+  const FRONT_NAMES = ['Operation Ashtide', 'Operation Saltfang', 'Operation Grey Wake', 'Operation Hollow Bell', 'Operation Red Shoal', 'Operation Cinder Reef'];
+  function genFront(seed) {
+    const W = 160, H = 120, WS = 104, B = builder('front', 'The Brinefront', W, H, seed, WS), { M, R } = B;
+    M.desc = 'A Brineworn breeding ground the guild wants burned out. Destroy the nests, raise the signal mast, call extraction and hold.';
+    M.ground.push({ area: [0, 0, W, WS], m: 'ash', alt: 'soil', p: .45, base: .55 }, { area: [0, WS - 9, W, 9], m: 'mud', alt: 'sand', p: .45, base: .5 });
+    for (let i = 0; i < 14; i++) M.ground.push({ blob: [8 + R() * (W - 16), 10 + R() * (WS - 22), 5 + R() * 10], m: pick(R, ['salt', 'mud', 'gravel', 'ash', 'tall']), alt: pick(R, ['ash', 'soil', 'gravel']), p: .35 });
+    const land = [20 + R() * (W - 40), WS - 4];
+    M.arrivals = { default: [land[0], land[1] - 1.5], legacy: [], from: { hub: [land[0], land[1] - 1.5] } };
+    B.keep.push([land[0], land[1], 7]); B.put('art/props/rowboat', land[0] + 2, land[1] + 2.6, .9);
+    // objectives: 3 brood nests + the signal mast, spread across the map; extraction beacon on the far shore
+    const spots = []; const far = (x, y, d) => spots.every(p => Math.hypot(p[0] - x, p[1] - y) > d) && Math.hypot(x - land[0], y - land[1]) > 28;
+    const place = () => { for (let t = 0; t < 200; t++) { const x = 16 + R() * (W - 32), y = 14 + R() * (WS - 34); if (far(x, y, 30)) { spots.push([x, y]); return [x, y]; } } const x = 20 + R() * (W - 40), y = 20 + R() * (WS - 40); spots.push([x, y]); return [x, y]; };
+    const objectives = [];
+    for (let i = 0; i < 3; i++) { const [x, y] = place(); objectives.push({ id: 'nest' + i, kind: 'nest', label: `Burn Brood Nest ${i + 1}`, x, y, done: false });
+      B.keep.push([x, y, 6]); M.ground.push({ blob: [x, y, 6], m: 'mud', alt: 'ash', p: .4 });
+      for (let k = 0; k < 5; k++) { const a = R() * TAU, r = 2.5 + R() * 3; B.put(pick(R, ['art/props/bone_pile_01', 'art/props/bone_pile_02', 'art/props/carcass_01', 'art/props/carcass_02', 'art/props/nest_01']), x + Math.cos(a) * r, y + Math.sin(a) * r * .8, 1, R() < .5); }
+      B.zone('front.nest' + i, 'Brood Nest', x - 9, y - 7, 18, 14); }
+    { const [x, y] = place(); objectives.push({ id: 'mast', kind: 'mast', label: 'Raise the Signal Mast', x, y, done: false, progress: 0, need: 25 });
+      B.keep.push([x, y, 7]); M.ground.push({ blob: [x, y, 6], m: 'plaza', alt: 'gravel', p: .3 });
+      B.put('art/props/lantern_post', x, y - .5, 1.3); B.put('art/props/signpost', x - 2.2, y + 1.2); B.put('art/props/crate_stack', x + 2.6, y + 1.4); B.ghost(x, y - .6, 'crate'); B.light(x, y, 200, .9);
+      B.zone('front.mast', 'Signal Mast', x - 9, y - 7, 18, 14); }
+    let evac; for (let t = 0; t < 200; t++) { const x = 16 + R() * (W - 32); if (Math.abs(x - land[0]) > 50) { evac = [x, WS - 6]; break; } } evac ||= [W - land[0], WS - 6];
+    B.keep.push([evac[0], evac[1], 7]); M.ground.push({ blob: [evac[0], evac[1], 6], m: 'gravel', alt: 'sand', p: .3 }); B.zone('front.evac', 'Extraction Beacon', evac[0] - 9, evac[1] - 7, 18, 14);
+    // tracks between everything
+    const nodes = [land, ...objectives.map(o => [o.x, o.y]), evac]; let cur = nodes[0], left = nodes.slice(1, -1);
+    while (left.length) { left.sort((a, b) => Math.hypot(a[0] - cur[0], a[1] - cur[1]) - Math.hypot(b[0] - cur[0], b[1] - cur[1])); const n = left.shift(); B.path(cur, n, 3, 'gravel'); cur = n; } B.path(cur, evac, 3, 'gravel');
+    // a few ruined camps with caches
+    const containers = []; for (let i = 0; i < 6; i++) { const [x, y] = [12 + R() * (W - 24), 12 + R() * (WS - 24)]; if (!B.clear(x, y, 3)) continue;
+      B.put(pick(R, ['art/props/cart_wreck', 'art/props/tent_supplies', 'art/props/salvage_debris']), x, y); B.ghost(x, y - .3, 'crate');
+      containers.push({ id: 'front_c_' + i, name: pick(R, ['Guild Supply Drop', 'Scorched Crate', 'Dead Hunter’s Pack']), mapId: 'front', x: +(x + 1.6).toFixed(2), y: +(y + 1).toFixed(2), lootTableId: pick(R, ['provisions', 'dock_scrap', 'wrecker_cache', 'deep_cache']), respawn: 'raid' }); B.keep.push([x, y, 3]); }
+    B.zone('front.all', 'The Brinefront', 0, 0, W, H);
+    B.edges(); B.trees(.5, ['dead', 'blight', 'ash']); B.rocks(80); B.plants(800);
+    for (let i = 0; i < 30; i++) { const x = 10 + R() * (W - 20), y = 10 + R() * (WS - 20); if (Math.hypot(x - land[0], y - land[1]) > 30) M.spawns.push([+x.toFixed(1), +y.toFixed(1)]); }
+    M.procedural = true; M.containers = containers; M.objectives = objectives; M.evac = { x: evac[0], y: evac[1] }; M.opName = pick(R, FRONT_NAMES);
+    return M;
+  }
+  IS.genFront = genFront;
+
   // register the fixed map at load (so it is preloaded and cached like the others)
   const G0 = () => window.SALTWAKE_DEV?.game;
   function install(G, M) {
@@ -142,28 +181,73 @@
   try { const W0 = window.SALTWAKE_WORLD || WORLD; const maw = genMaw(); W0.maps.maw = maw; window.saltwakeTiles?.installScene?.('maw', maw); W0.content.containers = W0.content.containers.filter(k => k.mapId !== 'maw').concat(maw.containers); if (window.saltwakeBoss) window.saltwakeBoss.ARENAS.maw = maw.arena; } catch (e) { }
 
   // ---- destinations ----------------------------------------------------------------------------------------------
-  const unlocked = (G, d) => d !== 'maw' || !!G.save.flags?.tidemawSlain;
+  // Quest destinations: a map that exists only while a story quest that names it is active (the Maw: "Into the Maw").
+  const questFor = (G, d) => (G.world.content.quests || []).find(q => q.destination === d && G.quest?.progress?.(q)) || null;
+  IS.questFor = questFor;
+  const unlocked = (G, d) => d !== 'maw' || !!questFor(G, d);
   IS.unlocked = unlocked;
+  // ---- EXPEDITION CHART (Monster Hunter-style destination map) ----------------------------------------------------
+  // The one departure point is the Rest Docks pier. It opens a full-screen sea chart of the Red Salt Coast; pick a
+  // region, read its brief, check the weather windows, depart.
   const DEST_INFO = {
-    quays: ['The Outer Quays', 'The fixed waterfront. Story quests, commissions and the Tidemaw.'],
-    isle: ['The Drowned Isle', 'A new random island every visit. Salvage caches, monster packs, two extractions.'],
-    maw: ['The Maw · Final Hunt', 'A fixed arena map. The Elder Tidemaw waits in the drowned crater.'],
+    quays: { name: 'The Outer Quays', tag: 'FIXED MAP', threat: 2, pos: [44, 58], desc: 'The ruined waterfront south-west of the Rest. Story quests, field commissions, survival operations and the Tidemaw at the Boathouse Slip.',
+      facts: ['Story & commissions', 'Tide-gated extractions', 'Boss: the Tidemaw'] },
+    isle: { name: 'The Drowned Isle', tag: 'RANDOM ISLAND', threat: 2, pos: [20, 30], desc: 'An unmapped isle that is different every time the fog lifts. Landmarks, salvage caches and monster packs in a new layout every visit.',
+      facts: ['New layout every visit', '12-16 salvage caches', 'Extract: landing skiff or cliff rope'] },
+    front: { name: 'The Brinefront', tag: 'OPERATION', threat: 3, pos: [72, 30], desc: 'A Brineworn breeding ground. Burn the brood nests, raise the signal mast, then call extraction and hold the line until the boat comes. Call-ins available all mission.',
+      facts: ['Objectives: 3 nests + signal mast', 'Call-ins: hold X', 'Hold for extraction · bonus 250 scrip'] },
+    maw: { name: 'The Maw', tag: 'STORY QUEST', threat: 5, pos: [52, 12], desc: 'A drowned crater ringed by old pillars, charted by Teren Sull. The Elder Tidemaw waits at its heart. Bring everything.',
+      facts: ['Story quest: Into the Maw', 'Boss: the Elder Tidemaw', 'Appears only while the quest is active'] },
   };
+  IS.DEST_INFO = DEST_INFO;
+  const thumbs = {};
+  function thumb(G, d) {
+    if (thumbs[d] !== undefined) return thumbs[d];
+    const imgs = window.SALTWAKE_ASSETS?.images || {};
+    if (d === 'quays') return (thumbs[d] = imgs['art/maps/quays'] || null);
+    if (d === 'maw') { try { const c = window.saltwakeTiles?.renderOverview?.(G, 'maw', 3); return (thumbs[d] = c ? c.toDataURL('image/png') : null); } catch (e) { return null; } }
+    return (thumbs[d] = null);
+  }
   const fc = P.showClimateForecast;
   if (fc) P.showClimateForecast = function (departure) {
-    const out = fc.apply(this, arguments); if (!departure) return out;
-    const body = document.querySelector('#panel .panelBody'); if (!body) return out;
-    const dest = this.save.destination && unlocked(this, this.save.destination) ? this.save.destination : 'quays';
-    const html = `<h3>Destination</h3><div class="swDest">${IS.DEST.map(d => { const ok = unlocked(this, d), [nm, ds] = DEST_INFO[d];
-      return `<button data-act="sw_dest" data-id="${d}" aria-pressed="${d === dest}" ${ok ? '' : 'disabled'}><b>${nm}</b><small>${ok ? ds : 'Locked · slay the Tidemaw on the Outer Quays first'}</small></button>`; }).join('')}</div>
-      ${dest !== 'quays' && this.livingState?.().active ? '<p class="fine">Your commission sites are on the Outer Quays; hunt-type commissions still count anywhere.</p>' : ''}`;
-    const act = body.querySelector('[data-act="env_deploy"]')?.closest('.actions'); if (act) act.insertAdjacentHTML('beforebegin', html); else body.insertAdjacentHTML('beforeend', html);
-    const btn = body.querySelector('[data-act="env_deploy"]'); if (btn) btn.textContent = btn.textContent.replace('DEPART NOW', 'DEPART TO ' + DEST_INFO[dest][0].toUpperCase().replace(' · FINAL HUNT', ''));
-    return out;
+    if (!departure) return fc.apply(this, arguments);
+    const G = this; if (this.save.destination === 'maw' && !unlocked(this, 'maw')) this.save.destination = 'quays';
+    const sel = this.save.destination && IS.DEST.includes(this.save.destination) ? this.save.destination : 'quays', D = DEST_INFO[sel], ok = unlocked(this, sel);
+    const cs = this.climateState(), weather = cs.weather, inPort = this.environmentCanDepart?.() !== false, ct = typeof coastTime === 'function' ? coastTime : m => '';
+    const shown = IS.DEST.filter(d => d !== 'maw' || unlocked(G, d));
+    const nodes = shown.map(d => { const I = DEST_INFO[d], open = unlocked(G, d), t = open ? thumb(G, d) : null;
+      return `<button class="swNode ${d === sel ? 'on' : ''} ${open ? '' : 'locked'} t-${d}" data-act="sw_dest" data-id="${d}" style="left:${I.pos[0]}%;top:${I.pos[1]}%">
+        <span class="swThumb">${t ? `<img src="${t}" alt="">` : `<i>${open ? (d === 'isle' || d === 'front' ? '?' : '◆') : '🔒'}</i>`}</span><b>${I.name}</b><small>${I.tag}</small></button>`; }).join('');
+    const routes = shown.map(d => { const I = DEST_INFO[d]; return `<path d="M 36 88 Q ${(36 + I.pos[0]) / 2 + (I.pos[0] < 36 ? -8 : 8)} ${(88 + I.pos[1]) / 2} ${I.pos[0]} ${I.pos[1] + 6}" class="${d === sel ? 'on' : ''} ${unlocked(G, d) ? '' : 'locked'}"/>`; }).join('');
+    const windows = [['dawn', 360], ['day', 600], ['dusk', 1080], ['night', 1260]].map(([id, minute]) => { const delta = (((minute - cs.clock) % 1440) + 1440) % 1440 || 1440, f = this.climateState(cs.clock + delta);
+      return `<div class="swWin"><span><b>${id.toUpperCase()}</b><small>${ct(cs.clock + delta)} · ${f.weather.icon} ${f.weather.name}</small></span><button data-act="env_wait" data-window="${id}" ${inPort ? '' : 'disabled'}>Wait</button></div>`; }).join('');
+    const stars = n => '★'.repeat(n) + '☆'.repeat(5 - n);
+    this.open('EXPEDITION PLANNING', `<div class="swChart">
+      <section class="swSea"><svg viewBox="0 0 100 100" preserveAspectRatio="none" class="swRoutes">${routes}</svg>
+        <div class="swHome" style="left:36%;top:88%"><b>Salvager’s Rest</b><small>Departure pier</small></div>${nodes}
+        <div class="swCompass">N</div><div class="swSeaName">THE RED SALT COAST</div></section>
+      <aside class="swBrief"><span class="swTag t-${sel}">${D.tag}</span><h2>${D.name}</h2><div class="swThreat">Threat <b>${stars(D.threat)}</b></div>
+        <p>${D.desc}</p><ul>${D.facts.map(f => `<li>${f}</li>`).join('')}</ul>
+        ${sel === 'maw' && ok ? `<p class="swQuest">◆ Story quest · ${questFor(G, 'maw').title}</p>` : ''}
+        ${sel !== 'quays' && this.livingState?.().active ? '<p class="fine">Your commission’s sites are on the Outer Quays; hunt-type commissions still count anywhere.</p>' : ''}
+        <h4>Conditions now · ${ct(cs.clock)}</h4><div class="swNow">${weather.icon} <b>${weather.name}</b> · ${cs.period.name}</div>
+        <h4>Departure windows</h4><div class="swWins">${windows}</div>
+        <button class="primary swGo" data-act="env_deploy" ${inPort && ok ? '' : 'disabled'}>DEPART · ${D.name.toUpperCase()}</button>
+        <p class="fine">Gear carried on death is lost. Extract to bring it home.</p></aside></div>`);
   };
   const act = P.doAction;
-  P.doAction = function (a, n) { if (a === 'sw_dest') { const d = n.dataset.id; if (IS.DEST.includes(d) && unlocked(this, d)) { this.save.destination = d; this.store(); } return this.showClimateForecast(true); } return act.apply(this, arguments); };
+  P.doAction = function (a, n) { if (a === 'sw_dest') { const d = n.dataset.id; if (IS.DEST.includes(d)) { this.save.destination = d; this.store(); } return this.showClimateForecast(true); } return act.apply(this, arguments); };
 
+  // one departure point: the Rest Docks pier; the old road passage is barricaded
+  const hubPortal = P.portal;
+  P.portal = function (o) {
+    if (!this.raid && this.mapId === 'hub' && o?.id === 'hub.outer') { this.notify('The passage is barricaded · Expeditions leave from the Rest Docks departure pier', 3.5); return; }
+    return hubPortal.apply(this, arguments);
+  };
+  try { const H = (window.SALTWAKE_WORLD || WORLD).maps.hub, dp = H.portals.find(p => p.id === 'hub.depart');
+    if (dp) { dp.name = 'Departure Pier · Expedition Chart'; H.scene?.decor?.push({ asset: 'art/props/notice_board', x: dp.x - 1.2, y: dp.y - 2.2, w: SIZE['art/props/notice_board']?.[0] || 2.8, h: SIZE['art/props/notice_board']?.[1] || 2.8, anchor: 'bottom' }, { asset: 'art/props/lantern_post', x: dp.x + 1.5, y: dp.y - 1.6, w: SIZE['art/props/lantern_post']?.[0] || 1.4, h: SIZE['art/props/lantern_post']?.[1] || 2.8, anchor: 'bottom' });
+      H.scene?.lights?.push({ x: dp.x + 1.5, y: dp.y - 2.6, radius: 170, strength: .8 }); }
+    const ou = H.portals.find(p => p.id === 'hub.outer'); if (ou) ou.name = 'Outer Quays Passage (barricaded)'; } catch (e) { }
   // ---- raid on a destination ---------------------------------------------------------------------------------------
   const MON = (G, type, x, y, id) => {
     if (/^brineworn_/.test(type)) return window.saltwakeAlpha?.makeAltered?.(G, type, x, y, id) || null;
@@ -173,7 +257,7 @@
   };
   function populate(G, M, seed) {
     const R = rng(seed ^ 0x51ed), night = !!G.climateState?.().night, out = [], TX = window.saltwakeTiles;
-    const types = M.id === 'maw' ? ['brineworn_drifter', 'brineworn_drifter', 'brineworn_breaker', 'widow', 'gull'] : night ? ['brineworn_drifter', 'widow', 'brineback', 'gull', 'brineworn_breaker'] : ['gull', 'gull', 'widow', 'brineback', 'grazer', 'grazer', 'brineworn_drifter'];
+    const types = M.id === 'front' ? ['brineworn_drifter', 'brineworn_drifter', 'brineworn_caller', 'brineworn_breaker', 'widow', 'gull'] : M.id === 'maw' ? ['brineworn_drifter', 'brineworn_drifter', 'brineworn_breaker', 'widow', 'gull'] : night ? ['brineworn_drifter', 'widow', 'brineback', 'gull', 'brineworn_breaker'] : ['gull', 'gull', 'widow', 'brineback', 'grazer', 'grazer', 'brineworn_drifter'];
     const n = M.id === 'maw' ? 6 : 12 + Math.floor(R() * 5);
     for (let i = 0; i < n; i++) { const sp = M.spawns[i % M.spawns.length]; let x = sp[0] + (R() - .5) * 6, y = sp[1] + (R() - .5) * 5;
       const nw = TX?.nearestWalkable?.(G, x, y); if (nw) [x, y] = nw; const e = MON(G, pick(R, types), x * T, y * T, `${M.id}_${seed}_${i}`); if (!e) continue; try { G.initSense?.(e); } catch (er) { } out.push(e); }
@@ -188,15 +272,17 @@
     if (dest === 'quays') return out;
     let M;
     if (dest === 'isle') { const seed = (Date.now() ^ (Math.random() * 1e9)) >>> 0; M = genIsle(seed); IS.stats.generated++; }
+    else if (dest === 'front') { const seed = (Date.now() ^ (Math.random() * 1e9)) >>> 0; M = genFront(seed); IS.stats.generated++; }
     else M = this.world.maps.maw?.tilemap ? this.world.maps.maw : genMaw();
     install(this, M);
     // overview picture for the map screen (random maps have no painted overview)
     try { if (!M.overview) { const c = window.saltwakeTiles?.renderOverview?.(this, M.id, 6); if (c) { const al = `art/maps/${M.id}_${M.seed}`; window.SALTWAKE_ASSETS.images[al] = c.toDataURL('image/png'); M.overview = al; } } } catch (e) { }
     r.destination = dest; r.tidemaw = null; r.contract = {};
     r.enemies = populate(this, M, r.seed || 1);
+    if (dest === 'front') r.operation = { name: M.opName, tier: 3, reward: 250, hold: 90, evac: M.evac, objectives: M.objectives.map(o => ({ ...o })) };
     IS.stats.visits++;
     const [ax, ay] = M.arrivals.default; this.setArea(M.id, ax, ay);
-    this.notify(dest === 'isle' ? `${M.name.toUpperCase()} · A new isle rises from the fog. Salvage and reach an extraction.` : 'THE MAW · The Elder Tidemaw waits in the drowned crater.', 5);
+    this.notify(dest === 'isle' ? `${M.name.toUpperCase()} · A new isle rises from the fog. Salvage and reach an extraction.` : dest === 'front' ? `${M.opName.toUpperCase()} · Burn the nests, raise the mast, then call extraction. Hold X for call-ins.` : 'INTO THE MAW · The Elder Tidemaw waits in the drowned crater.', 5);
     return out;
   };
   // extraction on the new maps
@@ -206,8 +292,77 @@
     return portal.apply(this, arguments);
   };
 
+  // ---- operation objectives (Brinefront) -------------------------------------------------------------------------
+  const opNear = (G, o, r) => Math.hypot(G.player.x - o.x * T, G.player.y - o.y * T) < r * T;
+  function defenders(G, o, n) { const R = Math.random; for (let i = 0; i < n; i++) { const a = R() * TAU, x = (o.x + Math.cos(a) * 9) * T, y = (o.y + Math.sin(a) * 7) * T;
+      const e = MON(G, pick(R, ['brineworn_drifter', 'brineworn_drifter', 'widow', 'brineworn_breaker']), x, y, `op_${o.id}_${Date.now()}_${i}`); if (!e) continue; try { G.initSense?.(e); } catch (er) { } e.surv = true; e.provoked = true; e.awareness = 'alert'; e.aggro = 9; G.raid.enemies.push(e); } }
+  IS.opDefenders = defenders;
+  const inter = P.interact;
+  P.interact = function () {
+    const op = this.raid?.operation;
+    if (op && !this.isPaused()) for (const o of op.objectives) {
+      if (o.done) continue;
+      if (o.kind === 'nest' && !o.charge && opNear(this, o, 2.6)) { o.charge = 5; this.notify('CHARGE PLANTED · Get clear! 5 s', 2.5); defenders(this, o, 3); window.saltwakeAudio?.event?.('warning', .8); return; }
+      if (o.kind === 'mast' && !o.active && opNear(this, o, 2.6)) { o.active = true; o.wave = 2; this.notify('SIGNAL MAST RAISING · Stay near it for 25 s', 3); defenders(this, o, 3); return; }
+    }
+    return inter.apply(this, arguments);
+  };
+  const opUpd = P.update;
+  P.update = function (dt) {
+    const out = opUpd.apply(this, arguments), op = this.raid?.operation; if (!op || this.isPaused()) return out; dt = Math.min(.1, dt || 0);
+    for (const o of op.objectives) {
+      if (o.done) continue;
+      if (o.kind === 'nest' && o.charge) { o.charge -= dt; if (o.charge <= 0) { o.done = true; o.charge = 0;
+          for (const e of this.raid.enemies) if (!e.dead && Math.hypot(e.x - o.x * T, e.y - o.y * T) < 110) this.hitMonster(e, 220, { penetration: 50, stagger: 3 }, e.x, e.y);
+          if (opNear(this, o, 3.2) && this.player.iframes <= 0) this.hurtPlayer(40, 0);
+          window.saltwakeCamera?.shake?.(.6); window.saltwakeImpact?.SFX?.kill?.(); this.raid.swBooms = (this.raid.swBooms || []).concat([{ x: o.x * T, y: o.y * T, R: 110, life: .45 }]);
+          const IMx = window.saltwakeImpact; if (IMx) IMx.decals.push({ x: o.x * T, y: o.y * T - 14, blobs: [[0, 0, 20], [14, 4, 10], [-12, -3, 12], [5, -8, 9]], color: '#1a1410', life: 60 });
+          const left = op.objectives.filter(x => !x.done).length; this.notify(`NEST DESTROYED · ${op.objectives.length - left}/${op.objectives.length} objectives`, 3); } }
+      if (o.kind === 'mast' && o.active) { if (opNear(this, o, 5.5)) o.progress = Math.min(o.need, (o.progress || 0) + dt);
+        o.wave -= dt; if (o.wave <= 0) { defenders(this, o, 2); o.wave = 8; }
+        if (o.progress >= o.need) { o.done = true; o.active = false; this.notify('SIGNAL MAST RAISED · The guild knows where you are', 3); window.saltwakeAudio?.event?.('success', .8); } }
+    }
+    if (!op.allDone && op.objectives.every(o => o.done)) { op.allDone = true; this.notify('ALL OBJECTIVES COMPLETE · Call extraction at the beacon', 4.5); }
+    return out;
+  };
+  const opScene = P.drawCoastScene;
+  P.drawCoastScene = function () {
+    const out = opScene.apply(this, arguments), op = this.raid?.operation; if (!op || this.mapId !== 'front') return out;
+    const now = performance.now() / 1000; g.save();
+    for (const o of op.objectives) { const x = o.x * T, y = o.y * T;
+      if (o.kind === 'nest') { if (!o.done) { const im = nestImg(); if (im) { const w = 96 * 1.4, h = 64 * 1.4; g.drawImage(im, x - w / 2, y - h + 10, w, h); }
+          g.strokeStyle = `rgba(255,90,70,${.45 + .3 * Math.sin(now * 4)})`; g.lineWidth = 3; g.beginPath(); g.ellipse(x, y + 4, 60, 34, 0, 0, TAU); g.stroke();
+          if (o.charge) { g.strokeStyle = '#ffd27a'; g.lineWidth = 5; g.beginPath(); g.arc(x, y - 30, 22, -Math.PI / 2, -Math.PI / 2 + TAU * (1 - o.charge / 5)); g.stroke(); g.fillStyle = '#ffd27a'; g.font = '700 14px system-ui'; g.textAlign = 'center'; g.fillText(Math.ceil(o.charge) + '', x, y - 25); }
+          else if (opNear(this, o, 2.6)) { g.font = '600 13px system-ui'; g.textAlign = 'center'; g.fillStyle = 'rgba(255,240,200,.95)'; g.fillText('E · Plant charge', x, y - 80); } } }
+      else if (o.kind === 'mast') { const k = (o.progress || 0) / o.need; g.strokeStyle = o.done ? 'rgba(140,230,200,.8)' : 'rgba(140,210,240,.7)'; g.lineWidth = 3; g.setLineDash([10, 6]); g.beginPath(); g.ellipse(x, y, 5.5 * T, 3.8 * T, 0, 0, TAU); g.stroke(); g.setLineDash([]);
+        if (!o.done && k > 0) { g.fillStyle = 'rgba(140,210,240,.16)'; g.beginPath(); g.ellipse(x, y, 5.5 * T * k, 3.8 * T * k, 0, 0, TAU); g.fill(); }
+        if (!o.active && !o.done && opNear(this, o, 2.6)) { g.font = '600 13px system-ui'; g.textAlign = 'center'; g.fillStyle = 'rgba(255,240,200,.95)'; g.fillText('E · Raise the signal mast', x, y - 90); } } }
+    g.restore(); return out;
+  };
+  let nestIm = null; const nestImg = () => { if (!nestIm) { const s2 = window.SALTWAKE_ASSETS?.images?.['art/props/nest_02']; if (s2) { nestIm = new Image(); nestIm.src = s2; } } return nestIm && nestIm.complete && nestIm.naturalWidth ? nestIm : null; };
+
   const css = document.createElement('style');
-  css.textContent = `.swDest{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-bottom:12px}.swDest button{display:flex!important;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;padding:10px 12px!important}
+  css.textContent = `
+  .swChart{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,380px);gap:18px;height:calc(100vh - 150px);min-height:440px}
+  .swSea{position:relative;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 40% 85%,#2d4c4f 0,#18323a 35%,#0d1d24 75%),#0d1d24;border:1px solid rgba(255,255,255,.08)}
+  .swSea::before{content:'';position:absolute;inset:0;background:repeating-radial-gradient(circle at 36% 92%,rgba(255,255,255,.035) 0 2px,transparent 2px 26px);pointer-events:none}
+  .swSea::after{content:'';position:absolute;left:-10%;right:-10%;bottom:0;height:22%;background:radial-gradient(ellipse at 50% 120%,rgba(120,95,70,.55),transparent 70%);pointer-events:none}
+  .swRoutes{position:absolute;inset:0;width:100%;height:100%}.swRoutes path{fill:none;stroke:rgba(232,209,143,.35);stroke-width:.4;stroke-dasharray:1.4 1.2}.swRoutes path.on{stroke:rgba(232,209,143,.95);stroke-width:.6}.swRoutes path.locked{stroke:rgba(255,255,255,.12)}
+  .swNode,html.sw-glass #panelLayer #panel .swNode{position:absolute;transform:translate(-50%,-50%);display:flex!important;flex-direction:column;align-items:center;gap:4px;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:0!important;cursor:pointer;z-index:2}
+  .swThumb{width:96px;height:96px;border-radius:50%;overflow:hidden;display:grid;place-items:center;border:3px solid rgba(232,209,143,.5);background:radial-gradient(circle,#3a4e52,#1b2a30);box-shadow:0 6px 18px rgba(0,0,0,.5)}
+  .swThumb img{width:100%;height:100%;object-fit:cover}.swThumb i{font-style:normal;font-size:34px;color:#e8d18f;opacity:.85}
+  .swNode b{font-size:14px;color:#f3ead8;text-shadow:0 1px 3px #000}.swNode small{font-size:10px;letter-spacing:.14em;color:#9fd8ff;opacity:.85}
+  .swNode.on .swThumb{border-color:#e8d18f;box-shadow:0 0 0 6px rgba(232,209,143,.18),0 6px 18px rgba(0,0,0,.5)}.swNode.locked{opacity:.5}
+  .swNode.t-maw .swThumb{border-color:rgba(255,110,90,.6)}.swNode.t-front .swThumb{border-color:rgba(255,170,90,.6)}.swNode.t-isle .swThumb{border-color:rgba(140,210,240,.6)}
+  .swHome{position:absolute;transform:translate(-50%,-50%);text-align:center;padding:8px 12px;border-radius:10px;background:rgba(20,16,10,.65);border:1px solid rgba(232,209,143,.45);z-index:2}.swHome b{display:block;color:#e8d18f}.swHome small{opacity:.7}
+  .swCompass{position:absolute;right:16px;top:12px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.25);color:#e8d18f;font-weight:800}
+  .swSeaName{position:absolute;left:16px;top:14px;letter-spacing:.3em;font-size:11px;color:rgba(232,209,143,.6)}
+  .swChart>.swBrief{position:relative!important;inset:auto!important;left:auto!important;top:auto!important;width:auto!important;max-width:none!important;transform:none!important;background:transparent!important;display:flex;flex-direction:column;gap:8px;overflow:auto;padding:4px 4px 4px 0}.swBrief h2{margin:0}.swBrief ul{margin:0;padding-left:18px;opacity:.85}.swBrief h4{margin:10px 0 0;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.65}
+  .swTag{align-self:flex-start;font-size:11px;letter-spacing:.14em;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.08)}.swTag.t-maw{color:#ff9a86}.swTag.t-front{color:#ffc37a}.swTag.t-isle{color:#9fd8ff}.swTag.t-quays{color:#e8d18f}
+  .swThreat b{color:#e8a05a;letter-spacing:.1em}.swLock{color:#ff9a86}.swQuest{color:#e8d18f;font-weight:600}.swWins{display:flex;flex-direction:column;gap:6px}.swWin{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.04)}
+  .swWin small{display:block;opacity:.7}.swGo{margin-top:8px;padding:12px!important;font-size:15px!important;letter-spacing:.08em}
+  @media (max-width:860px){.swChart{grid-template-columns:1fr;height:auto}.swSea{height:60vh}}
+  .swDest{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-bottom:12px}.swDest button{display:flex!important;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;padding:10px 12px!important}
   .swDest button[aria-pressed="true"]{outline:2px solid rgba(143,212,232,.65);background:rgba(143,212,232,.14)!important}.swDest small{opacity:.75;font-size:12px;line-height:1.35}`;
   document.head.appendChild(css);
 })();

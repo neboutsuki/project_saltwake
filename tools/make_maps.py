@@ -714,6 +714,13 @@ def place_content(world, H, Q):
     QS.append(mkq('q_tidemaw', 'The Thing Under the Slip', 'main', 'n_dockmaster', ['q_slip_warnings'],
         'The logbook names it: the Tidemaw. It burrows under the Boathouse Slip and floods it when it rises. Break its gills before it calls the tide, and bring it down.',
         [('interact', 'i_qs_tidemaw', 'Slay the Tidemaw at the Boathouse Slip')], 600, [('masterwork_core', 1), ('healing_tincture', 2)]))
+    # Story: the final hunt. The Maw is a map that appears on the Expedition Chart only while this quest is active.
+    QS.append(mkq('q_into_the_maw', 'Into the Maw', 'main', 'n_tidepilot', ['q_tidemaw'],
+        'The Tidemaw at the Slip was only a youngling. Teren has charted where the old ones go to die: a drowned crater the pilots call the Maw. While you carry this quest, the Maw is on the Expedition Chart at the Departure Pier. Sail there and end it.',
+        [('interact', 'i_qs_elder', 'Slay the Elder Tidemaw in the Maw')], 1200, [('masterwork_core', 2), ('healing_tincture', 3)]))
+    QS[-1]['destination'] = 'maw'
+    c['interactables'] = [k for k in c['interactables'] if k['id'] != 'i_qs_elder'] + [
+        {'id': 'i_qs_elder', 'name': 'The Elder\u2019s Wallow', 'mapId': 'maw', 'x': 60, 'y': 44, 'kind': 'inspect'}]
     c['interactables'] = [k for k in c['interactables'] if k['id'] != 'i_qs_tidemaw'] + [
         {'id': 'i_qs_tidemaw', 'name': 'The Tidemaw\u2019s Wallow', 'mapId': 'quays', 'x': 168, 'y': 112.5, 'kind': 'inspect'}]
     # boss, trophies, deep loot

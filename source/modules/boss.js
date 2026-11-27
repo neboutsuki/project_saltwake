@@ -152,6 +152,7 @@
     if (e.elder) { B.stats.elderKills++; g.save.flags.elderSlain = (g.save.flags.elderSlain || 0) + 1;
       for (const id of ['masterwork_core', 'tidemaw_gill', 'tidemaw_gill']) g.raid.drops.push({ x: e.x + (Math.random() - .5) * 80, y: e.y + 30, id, n: 1, got: false });
       (window.saltwakeHunter?.bank || window.saltwakeHunter?.grant)?.(g, 900, 'Elder Tidemaw');
+      g.quest?.emit('interact', 'i_qs_elder');
       g.notify('THE ELDER TIDEMAW IS SLAIN · The Red Salt Coast breathes again. Gather the trophies and extract!', 7);
     } else {
       g.save.flags.tidemawSlain = (g.save.flags.tidemawSlain || 0) + 1;
@@ -194,7 +195,7 @@
   };
   // the Wallow can only be "completed" by slaying the beast
   const use = P.useInteractable;
-  P.useInteractable = function (o) { if (o?.id === 'i_qs_tidemaw') { this.notify(this.save.flags?.tidemawSlain ? 'The wallow is still. The Tidemaw is gone.' : 'Something vast stirs under the sand. Step into the Slip if you dare.', 3); return; } return use.apply(this, arguments); };
+  P.useInteractable = function (o) { if (o?.id === 'i_qs_elder') { this.notify(this.save.flags?.elderSlain ? 'The Maw is quiet. The Elder is gone.' : 'The ground breathes. Step into the crater to wake the Elder Tidemaw.', 3); return; } if (o?.id === 'i_qs_tidemaw') { this.notify(this.save.flags?.tidemawSlain ? 'The wallow is still. The Tidemaw is gone.' : 'Something vast stirs under the sand. Step into the Slip if you dare.', 3); return; } return use.apply(this, arguments); };
 
   // ---- deeper = richer: containers far from the West Passage give an extra deep-salvage roll ----------------------
   const loot = P.loot;

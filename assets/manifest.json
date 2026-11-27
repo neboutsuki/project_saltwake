@@ -10379,7 +10379,7 @@
   ],
   "pack": "art-new",
   "staged": false,
-  "sha256": "08c00e3b6845e55abb12562ec9f53246814bfb52766ad20ff26d173e71329e06"
+  "sha256": "fc0b78ce36b002cf008cd79f9146ea99e1cf59199a6bb0655e3a75d5a412c259"
  },
  "art_new_art_portraits_harlan": {
   "path": "assets/art/portraits/harlan.png",
@@ -10389,7 +10389,7 @@
   ],
   "pack": "art-new",
   "staged": false,
-  "sha256": "710cb681f0608babef3de0f2ccef7b98de4ffb305e80bbf91507920515db8815"
+  "sha256": "1b7dd67c029a5b809152697336dfcdfde46eec68a3e73331f05b7ab81de52636"
  },
  "art_new_art_portraits_ivo": {
   "path": "assets/art/portraits/ivo.png",
@@ -10399,7 +10399,7 @@
   ],
   "pack": "art-new",
   "staged": false,
-  "sha256": "1006f7bcbdf241e5b4f69a53fa0168a2a45d16ecf42ef6228d30db949bae8044"
+  "sha256": "e023a91bca23d6d2ab4d8f848bc1d4ff51b905bb3046ba1285599a22b05c3b62"
  },
  "art_new_art_portraits_kade": {
   "path": "assets/art/portraits/kade.png",
@@ -10409,7 +10409,7 @@
   ],
   "pack": "art-new",
   "staged": false,
-  "sha256": "d5b6178817e9a046c6880de6dd42ac0ebfe0a0d0e3feaba0ec5215488e62d501"
+  "sha256": "679e3c69e139f7b52a07b6b1a71ca110da085b00a73df0f27709f909d85fd70c"
  },
  "art_new_art_portraits_lira": {
   "path": "assets/art/portraits/lira.png",
@@ -10419,7 +10419,7 @@
   ],
   "pack": "art-new",
   "staged": false,
-  "sha256": "128cfa74574c9c21a3c224ac544efa89561e73167e4e905b82b74d7ab2a5b333"
+  "sha256": "71ae83ab1a12b417c710ea7098e83255b2775ecc6f6db544736920a959a4694c"
  },
  "art_new_art_portraits_marin": {
   "path": "assets/art/portraits/marin.png",
@@ -10429,7 +10429,7 @@
   ],
   "pack": "art-new",
   "staged": false,
-  "sha256": "6302d84d780de656c8b45a0785c60e2e9531684d61d08d96ccddba77c4b2e3fd"
+  "sha256": "fc90760ddab9c2d375af4c99a66678d4807addd085b07f15ddbd2be98cb56d5d"
  },
  "art_new_art_portraits_master_rook": {
   "path": "assets/art/portraits/master_rook.png",
@@ -10439,7 +10439,7 @@
   ],
   "pack": "art-new",
   "staged": false,
-  "sha256": "d6b12669f737eccfff9ae17c9a09c64a633b0bd6a44a0265ae5bf4f61018334f"
+  "sha256": "c368fc27e70936f3f5005d1d882f30497c23e420a1d038fc1967307c3684c34f"
  },
  "art_new_art_portraits_mira": {
   "path": "assets/art/portraits/mira.png",
@@ -10449,7 +10449,7 @@
   ],
   "pack": "art-new",
   "staged": false,
-  "sha256": "d2866df946baa380a2f04305db7a7084f79aa60664ad549049cef43ff9b566d0"
+  "sha256": "8aa7c842b4c07347a41b6fb46dc4d691fa48ad36c1c2d1937c8a84132c77af98"
  },
  "art_new_art_portraits_soren": {
   "path": "assets/art/portraits/soren.png",
@@ -10459,7 +10459,7 @@
   ],
   "pack": "art-new",
   "staged": false,
-  "sha256": "3f679b10ea7ff715144393bb4d2d6778440320c4fd26eaf00dd51b8338c3939b"
+  "sha256": "d44c523b83362e688fac7e3d49941b1be76335eb15ff45f6b6b5b313d8913ab7"
  },
  "art_new_art_portraits_tess": {
   "path": "assets/art/portraits/tess.png",
@@ -10469,7 +10469,7 @@
   ],
   "pack": "art-new",
   "staged": false,
-  "sha256": "76909d8b4d7c083ca6ec0d0633fc888114ee1ee788df627090844997aa9bba5b"
+  "sha256": "ba96f3ab6843b5a3af8e47193e2a6d51bbfbb30b9eaa9118203c040035432c33"
  },
  "art_new_art_edges_cliff_face": {
   "path": "assets/art/edges/cliff_face.png",

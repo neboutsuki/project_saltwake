@@ -52036,6 +52036,14 @@
     "kind": "inspect"
    },
    {
+    "id": "i_qs_elder",
+    "name": "The Elder’s Wallow",
+    "mapId": "maw",
+    "x": 60,
+    "y": 44,
+    "kind": "inspect"
+   },
+   {
     "id": "i_qs_tidemaw",
     "name": "The Tidemaw’s Wallow",
     "mapId": "quays",
@@ -54800,6 +54808,53 @@
       }
      ]
     }
+   },
+   {
+    "id": "q_into_the_maw",
+    "title": "Into the Maw",
+    "kind": "main",
+    "offeredBy": "n_tidepilot",
+    "prerequisites": [
+     "q_tidemaw"
+    ],
+    "summary": "The Tidemaw at the Slip was only a youngling. Teren has charted where the old ones go to die: a drowned crater the pilots call the Maw. While you carry this quest, the Maw is on the Expedition Chart at the Departure Pier. Sail there and end it.",
+    "stages": [
+     {
+      "id": "a",
+      "description": "Slay the Elder Tidemaw in the Maw",
+      "type": "interact",
+      "targetId": "i_qs_elder",
+      "count": 1
+     },
+     {
+      "id": "b",
+      "description": "Extract to Salvager’s Rest",
+      "type": "extract",
+      "targetId": "quays.west",
+      "count": 1
+     },
+     {
+      "id": "c",
+      "description": "Report back to Teren Sull",
+      "type": "talk",
+      "targetId": "n_tidepilot",
+      "count": 1
+     }
+    ],
+    "rewards": {
+     "coins": 1200,
+     "items": [
+      {
+       "itemId": "masterwork_core",
+       "quantity": 2
+      },
+      {
+       "itemId": "healing_tincture",
+       "quantity": 3
+      }
+     ]
+    },
+    "destination": "maw"
    },
    {
     "id": "er_ola_hammer",

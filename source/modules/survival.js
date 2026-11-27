@@ -31,6 +31,9 @@
   SV.state = g => g.raid?.surv || null;
   function state(g) {
     const r = g.raid; if (!r) return null;
+    if (!r.surv && r.operation) { const o = r.operation;     // Brinefront operation: objectives first, then call extraction at the beacon
+      r.surv = { phase: 'ops', op: true, t: 0, seconds: o.hold || 90, evac: 30, wave: 0, next: 45, kills: 0, tier: o.tier || 2, site: { x: o.evac.x * T, y: o.evac.y * T, name: 'the extraction beacon' },
+        cd: Object.fromEntries(STRAT.map(x => [x.id, 0])), calls: [], shells: [], pods: [], input: [], menu: false, boat: null, zone: null, board: 0, msg: null }; }
     if (!r.surv) { const k = cur(g); if (!k) return null; const s = site(k);
       r.surv = { phase: 'idle', t: 0, seconds: k.s.seconds || 180, evac: 30, wave: 0, next: 4, kills: 0, tier: k.c.tier || 1, site: { x: s.x * T, y: s.y * T, name: s.name },
         cd: Object.fromEntries(STRAT.map(x => [x.id, 0])), calls: [], shells: [], pods: [], input: [], menu: false, boat: null, zone: null, board: 0, msg: null }; }
@@ -40,7 +43,7 @@
 
   // ---- start ----------------------------------------------------------------------------------------------------
   function start(g) {
-    const S = state(g); if (!S || S.phase !== 'idle') return false;
+    const S = state(g); if (!S || (S.phase !== 'idle' && S.phase !== 'ops')) return false;
     S.phase = 'waves'; S.t = 0; S.next = 3; SV.stats.started++;
     S.zone = evacPoint(g, S.site);
     g.notify('BEACON LIT · Hold the line! Hold X for call-ins', 4); window.saltwakeAudio?.event?.('warning', .8); window.saltwakeCamera?.shake?.(.2);
@@ -51,6 +54,9 @@
   P.interact = function () {
     const S = this.raid && state(this);
     if (S && S.phase === 'idle' && near(this.player, S.site, 3 * T)) { start(this); return; }
+    if (S && S.phase === 'ops' && near(this.player, S.site, 3 * T)) { const o = this.raid.operation, left = o.objectives.filter(x => !x.done).length;
+      if (left) { this.notify(`Complete the objectives first · ${o.objectives.length - left}/${o.objectives.length} done`, 3); return; }
+      start(this); this.notify('EXTRACTION CALLED · Hold the beacon until the boat arrives! Hold X for call-ins', 4); return; }
     return interact.apply(this, arguments);
   };
   // the boat lands at the nearest shore to the site (else at the site itself)
@@ -97,7 +103,7 @@
   SV.spawnWave = (g, surge) => spawnWave(g, state(g), surge);
 
   // ---- call-ins ---------------------------------------------------------------------------------------------------
-  const active = g => { const S = g.raid && !g.isPaused?.() && g.mode === 'play' && state(g); return S && (S.phase === 'waves' || S.phase === 'evac' || S.phase === 'board') ? S : null; };
+  const active = g => { const S = g.raid && !g.isPaused?.() && g.mode === 'play' && state(g); return S && (S.phase === 'ops' || S.phase === 'waves' || S.phase === 'evac' || S.phase === 'board') ? S : null; };
   function call(g, id, x, y) {
     const S = state(g), st = STRAT.find(s => s.id === id); if (!S || !st || S.cd[id] > 0) return false;
     if (x == null) { const a = g.aimWorld?.() || { x: g.player.x + 100, y: g.player.y }, d = Math.hypot(a.x - g.player.x, a.y - g.player.y), k = Math.min(1, 300 / (d || 1)); x = g.player.x + (a.x - g.player.x) * k; y = g.player.y + (a.y - g.player.y) * k; }
@@ -148,13 +154,14 @@
     const r = this.raid; if (!r || this.isPaused?.()) return out;
     const S = state(this); if (!S) return out; dt = Math.min(.1, dt || 0);
     const p = this.player;
-    if (S.phase === 'waves' || S.phase === 'evac' || S.phase === 'board') {
-      S.t += dt;
+    if (S.phase === 'ops' || S.phase === 'waves' || S.phase === 'evac' || S.phase === 'board') {
+      if (S.phase !== 'ops') S.t += dt;
       for (const k in S.cd) S.cd[k] = Math.max(0, S.cd[k] - dt);
       // surviving monsters always know where you are
       for (const e of r.enemies) if (e.surv && !e.dead) { e.lastSeenX = p.x; e.lastSeenY = p.y; e.provoked = true; e.aggro = Math.max(e.aggro || 0, 5); if (e.awareness !== 'alert') { e.awareness = 'alert'; e.searchTime = 0; } }
       S.next -= dt;
-      if (S.phase === 'waves') {
+      if (S.phase === 'ops') { if (S.next <= 0) { spawnWave(this, S, false); S.next = 50 + Math.random() * 25; this.notify('A patrol has picked up your trail', 2); } }
+      else if (S.phase === 'waves') {
         if (S.next <= 0) { S.wave++; SV.stats.waves++; spawnWave(this, S, false); S.next = Math.max(11, 21 - S.wave * .9); this.notify(`WAVE ${S.wave}`, 1.4); }
         if (S.t >= S.seconds) { S.phase = 'evac'; S.evacT = S.evac; S.next = 2; S.boat = { x: S.zone.wx + Math.cos(S.zone.a) * 700, y: S.zone.wy + Math.sin(S.zone.a) * 700 }; this.notify('BOAT INBOUND · 30 seconds · hold on!', 3.5); window.saltwakeAudio?.event?.('warning', 1); }
       } else if (S.phase === 'evac') {
@@ -164,7 +171,7 @@
         if (S.evacT <= 0) { S.phase = 'board'; S.board = 0; this.notify('EVAC READY · Get to the boat!', 3.5); window.saltwakeAudio?.event?.('success', .7); }
       } else if (S.phase === 'board') {
         if (Math.hypot(p.x - S.zone.x, p.y - S.zone.y) < 70) S.board += dt; else S.board = Math.max(0, S.board - dt * 2);
-        if (S.board >= 2) { const k = cur(this), bonus = S.kills * 4 + S.wave * 10; S.phase = 'done'; SV.stats.wins++;
+        if (S.board >= 2) { const k = cur(this), bonus = S.kills * 4 + S.wave * 10 + (r.operation ? r.operation.reward : 0); if (r.operation) r.operation.complete = true; S.phase = 'done'; SV.stats.wins++;
           if (k) this.livingAdvance('survive', k.s.target); this.save.gold += bonus; this.notify(`EVACUATED · ${S.kills} kills · +${bonus} bonus scrip`, 5);
           this.endRaid(true, 'Evacuated by the guild boat'); return out; }
       }
@@ -188,9 +195,11 @@
     g.save();
     // beacon
     sprite('art/props/brazier', s.x, s.y + 10, 58);
-    if (S.phase !== 'idle') { const fl = .7 + Math.sin(now * 13) * .15 + Math.sin(now * 7.3) * .1; const gr = g.createRadialGradient(s.x, s.y - 30, 2, s.x, s.y - 30, 90 * fl);
+    if (S.phase !== 'idle' && S.phase !== 'ops') { const fl = .7 + Math.sin(now * 13) * .15 + Math.sin(now * 7.3) * .1; const gr = g.createRadialGradient(s.x, s.y - 30, 2, s.x, s.y - 30, 90 * fl);
       gr.addColorStop(0, 'rgba(255,200,110,.55)'); gr.addColorStop(1, 'rgba(255,140,60,0)'); g.globalCompositeOperation = 'lighter'; g.fillStyle = gr; g.fillRect(s.x - 100, s.y - 130, 200, 200); g.globalCompositeOperation = 'source-over'; }
-    else if (Math.hypot(this.player.x - s.x, this.player.y - s.y) < 3 * T) { g.font = '600 13px system-ui'; g.textAlign = 'center'; g.fillStyle = 'rgba(255,240,200,.95)'; g.strokeStyle = 'rgba(0,0,0,.7)'; g.lineWidth = 3; g.strokeText('E · Light the signal beacon', s.x, s.y - 70); g.fillText('E · Light the signal beacon', s.x, s.y - 70); }
+    else if (S.phase === 'ops' && Math.hypot(this.player.x - s.x, this.player.y - s.y) < 3 * T) { const ready = this.raid.operation.objectives.every(o => o.done), t2 = ready ? 'E · Call extraction' : 'Extraction beacon · finish the objectives';
+      g.font = '600 13px system-ui'; g.textAlign = 'center'; g.fillStyle = ready ? 'rgba(160,240,210,.95)' : 'rgba(255,240,200,.8)'; g.strokeStyle = 'rgba(0,0,0,.7)'; g.lineWidth = 3; g.strokeText(t2, s.x, s.y - 70); g.fillText(t2, s.x, s.y - 70); }
+    else if (S.phase === 'idle' && Math.hypot(this.player.x - s.x, this.player.y - s.y) < 3 * T) { g.font = '600 13px system-ui'; g.textAlign = 'center'; g.fillStyle = 'rgba(255,240,200,.95)'; g.strokeStyle = 'rgba(0,0,0,.7)'; g.lineWidth = 3; g.strokeText('E · Light the signal beacon', s.x, s.y - 70); g.fillText('E · Light the signal beacon', s.x, s.y - 70); }
     // pods
     for (const pod of S.pods) { sprite('art/props/open_supply_crate', pod.x, pod.y + 8, 40); g.strokeStyle = `rgba(140,230,200,${.5 + .4 * Math.sin(now * 5)})`; g.lineWidth = 2; g.beginPath(); g.ellipse(pod.x, pod.y + 6, 26, 12, 0, 0, TAU); g.stroke(); }
     // boat + evac zone
@@ -228,7 +237,9 @@
     const S = this.raid && this.mode === 'play' && state(this);
     if (!S || S.phase === 'done') { el.hidden = st.hidden = true; return out; }
     el.hidden = false; el.className = S.phase;
-    const html = S.phase === 'idle' ? `<b>SURVIVAL</b><small>Go to ${S.site.name} and light the beacon (E)</small>`
+    const ops = S.phase === 'ops' && this.raid.operation, objs = ops ? ops.objectives.map(o => `${o.done ? '✓' : '○'} ${o.label}${!o.done && o.kind === 'mast' && o.progress ? ' ' + Math.round(o.progress / o.need * 100) + '%' : ''}`).join(' · ') : '';
+    const html = ops ? `<b>OPERATION · ${ops.name}</b><small>${objs}${ops.objectives.every(o => o.done) ? ' · <b style="display:inline;font-size:13px">Call extraction at the beacon (E)</b>' : ''}</small>`
+      : S.phase === 'idle' ? `<b>SURVIVAL</b><small>Go to ${S.site.name} and light the beacon (E)</small>`
       : S.phase === 'waves' ? `<b>HOLD THE LINE · ${fmt(S.seconds - S.t)}</b><small>Wave ${S.wave} · ${S.kills} kills · next wave ${Math.ceil(Math.max(0, S.next))}s</small>`
         : S.phase === 'evac' ? `<b>BOAT INBOUND · ${fmt(S.evacT)}</b><small>Survive! · ${S.kills} kills</small>`
           : `<b>EVAC READY</b><small>Reach the boat and stand in the circle ${S.board > 0 ? '· boarding ' + Math.round(S.board / 2 * 100) + '%' : ''}</small>`;
@@ -244,6 +255,8 @@
   const UI = window.saltwakeQuestUI;
   if (UI) { const ex = UI.extraTarget; UI.extraTarget = g => { const S = g.raid && state(g);
     if (S && S.phase === 'idle') return { q: null, loc: { mapId: 'quays', name: S.site.name }, x: S.site.x, y: S.site.y + 30 };
+    if (S && S.phase === 'ops') { const o = g.raid.operation.objectives.find(x => !x.done);
+      return o ? { q: null, loc: { mapId: g.mapId, name: o.label }, x: o.x * T, y: o.y * T + 30 } : { q: null, loc: { mapId: g.mapId, name: 'the extraction beacon' }, x: S.site.x, y: S.site.y + 30 }; }
     if (S && S.phase === 'board') return { q: null, loc: { mapId: 'quays', name: 'the boat' }, x: S.zone.x, y: S.zone.y + 30 };
     return ex ? ex(g) : null; }; }
 })();
