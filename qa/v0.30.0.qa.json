@@ -455,7 +455,14 @@
     "systems.hitStop": true,
     "systems.hitStopSlowsSim": true,
     "systems.dangerCue": true,
-    "systems.dangerClears": true
+    "systems.dangerClears": true,
+    "clicks.chartButtonsClickable": true,
+    "clicks.departOnScreen": true,
+    "clicks.packButtonsClickable": true,
+    "clicks.optionsButtonsClickable": true,
+    "clicks.loaderCapped": true,
+    "clicks.loaderOnTop": true,
+    "clicks.proportionsLoaded": true
   },
   "page_errors": []
 }

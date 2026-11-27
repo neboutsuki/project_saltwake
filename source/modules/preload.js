@@ -9,10 +9,10 @@
 (() => {
   const P = Game.prototype, TX = window.saltwakeTiles, $ = id => document.getElementById(id);
   if (!TX?.loadMap) return;
-  const PL = window.saltwakePreload = { loading: false, prepared: false, stats: { loads: 0 } };
+  const PL = window.saltwakePreload = { loading: false, prepared: false, maxWait: 4, stats: { loads: 0, timeouts: 0 } };
   const css = document.createElement('style');
   css.textContent = `
-  #swLoading{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(circle at 50% 45%,#16232a,#06090b);color:#e9e2d0;font:600 15px system-ui,sans-serif;letter-spacing:.06em}
+  #swLoading{position:fixed;inset:0;z-index:2147483000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(circle at 50% 45%,#16232a,#06090b);color:#e9e2d0;font:600 15px system-ui,sans-serif;letter-spacing:.06em}
   #swLoading[hidden]{display:none}#swLoading b{font-size:22px;letter-spacing:.14em;text-transform:uppercase}#swLoading small{opacity:.65;font-weight:500}
   .swBar{width:min(420px,70vw);height:6px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden}.swBar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8fd4e8,#e8d18f);transition:width .15s}
   #swPrep{position:fixed;left:24px;bottom:20px;z-index:61;width:260px;padding:10px 12px;border-radius:10px;background:rgba(8,12,15,.7);border:1px solid rgba(255,255,255,.08);font:500 12px system-ui,sans-serif;color:#c6d0d4;display:flex;flex-direction:column;gap:7px}#swPrep .swBar{width:100%;height:4px}`;
@@ -34,8 +34,13 @@
     if (qa() || TX.mapLoaded(G, id)) return;
     const name = G.world.maps[id]?.name || 'map', bar = ov.querySelector('i'), note = ov.querySelector('small');
     PL.loading = true; PL.stats.loads++; ov.hidden = false; ov.querySelector('b').textContent = 'Loading ' + name; bar.style.width = '0%'; note.textContent = '';
-    try { await TX.loadMap(G, id, (d, n) => { bar.style.width = Math.round(d / n * 100) + '%'; note.textContent = `${d} / ${n}`; }); }
-    finally { PL.loading = false; ov.hidden = true; }
+    // never hold the player for long: after PL.maxWait seconds the game continues and the rest of the ground is
+    // painted on demand (the old loader could wait behind the background map preparation and freeze all input)
+    const seq = PL.seq = (PL.seq || 0) + 1;
+    try { await Promise.race([TX.loadMap(G, id, (d, n) => { bar.style.width = Math.round(d / n * 100) + '%'; note.textContent = `${d} / ${n}`; }),
+      new Promise(res => setTimeout(() => { PL.stats.timeouts = (PL.stats.timeouts || 0) + 1; res(); }, PL.maxWait * 1000))]); }
+    catch (e) { }
+    finally { if (PL.seq === seq) { PL.loading = false; ov.hidden = true; } }
   }
   PL.load = load;
   const setArea = P.setArea;

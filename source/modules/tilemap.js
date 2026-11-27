@@ -282,7 +282,7 @@
     for (const id of Object.keys(game.world.maps)) { const m = game.world.maps[id]; if (!isTile(m) || m.procedural) continue; const s = ensureState(game, id);
       if (!s.pruned) { DISK.prune(id, s.sig); s.pruned = true; }
       const mw = Math.ceil(m.w / CH), mh = Math.ceil(m.h / CH);
-      for (let y = 0; y < mh; y++) for (let x = 0; x < mw; x++) if (!DISK.known.has(DISK.key(id, s.sig, x + ',' + y))) jobs.push(() => loadChunk(game, s, id, x, y, false)); }
+      for (let y = 0; y < mh; y++) for (let x = 0; x < mw; x++) if (!DISK.known.has(DISK.key(id, s.sig, x + ',' + y))) jobs.push(async () => { while (TX.loadingMaps > 0) await new Promise(r => setTimeout(r, 120)); return loadChunk(game, s, id, x, y, false); }); }   // yields to a map being entered
     TX.prepared = false; await pool(jobs, 3, onProgress); TX.prepared = true; onProgress?.(1, 1); return true;
   };
   TX.loadMap = async function (game, id, onProgress) {
@@ -294,7 +294,7 @@
     const px = game.player.x / CPX, py = game.player.y / CPX, list = [];
     for (let y = 0; y < mh; y++) for (let x = 0; x < mw; x++) if (!s.chunks.has(x + ',' + y)) list.push([x, y, Math.hypot(x + .5 - px, y + .5 - py)]);
     list.sort((a, b) => a[2] - b[2]); for (const [x, y] of list) jobs.push(() => loadChunk(game, s, id, x, y, true));
-    await pool(jobs, 10, onProgress); return true;
+    TX.loadingMaps = (TX.loadingMaps || 0) + 1; try { await pool(jobs, 10, onProgress); } finally { TX.loadingMaps--; } return true;
   };
   // A small painted overview for maps without overview art (random maps): material colours, sea, trees and rocks.
   TX.renderOverview = function (game, id, k = 6) {

@@ -1,6 +1,6 @@
 /* SALTWAKE sharp rendering (v0.31): the game used to draw into a fixed 1024x576 canvas that the browser stretched to
  * the window (2.5x at 1440p), so everything looked soft and blocky. Now:
- * - The world canvas renders at up to the real screen resolution (default cap 1.875x = 1920x1080; up to 3x in
+ * - The world canvas renders at up to the real screen resolution (default cap 2.5x = 2560x1440; up to 3x in
  *   Graphics). If the game runs below ~48 fps for 3 s it steps the resolution down automatically.
  *   All game code keeps drawing in its 1024x576 coordinates: setTransform/resetTransform are scaled underneath.
  * - Sharp pixel art: small sprites drawn with nearest-neighbour at a non-integer scale get uneven, shimmering pixels.
@@ -11,7 +11,7 @@
  */
 (() => {
   const C = document.getElementById('world'); if (!C || typeof g === 'undefined') return;
-  const H = window.saltwakeHiRes = { enabled: true, scale: 1, max: 1.875, cap: 1.875, stats: { resizes: 0, sharp: 0, cached: 0 } };
+  const H = window.saltwakeHiRes = { enabled: true, scale: 1, max: 2.5, cap: 2.5, stats: { resizes: 0, sharp: 0, cached: 0 } };
   try { if (localStorage.getItem('saltwake.hires') === 'off') H.enabled = false; const m = +localStorage.getItem('saltwake.hires.max'); if (m >= 1 && m <= 3) H.max = H.cap = m; } catch (e) { }
   const ctx = g, setT = ctx.setTransform.bind(ctx), resetT = ctx.resetTransform?.bind(ctx), draw = ctx.drawImage.bind(ctx);
   // Overrides live on a private prototype for this one context, so other modules that set and then delete their own
@@ -32,7 +32,7 @@
     C.width = W; C.height = Hh; H.scale = W / VW; H.stats.resizes++;
     setT(H.scale, 0, 0, H.scale, 0, 0);
   }
-  // Adaptive: if the game runs below ~48 fps for 3 s, step the resolution down (1.875 -> 1.5 -> 1.25 -> 1).
+  // Adaptive: if the game runs below ~48 fps for 3 s, step the resolution down (2.5 -> 2.125 -> ... -> 1).
   let frames = 0, t0 = 0, slow = 0;
   function watch(t) {
     const G = window.SALTWAKE_DEV?.game;
@@ -72,7 +72,7 @@
   }
   proto.drawImage = function (src) {
     // pixel-art images (decoded <img> art) always take the sharp path; generated canvases keep the caller's smoothing
-    if (!H.enabled || !src || arguments.length < 5 || !(src instanceof HTMLImageElement)) return draw.apply(ctx, arguments);
+    if (!H.enabled || !src || arguments.length < 5 || !(src instanceof HTMLImageElement || src.pixelArt)) return draw.apply(ctx, arguments);
     const was = ctx.imageSmoothingEnabled;
     const sw = src.naturalWidth || src.width, sh = src.naturalHeight || src.height;
     if (!sw || sw > 420 || sh > 420) {                 // big paintings: smooth them
@@ -81,7 +81,7 @@
     }
     const t = ctx.getTransform(), dw = arguments.length >= 9 ? arguments[7] : arguments[3], sx = Math.abs(dw * t.a / (arguments.length >= 9 ? arguments[3] : sw));
     if (sx < 1.6) { ctx.imageSmoothingEnabled = true; try { return draw.apply(ctx, arguments); } finally { ctx.imageSmoothingEnabled = was; } }
-    const k = Math.min(6, Math.max(2, Math.round(sx))), up = upscaled(src, k);
+    const k = Math.min(src.pixelArt ? 4 : 6, Math.max(2, Math.round(sx))), up = upscaled(src, k);
     ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'medium'; H.stats.sharp++;
     try {
       if (arguments.length >= 9) { const [, a, b, c, d, e, f, w2, h2] = arguments; return draw(up, a * k, b * k, c * k, d * k, e, f, w2, h2); }
@@ -94,7 +94,7 @@
   const P = Game.prototype, gp = P.graphicsPanel;
   P.graphicsPanel = function () {
     const out = gp.apply(this, arguments), root = document.getElementById('panel')?.querySelector('.engineOptions');
-    root?.insertAdjacentHTML('afterbegin', `<label class="engineCheck"><input id="swHiRes" type="checkbox" ${H.enabled ? 'checked' : ''}> Sharp high-resolution rendering (${H.scale.toFixed(2)}x)</label><label>Max render scale<select id="swHiResMax">${[1.25, 1.5, 1.875, 2.5, 3].map(v => `<option value="${v}" ${v === H.max ? 'selected' : ''}>${v}x${v === 1.875 ? ' (1080p, default)' : v === 3 ? ' (4K)' : ''}</option>`).join('')}</select></label>`);
+    root?.insertAdjacentHTML('afterbegin', `<label class="engineCheck"><input id="swHiRes" type="checkbox" ${H.enabled ? 'checked' : ''}> Sharp high-resolution rendering (${H.scale.toFixed(2)}x)</label><label>Max render scale<select id="swHiResMax">${[1.25, 1.5, 1.875, 2.5, 3].map(v => `<option value="${v}" ${v === H.max ? 'selected' : ''}>${v}x${v === 1.875 ? ' (1080p)' : v === 2.5 ? ' (1440p, default)' : v === 3 ? ' (4K)' : ''}</option>`).join('')}</select></label>`);
     const mx = document.getElementById('swHiResMax'); if (mx) mx.onchange = e => { H.max = +e.target.value; H.cap = H.max; try { localStorage.setItem('saltwake.hires.max', String(H.max)); } catch (_) { } resize(); };
     const el = document.getElementById('swHiRes'); if (el) el.onchange = e => { H.enabled = e.target.checked; try { localStorage.setItem('saltwake.hires', H.enabled ? 'on' : 'off'); } catch (_) { } resize(); };
     return out;

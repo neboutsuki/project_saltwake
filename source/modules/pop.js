@@ -33,14 +33,14 @@
     if (outCount > 600) { OUT.clear(); outCount = 0; m = new Map(); OUT.set(src, m); }
     // No outline (v0.31): the frame is "lifted" instead - a little more contrast, saturation and brightness than the
     // muted ground - and a dark silhouette is kept for the cast shadow.
-    c = document.createElement('canvas'); c.width = sw; c.height = sh; c.pad = 0;
+    c = document.createElement('canvas'); c.width = sw; c.height = sh; c.pad = 0; c.pixelArt = true;   // drawn through the sharp high-res path
     const x = c.getContext('2d', { willReadFrequently: true }); x.imageSmoothingEnabled = false; x.drawImage(src, sx, sy, sw, sh, 0, 0, sw, sh);
     try { const id = x.getImageData(0, 0, sw, sh), d = id.data, C = POP.lift.contrast, S = POP.lift.saturation, B = POP.lift.brightness;
       for (let i = 0; i < d.length; i += 4) { if (!d[i + 3]) continue; let rr = d[i], gg = d[i + 1], bb = d[i + 2]; const L = rr * .3 + gg * .59 + bb * .11;
         rr = L + (rr - L) * S; gg = L + (gg - L) * S; bb = L + (bb - L) * S;
         d[i] = Math.max(0, Math.min(255, ((rr - 128) * C + 128) * B)); d[i + 1] = Math.max(0, Math.min(255, ((gg - 128) * C + 128) * B)); d[i + 2] = Math.max(0, Math.min(255, ((bb - 128) * C + 128) * B)); }
       x.putImageData(id, 0, 0); } catch (e) { }
-    c.sil = silhouette(src, sx, sy, sw, sh, POP.shadowColor || 'rgb(8,8,12)');
+    c.sil = silhouette(src, sx, sy, sw, sh, POP.shadowColor || 'rgb(8,8,12)');  c.sil.isSil = true;
     m.set(key, c); outCount++; POP.stats.cached = (POP.stats.cached || 0) + 1; return c;
   }
   for (const name of ['coastPlayer', 'draw25Player']) {

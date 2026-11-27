@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.31-dev — Departures fixed, consistent proportions, sharper rendering
+- **Fixed: could not choose a destination or depart.**
+  - A global `aside { pointer-events: none }` HUD rule made the Expedition Chart's brief panel ignore real mouse clicks: missions, Wait and DEPART were all dead. The brief panel is clickable again.
+  - On destinations with missions, DEPART was pushed below the screen. The brief panel now scrolls and DEPART stays pinned at its bottom.
+  - The map loading screen was invisible behind menus but still swallowed every click, and it could wait behind the background map preparation for a long time. It now sits on top (visible), gives up after 4 s (the rest of the ground paints on demand), and background preparation pauses while a map is being entered.
+  - New `clicks` QA suite: every enabled button on the chart (all destinations), pack and options is hit-tested at its own centre; plus a real-mouse departure/extraction playtest.
+- **Proportions** (`proportions.js`): sizes are measured from each sprite's visible pixels and drawn at real-world heights, anchored at the feet (collision and depth unchanged).
+  - People: Ren, the story cast, townsfolk, Wreckers and Brineworn are all one adult height (the Breaker is 2.2 m). Fixes the oversized dock workers and the undersized townsfolk.
+  - Monsters: per-species heights (Brineback, Salt Widow, Grazer, gull); apexes keep their extra size.
+  - Props: about 60 props get real-world heights (barrel 1 m, pump 1.45 m, lantern post 2.6 m, statue 3.3 m…). Oversized workbenches, fish stations, wheelbarrows and pumps shrink; small ones grow to match.
+- **Sharper rendering:** the default render cap is raised to 2.5× (1440p; adaptive downshift unchanged). Ren's and the NPCs' frames now go through the sharp pixel-art upscaler instead of plain scaling.
+
 ## v0.31-dev — Smarter monsters, a livelier world
 - **Monster behavior layer** (`monster-ai.js`, on top of the engine's sense/chase/attack step and the telegraphs):
   - **Pack alarm:** a monster that spots you alerts its kind nearby; a Caller's cry alerts every Brineworn in earshot.
