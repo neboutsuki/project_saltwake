@@ -29,10 +29,11 @@ try{suites.push(['telegraphs',require('./telegraphs_checks.js')])}catch(e){}
 try{suites.push(['impact',require('./impact_checks.js')])}catch(e){}
 try{suites.push(['survival',require('./survival_checks.js')])}catch(e){}
 try{suites.push(['screen',require('./screen_checks.js')])}catch(e){}
+try{suites.push(['preload',require('./preload_checks.js')])}catch(e){}
 try{suites.push(['systems',require('./systems_checks.js')])}catch(e){}
 (async()=>{const b=await chromium.launch({args:['--no-sandbox','--disable-dev-shm-usage']});
 const page=await b.newPage({viewport:{width:1280,height:800}});const errors=[];page.on('pageerror',e=>errors.push(String(e)));
-await page.addInitScript(()=>{const d=new Map();Object.defineProperty(window,'localStorage',{value:{getItem:k=>d.has(k)?d.get(k):null,setItem:(k,v)=>d.set(k,String(v)),removeItem:k=>d.delete(k),clear:()=>d.clear(),key:i=>[...d.keys()][i]??null,get length(){return d.size}}})});
+await page.addInitScript(()=>{window.SALTWAKE_QA=true;const d=new Map();Object.defineProperty(window,'localStorage',{value:{getItem:k=>d.has(k)?d.get(k):null,setItem:(k,v)=>d.set(k,String(v)),removeItem:k=>d.delete(k),clear:()=>d.clear(),key:i=>[...d.keys()][i]??null,get length(){return d.size}}})});
 if(isUrl)await page.goto(file,{waitUntil:'load',timeout:90000});else{await page.goto('about:blank');await page.setContent(fs.readFileSync(file,'utf8'),{waitUntil:'load',timeout:90000});}
 await page.waitForFunction('window.SALTWAKE_DEV && window.saltwakeWar');await page.waitForTimeout(500);
 const report={checks:{},page_errors:errors};

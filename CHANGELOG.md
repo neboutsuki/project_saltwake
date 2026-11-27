@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.31-dev — Maps preload up front
+- **Title screen:** every map's ground is painted once and saved while you are on the main menu. A small "Preparing maps… %" box in the corner shows progress, and the menu stays usable. Test machine: ~14 s the first time, 0.5 s on later launches.
+- **Entering a map** (new game, continue, expedition start, return to the harbor): a loading screen ("Loading The Outer Quays", progress bar and count) holds the game until the whole map's ground is in memory. The game is paused meanwhile, so nothing can attack you.
+  - Saved pieces load 10 at a time: the 140-piece Outer Quays went from 8.4 s to 0.8 s on the test machine.
+  - Verified: sprinting around the field afterwards triggers **0** new paints or previews.
+- The other map's ground is released when you change maps, which keeps memory down (about 140 MB of ground while in the field).
+- New module `preload.js`; `saltwakeTiles.prepareAll` / `loadMap`. QA runs skip the loading pause (`SALTWAKE_QA`). New `preload` suite. 398 checks, all passing.
+
 ## v0.31-dev — Leap attacks (attack during a dodge roll)
 - With a melee weapon, left or right click while rolling turns the roll into a **leap** toward your aim:
   - Ren rises in an arc while his shadow stays on the ground and shrinks.

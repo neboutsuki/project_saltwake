@@ -17,7 +17,7 @@
   const P = Game.prototype, IMGS = () => (window.SALTWAKE_ASSETS && window.SALTWAKE_ASSETS.images) || {};
   const CH = 16, CPX = CH * 32, ART_SCALE = 1.4;
   window.SALTWAKE_NEW_HUB = true;
-  const TX = window.saltwakeTiles = { enabled: true, ready: false, stats: { chunks: 0, built: 0, sprites: 0, facades: 0, remaps: 0 }, cacheSize: 96,
+  const TX = window.saltwakeTiles = { enabled: true, ready: false, stats: { chunks: 0, built: 0, sprites: 0, facades: 0, remaps: 0 }, cacheSize: 170,
     budgetMs: 5, camera: .95, brighten: 1.1, desat: .18 };
   const isTile = m => !!(m && m.tilemap);
 
@@ -170,6 +170,7 @@
       worker = new Worker(URL.createObjectURL(new Blob([WORKER_SRC], { type: 'text/javascript' })));
       worker.onmessage = ev => {
         const { key, cx, cy, bmp, buf, blob, bg } = ev.data, k = cx + ',' + cy, st = state[key]; inflight.delete(key + ':' + k);
+        const wait = waiters.get(key + ':' + k); if (wait) { waiters.delete(key + ':' + k); queueMicrotask(() => wait(true)); }
         if (blob && st?.sig) DISK.put(DISK.key(key, st.sig, k), blob);
         if (bg) { TX.stats.baked++; if (!blob && st?.sig) (DISK.skip ||= new Set()).add(DISK.key(key, st.sig, k)); return; }
         if (!st) return; let c = bmp;
@@ -243,6 +244,54 @@
     }
   }
   TX.bakeNext = bakeNext;
+
+  // ---- preloading -----------------------------------------------------------------------------------------------
+  // prepareAll(): on the title screen, every tilemap map is painted once and saved (progress bar under the menu).
+  // loadMap(): when you enter a map, all of its chunks are loaded into memory behind a short loading screen, so nothing
+  // is painted or previewed during play. Other maps' chunks are released to keep memory down.
+  const waiters = new Map();
+  function ensureState(game, id) {
+    const m = game.world.maps[id]; let s = state[id];
+    if (!s || s.m !== m) s = state[id] = { m, grid: null, chunks: new Map(), jobs: new Map(), bins: null };
+    if (!s.grid) buildGrid(game, s);
+    return s;
+  }
+  function loadChunk(game, s, key, cx, cy, keep) {
+    return new Promise(res => {
+      const k = cx + ',' + cy; if (keep && s.chunks.has(k)) return res(true);
+      const dk = DISK.key(key, s.sig, k);
+      const viaWorker = () => { if (!worker) return res(false); waiters.set(key + ':' + k, res); inflight.set(key + ':' + k, performance.now()); sendGrid(key, s);
+        worker.postMessage({ type: 'job', key, cx, cy, store: !!DISK.db, bg: !keep }); };
+      if (DISK.known.has(dk)) {
+        if (!keep) return res(true);
+        DISK.get(dk).then(b => b ? createImageBitmap(b) : null).then(bmp => { if (!bmp) { DISK.known.delete(dk); return viaWorker(); } s.chunks.set(k, bmp); TX.stats.disk++; res(true); }).catch(viaWorker);
+      } else viaWorker();
+    });
+  }
+  async function pool(jobs, n, onStep) { let i = 0, done = 0; const run = async () => { while (i < jobs.length) { const j = jobs[i++]; await j(); done++; onStep?.(done, jobs.length); } };
+    await Promise.all(Array.from({ length: Math.min(n, jobs.length) }, run)); }
+  const waitReady = async () => { for (let i = 0; i < 400 && !(MATS.every(n => tex(n)) && initWorker() && (DISK.ready || DISK.failed)); i++) await new Promise(r => setTimeout(r, 50)); return !!worker; };
+  TX.prepareAll = async function (game, onProgress) {
+    if (!(await waitReady()) || !DISK.db) return false;
+    const jobs = [];
+    for (const id of Object.keys(game.world.maps)) { const m = game.world.maps[id]; if (!isTile(m)) continue; const s = ensureState(game, id);
+      if (!s.pruned) { DISK.prune(id, s.sig); s.pruned = true; }
+      const mw = Math.ceil(m.w / CH), mh = Math.ceil(m.h / CH);
+      for (let y = 0; y < mh; y++) for (let x = 0; x < mw; x++) if (!DISK.known.has(DISK.key(id, s.sig, x + ',' + y))) jobs.push(() => loadChunk(game, s, id, x, y, false)); }
+    TX.prepared = false; await pool(jobs, 3, onProgress); TX.prepared = true; onProgress?.(1, 1); return true;
+  };
+  TX.loadMap = async function (game, id, onProgress) {
+    if (!(await waitReady())) return false;
+    const m = game.world.maps[id]; if (!isTile(m)) return true;
+    for (const [k, st] of Object.entries(state)) if (k !== id && st.chunks.size) { for (const v of st.chunks.values()) v?.close?.(); st.chunks.clear(); }   // release other maps
+    const s = ensureState(game, id), mw = Math.ceil(m.w / CH), mh = Math.ceil(m.h / CH), jobs = [];
+    // nearest chunks to the player first
+    const px = game.player.x / CPX, py = game.player.y / CPX, list = [];
+    for (let y = 0; y < mh; y++) for (let x = 0; x < mw; x++) if (!s.chunks.has(x + ',' + y)) list.push([x, y, Math.hypot(x + .5 - px, y + .5 - py)]);
+    list.sort((a, b) => a[2] - b[2]); for (const [x, y] of list) jobs.push(() => loadChunk(game, s, id, x, y, true));
+    await pool(jobs, 10, onProgress); return true;
+  };
+  TX.mapLoaded = (game, id) => { const m = game.world.maps[id], s = state[id]; if (!isTile(m)) return true; if (!s || s.m !== m) return false; return s.chunks.size >= Math.ceil(m.w / CH) * Math.ceil(m.h / CH); };
   // average colour per material, for the previews
   const avg = {};
   function avgOf(i) { if (avg[i]) return avg[i]; const t = tex(MATS[i]); let r = 0, gg = 0, b = 0, n = 0; for (let q = 0; q < t.d.length; q += 4 * 7) { r += t.d[q]; gg += t.d[q + 1]; b += t.d[q + 2]; n++; } return (avg[i] = [r / n, gg / n, b / n]); }
