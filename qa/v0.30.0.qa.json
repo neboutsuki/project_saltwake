@@ -500,7 +500,14 @@
     "gfx.flashLights": true,
     "gfx.smoothDefault": true,
     "gfx.smoothPathUsed": true,
-    "gfx.ashFullRes": true
+    "gfx.ashFullRes": true,
+    "camera.mouseLook": true,
+    "camera.fightZoomOut": true,
+    "camera.zoomReturns": true,
+    "camera.killPunch": true,
+    "camera.talkCloseUp": true,
+    "camera.talkReturns": true,
+    "camera.settings": true
   },
   "page_errors": []
 }

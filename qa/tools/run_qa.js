@@ -40,6 +40,7 @@ try{suites.push(['folk',require('./folk_checks.js')])}catch(e){}
 try{suites.push(['rack',require('./rack_checks.js')])}catch(e){}
 try{suites.push(['npc',require('./npc_checks.js')])}catch(e){}
 try{suites.push(['gfx',require('./gfx_checks.js')])}catch(e){}
+try{suites.push(['camera',require('./camera_checks.js')])}catch(e){}
 (async()=>{const b=await chromium.launch({args:['--no-sandbox','--disable-dev-shm-usage']});
 const page=await b.newPage({viewport:{width:1280,height:800}});const errors=[];page.on('pageerror',e=>errors.push(String(e)));
 await page.addInitScript(()=>{window.SALTWAKE_QA=true;const d=new Map();Object.defineProperty(window,'localStorage',{value:{getItem:k=>d.has(k)?d.get(k):null,setItem:(k,v)=>d.set(k,String(v)),removeItem:k=>d.delete(k),clear:()=>d.clear(),key:i=>[...d.keys()][i]??null,get length(){return d.size}}})});

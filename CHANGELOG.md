@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.31-dev — Camera system
+- **Mouse look:** the view leans toward the cursor, so you see where you aim. The lean is eased: nothing near the centre, up to about a quarter of the screen at the edge in the field, gentle in town. Movement lead is kept.
+- **Dynamic framing:**
+  - In a fight the camera shifts toward up to 4 nearby hunting monsters, and zooms out only if needed to keep them on screen.
+  - A boss gets a wider shot that frames you both.
+  - Sprinting pulls out slightly.
+- **Conversation close-up:** while you talk to someone, the camera eases in on the two of you and returns afterwards.
+- **Kill punch:** a small zoom punch on kills, on top of the existing damage shake.
+- **Zoom range** is now 0.7–1.6 (wheel, - / =, Alt+0 resets).
+- **Graphics options:** "Mouse look" and "Dynamic framing".
+- The framing zoom runs through the shared base zoom, so the Longwatch scope (which resets the zoom target every frame) and map changes stay in sync.
+- New `camera` QA suite with a simulated clock (508 checks, all passing).
+
 ## v0.31-dev — Smooth rendering (no visible pixels)
 - **New default pixel style "Smooth":**
   - Each small sprite (characters, monsters, props, plants, buildings up to 420 px) is upscaled once with a bicubic (Catmull-Rom) filter in a background worker, using premultiplied alpha so edges don't halo. The result is cached and drawn with high-quality smoothing.
