@@ -1,5 +1,30 @@
 # Changelog
 
+## v0.31-dev — Graphics pass: lighting, terrain, water, weather
+- **Ground (painter v2, `tilemap.js`):**
+  - Material borders blend softly over ~17 px with a gritty mix and a faint crease, instead of hard cut-out edges.
+  - Large-scale light and warmth variation breaks up big uniform areas.
+  - One composer is shared by the background workers and the main thread. Cached ground is repainted once (cache v2).
+- **Water and shoreline:**
+  - Surf no longer shows rectangular seams: stamps are feathered, overlap and bob independently.
+  - New: two animated foam lines (one hugging the beach, one rolling in and fading), a damp-sand band above the waterline, sun glints by day and moon glints at night, rain rings on the water, and a faint sky reflection.
+  - Pier shadows are feathered and fall only on the water; they used to be hard dark boxes that also covered the land.
+- **Atmosphere (`atmosphere.js`):**
+  - Cloud shadows drift over the land with the wind on part-cloudy days.
+  - Warm sun shafts slant across the scene at dawn and in the golden hour.
+  - Drifting fog banks with parallax in fog and rain, and a thin mist at dawn.
+  - Ground darkens and cools in rain and dries afterwards.
+  - Embers rise from fires and braziers.
+  - Each building gets a soft ground shadow at its base.
+  - Graphics setting: "Atmosphere".
+- **Lighting (`daynight.js`):**
+  - The lantern is a soft feathered beam instead of a hard-edged wedge.
+  - New short-lived flash lights: muzzle flashes (wickcaster brighter and warmer) and hits briefly light their surroundings, most visible at night.
+- **Weather particles (`environment-fx.js`):**
+  - The ash/rain layer renders at full resolution; at half resolution ash flakes were blocky white squares. Flakes are softer and follow the weather's ash amount.
+  - Rain streaks and splashes now draw without the GPU renderer too.
+- New `gfx` QA suite (499 checks, all passing). Cost with every effect on at once is about 5 ms per frame in a software-rendered test browser, far less with GPU canvas; the adaptive resolution step-down still applies.
+
 ## v0.31-dev — Living harbor: routines, personalities, memory
 - **Townsfolk routines** (`hublife.js`, street graph and places in the map data from `tools/make_maps.py`):
   - Townsfolk walk the streets to real places and spend time there: reading the notice board, drawing water, the fountain, shopping at the stalls, watching the forge, working the quay, looking out to sea from the piers, praying at the chapel at dawn and dusk, gathering at the campfire in the evening, and keeping watch at night. They prefer places nearby.

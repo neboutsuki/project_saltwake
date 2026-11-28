@@ -130,7 +130,7 @@
     if (!IM.enabled || !this.raid || meta.enemy || wasDead) return out;
     const dealt = Math.max(0, hp - e.hp), t = now(), fam = meta.fam || (meta.weaponId && (typeof ARMORY !== 'undefined') && ARMORY.weapons.find(n => n.id === meta.weaponId)?.family);
     const ang = meta.vx != null ? Math.atan2(meta.vy, meta.vx) : Math.atan2(e.y - this.player.y, e.x - this.player.x);
-    e.swFlash = t + 90; e.swSquash = t + 140; IM.stats.hits++;
+    e.swFlash = t + 90; e.swSquash = t + 140; IM.stats.hits++; window.saltwakeDayNight?.flash?.(e.x, e.y - 20, 90, '255,190,140', .55, .08);
     const armor = dealt < damage * .45;
     spray(this, x ?? e.x, (y ?? e.y) - 8, ang, armor ? 4 : 9, armor ? '#e8d9b0' : blood(e));
     if (!armor) splat(e.x, e.y, ang, blood(e), dealt > 60 ? 1.4 : 1);
@@ -168,6 +168,7 @@
     if (r.particles) for (let i = 0; i < 5; i++) r.particles.push({ x: mx, y: my, vx: Math.cos(a) * 30 + (Math.random() - .5) * 30, vy: Math.sin(a) * 30 - 25 - Math.random() * 20, t: .4 + Math.random() * .3, color: 'rgba(200,196,186,.55)' });
     if (fam === 'wickcaster' || fam === 'harpoon') { const s = Math.cos(a) >= 0 ? -1 : 1; IM.casings.push({ x: p.x + s * 8, y: p.y + 6 + Math.random() * 8, r: Math.random() * 3, life: 6 }); if (IM.casings.length > 40) IM.casings.shift(); }
     SFX.shot(fam, big);
+    window.saltwakeDayNight?.flash?.(mx, my, fam === 'wickcaster' ? 230 : 150 * (big ? 1.5 : 1), fam === 'wickcaster' ? '255,170,90' : '255,215,160', fam === 'wickcaster' ? 1 : .7, fam === 'wickcaster' ? .16 : .09);   // muzzle flash lights the surroundings
   }
   IM.scanShots = scanShots;
 

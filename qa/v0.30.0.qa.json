@@ -489,7 +489,16 @@
     "npc.remembersFailure": true,
     "npc.commentsOnce": true,
     "npc.allStoryNpcsVoiced": true,
-    "npc.storyCallOuts": true
+    "npc.storyCallOuts": true,
+    "gfx.cloudShadows": true,
+    "gfx.wetGround": true,
+    "gfx.fogBanks": true,
+    "gfx.sunShafts": true,
+    "gfx.buildingContactShadow": true,
+    "gfx.glintsOnWater": true,
+    "gfx.pierShadowOnWater": true,
+    "gfx.flashLights": true,
+    "gfx.ashFullRes": true
   },
   "page_errors": []
 }

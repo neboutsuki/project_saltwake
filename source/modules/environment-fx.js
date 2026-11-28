@@ -46,10 +46,10 @@ const renderAsh=P.render;P.render=function(t,...r){const out=renderAsh.call(this
 // Brine miasma: a faint green-grey haze pooling at the feet of mutated Brineworn (lore: brine-tainted former humans).
 const de=P.draw25Enemy;P.draw25Enemy=function(e,...a){if(cfg.grade&&e&&!e.dead&&/brineworn|brineback/.test(e.type||'')){const t=performance.now()/1000;g.save();g.translate(e.x,e.y+6);g.scale(1,.4);const r=34+Math.sin(t*1.7+e.x)*4;const gr=g.createRadialGradient(0,0,0,0,0,r);gr.addColorStop(0,'rgba(110,170,135,.22)');gr.addColorStop(1,'rgba(110,170,135,0)');g.fillStyle=gr;g.beginPath();g.arc(0,0,r,0,Math.PI*2);g.fill();g.restore()}return de.call(this,e,...a)};
 // Ashfall: screen-space overlay above both the field canvas and the harbor frame (below HUD). Parallax follows the field camera.
-const ash=document.createElement('canvas');ash.id='swAsh';ash.width=VW/2;ash.height=VH/2;ash.setAttribute('aria-hidden','true');
+const ash=document.createElement('canvas');ash.id='swAsh';ash.width=VW;ash.height=VH;   /* full resolution: at half resolution flakes and streaks were blocky squares */ash.setAttribute('aria-hidden','true');
 const ashStyle=document.createElement('style');ashStyle.textContent='#swAsh{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}';document.head.append(ashStyle);
 // Offscreen: the GPU renderer samples it; without the renderer the field scene draws it directly (no extra DOM layer).
-const actx=ash.getContext('2d');actx.scale(.5,.5);FX.ashCanvas=ash;FX.ashLive=false;
+const actx=ash.getContext('2d');FX.ashCanvas=ash;FX.ashLive=false;
 const fxImg=a=>{const u=window.SALTWAKE_ASSETS.images[a];if(!u)return null;const i=new Image();i.src=u;return i};const FXI={};for(const [k,a] of Object.entries({ash:'fx/ash_flake',ashSmall:'fx/ash_flake_small',ember:'fx/ember',rain:'fx/rain_streak',splash:'fx/splash'}))FXI[k]=fxImg(a);const flakes=[];let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
 for(let i=0;i<140;i++)flakes.push({x:rnd()*VW,y:rnd()*VH,z:.35+rnd()*.9,s:1.2+rnd()*2.2,ph:rnd()*6.28,ember:rnd()<.06});
 let lastT=0,lastCam=null;stats.ashFrames=0;
@@ -59,12 +59,12 @@ function ashLoop(t){requestAnimationFrame(ashLoop);const G=window.SALTWAKE_DEV?.
  const dt=lastT?Math.min(.05,(t-lastT)/1000):0;lastT=t;const w=wind();let cx=0,cy=0;
  if(G.raid&&G.camera){if(lastCam){cx=(G.camera.x-lastCam.x)*(G.camera.zoom||1);cy=(G.camera.y-lastCam.y)*(G.camera.zoom||1)}lastCam={x:G.camera.x,y:G.camera.y}}else lastCam=null;
  actx.clearRect(0,0,VW,VH);
- const SK=window.saltwakeSky,K=SK?.state,ashK=SK?.ownsWeather?K.ash:1,wv=SK?.ownsWeather?K.wind:null;
+ const SK=window.saltwakeSky,K=SK?.state,ashK=K?K.ash:1,wv=K?K.wind:null;
  for(const f of flakes){if(ashK<.05)break;if(f.z>ashK*1.3)continue;f.ph+=dt*1.3;f.x+=(14*(wv?wv.x*2.2:w)+Math.sin(f.ph)*9)*f.z*dt-cx*f.z;f.y+=(16+8*f.z)*f.z*dt-cy*f.z;
   if(f.y>VH+4){f.y=-4;f.x=rnd()*VW}if(f.y<-6)f.y=VH+4;if(f.x>VW+4)f.x=-4;if(f.x<-6)f.x=VW+4;
-  const spr=f.ember?FXI.ember:f.s>2.2?FXI.ash:FXI.ashSmall;if(!spr)continue;actx.globalAlpha=f.ember?(.45+.35*Math.sin(f.ph*2.3))*f.z:.45+.5*f.z;const sz=f.ember?1.4:f.z*1.2;actx.drawImage(spr,f.x,f.y,spr.width*sz,spr.height*sz)}
+  const spr=f.ember?FXI.ember:f.s>2.2?FXI.ash:FXI.ashSmall;if(!spr)continue;actx.globalAlpha=f.ember?(.45+.35*Math.sin(f.ph*2.3))*f.z:(.18+.32*f.z)*Math.min(1,ashK*1.2);const sz=f.ember?1.4:.7+f.z*.9;actx.drawImage(spr,f.x,f.y,spr.width*sz,spr.height*sz)}
  actx.globalAlpha=1;
- if(SK?.ownsWeather&&K.rain>.02){const n=Math.round(260*K.rain*(window.saltwakePerf?.density||1)),ang=Math.atan2(1,Math.max(-1.2,Math.min(1.2,K.wind.x*.55))),len=12+10*K.rain,ca=Math.cos(ang),sa=Math.sin(ang),tt=t/1000;
+ if(K&&K.rain>.02){const n=Math.round(260*K.rain*(window.saltwakePerf?.density||1)),ang=Math.atan2(1,Math.max(-1.2,Math.min(1.2,K.wind.x*.55))),len=12+10*K.rain,ca=Math.cos(ang),sa=Math.sin(ang),tt=t/1000;
   const RS=FXI.rain,SP=FXI.splash;if(RS){actx.globalAlpha=.35+.45*K.rain;
   for(let i=0;i<n;i++){const sx=((i*0.6180339)%1),sy=((i*0.7548776)%1),sp=620+260*((i*0.13)%1);let x=(sx*(VW+200)+tt*sp*ca*.9-cx*.6)%(VW+200),y=(sy*(VH+120)+tt*sp*sa-cy*.6)%(VH+120);if(x<0)x+=VW+200;if(y<0)y+=VH+120;x-=100;y-=60;actx.save();actx.translate(x,y);actx.rotate(ang-Math.PI/2);actx.drawImage(RS,-1,0,2,len);actx.restore()}}
   if(SP)  for(let i=0;i<Math.round(40*K.rain);i++){const ph=(tt*2.2+i*0.37)%1,x=((i*0.31831+Math.floor(tt*2.2+i*0.37)*0.7071)%1)*VW,y=((i*0.5772+Math.floor(tt*2.2+i*0.37)*0.4142)%1)*VH,r=1+ph*5;actx.globalAlpha=(1-ph)*.8*K.rain;actx.drawImage(SP,x-r,y-r*.4,r*2,r*.8)}

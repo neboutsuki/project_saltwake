@@ -96,13 +96,40 @@
       grid[y * gw + x] = id(mat);
     }
     s.grid = grid; s.gw = gw; s.gh = gh; s.gen = (s.gen || 0) + 1 + Math.random();
-    let sig = JSON.stringify(m.ground || []) + '|' + gw + 'x' + gh + '|' + m.waterStart + '|' + TX.desat + '|' + TX.brighten + '|' + CPX + '|v1';
+    let sig = JSON.stringify(m.ground || []) + '|' + gw + 'x' + gh + '|' + m.waterStart + '|' + TX.desat + '|' + TX.brighten + '|' + CPX + '|v2';
     for (const n of MATS) { const t = tex(n); if (t) { let a = 0; for (let i = 0; i < t.d.length; i += 997) a = (a * 31 + t.d[i]) | 0; sig += '|' + n + t.w + 'x' + t.h + ':' + a; } }
     let h = 2166136261; for (let i = 0; i < sig.length; i++) h = Math.imul(h ^ sig.charCodeAt(i), 16777619); s.sig = (h >>> 0).toString(36);
   }
   const matAt = (s, tx, ty) => s.grid[Math.max(0, Math.min(s.gh - 1, ty)) * s.gw + Math.max(0, Math.min(s.gw - 1, tx))];
 
   // ---- chunk compose (incremental) -------------------------------------------------------------------------------
+
+  // ---- ground composer (shared by the main thread and the Web Worker) -----------------------------------------------
+  // Per pixel: the material under a noise-warped position, sampled from its seamless texture (texture bombing for big
+  // repeating textures). v2 adds: soft blending across material borders (neighbours in warped space, grainy so it reads
+  // as soil/grit mixing rather than a blur), a slight crease shading along borders, and large-scale light/warmth
+  // variation so wide areas don't look uniform.
+  const COMPOSE_SRC = `function compose(o,ox,oy,CPX,gw,gh,grid,Tx,bomb,vnoise,hash,row0,row1){
+    const St=8,n=CPX/St+2,wx=new Float32Array(n*n),wy=new Float32Array(n*n),mv=new Float32Array(n*n),mw=new Float32Array(n*n);
+    for(let j=0;j<n;j++)for(let i=0;i<n;i++){const X=(ox+i*St)/23,Y=(oy+j*St)/23,k=j*n+i;
+      wx[k]=(vnoise(X,Y,11)-.5)*44+(vnoise(X*3,Y*3,12)-.5)*12;wy[k]=(vnoise(X,Y,21)-.5)*44+(vnoise(X*3,Y*3,22)-.5)*12;
+      const MX=(ox+i*St)/420,MY=(oy+j*St)/420;mv[k]=.9+.17*vnoise(MX,MY,31)+.06*vnoise(MX*3.1,MY*3.1,32);mw[k]=(vnoise(MX*.7,MY*.7,41)-.5)*.1}
+    const mat=(x,y)=>grid[Math.max(0,Math.min(gh-1,Math.floor(y/32)))*gw+Math.max(0,Math.min(gw-1,Math.floor(x/32)))];
+    const col=(mt,gx,gy,dx,dy)=>{const t=Tx[mt];let sx=gx,sy=gy;if(bomb[mt]){const c2=Math.floor((gx+dx*.8)/100),d2=Math.floor((gy+dy*.8)/100),hk=c2*7919+d2*104729;sx+=(Math.imul(hk,2654435761)>>>0)%t.w;sy+=(Math.imul(hk,2246822519)>>>0)%t.h}return(((sy%t.h)*t.w)+(sx%t.w))*4};
+    const R=17;
+    for(let py=row0;py<row1;py++){const fj=py/St,j0=fj|0,tj=fj-j0;for(let px=0;px<CPX;px++){const fi=px/St,i0=fi|0,ti=fi-i0,k=j0*n+i0;
+      const L=(a)=>(a[k]*(1-ti)+a[k+1]*ti)*(1-tj)+(a[k+n]*(1-ti)+a[k+n+1]*ti)*tj;
+      const dx=L(wx),dy=L(wy),gx=ox+px,gy=oy+py,X=gx+dx,Y=gy+dy,mt=mat(X,Y),t=Tx[mt],q=col(mt,gx,gy,dx,dy),p=(py*CPX+px)*4;
+      let r=t.d[q],g=t.d[q+1],b=t.d[q+2];
+      // neighbours: how much of another material is around this point
+      let other=-1,cnt=0;const D=R*.7,a1=mat(X+R,Y),a2=mat(X-R,Y),a3=mat(X,Y+R),a4=mat(X,Y-R),a5=mat(X+D,Y+D),a6=mat(X-D,Y-D),a7=mat(X+D,Y-D),a8=mat(X-D,Y+D);
+      if(a1!==mt){cnt++;other=a1}if(a2!==mt){cnt++;other=a2}if(a3!==mt){cnt++;other=a3}if(a4!==mt){cnt++;other=a4}
+      if(a5!==mt){cnt++;other=a5}if(a6!==mt){cnt++;other=a6}if(a7!==mt){cnt++;other=a7}if(a8!==mt){cnt++;other=a8}
+      if(cnt){const h=hash(gx,gy,7),w=Math.min(.5,cnt*.065*(.35+1.3*h));const t2=Tx[other],q2=col(other,gx,gy,dx,dy);
+        r+=(t2.d[q2]-r)*w;g+=(t2.d[q2+1]-g)*w;b+=(t2.d[q2+2]-b)*w;const cr=1-.022*cnt;r*=cr;g*=cr;b*=cr}
+      const v=L(mv),w2=L(mw);o[p]=r*v*(1+w2);o[p+1]=g*v;o[p+2]=b*v*(1-w2);o[p+3]=255}}
+  }`;
+  const compose = new Function('return ' + COMPOSE_SRC)();
   function startJob(cx, cy) {
     const c = document.createElement('canvas'); c.width = c.height = CPX;
     const ctx = c.getContext('2d'), out = ctx.createImageData(CPX, CPX);
@@ -115,30 +142,15 @@
     return { c, ctx, out, ox, oy, St, n, wx, wy, row: 0 };
   }
   function runJob(s, J, until) {
-    const o = J.out.data, Tx = MATS.map(n => tex(n)), bomb = MATS.map(n => BOMB.has(n)), { ox, oy, St, n, wx, wy } = J;
-    while (J.row < CPX && performance.now() < until) {
-      for (let r = 0; r < 16 && J.row < CPX; r++, J.row++) {
-        const py = J.row, fj = py / St, j0 = fj | 0, tj = fj - j0;
-        for (let px = 0; px < CPX; px++) {
-          const fi = px / St, i0 = fi | 0, ti = fi - i0, k = j0 * n + i0;
-          const dx = (wx[k] * (1 - ti) + wx[k + 1] * ti) * (1 - tj) + (wx[k + n] * (1 - ti) + wx[k + n + 1] * ti) * tj;
-          const dy = (wy[k] * (1 - ti) + wy[k + 1] * ti) * (1 - tj) + (wy[k + n] * (1 - ti) + wy[k + n + 1] * ti) * tj;
-          const gx = ox + px, gy = oy + py, m = matAt(s, Math.floor((gx + dx) / 32), Math.floor((gy + dy) / 32)), t = Tx[m];
-          let sx = gx, sy = gy;
-          if (bomb[m]) { const c2 = Math.floor((gx + dx * .8) / 100), d2 = Math.floor((gy + dy * .8) / 100), hk = c2 * 7919 + d2 * 104729;
-            sx += (Math.imul(hk, 2654435761) >>> 0) % t.w; sy += (Math.imul(hk, 2246822519) >>> 0) % t.h; }
-          const q = (((sy % t.h) * t.w) + (sx % t.w)) * 4, p = (py * CPX + px) * 4;
-          o[p] = t.d[q]; o[p + 1] = t.d[q + 1]; o[p + 2] = t.d[q + 2]; o[p + 3] = 255;
-        }
-      }
-    }
+    const Tx = MATS.map(n => tex(n)), bomb = MATS.map(n => BOMB.has(n)), hashF = (x, y, sd) => { let h = (Math.imul(x, 374761393) + Math.imul(y, 668265263) + Math.imul(sd, 2147483647)) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
+    while (J.row < CPX && performance.now() < until) { const r1 = Math.min(CPX, J.row + 16); compose(J.out.data, J.ox, J.oy, CPX, s.gw, s.gh, s.grid, Tx, bomb, vnoise, hashF, J.row, r1); J.row = r1; }
     if (J.row < CPX) return null;
     J.ctx.putImageData(J.out, 0, 0); TX.stats.built++; return J.c;
   }
   // ---- background composition (Web Worker) + instant low-res previews -----------------------------------------------
   // Full-res chunks are composed off the main thread, nearest first, and kept in a large cache; until one is ready the
   // chunk shows a soft 1/8-scale preview of the same warped materials (never a flat fill), so nothing pops in from blank.
-  const WORKER_SRC = `
+  const WORKER_SRC = COMPOSE_SRC + `
     const hash=(x,y,s)=>{let h=(Math.imul(x,374761393)+Math.imul(y,668265263)+Math.imul(s,2147483647))|0;h=Math.imul(h^(h>>>13),1274126177);return((h^(h>>>16))>>>0)/4294967296};
     const smooth=t=>t*t*(3-2*t);
     function vnoise(x,y,s){const xi=Math.floor(x),yi=Math.floor(y),xf=smooth(x-xi),yf=smooth(y-yi);const a=hash(xi,yi,s),b=hash(xi+1,yi,s),c=hash(xi,yi+1,s),d=hash(xi+1,yi+1,s);return a+(b-a)*xf+(c-a)*yf+(a-b-c+d)*xf*yf}
@@ -147,14 +159,7 @@
       if(m.type==='init'){Tx=m.mats;bomb=m.bomb;CPX=m.CPX;return}
       if(m.type==='grid'){grids[m.key]=m;return}
       if(m.type!=='job')return;const G=grids[m.key];if(!G||!Tx)return;
-      const {cx,cy}=m,ox=cx*CPX,oy=cy*CPX,St=8,n=CPX/St+2,wx=new Float32Array(n*n),wy=new Float32Array(n*n);
-      for(let j=0;j<n;j++)for(let i=0;i<n;i++){const X=(ox+i*St)/23,Y=(oy+j*St)/23;wx[j*n+i]=(vnoise(X,Y,11)-.5)*44+(vnoise(X*3,Y*3,12)-.5)*12;wy[j*n+i]=(vnoise(X,Y,21)-.5)*44+(vnoise(X*3,Y*3,22)-.5)*12}
-      const o=new Uint8ClampedArray(CPX*CPX*4),gw=G.gw,gh=G.gh,grid=G.grid;
-      for(let py=0;py<CPX;py++){const fj=py/St,j0=fj|0,tj=fj-j0;for(let px=0;px<CPX;px++){const fi=px/St,i0=fi|0,ti=fi-i0,k=j0*n+i0;
-        const dx=(wx[k]*(1-ti)+wx[k+1]*ti)*(1-tj)+(wx[k+n]*(1-ti)+wx[k+n+1]*ti)*tj,dy=(wy[k]*(1-ti)+wy[k+1]*ti)*(1-tj)+(wy[k+n]*(1-ti)+wy[k+n+1]*ti)*tj;
-        const gx=ox+px,gy=oy+py,tx=Math.max(0,Math.min(gw-1,Math.floor((gx+dx)/32))),ty=Math.max(0,Math.min(gh-1,Math.floor((gy+dy)/32))),mt=grid[ty*gw+tx],t=Tx[mt];
-        let sx=gx,sy=gy;if(bomb[mt]){const c2=Math.floor((gx+dx*.8)/100),d2=Math.floor((gy+dy*.8)/100),hk=c2*7919+d2*104729;sx+=(Math.imul(hk,2654435761)>>>0)%t.w;sy+=(Math.imul(hk,2246822519)>>>0)%t.h}
-        const q=(((sy%t.h)*t.w)+(sx%t.w))*4,p=(py*CPX+px)*4;o[p]=t.d[q];o[p+1]=t.d[q+1];o[p+2]=t.d[q+2];o[p+3]=255}}
+      const {cx,cy}=m,ox=cx*CPX,oy=cy*CPX,o=new Uint8ClampedArray(CPX*CPX*4);compose(o,ox,oy,CPX,G.gw,G.gh,G.grid,Tx,bomb,vnoise,hash,0,CPX);
       const img=new ImageData(o,CPX,CPX);
       let blob=null;if(m.store&&self.OffscreenCanvas){try{const oc=new OffscreenCanvas(CPX,CPX);oc.getContext('2d').putImageData(img,0,0);blob=await oc.convertToBlob({type:'image/webp',quality:.9})}catch(e){blob=null}}
       if(m.bg){postMessage({key:m.key,cx,cy,blob,bg:true});return}
@@ -382,7 +387,10 @@
     for (let y = 0; y < c.height; y++) for (let i = 0; i < c.width; i++) if (d[(y * c.width + i) * 4 + 3] > 8) { x0 = Math.min(x0, i); x1 = Math.max(x1, i); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
     if (x1 <= x0) return null;
     const out = document.createElement('canvas'); out.width = x1 - x0 + 1; out.height = y1 - y0 + 1;
-    out.getContext('2d').drawImage(c, x0, y0, out.width, out.height, 0, 0, out.width, out.height);
+    const oc = out.getContext('2d'); oc.drawImage(c, x0, y0, out.width, out.height, 0, 0, out.width, out.height);
+    // feather the left and right edges so overlapping stamps blend instead of showing rectangular seams
+    const fg = oc.createLinearGradient(0, 0, out.width, 0); fg.addColorStop(0, 'rgba(0,0,0,0)'); fg.addColorStop(.22, 'rgba(0,0,0,1)'); fg.addColorStop(.78, 'rgba(0,0,0,1)'); fg.addColorStop(1, 'rgba(0,0,0,0)');
+    oc.globalCompositeOperation = 'destination-in'; oc.fillStyle = fg; oc.fillRect(0, 0, out.width, out.height);
     return (surfCache = { c: out, w: out.width, h: out.height });
   }
   function drawSea(game, view) {
@@ -406,9 +414,57 @@
       g.globalAlpha = 1;
     }
     const sf = surf();
-    if (sf) { const bob = Math.sin(t * 1.3) * 2.5; g.globalAlpha = .82;
-      for (let x = Math.floor(west / sf.w) * sf.w; x < east + sf.w; x += sf.w - 6) g.drawImage(sf.c, x, game.coastY(x + sf.w / 2) - sf.h * .35 + bob, sf.w, sf.h);
+    if (sf) { g.globalAlpha = .8; const step = Math.round(sf.w * .62);
+      for (let x = Math.floor(west / step) * step - step; x < east + sf.w; x += step) { const ph = x * .013, bob = Math.sin(t * 1.3 + ph) * 2.5;
+        g.drawImage(sf.c, x, game.coastY(x + sf.w / 2) - sf.h * .35 + bob, sf.w, sf.h); }
       g.globalAlpha = 1; }
+    if (TX.waterFx !== false) waterFx(game, view, west, east, t);
+    g.restore();
+    if (TX.waterFx !== false) wetSand(game, west, east, t);
+  }
+  // ---- water and shoreline effects (code: light, foam lines, glints; no sprites) ------------------------------------
+  const H01 = (x, y, sd) => { let h = (Math.imul(x, 374761393) + Math.imul(y, 668265263) + Math.imul(sd, 2147483647)) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
+  function waterFx(game, view, west, east, t) {
+    const K = window.saltwakeSky?.state || {}, sun = Math.max(0, K.sunElev ?? .7), cloud = K.cloud ?? .2, night = sun < .05;
+    const cy0 = Math.max(view.y0, Math.min(...[west, (west + east) / 2, east].map(x => game.coastY(x))) - 10), y1 = view.y1;
+    // faint sky reflection
+    const tint = K.tint || [1, 1, 1];
+    g.globalCompositeOperation = 'screen'; g.globalAlpha = night ? .05 : .08 * (1 - cloud * .5);
+    g.fillStyle = night ? 'rgb(90,120,170)' : `rgb(${Math.round(150 * tint[0])},${Math.round(175 * tint[1])},${Math.round(200 * tint[2])})`; g.fillRect(west, cy0, east - west, y1 - cy0);
+    // glints: sun (warm) by day, moon (pale) at night; they twinkle and drift with the swell
+    const str = night ? .35 * (1 - cloud * .8) : .75 * sun * (1 - cloud * .7);
+    g.globalCompositeOperation = 'lighter';
+    if (str > .03) { const C = 26, ix0 = Math.floor(west / C), ix1 = Math.ceil(east / C), iy0 = Math.floor(cy0 / C), iy1 = Math.ceil(y1 / C);
+      g.fillStyle = night ? 'rgb(190,210,255)' : 'rgb(255,236,190)'; let n = 0;
+      for (let iy = iy0; iy <= iy1; iy++) for (let ix = ix0; ix <= ix1; ix++) { const h = H01(ix, iy, 5); if (h > .2) continue;
+        const ph = t * (.7 + h * 9) + h * 60, tw = Math.max(0, Math.sin(ph)); if (tw < .6) continue;
+        const x = ix * C + H01(ix, iy, 6) * C + Math.sin(t * .6 + h * 20) * 4, y = iy * C + H01(ix, iy, 7) * C; if (y < game.coastY(x) + 14) continue;
+        const k = Math.pow(tw, 5), len = 3 + 9 * H01(ix, iy, 8);
+        g.globalAlpha = str * k; g.fillRect(x - len / 2, y, len, 1.6); if (k > .7) g.fillRect(x - .8, y - 1.6, 1.6, 4.8); n++; }
+      TX.stats.glints = n; }
+    // rain rings on the water
+    if ((K.rain || 0) > .05) { g.strokeStyle = 'rgba(220,232,240,1)'; g.lineWidth = 1; const N = Math.round(60 * K.rain);
+      for (let i = 0; i < N; i++) { const cyc = t * 1.6 + i * .37, k = cyc % 1, s = Math.floor(cyc);
+        const x = west + H01(i, s, 9) * (east - west), y = cy0 + 30 + H01(i, s, 10) * (y1 - cy0 - 30); if (y < game.coastY(x) + 20) continue;
+        g.globalAlpha = (1 - k) * .35; g.beginPath(); g.ellipse(x, y, 2 + k * 9, (2 + k * 9) * .42, 0, 0, Math.PI * 2); g.stroke(); } }
+    // foam lines along the shore: one hugging the beach, one rolling in and fading
+    g.globalCompositeOperation = 'source-over';
+    const line = (off, w, a) => { g.globalAlpha = a; g.lineWidth = w; g.beginPath();
+      for (let x = west; x <= east; x += 8) { const y = game.coastY(x) + off(x); x === west ? g.moveTo(x, y) : g.lineTo(x, y); } g.stroke(); };
+    g.strokeStyle = 'rgb(236,240,236)'; g.lineCap = 'round';
+    line(x => 3 + Math.sin(t * 1.6 + x * .025) * 2.5 + Math.sin(x * .07) * 1.5, 2.6, .55);
+    const w = (t * .16) % 1; line(x => 12 + w * 46 + Math.sin(x * .018 + t * .8) * 4, 1.8, .45 * (1 - w) * Math.min(1, w * 5));
+    const w2 = (t * .16 + .5) % 1; line(x => 12 + w2 * 46 + Math.sin(x * .021 - t * .7) * 4, 1.4, .3 * (1 - w2) * Math.min(1, w2 * 5));
+    g.globalAlpha = 1; g.globalCompositeOperation = 'source-over';
+  }
+  function wetSand(game, west, east, t) {   // darker, damp sand just above the waterline (breathes with the waves)
+    g.save(); const reach = 20 + Math.sin(t * .9) * 4;
+    for (const [off, a] of [[reach, .07], [reach * .62, .07], [reach * .3, .08]]) {
+      const band = new Path2D(); band.moveTo(west, game.coastY(west) - off);
+      for (let x = west + 8; x <= east; x += 8) band.lineTo(x, game.coastY(x) - off + Math.sin(x * .05) * 2);
+      for (let x = east; x >= west; x -= 8) band.lineTo(x, game.coastY(x) + 2);
+      band.closePath(); g.fillStyle = `rgba(28,24,20,${a})`; g.fill(band);
+    }
     g.restore();
   }
 
@@ -418,9 +474,18 @@
   const drawDocks = P.drawDocks;
   P.drawDocks = function () {
     if (!active(this)) return drawDocks.apply(this, arguments);
-    const pat = SPRITES.pattern, plank = pattern(g, 'plank');
+    const pat = SPRITES.pattern, plank = pattern(g, 'plank'), game = this, fill = this.fill;
     SPRITES.pattern = function (ctx, key) { return key === 'coast/materials/deck' && plank ? plank : pat.apply(this, arguments); };
-    try { return drawDocks.apply(this, arguments); } finally { SPRITES.pattern = pat; }
+    // the pier's drop shadow: feathered, and only on the water (it used to be a hard dark box that also lay on the land)
+    this.fill = function (x, y, w, h, color) {
+      if (color !== 'rgba(11,29,31,.53)') return fill.apply(this, arguments);
+      g.save(); const m = game.map(), west = x - 20, east = x + w + 20, water = new Path2D(); water.moveTo(west, game.coastY(west) + 4);
+      for (let xx = west + 8; xx <= east; xx += 8) water.lineTo(xx, game.coastY(xx) + 4);
+      water.lineTo(east, m.h * 32); water.lineTo(west, m.h * 32); water.closePath(); g.clip(water);
+      for (const [k, a] of [[10, .1], [6, .12], [2, .16], [0, .14]]) { g.fillStyle = `rgba(8,24,28,${a})`; g.fillRect(x - k, y - k * .5, w + k * 2, h + k); }
+      g.restore(); TX.stats.dockShadows = (TX.stats.dockShadows || 0) + 1;
+    };
+    try { return drawDocks.apply(this, arguments); } finally { SPRITES.pattern = pat; this.fill = fill; }
   };
 
   // ---- scene -----------------------------------------------------------------------------------------------------

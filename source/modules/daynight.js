@@ -11,6 +11,7 @@
 (() => {
   const P = Game.prototype, T = 32;
   const DN = window.saltwakeDayNight = { enabled: true, active: false, stats: { frames: 0, lights: 0 }, ambient: [255, 255, 255], level: 0 };
+  DN.flash = (x, y, r = 160, rgb = '255,200,130', a = 1, life = .12) => { (DN.flashes ||= []).push({ x, y, r, rgb, a, life, t0: performance.now() }); if (DN.flashes.length > 24) DN.flashes.shift(); DN.stats.flashes = (DN.stats.flashes || 0) + 1; };
   // minute -> [r, g, b, darkness 0..1]
   const KEYS = [[0, 9, 11, 20, 1], [280, 9, 11, 20, 1], [330, 46, 44, 66, .85], [380, 226, 182, 164, .3], [440, 238, 210, 186, .12],
     [520, 250, 244, 232, 0], [720, 255, 252, 246, 0], [960, 255, 242, 218, 0], [1030, 255, 208, 154, .08], [1090, 238, 168, 130, .25],
@@ -121,10 +122,16 @@
       if (X < -R || Y < -R || X > W + R || Y > H + R) continue;
       glow(lx, X, Y, R, rgb, Math.min(1, a * (.25 + .9 * L))); n++;
     }
-    if (this.lanternOn !== false && L > .2) {   // lantern cone toward the aim
+    // short-lived lights: muzzle flashes, impacts, explosions (DN.flash)
+    DN.flashes = (DN.flashes || []).filter(f => now - f.t0 < f.life * 1000);
+    for (const f of DN.flashes) { const k = 1 - (now - f.t0) / (f.life * 1000), X = sx(f.x), Y = sy(f.y), R = f.r * z * (.8 + .2 * k);
+      if (X < -R || Y < -R || X > W + R || Y > H + R) continue; glow(lx, X, Y, R, f.rgb, Math.min(1, f.a * k * k * (.35 + .9 * L))); n++; }
+    if (this.lanternOn !== false && L > .2) {   // lantern beam toward the aim: nested feathered wedges, so its edges are soft
       const a = p.angle || 0, X = sx(p.x), Y = sy(p.y - 16), R = 470 * z;
-      lx.save(); lx.beginPath(); lx.moveTo(X, Y); lx.arc(X, Y, R, a - .42, a + .42); lx.closePath(); lx.clip();
-      glow(lx, X, Y, R, '255,222,170', .9 * L); lx.restore();
+      for (const [half, k] of [[.16, .3], [.26, .26], [.36, .2], [.48, .14], [.62, .08]]) {
+        lx.save(); lx.beginPath(); lx.moveTo(X - Math.cos(a) * 14 * z, Y - Math.sin(a) * 14 * z); lx.arc(X, Y, R * (1 - half * .35), a - half, a + half); lx.closePath(); lx.clip();
+        glow(lx, X, Y, R, '255,222,170', k * 1.6 * L); lx.restore();
+      }
     }
     g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.imageSmoothingEnabled = true;
     g.globalCompositeOperation = 'multiply'; g.drawImage(LC, 0, 0, VW, VH);
