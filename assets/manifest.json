@@ -10518,5 +10518,485 @@
   "pack": "art-new",
   "placeholder": true,
   "sha256": "2b65047a6a760acf547957dd708a990b99f4e9ebc29e39a4586dcf703ebc7793"
+ },
+ "art_townsfolk_folk_a_down_idle": {
+  "path": "assets/art/characters/townsfolk/folk_a_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_a_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "c60cd65875c12f72754928cfcb0aae6340f152a5b0763a2fdbb084d3df4cfe52"
+ },
+ "art_townsfolk_folk_a_up_idle": {
+  "path": "assets/art/characters/townsfolk/folk_a_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_a_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "b6cced3b70a9fe389884a27230bf225b569b471aca373256fef7c8edd8409fd9"
+ },
+ "art_townsfolk_folk_a_left_idle": {
+  "path": "assets/art/characters/townsfolk/folk_a_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_a_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "3a86aa30d8f60378df12aa094e47c3cfaa24c9fe61035803e57456ab6ad9cdf7"
+ },
+ "art_townsfolk_folk_a_right_idle": {
+  "path": "assets/art/characters/townsfolk/folk_a_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_a_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "e7e21af96da20df51138094de14a7ffa245e37f1f15b1899ffd786774227670d"
+ },
+ "art_townsfolk_folk_a_down_walk": {
+  "path": "assets/art/characters/townsfolk/folk_a_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_a_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "7d3eb9423527783d25aadb42776fcd57ca5735786f8c7514379fc1a90d0faff0"
+ },
+ "art_townsfolk_folk_a_up_walk": {
+  "path": "assets/art/characters/townsfolk/folk_a_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_a_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "676d662993c17d288a024f890b4e83846ca67a8690c8284d6d09229344298a98"
+ },
+ "art_townsfolk_folk_b_down_idle": {
+  "path": "assets/art/characters/townsfolk/folk_b_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_b_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "c1cce1ea1fe006ebbd563a99bb2a64e8082db530407b6e4e00bc01af583e4efb"
+ },
+ "art_townsfolk_folk_b_up_idle": {
+  "path": "assets/art/characters/townsfolk/folk_b_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_b_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "a994bd18953174f8d20593b49b305d2850807bbf451c8d5c0a5fc794bb0c2093"
+ },
+ "art_townsfolk_folk_b_left_idle": {
+  "path": "assets/art/characters/townsfolk/folk_b_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_b_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "a3a794c6ddc195b8af64585223bbbdab8e2917c187c4717cde37f4eec5611d8f"
+ },
+ "art_townsfolk_folk_b_right_idle": {
+  "path": "assets/art/characters/townsfolk/folk_b_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_b_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "93a9cbeb23037c71b2f089095bb2fa99f97be4b93e64b3adaa5aaa87783900ce"
+ },
+ "art_townsfolk_folk_b_down_walk": {
+  "path": "assets/art/characters/townsfolk/folk_b_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_b_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "b11795b58cc02a66f9b936ef7f2055fbdbdbda35e1e3df7b3e0ec6b5febb0136"
+ },
+ "art_townsfolk_folk_b_up_walk": {
+  "path": "assets/art/characters/townsfolk/folk_b_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_b_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "8d6bd6e03364a812701d78a02ac7bf063db219c1fb5da4a75664a37ca6963b94"
+ },
+ "art_townsfolk_folk_c_down_idle": {
+  "path": "assets/art/characters/townsfolk/folk_c_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_c_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "1eb89ee09cb033027f1834417bc3125ebc147e1927369e8b9461886b576e4de3"
+ },
+ "art_townsfolk_folk_c_up_idle": {
+  "path": "assets/art/characters/townsfolk/folk_c_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_c_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "7c524d271c0f86535d255c3b4c45c6c7d4511f04f776b127828198b1f9d8d7e7"
+ },
+ "art_townsfolk_folk_c_left_idle": {
+  "path": "assets/art/characters/townsfolk/folk_c_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_c_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "88067d4ca28d5705de2dcdc376b059cf7498466ba39ca3171aca4f9999384b40"
+ },
+ "art_townsfolk_folk_c_right_idle": {
+  "path": "assets/art/characters/townsfolk/folk_c_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_c_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "55f4cc5e2f8fed5adc69e09c111e4cdd17c53363a09ad8c887097fc5baa7f33e"
+ },
+ "art_townsfolk_folk_c_down_walk": {
+  "path": "assets/art/characters/townsfolk/folk_c_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_c_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "301a897438453febe0a4bc07282844e03563f1af19b5d4d0f6bf4785cb6cd404"
+ },
+ "art_townsfolk_folk_c_up_walk": {
+  "path": "assets/art/characters/townsfolk/folk_c_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_c_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "cf03e28b7a183ffdafc5ccbaaf1439e0fe9672a1f6a7e1d79885bf219c94fa9a"
+ },
+ "art_townsfolk_folk_d_down_idle": {
+  "path": "assets/art/characters/townsfolk/folk_d_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_d_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "06c6597edfbed3e2832b31849fa5e66b4f383a3266056eb782adbeaab8cb009d"
+ },
+ "art_townsfolk_folk_d_up_idle": {
+  "path": "assets/art/characters/townsfolk/folk_d_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_d_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "7b84fae5bef6efe48eb0b2637d9670764417218e636e2de0ac9ae78dc0219771"
+ },
+ "art_townsfolk_folk_d_left_idle": {
+  "path": "assets/art/characters/townsfolk/folk_d_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_d_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "ff432cc6142dd2a8843a59d780432ff9e00edc4e9d38924f9fbe610d1a541d06"
+ },
+ "art_townsfolk_folk_d_right_idle": {
+  "path": "assets/art/characters/townsfolk/folk_d_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_d_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "af9ddf21292eaaa840958ab95ba5d15b564c5e2e1181ba10fd8f18a7c21d431b"
+ },
+ "art_townsfolk_folk_d_down_walk": {
+  "path": "assets/art/characters/townsfolk/folk_d_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_d_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "c0524a8c893f0611a0bde9e30f821e0467e1cc8108f47f8647361ae548a3953f"
+ },
+ "art_townsfolk_folk_d_up_walk": {
+  "path": "assets/art/characters/townsfolk/folk_d_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_d_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "5ff52dbdd719fc85416db81c8ef860e543fd517056c02eef9000855b5b04ca7f"
+ },
+ "art_townsfolk_folk_e_down_idle": {
+  "path": "assets/art/characters/townsfolk/folk_e_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_e_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "972c247a1b73344d28990ff49c46f3700f1f5fb026ef3c81dbfd26fd5c12dd2f"
+ },
+ "art_townsfolk_folk_e_up_idle": {
+  "path": "assets/art/characters/townsfolk/folk_e_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_e_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "a51a68c1dd0f2fc1a09e69c7b198d90355863dd094d9d70e1bc5db295fd315c0"
+ },
+ "art_townsfolk_folk_e_left_idle": {
+  "path": "assets/art/characters/townsfolk/folk_e_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_e_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "ba6df69dd308f0f95043006f1d74da27fbf09616446be08d703d049a1e041c38"
+ },
+ "art_townsfolk_folk_e_right_idle": {
+  "path": "assets/art/characters/townsfolk/folk_e_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_e_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "689969126ba33dad372469c5e53e4388d788fa5b65bae2c5879ce241643ce9a2"
+ },
+ "art_townsfolk_folk_e_down_walk": {
+  "path": "assets/art/characters/townsfolk/folk_e_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_e_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "4a4e21359e8f2753876341b749f5d3ea061a45e4ca0253b13998a7dda3e0cca9"
+ },
+ "art_townsfolk_folk_e_up_walk": {
+  "path": "assets/art/characters/townsfolk/folk_e_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_e_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "a2ccab4157d8f89e890a56c0afb6529e4cbcf9f58c161ef966990dca3e328a56"
+ },
+ "art_townsfolk_folk_f_down_idle": {
+  "path": "assets/art/characters/townsfolk/folk_f_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_f_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "1cf0c56671394902f61b30077cfe585627d8340cc45ebd6237601ef37f128603"
+ },
+ "art_townsfolk_folk_f_up_idle": {
+  "path": "assets/art/characters/townsfolk/folk_f_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_f_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "b57bcd717ff72d16a5cd8b840d1f5267de0e082cab7c1985c514fb0af99ed6a8"
+ },
+ "art_townsfolk_folk_f_left_idle": {
+  "path": "assets/art/characters/townsfolk/folk_f_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_f_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "75ceca8370fc5b78e4fa3e974e610b8f63addefeddd4bda525e519a45a701e7a"
+ },
+ "art_townsfolk_folk_f_right_idle": {
+  "path": "assets/art/characters/townsfolk/folk_f_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_f_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "54da632ea350a21c3ccfcc1ca9c7f9fc6c4628e64db517a863e2f9bbba9fc97b"
+ },
+ "art_townsfolk_folk_f_down_walk": {
+  "path": "assets/art/characters/townsfolk/folk_f_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_f_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "60c296ec4d793c80a19d8b1a424dbfe8b03e78bbdae0e4cf1ebf3a634758cd0b"
+ },
+ "art_townsfolk_folk_f_up_walk": {
+  "path": "assets/art/characters/townsfolk/folk_f_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_f_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "0f82c420286dcec3165f83afc0acf8d6a4bd2b205574db5818ad7c6b46f66d6c"
+ },
+ "art_townsfolk_folk_g_down_idle": {
+  "path": "assets/art/characters/townsfolk/folk_g_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_g_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "425eb189b3563a52c984bc9b56df1dc10c805ce7129d70a1c4dfd01f4103abdf"
+ },
+ "art_townsfolk_folk_g_up_idle": {
+  "path": "assets/art/characters/townsfolk/folk_g_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_g_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "872da8191102912ab9feefe08fc333dff0a9b06de3035b59a01df759f92e1f51"
+ },
+ "art_townsfolk_folk_g_left_idle": {
+  "path": "assets/art/characters/townsfolk/folk_g_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_g_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "f2e4b8174a0809a260ea926e05226126eaddc3f1c15472874d4c250b93d0b6dd"
+ },
+ "art_townsfolk_folk_g_right_idle": {
+  "path": "assets/art/characters/townsfolk/folk_g_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_g_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "5e7e20c974a06e4e64dd1b7298ae902fbb65d6cb8579a3a99e9d2b01cd5a2f1c"
+ },
+ "art_townsfolk_folk_g_down_walk": {
+  "path": "assets/art/characters/townsfolk/folk_g_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_g_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "e488a017b76d47a5be010e57f4d570a9817e19af3fede6615943435460b6ef2e"
+ },
+ "art_townsfolk_folk_g_up_walk": {
+  "path": "assets/art/characters/townsfolk/folk_g_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_g_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "93f1eb481de402d676a4f2ed45129dd7021d510f65f7326526c476ac547a7cc5"
+ },
+ "art_townsfolk_folk_h_down_idle": {
+  "path": "assets/art/characters/townsfolk/folk_h_down_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_h_down_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "ace1e41db76a70834e884eccf9dc770ce46799bea5f98a42dedb363367e28c57"
+ },
+ "art_townsfolk_folk_h_up_idle": {
+  "path": "assets/art/characters/townsfolk/folk_h_up_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_h_up_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "c58115c89758c3ae30efa94273fde66d7fb6c36a31fa4e8f61a1077703bdc5f8"
+ },
+ "art_townsfolk_folk_h_left_idle": {
+  "path": "assets/art/characters/townsfolk/folk_h_left_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_h_left_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "34a635cce32667c9a638c0422847a5fc8b4c521a8531a30f82592cbf14da2d98"
+ },
+ "art_townsfolk_folk_h_right_idle": {
+  "path": "assets/art/characters/townsfolk/folk_h_right_idle.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_h_right_idle"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "5364734c8c504bdc38edf887edfc037c5bc51a8312ef85d7b920d35586fecc40"
+ },
+ "art_townsfolk_folk_h_down_walk": {
+  "path": "assets/art/characters/townsfolk/folk_h_down_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_h_down_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "b439c21d06785527bd5c44f340ede5b0fea813ca4c02695f2fc965c66d27d7b1"
+ },
+ "art_townsfolk_folk_h_up_walk": {
+  "path": "assets/art/characters/townsfolk/folk_h_up_walk.png",
+  "mime": "image/png",
+  "aliases": [
+   "art/characters/townsfolk/folk_h_up_walk"
+  ],
+  "pack": "art-new",
+  "staged": false,
+  "sha256": "c59607519c6c80fafe9c010b36e3c5d0230231a3046358337a97cf8cec15e9da"
  }
 }

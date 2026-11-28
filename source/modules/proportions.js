@@ -50,7 +50,7 @@
         let sx = 0, sy = 0, sw = src.naturalWidth || src.width, sh = src.naturalHeight || src.height, dh;
         if (arguments.length === 9) { sx = arguments[1]; sy = arguments[2]; sw = arguments[3]; sh = arguments[4]; dh = arguments[8]; } else dh = arguments[4];
         const t = g.getTransform(), sy2 = Math.hypot(t.b, t.d), vis0 = Math.abs(dh) * sy2 / worldScale();
-        if (PR.trace) { const b = box(src, sx, sy, sw, sh); (PR.trace[key] ||= []).push([src.tagName === 'CANVAS' ? 'c' + src.width + 'x' + src.height : String(src.src).slice(-24), Math.round(vis0), b && Math.round(vis0 * (b[1] - b[0]))]); }
+        if (PR.trace) { const b = box(src, sx, sy, sw, sh); (PR.trace[key] ||= []).push([src.tagName === 'CANVAS' ? 'c' + src.width + 'x' + src.height : (src.src||''), Math.round(vis0), b && Math.round(vis0 * (b[1] - b[0]))]); }
         if (vis0 >= 18) { const b = box(src, sx, sy, sw, sh); if (b) best = Math.max(best, vis0 * (b[1] - b[0])); }
       }
       return draw.apply(g, arguments);
@@ -58,7 +58,7 @@
     g.save(); if (k !== 1) { g.translate(ax, ay); g.scale(k, k); g.translate(-ax, -ay); }
     try { return fn.apply(self, args); } finally { g.restore(); if (st.raw == null && best > 0) st.raw = best; if (own) g.drawImage = draw; else delete g.drawImage; }
   }
-  PR.normalized = normalized;
+  PR.normalized = normalized; PR.reset = () => ST.clear();
 
   // ---- people ----------------------------------------------------------------------------------------------------
   for (const name of ['coastPlayer', 'draw25Player']) {
@@ -69,7 +69,7 @@
   if (cp) P.coastPerson = function (x, y, faction, role) { PR.stats.people++; return normalized('person:' + (role || faction || '?'), x, y + 4, HUMAN, cp, this, arguments); };
   function wrapFaces() { const F = window.saltwakeFaces; if (!F || F.__prop || typeof F.render !== 'function') return; const r = F.render;
     F.render = function (ctx, profile, dir, mirror, frame, x, y, w, h) { if (ctx !== g || typeof x !== 'number') return r.apply(this, arguments); PR.stats.people++;
-      return normalized('face:' + (profile?.id || profile?.role || '?') + ':' + dir, x, y, HUMAN, r, this, arguments); };
+      return normalized('face:' + (profile?.cast || profile?.id || profile?.role || '?') + ':' + dir, x, y, HUMAN, r, this, arguments); };
     F.__prop = true; }
   wrapFaces(); setTimeout(wrapFaces, 0); setTimeout(wrapFaces, 1000);
 

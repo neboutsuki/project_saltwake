@@ -462,7 +462,13 @@
     "clicks.optionsButtonsClickable": true,
     "clicks.loaderCapped": true,
     "clicks.loaderOnTop": true,
-    "clicks.proportionsLoaded": true
+    "clicks.proportionsLoaded": true,
+    "folk.folkArt": true,
+    "folk.walkersStyled": true,
+    "folk.walkersVaried": true,
+    "folk.escortStyled": true,
+    "folk.storyKeepsCast": true,
+    "folk.folkNormalised": true
   },
   "page_errors": []
 }

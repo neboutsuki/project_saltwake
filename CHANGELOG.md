@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.31-dev — Townsfolk in the cast's art style
+- **Every person in the harbor now matches Ren and the story cast:** same art style, proportions, height, resolution and animation (idle in 4 directions, walk up/down).
+  - Replaced the blurry code-drawn 40×56 figure that the smith, medic, ledger and merchant walkers fell back to.
+  - Replaced the chibi worker/male/female sprites (big heads, wide bodies), which looked larger than everyone else at the same height.
+  - 8 townsfolk (`art/characters/townsfolk/folk_a…h_*`) are baked from the cast strips by `tools/bake_townsfolk.py`, each with its own clothes and hair (navy dock hand, moss-green fisherman, navy-dress townswoman, teal clerk, ochre labourer, plum salvager, brown-robed woman, blue-jacket youth).
+  - Harbor walkers each get a different townsperson, and so do the escort and role-only NPCs such as the Dock Worker. Story NPCs keep their cast member. Hostile humans keep their own art.
+  - Walking animation state is tracked per person, so two people with the same look animate independently.
+  - New `folk` QA suite (469 checks, all passing).
+
 ## v0.31-dev — Harbor town re-planned
 - **Salvager's Rest layout:** the buildings are now laid out as a proper town grid instead of a loose scatter.
   - North lane: the homes, the chapel, the guardhouse, your quarters and the cart shelter, evenly spaced on both sides of the city gate.

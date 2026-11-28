@@ -20,6 +20,16 @@
     idle: { frames: 4, ms: 220, dirs: { down: `art/characters/story/${n}_down_idle`, up: `art/characters/story/${n}_up_idle`, left: `art/characters/story/${n}_left_idle`, right: `art/characters/story/${n}_right_idle` } },
     walk: { frames: 8, ms: 110, dirs: { down: `art/characters/story/${n}_down_walk`, up: `art/characters/story/${n}_up_walk` } },
   };
+  // Harbor townsfolk (tools/bake_townsfolk.py): the cast art with their own clothes and hair, same style and scale.
+  const FOLK = C.folk = ['folk_a', 'folk_b', 'folk_c', 'folk_d', 'folk_e', 'folk_f', 'folk_g', 'folk_h'];
+  for (const n of FOLK) STRIPS[n] = {
+    idle: { frames: 4, ms: 220, dirs: { down: `art/characters/townsfolk/${n}_down_idle`, up: `art/characters/townsfolk/${n}_up_idle`, left: `art/characters/townsfolk/${n}_left_idle`, right: `art/characters/townsfolk/${n}_right_idle` } },
+    walk: { frames: 8, ms: 110, dirs: { down: `art/characters/townsfolk/${n}_down_walk`, up: `art/characters/townsfolk/${n}_up_walk` } },
+  };
+  const hashOf = t => { let h = 2166136261; for (const c of String(t)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
+  // which townsperson: walkers by their index (all different), everyone else by a stable hash of their id/role
+  const folkFor = id => { const m = /^walker_(\d+)$/.exec(id || ''); return FOLK[(m ? +m[1] : hashOf(id)) % FOLK.length]; };
+  C.folkFor = folkFor;
   // Full alias names (the single-file build inlines staged art that a module names in full):
   // 'art/characters/story/captain_elda_down_idle' 'art/characters/story/captain_elda_up_idle' 'art/characters/story/captain_elda_left_idle' 'art/characters/story/captain_elda_right_idle' 'art/characters/story/captain_elda_down_walk' 'art/characters/story/captain_elda_up_walk'
   // 'art/characters/story/harlan_down_idle' 'art/characters/story/harlan_up_idle' 'art/characters/story/harlan_left_idle' 'art/characters/story/harlan_right_idle' 'art/characters/story/harlan_down_walk' 'art/characters/story/harlan_up_walk'
@@ -115,8 +125,8 @@
   // ---- harbor player ---------------------------------------------------------------------------------------------
   const hub = { x: null, y: null, dist: 0, last: 0 };
   const npcMotion = {};
-  function npc(ctx, who, dir, mirror, x, y, h) {
-    const now = performance.now(), m = npcMotion[who] || (npcMotion[who] = { x, y, dist: 0, last: 0, since: now });
+  function npc(ctx, who, dir, mirror, x, y, h, key = who) {
+    const now = performance.now(), m = npcMotion[key] || (npcMotion[key] = { x, y, dist: 0, last: 0, since: now });
     const d = Math.hypot(x - m.x, y - m.y);
     if (d < 1.5) { m.dist += d; if (d > .004) { m.last = now; m.since = now; } } m.x = x; m.y = y;
     const moving = now - m.last < 160, D = dir === 'side' ? (mirror ? 'left' : 'right') : dir === 'back' ? 'up' : 'down';
@@ -132,9 +142,12 @@
   function wrapFaces() {
     const F = window.saltwakeFaces; if (!F || F.__cast || typeof F.render !== 'function') return; const r = F.render;
     const prof = F.profile;
-    F.profile = function (role, a) { const p = prof.apply(this, arguments); if (a && CAST_OF[a.id]) p.cast = CAST_OF[a.id]; return p; };
+    F.profile = function (role, a) { const p = prof.apply(this, arguments);
+      if (a && CAST_OF[a.id]) p.cast = CAST_OF[a.id];
+      else if (a?.id && role !== 'player' && role !== 'wrecker') { p.cast = folkFor(a.id); p.motionKey = a.id; }   // townsfolk, escorts
+      return p; };
     F.render = function (ctx, profile, dir, mirror, frame, x, y, w, h, isPlayer) {
-      if (isPlayer !== true && profile && profile.cast && C.enabled && npc(ctx, profile.cast, dir, mirror, x, y, h)) return true;
+      if (isPlayer !== true && profile && profile.cast && C.enabled && npc(ctx, profile.cast, dir, mirror, x, y, h, profile.motionKey || profile.cast)) return true;
       if (isPlayer !== true || !C.enabled || !C.ready()) return r.apply(this, arguments);
       const now = performance.now(), d = hub.x === null ? 0 : Math.hypot(x - hub.x, y - hub.y);
       if (d < 1.5) { hub.dist += d; if (d > .004) hub.last = now; } hub.x = x; hub.y = y;
@@ -153,9 +166,11 @@
   const cp2 = P.coastPerson;
   if (cp2) P.coastPerson = function (x, y, faction, role) {
     if (C.enabled && typeof x === 'number' && role) {
-      const n = (this.world.content.npcs || []).find(q => q.role === role && q.mapId === this.mapId), who = n && CAST_OF[n.id];
+      const n = (this.world.content.npcs || []).find(q => q.role === role && q.mapId === this.mapId);
+      // story cast if they have one, otherwise a townsperson (friendly people only; hostile humans keep their art)
+      const who = (n && CAST_OF[n.id]) || (!/wrecker|hostile|raider/i.test(String(faction) + role) ? folkFor('role:' + role) : null), mk = n ? n.id : 'role:' + role;
       if (who) {
-        const now = performance.now(), m = fieldNpc[n.id] || (fieldNpc[n.id] = { x, y, dist: 0, last: 0, dir: 'down' }), d = Math.hypot(x - m.x, y - m.y);
+        const now = performance.now(), m = fieldNpc[mk] || (fieldNpc[mk] = { x, y, dist: 0, last: 0, dir: 'down' }), d = Math.hypot(x - m.x, y - m.y);
         if (d < 60) { m.dist += d; if (d > .3) { m.last = now; m.dir = Math.abs(x - m.x) > Math.abs(y - m.y) ? (x < m.x ? 'left' : 'right') : y < m.y ? 'up' : 'down'; } }
         m.x = x; m.y = y;
         const moving = now - m.last < 160, action = moving && (m.dir === 'up' || m.dir === 'down') ? 'walk' : 'idle';
