@@ -174,7 +174,9 @@
         if (d < 60) { m.dist += d; if (d > .3) { m.last = now; m.dir = Math.abs(x - m.x) > Math.abs(y - m.y) ? (x < m.x ? 'left' : 'right') : y < m.y ? 'up' : 'down'; } }
         m.x = x; m.y = y;
         const moving = now - m.last < 160, action = moving && (m.dir === 'up' || m.dir === 'down') ? 'walk' : 'idle';
-        const D = moving ? m.dir : 'down', s = strip(who, action, D);
+        const pl = this.player, pd = pl ? Math.hypot(pl.x - x, pl.y - y) : 1e9;   // standing NPCs turn to face you when you come close
+        const face = pd < 150 ? (Math.abs(pl.x - x) > Math.abs(pl.y - y) * .9 ? (pl.x < x ? 'left' : 'right') : pl.y < y ? 'up' : 'down') : 'down';
+        const D = moving ? m.dir : face, s = strip(who, action, D);
         if (s) {
           this.draw25Shadow?.(x, y + 4, 15, 6, .32);
           const fr = action === 'walk' ? Math.floor(m.dist / 9) % s.frames : Math.floor(now / s.ms) % s.frames;

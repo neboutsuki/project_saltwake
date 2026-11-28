@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.31-dev — Living harbor: routines, personalities, memory
+- **Townsfolk routines** (`hublife.js`, street graph and places in the map data from `tools/make_maps.py`):
+  - Townsfolk walk the streets to real places and spend time there: reading the notice board, drawing water, the fountain, shopping at the stalls, watching the forge, working the quay, looking out to sea from the piers, praying at the chapel at dawn and dusk, gathering at the campfire in the evening, and keeping watch at night. They prefer places nearby.
+  - Two townsfolk who cross paths may stop and talk; the conversation shows as alternating speech bubbles.
+  - At dusk and night most go home through their doors. In the morning they come back out.
+  - In rain fewer people are out; they hurry and shelter under awnings and the forge roof.
+  - They step aside when you walk into them, and turn to greet you.
+- **Story NPCs** (`npc-voice.js`, all 11 harbor NPCs have their own personality):
+  - They greet you by time of day, weather and how well they know you.
+  - The first time each one sees you after an expedition, they mention it: extracted, failed, a big fight, the apex you slew, the Elder.
+  - **"How are you holding up?"** is a new dialogue choice. Each NPC tells 5–6 personal lines in order (backstory, opinions of each other, rumors) and only repeats once all are told.
+  - They turn to face you when you come close and call out a line as you pass.
+- **Townsfolk talk:** lines fit the moment and what they are doing, the hour and the weather, and they gossip about your deeds and finished story quests.
+- **Memory:** saves keep how often you talked to each NPC, which stories they told, and your last expedition (`save.npcMem`).
+- The failed-expedition debrief now says your weapons came home with you.
+- New `npc` QA suite (490 checks, all passing).
+
 ## v0.31-dev — Weapon rack, weapons never lost
 - **All basic weapons are yours:** the rank I Bow, Arbalest, Wickcaster, Longwatch and Harpoon Gun, plus the Salvager Spear, Gutting Knife and Greataxe, are granted to every save, new or existing, if you own none of that type.
 - **Weapon Rack in the Personal Stash:** lists every weapon you own with its condition. Equip any one as primary, secondary or melee right there; the forge is no longer needed just to swap.

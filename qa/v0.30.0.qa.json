@@ -475,7 +475,21 @@
     "rack.rackEquips": true,
     "rack.rackEquipsMelee": true,
     "rack.failKeepsWeapons": true,
-    "rack.failLosesItems": true
+    "rack.failLosesItems": true,
+    "npc.graph": true,
+    "npc.townsfolkDoThings": true,
+    "npc.townsfolkChat": true,
+    "npc.townsfolkGreet": true,
+    "npc.onStreets": true,
+    "npc.homeAtNight": true,
+    "npc.firstMeeting": true,
+    "npc.chatOption": true,
+    "npc.personalLinesAdvance": true,
+    "npc.contextGreeting": true,
+    "npc.remembersFailure": true,
+    "npc.commentsOnce": true,
+    "npc.allStoryNpcsVoiced": true,
+    "npc.storyCallOuts": true
   },
   "page_errors": []
 }
