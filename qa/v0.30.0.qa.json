@@ -468,7 +468,14 @@
     "folk.walkersVaried": true,
     "folk.escortStyled": true,
     "folk.storyKeepsCast": true,
-    "folk.folkNormalised": true
+    "folk.folkNormalised": true,
+    "rack.allRangedBasics": true,
+    "rack.allMeleeBasics": true,
+    "rack.rackShown": true,
+    "rack.rackEquips": true,
+    "rack.rackEquipsMelee": true,
+    "rack.failKeepsWeapons": true,
+    "rack.failLosesItems": true
   },
   "page_errors": []
 }

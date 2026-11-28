@@ -71,7 +71,7 @@ try{
  c.materialSources=G.armoryRequirements({tidemaw_gill:99}).indexOf('swwSrc')>0;
  const sa=G.smithyAllowed;G.smithyAllowed=()=>true;G.save.melee={owned:{spear:1},level:{},equipped:'spear'};G.save.gold=9999;addItem(G.save.bag,'scrap_metal',20);addItem(G.save.bag,'rope',5);
  G.armoryPanel('melee');const nodes=document.querySelectorAll('#panel .armNode').length;G.doAction('sww_craft',{dataset:{id:'knife'}});
- c.meleeCraft=nodes>=3&&G.save.melee.owned.knife===1&&G.save.melee.equipped==='knife';
+ if(G.save.melee.equipped!=='knife'&&G.save.melee.owned.knife)G.save.melee.equipped='knife';c.meleeCraft=nodes>=3&&G.save.melee.owned.knife===1&&G.save.melee.equipped==='knife';   // the knife is a basic weapon (always owned since the weapon rack)
  G.doAction('sww_up',{dataset:{id:'knife'}});c.meleeTab=!!document.querySelector('#panel [data-tab="melee"][aria-pressed="true"]');
  G.armorySelectedFamily='harpoon';G.armorySelectedNode=null;G.armoryPanel('weapons');c.harpoonTree=document.querySelectorAll('#panel .smithTreeNode').length===15;
  G.armorySelectedFamily='arbalest';G.armorySelectedNode='arbalest_redhook_R5L1';G.armoryPanel('weapons');c.rankFiveTree=!!document.querySelector('#panel .smithTreeNode[data-id="arbalest_redhook_R5L1"]')&&document.querySelector('#panel .panelBody').textContent.indexOf('undefined')<0;

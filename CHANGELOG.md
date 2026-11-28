@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.31-dev — Weapon rack, weapons never lost
+- **All basic weapons are yours:** the rank I Bow, Arbalest, Wickcaster, Longwatch and Harpoon Gun, plus the Salvager Spear, Gutting Knife and Greataxe, are granted to every save, new or existing, if you own none of that type.
+- **Weapon Rack in the Personal Stash:** lists every weapon you own with its condition. Equip any one as primary, secondary or melee right there; the forge is no longer needed just to swap.
+- **Failed expeditions no longer take weapons:** carried items in your pack (and armor worn) are still lost, but weapons stay yours and stay equipped, with their condition and modifications. The Expedition Chart says so.
+- New `rack` QA suite. The melee crafting check is updated now that the knife is a basic weapon (476 checks, all passing).
+
 ## v0.31-dev — Townsfolk in the cast's art style
 - **Every person in the harbor now matches Ren and the story cast:** same art style, proportions, height, resolution and animation (idle in 4 directions, walk up/down).
   - Replaced the blurry code-drawn 40×56 figure that the smith, medic, ledger and merchant walkers fell back to.

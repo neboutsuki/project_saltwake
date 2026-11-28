@@ -392,7 +392,7 @@
         <h4>Conditions now · ${ct(cs.clock)}</h4><div class="swNow">${weather.icon} <b>${weather.name}</b> · ${cs.period.name}</div>
         <h4>Departure windows</h4><div class="swWins">${windows}</div>
         <button class="primary swGo" data-act="env_deploy" ${inPort && ok ? '' : 'disabled'}>DEPART · ${(IS.mission(G, sel)?.kind === 'free' ? D.name : IS.mission(G, sel)?.name || D.name).toUpperCase()}</button>
-        <p class="fine">Gear carried on death is lost. Extract to bring it home.</p></aside></div>`);
+        <p class="fine">Items you carry are lost if the expedition fails. Weapons are always kept.</p></aside></div>`);
   };
   const act = P.doAction;
   P.doAction = function (a, n) { if (a === 'sw_mission') { const id = n.dataset.id, d = Object.keys(MISSIONS).find(k => MISSIONS[k].some(m => m.id === id)); if (d) { (this.save.missions ||= {})[d] = id; this.store(); } return this.showClimateForecast(true); }
