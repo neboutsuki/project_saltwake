@@ -498,6 +498,8 @@
     "gfx.glintsOnWater": true,
     "gfx.pierShadowOnWater": true,
     "gfx.flashLights": true,
+    "gfx.smoothDefault": true,
+    "gfx.smoothPathUsed": true,
     "gfx.ashFullRes": true
   },
   "page_errors": []

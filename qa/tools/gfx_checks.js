@@ -7,5 +7,6 @@ module.exports=`async()=>{const c={},G=SALTWAKE_DEV.game,TX=window.saltwakeTiles
   c.cloudShadows=A.stats.clouds>s0.clouds;c.wetGround=A.stats.wet>s0.wet;c.fogBanks=A.stats.fog>s0.fog;c.sunShafts=A.stats.shafts>s0.shafts;c.buildingContactShadow=A.stats.ao>s0.ao;
   c.glintsOnWater=(TX.stats.glints||0)>0;c.pierShadowOnWater=(TX.stats.dockShadows||0)>g0;
   const before=DN.stats.flashes||0;DN.flash(G.player.x,G.player.y,150);c.flashLights=(DN.stats.flashes||0)>before&&DN.flashes.length>0;
+  const HR=window.saltwakeHiRes;c.smoothDefault=HR.smooth===true;const sm0=HR.stats.smooth;G.render(performance.now());c.smoothPathUsed=HR.scale*G.camera.zoom<1.6||HR.stats.smooth>sm0;
   const ash=FX.ashCanvas;c.ashFullRes=!!ash&&ash.width>=VW;
  }finally{G.notify=n}return c}`;

@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.31-dev — Smooth rendering (no visible pixels)
+- **New default pixel style "Smooth":**
+  - Each small sprite (characters, monsters, props, plants, buildings up to 420 px) is upscaled once with a bicubic (Catmull-Rom) filter in a background worker, using premultiplied alpha so edges don't halo. The result is cached and drawn with high-quality smoothing.
+  - Art pixels are no longer visible as blocks at 2–4× zoom, and detail stays sharp instead of turning blurry.
+  - A memory guard (about 420 MB) and a queue limit fall back to plain high-quality smoothing.
+  - Item icons, portraits and map canvases render smoothly too.
+- **Graphics > Pixel style:** "Smooth (no visible pixels)" or "Crisp pixel art" (the previous look).
+- Townsfolk speech bubbles no longer overlap; a bubble that would cover another moves up.
+- QA: smooth path check; the crisp-path check now applies in Crisp mode (501 checks, all passing).
+
 ## v0.31-dev — Graphics pass: lighting, terrain, water, weather
 - **Ground (painter v2, `tilemap.js`):**
   - Material borders blend softly over ~17 px with a gritty mix and a faint crease, instead of hard cut-out edges.

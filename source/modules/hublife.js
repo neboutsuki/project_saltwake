@@ -194,10 +194,14 @@
     const out = render.apply(this, arguments);
     if (hubActive(this) && L.barks.length && !this.panel) {
       const z = this.camera.zoom; g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.font = '600 12px system-ui,sans-serif'; g.textAlign = 'center';
+      const placed = [];
       for (const b of L.barks) {
         if (b.d && b.t > (b.T || 3.2)) continue;   // a reply waiting for its turn
-        const x = (b.w.x + (b.w.ox || 0) - this.camera.x) * z, y = (b.w.y - 92 - this.camera.y) * z; if (x < 0 || y < 0 || x > VW || y > VH) continue;
+        const x = (b.w.x + (b.w.ox || 0) - this.camera.x) * z; let y = (b.w.y - 92 - this.camera.y) * z; if (x < 0 || y < 0 || x > VW || y > VH) continue;
         const a = Math.max(0, Math.min(1, b.t / .5, ((b.T || 3.2) - b.t) / .3)), w = g.measureText(b.text).width + 14;
+        // keep bubbles from covering each other: lift a bubble above any already drawn where they overlap
+        let yy = y; for (let k = 0; k < 6; k++) { const hit = placed.find(r => Math.abs(r[0] - x) < (r[2] + w) / 2 && Math.abs(r[1] - yy) < 24); if (!hit) break; yy = hit[1] - 26; }
+        placed.push([x, yy, w]); y = yy;
         g.globalAlpha = a * .82; g.fillStyle = 'rgba(246,244,239,.9)'; g.beginPath(); g.roundRect(x - w / 2, y - 18, w, 22, 8); g.fill();
         g.globalAlpha = a; g.fillStyle = '#1c2224'; g.fillText(b.text, x, y - 3);
       }
